@@ -4,8 +4,11 @@
   "description": "automate.fedramp.gov website",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pages": "git submodule init && hugo -d _site"
+    "pages": "git submodule update --init && hugo -d _site"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "hugo-extended": "^0.125.6"
+  }
 }
