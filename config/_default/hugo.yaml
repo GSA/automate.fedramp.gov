@@ -35,8 +35,8 @@ params:
   header:
     project_shortname: "FedRAMP Automation"
     project_name: "FedRAMP Automation"
-  page_repo_path: https://github.com/GSA/fedramp-automation/tree/feature-guides-updates/docs
-  contentRepoPath: https://github.com/GSA/automate.fedramp.gov/tree/develop
+  page_repo_path: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
+  contentRepoPath: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
   # searchAffiliate: fedramp
   usabanner: true
   sidenav:
