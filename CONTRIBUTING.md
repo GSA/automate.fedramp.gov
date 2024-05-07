@@ -1,8 +1,8 @@
 # Welcome!
 
-We are glad you’re thinking about contributing to the FedRAMP Automation Project!
+We are glad you’re thinking about contributing to the FedRAMP Automation Website project!
 
-We’re an open source project that accepts contributions from our community members. FedRAMP Automation Project is the result of community contributions, large and small. Your contribution helps to make FedRAMP processes more automated. 
+We’re an open source project that accepts contributions from our community members. The FedRAMP Automation Website project is the result of community contributions, large and small. Your contribution helps to make FedRAMP processes more automated. 
 
 ## Code of Conduct
 
@@ -10,7 +10,7 @@ GSA is committed to building a safe, welcoming, harassment-free culture for ever
 
 We encourage you to read this project’s Contribution Guide (you are here), its [LICENSE](https://github.com/GSA/automate.fedramp.gov/blob/main/LICENSE.md) and its [README](https://github.com/GSA/automate.fedramp.gov/blob/main/README.md). If you want to read more about our open source policy or have questions, check out the [GSA Open Source Policy GitHub repository](https://github.com/GSA/open-source-policy) or send us an [email](mailto:oscal@fedramp.gov).
 
-## Licenses and attribution
+## Licenses and Attribution
 
 ### This project is in the public domain
 
