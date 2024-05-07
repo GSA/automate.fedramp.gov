@@ -1,0 +1,4 @@
+[submodule "themes/uswds-hugo"]
+	path = themes/uswds-hugo
+	url = https://github.com/GSA/uswds-hugo.git
+	branch = develop

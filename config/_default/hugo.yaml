@@ -27,8 +27,10 @@ module:
     target: assets/img
   - source: ../examples
     target: static/examples
-  imports:
-  - path: github.com/GSA/uswds-hugo
+#  imports:
+#  - path: github.com/GSA/uswds-hugo
+theme:
+- uswds-hugo
 params:
   header:
     project_shortname: "FedRAMP Automation"
