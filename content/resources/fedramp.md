@@ -1,11 +1,12 @@
 ---
-title: FedRAMP Resource Links
-heading: FedRAMP OSCAL Resources
+title: FedRAMP Automation Resources
+heading: FedRAMP Automation Resources
+weight: 40
 menu:
   primary:
-    name: FedRAMP Resource Links
+    name: FedRAMP Automation Resources
     parent: Resources
-    weight: 103
+    weight: 40
 toc:
   enabled: true
 ---

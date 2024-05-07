@@ -1,11 +1,12 @@
 ---
-title: Templates
-heading: FedRAMP OSCAL Tools
+title: FedRAMP Templates
+heading: FedRAMP Templates
+weight: 20
 menu:
   primary:
-    name: Templates
+    name: FedRAMP Templates
     parent: Resources
-    weight: 101
+    weight: 20
 toc:
   enabled: true
 ---

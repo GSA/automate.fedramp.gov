@@ -1,11 +1,12 @@
 ---
-title: NIST Resource Links
-heading: OSCAL Resources
+title: NIST OSCAL Resources
+heading: NIST OSCAL Resources
+weight: 60
 menu:
   primary:
-    name: NIST Resource Links
+    name: NIST OSCAL Resources
     parent: Resources
-    weight: 104
+    weight: 60
 toc:
   enabled: true
 ---

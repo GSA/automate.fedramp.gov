@@ -6,4 +6,4 @@ go 1.21
 
 // TODO replace with official release
 
-require github.com/GSA/uswds-hugo v0.0.0-20240507185902-8d9ddb7440e6
+// require github.com/GSA/uswds-hugo v0.0.0-20240507185902-8d9ddb7440e6

@@ -3,7 +3,7 @@ title: FedRAMP SSP OSCAL Guide
 weight: 50
 menu:
   primary:
-    name: System Security Plan OSCAL Guide
+    name: System Security Plan
     parent: Documentation
     weight: 50
 ---

@@ -1,11 +1,12 @@
 ---
 title: Tools
-heading: FedRAMP OSCAL Tools
+heading: Tools
+weight: 10
 menu:
   primary:
     name: Tools
     parent: Resources
-    weight: 103
+    weight: 10
 toc:
   enabled: true
 ---
