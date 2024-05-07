@@ -1,0 +1,11 @@
+{
+  "name": "automate.fedramp.gov",
+  "version": "1.0.0",
+  "description": "automate.fedramp.gov website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pages": "git submodule init && hugo -d _site"
+  },
+  "author": "",
+  "license": "ISC"
+}
