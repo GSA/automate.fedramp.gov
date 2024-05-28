@@ -8,6 +8,7 @@ menu:
 toc:
   enabled: true
 ---
+# Resources
 
 ### Learn
 The following NIST resources will help you gain a foundational understanding of OSCAL.

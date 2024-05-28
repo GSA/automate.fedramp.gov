@@ -8,6 +8,7 @@ menu:
 toc:
   enabled: true
 ---
+# Getting Started
 
 Open Security Controls Assessment Language (OSCAL) is a standardized format developed by NIST to facilitate the exchange and processing of security control information. For developers new to OSCAL, here is a step-by-step guide to help you get started.
 
