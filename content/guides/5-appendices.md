@@ -1,11 +1,10 @@
 ---
-title: Appendices
-weight: 90
+title: Key OSCAL Concepts - Part 2
+weight: 25
 ---
+# Key OSCAL Concepts - Part 2
 
-# Appendices
-
-## Appendix A. OSCAL-Based FedRAMP Baselines
+## OSCAL-Based FedRAMP Baselines
 
 NIST designed OSCAL catalogs as the primary source of control definition
 information from a framework publisher. Catalogs are typically only
@@ -98,7 +97,7 @@ baseline available now in both XML and JSON formats as follows:
 | **XML Version:** <https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/xml/FedRAMP_rev5_LI-SaaS-baseline_profile.xml>|
 | **JSON Version:** <https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/json/FedRAMP_rev5_LI-SaaS-baseline_profile.json>|
 
-## Appendix B. Modifying a FedRAMP Baseline
+## Modifying a FedRAMP Baseline
 
 OSCAL is designed to allow modification of controls and baselines, while
 maintaining traceability through each layer of modification. This means
@@ -208,7 +207,7 @@ A complete OSCAL profile syntax reference is available here:\
 </profile>
 {{</ highlight >}}
 
-## Appendix C. Profile Resolution
+## Profile Resolution
 
 Profiles are intended to identify upstream sources of control definition
 information and show only the changes to those upstream sources. This
@@ -281,7 +280,7 @@ NIST at <oscal@nist.gov> or by submitting an issue here:
 
 <https://github.com/usnistgov/OSCAL/issues>
 
-## Appendix D. Working with Roles, Locations, People, and Organizations
+## Working with Roles, Locations, People, and Organizations
 
 An OSCAL file defines roles, people, and organizations within the
 metadata as part of three separate assemblies:
