@@ -1,5 +1,5 @@
 ---
-title: Attachments
+title: Appendices & Attachments
 weight: 104
 ---
 
@@ -36,13 +36,13 @@ is handled:
 | **Appendix Q: Cryptographic Module Table** | Yes | See the Cryptographic Modules Section dealing with components. |
 
 ---
-## 5.1. Attachments
+### Attachments
 Classic FedRAMP attachments include a mix of items. Some lend well to
 machine-readable format, while others do not. Machine-readable content
 is typically addressed within the OSCAL-based FedRAMP SSP syntax, while
 policies, procedures, plans, guidance, and the rules of behavior documents are all treated as classic attachments, as described in the *Citations, Attachments, and Embedded Content in OSCAL Files* Section. The following table describes how each attachment is handled:
 
-#### Attachment Representation
+##### Attachment Representation
 {{< highlight xml "linenos=table" >}}
 <!-- cut -->
 <back-matter>
@@ -63,7 +63,7 @@ policies, procedures, plans, guidance, and the rules of behavior documents are a
 </back-matter>
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
   The Number of Policies Attached:
     count(/*/back-matter/resource/prop[@name="type"][@ns="https://fedramp.gov/ns/oscal"][string(./@value)="policy"])
@@ -76,7 +76,7 @@ policies, procedures, plans, guidance, and the rules of behavior documents are a
 {{</ highlight >}}
 
 ---
-## 5.2. System Inventory Approach
+### System Inventory Approach
 
 ![Flat-File Inventory Approach](/img/ssp-figure-24.png)
 
@@ -99,9 +99,9 @@ With the **component-based approach**, common information is captured once in a 
 For example, if the same Linux operating system is used as the platform for all database and web servers, most of the details about the Linux operating system can be captured once as a component. This includes information such as vendor name, version number, and patch level. If four Linux instances are used, each instance is an inventory item with a unique IP address and MAC address. Only those unique pieces are captured at the inventory level. All four inventory-items point back to the component for vendor name, version number, and patch level.
 
 ---
-### 5.2.1. Flat File Approach
+#### Flat File Approach
 
-#### Flat-File Representation
+##### Flat-File Representation
 {{< highlight xml "linenos=table" >}}
 <!-- cut -->
 <system-implementation>
@@ -158,9 +158,9 @@ The value of asset-type determines whether the identified
 asset-administrator is managing a system or an application. Currently, any FedRAMP-defined asset-type implies the management of a system, and therefore, is to be scanned as infrastructure.
 
 ---
-### 5.2.2. Component-based Approach
+#### Component-based Approach
 
-#### Component-based Representation
+##### Component-based Representation
 {{< highlight xml "linenos=table" >}}
 <!-- cut -->
 <system-implementation>
@@ -216,7 +216,7 @@ asset-administrator is managing a system or an application. Currently, any FedRA
 -   If component-sample is an image of a Linux virtual machine (VM), and 10 instances of that VM are in use, there would be one (1) component assembly and ten (10) inventory-item assemblies, all referencing the same component.
 
 ---
-### 5.2.3. Inventory Data Locations and XPath Queries
+#### Inventory Data Locations and XPath Queries
 
 The following queries are intended to show where to find each piece of information within the system inventory template.
 
@@ -232,7 +232,7 @@ The following queries are intended to show where to find each piece of informati
 ![Any Inventory](/img/ssp-figure-26.4.png)
 *Any Inventory*
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Number of Inventory Items:
     count(/*/system-implementation/system-inventory/inventory-item)
@@ -257,7 +257,7 @@ addresses for each scan type (infrastructure, web, and database),
 whether using the flat-file inventory approach or the component-based
 approach.
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   IPv4 Address of All Inventory Items Identified for Infrastructure Scanning:
     distinct-values( (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='https://fedramp.gov/ns/oscal']='infrastructure']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/ prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='https://fedramp.gov/ns/oscal']  [string(.)='infrastructure']]) )
