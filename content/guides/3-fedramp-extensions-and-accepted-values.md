@@ -2,6 +2,7 @@
 title: FedRAMP Extensions and Accepted Values
 weight: 30
 ---
+# FedRAMP Extensions and Accepted Values
 
 NIST designed the core OSCAL syntax to meet model cybersecurity
 information that is common to any organization and compliance framework.
