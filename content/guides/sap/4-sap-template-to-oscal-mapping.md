@@ -1,7 +1,8 @@
 ---
-title: SAP Template to OSCAL Mapping
+title: Contents
 weight: 102
 ---
+# FedRAMP SAP Contents
 
 For SAP-specific content, each page of the SAP is represented in this
 section, along with OSCAL code snippets for representing the information
@@ -49,7 +50,7 @@ template.**
 (11\" x 17\") paper.**
 
 ---
-## 4.1. Background
+### Background
 
 The *Background*, *Purpose*, and *Applicable Laws* sections of the
 FedRAMP SAP template contain references to the CSP name, the CSO name,
@@ -61,7 +62,7 @@ its associated documents.
 
 ![Background](/img/sap-figure-4.png)
 
-#### SAP Import Representation
+##### SAP Import Representation
 {{< highlight xml "linenos=table" >}}
 <!-- cut -->
 
@@ -92,7 +93,7 @@ its associated documents.
 
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
     (SAP) IA Name:
         /assessment-plan/metadata/party[@uuid="uuid-of-ia"]/name 
@@ -108,13 +109,13 @@ its associated documents.
 {{</ highlight >}}
 
 ---
-## 4.2. Scope
+### Scope
 
 This information should come entirely from the imported SSP. If the
 OSCAL-based SSP exists and is accurate, the tool should query that file
 for this information as follows:
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
     Table 2-1
     (SSP) Unique Identifier:
@@ -136,7 +137,7 @@ The system\'s authorization date, purpose, and description have not
 historically been displayed in the SAP but must be present when the SAR
 references this content.
 
-### 4.2.1. Location of Components
+#### Location of Components
 
 The SAP reference location information in the SSP using its ID and must
 explicitly cite each location within the scope of the assessment. While
@@ -147,7 +148,7 @@ data centers.
 
 ![Location of Components](/img/sap-figure-6.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <assessment-subject type="location">
     <description>
@@ -167,7 +168,7 @@ data centers.
 
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
     (SSP) List the Data Center UUIDs in the SSP (Primary and Alternate):
         /*/metadata/location[prop[@name='type'][@value='data-center']]/@uuid
@@ -206,7 +207,7 @@ The same queries work as presented above; however, the queries are used
 in the SAP instead of the SSP.
 
 ---
-### 4.2.2. IP Addresses Slated for Testing
+#### IP Addresses Slated for Testing
 
 The SAP references SSP content for this information. Each subnet should
 be represented in the SSP as a component with type=\'subnet\'. If the
@@ -241,7 +242,7 @@ component was not explicitly cited in the SAP.
 
 ![Location of Components](/img/sap-figure-7.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
     <assessment-subject type="component">
         <description><p>A description of the included component.</p></description>
@@ -270,7 +271,7 @@ component was not explicitly cited in the SAP.
 
 {{</ highlight >}}
 
-#### XPath Queries   
+##### XPath Queries   
 {{< highlight xml "linenos=table" >}}
     (SAP) Should all inventory-items be included? (true/false):
         boolean(/*/assessment-subject[@type='inventory-item']/include-all)
@@ -284,7 +285,7 @@ component was not explicitly cited in the SAP.
 
 
 ---
-#### 4.2.2.1 If No OSCAL-based SSP Exists or Has Inaccurate Information (IP Addresses)
+##### If No OSCAL-based SSP Exists or Has Inaccurate Information (IP Addresses)
 
 If no OSCAL-based SSP exists, or the inventory information is not
 accurately reflected in the SSP, this information may be added to the
@@ -292,7 +293,7 @@ SAP\'s local-definition section as described below. The include-subject
 citations are still required as described above; however, the UUIDs
 point to the SAP\'s local definitions instead of the SSP.
 
-#### Representation   
+##### Representation   
 {{< highlight xml "linenos=table" >}}
     <local-definitions>
         <inventory-item uuid="uuid-value">
@@ -327,7 +328,7 @@ point to the SAP\'s local definitions instead of the SSP.
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
     (SAP) Get the included ID the same way:
         /*/assessment-subject[@type='inventory-item']/include-subject[2]/@subject-uuid 
@@ -337,7 +338,7 @@ point to the SAP\'s local definitions instead of the SSP.
 {{</ highlight >}}
   
 ---
-### 4.2.3. SAP Web Applications Slated for Testing
+#### SAP Web Applications Slated for Testing
 
 The SSP inventory data should already indicate which assets have a web
 interface, with the following FedRAMP extension:
@@ -363,7 +364,7 @@ duplicate it here. If not, the tool should enable the assessor to add it
 here. A SAP tool should also enable the assessor to add a login-id for
 test users here. Both use FedRAMP extensions.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
     <local-definitions>
         <activity uuid="uuid-of-web-application-activity">
@@ -392,7 +393,7 @@ test users here. Both use FedRAMP extensions.
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
     (SAP) Login URL:
         (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-url'][@ns="https://fedramp.gov/ns/oscal"]
@@ -406,7 +407,7 @@ test users here. Both use FedRAMP extensions.
 {{</ highlight >}}
 
 ---
-### 4.2.2. SAP Databases Slated for Testing
+#### SAP Databases Slated for Testing
 
 The SSP inventory data should already indicate which assets are a database, with the following FedRAMP extension:
 
@@ -425,7 +426,7 @@ discovery scans once the assessment begins. SAP tools should facilitate
 this review and adjustment of inventory data as needed for the assessor
 to properly identify all databases for testing.
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
     (SSP) Host name of first database in SSP(flat file approach):
         (/*/system-implementation/system-inventory/inventory-item/prop[@name='scan-type'][string()='database'])[1]/../prop[@name='fqdn']
@@ -435,7 +436,7 @@ to properly identify all databases for testing.
 {{</ highlight >}}
 
 
-#### 4.2.4.1. If No OSCAL-based SSP Exists or Has Inaccurate Information (Database)
+##### If No OSCAL-based SSP Exists or Has Inaccurate Information (Database)
 
 If no OSCAL-based SSP exists, or an item is missing completely from the
 SSP inventory, it should have already been added as described in
@@ -447,7 +448,7 @@ database, the tool should enable the assessor to add this designation
 with an entry in the SAP local-definitions*,* except the value database
 should be used instead of web for the scan-type.
 
-### 4.2.5. Roles Testing Inclusions and Exclusion
+#### Roles Testing Inclusions and Exclusion
 
 Historically, FedRAMP assessors often identified generalized roles for
 testing, such as \"internal\", \"external\", and \"privileged\" rather
@@ -471,7 +472,7 @@ generic roles locally in the SAP local-definitions assembly.
 
 ![Role Testing Exclusions](/img/sap-figure-8.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <local-definitions>
     <!-- add user assembly for each role to be assessed -->
@@ -498,7 +499,7 @@ identified by the assessor, there must be an assessment-subject entry,
 and at least one corresponding task. A SAP tool should enable the
 assessor to add a test user ID here via FedRAMP extension properties.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <assessment-plan>  
     <!-- cut metadata -->
@@ -544,7 +545,7 @@ assessor to add a test user ID here via FedRAMP extension properties.
 {{</ highlight >}}
 
 ---
-## 4.3. SAP Assumptions
+### SAP Assumptions
 
 SAP Assumptions use syntax similar to OSCAL control catalog statements.
 They have a sort-id, which a tool can use to ensure the intended
@@ -556,7 +557,7 @@ within an OSCAL part is described on the [NIST OSCAL Concepts page](https://page
 
 ![Role Testing Exclusions](/img/sap-figure-9.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
     <terms-and-conditions>
         <part name="assumptions">
@@ -585,7 +586,7 @@ within an OSCAL part is described on the [NIST OSCAL Concepts page](https://page
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Obtain Sort IDs, for sorting by the SAP tool:
     /*/terms-and-conditions/part[@name='assumptions']/ part[@name='assumption']/prop[@name='sort-id']
@@ -609,13 +610,13 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
     added to future version of OSCAL.
 
 ---
-## 4.4. SAP Methodology
+### SAP Methodology
 
 In general, the methodology is simply a single markup multiline field, which enables the assessor to modify the content using rich text formatting. The FedRAMP SAP template includes subsections for *Control Testing, Data Gathering, Sampling,* and *Penetration Test*. Each of these sections must be present in the FedRAMP OSCAL SAP terms-and-condition assembly, within part named "methodology" as sub-parts. The subparts are specifically defined for FedRAMP SAP, so they have namespace "https://fedramp.gov/ns/oscal" and attributes are named "control-testing", "data-gathering", "sampling", and "pen-testing".
 
 ![SAP Methodology](/img/sap-figure-10.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
       <!-- Section 5 -->
@@ -657,7 +658,7 @@ assessor for the assessment. The insert elements can be used by tool developers 
 
 ![Sampling](/img/sap-figure-11.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
       <!-- Section 5 -->
@@ -679,7 +680,7 @@ assessor for the assessment. The insert elements can be used by tool developers 
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Will the assessor use sampling?:
     /*/terms-and-conditions/part[@name='methodology']/prop[@name='sampling']/@value
@@ -697,7 +698,7 @@ assessor for the assessment. The insert elements can be used by tool developers 
 -   The SAP tool should allow the assessor to modify this content as
     needed.
 
-## 4.5. Control Testing
+### Control Testing
 
 An OSCAL SAP must always explicitly select the in-scope controls from
 the applicable FedRAMP Baseline/Profile. For initial assessments, this
@@ -708,7 +709,7 @@ scope.
 
 ![Control Testing](/img/sap-figure-12.png)
 
-#### Representation   
+##### Representation   
 {{< highlight xml "linenos=table" >}}
 <!-- metadata -->
 <reviewed-controls>
@@ -733,7 +734,7 @@ scope.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Include All Controls? (true or false):
     boolean(/*/objectives/controls/include-all)
@@ -756,9 +757,9 @@ NOTE: Replace "exclude-control" with "include-control" above for any explicitly 
     in-scope for each assessment does not change with OSCAL.
 
 ---
-## 4.6. SAP Test Plan
+### SAP Test Plan
 
-### 4.6.1. Assessor\'s Name, Address, and URL
+#### Assessor\'s Name, Address, and URL
 
 The SAP\'s metadata is used to represent
 the assessor\'s name address and URL. This uses the OSCAL common role,
@@ -769,7 +770,7 @@ ID that duplicates one used in the SSP.
 
 ![Test Plan](/img/sap-figure-13.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- cut: title, published, last-modified, version, oscal-version, prop -->
@@ -802,7 +803,7 @@ ID that duplicates one used in the SSP.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Assessor's Name:
     /*/metadata/party[@id=(/*/metadata/responsible-party[@role-id='assessor']/party-uuid)] /org/org-name
@@ -816,7 +817,7 @@ ID that duplicates one used in the SSP.
 {{</ highlight >}}
 
 ---
-### 4.6.2. Security Assessment Team
+#### Security Assessment Team
 
 The SAP\'s metadata is used to represent the assessment team and
 assessment lead. This uses the OSCAL common role, party, and
@@ -826,7 +827,7 @@ in the SSP.
 
 ![Test Plan](/img/sap-figure-14.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- cut: title, published, last-modified, version, oscal-version, prop -->
@@ -852,7 +853,7 @@ in the SSP.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of Assessment Team Members (integer):
     count(/*/metadata/responsible-party[@role-id='assessment-team']/party-uuid)
@@ -868,7 +869,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 {{</ highlight >}}
 
 ---
-### 4.6.3. CSP Testing Points of Contact
+#### CSP Testing Points of Contact
 
 The SAP\'s metadata is used to represent the CSP\'s points of contact.
 This uses the OSCAL common role, party, and responsible-party
@@ -881,7 +882,7 @@ reference the SSP party ID for that individual.
 
 ![Test Plan](/img/sap-figure-15.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="csp-assessment-poc">
@@ -901,7 +902,7 @@ reference the SSP party ID for that individual.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of CSP Assessment POCs (integer):
     count(/*/metadata/responsible-party[@role-id='csp-assessment-poc']/party-uuid)
@@ -928,7 +929,7 @@ NOTE: Replace 'person-1' with each party-uuid found in the responsible role.
     in the SSP.
 
 ---
-### 4.6.4. Testing Performed Using Automated Tools
+#### Testing Performed Using Automated Tools
 
 Automated tools are enumerated in the assets section of the SAP using
 the tools assembly. Each tool is listed using the same component syntax
@@ -936,7 +937,7 @@ available in the SSP.
 
 ![Test Plan](/img/sap-figure-16.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <assessment-assets >
     <component uuid="assessor-component1-uuid" type="software">
@@ -966,7 +967,7 @@ available in the SSP.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of Tools (integer):
     count(/*/assessment-assets/component)
@@ -989,14 +990,14 @@ NOTE: Replace [1] as needed with [2], [3], etc.
     \'operational\', otherwise a remark must be provided.
 
 ---
-### 4.6.5. Testing Performed Through Manual Methods
+#### Testing Performed Through Manual Methods
 
 In OSCAL, the manual assessment methods are described in the activity
 assembly as shown below:
 
 ![Test Plan](/img/sap-figure-17.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <local-definitions>
     <activity uuid="2715174e-9355-4775-bea4-4068e59e916b">
@@ -1031,7 +1032,7 @@ assembly as shown below:
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of manual test methods (integer):
     count(/*/local-definitions/activity[prop[@name='type'][@value='manual']])
@@ -1052,7 +1053,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
     appear twice, indicating each type.
  
 ---
-#### Including Manual Test Methods in the OSCAL SAP Test Plan Section
+##### Including Manual Test Methods in the OSCAL SAP Test Plan Section
 
 The FedRAMP OSCAL SAP terms-and-condition assembly, should contain a
 part with ns=\"https://fedramp.gov/ns/oscal\" name=\"manual-methods-testing\" when needed to facilitate rending of
@@ -1061,7 +1062,7 @@ as insertion points for data items such as test ID, test name, and test
 description if the tool is able manage them as parameters. The use of
 insert within an OSCAL part is described on the [NIST OSCAL Concepts page](https://pages.nist.gov/OSCAL/concepts/layer/control/catalog/sp800-53rev5-example/#parts). The XPath queries below show how to identify manual test information within the OSCAL SAP.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
       <!-- Section 6 Test Plan -->
@@ -1092,7 +1093,7 @@ insert within an OSCAL part is described on the [NIST OSCAL Concepts page](https
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Test ID:
     /assessment-plan/local-definitions[1]/activity[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="label"]/@value
@@ -1105,14 +1106,14 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 {{</ highlight >}}
 
 ---
-### 4.6.6. Schedule
+#### Schedule
 
 In OSCAL, the assessment schedule is described using an array of task
 assemblies as shown below:
 
 ![Test Plan](/img/sap-figure-18.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <task uuid="17030aaf-7712-4228-8607-a5a97a785efa" type="action">
     <title>Prepare Test Plan</title>
@@ -1135,7 +1136,7 @@ assemblies as shown below:
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of tasks in schedule (integer):
     count(/*/task)
@@ -1164,14 +1165,14 @@ NOTE: Replace [1] as needed with [2], [3], etc.
     user-friendly format.
 
 ---
-## 4.7. SAP Rules of Engagement (ROE)
+### SAP Rules of Engagement (ROE)
 
-### 4.7.1. Origination Addresses
+#### Origination Addresses
 
 The scan origination IP address(es) are included in the
 assessment-platform assembly. See the next page for other disclosures.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <assessment-assets>
     <component type="hardware" uuid="BA991C3F-1E00-4C38-BF81-86A9E503F3B9">
@@ -1205,7 +1206,7 @@ assessment-platform assembly. See the next page for other disclosures.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Count scan origination addresses (integer):
     count(/*/assessment-assets/assessment-platform/prop[@name='ipv4-address'])
@@ -1223,14 +1224,14 @@ NOTE: Replace [1] as needed with [2], [3], etc.
     followed by the list of addresses.
 
 ---
-### 4.7.2. Disclosures
+#### Disclosures
 
 The scan origination IP address(es) are included in the
 assessment-platform assembly. See the next page for other disclosures\`.
 
 ![Test Plan](/img/sap-figure-19.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
     <part name="disclosures">
@@ -1247,7 +1248,7 @@ assessment-platform assembly. See the next page for other disclosures\`.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Count other disclosure statements (integer):
     count(/*/terms-and-conditions/part[@name='disclosures']/part[@name='disclosure'])
@@ -1267,7 +1268,7 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
     followed by the list of addresses.
 
 ---
-### 4.7.3. Security Testing May Include 
+#### Security Testing May Include 
 
 SAP authors should describe the security testing that may be included
 within the terms-and-conditions assembly, in the "included-activities"
@@ -1275,7 +1276,7 @@ part and its "included-activity" sub-parts.
 
 ![Test Plan](/img/sap-figure-20.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
     <part name="included-activities">
@@ -1303,7 +1304,7 @@ part and its "included-activity" sub-parts.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of Included Activities:
     count(/*/terms-and-conditions/part[@name='included-activities']/part[@name='included-activity'])
@@ -1320,7 +1321,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
     following activities:\"
 
 ---
-### 4.7.4. Security Testing Will Not Include
+#### Security Testing Will Not Include
 
 SAP authors should describe exclusive disclosures within the
 terms-and-conditions assembly, in the "excluded-activities" part and its
@@ -1328,7 +1329,7 @@ terms-and-conditions assembly, in the "excluded-activities" part and its
 
 ![Test Plan](/img/sap-figure-21.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
     <part name="excluded-activities">
@@ -1361,7 +1362,7 @@ terms-and-conditions assembly, in the "excluded-activities" part and its
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of Excluded Activities:
     count(/*/terms-and-conditions/part[@name='excluded-activities']/part[@name='excluded-activity'])
@@ -1378,14 +1379,14 @@ NOTE: Replace [1] as needed with [2], [3], etc.
     of the following activities:\"
 
 ---
-### 4.7.5. End of Testing
+#### End of Testing
 
 This indicates who the Independent Assessor (IA) should notify within
 the CSP\'s organization when testing is complete.
 
 ![Test Plan](/img/sap-figure-22.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="csp-end-of-testing-poc">
@@ -1403,7 +1404,7 @@ the CSP\'s organization when testing is complete.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of CSP Parties to notify at EOT (integer):
     count(/*/metadata/responsible-party[@role-id='csp-end-of-testing-poc']/party-uuid)
@@ -1429,12 +1430,12 @@ NOTE: Replace 'person-2' with each party-uuid found in the responsible role.
     in the SSP.  
 
 ---
-### 4.7.6. Communication of Test Results
+#### Communication of Test Results
 
 This indicates who the Independent Assessor (IA) should send all the
 assessment results to at the CSP\'s organization.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="csp-results-poc">
@@ -1453,7 +1454,7 @@ assessment results to at the CSP\'s organization.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of CSP Test Result POCs (integer):
     count(/*/metadata/responsible-party[@role-id='csp-results-poc']/party-uuid)
@@ -1481,9 +1482,9 @@ NOTE: Replace 'person-1' with each party-uuid found in the responsible role.
     in the SSP.  
 
 ---
-### 4.7.7. Limitation of Liability 
+#### Limitation of Liability 
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
     <part name="liability-limitations">
@@ -1501,7 +1502,7 @@ NOTE: Replace 'person-1' with each party-uuid found in the responsible role.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Count individual limitations of liability statements (integer):
     count(/*/terms-and-conditions/part[@name='liability-limitations']/ part[@name='liability-limitation'])
@@ -1514,7 +1515,7 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
 {{</ highlight >}}
 
 ---
-## 4.8. SAP Signatures
+### SAP Signatures
 
 Using a machine-readable format such as OSCAL for SAP content creates a
 challenge in the handling of acceptance signatures. Early adopters are
@@ -1529,7 +1530,7 @@ following approaches is encouraged:
 
 ![Test Plan](/img/sap-figure-23.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <back-matter>
     <resource id="sap-signatures">
@@ -1543,7 +1544,7 @@ following approaches is encouraged:
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Link to signed SAP in PDF Format:
     /*/back-matter/resource/prop[@name='type'] [.='signed-sap']/../rlink/@href
@@ -1552,7 +1553,7 @@ following approaches is encouraged:
 
 {{</ highlight >}}
 
-### 4.8.1. Manual \"Wet\" Signature Approach (Document or Letter) Print, manually sign, scan, and attach. 
+#### Manual \"Wet\" Signature Approach (Document or Letter) Print, manually sign, scan, and attach. 
 
 1.  Print one of the following:
 
@@ -1568,7 +1569,7 @@ following approaches is encouraged:
 
 4.  Attach it to the OSCAL-based SAP as a resource.
 
-### 4.8.2. Digital Signature Approach Render, digitally sign, and attach. 
+#### Digital Signature Approach Render, digitally sign, and attach. 
 
 1.  Render the OSCAL-based SAP content as a PDF that resembles the
     MS-Word based FedRAMP SAP Template.
@@ -1578,15 +1579,15 @@ following approaches is encouraged:
 3.  Attach it to the OSCAL-based SAP as a resource.
 
 ---
-## 4.9. SAP Appendices
+### SAP Appendices
 
-### 4.9.1. Security Controls Selection Worksheet
+#### Security Controls Selection Worksheet
 
 An OSCAL SAP must always explicitly select the in-scope controls from
 the applicable FedRAMP Baseline/Profile. See section 4.5 Controls
 Testing for additional guidance.
 
-### 4.9.2. Test Case Procedures
+#### Test Case Procedures
 
 The assessment objectives and actions (Examine, Interview, and Test)
 from the test case workbook are now part of the [OSCAL-based FedRAMP
@@ -1594,7 +1595,7 @@ baselines](https://github.com/GSA/fedramp-automation/tree/master/baselines),
 with the detail imported from the OSCAL-based NIST SP 800-53 Catalog via
 the baseline.
 
-#### 4.9.2.1. Baseline Objectives and Methods
+##### Baseline Objectives and Methods
 
 To include an assessment objective and associated actions in the SAP,
 its control must be designated in-scope as described in *Sections 4.1,
@@ -1607,7 +1608,7 @@ needed, objectives can be explicitly included or excluded as well.
 
 ![Test Plan](/img/sap-figure-24.png)
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <reviewed-controls>
     <control-selection>
@@ -1634,7 +1635,7 @@ needed, objectives can be explicitly included or excluded as well.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Include All Objectives for in-scope controls? (true or false):
     boolean(/*/reviewed-controls/control-objective-selection/include-all)
@@ -1649,13 +1650,13 @@ NOTE: Replace "exclude-objective" with "include-objective" above for any explici
 
 {{</ highlight >}}
 
-#### 4.9.2.2. Sampling Methodology
+##### Sampling Methodology
 
 The sampling methodology may continue to be a separate, attached
 document. This should be provided as a back-matter resource, containing
 a FedRAMP "type" prop with an allowed value, sampling-methodology.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <back-matter>
     <resource uuid="uuid">
@@ -1675,7 +1676,7 @@ a FedRAMP "type" prop with an allowed value, sampling-methodology.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Link to Sampling Methodology:
     /*/back-matter/resource/prop[@name='type'] [@value='sampling-methodology']/../rlink/@href
@@ -1685,14 +1686,14 @@ a FedRAMP "type" prop with an allowed value, sampling-methodology.
 {{</ highlight >}}
 
 ---
-### 4.9.3. SAP Penetration Testing Plan and Methodology
+#### SAP Penetration Testing Plan and Methodology
 
 The penetration test plan methodology may continue to be a separate,
 attached document. This should be provided as a back-matter resource,
 containing a FedRAMP "type" prop with an allowed value,
 penetration-test-plan.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <back-matter>
     <resource uuid="uuid">
@@ -1733,7 +1734,7 @@ penetration-test-plan.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Link to Penetration Test Plan:
     /*/back-matter/resource/prop[@name='type'] [@value='penetration-test-plan']/../rlink/@href
@@ -1743,13 +1744,13 @@ penetration-test-plan.
 {{</ highlight >}}
 
 ---
-### 4.9.4. Significant Change Documentation
+#### Significant Change Documentation
 
 The significant change documentation must be provided as a back-matter
 resource, containing a FedRAMP "type" prop with an allowed value,
 significant-change-request.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <back-matter>
 <!-- Significant Change Request Documentation -->
@@ -1779,7 +1780,7 @@ significant-change-request.
 
 {{</ highlight >}}
 
-#### XPath Queries  
+##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Link to Significant Change Documentation:
     /*/back-matter/resource/prop[@name='type'] [@value=' significant-change-request ']/../rlink/@href
