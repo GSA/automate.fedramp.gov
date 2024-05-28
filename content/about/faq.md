@@ -8,6 +8,8 @@ menu:
 toc:
   enabled: true
 ---
+# FedRAMP OSCAL Frequently Asked Questions
+
 #### When does the FedRAMP expect CSPs will need to begin planning and migrating to the OSCAL process?
 
   While FedRAMP has not mandated the use of OSCAL by CSPs, FedRAMP encourages CSPs, 3PAOs, Agencies, and other stakeholders to begin engaging with the OSCAL community to  explore OSCAL's utility and feasibility.  As noted in the [New Roadmap for FedRAMP](https://www.fedramp.gov/2024-03-28-a-new-roadmap-for-fedramp/), _"FedRAMP needs to operate as a data-first program for its processes to scale"_ and OSCAL is a central part of achieving that goal.
