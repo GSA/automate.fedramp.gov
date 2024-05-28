@@ -2,6 +2,7 @@
 title: Security Controls
 weight: 105
 ---
+# FedRAMP SSP Security Controls
 
 ![Security Controls](/img/ssp-figure-30.png)
 
