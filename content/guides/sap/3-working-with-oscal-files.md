@@ -1,7 +1,8 @@
 ---
-title: Working with OSCAL Files
+title: Overview
 weight: 101
 ---
+# FedRAMP OSCAL SAP Overview
 
 This section provides a summary of several important concepts and
 details that apply to OSCAL-based FedRAMP SAP files.
@@ -11,7 +12,7 @@ provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to
 understanding this guide.
 
-## 3.1. XML and JSON Formats
+### XML and JSON Formats
 
 The examples provided here are in XML; however, FedRAMP accepts XML or
 JSON formatted OSCAL-based SAP files. NIST offers a utility that
@@ -21,7 +22,7 @@ JSON in either direction.
 You may submit your SAP to FedRAMP using either format. If necessary,
 FedRAMP tools will convert the files for processing.
 
-## 3.2. SAP File Concepts
+### SAP File Concepts
 
 Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based
 versions of these files are designed to make information available
@@ -54,7 +55,7 @@ TCW.
 The only reason to include this content in the SAP is when the assessor
 documents a deviation from the SSP, Baseline, or TCW.
 
-### 3.2.1. Resolved Profile Catalogs
+#### Resolved Profile Catalogs
 
 The resolved profile catalog for each FedRAMP baseline is produced by
 applying the FedRAMP profiles as a set of tailoring instructions on top
@@ -82,7 +83,7 @@ processing.*
 
 For more information about resolved profile catalogs, see the [*Guide to OSCAL-based FedRAMP Content*](/guides/5-appendices/#profile-resolution) *Appendix C, Profile Resolution*.
 
-## 3.3. OSCAL-based FedRAMP SAP Template
+### OSCAL-based FedRAMP SAP Template
 
 FedRAMP offers an OSCAL-based SAP shell file in both XML and JSON
 formats. This shell contains many of the FedRAMP required standards to
@@ -96,7 +97,7 @@ JSON formats here:
 -   OSCAL-based FedRAMP SAP Template (XML Format):\
     [https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sap/xml/FedRAMP-SAP-OSCAL-Template.xml](https://github.com/GSA/fedramp-automation/raw/master/dist/content/templates/sap/xml/FedRAMP-SAP-OSCAL-Template.xml)
 
-##  3.4. OSCAL's SAP Minimum File Requirements
+### OSCAL's SAP Minimum File Requirements
 
 Every OSCAL-based FedRAMP SAP file must have a minimum set of required
 fields/assemblies and must follow the OSCAL Assessment Plan model syntax
@@ -105,7 +106,7 @@ found here:
 [https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/](https://pages.nist.gov/OSCAL/concepts/layer/assessment/assessment-plan/)
 
 
-## 3.5. Importing the System Security Plan
+### Importing the System Security Plan
 
 OSCAL is designed for traceability. Because of this, the assessment plan
 is designed to be linked to the system security plan. Rather than
@@ -117,7 +118,7 @@ Use the import-ssp field to specify an existing OSCAL-based SSP. The
 href flag may include any valid uniform resource identifier (URI),
 including a relative path, absolute path, or URI fragment.
 
-#### SAP Import Representation
+##### SAP Import Representation
 {{< highlight xml "linenos=table" >}}
    <import-ssp href="../ssp/FedRAMP-SSP-OSCAL-File.xml" />
 
@@ -127,7 +128,7 @@ including a relative path, absolute path, or URI fragment.
 
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
   (SAP) URI to SSP:
     /*/import-ssp/@href
@@ -139,7 +140,7 @@ If the value is a URI fragment, such as
 hashtag (#) is the universally unique identifier (UUID) value of a
 resource in the SAP file\'s back-matter. Refer to the *[Guide to OSCAL-based FedRAMP Content](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Section 2.7, Citations and Attachments in OSCAL Files* for guidance on handling.
 
-#### SAP Back Matter Representation 
+##### SAP Back Matter Representation 
 {{< highlight xml "linenos=table" >}}
   <back-matter>
       <resource uuid="96445439-6ce1-4e22-beae-aa72cfe173d0">
@@ -153,7 +154,7 @@ resource in the SAP file\'s back-matter. Refer to the *[Guide to OSCAL-based Fed
   </back-matter>
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
   (SAP) Referenced OSCAL-based SSP
   XML: 
@@ -171,7 +172,7 @@ FedRAMP SAP to the OSCAL-based FedRAMP SSP.
 Where the provided path is invalid, tool developers should ensure the
 tool prompts the user for the updated path to the OSCAL-based SSP.
 
-### 3.5.1. When OSCAL-based SSP Information is Inaccurate
+#### When OSCAL-based SSP Information is Inaccurate
 
 When an assessor encounters inaccurate information in an OSCAL-based
 SSP, they should encourage the CSP to fix it and use the corrected
@@ -189,14 +190,14 @@ SSP information in the SAP\'s local-definitions or metadata sections
 when necessary. The relevant sections of this guide describe how to
 represent inaccurate SSP information in the SAP when needed.
 
-### 3.5.2. If No OSCAL-based SSP Exists (General)
+#### If No OSCAL-based SSP Exists (General)
 
 The OSCAL-based SAP must always have an import-ssp field, even if no
 OSCAL-based SSP is available. To compensate for this, use a URI fragment
 that points to a resource in the back-matter. The resource must have a
 \"type\" property with the value of **no-oscal-ssp**
 
-#### SAP Representation 
+##### SAP Representation 
 {{< highlight xml "linenos=table" >}}
   <import-ssp href="#7c30125f-c056-4888-9f1a-7ed1b6a1b638" />
 
@@ -227,7 +228,7 @@ that points to a resource in the back-matter. The resource must have a
 
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
   (SAP) Resource representing system details when no OSCAL-based SSP exists:
     /*/back-matter/resource/prop[@name='type'][@value='no-oscal-ssp']
@@ -257,7 +258,7 @@ perspective.
 The relevant sections of this guide describe how to represent missing
 SSP in formation in the SAP when needed.
 
-## 3.6. Resolution Resource Prop
+### Resolution Resource Prop
 
 FedRAMP will be implementing a separate set of automated SAP validation
 rules for the rev 5 OSCAL templates. To ensure FedRAMP initiates the
@@ -265,7 +266,7 @@ appropriate validation rules when processing OSCAL SAPs, SAP authors
 should add a new prop called "resolution-resource" in the metadata
 section and include an associated back-matter resource as shown below:
 
-#### SSP Resolution Resource Representation 
+##### SSP Resolution Resource Representation 
 {{< highlight xml "linenos=table, hl_lines=11-14" >}}
   <assessment-plan>
     <metadata>
@@ -300,7 +301,7 @@ section and include an associated back-matter resource as shown below:
 
 {{</ highlight >}}
 
-#### XPath Queries 
+##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
   (SAR) UUID of “resolution-resource”:
     /*/metadata/prop[@name=”resolution-resource”]/@value
