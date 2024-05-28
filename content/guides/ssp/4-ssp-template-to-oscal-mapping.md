@@ -2,6 +2,7 @@
 title: Contents
 weight: 103
 ---
+# FedRAMP SSP Contents
 
 For SSP-specific content, each main section of the SSP is represented in this section, along with OSCAL code snippets for representing the information in OSCAL syntax. There is also XPath syntax for querying the code in an OSCAL-based FedRAMP SSP represented in XML format.
 
