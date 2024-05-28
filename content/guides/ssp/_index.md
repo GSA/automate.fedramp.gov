@@ -1,5 +1,5 @@
 ---
-title: FedRAMP SSP OSCAL Guide
+title: FedRAMP OSCAL SSP
 weight: 50
 menu:
   primary:
@@ -7,8 +7,6 @@ menu:
     parent: Documentation
     weight: 50
 ---
-
-# Expressing a FedRAMP System Security Plan in OSCAL
 
 The following guidelines describe how to apply the OSCAL models, along with some FedRAMP-specific data requirements and extensions, to express a FedRAMP System Security Plan (SSP) in OSCAL. This includes:
 

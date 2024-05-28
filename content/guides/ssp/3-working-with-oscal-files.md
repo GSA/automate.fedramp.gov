@@ -3,19 +3,17 @@ title: Overview
 weight: 101
 ---
 
-# OSCAL-Based SSP Overview
-
 This section provides a summary of several important concepts and details that apply to OSCAL-based FedRAMP SSP files.
 
 The [*Guide to OSCAL-based FedRAMP Content*](/guides) provides important concepts necessary for working with any OSCAL-based FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
-## 3.1. XML and JSON Formats
+### XML and JSON Formats
 
 The examples provided here are in XML; however, FedRAMP accepts XML or JSON formatted OSCAL-based SSP files. NIST offers a utility that provides lossless conversion of OSCAL-compliant files between XML and JSON in either direction.
 
 You may submit your SSP to FedRAMP using either format. If necessary, FedRAMP tools will convert the files for processing.
 
-## 3.2. SSP File Concepts
+### SSP File Concepts
 
 Unlike the traditional MS Word-based SSP, SAP, and Security Assessment Report (SAR), the OSCAL-based versions of these files are designed to make information available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
 
@@ -30,7 +28,7 @@ For example, the NIST control definitions and FedRAMP baseline content that norm
 For this reason, an OSCAL-based SSP points to the appropriate
 OSCAL-based FedRAMP baseline as determined by the system\'s FIPS-199 impact level. Instead of duplicating control details, the OSCAL-based SSP simply points to the baseline content for information such as control definition statements, FedRAMP-added guidance, parameters, and FedRAMP-required parameter constraints.
 
-### 3.2.1. Resolved Profile Catalogs
+#### Resolved Profile Catalogs
 
 The resolved profile catalog for each FedRAMP baseline is a pre-processing of the profile and catalog to produce the resulting data. This reduces overhead for tools by eliminating the need to open and follow references from the profile to the catalog. It also includes only the catalog information relevant to the baseline, reducing the overhead of opening a larger catalog.
 
@@ -43,7 +41,7 @@ Developers should be aware that at this time, catalogs and profiles remain relat
 
 For more information about resolved profile catalogs, see the [*Guide to OSCAL-based FedRAMP Content*](/guides/5-appendices/#profile-resolution) *Appendix, Profile Resolution*.
 
-## 3.3. OSCAL-based FedRAMP SSP Template
+### OSCAL-based FedRAMP SSP Template
 
 FedRAMP offers an OSCAL-based SSP shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to help get you started. This document is intended to work in concert with that shell file. The OSCAL-based FedRAMP SSP Template is available in XML and JSON formats here:
 
@@ -53,14 +51,14 @@ FedRAMP offers an OSCAL-based SSP shell file in both XML and JSON formats. This 
 -   OSCAL-based FedRAMP SSP Template (XML Format):\
     <https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/ssp/xml/FedRAMP-SSP-OSCAL-Template.xml>
 
-## 3.4. OSCAL's Minimum File Requirements
+### OSCAL's Minimum File Requirements
 
 Every OSCAL-based FedRAMP SSP file must have a minimum set of required
 fields/assemblies and must follow the OSCAL SSP core syntax found here:
 
 [https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp](https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/)
 
-## 3.5. Importing the FedRAMP Baseline
+### Importing the FedRAMP Baseline
 
 OSCAL is designed for traceability. Because of this, the SSP is designed
 to be linked to the FedRAMP baseline. Rather than duplicating content
@@ -71,7 +69,7 @@ Use the import-profile field to specify an existing OSCAL-based SSP. The
 href flag may include any valid uniform resource identifier (URI),
 including a relative path, absolute path, or URI fragment.
 
-#### SSP Import Representation
+##### SSP Import Representation
 {{< highlight xml "linenos=table" >}}
    <import-profile href="path/to/profile.xml" />
 
@@ -81,7 +79,7 @@ including a relative path, absolute path, or URI fragment.
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   (SSP) URI to Baseline:
     /*/import-profile/@href
@@ -92,7 +90,7 @@ If the value is a URI fragment, such as
 hashtag (#) is the universally unique identifier (UUID) value of a
 resource in the SSP file\'s back-matter. Refer to the *[Guide to OSCAL-based FedRAMP Content](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Section 2.6, Citations, Attachments and Embedded Content in OSCAL Files* for guidance on handling.
 
-#### SSP Back Matter Representation
+##### SSP Back Matter Representation
 {{< highlight xml "linenos=table" >}}
     <back-matter>
       <resource uuid="96445439-6ce1-4e22-beae-aa72cfe173d0">
@@ -105,7 +103,7 @@ resource in the SSP file\'s back-matter. Refer to the *[Guide to OSCAL-based Fed
   </back-matter>
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   (SSP) Referenced OSCAL-based FedRAMP Baseline XML: 
     /*/back-matter/resource[@uuid='96445439-6ce1-4e22-beae-aa72cfe173d0'] /rlink[@media-type='application/xml']/@href
@@ -115,11 +113,11 @@ resource in the SSP file\'s back-matter. Refer to the *[Guide to OSCAL-based Fed
 
 Note: Cloud Service Providers must import [FedRAMP profiles or resolved profile catalogs](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/baselines).
 
-## 3.6. Resolution Resource Prop
+### Resolution Resource Prop
 
 FedRAMP will be implementing a separate set of automated SSP validation rules for the rev 5 OSCAL templates. To ensure FedRAMP initiates the appropriate validation rules when processing OSCAL SSPs, SSP authors should add a new prop called "resolution-resource" in the metadata section and include an associated back-matter resource as shown below:
 
-#### SSP Resolution Resource
+##### SSP Resolution Resource
 {{< highlight xml "linenos=table" >}}
   <system-security-plan>
     <metadata>
@@ -152,7 +150,7 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
   </system-security-plan>
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   (SSP) UUID of “resolution-resource”:
     /*/metadata/prop[@name=”resolution-resource”]/@value
