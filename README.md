@@ -44,11 +44,7 @@ hugo version
 ```
 NOTE: The extended version of Hugo is required. The reported version should include the word "extended".
 
-3. Navigate into the `docs/` directory
-
-```
-cd docs
-```
+3. Navigate into the website's root directory
 
 4. Start the Hugo server
 

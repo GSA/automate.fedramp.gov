@@ -8,10 +8,6 @@ toc:
   enabled: true
 ---
 
-# Learn more about FedRAMP OSCAL
+FedRAMP is committed to increasing program effectiveness through automation and technology-forward operation.  OSCAL provides a means for describing system context in richer, machine-readable form, which is a key enabler for significant improvements in assessment consistency, efficiency, and accuracy.  
 
-Coming Soon: Overview of FedRAMP OSCAL...
-
-## Why OSCAL at FedRAMP?
-
-Coming Soon: Description of FedRAMP's OSCAL adoption program
+FedRAMP will leverage OSCAL to support machine-readable *"digital authorization packages"* and its efforts to further centralize and automate continuous monitoring activities.  
