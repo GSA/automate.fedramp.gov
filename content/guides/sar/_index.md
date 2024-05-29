@@ -1,5 +1,5 @@
 ---
-title: FedRAMP SAR OSCAL Guide
+title: FedRAMP OSCAL SAR
 weight: 70
 menu:
   primary:
@@ -7,23 +7,12 @@ menu:
     parent: Documentation
     weight: 300
 ---
+# FedRAMP OSCAL SAR
 
-## 2. FedRAMP Extensions and Allowed Values
+The following guidelines describe how to apply the OSCAL models, along with some FedRAMP-specific data requirements and extensions, to express a FedRAMP Security Assessment Results (SAR) in OSCAL. This includes:
 
-NIST designed the core OSCAL syntax to model cybersecurity information
-that is common to most organization and compliance frameworks; however,
-NIST also recognized\ the need to provide flexibility or organizations with unique information
-needs.
+- An [overview](3-working-with-oscal-files) of using the OSCAL SAR model to represent a FedRAMP SAR.
+- [Guidance](4-sar-template-to-oscal-mapping) on representing FedRAMP SAR template information in OSCAL.
+- Using the OSCAL SAR for [generating other content artifacts](5-generated-content).
 
-Instead of trying to provide a language that meets each\
-organization\'s unique needs, NIST provided designed OSCAL\
-with the ability to be extended.
-
-As a result, FedRAMP-compliant OSCAL files are a combination of the core
-OSCAL syntax and extensions defined by FedRAMP. The [_Guide to OSCAL-Based FedRAMP Content_](/guides)
-describes the concepts behind FedRAMP extensions and allowed values. The
-extensions related to the Security Assessment Plan (SAP) are cited in
-this document in context\
-of their use.
-
-**FedRAMP extensions and allowed values are cited in relevant portions of this document and summarized in the FedRAMP OSCAL Registry.**
+**FedRAMP extensions and allowed values are cited in relevant portions of this documentation.**
