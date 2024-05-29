@@ -98,16 +98,16 @@ assemblies in the correct sequence.
 Always use the hierarchy found here:
 
 -   SSP:
-    <https://pages.nist.gov/OSCAL/reference/latest/system-security-plan/xml-outline/>
+    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-outline/>
 
 -   SAP:
-    <https://pages.nist.gov/OSCAL/reference/latest/assessment-plan/xml-outline/>
+    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-plan/xml-outline/>
 
 -   SAR:
-    <https://pages.nist.gov/OSCAL/reference/latest/assessment-results/xml-outline/>
+    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-results/xml-outline/>
 
 -   POA&M:
-    <https://pages.nist.gov/OSCAL/reference/latest/plan-of-action-and-milestones/xml-outline/>
+    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/plan-of-action-and-milestones/xml-outline/>
 
 #### Typical OSCAL Assembly Structure
 
