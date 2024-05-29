@@ -1,21 +1,22 @@
 ---
-title: Working with OSCAL Files
+title: Overview
 weight: 102
 ---
+# FedRAMP OSCAL SAR Overview
 
 This section provides a summary of several important concepts and details that apply\ to OSCAL-based FedRAMP SAR files.
 
-The [*Guide to OSCAL-based FedRAMP Content*](/guides) provides important concepts necessary for working with any OSCAL-based
+The [*FedRAMP OSCAL Documentation*](/guides) provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
-## 3.1. XML and JSON Formats
+### XML and JSON Formats
 
 The examples provided here are in XML; however, FedRAMP accepts XML or JSON formatted OSCAL-based SAR files. NIST offers a utility that
 provides lossless conversion of OSCAL-compliant files between XML and JSON in either direction.
 
 You may submit your SAR to FedRAMP using either format. If necessary, FedRAMP tools will convert the files for processing.
 
-## 3.2. SAR File Concepts
+### SAR File Concepts
 
 Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based versions of these files are designed to make information available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
 
@@ -36,7 +37,7 @@ The SAR also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP 
 
 The only reason to include this content in the SAR is when there is a deviation from the SAP.
 
-### 3.2.1. Resolved Profile Catalogs
+#### Resolved Profile Catalogs
 
 The resolved profile catalog for each FedRAMP baseline is a pre-processing of the profile and catalog to produce the resulting data.
 This reduces overhead for tools by eliminating the need to open and follow references from the profile to the catalog. It also
@@ -49,9 +50,9 @@ Developers should be aware that at this time catalogs and profiles remain relati
 ![Baseline Information](/img/sar-figure-3.png) \
 *The Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing.*
 
-For more information about resolved profile catalogs, see the [*Guide to OSCAL-based FedRAMP Content*](/guides/5-appendices/#profile-resolution) *Appendix, Profile Resolution*.
+For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](/guides/5-appendices/#profile-resolution) *Appendix, Profile Resolution*.
 
-### 3.2.2. Assessment Deviations and SAP/SAR Syntax Overlap
+#### Assessment Deviations and SAP/SAR Syntax Overlap
 
 The SAP represents the assessment intentions before it starts and should not be modified once the assessment starts. The SAR represents what actually happened during the assessment, in addition to reporting the results.
 
@@ -69,7 +70,7 @@ defined activities or control objectives. The \"Result\" local definitions captu
 Instead of an assessor manually summarizing assessment deviations, a tool can simply compare the SAP and SAR content and report the
 differences automatically. 
 
-### 3.2.3. Copying SAR Residual Risks to the POA&M
+#### Copying SAR Residual Risks to the POA&M
 
 FedRAMP requires residual risks from an initial or annual assessment to be reflected in the POA&M. The observation and risk assemblies syntax of the SAR and POA&M are identical to facilitate ease of transfer. The SAR finding assembly and POA&M poam-item assembly are also as similar as possible to further facilitate this transfer.
 
@@ -97,13 +98,13 @@ Allowing for these adjustments, the Risk Exposure table is simply a view or pres
 
 A SAR allows the assessor to update finding and risk information during the assessment.
 
-### 3.2.4. Previous Assessment Results
+#### Previous Assessment Results
 
 The OSCAL assessment results model is designed to support both continuous assessment as well as snapshot in time assessments. Currently, FedRAMP assessments represent a snapshot in time. This means a single result assembly should be used for all of the current assessment findings.
 
 Any findings from previous assessments may be included in the SAR by including each in its own result assembly. In this way, the assessor can include the \"snapshot\" of each previous assessment with the current assessment, eliminating the need to manually copy past findings into that portion of the TCW.
 
-#### SAR Representation
+##### SAR Representation
 {{< highlight xml "linenos=table" >}}
   <result uuid="d2b54365-1b4c-427c-a42d-5ad2932a0a73">
       <title>2023 Annual Assessment</title>
@@ -129,7 +130,7 @@ Any findings from previous assessments may be included in the SAR by including e
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 (SAR) Number of Assessments Represented:
   count(/*/result)
@@ -140,7 +141,7 @@ NOTE: Compare start dates of each result set to identify the newest.
 
 {{</ highlight >}}
 
-## 3.3. OSCAL-based FedRAMP SAR Template
+### OSCAL-based FedRAMP SAR Template
 
 FedRAMP offers an OSCAL-based SAR shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to
 help get you started. This document is intended to work in concert with that file. The OSCAL-based FedRAMP SAR Template is available in XML and JSON formats here:
@@ -151,18 +152,18 @@ help get you started. This document is intended to work in concert with that fil
 -   OSCAL-based FedRAMP SAR Template (XML Format):\
     [https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sar/xml/FedRAMP-SAR-OSCAL-Template.xml](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sar/xml/FedRAMP-SAR-OSCAL-Template.xml)
 
-## 3.4. OSCAL's Minimum File Requirements
+### OSCAL's Minimum File Requirements
 
 Every OSCAL-based FedRAMP SAR file must have a minimum set of required fields/assemblies, and must follow the OSCAL Assessment Results model syntax found here:
 
 [https://pages.nist.gov/OSCAL/concepts/layer/assessment/assessment-results/](https://pages.nist.gov/OSCAL/concepts/layer/assessment/assessment-results/)
 
-## 3.5. Importing the Security Assessment Plan
+### Importing the Security Assessment Plan
 
 OSCAL is designed for traceability. Because of this, the assessment report is designed to be linked to the security assessment plan. Rather than duplicating content from the SSP and SAP, the SAR is intended to reference the SSP and SAP content itself.
 
 {{<callout>}}
-#### *Unavailable or Inaccurate OSCAL-based SSP Content*
+##### *Unavailable or Inaccurate OSCAL-based SSP Content*
 *The SAR must import an OSCAL-based SAP, even if no OSCAL-based SSP exists. FedRAMP enables an assessor to use the OSCAL SAP and SAR, when no OSCAL-based SSP exists, or where the assessor finds it to be inaccurate. The [Guide to OSCAL-based FedRAMP Security Assessment Plans (SAP)](/guides/sap/4-sap-template-to-oscal-mapping/) describes when and how to represent missing or inaccurate SSP content.*
 
 *SAR tools must search both the SSP (if any) and the SAP for any SSP-related references. If an ID in the SAR references content in both the SSP and the SAP, the tool should treat the SAP content as an update to the SSP content. See the [Guide to OSCAL-based FedRAMP Security Assessment Plans (SAP)](/guides/sap/4-sap-template-to-oscal-mapping/) for more details.*
@@ -170,7 +171,7 @@ OSCAL is designed for traceability. Because of this, the assessment report is de
 
 Use the import-ap field to specify an existing OSCAL-based SAP. The href flag may include any valid uniform resource identifier (URI), including a relative path, absolute path, or URI fragment.
 
-#### SAR Import Representation
+##### SAR Import Representation
 {{< highlight xml "linenos=table" >}}
   <import-ap href="../sap/FedRAMP-SAP-OSCAL-File.xml" />
   
@@ -180,17 +181,17 @@ Use the import-ap field to specify an existing OSCAL-based SAP. The href flag ma
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 (SAR) URI to SSP:
   /*/import-ap/@href
 
 {{</ highlight >}}
 
-If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the universally unique identifier (UUID) value of a resource in the SAR file\'s back-matter. Refer to the *[Guide to OSCAL-based FedRAMP Content](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files),
+If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the universally unique identifier (UUID) value of a resource in the SAR file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files),
 Section 2.6, Citations, Attachments and Embedded Content in OSCAL Files*, for guidance on handling.
 
-#### SAR Back Matter Representation
+##### SAR Back Matter Representation
 {{< highlight xml "linenos=table" >}}
 <back-matter>
     <resource id="96445439-6ce1-4e22-beae-aa72cfe173d0">
@@ -206,7 +207,7 @@ Section 2.6, Citations, Attachments and Embedded Content in OSCAL Files*, for gu
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 (SAR) Referenced OSCAL-based SAP:
   /*/back-matter/resource[@uuid='96445439-6ce1-4e22-beae-aa72cfe173d0'] /rlink[@media-type= 'application/xml']/@href
@@ -215,11 +216,11 @@ Section 2.6, Citations, Attachments and Embedded Content in OSCAL Files*, for gu
 
 Where the provided path is invalid, tool developers should ensure the tool prompts the user for the updated path to the OSCAL-based SAP.
 
-## 3.6. Resolution Resource Prop
+### Resolution Resource Prop
 
 FedRAMP will be implementing a separate set of automated SAR validation rules for the rev 5 OSCAL templates. To ensure FedRAMP initiates the appropriate validation rules when processing OSCAL SARs, SAR authors should add a new prop called "resolution-resource" in the metadata section and include an associated back-matter resource as shown below:
 
-#### Resolution Resource
+##### Resolution Resource
 {{< highlight xml "linenos=table, hl_lines=11-13" >}}
 <assessment-results>
    <metadata>
@@ -253,7 +254,7 @@ FedRAMP will be implementing a separate set of automated SAR validation rules fo
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 (SAR) UUID of “resolution-resource”:
   /*/metadata/prop[@name=”resolution-resource”]/@value
