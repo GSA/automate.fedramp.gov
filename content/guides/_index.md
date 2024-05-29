@@ -103,7 +103,7 @@ validation requires:\
 
 Validating JSON-based OSCAL files using the NIST-published schema
 validation requires:\
-[JSON Schema, draft-07](https://json-schema.org/specification-links.html%23draft-7)
+[JSON Schema, draft-07](https://json-schema.org/specification-links#23draft-7)
 
 There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as stand-alone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
 
