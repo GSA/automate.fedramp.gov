@@ -7,7 +7,7 @@ weight: 101
 This section provides a summary of several important concepts and
 details that apply to OSCAL-based FedRAMP SAP files.
 
-The [*Guide to OSCAL-based FedRAMP Content*](/guides)
+The [*FedRAMP OSCAL Documentation*](/guides)
 provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to
 understanding this guide.
@@ -81,7 +81,7 @@ in their product roadmap.
 *The Resolved Profile Catalog for each FedRAMP Baseline reduces tool
 processing.*
 
-For more information about resolved profile catalogs, see the [*Guide to OSCAL-based FedRAMP Content*](/guides/5-appendices/#profile-resolution) *Appendix C, Profile Resolution*.
+For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](/guides/5-appendices/#profile-resolution) *Appendix C, Profile Resolution*.
 
 ### OSCAL-based FedRAMP SAP Template
 
@@ -138,7 +138,7 @@ including a relative path, absolute path, or URI fragment.
 If the value is a URI fragment, such as
 #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SAP file\'s back-matter. Refer to the *[Guide to OSCAL-based FedRAMP Content](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Section 2.7, Citations and Attachments in OSCAL Files* for guidance on handling.
+resource in the SAP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Section 2.7, Citations and Attachments in OSCAL Files* for guidance on handling.
 
 ##### SAP Back Matter Representation 
 {{< highlight xml "linenos=table" >}}
