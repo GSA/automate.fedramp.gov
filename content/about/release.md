@@ -4,7 +4,7 @@ menu:
   primary:
     name: Release Strategy / Versioning
     parent: About
-    weight: 2
+    weight: 40
 toc:
   enabled: true
 ---
