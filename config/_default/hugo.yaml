@@ -33,13 +33,15 @@ theme:
 - uswds-hugo
 params:
   header:
-    project_shortname: "FedRAMP Automation"
-    project_name: "FedRAMP Automation"
+    project_shortname: "Automation"
+    project_name: "Automation"
   page_repo_path: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
   contentRepoPath: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
   # searchAffiliate: fedramp
   usabanner: true
   sidenav:
+  custom_css:
+  - /css/site.css
 #    debug: true
 markup:
   goldmark: # Markdown Rendering
