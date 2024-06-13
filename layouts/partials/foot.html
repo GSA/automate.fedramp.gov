@@ -1,0 +1,76 @@
+<script>
+    $(document).ready(function () {
+        $('a[href*="//"]{{ if .Site.IsServer }}:not([href*="http://localhost:1313/"]){{ end }}:not([href*="gsa.gov"]):not([href*="fedramp.gov"]):not([href*="usa.gov"]):not([href^="#"]):not([href^="/"]),[href*="github.com"]').addClass('usa-link usa-link--external');
+    });
+</script>
+
+<div class="usa-identifier">
+    <section class="usa-identifier__section usa-identifier__section--masthead" aria-label="Agency identifier,"
+        style="padding-bottom: 0;">
+        <div class="footer-container">
+            <div class="usa-identifier__container">
+                <div> <a href="https://www.gsa.gov/" target="_blank"><img class="usa-footer-logo-img"
+                            src="https://fedramp.gov/assets/img/gsa-reversed-logo.svg" alt="GSA logo"></a> </div>
+                <div class="usa-identifier__identity" aria-label="Agency description">
+                    <p class="usa-identifier__identity-domain">FedRAMP.gov</p>
+                    <p class="usa-identifier__identity-disclaimer"> <span aria-hidden="true">An </span> official website
+                        of the GSA’s <a
+                            href="https://www.gsa.gov/about-us/organization/federal-acquisition-service/technology-transformation-services"
+                            class="gov-links">Technology Transformation Services</a> </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer-container" style="padding-bottom: 0;">
+        <nav class="usa-identifier__section usa-identifier__section--required-links" aria-label="Important links,">
+            <div class="usa-identifier__container">
+                <ul class="usa-identifier__required-links-list">
+                    <li class="usa-identifier__required-links-item"> <a href="https://www.gsa.gov/about-us"
+                            class="usa-identifier__required-link usa-link">About GSA</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a
+                            href="https://www.gsa.gov/website-information/accessibility-statement"
+                            class="usa-identifier__required-link usa-link">Accessibility statement</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a
+                            href="https://www.gsa.gov/reference/freedom-of-information-act-foia"
+                            class="usa-identifier__required-link usa-link">GSA FOIA</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a
+                            href="https://www.gsa.gov/reference/civil-rights-programs/notification-and-federal-employee-antidiscrimination-and-retaliation-act-of-2002"
+                            class="usa-identifier__required-link usa-link">No FEAR Act data</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a href="https://www.gsaig.gov/"
+                            class="usa-identifier__required-link usa-link">Office of the Inspector General</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a href="https://www.gsa.gov/reference/reports"
+                            class="usa-identifier__required-link usa-link">Performance reports</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a
+                            href="https://www.gsa.gov/website-information/website-policies#privacy"
+                            class="usa-identifier__required-link usa-link">GSA privacy policy</a> </li>
+                    <li class="usa-identifier__required-links-item"> <a
+                            href="https://www.gsa.gov/vulnerability-disclosure-policy"
+                            class="usa-identifier__required-link usa-link">Vulnerability disclosure policy</a> </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <section class="usa-identifier__section usa-identifier__section--usagov"
+        aria-label="U.S. government information and services,">
+        <div class="footer-container">
+            <div class="usa-identifier__container">
+                <div class="usa-identifier__usagov-description" style="margin-left: 0;"> Looking for U.S. government
+                    information and services? </div> <a href="https://www.usa.gov/" class="usa-link gov-links">Visit
+                    USA.gov</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div>
+    <div id="cookie-notice">
+        <div class="cookie-container">
+            <div class="cookie-notice cookie-text">
+                <p>You consent to our cookies by clicking “I Accept” or by continuing to use our website. See <a
+                        href="https://www.gsa.gov/website-information/website-policies" target="_blank"
+                        class="more-info btn btn-primary btn-sm">cookies policy</a>.</p>
+            </div>
+            <div class="cookie-accept-container"> <a id="cookie-notice-accept"
+                    class="btn btn-primary btn-sm cookie-accept">I Accept</a> </div>
+        </div>
+    </div>
+</div>
