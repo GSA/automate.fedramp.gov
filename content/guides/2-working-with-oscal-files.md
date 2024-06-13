@@ -1,6 +1,6 @@
 ---
 title: Key OSCAL Concepts - Part 1
-weight: 20
+weight: 110
 ---
 # Key OSCAL Concepts - Part 1
 
@@ -97,17 +97,13 @@ assemblies in the correct sequence.
 
 Always use the hierarchy found here:
 
--   SSP:
-    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-outline/>
+-   SSP ([XML](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-outline/) | [JSON](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/json-outline/) )
 
--   SAP:
-    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-plan/xml-outline/>
+-   SAP ([XML](<https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-plan/xml-outline/) | [JSON](<https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-plan/json-outline/) )
 
--   SAR:
-    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-results/xml-outline/>
+-   SAR ([XML](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-results/xml-outline/) | [JSON](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-results/json-outline/) )
 
--   POA&M:
-    <https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/plan-of-action-and-milestones/xml-outline/>
+-   POA&M ([XML](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/plan-of-action-and-milestones/xml-outline/) | [JSON](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/plan-of-action-and-milestones/json-outline/) )
 
 #### Typical OSCAL Assembly Structure
 
