@@ -1,7 +1,8 @@
 ---
-title: Security controls
+title: Security Controls
 weight: 105
 ---
+# FedRAMP SSP Security Controls
 
 ![Security Controls](/img/ssp-figure-30.png)
 
@@ -46,7 +47,7 @@ follows:
         -   **Providing Inheritance**
 
 ---
-## 6.1. Control Definitions
+### Control Definitions
 
 ![Control Definitions](/img/ssp-figure-31.png)
 
@@ -66,7 +67,7 @@ OSCAL-based SSP. Each control in the FedRAMP baseline must have a
 corresponding implemented-requirement assembly in the
 control-implementation assembly.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
     <!-- metadata -->
     <import-profile href="https://path/to/xml/FedRAMP_MODERATE-baseline_profile.xml"/>
@@ -94,7 +95,7 @@ control-implementation assembly.
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   URI to Profile:
     /*/import-profile/@href
@@ -108,7 +109,7 @@ implemented-requirement assembly for each control identified in the
 applicable FedRAMP baseline.
 
 ---
-## 6.2. Responsible Roles and Parameter Assignments
+### Responsible Roles and Parameter Assignments
 
 Every applicable control must have at least one responsible-role
 defined. There must be a separate responsible-role assembly for each
@@ -125,7 +126,7 @@ With the implemented-requirement assembly, there must be one set-parameter state
 OSCAL also supports parameter setting at the component level, within a
 by-component assembly.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="admin-unix">
@@ -153,7 +154,7 @@ by-component assembly.
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Number of specified Responsible Roles:
     count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/responsible-role)
@@ -167,7 +168,7 @@ by-component assembly.
 {{</ highlight >}}
 
 ---
-## 6.3. Implementation Status
+### Implementation Status
 
 FedRAMP only accepts only one of five values for implementation-status:
 implemented, partial, planned, alternative, and not-applicable. A
@@ -193,7 +194,7 @@ justification must be provided in the remarks field.
 
 ![Responsible Roles and Parameters](/img/ssp-figure-33.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <!-- system-implementation -->
 <control-implementation>
@@ -215,7 +216,7 @@ justification must be provided in the remarks field.
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Implementation Status (may return more than 1 result for a given control) :
     /*/control-implementation/implemented-requirement[@control-id="ac-1"] /prop[@name="implementation-status"]/@value
@@ -240,7 +241,7 @@ specified, the FedRAMP implementation-status value is assumed.
 Individual statements and/or components may override
 implementation-status locally.
 
-### 6.3.1. Control Origination
+#### Control Origination
 
 FedRAMP accepts only one of five values for control-origination:
 sp-corporate, sp-system, customer-configured, customer-provided, and
@@ -257,7 +258,7 @@ leveraged authorization as it appears in the
 
 ![Control Origination](/img/ssp-figure-34.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <!-- status -->
@@ -285,7 +286,7 @@ leveraged authorization as it appears in the
 
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Number of Control Originations:
     count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="https://fedramp.gov/ns/oscal"])
@@ -299,7 +300,7 @@ leveraged authorization as it appears in the
 {{</ highlight >}}
 
 ---
-## 6.4. Control Implementation Descriptions
+### Control Implementation Descriptions
 
 ![Control Origination](/img/ssp-figure-35.png)
 
@@ -313,7 +314,7 @@ SAR.
 When using a **FedRAMP Resolved Profile Catalog**, the following query
 will identify the response points for a given control.
 
-#### XPath Query
+##### XPath Query
 {{< highlight xml "linenos=table" >}}
   Response Points for AC-1:
     //control[@id='ac-1']/part[@name='statement']//prop[@name='response-point'][@ns='https://fedramp.gov/ns/oscal']/../@id
@@ -321,13 +322,13 @@ will identify the response points for a given control.
 {{</ highlight >}}
 
 ---
-### 6.4.1. Organization: Policy and Procedure Statements
+#### Organization: Policy and Procedure Statements
 
 For each of the -1 controls, such as AC-1, there must be exactly four
 statement assemblies: Part (a)(1), Part (a)(2), Part (b)(1), and Part
 (b)(2).
 
-#### Policy and Procedure Representation
+##### Policy and Procedure Representation
 {{< highlight xml "linenos=table" >}}
 <!-- system-implementation -->
 <control-implementation>
@@ -343,12 +344,12 @@ statement assemblies: Part (a)(1), Part (a)(2), Part (b)(1), and Part
 {{</ highlight >}}
 
 ---
-### 6.4.2. Organization: Multi-Part Statements 
+#### Organization: Multi-Part Statements 
 
 There must be one statement assembly for each lettered part, such as
 with AC-2, parts a, b, c, etc.
 
-#### Multi-Part Statement Representation
+##### Multi-Part Statement Representation
 {{< highlight xml "linenos=table" >}}
 <!-- system-implementation -->
 <control-implementation>
@@ -363,12 +364,12 @@ with AC-2, parts a, b, c, etc.
 {{</ highlight >}}
 
 ---
-### 6.4.3. Organization: Single Statement
+#### Organization: Single Statement
 
 If there are no lettered parts in the control definition, such as with
 AC-2 (1), there must be exactly one statement assembly.
 
-#### Single-Statement Representation
+##### Single-Statement Representation
 {{< highlight xml "linenos=table" >}}
 <!-- system-implementation -->
 <control-implementation>
@@ -381,7 +382,7 @@ AC-2 (1), there must be exactly one statement assembly.
 {{</ highlight >}}
 
 ---
-### 6.4.4. Response: Overview
+#### Response: Overview
 
 Within each statement assembly, all responses must be provided within
 one or more by-component assemblies. There must always be a component
@@ -426,14 +427,14 @@ into its individual components and responded to separately.
 **The following pages provide examples.**
 
 ---
-### 6.4.5. Response: Example
+#### Response: Example
 
 Within each of the statement assemblies, all responses appear in one or
 more by-component assemblies. Each by-component assembly references a component defined in the system-implementation assembly.
 
 ![Response](/img/ssp-figure-37.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <!-- leveraged-authorization, user -->
@@ -489,7 +490,7 @@ more by-component assemblies. Each by-component assembly references a component 
     <https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53>
 
 ---
-### 6.4.6. Response: "This System" Component
+#### Response: "This System" Component
 
 There must always be a **"This System"** component in the SSP. This is used in several ways:
 
@@ -508,7 +509,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
 
 ![This System Component](/img/ssp-figure-38.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <!-- leveraged-authorization, user -->
@@ -549,7 +550,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
     and procedures.
 
 ---
-### 6.4.7. Linking to Artifacts
+#### Linking to Artifacts
 
 Any time policies, procedures, plans, and similar documentation are
 cited in a control response, they must be linked.
@@ -559,7 +560,7 @@ assembly for **"this system"**, the link must be within the same by-component as
 
 ![This System Component](/img/ssp-figure-39.png)
 
-#### Representation: Legacy Approach Example - No Policy Component
+##### Representation: Legacy Approach Example - No Policy Component
 {{< highlight xml "linenos=table" >}}
 <control-implementation>
     <implemented-requirement uuid="uuid-value" control-id="ac-1">
@@ -581,7 +582,7 @@ For the component approach, use the component representing the policy.
 The link should be in the component, but may be added directly to the
 by-component as well.
 
-#### Representation: Component Approach Example
+##### Representation: Component Approach Example
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <!-- leveraged-authorization, user -->
@@ -611,7 +612,7 @@ by-component as well.
 
 For either example above, the policy must be present as a resource in back-matter.
 
-#### In Back Matter
+##### In Back Matter
 {{< highlight xml "linenos=table" >}}
 <back-matter>
     <resource uuid="uuid-value">
@@ -624,7 +625,7 @@ For either example above, the policy must be present as a resource in back-matte
 {{</ highlight >}}
 
 ---
-### 6.4.8. Response: Identifying Inheritable Controls and Customer Responsibilities
+#### Response: Identifying Inheritable Controls and Customer Responsibilities
 
 For systems that may be leveraged, OSCAL enables a robust mechanism for
 providing both inheritance details as well as customer responsibilities
@@ -636,7 +637,7 @@ Within the appropriate by-component assembly, include an export
 assembly. Use provided to identify a capability that may be inherited by a leveraging system. Use responsibility to identify a customer responsibility. If a responsibility must be satisfied to achieve inheritance, add the
 provided-uuid flag to the responsibility field.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <!-- system-implementation -->
 <control-implementation><!-- cut -->
@@ -687,7 +688,7 @@ provided-uuid flag to the responsibility field.
 **See the [NIST OSCAL Leveraged Authorization Presentation](https://pages.nist.gov/OSCAL/presentations/oscal-leveraged-authorizations-v6a.pdf) for more information.**
 
 ---
-### 6.4.9. Leveraged Authorization Response: Inheriting Controls, Satisfying Responsibilities
+#### Leveraged Authorization Response: Inheriting Controls, Satisfying Responsibilities
 
 When the current system is inheriting a control from or meeting customer
 responsibilities defined by an underlying authorization, the leveraged
@@ -704,7 +705,7 @@ system\'s SSP.
 
 ![Leveraged Authorization Response](/img/ssp-figure-41.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <component uuid="uuid-value" type="this-system"><!-- cut --></component>
@@ -757,7 +758,7 @@ system\'s SSP.
 **See the [NIST OSCAL Leveraged Authorization Presentation](https://pages.nist.gov/OSCAL/presentations/oscal-leveraged-authorizations-v6a.pdf) for more information.**
 
 ---
-### 6.4.10. XPath Queries for Control Implementation Descriptions
+#### XPath Queries for Control Implementation Descriptions
 
 Use the following XPath queries to retrieve basic control response
 information. For any given control response part, tools should list the
@@ -766,7 +767,7 @@ description.
 
 ![Leveraged Authorization Response](/img/ssp-figure-41.png)
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
   Number of cited components for AC-2, part a (Integer):
     count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/statement[@statement-id="ac-2_smt.a"]/by-component)

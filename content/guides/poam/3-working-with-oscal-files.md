@@ -1,23 +1,24 @@
 ---
-title: Working with OSCAL Files
+title: Overview
 section: /poam/
 weight: 101
 ---
+# FedRAMP OSCAL PO&AM Overview
 
 This section provides a summary of several important concepts and
 details that apply to OSCAL-based FedRAMP POA&M files.
 
-The [*Guide to OSCAL-based FedRAMP Content*](/guides) provides important concepts necessary for working with any OSCAL-based
+The [*FedRAMP OSCAL Documentation*](/guides) provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
-## 3.1. XML and JSON Formats
+### XML and JSON Formats
 
 The examples provided here are in XML; however, FedRAMP accepts XML or JSON formatted OSCAL-based POA&M files. NIST offers a utility that
 provides lossless conversion of OSCAL-compliant files between XML and JSON in either direction.
 
 You may submit your POA&M to FedRAMP using either format. If necessary, FedRAMP tools will convert the files for processing.
 
-## 3.2. POA&M File Concepts
+### POA&M File Concepts
 
 Unlike the traditional MS Word-and Excel based SSP and POA&M, the OSCAL-based versions of these files are designed to make information
 available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
@@ -36,7 +37,7 @@ For this reason, an OSCAL-based POA&M points to the OSCAL-based SSP of the syste
 
 The POA&M also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP Baseline. Through that linkage, the POA&M references the control baseline definitions for the system\'s baseline.
 
-### 3.2.1. Resolved Profile Catalogs
+#### Resolved Profile Catalogs
 
 The resolved profile catalog for each FedRAMP baseline is produced by applying the FedRAMP profiles as a set of tailoring instructions on top of the NIST control catalog. This reduces overhead for tools by eliminating the need to open and follow references from the profile to the catalog. It also includes only the catalog information relevant to the baseline, reducing the overhead of opening a larger catalog.
 
@@ -50,9 +51,9 @@ in their product roadmap.
 
 _The Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing._
 
-For more information about resolved profile catalogs, see the [*Guide to OSCAL-based FedRAMP Content*](guides/5-appendices/#appendix-c-profile-resolution) *Appendix C, Profile Resolution*.
+For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](guides/5-appendices/#appendix-c-profile-resolution) *Appendix C, Profile Resolution*.
 
-## 3.3. OSCAL-based FedRAMP POA&M Template
+### OSCAL-based FedRAMP POA&M Template
 
 FedRAMP offers an OSCAL-based POA&M shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to help get you started. This document is intended to work in concert with that file. The OSCAL-based FedRAMP POA&M Template is available in XML and JSON formats here:
 
@@ -62,7 +63,7 @@ FedRAMP offers an OSCAL-based POA&M shell file in both XML and JSON formats. Thi
 -   OSCAL-based FedRAMP POA&M Template (XML Format):\
     <https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/poam/xml/FedRAMP-POAM-OSCAL-Template.xml>
 
-## 3.4. OSCAL's Minimum File Requirements
+### OSCAL's Minimum File Requirements
 
 Every OSCAL-based FedRAMP POA&M file must have a minimum set of required fields/assemblies, and must follow the OSCAL POA&M Model syntax found
 here:
@@ -71,7 +72,7 @@ here:
 
 ![Minimum File Requirements](/img/poam-figure-4.png)
 
-## 3.5. Importing the System Security Plan
+### Importing the System Security Plan
 
 OSCAL is designed for traceability. Because of this, the POA&M is designed to be linked to the SSP. Rather than duplicating content from the SSP, the POA&M is intended to reference the SSP content itself.
 
@@ -85,7 +86,7 @@ FedRAMP recognizes some system owners may adopt OSCAL for the POA&M before adopt
 
 Use the import-ssp field to specify an existing OSCAL-based SSP. The href flag may include any valid uniform resource identifier (URI), including a relative path, absolute path, or URI fragment.
 
-####  SSP Import Representation
+#####  SSP Import Representation
 {{< highlight xml "linenos=table" >}}
 <import-ssp href="../ssp/FedRAMP-SSP-OSCAL-File.xml" /> 
 
@@ -94,15 +95,15 @@ Use the import-ssp field to specify an existing OSCAL-based SSP. The href flag m
 <import-ssp href="#[uuid-valueof-resource]" />
 {{</ highlight >}}
 
-####  XPath Queries
+#####  XPath Queries
 {{< highlight xml "linenos=table" >}}
 <!-- (POA&M) URI to SSP:  -->
   /*/import-ssp/@href
 {{</ highlight >}}
 
-If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the UUID value of a resource in the POA&M file\'s back-matter. Refer to the *[Guide to OSCAL-based FedRAMP Content](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/Guide_to_OSCAL-based_FedRAMP_Content_rev5.pdf), Section 2.7, Citations and Attachments in OSCAL Files*, for guidance on handling.
+If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the UUID value of a resource in the POA&M file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/Guide_to_OSCAL-based_FedRAMP_Content_rev5.pdf), Section 2.7, Citations and Attachments in OSCAL Files*, for guidance on handling.
 
-#### POA&M Back Matter Representation                                      
+##### POA&M Back Matter Representation                                      
 {{< highlight xml "linenos=table" >}}
 <back-matter> 
   <resource uuid="96445439-6ce1-4e22-beae-aa72cfe173d0"> 
@@ -122,7 +123,7 @@ If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, t
 While OSCAL provides the ability to embed the SSP in the POA&M, this approach does not align with FedRAMP's current delivery process and is discouraged.
 {{</callout>}}
 
-####  XPath Queries
+#####  XPath Queries
 {{< highlight xml "linenos=table" >}}
 <!-- (POA&M) Referenced OSCAL-based SSP XML: -->
   /*/back-matter/resource[@uuid='96445439-6ce1-4e22-beae-aa72cfe173d0'] /rlink[@media-type='application/xml']/@href 
@@ -134,7 +135,7 @@ While OSCAL provides the ability to embed the SSP in the POA&M, this approach do
 
 Where the provided path is invalid, tool developers should ensure the tool prompts the user for the updated path to the OSCAL-based SSP.
 
-### 3.5.1. When OSCAL-based SSP Information is Inaccurate
+#### When OSCAL-based SSP Information is Inaccurate
 
 Ideally, when SSP information is missing or inaccurate the system ISSO should correct the SSP.
 
@@ -148,7 +149,7 @@ Tool designers should ensure their tools can cite the relevant OSCAL-based SSP i
 For monthly ConMon deliveries, the CSP may duplicate the component and inventory-item content from their SSP into the POA&M's local-definitions section. Delivering an OSCAL POA&M with all inventory in this way satisfies both the POA&M and System Inventory deliverables.
 {{</callout>}}
 
-### 3.5.2. Delivering the POA&M and Inventory Without the SSP 
+#### Delivering the POA&M and Inventory Without the SSP 
 
 FedRAMP currently requires CSPs to deliver their POA&M, system inventory, and raw scanner tool output each month. OSCAL enables the delivery of POA&M and inventory without delivering the linked SSP.
 
@@ -158,7 +159,7 @@ All SSP inventory-item assemblies must be duplicated into the POA&M local-defini
 
 Finally, any SSP component referenced by POA&M data must be duplicated, whether it is referenced by an inventory-item or not.
 
-#### POA&M Representation                                      
+##### POA&M Representation                                      
 {{< highlight xml "linenos=table" >}}
 <system-id identifier-type="https://fedramp.gov">F00000000</system-id> 
 <local-definitions> 
@@ -185,11 +186,11 @@ Finally, any SSP component referenced by POA&M data must be duplicated, whether 
 </local-definitions>
 {{</ highlight >}}
 
-## 3.6. Resolution Resource Prop
+### Resolution Resource Prop
 
 FedRAMP will be implementing a separate set of automated POA&M validation rules for the rev 5 OSCAL templates. To ensure FedRAMP initiates the appropriate validation rules when processing OSCAL POA&Ms, POA&M authors should add a new prop called "resolution-resource" in the metadata section and include an associated back-matter resource as shown below:
 
-#### SSP Resolution Resource
+##### SSP Resolution Resource
 {{< highlight xml "linenos=table, hl_lines=11-12" >}}
 <plan-of-action-and-milestones>
   <metadata>
@@ -220,7 +221,7 @@ FedRAMP will be implementing a separate set of automated POA&M validation rules 
 </plan-of-action-and-milestones>
 {{</ highlight >}}
 
-####  XPath Queries
+#####  XPath Queries
 {{< highlight xml "linenos=table" >}}
 (SAR) UUID of “resolution-resource”: 
   /*/metadata/prop[@name=”resolution-resource”]/@value 

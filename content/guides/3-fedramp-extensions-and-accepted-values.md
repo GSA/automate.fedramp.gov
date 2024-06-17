@@ -2,7 +2,6 @@
 title: FedRAMP Extensions and Accepted Values
 weight: 30
 ---
-
 # FedRAMP Extensions and Accepted Values
 
 NIST designed the core OSCAL syntax to meet model cybersecurity
@@ -25,7 +24,7 @@ FedRAMP has tailored OSCAL by specifying:
     case-sensitive set of accepted values. Only these values are
     recognized by FedRAMP processing tools.
 
-### 3.1.1. FedRAMP Extensions
+### FedRAMP Extensions
 
 There are several pieces of information required in FedRAMP templates
 that cannot be modeled using the OSCAL core syntax. NIST wanted to limit
@@ -130,12 +129,12 @@ _***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was orig
 - _[HTML Version](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/FedRAMP_extensions.html)_
 {{</callout>}}
 
-### 3.1.2. FedRAMP Conformity Tagging
+### FedRAMP Conformity Tagging
 
 FedRAMP collaborated with NIST to address the ambiguities in OSCAL
 syntax necessitating conformity tags necessary.
 
-### 3.1.3. OSCAL and FedRAMP-Defined Identifiers
+### OSCAL and FedRAMP-Defined Identifiers
 
 NIST now defines *allowed values* in a way that supersedes FedRAMP\'s
 separate handling of *defined identifiers* and *accepted values*. To
@@ -146,7 +145,7 @@ part of the core OSCAL syntax.
 Any remaining *defined identifiers* or *accepted values* are enumerated
 in the FedRAMP OSCAL registry as *allowed values*.
 
-### 3.1.4. OSCAL and FedRAMP Accepted Values
+### OSCAL and FedRAMP Accepted Values
 
 NIST now defines *allowed values* in a way that supersedes FedRAMP\'s
 separate handling of *defined identifiers* and *accepted values*. To
@@ -157,7 +156,7 @@ part of the core OSCAL syntax.
 Any remaining *defined identifiers* or *accepted values* are enumerated
 in the FedRAMP OSCAL registry as *allowed values*.
 
-### 3.1.5. OSCAL and FedRAMP Allowed Values
+### OSCAL and FedRAMP Allowed Values
 
 To facilitate consistent processing, the value for property names,
 annotation names, and some field values is limited to a list of

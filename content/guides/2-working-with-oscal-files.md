@@ -1,14 +1,13 @@
 ---
-title: Key OSCAL Concepts
-weight: 20
+title: Key OSCAL Concepts - Part 1
+weight: 110
 ---
-
-# Working with OSCAL Files
+# Key OSCAL Concepts - Part 1
 
 This section covers several important concepts and details that apply to
 OSCAL-based FedRAMP files.
 
-## 2.1. File Content Concepts
+### File Content Concepts
 
 Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based
 versions of these files are designed to make information available
@@ -41,7 +40,7 @@ TCW.
 The only reason to include this content in the SAP is when the assessor
 documents a deviation from the SSP, Baseline, or TCW.
 
-### 2.1.1. Resolved Profile Catalogs
+#### Resolved Profile Catalogs
 
 The resolved profile catalog for each FedRAMP baseline is a
 pre-processing the profile and catalog to produce the resulting data.
@@ -69,7 +68,7 @@ in their product roadmap.
 For more information about resolved profile catalogs, see *Appendix C,
 Profile Resolution*.
 
-## 2.2. Hierarchy and Sequence
+### Hierarchy and Sequence
 
 For both XML and JSON, the hierarchy of syntax is important and must be
 followed. For example, the `metadata` assembly must be at the top level of
@@ -98,19 +97,15 @@ assemblies in the correct sequence.
 
 Always use the hierarchy found here:
 
--   SSP:
-    <https://pages.nist.gov/OSCAL/reference/latest/system-security-plan/xml-outline/>
+-   SSP ([XML](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-outline/) | [JSON](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/json-outline/) )
 
--   SAP:
-    <https://pages.nist.gov/OSCAL/reference/latest/assessment-plan/xml-outline/>
+-   SAP ([XML](<https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-plan/xml-outline/) | [JSON](<https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-plan/json-outline/) )
 
--   SAR:
-    <https://pages.nist.gov/OSCAL/reference/latest/assessment-results/xml-outline/>
+-   SAR ([XML](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-results/xml-outline/) | [JSON](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/assessment-results/json-outline/) )
 
--   POA&M:
-    <https://pages.nist.gov/OSCAL/reference/latest/plan-of-action-and-milestones/xml-outline/>
+-   POA&M ([XML](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/plan-of-action-and-milestones/xml-outline/) | [JSON](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/plan-of-action-and-milestones/json-outline/) )
 
-### 2.2.1. Typical OSCAL Assembly Structure
+#### Typical OSCAL Assembly Structure
 
 Most assemblies in OSCAL follow a general pattern as follows:
 
@@ -147,7 +142,7 @@ The `prop` field is present to allow OSCAL extensions within each
 assembly. See *Section 3, FedRAMP Extensions and Accepted Values* for
 more information on FedRAMP's use of OSCAL extensions.
 
-## 2.3. Multiple Layers of Validation
+### Multiple Layers of Validation
 
 There are several layers at which an OSCAL file can be considered
 valid.
@@ -161,7 +156,7 @@ valid.
 |**FedRAMP Syntax Extensions**    | NIST designed OSCAL to represents the commonality of most cybersecurity frameworks and provided the ability to extend the language for framework-specific needs. FedRAMP makes use of these extensions. <br /><br />NIST provides `prop` fields throughout most of its assemblies, always with a `name`, `class`, and `ns` (namespace) flag: <br /> `<prop name="" class="" ns="">Data</prop>` <br /><br /> In the core OSCAL syntax, the `ns` flag is never used. Where FedRAMP extends OSCAL, the value for `ns` is always: <br /><br />`https://fedramp.gov/ns/oscal` (case sensitive). <br /><br /> When `ns='https://fedramp.gov/ns/oscal'` the `name` flag is as defined by FedRAMP. If the `class` flag is present, that is also defined by FedRAMP.|
 |**FedRAMP Content**| Today, FedRAMP content is enforced programmatically. FedRAMP intends to publish automated validation rules, which may be adopted by tool developers to verify OSCAL-based FedRAMP content is acceptable before submission. <br /><br />Initial validation rules ensure a package has all required elements and will evolve to perform more detailed validation. Separate details will be published about this in the near future.|
 
-##  2.4. OSCAL's Minimum File Requirements
+###  OSCAL's Minimum File Requirements
 
 Every OSCAL-based FedRAMP file must have a minimum set of required
 fields/assemblies, and must follow the core OSCAL syntax found here:
@@ -219,7 +214,7 @@ XML formats:
 
 [https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates)
 
-#### An Empty OSCAL File Representation
+##### An Empty OSCAL File Representation
 {{< highlight xml "linenos=table" >}}
     <?xml version="1.0" encoding="UTF-8"?>
     <OSCAL-root-element xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="[generated-uuid]">
@@ -237,7 +232,7 @@ XML formats:
 {{< /highlight >}}
 
 
-### 2.4.1. UTF-8 Character Encoding
+#### UTF-8 Character Encoding
 
 OSCAL uses UTF-8 character encoding. JSON files are always UTF-8
 character encoded.
@@ -245,7 +240,7 @@ character encoded.
 In XML, the first line in the example above ensures UTF-8 encoding is
 used. Other encoding options will create unpredictable results.
 
-### 2.4.2. OSCAL Syntax Version
+#### OSCAL Syntax Version
 
 Tools designed to read an OSCAL file must verify the `oscal-version` field
 to determine which published syntax is used.
@@ -263,7 +258,7 @@ FedRAMP releases indicate, in its trailing half, the earliest version of
 OSCAL supported by baselines, templates, documentation, and ancillary
 utilities. See [the OSCAL Support and Deprecation Policy in the FedRAMP Automation Github repository](https://github.com/GSA/fedramp-automation/blob/e0bf4d343b8bd06daa52e7817b2215f294aeab6b/README.md#support-and-oscal-deprecation-strategy) for further details.
 
-### 2.4.3. Content Change Requirements
+#### Content Change Requirements
 
 Any time a tool changes the contents of an OSCAL file, it must also:
 
@@ -278,7 +273,7 @@ knowing the file has changed.
 See the following for more information:
 https://pages.nist.gov/OSCAL/documentation/schema/overview/#common-high-level-structure
 
-### 2.4.4. Cryptographic Integrity (Future)
+#### Cryptographic Integrity (Future)
 
 NIST intends to add a cryptographic hash feature to OSCAL during
 calendar year 2021. Once available, NIST will publish details here:
@@ -289,12 +284,12 @@ checking, it is important to note cryptographic hash algorithms will
 produce a different result for inconsequential file differences, such as
 different indentation or a change in the sequence of flags.
 
-### 2.4.5. Useful XPath Queries for Document Changes and OSCAL Syntax
+#### Useful XPath Queries for Document Changes and OSCAL Syntax
 
 Below are a few important queries, which enable a tool to obtain
 critical information about any OSCAL file.
 
-#### XPath Queries          
+##### XPath Queries          
 {{< highlight xml "linenos=table" >}} 
     <!-- OSCAL syntax version used in this file: -->
     /*/metadata/oscal-version                                           
@@ -311,7 +306,7 @@ critical information about any OSCAL file.
 {{< /highlight >}}
 
 
-### 2.4.6. OSCAL Syntax Versions
+#### OSCAL Syntax Versions
 
 NIST's approach to OSCAL development ensures the syntax validation and
 format conversion tools remain available for release of OSCAL.
@@ -323,7 +318,7 @@ To ensure stable resources, use a formal OSCAL release. NIST publishes formal OS
 https://github.com/usnistgov/OSCAL/releases
 {{</callout>}}
 
-## 2.5. Assigning Identifiers
+### Assigning Identifiers
 
 There are four ways identifiers are typically used in OSCAL:
 
@@ -377,7 +372,7 @@ consistent processing, FedRAMP encourage content creators to use the
 NIST and FedRAMP-defined identifiers to the greatest degree practical.
 Deviation is likely to result in processing errors.
 
-### 2.5.1. Uniqueness of Identifiers
+#### Uniqueness of Identifiers
 
 Within FedRAMP deliverables, only `roles` in the `metadata` assembly have ID
 flags. All other OSCAL identifiers are UUID.
@@ -395,7 +390,7 @@ developers are encouraged to check for unintended duplicates whenever
 generating a new UUID values. At least during the testing phase of your
 development lifecycle.
 
-### 2.5.2. Searching for Information by ID or UUID Values
+#### Searching for Information by ID or UUID Values
 
 When searching for an ID or UUID reference, the tool must look both in
 the current OSCAL file, and other files in the OSCAL stack as described
@@ -464,7 +459,7 @@ value is
 {{< highlight xml "linenos=table" >}}
 /*/system-implementation/component[@uuid='1c23ddee-7001-4512-9de1-e062faa69c0a']
 {{< /highlight >}}
-## 2.6. Handling of OSCAL Data Types
+### Handling of OSCAL Data Types
 
 OSCAL fields and flags have data types assigned to them. NIST provides
 important information about these data types here:
@@ -473,7 +468,7 @@ important information about these data types here:
 The following sections describe special handling considerations for data
 types that directly impact FedRAMP content in OSCAL.
 
-### 2.6.1. Date and Time in OSCAL Files
+#### Date and Time in OSCAL Files
 
 Except where noted, all dates and times in the OSCAL-based content must
 be in an OSCAL
@@ -547,7 +542,7 @@ Please use the appropriate UTC offset in your region. If you are storing
 a date and padding the time with zeros, you may also pad the UTC offset
 with zeros.
 
-### 2.6.2. UUID Datatypes
+#### UUID Datatypes
 
 Any place a UUID flag or UUID reference exits, NIST requires UUID
 version 4, as defined by
@@ -577,7 +572,7 @@ non-compliant or erroneous algorithms.
 **For more information about the use of UUIDs in OSCAL, see *Section*
 *2.5,* *Assigning Identifiers*.**
 
-### 2.6.3. ID Datatypes
+#### ID Datatypes
 
 NIST typically uses ID flags in OSCAL where the identifier is intended
 to be canonical, such as the identifiers for `role` IDs or NIST SP 800-53
@@ -607,7 +602,7 @@ prepending "uuid-" to the UUID value.
 **For more information about the use of IDs in OSCAL, see *Section*
 *2.5,* *Assigning Identifiers*.**
 
-### 2.6.4. Working With href Flags
+#### Working With href Flags
 
 All OSCAL-based `href` flags are URIs formatted according to [section 4.1
 of RFC3986](https://tools.ietf.org/html/rfc3986#section-4.1). When
@@ -643,7 +638,7 @@ file, or one of the imported OSCAL files in the stack as described in
 For example, the following OSCAL content contains a `href` flag with a URI
 fragment:
 
-#### URI Fragment Example
+##### URI Fragment Example
  {{< highlight xml "linenos=table" >}}
  <system-characteristics>
   <authorization-boundary>
@@ -677,7 +672,7 @@ name(//*[@uuid="uri-fragment" | @id="uri-fragment"])
 The above query will return "resource", if the URI Fragment references
 the UUID of a `resource` assembly.
 
-### 2.6.5. Markup-line and Markup-multiline Fields in OSCAL
+#### Markup-line and Markup-multiline Fields in OSCAL
 
 As with most machine-readable formats, most of OSCAL's fields are
 intended to capture short, discrete pieces of information; however,
@@ -731,7 +726,7 @@ For a complete list of markup-line and markup-multiline features, please
 visit:
 [[https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types]](https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types)
 
-### 2.6.6. Working with Markup-multiline Content
+#### Working with Markup-multiline Content
 
 In JSON, markup-multiline is based on Markdown syntax and requires no
 special handling. XML-based markup-multiline fields require all content
@@ -746,7 +741,7 @@ required tags. This will produce an error when checked with the OSCAL
 schema.
 
 
-#### Incorrect Markup-multiline Representation
+##### Incorrect Markup-multiline Representation
 {{< highlight xml "linenos=table" >}}
   <system-characteristics>
     <!-- cut -->
@@ -758,7 +753,7 @@ schema.
 The simplest way to correct the error is to enclose the text in
 `<p></p>` tags, within the `description` field.
 
-#### Correct Markup-multiline Representation
+##### Correct Markup-multiline Representation
 {{< highlight xml "linenos=table" >}}
   <system-characteristics>
     <!-- cut -->
@@ -774,7 +769,7 @@ Please note, the inclusion of a `<p />` tag on a line by itself inserts
 an empty paragraph. Within XML and HTML, this is treated as a shortcut,
 and is interpreted as `"<p></p>"`.
 
-#### Correct Markup-multiline Representation
+##### Correct Markup-multiline Representation
 {{< highlight xml "linenos=table" >}}
   <system-characteristics>
     <!-- cut -->
@@ -801,7 +796,7 @@ and is interpreted as `"<p></p>"`.
 For more information, please visit:
 [https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types](https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types)
 
-### 2.6.7. Special Characters in OSCAL
+#### Special Characters in OSCAL
 
 While OSCAL itself does not directly impose special character handling
 requirements, XML and JSON do. Characters, such as ampersand (&),
@@ -812,7 +807,7 @@ please visit:
 
 [https://pages.nist.gov/OSCAL/reference/datatypes/#specialized-character-mapping](https://pages.nist.gov/OSCAL/reference/datatypes/#specialized-character-mapping)
 
-## 2.7. Citations and Attachments in OSCAL Files
+### Citations and Attachments in OSCAL Files
 
 OSCAL is designed so that all citations and attachments are defined once
 at the end of the file as a `resource`, and then referenced as needed
@@ -842,7 +837,7 @@ The `media-type` flag should be present and must be set to an [Internet
 Assigned Numbers Authority (IANA) Media
 Type](http://www.iana.org/assignments/media-types/media-types.xhtml).
 
-### 2.7.1. Citations
+#### Citations
 
 Citations are for reference. The content is not included with the
 authorization package.
@@ -853,7 +848,7 @@ accessible by FedRAMP and Agency reviewers from government systems.
 Examples include links to publicly available laws such as FISMA, and
 applicable standards, such NIST SP 800 series documents.
 
-### 2.7.2. Attachments
+#### Attachments
 
 Unlike citations, attachments are included with the authorization
 package when submitted.
@@ -905,7 +900,7 @@ When using attachments with relative paths, consider using a technology
 such as a ZIP archive to package and deliver attachments while
 maintaining their relative position to the OSCAL file.
 
-### 2.7.3. Including Multiple rlink and base64 Fields
+#### Including Multiple rlink and base64 Fields
 
 Within a `resource`, there may be:
 
@@ -940,7 +935,7 @@ multiple `rlink` and/or `base64` fields within the same resource include:
     document format (PDF) version of the same image for download by
     users.
 
-### 2.7.4. Handling Multiple rlink and base64 Fields
+#### Handling Multiple rlink and base64 Fields
 
 NIST designed `resource` assemblies to be flexible and wanted to offer
 developers the flexibility to implement handling of multiple `rlink` and
@@ -989,7 +984,7 @@ using the following priority, unless specified otherwise:
         treat the resource as invalid, which may include raising a
         warning or error message.
 
-### 2.7.5. Citation and Attachment Details
+#### Citation and Attachment Details
 
 IMPORTANT: As of 1.0.0, NIST includes `type`, `version`, and `published`
 properties as part of core OSCAL, eliminating the requirement to treat
@@ -1015,7 +1010,7 @@ a resource.
   </back-matter>
   {{< /highlight >}}
 
-### 2.7.6. Citation and Attachment Conformity
+#### Citation and Attachment Conformity
 
 IMPORTANT: As of 1.0.0, NIST includes many aspects of OSCAL previously
 only possible with conformity tags. For citations and attachments,
@@ -1094,4 +1089,3 @@ satisfies via the preferred component-based approach.
     </resource>
   </back-matter>
   {{< /highlight >}}
-

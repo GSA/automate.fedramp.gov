@@ -2,8 +2,7 @@
 title: Expressing FedRAMP Template Metadata
 weight: 40
 ---
-
-# Expressing FedRAMP Package Data in OSCAL
+# Expressing FedRAMP Template Metadata in OSCAL
 
 While each FedRAMP template has a unique purpose, they share common
 information elements, such as title and publication date. These common
@@ -52,7 +51,7 @@ elements, including:
 **The following pages are formatted for tabloid (11\" x 17\") paper in
 landscape orientation.**
 
-## 4.1. Title Page
+### Title Page
 
 ![Title Page](/img/content-figure-5.png)
 
@@ -72,7 +71,7 @@ OR\
 `   /*/back-matter/resource[@uuid='[UUID-value-returned-above]']/base64`
 {{</callout>}}
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <title>FedRAMP System Security Plan (SSP)</title>
@@ -115,7 +114,7 @@ Required Role ID:
 - `fedramp-pmo`
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Document Title:
     /*/metadata/title
@@ -142,14 +141,14 @@ Document Sensitivity Label (If more than one, tools should present all):
     includes the NIST Logo, as well as the three Joint Authorization
     Board (JAB) Agency Logos.
 
-## 4.2. Prepared By (Third Party)
+### Prepared By (Third Party)
 
 ![Prepared By](/img/content-figure-6.png)
 
 The FedRAMP SAP and SAR must always indicate the assessing organization
 using this Prepared By syntax.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="prepared-by">
@@ -192,7 +191,7 @@ Required Role ID:
 
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Preparer Organization's Name and Address: 
     /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name
@@ -207,14 +206,14 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 -   If the content was prepared by an organization other than the CSP,
     their logo should also appear in back-matter.
 
-## 4.3. Prepared By (CSP Self-Prepared)
+### Prepared By (CSP Self-Prepared)
 
 ![Prepared By](/img/content-figure-6.png)
 
 This is applicable where the CSP creates or updates its own SSP or POA&M
 content. The FedRAMP SAP and SAR must never be CSP self-prepared.
 
-#### Representation 
+##### Representation 
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="prepared-by">
@@ -253,7 +252,7 @@ Required Role ID:
 
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Preparer Organization's Name and Address: 
     /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name
@@ -265,7 +264,7 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 -   The `responsible-party` assembly connects the role to the party and is
     required for compliance.
 
-## 4.4. Prepared For (CSP)
+### Prepared For (CSP)
 
 ![Prepared For](/img/content-figure-7.png)
 
@@ -274,7 +273,7 @@ the CSP; however, it may be different if an unforeseen circumstance
 requires another party to be named. For this reason, \"Prepared For\"
 and CSP have separately defined roles.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- prop -->
@@ -309,7 +308,7 @@ and CSP have separately defined roles.
 </back-matter>
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Prepared For (CSP) Details: 
     /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name
@@ -318,7 +317,7 @@ Prepared For Details:
 NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
 {{</ highlight >}}
 
-## 4.5. Document Revision History
+### Document Revision History
 
 ![Document Revision History](/img/content-figure-8.png)
 
@@ -332,7 +331,7 @@ NOTE: At time of publication, NIST is evaluating the possibility of including pa
 The OSCAL revision history requires one FedRAMP extension to fully meet
 FedRAMP\'s revision history requirements.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- title, published, last-modified, version, oscal-version -->
@@ -367,7 +366,7 @@ prop (ns="https://fedramp.gov/ns/oscal"):
 
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Number of Revision Entries:
     count(/*/metadata/revision-history/revision)
@@ -402,7 +401,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
     -   FedRAMP tools should present only the date, and use a more
         user-friendly format.
 
-## 4.6. How to Contact Us
+### How to Contact Us
 
 ![Contact Us](/img/content-figure-9.png)
 
@@ -415,7 +414,7 @@ There must be a role defined in the file with the ID value set to
 and there must be a `responsible-party` defined, linking the
 `"fedramp-pmo"` `role-id` to the FedRAMP `party` uuid.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     
@@ -454,7 +453,7 @@ and there must be a `responsible-party` defined, linking the
 
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 FedRAMP Email Address:
     /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='fedramp-pmo'] /party-uuid]/email
@@ -462,7 +461,7 @@ FedRAMP Web Site Address:
     /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='fedramp-pmo'] /party-uuid]/link/@href
 {{</ highlight >}}
 
-## 4.7. Document Approvals
+### Document Approvals
 
 ![Document Approvals](/img/content-figure-10.png)
 
@@ -471,7 +470,7 @@ SAR. For the SSP, approvers are typically executives within the CSP. For
 the SAP and SAR, approvers are typically executives within the
 assessor\'s organization.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <!-- Representation -->
 <metadata>
@@ -522,7 +521,7 @@ prop (ns="https://fedramp.gov/ns/oscal"):
 
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Approver’s Name:
     (/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]
@@ -540,7 +539,7 @@ The code above is an SSP example For SAP and SAR, a similar approach is
 used for the assessor, using the `"assessor"` role ID instead of the
 `"cloud-service-provider"` role ID.
 
-## 4.8. FedRAMP Standard Attachments (Acronyms, Laws/Regulations)
+### FedRAMP Standard Attachments (Acronyms, Laws/Regulations)
 
 The FedRAMP MS Word-based SSP, SAP and SAR templates included links to
 the FedRAMP Laws and Regulations file, as well as the FedRAMP Acronyms
@@ -552,7 +551,7 @@ identified with links from the property type, `"fedramp-citations"`. The
 resource linking to the FedRAMP acronyms file is identified with the
 property type, `"fedramp-acronyms"`.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- cut -->
@@ -581,7 +580,7 @@ property type, `"fedramp-acronyms"`.
 </back-matter>
 {{</ highlight >}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Link to FedRAMP Applicable Laws and Regulations:
     /*/back-matter/resource/prop[@name='type'][string(.)='fedramp-citations']/../rlink/@href
@@ -589,7 +588,7 @@ Link to FedRAMP Acronyms and Glossary:
     /*/back-matter/resource/prop[@name='type'][string(.)='fedramp-acronyms']/../rlink/@href
 {{</ highlight >}}
 
-## 4.9. Additional Laws, Regulations, Standards or Guidance
+### Additional Laws, Regulations, Standards or Guidance
 
 ![Laws and Regulations](/img/content-figure-11.png)
 
@@ -604,7 +603,7 @@ appropriate. There may be more than one type defined. FedRAMP tools use
 the `type` property to differentiate these resource assemblies from
 others.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <back-matter>
     <resource uuid="d45612a9-cf25-4ef6-b2dd-69e38ba2967a">
@@ -633,7 +632,7 @@ others.
 Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Number of Laws and Regulations (integer):
     count(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])
@@ -648,7 +647,7 @@ Laws and Regulations - Link:
 NOTE: For Standards and Guidance replace "law" with "standard" and "regulation" with "guidance" in the above queries to generate the Standards and Guidance tables.
 {{</ highlight >}}
 
-## 4.10. Attachments and Embedded Content
+### Attachments and Embedded Content
 
 ![Attachments](/img/content-figure-12.png)
 
@@ -667,7 +666,7 @@ referenced from the body of the OSCAL file, as described in Section 2.7
 Files*](#_Citations,_Attachments,_and). The following table represents
 attachments and embedded content.
 
-#### Representation
+##### Representation
 {{< highlight xml "linenos=table" >}}
 <!-- cut -->
 <back-matter>
@@ -699,7 +698,7 @@ attachments and embedded content.
 Replace "policy" with "plan", "rob", etc. for each attachment type.
 {{</callout>}}
 
-#### XPath Queries
+##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 PIA Attachment (Embedded Base64 encoded):
     /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/.. /base64
