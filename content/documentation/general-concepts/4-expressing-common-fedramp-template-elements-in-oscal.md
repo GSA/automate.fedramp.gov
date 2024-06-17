@@ -1,6 +1,6 @@
 ---
 title: Expressing FedRAMP Template Metadata
-weight: 40
+weight: 124
 ---
 # Expressing FedRAMP Template Metadata in OSCAL
 
@@ -48,12 +48,9 @@ elements, including:
 
     -   FedRAMP Citations (Laws, Regulations, Standards, and Guidance)
 
-**The following pages are formatted for tabloid (11\" x 17\") paper in
-landscape orientation.**
-
 ### Title Page
 
-![Title Page](/img/content-figure-5.png)
+{{< figure src="/img/content-figure-5.png" title="FedRAMP document template title page." alt="Screenshot of a FedRAMP document template cover page." >}}
 
 {{<callout>}}
 The **FedRAMP Logo** is a resource in the back-matter section of the OSCAL-based FedRAMP Templates, and can be referenced with the following XPath:
