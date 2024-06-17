@@ -82,7 +82,3 @@ Incrementing the MAJOR segment will occur in the following cases:
 - **NIST OSCAL:** An OSCAL MAJOR release.
 - **FedRAMP OSCAL Guides:** Changes to a guide that change a requirement or that fix a non-obvious error.
 - **NIST and FedRAMP OSCAL validations:** Changes to validations that change a requirement.
-
-## Release Approach
-
-TODO: Discuss release strategy, including use of release candidates. Describe incremental approach relative to the roadmap initiatives.
