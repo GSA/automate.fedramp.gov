@@ -37,16 +37,6 @@ The SAR also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP 
 
 The only reason to include this content in the SAR is when there is a deviation from the SAP.
 
-#### Resolved Profile Catalogs
-
-The resolved profile catalog for each FedRAMP baseline is a pre-processing of the profile and catalog to produce the resulting data.
-This reduces overhead for tools by eliminating the need to open and follow references from the profile to the catalog. It also
-includes only the catalog information relevant to the baseline, reducing the overhead of opening a larger catalog.
-
-Where available, tool developers have the option of following the links from the profile to the catalog as described above or using the resolved profile catalog.
-
-Developers should be aware that at this time catalogs and profiles remain relatively static. As OSCAL gains wider adoption, there is a risk that profiles and catalogs will become more dynamic, and a resolved profile catalog becomes more likely to be out of date. Early adopters may wish to start with the resolved profile catalog now, and plan to add functionality for the separate profile and catalog handling later in their product roadmap.
-
 ![Baseline Information](/img/sar-figure-3.png) \
 *The Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing.*
 
