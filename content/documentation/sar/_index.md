@@ -1,6 +1,6 @@
 ---
 title: FedRAMP OSCAL SAR
-weight: 70
+weight: 400
 menu:
   primary:
     name: Security Assessment Results
