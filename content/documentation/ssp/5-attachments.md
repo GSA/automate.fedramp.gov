@@ -79,7 +79,7 @@ policies, procedures, plans, guidance, and the rules of behavior documents are a
 ---
 ### System Inventory Approach
 
-![Flat-File Inventory Approach](/img/ssp-figure-24.png)
+{{< figure src="/img/ssp-figure-24.png" title="FedRAMP SSP template Integrated Inventory Workbook." alt="Screenshot of the Integrated Inventory Workbook in the FedRAMP SSP template." >}}
 
 OSCAL makes two approaches available for depicting the system inventory:
 
@@ -89,11 +89,11 @@ OSCAL makes two approaches available for depicting the system inventory:
 
 FedRAMP prefers the component-based approach but accepts the flat-file approach to aid CSPs who are converting their existing MS-Excel based FedRAMP Integrated Inventory Workbook to OSCAL. **FedRAMP SSP tools must support both approaches.**
 
-![Flat-File Inventory Approach](/img/ssp-figure-25.png)
+{{< figure src="/img/ssp-figure-25.png" title="FedRAMP OSCAL flat-file inventory approach." alt="Figure illustrating the 'flat-file' inventory approach where each inventory spreadsheet row is represented as a single OSCAL inventory-item." >}}
 
 With the **flat-file approach**, all content on a spreadsheet row appears in a single OSCAL inventory-item assembly. This results in a great deal of redundant information but is a simple transition from the current spreadsheet approach.
 
-![Flat-File Inventory Approach](/img/ssp-figure-26.png)
+{{< figure src="/img/ssp-figure-26.png" title="FedRAMP OSCAL component-based inventory approach." alt="Figure illustrating the 'component-based' inventory approach where common information is captured once in a component, and each instance of that component has its own inventory-item." >}}
 
 With the **component-based approach**, common information is captured once in a component assembly. Each instance of that component has its own inventory-item assembly, which cites the relevant component and only includes information unique to that instance.
 
@@ -221,17 +221,13 @@ asset-administrator is managing a system or an application. Currently, any FedRA
 
 The following queries are intended to show where to find each piece of information within the system inventory template.
 
-![All Inventory](/img/ssp-figure-26.1.png)
-*All Inventory*
+{{< figure src="/img/ssp-figure-26.1.png" title="All Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to all inventory items." >}}
 
-![OS Infrastructure Inventory](/img/ssp-figure-26.2.png)
-*OS Infrastructure Inventory*
+{{< figure src="/img/ssp-figure-26.2.png" title="OS Infrastructure Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to OS infrastructure inventory items." >}}
 
-![Software and Database Inventory](/img/ssp-figure-26.3.png)
-*Software and Database Inventory*
+{{< figure src="/img/ssp-figure-26.3.png" title="Software and Database Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to software and database inventory items." >}}
 
-![Any Inventory](/img/ssp-figure-26.4.png)
-*Any Inventory*
+{{< figure src="/img/ssp-figure-26.4.png" title="Any Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to any inventory item." >}}
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}

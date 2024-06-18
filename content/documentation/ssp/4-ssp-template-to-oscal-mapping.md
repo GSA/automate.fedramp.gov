@@ -6,19 +6,17 @@ weight: 103
 
 For SSP-specific content, each main section of the SSP is represented in this section, along with OSCAL code snippets for representing the information in OSCAL syntax. There is also XPath syntax for querying the code in an OSCAL-based FedRAMP SSP represented in XML format.
 
-Content that is common across OSCAL file types is described in the *[FedRAMP OSCAL Documentation](/guides).* This includes the following:
+Content that is common across OSCAL file types is described in the *[FedRAMP OSCAL Documentation](/documentation).* This includes the following:
 
-| Topic                                         | Location                                                                                                                                                                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title Page**                                | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)_, Section 4.1_                                                        |
-| **Prepared By/For**                           | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)_, Section 4.2 - 4.4_                                                  |
-| **Record of Template Changes**                | Not Applicable. Instead follow [_FedRAMP OSCAL Documentation_](/guides/2-working-with-oscal-files/#oscal-syntax-version)_, Section 2.3.2, OSCAL Syntax Version_ |
-| **Revision History**                          | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)_, Section 4.5_                                                        |
-| **How to Contact Us**                         | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)_, Section 4.6_                                                        |
-| **Document Approvers**                        | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)_, Section 4.7_                                                        |
-| **Acronyms and Glossary**                     | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)_, Section 4.8_                                                        |
-| **Laws, Regulations, Standards and Guidance** | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)_, Section 4.9_                                                        |
-| **Attachments and Citations**                 | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)_, Section 4.10_                                                       |
+- [**Title Page**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)
+- [**Prepared By/For**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)
+- **Record of Template Changes**
+- [**Revision History**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)
+- [**How to Contact Us**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)
+- [**Document Approvers**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)
+- [**Acronyms and Glossary**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)
+- [**Laws, Regulations, Standards and Guidance**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)
+- [**Attachments and Citations**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)
 
 It is not necessary to represent the following sections of the SSP template in OSCAL; however, tools should present users with this content where it is appropriate:
 
@@ -44,9 +42,9 @@ The OSCAL syntax in this guide may be used to represent the High, Moderate, and 
 
 The cloud service provider (CSP) must be provided as one of the party assemblies within the metadata.
 
-![System Information](/img/ssp-figure-4.png)
+{{< figure src="/img/ssp-figure-4.png" title="FedRAMP SSP template CSP Name" alt="Screenshot of the CSP name in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=5" >}}
 <system-security-plan>
     <metadata>
@@ -58,7 +56,7 @@ The cloud service provider (CSP) must be provided as one of the party assemblies
 </system-security-plan>
 {{</ highlight >}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
 Cloud Service Provider (CSP) Name:
     /*/metadata/party[@uuid='uuid-of-csp']/name
@@ -74,9 +72,9 @@ The FedRAMP-assigned application number is the unique ID for a FedRAMP system. O
 
 For this reason, OSCAL requires the identifier-type flag be present and have a value that uniquely identifies the issuing organization. FedRAMP requires its value to be "https://fedramp.gov" for all FedRAMP-issued application numbers.
 
-![System Information](/img/ssp-figure-5.png)
+{{< figure src="/img/ssp-figure-5.png" title="FedRAMP SSP template System Name and Package ID" alt="Screenshot of the system name, and package ID in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=9-13" >}}
 <system-security-plan>
     <metadata>
@@ -107,7 +105,7 @@ Required Identifier Type:
 
 {{</callout>}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Information System Name:
         /*/system-characteristics/system-name
@@ -122,9 +120,9 @@ Required Identifier Type:
 
 The core-OSCAL system-characteristics assembly has a property for the cloud service model.
 
-![System Information](/img/ssp-figure-6.png)
+{{< figure src="/img/ssp-figure-6.png" title="FedRAMP SSP template cloud service model" alt="Screenshot of the cloud service model in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=14-19" >}}
 <system-security-plan>
     <metadata>
@@ -164,7 +162,8 @@ Valid Service Model values:
 - other
 
 {{</callout>}}
-##### XPath Queries
+
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Service Model:
         /*/system-characteristics/prop[@name="cloud-service-model"]/@value
@@ -182,9 +181,9 @@ Valid Service Model values:
 
 The core-OSCAL system-characteristics assembly has a property for the cloud deployment model.
 
-![System Information](/img/ssp-figure-7.png)
+{{< figure src="/img/ssp-figure-7.png" title="FedRAMP SSP template cloud deployment model" alt="Screenshot of the cloud deployment model in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=20-25" >}}
 <system-security-plan>
     <metadata>
@@ -227,7 +226,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
 
 {{</callout>}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Deployment Model:
         /*/system-characteristics/prop[@name="cloud-deployment-model"]/@value
@@ -248,9 +247,9 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
 The digital identity level identified in Table 1.0 is the same as the level in Attachment 3. It is expressed through 
 the following core OSCAL properties.
 
-![System Information](/img/ssp-figure-8.png)
+{{< figure src="/img/ssp-figure-8.png" title="FedRAMP SSP template DIL determination." alt="Screenshot of the DIL determination in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=14-17" >}}
 <system-security-plan>
     <metadata>
@@ -289,7 +288,7 @@ Valid IAL, AAL, and FAL values (as defined by NIST 800-63):
 {{</callout>}}
 
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Identity Assurance Level: 
         /*/system-characteristics/prop[@name="identity-assurance-level"]/@value
@@ -304,9 +303,9 @@ Valid IAL, AAL, and FAL values (as defined by NIST 800-63):
 
 The privacy system designation in Table 1.0 is the same as in Attachment 4. It is expressed through the following core OSCAL property.
 
-![System Information](/img/ssp-figure-9.png)
+{{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=15-16" >}}
 <system-security-plan>
     <metadata>
@@ -344,7 +343,7 @@ Valid values for security-sensitivity-level:
 {{</callout>}}
 
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     System Sensitivity Level:
         /*/system-characteristics/security-sensitivity-level
@@ -357,9 +356,9 @@ Valid values for security-sensitivity-level:
 ---
 #### System Status
 
-![System Information](/img/ssp-figure-10.png)
+{{< figure src="/img/ssp-figure-10.png" title="FedRAMP SSP template system status." alt="Screenshot of the system status information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=24" >}}
 <system-security-plan>
     <metadata>
@@ -406,7 +405,7 @@ FedRAMP only accepts those in bold:
 
 {{</callout>}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     System's Operational Status:
         /*/system-characteristics/status/@state
@@ -425,9 +424,9 @@ FedRAMP only accepts those in bold:
 ---
 #### System Functionality
 
-![System Information](/img/ssp-figure-11.png)
+{{< figure src="/img/ssp-figure-11.png" title="FedRAMP SSP template general system description." alt="Screenshot of the general system description information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=19-24" >}}
 <system-security-plan>
     <metadata>
@@ -459,7 +458,7 @@ FedRAMP only accepts those in bold:
 </system-security-plan>
 {{</ highlight >}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     System Function or Purpose: First paragraph in description
         /*/system-characteristics/description/node()
@@ -471,9 +470,9 @@ FedRAMP only accepts those in bold:
 
 A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner\'s information.
 
-![System Information](/img/ssp-figure-12.png)
+{{< figure src="/img/ssp-figure-12.png" title="FedRAMP SSP template information system owner." alt="Screenshot of the system owner  information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- cut -->
@@ -515,7 +514,7 @@ Required role ID:
 
 {{</callout>}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     System Owner's Name:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="system-owner"]/party-uuid]]/name
@@ -538,7 +537,7 @@ If no country is provided, FedRAMP tools will assume a US address.
 
 A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official\'s information.
 
-![System Information](/img/ssp-figure-13.png)
+{{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
 
 ##### Federal Agency Authorization Representation
 {{< highlight xml "linenos=table" >}}
@@ -570,7 +569,7 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
 </system-characteristics>
 {{</ highlight >}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     FedRAMP Authorization Type:
         /*/system-characteristics/prop[@name="authorization-type"][@ns="https://fedramp.gov/ns/oscal"]/@value
@@ -615,7 +614,7 @@ If the authorization-type field is "fedramp-jab", the responsible-party/party-uu
 </system-characteristics>
 {{</ highlight >}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Authorizing Official’s Name:
         //metadata/party[@uuid=[//metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
@@ -648,7 +647,7 @@ A role with an ID value of information-system-security-officer" is
 required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
 System Security Officer\'s information.
 
-![System Information](/img/ssp-figure-14.png)
+{{< figure src="/img/ssp-figure-14.png" title="FedRAMP SSP template security point of contact." alt="Screenshot of the security point of contact information (e.g., ISSO) in the FedRAMP SSP template." >}}
 
 <br />
 {{<callout>}}
@@ -664,7 +663,7 @@ A tool developer may elect to always create a location assembly, even when only 
 
 {{</callout>}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- cut -->
@@ -707,7 +706,7 @@ Required Role ID:
 
 {{</callout>}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     ISSO POC Name:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="information-system-security-officer"]/party-uuid]]/name
@@ -731,7 +730,7 @@ UUID value of its associated leveraged-authorization assembly. The component ass
 
 If the leveraged system owner provides a UUID for their system, such as in an OSCAL-based Inheritance and Responsibility document (similar to a CRM), it should be provided as the inherited-uuid property value.
 
-![System Information](/img/ssp-figure-15.png)
+{{< figure src="/img/ssp-figure-15.png" title="FedRAMP SSP template leveraged FedRAMP-authorized services." alt="Screenshot of the leveraged FedRAMP-authorized service information in the FedRAMP SSP template." >}}
 
 <br />
 {{<callout>}}
@@ -742,7 +741,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
 
 {{</callout>}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- CSP name -->
@@ -793,7 +792,7 @@ A leveraged-system-identifier property must be provided within each leveraged-au
 
 {{</callout>}}
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Name of first leveraged system:
         /*/system-implementation/leveraged-authorization[1]/title
@@ -827,9 +826,9 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 ### External Systems and Services Not Having FedRAMP Authorization
 
-![System Information](/img/ssp-figure-17.png)
+{{< figure src="/img/ssp-figure-17.png" title="FedRAMP SSP template external systems (not FedRAMP authorized)." alt="Screenshot of the external system information for non-FedRAMP authorized services in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <!-- list any external connections as components in the system-characteristics -->
     <component uuid="uuid-value" type="interconnection">
@@ -891,7 +890,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 ### External System and Services (Queries)
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Interconnection # for first external system:
         /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-type"]/@value
@@ -933,9 +932,9 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 The OSCAL approach to this type of diagram is to treat the image data as either a linked or base64-encoded resource in the back-matter section of the OSCAL file, then reference the diagram using the link field.
 
-![System Information](/img/ssp-figure-19.png)
+{{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template authorization boundary sections." alt="Screenshot of the authorization boundary information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <system-characteristics>
     <!-- leveraged-authorization -->
@@ -966,7 +965,7 @@ The OSCAL approach to this type of diagram is to treat the image data as either 
 {{</ highlight >}}
 
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Overall Description:
         /*/system-characteristics/authorization-boundary/description/node()
@@ -992,9 +991,9 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 #### Network Architecture
 
-![System Information](/img/ssp-figure-19.png)
+{{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template network architecture." alt="Screenshot of the network architecture information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <system-characteristics>
     <!-- authorization-boundary -->
@@ -1028,7 +1027,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</ highlight >}}
 
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Overall Description:
         /*/system-characteristics/network-architecture/description/node()
@@ -1054,9 +1053,9 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 #### Data Flow
 
-![System Information](/img/ssp-figure-19.png)
+{{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template data flow." alt="Screenshot of data flow information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <system-characteristics>
     <!-- data-flow -->
@@ -1090,7 +1089,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</ highlight >}}
 
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Overall Description:
         /*/system-characteristics/data-flow/description/node()
@@ -1117,9 +1116,9 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 Entries in the ports, protocols, and services table are represented as component assemblies, with the component-type flag set to "service". Use a protocol assembly for each protocol associated with the service. For a single port, set the port-range start flag and end flag to the same value.
 
-![System Information](/img/ssp-figure-20.png)
+{{< figure src="/img/ssp-figure-20.png" title="FedRAMP SSP template ports, protocols, and services." alt="Screenshot of the ports, protocols, and services information in the FedRAMP SSP template." >}}
 
-##### Representation
+#### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <!-- user -->
@@ -1143,7 +1142,7 @@ Entries in the ports, protocols, and services table are represented as component
 {{</ highlight >}}
 
 
-##### XPath Queries
+#### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Service (1st service):
         /*/system-implementation/component[@type='service'][1]/title
@@ -1181,7 +1180,7 @@ Resource Center (CSRC) [Cryptographic Module Validation Program Database](https:
 The product definition is a product with a cryptographic module. It must contain all of the typical component information suitable for reference by inventory-items and control statements. It must also include a link field with a rel value set to "validation" and an href value containing
 a URI fragment. The Fragment must start with a hashtag (#) and include the UUID value of the validation component. This links the two together.
 
-![System Information](/img/ssp-figure-21.png)
+{{< figure src="/img/ssp-figure-21.png" title="FedRAMP SSP template cryptographic modules table (data-in-transit)." alt="Screenshot of the cryptographic modules table (data-in-transit) in the FedRAMP SSP template." >}}
 
 ##### Component Representation: Example Product with FIPS 140-2 Validation
 {{< highlight xml "linenos=table" >}}
@@ -1225,7 +1224,7 @@ a URI fragment. The Fragment must start with a hashtag (#) and include the UUID 
 
 The approach is the same as in section 4.14 (cryptographic module data-in-transit).
 
-![System Information](/img/ssp-figure-22.png)
+{{< figure src="/img/ssp-figure-22.png" title="FedRAMP SSP template cryptographic modules table (data-at-rest)." alt="Screenshot of the cryptographic modules table (data-at-rest) in the FedRAMP SSP template." >}}
 
 ##### Component Representation: Example Product with FIPS 140-2 Validation
 {{< highlight xml "linenos=table" >}}
