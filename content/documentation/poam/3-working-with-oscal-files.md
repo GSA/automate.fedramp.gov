@@ -37,16 +37,6 @@ For this reason, an OSCAL-based POA&M points to the OSCAL-based SSP of the syste
 
 The POA&M also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP Baseline. Through that linkage, the POA&M references the control baseline definitions for the system\'s baseline.
 
-#### Resolved Profile Catalogs
-
-The resolved profile catalog for each FedRAMP baseline is produced by applying the FedRAMP profiles as a set of tailoring instructions on top of the NIST control catalog. This reduces overhead for tools by eliminating the need to open and follow references from the profile to the catalog. It also includes only the catalog information relevant to the baseline, reducing the overhead of opening a larger catalog.
-
-Where available, tool developers have the option of following the links from the profile to the catalog as described above or using the resolved profile catalog.
-
-Developers should be aware that at this time, catalogs and profiles remain relatively static. As OSCAL gains wider adoption, there is a risk that profiles and catalogs will become more dynamic, and a resolved profile catalog becomes more likely to be out of date. Early adopters may wish to start with the resolved profile catalog now, and plan to add
-functionality later for the separate profile and catalog handling later
-in their product roadmap.
-
 ![Resolved Profile Catalog](/img/poam-figure-3.png)
 
 _The Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing._
