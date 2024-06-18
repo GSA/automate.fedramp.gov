@@ -1,5 +1,5 @@
 ---
-title: More about FedRAMP OSCAL
+title: About FedRAMP OSCAL
 menu:
   primary:
     name: About
