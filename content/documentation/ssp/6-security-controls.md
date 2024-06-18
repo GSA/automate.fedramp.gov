@@ -4,7 +4,7 @@ weight: 105
 ---
 # FedRAMP SSP Security Controls
 
-![Security Controls](/img/ssp-figure-30.png)
+{{< figure src="/img/ssp-figure-30.png" title="SSP Template Security Control" alt="Screenshot of an SSP template security control." >}}
 
 This section describes the modeling of security control information in
 an OSCAL-based FedRAMP SSP. To ensure consistent processing, FedRAMP
@@ -13,16 +13,16 @@ imposes specific requirements on the use of OSCAL for control implementation inf
 The modeling of controls is addressed in the following sections as
 follows:
 
--   **Section 6.1, Control Definitions**
+-   **Control Definitions**
 
--   **Section 6.2, Responsible Roles Responsible Roles** and Parameter
+-   **Responsible Roles Responsible Roles** and Parameter
     Assignments
 
--   **Section 6.3, Implementation Status**
+-   **Implementation Status**
 
--   **Section 6.3.1.1, Control Origination**
+-   **Control Origination**
 
--   **Section 6.4, Control Implementation Descriptions**
+-   **Control Implementation Descriptions**
 
     -   **Organization**
 
@@ -49,7 +49,7 @@ follows:
 ---
 ### Control Definitions
 
-![Control Definitions](/img/ssp-figure-31.png)
+{{< figure src="/img/ssp-figure-31.png" title="SSP Template Security Control Definition" alt="Screenshot of an SSP template security control definition." >}}
 
 All control definition information is imported from the appropriate
 FedRAMP baseline (OSCAL profile).  This includes the original NIST control definition and parameter labels as well as any FedRAMP control 
@@ -119,7 +119,7 @@ implementation-status property value of non-applicable (see section 6.3)
 do not require a responsible-role. FedRAMP further requires the
 specified role-id must also have been referenced in the system-implementation user assembly. This equates to the FedRAMP requirement of all responsible roles appearing in the Personnel Roles and Privileges table.
 
-![Responsible Roles and Parameters](/img/ssp-figure-32.png)
+{{< figure src="/img/ssp-figure-32.png" title="SSP Template Security Control Parameter Assignments" alt="Screenshot of an SSP template security control parameter assignments." >}}
 
 With the implemented-requirement assembly, there must be one set-parameter statement for each of the control\'s parameters, as specified in the FedRAMP baseline and illustrated in the example representation below. The only exception to this is with nested parameters. Some select parameters contain an assignment parameter within a selection parameter, such as appears in AC-7 (b). In these instances, only the final selected value must be provided. The nested assignment parameter may be ignored.
 
@@ -192,7 +192,7 @@ implementation must be summarized in the remarks field.
 **If the implementation-status is not-applicable,** the N/A
 justification must be provided in the remarks field.
 
-![Responsible Roles and Parameters](/img/ssp-figure-33.png)
+{{< figure src="/img/ssp-figure-33.png" title="SSP Template Security Control Implementation Status" alt="Screenshot of an SSP template security control implementation status." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -256,7 +256,7 @@ ns=\"https://fedramp.gov/ns/oscal\") field containing the UUID of the
 leveraged authorization as it appears in the
 /\*/system-implementation/leveraged-authorization assembly.
 
-![Control Origination](/img/ssp-figure-34.png)
+{{< figure src="/img/ssp-figure-34.png" title="SSP Template Security Control Origination" alt="Screenshot of an SSP template security control origination." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -302,7 +302,7 @@ leveraged authorization as it appears in the
 ---
 ### Control Implementation Descriptions
 
-![Control Origination](/img/ssp-figure-35.png)
+{{< figure src="/img/ssp-figure-35.png" title="SSP Template Security Control Implementation" alt="Screenshot of an SSP template security control implementation description." >}}
 
 Within the OSCAL-based FedRAMP baselines, control statements and control
 objectives are tagged with a response-point FedRAMP Extension. Every
@@ -398,7 +398,7 @@ and underlying systems (leveraged authorizations) are all components.
 With OSCAL, the content in the cell next to *Part a* must be broken down
 into its individual components and responded to separately.
 
-![Control Implementation](/img/ssp-figure-36.png)
+{{< figure src="/img/ssp-figure-36.png" title="SSP Template Security Control Description" alt="Screenshot of an SSP template security control description." >}}
 
 - For **Part a**
     - Component - This System
@@ -432,7 +432,7 @@ into its individual components and responded to separately.
 Within each of the statement assemblies, all responses appear in one or
 more by-component assemblies. Each by-component assembly references a component defined in the system-implementation assembly.
 
-![Response](/img/ssp-figure-37.png)
+{{< figure src="/img/ssp-figure-37.png" title="SSP Template Security Control Response" alt="Figure illustrating how component-level control implementation statements are used in OSCAL control implementation statements." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -507,7 +507,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
     with the **"This System"** component until the SSP author is able\
     to provide responses for individual components.
 
-![This System Component](/img/ssp-figure-38.png)
+{{< figure src="/img/ssp-figure-38.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response is broad and should apply to the 'this-system' component in OSCAL." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -558,7 +558,7 @@ cited in a control response, they must be linked.
 For the legacy approach, when responding within the by-component
 assembly for **"this system"**, the link must be within the same by-component assembly where the artifact is cited.
 
-![This System Component](/img/ssp-figure-39.png)
+{{< figure src="/img/ssp-figure-39.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response should link to the appropriate artifact." >}}
 
 ##### Representation: Legacy Approach Example - No Policy Component
 {{< highlight xml "linenos=table" >}}
@@ -703,7 +703,7 @@ or may provide individual system components as well. In either case, the
 inherited-uuid property in the component when defined in the leveraging
 system\'s SSP.
 
-![Leveraged Authorization Response](/img/ssp-figure-41.png)
+{{< figure src="/img/ssp-figure-41.png" title="SSP Template Control Description" alt="Screenshot of a security control description in the SSP template." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -765,7 +765,7 @@ information. For any given control response part, tools should list the
 name of each component cited by a by-component assembly, as well as the
 description.
 
-![Leveraged Authorization Response](/img/ssp-figure-41.png)
+{{< figure src="/img/ssp-figure-41.png" title="SSP Template Control Description" alt="Screenshot of a security control description in the SSP template." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
