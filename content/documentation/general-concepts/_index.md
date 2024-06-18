@@ -1,7 +1,7 @@
 ---
 title: General Concepts
 weight: 100
-section: general-concepts
+suppresstopiclist: false
 ---
 
 # General FedRAMP OSCAL Concepts
