@@ -5,8 +5,12 @@ menu:
     name: Documentation
     weight: 100
 cascade:
+  suppresstopiclist: true
   toc:
     display: true
+  sidenav:
+    activerenderdepth: 2
+    inactiverenderdepth: 1
 ---
 # FedRAMP OSCAL Documentation
 
