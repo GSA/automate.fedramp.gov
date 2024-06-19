@@ -6,7 +6,7 @@ weight: 102
 
 This section provides a summary of several important concepts and details that apply\ to OSCAL-based FedRAMP SAR files.
 
-The [*FedRAMP OSCAL Documentation*](/guides) provides important concepts necessary for working with any OSCAL-based
+The [*FedRAMP OSCAL Documentation*](/documentation) provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
 ### XML and JSON Formats
@@ -20,13 +20,11 @@ You may submit your SAR to FedRAMP using either format. If necessary, FedRAMP to
 
 Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based versions of these files are designed to make information available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
 
-![OSCAL File Imports](/img/sar-figure-1.png)
-*Each OSCAL file imports information from the one to the left*
+{{< figure src="/img/sar-figure-1.png" title="OSCAL import linkage hierarchy." alt="Figure illustrating how the OSCAL catalog, profile, SSP, SAP, and SAR have linkages to the preceding OSCAL model. The POA&M model is omitted for simplicity." >}}
 
 For example, the assessment objectives and actions that appear in a blank test case workbook (TCW), are defined in the FedRAMP profile, and simply referenced by the SAP and SAR. Only deviations from the TCW are captured in the SAP or SAR.
 
-![Baseline Information](/img/sar-figure-2.png) \
-*Baseline Information is referenced instead of duplicated.*
+{{< figure src="/img/sar-figure-2.png" title="Detailed overview of OSCAL models." alt="Figure showing the main contents of the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
 For this reason, an OSCAL-based SAR points to the OSCAL-based SAP for this assessment.
 
@@ -37,16 +35,14 @@ The SAR also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP 
 
 The only reason to include this content in the SAR is when there is a deviation from the SAP.
 
-![Baseline Information](/img/sar-figure-3.png) \
-*The Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing.*
+{{< figure src="/img/sar-figure-3.png" title="FedRAMP SAR imports SAP." alt="Figure showing the dependency between the SAR, SAP, SSP, and FedRAMP baseline." >}}
 
-For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](/guides/5-appendices/#profile-resolution) *Appendix, Profile Resolution*.
 
 #### Assessment Deviations and SAP/SAR Syntax Overlap
 
 The SAP represents the assessment intentions before it starts and should not be modified once the assessment starts. The SAR represents what actually happened during the assessment, in addition to reporting the results.
 
-![Assessment Results to POA&M](/img/sar-figure-4.png)
+{{< figure src="/img/sar-figure-4.png" title="Assessment Plan and Results." alt="Detailed figure showing the dependency between the SAR and the SAP." >}}
 
 The SAR reference SAP content when those references are accurate and defines content locally when the assessment details deviate from the SAP. Similarly, the SAR\'s assessment log captures the actual timing of events and can be linked to the SAP\'s defined tasks (schedule).
 
@@ -70,7 +66,7 @@ If available, use the finding/target citation in the SAR to determine the impact
 
 It may also be necessary to copy content from the AP or SAR into the POA&M\'s Local Definitions, such as to ensure Observation/Origin references remain valid.
 
-![Assessment Results to POA&M](/img/sar-figure-5.png)
+{{< figure src="/img/sar-figure-5.png" title="Assessment Results to POA&M." alt="Detailed figure showing the dependency between the POA&M and the SAR." >}}
 
 A SAR tool can transfer residual risks to a POA&M using the same OSCAL syntax.
 
@@ -84,7 +80,7 @@ As risks are closed during testing, the SAR tool should allow the assessor to ma
 
 Allowing for these adjustments, the Risk Exposure table is simply a view or presentation of the findings that have risks with an open status that have not been marked as a false positive. These are also the entries that are copied to the Cloud Service Provider (CSP)\'s POA&M.
 
-![Assessment Results to POA&M](/img/sar-figure-6.png)
+{{< figure src="/img/sar-figure-5.png" title="Gathering findings and risk analysis." alt="Detailed figure showing assessment activities, including gathering of findings, risk analysis, and risk tracking.  The figure shows how identified risks are captured in the SAR and this information is used by the POA&M for risk tracking." >}}
 
 A SAR allows the assessor to update finding and risk information during the assessment.
 
@@ -154,9 +150,9 @@ OSCAL is designed for traceability. Because of this, the assessment report is de
 
 {{<callout>}}
 ##### *Unavailable or Inaccurate OSCAL-based SSP Content*
-*The SAR must import an OSCAL-based SAP, even if no OSCAL-based SSP exists. FedRAMP enables an assessor to use the OSCAL SAP and SAR, when no OSCAL-based SSP exists, or where the assessor finds it to be inaccurate. The [Guide to OSCAL-based FedRAMP Security Assessment Plans (SAP)](/guides/sap/4-sap-template-to-oscal-mapping/) describes when and how to represent missing or inaccurate SSP content.*
+*The SAR must import an OSCAL-based SAP, even if no OSCAL-based SSP exists. FedRAMP enables an assessor to use the OSCAL SAP and SAR, when no OSCAL-based SSP exists, or where the assessor finds it to be inaccurate. The [OSCAL-based FedRAMP Security Assessment Plans (SAP)](/documentation/sap/4-sap-template-to-oscal-mapping/) section describes when and how to represent missing or inaccurate SSP content.*
 
-*SAR tools must search both the SSP (if any) and the SAP for any SSP-related references. If an ID in the SAR references content in both the SSP and the SAP, the tool should treat the SAP content as an update to the SSP content. See the [Guide to OSCAL-based FedRAMP Security Assessment Plans (SAP)](/guides/sap/4-sap-template-to-oscal-mapping/) for more details.*
+*SAR tools must search both the SSP (if any) and the SAP for any SSP-related references. If an ID in the SAR references content in both the SSP and the SAP, the tool should treat the SAP content as an update to the SSP content. See the [OSCAL-based FedRAMP Security Assessment Plans (SAP)](/documentation/sap/4-sap-template-to-oscal-mapping/) section for more details.*
 {{</callout>}}
 
 Use the import-ap field to specify an existing OSCAL-based SAP. The href flag may include any valid uniform resource identifier (URI), including a relative path, absolute path, or URI fragment.
@@ -178,8 +174,7 @@ Use the import-ap field to specify an existing OSCAL-based SAP. The href flag ma
 
 {{</ highlight >}}
 
-If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the universally unique identifier (UUID) value of a resource in the SAR file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files),
-Section 2.6, Citations, Attachments and Embedded Content in OSCAL Files*, for guidance on handling.
+If the value is a URI fragment, such as **#96445439-6ce1-4e22-beae-aa72cfe173d0**, the value to the right of the hashtag (#) is the universally unique identifier (UUID) value of a resource in the SAR file\'s back-matter. Refer to the [Citations, Attachments and Embedded Content in OSCAL Files](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
 
 ##### SAR Back Matter Representation
 {{< highlight xml "linenos=table" >}}
