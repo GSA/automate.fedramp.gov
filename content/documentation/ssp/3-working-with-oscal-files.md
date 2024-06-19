@@ -37,7 +37,7 @@ Developers should be aware that at this time, catalogs and profiles remain relat
 
 {{< figure src="/img/ssp-figure-3.png" title="FedRAMP SSP imports FedRAMP resolved profile catalog." alt="Figure showing that SSP reduces tool processing by importing the  resolved profile catalog for each FedRAMP baseline." >}}
 
-For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](/guides/5-appendices/#profile-resolution) *Appendix, Profile Resolution*.
+For more information about resolved profile catalogs, see the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) section.
 
 ### OSCAL-based FedRAMP SSP Template
 
