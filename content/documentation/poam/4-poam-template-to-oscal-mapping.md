@@ -18,32 +18,23 @@ includes:
 -   POA&M Items syntax. Individual POA&M item syntax is the same as the
     Findings syntax in the SAR.
 
-{{<callout>}}
-This guide assumes tool developers are already familiar with the [FedRAMP OSCAL Documentation](/guides).
-Instead of duplicating content from that guide, this document refers to them and only adds details that are unique to the POA&M.
-{{</callout>}}
-
 ### Representing the POA&M
 
-This is based on the Excel-based [FedRAMP POA&M Template.](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsm)
+This is based on the Excel-based [FedRAMP POA&M Template.](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsx)
 
 Content that is common across OSCAL file types is described in the
-*[FedRAMP OSCAL Documentation](/guides).*
+*[FedRAMP OSCAL Documentation](/documentation).*
 This includes the following:
 
-| Topic                                         | Location                                                                                                                                                                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title Page**                                | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)_, Section 4.1_                                                        |
-| **Prepared By/For**                           | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)_, Section 4.2 - 4.4_                                                  |
-| **Record of Template Changes**                | Not Applicable. Instead follow [_FedRAMP OSCAL Documentation_](/guides/2-working-with-oscal-files/#oscal-syntax-version)_, Section 2.3.2, OSCAL Syntax Version_ |
-| **Revision History**                          | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)_, Section 4.5_                                                        |
-| **How to Contact Us**                         | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)_, Section 4.6_                                                        |
-| **Document Approvers**                        | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)_, Section 4.7_                                                        |
-| **Acronyms and Glossary**                     | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)_, Section 4.8_                                                        |
-| **Laws, Regulations, Standards and Guidance** | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)_, Section 4.9_                                                        |
-| **Attachments and Citations**                 | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)_, Section 4.10_ 
-
-**The following pages are intended to be printed landscape on tabloid (11" x 17") paper.**
+- [**Title Page**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)
+- [**Prepared By/For**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)
+- [**Record of Template Changes**](/documentation/general-concepts/oscal-file-concepts/#oscal-syntax-versions)
+- [**Revision History**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)
+- [**How to Contact Us**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)
+- [**Document Approvers**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)
+- [**Acronyms and Glossary**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)
+- [**Laws, Regulations, Standards and Guidance**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)
+- [**Attachments and Citations**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)
 
 ### Individual POA&M Entries
 
@@ -56,7 +47,7 @@ start and end fields. The value of the title and description fields may
 be anything the CSP feels is appropriate. FedRAMP suggests duplicating
 the title value used in the metadata section.
 
-![POA&M Entries](/img/poam-figure-5.png)
+{{< figure src="/img/poam-figure-5.png" title="FedRAMP POA&M entries." alt="Screenshot of the FedRAMP POA&M template showing entry rows." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table" >}}
@@ -125,7 +116,7 @@ may be the tool\'s timestamp.
 Within the poam-item assembly, there must be at least one observation
 assembly, and exactly one risk assembly.
 
-![POA&M IDs](/img/poam-figure-6.png)
+{{< figure src="/img/poam-figure-6.png" title="Individual POA&M entry." alt="Screenshot of the FedRAMP POA&M template showing individual POA&M entry row." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=18" >}}
@@ -173,10 +164,7 @@ The uuid flag of the origin field must identify the Weakness Detector
 Source of the information. For monthly scanning, this must identify the
 automated tool\'s UUID, and the type flag must be set to \"tool\". The
 tool must be defined as a component in the local-definitions assembly,
-using the same syntax and approach described in the [*Guide to
-OSCAL-based Security Assessment Plans
-(SAP)*](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/Guide_to_OSCAL-based_FedRAMP_Security_Assessment_Plans_(SAP)_rev5.pdf),
-*Section 4.14, SAP Test Plan: Testing Performed Using Automated Tools*.
+using the same syntax and approach described in [*SAP Test Plan: Testing Performed Using Automated Tools*](/documentation/sap/4-sap-template-to-oscal-mapping/#testing-performed-using-automated-tools).
 
 The href flag in the relevant-evidence field must point to the resource
 containing the raw tool output attached in the back-matter using a URI
@@ -191,7 +179,7 @@ imported SSP. Tool operator information is optional, but a POA&M tool
 should display the party information if one or more party-uuid fields
 are present.
 
-![Weakness Detector Source](/img/poam-figure-7.png)
+{{< figure src="/img/poam-figure-7.png" title="FedRAMP POA&M entry weakness source." alt="Screenshot of the FedRAMP POA&M template showing entry row weakness source." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=2-9 15-18" >}}
@@ -252,8 +240,8 @@ be delivered either by:
     assembly of the POA&M. Any role or party citations in this content
     must also be duplicated from the SSP metadata assembly to the POA&M
     metadata assembly.
-
-![Asset Identifier](/img/poam-figure-8.png)
+    
+{{< figure src="/img/poam-figure-8.png" title="FedRAMP POA&M entry asset identifier." alt="Screenshot of the FedRAMP POA&M template showing entry row asset identifier." >}}
 
 {{<callout>}}
 ***System Inventory***
@@ -262,7 +250,7 @@ When providing a monthly POA&M to FedRAMP using OSCAL, the OSCAL-based inventory
 - by delivering the entire OSCAL-based SSP file, including the latest system inventory; or
 - by duplicating all component and inventory-item assemblies from the system-implementation assembly of the SSP to the local-definitions assembly of the POA&M.
 
-See [Section 3.5.2](/guides/poam/3-working-with-oscal-files/#35-importing-the-system-security-plan) for more information.
+See [POA&M - Importing the System Security Plan](/documentation/poam/3-working-with-oscal-files/#importing-the-system-security-plan) for more information.
 
 {{</callout>}}
 
@@ -332,7 +320,7 @@ value flag set to either \"initial\" or \"adjusted\". There must always
 be \"initial\" facets. If adjusted, there may be a \"adjusted\" facets
 as well.
 
-![Weakness Information](/img/poam-figure-9.png)
+{{< figure src="/img/poam-figure-9.png" title="FedRAMP POA&M entry weakness information." alt="Screenshot of the FedRAMP POA&M template showing entry row weakness information." >}}
 
 {{<callout>}}
 ***Risk Metric Fields***
@@ -466,7 +454,7 @@ free-form explanation of required resources. Use one or more subject
 fields to link to a specific party, component, inventory-item, system
 user, or resource.
 
-![Remediation Plan](/img/poam-figure-10.png)
+{{< figure src="/img/poam-figure-10.png" title="FedRAMP POA&M entry remediation plan." alt="Screenshot of the FedRAMP POA&M template showing entry row remediation plan." >}}
 
 {{<callout>}}
 ***Accepted Values***
@@ -545,7 +533,7 @@ is the farthest specified timing assembly date in the future because it
 indicates when all remediation schedule milestones and actions will be
 complete.
 
-![Planned Remediation Schedule](/img/poam-figure-11.png)
+{{< figure src="/img/poam-figure-11.png" title="FedRAMP POA&M entry planned remediation schedule." alt="Screenshot of the FedRAMP POA&M template showing entry row planned remediation schedule." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=17-30" >}}
@@ -614,7 +602,7 @@ If it is appropriate to attach evidence related to risk tracking, add an
 observation assembly with the appropriate evidence attached. If used,
 the observation assembly must have a type tag of \"risk-tracking\".
 
-![Risk Tracking](/img/poam-figure-12.png)
+{{< figure src="/img/poam-figure-12.png" title="FedRAMP POA&M entry risk tracking." alt="Screenshot of the FedRAMP POA&M template showing entry row risk tracking." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=3-35" >}}
@@ -686,10 +674,9 @@ the method is set to \"EXAMINE\". Add an additional related-observation
 field linking the poam-item to the new observation.
 
 Once the FP is approved, change the \"false-positive\" extension\'s
-value to \"approved\" and close the risk as described in [*Section 4.6,
-Risk Closure*](/guides/poam/4-poam-template-to-oscal-mapping/#46-risk-closure).
+value to \"approved\" and close the risk as described in the [*Risk Closure*](/documentation/poam/4-poam-template-to-oscal-mapping/#risk-closure) section.
 
-![False Positive (FP)](/img/poam-figure-13.png)
+{{< figure src="/img/poam-figure-13.png" title="False Positive (FP)" alt="Screenshot of the FedRAMP POA&M template showing a false positive entry." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=3 5 6-8 22" >}}
@@ -751,7 +738,7 @@ section for risk adjustments. When there is both an OR and an RA, each
 will have their own observation assembly and respective
 related-observation entries in the poam-item assembly.
 
-![Operationally Required (OR)](/img/poam-figure-14.png)
+{{< figure src="/img/poam-figure-14.png" title="Operational Requirement (OR)." alt="Screenshot of the FedRAMP POA&M template showing an operational requirement entry." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=3 5-9 21" >}}
@@ -816,7 +803,7 @@ section for operationally required risks. When there is both an OR and
 an RA, each will have their own observation assembly and respective
 related-observation entries in the poam-item assembly.
 
-![Risk Adjustment (RA)](/img/poam-figure-15.png)
+{{< figure src="/img/poam-figure-15.png" title="Risk Adjustment (RA)." alt="Screenshot of the FedRAMP POA&M template showing a risk adjustment entry." >}}
 
 {{<callout>}}
 ***Calculated Risk***
@@ -922,7 +909,7 @@ fragment (hashtag, followed by the UUID of the resource.)
 Once the vendor publishes a resolution, change the \"vendor-dependency\"
 extension value to \"resolved\".
 
-![Vendor Dependency](/img/poam-figure-16.png)
+{{< figure src="/img/poam-figure-16.png" title="Vendor Dependency (VD)." alt="Screenshot of the FedRAMP POA&M template showing a vendor dependency." >}}
 
 {{<callout>}}
 If the Vendor Dependent Product Name is not already defined as an individual component, add a component to the local-definitions assembly describing the component.
@@ -976,9 +963,7 @@ reflecting the date the resolution was published.
 #### Evidence and Artifacts
 
 All evidence collected must be attached (by relative URI path or
-embedded Base64) as a resource in the back-matter. See the [*FedRAMP OSCAL Documentation*](/guides/2-working-with-oscal-files/#27-citations-and-attachments-in-oscal-files),
-*Section 2.7, Citations and Attachments in OSCAL
-Files* for more information.
+embedded Base64) as a resource in the back-matter. See the [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) section for more information.
 
 Evidence must have the FedRAMP extension \"type\" with the value set to
 \"evidence\".
@@ -1043,7 +1028,7 @@ If it is appropriate to attach evidence of
 closure, add an observation assembly with the type field set to
 \"closure\", and cite the appropriate evidence.
 
-![Risk Closure](/img/poam-figure-17.png)
+{{< figure src="/img/poam-figure-17.png" title="Risk Closure." alt="Screenshot of the FedRAMP POA&M template showing closure of a risk entry." >}}
 
 ##### Representation                                     
 {{< highlight xml "linenos=table, hl_lines=5 13 25-33" >}}
