@@ -6,7 +6,7 @@ weight: 101
 
 This section provides a summary of several important concepts and details that apply to OSCAL-based FedRAMP SSP files.
 
-The [*FedRAMP OSCAL Documentation*](/guides) provides important concepts necessary for working with any OSCAL-based FedRAMP file. Familiarization with those concepts is important to understanding this guide.
+The [*FedRAMP OSCAL Documentation*](/documentation) provides important concepts necessary for working with any OSCAL-based FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
 ### XML and JSON Formats
 
