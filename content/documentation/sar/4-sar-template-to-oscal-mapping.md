@@ -11,70 +11,65 @@ The OSCAL Assessment Results Model is used to represent the FedRAMP SAR. This mo
 -   Results syntax, which is common to the SAR and POA&M.
 
 {{<callout>}}
-This guide assumes tool developers are already familiar with the [FedRAMP OSCAL Documentation](/guides) and the [Guide to OSCAL-based FedRAMP Security Assessment Plans (SAP)](/guides/sap/). 
+This guide assumes tool developers are already familiar with the [FedRAMP OSCAL Documentation](/documentation) and the [FedRAMP Security Assessment Plans (SAP)](/documentation/sap/) sections. 
 
-Instead of duplicating content from those guides, this document refers to them and only adds details that are unique to the SAR.
+Instead of duplicating content from those sections, this section refers to them and only adds details that are unique to the SAR.
 {{</callout>}}
 
 This section addresses the TCW, Scanner Tool Results, Risks Identified during Penetration Testing, and the Risk Exposure Table (RET) first. These are addressed first because much of the individual SAR tables are generated from OSCAL-based content.
 
-As described in *Section 2, FedRAMP Extensions and Allowed Values*
+As described in the  [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section.
 
 NIST designed the core OSCAL syntax to model cybersecurity information that is common to most organization and compliance frameworks; however, NIST also recognized the need to provide flexibility or organizations with unique information needs.
 
 Instead of trying to provide a language that meets each organization\'s unique needs, NIST provided designed OSCAL with the ability to be extended.
 
-As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The *Guide to
-OSCAL-Based FedRAMP Content* describes the concepts behind FedRAMP extensions and allowed values. The extensions related to the Security Assessment Plan (SAP) are cited in this document in context of their use.
+As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The extensions related to the Security Assessment Plan (SAP) are cited in context of their use.
 
 **FedRAMP extensions and allowed values are cited in relevant portions of this document and summarized in the FedRAMP OSCAL Registry.**
 
 {{<callout>}}
-_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats, with a human-readable HTML representation._
+_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats._
 - _[XML Version](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/resources/xml/FedRAMP_extensions.xml)_
 - _[JSON Version](https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/resources/json/FedRAMP_extensions.json)_
-- _[HTML Version](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/FedRAMP_extensions.html)_
 {{</callout>}}
 
 Working with OSCAL Files, the SAP communicates the *intended* scope, subject, assets, and activities, and the SAR communicates the actual circumstances of the assessment. The same OSCAL syntax is used for this content in the SAP and SAR.
 
 Assessment tools must enable assessors to duplicate the SAP content and modify it to reflect what actually happened during the assessment, including changes to the schedule, team, and tools used.
 
-Content that is common across OSCAL file types is described in the *[FedRAMP OSCAL Documentation](/guides).*
+Content that is common across OSCAL file types is described in the *[FedRAMP OSCAL Documentation](/documentation).*
 This includes the following:
 
-| Topic                                         | Location                                                                                                                                                                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title Page**                                | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)_, Section 4.1_                                                        |
-| **Prepared By/For**                           | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)_, Section 4.2 - 4.4_                                                  |
-| **Record of Template Changes**                | Not Applicable. Instead follow [_FedRAMP OSCAL Documentation_](/guides/2-working-with-oscal-files/#oscal-syntax-version)_, Section 2.3.2, OSCAL Syntax Version_ |
-| **Revision History**                          | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)_, Section 4.5_                                                        |
-| **How to Contact Us**                         | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)_, Section 4.6_                                                        |
-| **Document Approvers**                        | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)_, Section 4.7_                                                        |
-| **Acronyms and Glossary**                     | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)_, Section 4.8_                                                        |
-| **Laws, Regulations, Standards and Guidance** | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)_, Section 4.9_                                                        |
-| **Attachments and Citations**                 | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)_, Section 4.10_  
+- [**Title Page**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)
+- [**Prepared By/For**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)
+- [**Record of Template Changes**](/documentation/general-concepts/oscal-file-concepts/#oscal-syntax-versions)
+- [**Revision History**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)
+- [**How to Contact Us**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)
+- [**Document Approvers**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)
+- [**Acronyms and Glossary**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)
+- [**Laws, Regulations, Standards and Guidance**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)
+- [**Attachments and Citations**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)  
 
 It is not necessary to represent the following sections of the SAR template in OSCAL; however, tools should present users with this content where it is appropriate:
 
 -   Any blue-text instructions found in the SSP template, where the instructions are related to the content itself.
 -   Table of Contents 
 -   Introductory and instructive content in each section
--   SAR Section 4.3, Consideration of Threats
--   SAR Section 4.4, Document Results
+-   SAR Consideration of Threats section
+-   SAR Document Results section
 
 The Annual SAR was used, which includes all information typically found in the Initial SAR, plus a scope section that is unique to annual assessments. OSCAL always requires a scope. For initial assessments, the scope is all controls. For annual assessments, it is the controls required by FedRAMP.
 
-**The following pages are intended to be printed landscape on tabloid (11\" x 17\") paper.**
 
 ---
 ### One Result Assembly for the Entire Assessment
 
-All results from the current assessment, such as observations, findings, and risks, must be in a single result assembly. Additional result assemblies are used for past assessment results. One result assembly for each past assessment results. This is covered in more detail in *Section 3.2.4, Previous Assessment Results*.
+All results from the current assessment, such as observations, findings, and risks, must be in a single result assembly. Additional result assemblies are used for past assessment results. One result assembly for each past assessment results. 
 
 Tool developers must use the start field for each result assembly to determine the most recent set of results present in the SAR.
 
-![Current Assessment Results](/img/sar-figure-7.png)
+{{< figure src="/img/sar-figure-7.png" title="Current Assessment Results." alt="Figure illustrating how the OSCAL SAR must have each assessment cycle int its own result assembly." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -117,19 +112,19 @@ Tool developers must use the start field for each result assembly to determine t
 
 {{</ highlight >}}
 
-**NOTES:** The start and end fields are [dateTime-with-timezone](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#datetime-with-timezone). For FedRAMP initial and annual assessments, the time portion of this field may be all zeros as shown in the
+**NOTES:** The start and end fields are [dateTime-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone). For FedRAMP initial and annual assessments, the time portion of this field may be all zeros as shown in the
 representation above.
 
 ---
 ### Test Case Workbook: Assessment Objectives and Methods
 
-There should be one finding assembly for each row in the Excel-based FedRAMP TCW. Tools must identify the appropriate FedRAMP baseline as described in Section 2.1 of the FedRAMP OSCAL Documentation.
+There should be one finding assembly for each row in the Excel-based FedRAMP TCW. Tools must identify the appropriate FedRAMP baseline as described in the [FedRAMP OSCAL Documentation](/documentation/general-concepts/oscal-based-baselines/).
 
 Within the OSCAL-based FedRAMP baselines, control statements and control objectives are tagged with a response-point FedRAMP Extension. For each **in-scope** control, every control objective designated as a response-point in the baseline must have a finding assembly in the result assembly of the SAR.
 
 When using a **FedRAMP Resolved Profile Catalog**, the following query will identify the response points for a given control.
 
-![Assessment Objectives and Methods](/img/sar-figure-8.png)
+{{< figure src="/img/sar-figure-8.png" title="Assessment Objectives and Methods." alt="Screenshot of the FedRAMP Test Case Workbook showing the assessment objectives and methods." >}}
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -158,7 +153,7 @@ There must be exactly one finding assembly for each required control objective a
 
 The target assembly identifies which objective is being addressed by the assessor. It also holds the Implementation Status and Assessment Results fields.
 
-![Findings and Objective Status](/img/sar-figure-9.png)
+{{< figure src="/img/sar-figure-9.png" title="Assessment Results and Implementation Status." alt="Screenshot of the FedRAMP Test Case Workbook showing the assessment results and implementations status." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table, hl_lines=21-22 39-40" >}}
@@ -226,13 +221,11 @@ The target assembly identifies which objective is being addressed by the assesso
 
 The assessors who gathered the evidence are identified at the bottom of the finding assembly using the actor-uuid attribute of the origin actor fields. The assessment team is defined as a party in the SAP metadata. If the assessor was not listed in the SAP, add a party to the SAR metadata for the assessor. In either case, a tool should list the UUID here, and should search both the SAP and SAR for the UUID when using this data.
 
-**See the next page for XPath Queries.**
+{{< figure src="/img/sar-figure-10.png" title="Observation and Evidence" alt="Screenshot of the FedRAMP Test Case Workbook showing the observation and evidence information." >}}
 
-![Implementation Status and Result](/img/sar-figure-10.png)
+{{< figure src="/img/sar-figure-11.png" title="Assessor POC" alt="Screenshot of the FedRAMP Test Case Workbook showing the assessor POC information." >}}
 
-![Assessment POC](/img/sar-figure-11.png)
-
-The following assumes, the first result assembly contains the current assessment, as determined in *Section 4.1, One Result Assembly for the Entire Assessment*.
+The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -253,9 +246,9 @@ NOTE: Search the SAP and SAR metadata for the party referenced by the UUID.
 
 The historic TCW spreadsheet only provided the assessor one cell for each Assessment Procedure to capture all observations and evidence. 
 
-![Observations and Evidence](/img/sar-figure-12.png)
+{{< figure src="/img/sar-figure-12.png" title="Observation and Evidence" alt="Screenshot of the FedRAMP Test Case Workbook showing the observation and evidence information." >}}
 
-![Assessment POC](/img/sar-figure-13.png)
+{{< figure src="/img/sar-figure-13.png" title="Assessor POC" alt="Screenshot of the FedRAMP Test Case Workbook showing the assessor POC information." >}}
 
 OSCAL enables observations to be broken down into more granular detail, which further enables machine processing.
 
@@ -271,7 +264,7 @@ While each assessment procedure must have exactly one finding assembly, within t
 |**How**: What was used?|**reference \[type=\"tool\" or \"method\"\]**|
 |**Evidence**: What evidence supports this?|**relevant-evidence \[type=\'observation\'\]**|
 
-**The following pages contain specific examples of Observations and Evidence.**
+**The following documentation contain specific examples of Observations and Evidence.**
 
 ---
 #### TCW - Observations and Evidence: Examine
@@ -430,7 +423,7 @@ The type flag of the origin/actor field may be set to one of the following:
 ---
 #### TCW - Observations and Evidence: Evidence and Artifacts
 
-All artifacts reviewed and all evidence collected must be attached (by relative URI path or embedded Base64) as a resource in the back-matter. See *Section 2.6, Citations, Attachments, and Embedded Content in OSCAL Files *for more information.
+All artifacts reviewed and all evidence collected must be attached (by relative URI path or embedded Base64) as a resource in the back-matter. See [*Citations, Attachments, and Embedded Content in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) for more information.
 
 Evidence must have the \"type\" property with the value set to \"evidence\".
 
@@ -480,8 +473,7 @@ absolute link to the file\'s authoritative source location as well as a relative
 ---
 #### TCW - Observations and Evidence: Queries
 
-![](./media/image3.png){width="7.812482502187226in"
-height="4.5633989501312335in"}The following assumes, the first result assembly contains the current assessment, as determined in *Section 4.1, One Result Assembly for the Entire Assessment*.
+The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -528,7 +520,7 @@ SAP or SAR, and sometimes possibly all three depending on the context.
 
 When converting Historic Test Case Workbook content to OSCAL, many details broken down in a way that fits OSCAL. While refactoring legacy data to fit OSCAL is ideal and encouraged, it is not required for historic information.
 
-![Historic Test Case Workbook](/img/sar-figure-14.png)
+{{< figure src="/img/sar-figure-14.png" title="Observation and Evidence" alt="Screenshot of the FedRAMP Historic Test Case Workbook showing the observation and evidence information." >}}
 
 There must still be one finding assembly for each row of the Test Case Workbook.
 
@@ -538,7 +530,7 @@ Provide a single observation assembly in each finding and put the entire TCW ent
 
 Finally, set the observation/method to \"MIXED\" and the observation/type to \"historic\".
 
-The Implementation Status, Assessment Results, and Assessor POC are handled the same as described in sections 4.3 -- 4.4.4.
+The Implementation Status, Assessment Results, and Assessor POC are handled the same as described throughout this documentation.
 
 ##### Representation
 {{< highlight xml "linenos=table, hl_lines=7" >}}
@@ -587,7 +579,7 @@ implementation-statement-uuid field with the UUID of the original statement in t
 If this was an issue where an inventory-item or component was not configured as described in the SSP, the related observation should
 include the relevant inventory-item or component should be cited as subjects.
 
-![SSP Implementation Statement Differential](/img/sar-figure-15.png)
+{{< figure src="/img/sar-figure-15.png" title="SSP Implementation Statement Differential" alt="Screenshot of the FedRAMP Test Case Workbook showing the SSP implementation statement differential information." >}}
 
 <br />
 {{<callout>}}
@@ -636,7 +628,7 @@ The type flag of the origin/actor field may be set to one of the following:
 
 {{</ highlight >}}
 
-The following assumes, the first result assembly contains the current assessment, as determined in *Section 4.1, One Result Assembly for the Entire Assessment*.
+The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 {{< highlight xml "linenos=table" >}}
 (SAR) Quantity of SSP implementation statement differential issues cited in current assessment (integer):
@@ -659,7 +651,7 @@ The Likelihood Level and Impact Level are each entered in a characterization/fac
 
 Initially, the status field should always be set to \"open\". If the risk is addressed by the CSP and verified by the assessor before assessment activities are complete, this may be set to \"closed\", and entry must be made in the risk-log.
 
-![Identified Risks](/img/sar-figure-16.png)
+{{< figure src="/img/sar-figure-14.png" title="Identified Risks" alt="Screenshot of the FedRAMP Historic Test Case Workbook showing the risk information." >}}
 
 <br />
 {{<callout>}}
@@ -731,7 +723,7 @@ The assessor\'s recommendation should appear in the description field.
 
 The response origin field\'s type flag should be set to \"party\", and the actor-uuid should contain the UUID of either the assessment organization itself or the individual assessor making the recommendation.
 
-![Recommendation for Mitigation](/img/sar-figure-17.png)
+{{< figure src="/img/sar-figure-17.png" title="Recommendation for Mitigation" alt="Screenshot of the FedRAMP Test Case Workbook showing the recommendation for mitigation information." >}}
 
 <br />
 {{<callout>}}
@@ -799,7 +791,7 @@ Within the observation assembly, the observation method field must be set to \"T
 \"finding\". 
 
 The actor-uuid flag of the origin field must identify the automated tool\'s UUID, and the type flag must be set to \"tool\". The scanning tool should have been previously defined in the SAP\'s assessment-assets assembly and copied to the SAR. If not, the
-scanning tool should be added to the SAR results local-definitions/assessment-assets assembly as described in the [*Guide to OSCAL-based Security Assessment Plans (SAP)*](/guides/sap/4-sap-template-to-oscal-mapping/#testing-performed-using-automated-tools), *Section 4.13, SAP Test Plan: Testing Performed Using Automated Tools*.
+scanning tool should be added to the SAR results local-definitions/assessment-assets assembly as described in the [*SAP Test Plan: Testing Performed Using Automated Tools*](/documentation/sap/4-sap-template-to-oscal-mapping/#testing-performed-using-automated-tools) section of the documentation.
 
 The href flag in the relevant-evidence field must contain a URI fragment that points to the resource containing the raw tool output attached in the back-matter.
 
@@ -846,7 +838,7 @@ At the end of the finding assembly, the UUID for the tool operator must be liste
 
 #### Automated Tools: Discovery Scans
 
-Any undocumented devices identified by the discovery scans must be added to the SAR\'s local-definitions assembly as either inventory-items or components, as described in the [*Guide to OSCAL-based Security Assessment Plans (SAP)*](/guides/sap/4-sap-template-to-oscal-mapping/#ip-addresses-slated-for-testing), *Section 4.5, SAP IP Addresses Slated for Testing*.
+Any undocumented devices identified by the discovery scans must be added to the SAR\'s local-definitions assembly as either inventory-items or components, as described in the [*SAP IP Addresses Slated for Testing*](/documentation/sap/4-sap-template-to-oscal-mapping/#ip-addresses-slated-for-testing) section of the documentation.
 
 This should include information such as IP address, host name, and OS, as well as any other details typically reported for an undocumented host. All component and inventory-item syntax from the SSP is available here. Each undocumented device should then be listed as an individual subject reference.
 
@@ -954,7 +946,6 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
 
 {{</ highlight >}}
 
-**See next page for risk assembly**
 
 The risk assembly uses facet fields to capture relevant tool output details. The facet field's system flag allows data from different tools and different security frameworks to co-exist in the same file.
 
@@ -1014,7 +1005,7 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
 
 {{</ highlight >}}
 
-For information about the remediation assembly, see *Section 4.6.1, Test Case Workbook: Recommendation for Mitigation*.
+For information about the remediation assembly, see [*Test Case Workbook: Recommendation for Mitigation*](/documentation/sar/4-sar-template-to-oscal-mapping/#test-case-workbook-recommendation-for-mitigation).
 
 ---
 ### Penetration Testing: Findings
@@ -1023,7 +1014,7 @@ FedRAMP requires exactly one finding assembly for each risk identified through p
 
 The observation assembly contains the method field which must be set to \"TEST\", and the type field which must be set to \"finding\". The observation assembly also contains the collected field which must be set to the automation tool\'s discovery timestamp, or the date and time observed. The assessors who gathered the evidence are identified at the bottom of the finding assembly using actor-uuid fields.
 
-The href flag in the relevant-evidence field must contain a URI fragment that points to the resource containing the penetration testing report. Section 4.4.3 describes how to reference evidence resources. The back-matter resource containing the penetration test must also have a prop with a name of \"type\" and with a value of \" report\".
+The href flag in the relevant-evidence field must contain a URI fragment that points to the resource containing the penetration testing report. The back-matter resource containing the penetration test must also have a prop with a name of \"type\" and with a value of \" report\".
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -1376,7 +1367,7 @@ The \"other information as may be required\" may be added as a part assembly in 
 Each risk may have a priority value assigned to it. This is another FedRAMP extension prop with the name flag set to \"priority\". A
 priority value of \"1\" represents the most important risk. \"2\" represents the second most important risk. Each number should be unique. Do not assign a priority value to a risk that will not be mitigated, such as an operationally required risk.
 
-![Continued Authorization Recommendation](/img/sar-figure-18.png)
+{{< figure src="/img/sar-figure-18.png" title="Continuous Authorization Recommendation." alt="Screenshot of the FedRAMP SAR template showing the Continued Authorization Recommendation part of the template." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
