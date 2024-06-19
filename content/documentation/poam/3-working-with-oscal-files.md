@@ -8,7 +8,7 @@ weight: 101
 This section provides a summary of several important concepts and
 details that apply to OSCAL-based FedRAMP POA&M files.
 
-The [*FedRAMP OSCAL Documentation*](/guides) provides important concepts necessary for working with any OSCAL-based
+The [*FedRAMP OSCAL Documentation*](/documentation) provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
 ### XML and JSON Formats
@@ -23,25 +23,19 @@ You may submit your POA&M to FedRAMP using either format. If necessary, FedRAMP 
 Unlike the traditional MS Word-and Excel based SSP and POA&M, the OSCAL-based versions of these files are designed to make information
 available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
 
-![OSCAL File Imports](/img/poam-figure-1.png)
-
-_Each OSCAL file imports information from the one to the left_
+{{< figure src="/img/poam-figure-1.png" title="OSCAL file imports." alt="Figure showing how OSCAL files import information from the preceding models." >}}
 
 For example, the systems impacted by a vulnerability as listed in the POA&M are defined in the FedRAMP SSP and simply referenced by the POA&M.
 
-![Baseline and SSP Information](/img/poam-figure-2.png)
-
-_Baseline and SSP Information is referenced instead of duplicated._
+{{< figure src="/img/ssp-figure-2.png" title="Detailed overview of OSCAL models." alt="Figure showing the main contents of the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
 For this reason, an OSCAL-based POA&M points to the OSCAL-based SSP of the system being assessed. Instead of duplicating system details, the OSCAL-based POA&M simply points to the SSP content for information such as system description, boundary, users, locations, and inventory items.
 
 The POA&M also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP Baseline. Through that linkage, the POA&M references the control baseline definitions for the system\'s baseline.
 
-![Resolved Profile Catalog](/img/poam-figure-3.png)
+{{< figure src="/img/poam-figure-3.png" title="Resolved Profile Catalog." alt="Figure showing how Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing." >}}
 
-_The Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing._
-
-For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](guides/5-appendices/#appendix-c-profile-resolution) *Appendix C, Profile Resolution*.
+For more information about resolved profile catalogs, see the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) section.
 
 ### OSCAL-based FedRAMP POA&M Template
 
@@ -60,7 +54,7 @@ here:
 
 [https://pages.nist.gov/OSCAL/concepts/layer/assessment/poam/](https://pages.nist.gov/OSCAL/concepts/layer/assessment/poam/)
 
-![Minimum File Requirements](/img/poam-figure-4.png)
+{{< figure src="/img/poam-figure-4.png" title="Minimum File Requirements." alt="Figure showing the minimum set of required fields and assemblies that each OSCAL POA&M file must have." >}}
 
 ### Importing the System Security Plan
 
@@ -91,7 +85,7 @@ Use the import-ssp field to specify an existing OSCAL-based SSP. The href flag m
   /*/import-ssp/@href
 {{</ highlight >}}
 
-If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the UUID value of a resource in the POA&M file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/Guide_to_OSCAL-based_FedRAMP_Content_rev5.pdf), Section 2.7, Citations and Attachments in OSCAL Files*, for guidance on handling.
+If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the UUID value of a resource in the POA&M file\'s back-matter. Refer to the *[Citations and Attachments in OSCAL Files](/documentation/general-concepts/oscal-citations-and-attachments/)* section for guidance on handling.
 
 ##### POA&M Back Matter Representation                                      
 {{< highlight xml "linenos=table" >}}
