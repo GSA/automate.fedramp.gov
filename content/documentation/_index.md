@@ -52,7 +52,7 @@ or JSON. If necessary, FedRAMP\'s tools will convert the files for
 processing.
 
 {{<callout>}}
-_For more information on converting OSCAL files between XML and JSON, see Section 1.6.2, NIST OSCAL Format Conversion Mechanisms._
+_For more information on converting OSCAL files between XML and JSON, see [NIST OSCAL Format Conversion Mechanisms](/documentation/#nist-oscal-format-conversion-mechanisms)._
 {{</callout>}}
 
 NOTE: NIST partially supports _YAML_ (YAML) as an offshoot of JSON.
@@ -147,7 +147,7 @@ _JSON Users: There are several JSON query technologies available, such as [JSONP
 
 Most XPath queries in this document are absolute paths from the root of
 the document. In other words, it is clear from the XPath query which of
-the major file sections described in Section 2.3 is being referenced,
+the major file sections are being referenced,
 and where the field is located within the section.
 
 {{<callout>}}

@@ -2,7 +2,7 @@
 title: OSCAL Data Types
 weight: 117
 ---
-### Handling of OSCAL Data Types
+# Handling of OSCAL Data Types
 
 OSCAL fields and flags have data types assigned to them. NIST provides
 important information about these data types here:
@@ -11,7 +11,7 @@ important information about these data types here:
 The following sections describe special handling considerations for data
 types that directly impact FedRAMP content in OSCAL.
 
-#### Date and Time in OSCAL Files
+## Date and Time in OSCAL Files
 
 Except where noted, all dates and times in the OSCAL-based content must
 be in an OSCAL
@@ -85,7 +85,7 @@ Please use the appropriate UTC offset in your region. If you are storing
 a date and padding the time with zeros, you may also pad the UTC offset
 with zeros.
 
-#### UUID Datatypes
+## UUID Datatypes
 
 Any place a UUID flag or UUID reference exits, NIST requires UUID
 version 4, as defined by
@@ -115,7 +115,7 @@ non-compliant or erroneous algorithms.
 **For more information about the use of UUIDs in OSCAL, see *Section*
 *2.5,* *Assigning Identifiers*.**
 
-#### ID Datatypes
+## ID Datatypes
 
 NIST typically uses ID flags in OSCAL where the identifier is intended
 to be canonical, such as the identifiers for `role` IDs or NIST SP 800-53
@@ -145,7 +145,7 @@ prepending "uuid-" to the UUID value.
 **For more information about the use of IDs in OSCAL, see *Section*
 *2.5,* *Assigning Identifiers*.**
 
-#### Working With href Flags
+## Working With href Flags
 
 All OSCAL-based `href` flags are URIs formatted according to [section 4.1
 of RFC3986](https://tools.ietf.org/html/rfc3986#section-4.1). When
@@ -181,7 +181,7 @@ file, or one of the imported OSCAL files in the stack as described in
 For example, the following OSCAL content contains a `href` flag with a URI
 fragment:
 
-##### URI Fragment Example
+### URI Fragment Example
  {{< highlight xml "linenos=table" >}}
  <system-characteristics>
   <authorization-boundary>
@@ -215,7 +215,7 @@ name(//*[@uuid="uri-fragment" | @id="uri-fragment"])
 The above query will return "resource", if the URI Fragment references
 the UUID of a `resource` assembly.
 
-#### Markup-line and Markup-multiline Fields in OSCAL
+## Markup-line and Markup-multiline Fields in OSCAL
 
 As with most machine-readable formats, most of OSCAL's fields are
 intended to capture short, discrete pieces of information; however,
@@ -269,7 +269,7 @@ For a complete list of markup-line and markup-multiline features, please
 visit:
 [[https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types]](https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types)
 
-#### Working with Markup-multiline Content
+## Working with Markup-multiline Content
 
 In JSON, markup-multiline is based on Markdown syntax and requires no
 special handling. XML-based markup-multiline fields require all content
@@ -284,7 +284,7 @@ required tags. This will produce an error when checked with the OSCAL
 schema.
 
 
-##### Incorrect Markup-multiline Representation
+### Incorrect Markup-multiline Representation
 {{< highlight xml "linenos=table" >}}
   <system-characteristics>
     <!-- cut -->
@@ -296,7 +296,7 @@ schema.
 The simplest way to correct the error is to enclose the text in
 `<p></p>` tags, within the `description` field.
 
-##### Correct Markup-multiline Representation
+### Correct Markup-multiline Representation
 {{< highlight xml "linenos=table" >}}
   <system-characteristics>
     <!-- cut -->
@@ -312,7 +312,7 @@ Please note, the inclusion of a `<p />` tag on a line by itself inserts
 an empty paragraph. Within XML and HTML, this is treated as a shortcut,
 and is interpreted as `"<p></p>"`.
 
-##### Correct Markup-multiline Representation
+### Correct Markup-multiline Representation
 {{< highlight xml "linenos=table" >}}
   <system-characteristics>
     <!-- cut -->
@@ -339,7 +339,7 @@ and is interpreted as `"<p></p>"`.
 For more information, please visit:
 [https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types](https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types)
 
-#### Special Characters in OSCAL
+## Special Characters in OSCAL
 
 While OSCAL itself does not directly impose special character handling
 requirements, XML and JSON do. Characters, such as ampersand (&),
