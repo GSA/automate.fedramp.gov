@@ -10,22 +10,20 @@ in OSCAL syntax. There is also XPath syntax for querying the code in an
 OSCAL-based FedRAMP SAP represented in XML format.
 
 Content that is common across OSCAL file types is described in the
-*[FedRAMP OSCAL Documentation](/guides).*
+*[FedRAMP OSCAL Documentation](/documentation).*
 This includes the following:
 
-| Topic                                         | Location                                                                                                                                                                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title Page**                                | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)_, Section 4.1_                                                        |
-| **Prepared By/For**                           | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)_, Section 4.2 - 4.4_                                                  |
-| **Record of Template Changes**                | Not Applicable. Instead follow [_FedRAMP OSCAL Documentation_](/guides/2-working-with-oscal-files/#oscal-syntax-version)_, Section 2.3.2, OSCAL Syntax Version_ |
-| **Revision History**                          | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)_, Section 4.5_                                                        |
-| **How to Contact Us**                         | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)_, Section 4.6_                                                        |
-| **Document Approvers**                        | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)_, Section 4.7_                                                        |
-| **Acronyms and Glossary**                     | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)_, Section 4.8_                                                        |
-| **Laws, Regulations, Standards and Guidance** | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)_, Section 4.9_                                                        |
-| **Attachments and Citations**                 | [_FedRAMP OSCAL Documentation_](/guides/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)_, Section 4.10_   
+- [**Title Page**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#title-page)
+- [**Prepared By/For**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-third-party)
+- [**Record of Template Changes**](/documentation/general-concepts/oscal-file-concepts/#oscal-syntax-versions)
+- [**Revision History**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-revision-history)
+- [**How to Contact Us**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)
+- [**Document Approvers**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)
+- [**Acronyms and Glossary**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)
+- [**Laws, Regulations, Standards and Guidance**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)
+- [**Attachments and Citations**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)
 
-It is not necessary to represent the following sections of the SAR
+It is not necessary to represent the following sections of the SAP
 template in OSCAL; however, tools should present users with this content
 where it is appropriate:
 
@@ -46,8 +44,6 @@ required by FedRAMP.
 vary slightly from the most current version of the FedRAMP rev 5 SAP
 template.**
 
-**The following pages are intended to be printed landscape on tabloid
-(11\" x 17\") paper.**
 
 ---
 ### Background
@@ -60,7 +56,7 @@ terms-and-conditions element of an OSCAL SSP. This approach is optional
 as the specific data items can simply be queried from an OSCAL SAP and
 its associated documents.
 
-![Background](/img/sap-figure-4.png)
+{{< figure src="/img/sap-figure-4.png" title="Background, Purpose, and Applicable Laws sections of the FedRAMP SAP template" alt="Screenshot of the Background, Purpose, and Applicable Laws sections of the FedRAMP SAP template." >}}
 
 ##### SAP Import Representation
 {{< highlight xml "linenos=table" >}}
@@ -146,7 +142,7 @@ cited, so that the assessor can add their own description of the
 location. Also, the SSP will likely also contain locations that are not
 data centers.
 
-![Location of Components](/img/sap-figure-6.png)
+{{< figure src="/img/sap-figure-6.png" title="FedRAMP SAP template location information." alt="Screenshot of component location information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -227,7 +223,7 @@ entries, or if the assessor needs to correct this information, the SAP
 tool must add this assessor-provided information to the SAP\'s
 local-definitions.
 
-See the [*Guide to OSCAL-based FedRAMP System Security Plans*](/guides/ssp/)
+See the [*Guide to OSCAL-based FedRAMP System Security Plans*](/documentation/ssp/)
 to learn more about legacy (flat-file) and component-based inventory
 approaches. Use a combination of include-subject and exclude-subject
 assemblies to specify the SSP IDs of all in-scope components and
@@ -240,7 +236,7 @@ software and version information. Tools should honor this relationship
 and consider linked components to be implicitly in-scope even if the
 component was not explicitly cited in the SAP.
 
-![Location of Components](/img/sap-figure-7.png)
+{{< figure src="/img/sap-figure-7.png" title="FedRAMP SAP template items slated for testing." alt="Screenshot of section of the FedRAMP SAP template where IP addresses slated for testing is provided." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -349,7 +345,7 @@ interface, with the following FedRAMP extension:
 
 This typically appears in the inventory-item itself with the legacy
 approach and appears in a component associated with the inventory-item
-if the SSP is using the component-based approach. See the [*Guide to OSCAL-based System Security Plans (SSP)*](/guides/ssp/5-attachments/#system-inventory-approach) for details on the flat-file and component-based approaches.
+if the SSP is using the component-based approach. See the [*Guide to OSCAL-based System Security Plans (SSP)*](/documentation/ssp/5-attachments/#system-inventory-approach) for details on the flat-file and component-based approaches.
 
 FedRAMP expects the assessor to review and validate the list of
 identified web applications, both initially in the SAP and as a result
@@ -418,7 +414,7 @@ The SSP inventory data should already indicate which assets are a database, with
 This typically appears in the inventory-item itself with the legacy
 (flat-file) approach and appears in a component associated with the
 inventory-item if the SSP is using the component-based approach. See the
-[*Guide to OSCAL-based System Security Plans (SSP)*](/guides/ssp/5-attachments/#component-based-approach) for details on the flat-file and component-based approaches.
+[*Guide to OSCAL-based System Security Plans (SSP)*](/documentation/ssp/5-attachments/#component-based-approach) for details on the flat-file and component-based approaches.
 
 FedRAMP expects the assessor to review and validate the list of
 identified databases, both initially in the SAP and as a result of
@@ -459,7 +455,7 @@ roles excluded from testing. When processing an OSCAL SAP, SAP tools
 should present assessors with the roles from the associated (import-ssp)
 SSP so the assessor can select specific roles for testing. SAP tools
 should allow the assessor to easily identify roles that are excluded.
-Section 6.2 of the [*Guide to OSCAL-based System Security Plans (SSP)*](/guides/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) describes personnel roles and privileges with examples illustrating how
+Section 6.2 of the [*Guide to OSCAL-based System Security Plans (SSP)*](/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) describes personnel roles and privileges with examples illustrating how
 to identify them in an OSCAL SSP. If the \"roles\" slated for testing
 exist in the SSP, the SSP roles are referenced from the SAP using their
 SSP IDs as defined in the SSP user assemblies in the system-implementation section of the OSCAL-based SSP file. **Note that in this case, the SAP role must actually map to the uuid of the user assembly in the SSP**.
@@ -470,7 +466,7 @@ from each of the common generalized role categories ("internal",
 generic roles, the SAP tool should enable the assessor to create these
 generic roles locally in the SAP local-definitions assembly.
 
-![Role Testing Exclusions](/img/sap-figure-8.png)
+{{< figure src="/img/sap-figure-8.png" title="FedRAMP SAP template role testing inclusions and exclusions." alt="Screenshot of the FedRAMP SAP template where role testing inclusions and exclusions are provided." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -555,7 +551,7 @@ The insert elements can be used by tool developers as insertion points
 for data items that the tool may manage as parameters. The use of insert
 within an OSCAL part is described on the [NIST OSCAL Concepts page](https://pages.nist.gov/OSCAL/resources/concepts/layer/control/catalog/sp800-53rev5-example/#parts).
 
-![Role Testing Exclusions](/img/sap-figure-9.png)
+{{< figure src="/img/sap-figure-9.png" title="FedRAMP SAP template assumptions." alt="Screenshot of the FedRAMP SAP template where assumptions are provided." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -614,7 +610,7 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
 
 In general, the methodology is simply a single markup multiline field, which enables the assessor to modify the content using rich text formatting. The FedRAMP SAP template includes subsections for *Control Testing, Data Gathering, Sampling,* and *Penetration Test*. Each of these sections must be present in the FedRAMP OSCAL SAP terms-and-condition assembly, within part named "methodology" as sub-parts. The subparts are specifically defined for FedRAMP SAP, so they have namespace "https://fedramp.gov/ns/oscal" and attributes are named "control-testing", "data-gathering", "sampling", and "pen-testing".
 
-![SAP Methodology](/img/sap-figure-10.png)
+{{< figure src="/img/sap-figure-10.png" title="FedRAMP SAP template methodology." alt="Screenshot of the FedRAMP SAP template where methodology information is provided." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -656,7 +652,7 @@ In general, the methodology is simply a single markup multiline field, which ena
 FedRAMP requires the presence of the sampling property, which indicates whether sampling will be used by the
 assessor for the assessment. The insert elements can be used by tool developers for insertion points for data items that the tool may manage as parameters. CSP tools must display a definitive statement based on the value of the sampling property.
 
-![Sampling](/img/sap-figure-11.png)
+{{< figure src="/img/sap-figure-11.png" title="FedRAMP SAP template sampling methodology." alt="Screenshot of the FedRAMP SAP template where sampling methodology information is provided." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -707,7 +703,7 @@ include-control instead - one for each control included in the
 assessment. Controls may also be explicitly excluded from the control
 scope.
 
-![Control Testing](/img/sap-figure-12.png)
+{{< figure src="/img/sap-figure-12.png" title="OSCAL SAP control testing." alt="Figure showing how an OSCAL SAP relies on an OSCAL SSP that depends on a control baseline, and the SAP must select in-scope controls from the applicable FedRAMP baseline/profile." >}}
 
 ##### Representation   
 {{< highlight xml "linenos=table" >}}
@@ -768,7 +764,7 @@ SAP. In the responsible-party assembly, the party-uuid may point to a
 party in the SSP or SAP. The SAP tool must not assign a role ID or party
 ID that duplicates one used in the SSP.
 
-![Test Plan](/img/sap-figure-13.png)
+{{< figure src="/img/sap-figure-13.png" title="FedRAMP SAP template security assessment team." alt="Screenshot of the security assessment team information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -825,7 +821,7 @@ responsible-party assemblies. Some roles are specific to the SAP. The
 SAP tool must not assign a role ID or party ID that duplicates one used
 in the SSP.
 
-![Test Plan](/img/sap-figure-14.png)
+{{< figure src="/img/sap-figure-14.png" title="FedRAMP SAP template security assessment team." alt="Screenshot of the additional security assessment team information \(e.g., assessment lead\) in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -880,7 +876,7 @@ already identified via a party assembly in the SSP, that individual\'s
 information should not be duplicated in the SAP. Instead, the SAP should
 reference the SSP party ID for that individual.
 
-![Test Plan](/img/sap-figure-15.png)
+{{< figure src="/img/sap-figure-15.png" title="FedRAMP SAP template CSP testing POC." alt="Screenshot of the CSP testing point of contact \(POC\) information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -935,7 +931,7 @@ Automated tools are enumerated in the assets section of the SAP using
 the tools assembly. Each tool is listed using the same component syntax
 available in the SSP.
 
-![Test Plan](/img/sap-figure-16.png)
+{{< figure src="/img/sap-figure-16.png" title="FedRAMP SAP template assessment tools." alt="Screenshot of the assessment tools information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -995,7 +991,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 In OSCAL, the manual assessment methods are described in the activity
 assembly as shown below:
 
-![Test Plan](/img/sap-figure-17.png)
+{{< figure src="/img/sap-figure-17.png" title="FedRAMP SAP template manual testing performed." alt="Screenshot of the manual testing and test methods information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1111,7 +1107,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 In OSCAL, the assessment schedule is described using an array of task
 assemblies as shown below:
 
-![Test Plan](/img/sap-figure-18.png)
+{{< figure src="/img/sap-figure-18.png" title="FedRAMP SAP template assessment schedule." alt="Screenshot of the assessment schedule information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1229,7 +1225,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 The scan origination IP address(es) are included in the
 assessment-platform assembly. See the next page for other disclosures\`.
 
-![Test Plan](/img/sap-figure-19.png)
+{{< figure src="/img/sap-figure-19.png" title="FedRAMP SAP template rules of engagement and disclosures." alt="Screenshot of the rules of engagement and disclosure information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1274,7 +1270,7 @@ SAP authors should describe the security testing that may be included
 within the terms-and-conditions assembly, in the "included-activities"
 part and its "included-activity" sub-parts.
 
-![Test Plan](/img/sap-figure-20.png)
+{{< figure src="/img/sap-figure-20.png" title="FedRAMP SAP template terms and conditions (inclusions)." alt="Screenshot of the terms and conditions \(e.g., security testing may include\) information in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1327,7 +1323,8 @@ SAP authors should describe exclusive disclosures within the
 terms-and-conditions assembly, in the "excluded-activities" part and its
 "included-activity" sub-parts.
 
-![Test Plan](/img/sap-figure-21.png)
+{{< figure src="/img/sap-figure-21.png" title="FedRAMP SAP template terms and conditions (exclusions)." alt="Screenshot of the terms and conditions \(e.g., security testing will not include\) information in the FedRAMP SAP template." >}}
+
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1384,7 +1381,8 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 This indicates who the Independent Assessor (IA) should notify within
 the CSP\'s organization when testing is complete.
 
-![Test Plan](/img/sap-figure-22.png)
+{{< figure src="/img/sap-figure-22.png" title="FedRAMP SAP template end of testing." alt="Screenshot of the end of testing section in the FedRAMP SAP template." >}}
+
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1528,7 +1526,7 @@ following approaches is encouraged:
 
 -   Digital Signature
 
-![Test Plan](/img/sap-figure-23.png)
+{{< figure src="/img/sap-figure-23.png" title="FedRAMP SAP template signatures." alt="Screenshot of the signatures section in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1591,7 +1589,7 @@ Testing for additional guidance.
 
 The assessment objectives and actions (Examine, Interview, and Test)
 from the test case workbook are now part of the [OSCAL-based FedRAMP
-baselines](https://github.com/GSA/fedramp-automation/tree/master/baselines),
+baselines](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/baselines),
 with the detail imported from the OSCAL-based NIST SP 800-53 Catalog via
 the baseline.
 
@@ -1606,7 +1604,7 @@ this case, a SAP tool may simply specify all, to indicate that all
 assessment objectives should be included for all in-scope controls. If
 needed, objectives can be explicitly included or excluded as well.
 
-![Test Plan](/img/sap-figure-24.png)
+{{< figure src="/img/sap-figure-24.png" title="FedRAMP SAP template test case workbook." alt="Screenshot of the test case workbook in the FedRAMP SAP template." >}}
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
