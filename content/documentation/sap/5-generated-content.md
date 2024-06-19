@@ -25,7 +25,7 @@ FedRAMP is developing Extensible Stylesheet Language Transformation
 (XSLT) files to generate them. When ready, FedRAMP will make this freely
 available to the public here:
 
-[https://github.com/GSA/fedramp-automation/tree/master/dist/content/resources](https://github.com/GSA/fedramp-automation/tree/master/dist/content/resources)
+[https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/resources](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/resources)
 
 **Tool developers are also encouraged to develop their own solutions to generating this content.**
 
@@ -36,8 +36,7 @@ reference or using the \"all\" clause. Once identified, the list of IP
 addresses slated for testing should be derived from the machine-readable
 inventory found in the SSP.
 
-As described in *Section 4.4.1, If No OSCAL-based SSP Exists or Has
-Inaccurate Information (IP* Addresses), if the assessor finds SSP
+As described in section [*If No OSCAL-based SSP Exists or Has Inaccurate Information (IP Addresses)*](/documentation/sap/4-sap-template-to-oscal-mapping/#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses), if the assessor finds SSP
 information inventory to be missing or inaccurate, the SAP tool must
 allow the assessor to insert inventory information into the
 local-definitions section of the SAP.
@@ -49,8 +48,7 @@ reference or using the \"all\" clause. Once identified, the list of
 Databases slated for testing should be derived from the machine-readable
 inventory found in the SSP.
 
-As described in *Section 4.4.1, If No OSCAL-based SSP Exists or Has
-Inaccurate Information (IP* Addresses), if the assessor finds SSP
+As described in section [*If No OSCAL-based SSP Exists or Has Inaccurate Information (Database)*](/documentation/sap/4-sap-template-to-oscal-mapping/#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-database), if the assessor finds SSP
 information inventory to be missing or inaccurate, the SAP tool must
 allow the assessor to insert inventory information into the
 local-definitions section of the SAP.
