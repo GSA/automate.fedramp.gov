@@ -21,12 +21,7 @@ There are many ways a tool developer can generate the CIS. FedRAMP is developing
 
 ### Generating the Customer Responsibility Matrix (CRM)
 
-There are many ways a tool developer can generate the CRM. FedRAMP is
-developing\
-an XSLT file to generate the FedRAMP CRM. When ready, FedRAMP will make
-this freely available to the public here:
-
-[https://github.com/GSA/fedramp-automation/tree/master/dist/content/resources](https://github.com/GSA/fedramp-automation/tree/master/dist/content/resources)
+There are many ways a tool developer can generate the CRM. FedRAMP plans to develop open-source tooling to generate the FedRAMP CRM. When ready, FedRAMP will make this freely available to the public on the [FedRAMP Automation GitHub repository](https://github.com/GSA/fedramp-automation).
 
 ##### Useful CRM XPath Queries 
 {{< highlight xml "linenos=table" >}}
