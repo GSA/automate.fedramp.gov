@@ -1152,7 +1152,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 
 -   In the OSCAL file, the start and end fields must use the OSCAL data
     type
-    [dateTime-with-timezone](https://pages.nist.gov/OSCAL/reference/datatypes/#date-with-timezone).
+    [dateTime-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone).
 
 -   The time may be entered as all zeros.
 
