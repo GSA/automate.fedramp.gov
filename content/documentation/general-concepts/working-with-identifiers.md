@@ -18,7 +18,7 @@ There are four ways identifiers are typically used in OSCAL:
 
 -   **Uniform Resource Identifier (URI) Fragment**: A value in a flag or
     field with a [URI data
-    type](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#uri).
+    type](https://pages.nist.gov/OSCAL/resources/concepts/uri-use/#oscal-uri-data-types).
     A [URI fragment](https://tools.ietf.org/html/rfc3986#section-3.5)
     starts with a hashtag (#) followed by a unique ID value.
 
