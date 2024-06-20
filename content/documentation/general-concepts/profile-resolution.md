@@ -71,7 +71,7 @@ be found here:
 
 The actual tool can be found here:
 
-<https://github.com/usnistgov/OSCAL/tree/main/src/utils/util/resolver-pipeline>
+<https://github.com/usnistgov/OSCAL/tree/v1.1.2/src/utils/resolver-pipeline>
 
 Currently the tool requires the profile and all imported catalogs and
 profiles to be in XML format. For now, JSON content must be converted to
@@ -88,7 +88,7 @@ It is also possible to run the scripts directly from the NIST OSCAL
 repository by supplying the following URL directly to the XSLT
 processor:
 
-<https://raw.githubusercontent.com/usnistgov/OSCAL/main/src/utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl>
+<https://github.com/usnistgov/OSCAL/blob/v1.1.2/src/utils/resolver-pipeline/oscal-profile-RESOLVE.xsl>
 
 This is a new capability provided by NIST and leveraged by FedRAMP.
 Please report bugs or provide feedback related to this tool directly to

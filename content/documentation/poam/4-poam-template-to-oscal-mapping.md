@@ -411,7 +411,7 @@ CSP vulnerabilities that are in the CISA KEV catalog must be remediated
 by the due date specified in the catalog. This date must be included in
 the CSP's POA&M via a FedRAMP extension property with the name flag set
 to \"kev-due-date\". This property's value must be set to a [valid date
-data type](https://pages.nist.gov/OSCAL/reference/datatypes/#date).
+data type](https://pages.nist.gov/metaschema/specification/datatypes/#date).
 
 ##### Representation                                     
 {{< highlight xml "linenos=table" >}}

@@ -90,13 +90,6 @@ _TIP: There are comments in the XML versions of the FedRAMP Templates. Unfortuna
 
 ### NIST OSCAL Syntax Validation Mechanisms
 
-The latest version of NIST OSCAL schema validation files are always
-available here:\
-- XML:
-[https://github.com/usnistgov/OSCAL/tree/main/xml/schema](https://github.com/usnistgov/OSCAL/tree/main/xml/schema)\
-- JSON:
-[https://github.com/usnistgov/OSCAL/tree/main/json/schema](https://github.com/usnistgov/OSCAL/tree/main/json/schema)
-
 Validating XML-based OSCAL files using the NIST-published schema
 validation requires:\
 [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/)
@@ -105,28 +98,15 @@ Validating JSON-based OSCAL files using the NIST-published schema
 validation requires:\
 [JSON Schema, draft-07](https://json-schema.org/specification-links#23draft-7)
 
-There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as stand-alone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
+The [NIST OSCAL Build tools](https://github.com/usnistgov/OSCAL/blob/v1.1.2/build/README.md#schemas) provide a mechanism for validating OSCAL XML and JSON content. There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as stand-alone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
 
 ### NIST OSCAL Format Conversion Mechanisms
 
-The latest version of NIST OSCAL format conversion files are always
-available here:
-- XML to JSON:
-[https://github.com/usnistgov/OSCAL/tree/main/json/convert](https://github.com/usnistgov/OSCAL/tree/main/json/convert)
-- JSON to XML:
-[https://github.com/usnistgov/OSCAL/tree/main/xml/convert](https://github.com/usnistgov/OSCAL/tree/main/xml/convert)
+The [NIST OSCAL Build tools](https://github.com/usnistgov/OSCAL/blob/v1.1.2/build/README.md#converters) also provide a mechanism for converting OSCAL XML and JSON content.
 
 For more information on converting OSCAL files between supported
-formats, please see the information at the following links:
-
-- [OSCAL
-  Converters](https://pages.nist.gov/OSCAL/concepts/layer/overview/#oscal-converters)
-
-- [Converting OSCAL XML Content to
-  JSON](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)
-
-- [Converting OSCAL JSON Content to
-  XML](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)
+formats, please see the [OSCAL
+  Converters](https://pages.nist.gov/OSCAL/concepts/layer/overview/#oscal-converters) documentation.
 
 ## XPath Queries and References
 

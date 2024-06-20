@@ -389,7 +389,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
     extension, which points to a metadata `party`.
 
 -   The published field requires the OSCAL data type,
-    [dateTime-with-timezone](https://pages.nist.gov/OSCAL/reference/datatypes/#datetime-with-timezone).
+    [dateTime-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone).
 
 -   FedRAMP only requires the publication date, not the time.
 
