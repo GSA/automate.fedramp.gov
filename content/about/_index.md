@@ -1,5 +1,5 @@
 ---
-title: About FedRAMP OSCAL
+title: About FedRAMP's Use of OSCAL
 menu:
   primary:
     name: About
