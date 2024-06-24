@@ -6,7 +6,7 @@ weight: 117
 
 OSCAL fields and flags have data types assigned to them. NIST provides
 important information about these data types here:
-[[https://pages.nist.gov/OSCAL/reference/datatypes/]](https://pages.nist.gov/OSCAL/reference/datatypes/)
+[[https://pages.nist.gov/metaschema/specification/datatypes/]](https://pages.nist.gov/metaschema/specification/datatypes/)
 
 The following sections describe special handling considerations for data
 types that directly impact FedRAMP content in OSCAL.
@@ -17,7 +17,7 @@ Except where noted, all dates and times in the OSCAL-based content must
 be in an OSCAL
 `dateTime-with-timezone` format as documented here:
 
-[[https://pages.nist.gov/OSCAL/reference/datatypes/#datetime-with-timezone]](https://pages.nist.gov/OSCAL/reference/datatypes/#datetime-with-timezone)
+[[https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone]](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone)
 
 This means all dates and times must be represented in the OSCAL file
 using following format, unless otherwise noted:
@@ -90,7 +90,7 @@ with zeros.
 Any place a UUID flag or UUID reference exits, NIST requires UUID
 version 4, as defined by
 [RFC-4122](https://tools.ietf.org/html/rfc4122). See here for more
-information: <https://pages.nist.gov/OSCAL/reference/datatypes/#uuid>
+information: <https://pages.nist.gov/metaschema/specification/datatypes/#uuid>
 
 Version 4 UUIDs are 128-bit numbers, represented as 32 hexadecimal
 (base-16) digits in the pattern:
@@ -122,7 +122,7 @@ to be canonical, such as the identifiers for `role` IDs or NIST SP 800-53
 controls.
 
 Any place an ID flag or ID reference exits, the datatype is
-[token](https://pages.nist.gov/OSCAL/reference/datatypes/#token). It is
+[token](https://pages.nist.gov/metaschema/specification/datatypes/#token). It is
 similar to the [NCName](https://www.w3.org/TR/xmlschema-2/#NCName) as
 defined by the World Wide Web Consortium (W3C), but does not allow
 spaces. The allowable values of an NCName are limited as follows:
@@ -267,7 +267,7 @@ Both *markup-line* and *markup-multiline* support:
 
 For a complete list of markup-line and markup-multiline features, please
 visit:
-[[https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types]](https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types)
+[[https://pages.nist.gov/metaschema/specification/datatypes/#markup-data-types]](https://pages.nist.gov/metaschema/specification/datatypes/#markup-data-types)
 
 ## Working with Markup-multiline Content
 
@@ -337,7 +337,7 @@ and is interpreted as `"<p></p>"`.
 {{< /highlight >}}
 
 For more information, please visit:
-[https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types](https://pages.nist.gov/OSCAL/reference/datatypes/#markup-data-types)
+[https://pages.nist.gov/metaschema/specification/datatypes/#markup-data-types](https://pages.nist.gov/metaschema/specification/datatypes/#markup-data-types)
 
 ## Special Characters in OSCAL
 
@@ -348,5 +348,5 @@ treatment in OSCAL files, depending on the format. For a complete list
 of special characters and the appropriate treatment for each format,
 please visit:
 
-[https://pages.nist.gov/OSCAL/reference/datatypes/#specialized-character-mapping](https://pages.nist.gov/OSCAL/reference/datatypes/#specialized-character-mapping)
+[https://pages.nist.gov/metaschema/specification/datatypes/#specialized-character-mapping](https://pages.nist.gov/metaschema/specification/datatypes/#specialized-character-mapping)
 
