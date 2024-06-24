@@ -41,24 +41,16 @@ Throughout this document, the following words are used to differentiate between 
 |**may**|Indicates an optional action.|
 
 
-## XML and JSON Formats
+## XML, JSON and YAML Formats
 
-The examples provided here are in XML; however, FedRAMP accepts XML or
-JSON formatted OSCAL content. NIST offers the ability to convert
-OSCAL-files between XML and JSON in either direction without data loss.
+The examples provided here are in XML; however, FedRAMP accepts XML, JSON or YAML formatted OSCAL content. NIST offers the ability to convert OSCAL-files between XML, JSON, and YAML in either direction without data loss.
 
-You may submit your SSP, SAP, SAR, and POA&M to FedRAMP using either XML
-or JSON. If necessary, FedRAMP\'s tools will convert the files for
-processing.
+You may submit your SSP, SAP, SAR, and POA&M to FedRAMP using either XML, JSON, or YAML. If necessary, FedRAMP\'s tools will convert the files for processing.
 
 {{<callout>}}
-_For more information on converting OSCAL files between XML and JSON, see [NIST OSCAL Format Conversion Mechanisms](/documentation/#nist-oscal-format-conversion-mechanisms)._
+_For more information on converting OSCAL files between FORMATS, see [NIST OSCAL Tools - Data conversion](https://pages.nist.gov/OSCAL/resources/tools/#data-conversion) page._
 {{</callout>}}
 
-NOTE: NIST partially supports _YAML_ (YAML) as an offshoot of JSON.
-FedRAMP will evaluate the use of YAML for FedRAMP deliverables once NIST
-offers the same level of support for YAML syntax validation and format
-conversion.
 
 ## OSCAL-based FedRAMP Templates
 
