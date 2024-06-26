@@ -90,11 +90,11 @@ Validating JSON-based OSCAL files using the NIST-published schema
 validation requires:\
 [JSON Schema, draft-07](https://json-schema.org/specification-links#23draft-7)
 
-The [NIST OSCAL Build tools](https://github.com/usnistgov/OSCAL/blob/v1.1.2/build/README.md#schemas) provide a mechanism for validating OSCAL XML and JSON content. There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as stand-alone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
+The [NIST OSCAL tools](https://pages.nist.gov/OSCAL/resources/tools/#validation) provide a mechanism for validating OSCAL XML and JSON content. There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as stand-alone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
 
 ### NIST OSCAL Format Conversion Mechanisms
 
-The [NIST OSCAL Build tools](https://github.com/usnistgov/OSCAL/blob/v1.1.2/build/README.md#converters) also provide a mechanism for converting OSCAL XML and JSON content.
+The [NIST OSCAL tools](https://pages.nist.gov/OSCAL/resources/tools/#data-conversion) also provide a mechanism for converting OSCAL XML and JSON content.
 
 For more information on converting OSCAL files between supported
 formats, please see the [OSCAL
