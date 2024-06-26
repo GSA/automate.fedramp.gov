@@ -7,7 +7,7 @@ weight: 101
 This section provides a summary of several important concepts and
 details that apply to OSCAL-based FedRAMP SAP files.
 
-The [*FedRAMP OSCAL Documentation*](/guides)
+The [*FedRAMP OSCAL Documentation*](/documentation)
 provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to
 understanding this guide.
@@ -29,18 +29,14 @@ versions of these files are designed to make information available
 through linkages, rather than duplicating information. In OSCAL, these
 linkages are established through import commands.
 
-![OSCAL File Imports](/img/sap-figure-1.png)
-
-*Each OSCAL file imports information from the one to the left*
+{{< figure src="/img/sap-figure-1.png" title="OSCAL import linkage hierarchy." alt="Figure illustrating how the OSCAL catalog, profile, SSP, SAP, and SAR have linkages to the preceding OSCAL model. The POA&M model is omitted for simplicity." >}}
 
 For example, the assessment objectives and actions that appear in a
 blank test case workbook (TCW), are defined in the FedRAMP profile, and
 simply referenced by the SAP and SAR. Only deviations from the TCW are
 captured in the SAP or SAR.
 
-![Baseline and SSP Reference](/img/sap-figure-2.png)
-
-*Baseline and SSP Information is referenced instead of duplicated.*
+{{< figure src="/img/sap-figure-2.png" title="Detailed overview of OSCAL models." alt="Figure showing the main contents of the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
 For this reason, an OSCAL-based SAP points to the OSCAL-based SSP of the
 system being assessed. Instead of duplicating system details, the
@@ -55,33 +51,6 @@ TCW.
 The only reason to include this content in the SAP is when the assessor
 documents a deviation from the SSP, Baseline, or TCW.
 
-#### Resolved Profile Catalogs
-
-The resolved profile catalog for each FedRAMP baseline is produced by
-applying the FedRAMP profiles as a set of tailoring instructions on top
-of the NIST control catalog. This reduces overhead for tools by
-eliminating the need to open and follow references from the profile to
-the catalog. It also includes only the catalog information relevant to
-the baseline, reducing the overhead of opening a larger catalog.
-
-Where available, tool developers have the option of following the links
-from the profile to the catalog as described above or using the resolved
-profile catalog.
-
-Developers should be aware that at this time catalogs and profiles
-remain relatively static. As OSCAL gains wider adoption, there is a risk
-that profiles and catalogs will become more dynamic, and a resolved
-profile catalog becomes more likely to be out of date. Early adopters
-may wish to start with the resolved profile catalog now, and plan to add
-functionality later for the separate profile and catalog handling later
-in their product roadmap.
-
-![Resolved Profile Catalog](/img/sap-figure-3.png)
-
-*The Resolved Profile Catalog for each FedRAMP Baseline reduces tool
-processing.*
-
-For more information about resolved profile catalogs, see the [*FedRAMP OSCAL Documentation*](/guides/5-appendices/#profile-resolution) *Appendix C, Profile Resolution*.
 
 ### OSCAL-based FedRAMP SAP Template
 
@@ -95,7 +64,7 @@ JSON formats here:
     [https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sap/json/FedRAMP-SAP-OSCAL-Template.json](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sap/json/FedRAMP-SAP-OSCAL-Template.json)
 
 -   OSCAL-based FedRAMP SAP Template (XML Format):\
-    [https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sap/xml/FedRAMP-SAP-OSCAL-Template.xml](https://github.com/GSA/fedramp-automation/raw/master/dist/content/templates/sap/xml/FedRAMP-SAP-OSCAL-Template.xml)
+    [https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sap/xml/FedRAMP-SAP-OSCAL-Template.xml](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sap/xml/FedRAMP-SAP-OSCAL-Template.xml)
 
 ### OSCAL's SAP Minimum File Requirements
 
@@ -138,7 +107,7 @@ including a relative path, absolute path, or URI fragment.
 If the value is a URI fragment, such as
 #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SAP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Section 2.7, Citations and Attachments in OSCAL Files* for guidance on handling.
+resource in the SAP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/documentation/general-concepts/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Citations and Attachments in OSCAL Files* for guidance on handling.
 
 ##### SAP Back Matter Representation 
 {{< highlight xml "linenos=table" >}}

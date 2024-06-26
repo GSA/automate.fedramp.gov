@@ -18,23 +18,23 @@ is handled:
 
 |**Appendix Name**|**Machine Readable**|**How to Handle in OSCAL**|
 | :-- | :-- | :-- |
-| **Appendix A: FedRAMP Security Controls** | Yes | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
+| **Appendix A: FedRAMP Security Controls** | [Yes](/documentation/ssp/6-security-controls/) | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
 | **Appendix B: Related Acronyms** | No | Attach using the back-matter, resource syntax.<br /><br />For Acronyms, resource must include a prop with @ns="https://fedramp.gov/ns/oscal", @name="type", and @value="fedramp-acronyms". |
 | **Appendix C: Security Policies and Procedures** | No | Attach using the back-matter, resource syntax.<br /><br />For Policies, resource must include a prop with @name=”type”, @value=”policy”, and @class=”control-family”.<br /><br />For Procedures, resource must include a prop with @name=”type”, @value=”procedure”, and @class=”control-family”. |
 | **Appendix D: User Guide** | No | Attach using the back-matter, resource syntax.<br /><br />For User Guides, resource must include a prop with @name=”type” and @value=”users-guide”. |
-| **Appendix E: Digital Identity Worksheet** | Yes | Incorporated above. See the Digital Identity Determination Section. |
+| **Appendix E: Digital Identity Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination) | Incorporated above. See the Digital Identity Determination Section. |
 | **Appendix F: Rules of Behavior** | No | Attach using the back-matter, resource syntax.<br /><br />For Rules of Behavior, resource must include a prop with @name=”type” and @value="rules-of-behavior". |
 | **Appendix G: Information System Contingency Plan (ISCP)** | No | Attach using the back-matter, resource syntax.<br /><br />For ISCP, resource must include a prop with @name=”type”, @value="plan", and @class="information-system-contingency-plan". |
 | **Appendix H: Configuration Management Plan (CMP)** | No | Attach using the back-matter, resource syntax.<br /><br />For CMP, resource must include a prop with @name=”type”, @value="plan", and @class="configuration-management-plan". |
 | **Appendix I: Incident Response Plan (IRP)** | No | Attach using the back-matter, resource syntax.<br /><br />For IRP, resource must include a prop with @name=”type”, @value="plan", and @class="incident-response-plan". |
-| **Appendix J: CIS and CRM Workbook** | Yes | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
-| **Appendix K: FIPS 199 Worksheet** | Yes | Incorporated above. See the Security Objectives Categorization (FIPS-199) Section. |
+| **Appendix J: CIS and CRM Workbook** | [Yes](/documentation/ssp/7-generated-content/) | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
+| **Appendix K: FIPS 199 Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level) | Incorporated above. See the Security Objectives Categorization (FIPS-199) Section. |
 | **Appendix L: CSO-Specific Required Laws and Regulations** | No | Attach using the back-matter, resource syntax.<br /><br />For User Guides, resource must include a prop with @name=”type” and @value=”law”. |
 | **Appendix M: Integrated Inventory Workbook** | Yes | See the System Inventory Section. |
 | **Appendix N: Continuous Monitoring Plan** | No | Attach using the back-matter, resource syntax.<br /><br />For ConMon, resource must include a prop with @name=”type”, @value="plan", and @class="incident-response-plan". |
-| **Appendix O: POA&M** | Yes | This is maintained separately in an OSCAL POA&M but can be attached using the back-matter, resource syntax.<br /><br />For POA&M, resource must include a prop with @name=”type”, @value="plan", and @class="poam". |
+| **Appendix O: POA&M** | [Yes](/documentation/poam/) | This is maintained separately in an OSCAL POA&M but can be attached using the back-matter, resource syntax.<br /><br />For POA&M, resource must include a prop with @name=”type”, @value="plan", and @class="poam". |
 | **Appendix P: Supply Chain Risk Management Plan (SCRMP)** | No | Attach using the back-matter, resource syntax.<br /><br />For SCRMP, resource must include a prop with @name=”type”, @value="plan", and @class="scrmp". |
-| **Appendix Q: Cryptographic Module Table** | Yes | See the Cryptographic Modules Section dealing with components. |
+| **Appendix Q: Cryptographic Module Table** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#cryptographic-modules-implemented-for-data-in-transit-dit) | See the Cryptographic Modules Section dealing with components. |
 
 ---
 ### Attachments
@@ -79,7 +79,7 @@ policies, procedures, plans, guidance, and the rules of behavior documents are a
 ---
 ### System Inventory Approach
 
-![Flat-File Inventory Approach](/img/ssp-figure-24.png)
+{{< figure src="/img/ssp-figure-24.png" title="FedRAMP SSP template Integrated Inventory Workbook." alt="Screenshot of the Integrated Inventory Workbook in the FedRAMP SSP template." >}}
 
 OSCAL makes two approaches available for depicting the system inventory:
 
@@ -89,11 +89,11 @@ OSCAL makes two approaches available for depicting the system inventory:
 
 FedRAMP prefers the component-based approach but accepts the flat-file approach to aid CSPs who are converting their existing MS-Excel based FedRAMP Integrated Inventory Workbook to OSCAL. **FedRAMP SSP tools must support both approaches.**
 
-![Flat-File Inventory Approach](/img/ssp-figure-25.png)
+{{< figure src="/img/ssp-figure-25.png" title="FedRAMP OSCAL flat-file inventory approach." alt="Figure illustrating the 'flat-file' inventory approach where each inventory spreadsheet row is represented as a single OSCAL inventory-item." >}}
 
 With the **flat-file approach**, all content on a spreadsheet row appears in a single OSCAL inventory-item assembly. This results in a great deal of redundant information but is a simple transition from the current spreadsheet approach.
 
-![Flat-File Inventory Approach](/img/ssp-figure-26.png)
+{{< figure src="/img/ssp-figure-26.png" title="FedRAMP OSCAL component-based inventory approach." alt="Figure illustrating the 'component-based' inventory approach where common information is captured once in a component, and each instance of that component has its own inventory-item." >}}
 
 With the **component-based approach**, common information is captured once in a component assembly. Each instance of that component has its own inventory-item assembly, which cites the relevant component and only includes information unique to that instance.
 
@@ -221,17 +221,13 @@ asset-administrator is managing a system or an application. Currently, any FedRA
 
 The following queries are intended to show where to find each piece of information within the system inventory template.
 
-![All Inventory](/img/ssp-figure-26.1.png)
-*All Inventory*
+{{< figure src="/img/ssp-figure-26.1.png" title="All Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to all inventory items." >}}
 
-![OS Infrastructure Inventory](/img/ssp-figure-26.2.png)
-*OS Infrastructure Inventory*
+{{< figure src="/img/ssp-figure-26.2.png" title="OS Infrastructure Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to OS infrastructure inventory items." >}}
 
-![Software and Database Inventory](/img/ssp-figure-26.3.png)
-*Software and Database Inventory*
+{{< figure src="/img/ssp-figure-26.3.png" title="Software and Database Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to software and database inventory items." >}}
 
-![Any Inventory](/img/ssp-figure-26.4.png)
-*Any Inventory*
+{{< figure src="/img/ssp-figure-26.4.png" title="Any Inventory." alt="Figure describing guidance, valid values, requirements, cardinality, data location and other notes on fields that apply to any inventory item." >}}
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}

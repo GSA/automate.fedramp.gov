@@ -1,6 +1,6 @@
 ---
 title: Expressing FedRAMP Template Metadata
-weight: 40
+weight: 124
 ---
 # Expressing FedRAMP Template Metadata in OSCAL
 
@@ -48,12 +48,9 @@ elements, including:
 
     -   FedRAMP Citations (Laws, Regulations, Standards, and Guidance)
 
-**The following pages are formatted for tabloid (11\" x 17\") paper in
-landscape orientation.**
-
 ### Title Page
 
-![Title Page](/img/content-figure-5.png)
+{{< figure src="/img/content-figure-5.png" title="FedRAMP document template title page." alt="Screenshot of a FedRAMP document template cover page." >}}
 
 {{<callout>}}
 The **FedRAMP Logo** is a resource in the back-matter section of the OSCAL-based FedRAMP Templates, and can be referenced with the following XPath:
@@ -143,7 +140,7 @@ Document Sensitivity Label (If more than one, tools should present all):
 
 ### Prepared By (Third Party)
 
-![Prepared By](/img/content-figure-6.png)
+{{< figure src="/img/content-figure-6.png" title="FedRAMP template \"Prepared By\"." alt="Screenshot of third party \"prepared by\" information in the FedRAMP template." >}}
 
 The FedRAMP SAP and SAR must always indicate the assessing organization
 using this Prepared By syntax.
@@ -208,7 +205,7 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 
 ### Prepared By (CSP Self-Prepared)
 
-![Prepared By](/img/content-figure-6.png)
+{{< figure src="/img/content-figure-6.png" title="FedRAMP template \"Prepared By\"." alt="Screenshot of CSP self \"prepared by\" information in the FedRAMP template." >}}
 
 This is applicable where the CSP creates or updates its own SSP or POA&M
 content. The FedRAMP SAP and SAR must never be CSP self-prepared.
@@ -266,7 +263,7 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 
 ### Prepared For (CSP)
 
-![Prepared For](/img/content-figure-7.png)
+{{< figure src="/img/content-figure-7.png" title="FedRAMP template \"Prepared For\"." alt="Screenshot of \"prepared for\" information in the FedRAMP template." >}}
 
 For FedRAMP SSP, SAP, SAR, and POA&M, the \"Prepared For\" is typically
 the CSP; however, it may be different if an unforeseen circumstance
@@ -319,10 +316,10 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 
 ### Document Revision History
 
-![Document Revision History](/img/content-figure-8.png)
+{{< figure src="/img/content-figure-8.png" title="FedRAMP template document revision history." alt="Screenshot of document revision history information in the FedRAMP template." >}}
 
 {{<callout>}}
-The `remarks` field is Markup multiline, which enables the text to be formatted. This requires special handling. See Section 2.5.3 Markup-line and Markup-multiline Fields in OSCAL, or visit: https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline <br/>
+The `remarks` field is Markup multiline, which enables the text to be formatted. This requires special handling. See the section on [Markup-line and Markup-multiline Fields in OSCAL](/documentation/general-concepts/oscal-data-types/#markup-line-and-markup-multiline-fields-in-oscal), or visit: https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline <br/>
 
 NOTE: At time of publication, NIST is evaluating the possibility of including party-uuid or similar in the `revision` assembly. This section will be updated if that decision is made.
 
@@ -392,7 +389,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
     extension, which points to a metadata `party`.
 
 -   The published field requires the OSCAL data type,
-    [dateTime-with-timezone](https://pages.nist.gov/OSCAL/reference/datatypes/#datetime-with-timezone).
+    [date-time-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone).
 
 -   FedRAMP only requires the publication date, not the time.
 
@@ -403,7 +400,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 ### How to Contact Us
 
-![Contact Us](/img/content-figure-9.png)
+{{< figure src="/img/content-figure-9.png" title="FedRAMP template contact us." alt="Screenshot of \"contact us\" information in the FedRAMP template." >}}
 
 The FedRAMP email and web site addresses are part of the organizational
 content for the FedRAMP PMO party. This information already exists in
@@ -463,7 +460,7 @@ FedRAMP Web Site Address:
 
 ### Document Approvals
 
-![Document Approvals](/img/content-figure-10.png)
+{{< figure src="/img/content-figure-10.png" title="FedRAMP template document approvals." alt="Screenshot of document approvals information in the FedRAMP template." >}}
 
 The OSCAL syntax is the same for document approvers in the SSP, SAP, and
 SAR. For the SSP, approvers are typically executives within the CSP. For
@@ -590,7 +587,7 @@ Link to FedRAMP Acronyms and Glossary:
 
 ### Additional Laws, Regulations, Standards or Guidance
 
-![Laws and Regulations](/img/content-figure-11.png)
+{{< figure src="/img/content-figure-11.png" title="FedRAMP template laws and regulations." alt="Screenshot of laws, regulations, standards, and guidance information in the FedRAMP template." >}}
 
 Additional citations must be represented as
 additional `resource` assemblies. One `resource` assembly per citation. This
@@ -649,8 +646,6 @@ NOTE: For Standards and Guidance replace "law" with "standard" and "regulation" 
 
 ### Attachments and Embedded Content
 
-![Attachments](/img/content-figure-12.png)
-
 There are several attachments in a classic
 FedRAMP MS Word based SSP, SAP, SAR document or Deviation Request (DR)
 form. Some lend well to machine-readable format, while others do not.
@@ -661,10 +656,10 @@ treated as attachments in OSCAL as well.
 
 Further, any diagrams or images that normally appear in context, such as
 the authorization boundary diagram, are attached in the back-matter and
-referenced from the body of the OSCAL file, as described in Section 2.7
-[*Citations, Attachments, and Embedded Content in OSCAL
-Files*](#_Citations,_Attachments,_and). The following table represents
+referenced from the body of the OSCAL file, as described in [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/). The following table represents
 attachments and embedded content.
+
+{{< figure src="/img/content-figure-12.png" title="FedRAMP template attachments and embedded content." alt="Screenshot of attachments and embedded content information in the FedRAMP template." >}}
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}

@@ -1,6 +1,6 @@
 ---
 title: FedRAMP Extensions and Accepted Values
-weight: 30
+weight: 150
 ---
 # FedRAMP Extensions and Accepted Values
 
@@ -123,10 +123,10 @@ the OSCAL SSP, SAP, SAR, or POA&M.
 summarized in the FedRAMP OSCAL Registry.**
 
 {{<callout>}}
-_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats, with a human-readable HTML representation._
+_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats._
 - _[XML Version](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/resources/xml/FedRAMP_extensions.xml)_
 - _[JSON Version](https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/resources/json/FedRAMP_extensions.json)_
-- _[HTML Version](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/FedRAMP_extensions.html)_
+
 {{</callout>}}
 
 ### FedRAMP Conformity Tagging
@@ -175,8 +175,9 @@ be provided using one of the specified choices.
 guidebook and summarized in the FedRAMP OSCAL Registry.**
 
 {{<callout>}}
-_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats, with a human-readable HTML representation. This enables tools to be extension-aware._
+_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats. This enables tools to be extension-aware._
+
 - _[XML Version](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/resources/xml/FedRAMP_extensions.xml)_
 - _[JSON Version](https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/resources/json/FedRAMP_extensions.json)_
-- _[HTML Version](https://github.com/GSA/fedramp-automation/raw/master/documents/rev5/FedRAMP_extensions.html)_
+
 {{</callout>}}

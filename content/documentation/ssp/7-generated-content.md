@@ -21,12 +21,7 @@ There are many ways a tool developer can generate the CIS. FedRAMP is developing
 
 ### Generating the Customer Responsibility Matrix (CRM)
 
-There are many ways a tool developer can generate the CRM. FedRAMP is
-developing\
-an XSLT file to generate the FedRAMP CRM. When ready, FedRAMP will make
-this freely available to the public here:
-
-[https://github.com/GSA/fedramp-automation/tree/master/dist/content/resources](https://github.com/GSA/fedramp-automation/tree/master/dist/content/resources)
+There are many ways a tool developer can generate the CRM. FedRAMP plans to develop open-source tooling to generate the FedRAMP CRM. When ready, FedRAMP will make this freely available to the public on the [FedRAMP Automation GitHub repository](https://github.com/GSA/fedramp-automation).
 
 ##### Useful CRM XPath Queries 
 {{< highlight xml "linenos=table" >}}
@@ -123,8 +118,7 @@ This is a one-to-many relationship. One component to many inventory item instanc
 
 For example, if an open-source operating system (OS) is used in many places throughout the system, it is defined once as a component. All information about the product, vendor, and support are modeled within the component detail. If the OS is used four times within the system, each use is an inventory item, with details about that specific information, such as IP address.
 
-![Components and Inventory](/img/ssp-figure-42.png)\
-*Relationship of Components and Inventory*
+{{< figure src="/img/ssp-figure-42.png" title="Relationship of Components and Inventory." alt="Figure showing the relationship between components and inventory." >}}
 
 FedRAMP requires a component assembly for each model of infrastructure device used, and each version of software and database used within the system. FedRAMP is not asking for more detail than provided in the legacy inventory workbook. Only that the information is organized differently.
 
