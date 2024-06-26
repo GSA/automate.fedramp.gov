@@ -37,11 +37,11 @@ params:
     project_name: "Automation"
   page_repo_path: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
   contentRepoPath: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
-  # searchAffiliate: fedramp
   usabanner: true
   sidenav:
   custom_css:
   - /css/site.css
+  searchAffiliate: fedramp-automation
 #    debug: true
 markup:
   goldmark: # Markdown Rendering
