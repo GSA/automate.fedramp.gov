@@ -16,11 +16,11 @@ You may submit your SSP to FedRAMP using either format. If necessary, FedRAMP to
 
 ### SSP File Concepts
 
-Unlike the traditional MS Word-based SSP, SAP, and Security Assessment Report (SAR), the OSCAL-based versions of these files are designed to make information available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
+Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based versions of these files are designed to make information available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
 
 {{< figure src="/img/ssp-figure-1.png" title="OSCAL import linkage hierarchy." alt="Figure illustrating how the OSCAL catalog, profile, SSP, SAP, and SAR have linkages to the preceding OSCAL model. The POA&M model is omitted for simplicity." >}}
 
-For example, the NIST control definitions and FedRAMP baseline content that normally appears in the SSP are defined in the FedRAMP profile and simply referenced by the SSP.
+For example, the NIST control definitions and FedRAMP baseline content that normally appear in the SSP are defined in the FedRAMP profile and simply referenced by the SSP.
 
 {{< figure src="/img/ssp-figure-2.png" title="Detailed overview of OSCAL models." alt="Figure showing the main contents of the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
@@ -33,7 +33,7 @@ The resolved profile catalog for each FedRAMP baseline is a pre-processing of th
 
 Where available, tool developers have the option of following the links from the profile to the catalog as described above or using the resolved profile catalog.
 
-Developers should be aware that at this time, catalogs and profiles remain relatively static. As OSCAL gains wider adoption, there is a risk that profiles and catalogs will become more dynamic, and a resolved profile catalog becomes more likely to be out of date. Early adopters may wish to start with the resolved profile catalog now, and plan to add functionality later for the separate profile and catalog handling later in their product roadmap.
+Developers should be aware that at this time, catalogs and profiles remain relatively static. As OSCAL gains wider adoption, there is a risk that profiles and catalogs will become more dynamic, and a resolved profile catalog becomes more likely to be out of date. Early adopters may wish to start with the resolved profile catalog now, and plan to add functionality for the separate profile and catalog handling later in their product roadmap.
 
 {{< figure src="/img/ssp-figure-3.png" title="FedRAMP SSP imports FedRAMP resolved profile catalog." alt="Figure showing that SSP reduces tool processing by importing the  resolved profile catalog for each FedRAMP baseline." >}}
 
@@ -133,7 +133,7 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
     </metadata>
     <!-- cut -->
     <back-matter>
-  <resource uuid="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41">
+        <resource uuid="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41">
           <title>Resolution Resource</title>
           <prop name="dataset" class="collection" value="Special Publication"/>
           <prop name="dataset" class="name" value="800-53"/>
@@ -143,7 +143,6 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
               <p>This "resolution resource" is used by FedRAMP as a local, authoritative indicator of what version SSP (rev 4 or rev 5) this OSCAL document is for.</p>
           </remarks>
         </resource>
-
     </back-matter>
   </system-security-plan>
 {{</ highlight >}}
