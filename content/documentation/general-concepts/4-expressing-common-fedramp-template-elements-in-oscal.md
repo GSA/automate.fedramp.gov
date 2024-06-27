@@ -63,7 +63,7 @@ If the above returns an href value beginning with a hashtag (#), the rest of the
 
 `   /*/back-matter/resource[@uuid='[UUID-value-returned-above]']/rlink/@href`
 
-OR\
+OR
 
 `   /*/back-matter/resource[@uuid='[UUID-value-returned-above]']/base64`
 {{</callout>}}
@@ -171,7 +171,7 @@ using this Prepared By syntax.
 
 <back-matter>
     <resource id="1507f5e0-635c-4e23-a5f3-93f368f8e022">
-        <description><p>Peparer Logo</p></description>
+        <description><p>Preparer Logo</p></description>
         <prop name="type" value="logo" />
         <!-- Use rlink and/or base64 -->
         <rlink href="./party-1-logo.png" media-type="image/png" />
@@ -319,7 +319,7 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 {{< figure src="/img/content-figure-8.png" title="FedRAMP template document revision history." alt="Screenshot of document revision history information in the FedRAMP template." >}}
 
 {{<callout>}}
-The `remarks` field is Markup multiline, which enables the text to be formatted. This requires special handling. See the section on [Markup-line and Markup-multiline Fields in OSCAL](/documentation/general-concepts/oscal-data-types/#markup-line-and-markup-multiline-fields-in-oscal), or visit: https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline <br/>
+The `remarks` field is Markup-multiline, which enables the text to be formatted. This requires special handling. See the section on [Markup-line and Markup-multiline Fields in OSCAL](/documentation/general-concepts/oscal-data-types/#markup-line-and-markup-multiline-fields-in-oscal), or visit: https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline <br/>
 
 NOTE: At time of publication, NIST is evaluating the possibility of including party-uuid or similar in the `revision` assembly. This section will be updated if that decision is made.
 
@@ -474,7 +474,7 @@ assessor\'s organization.
     <!-- title, published ... prop, link -->
     <role id="content-approver">
         <title>[SSP, SAP, or SAR] Approval</title>
-        <desc>The executive(s)accountable for the accuracy of this content.</desc>
+        <desc>The executive(s) accountable for the accuracy of this content.</desc>
     </role>
     <role id="cloud-service-provider">
         <title>Cloud Service Provider</title>
@@ -532,7 +532,7 @@ CSP Name:
 
 **NOTES:**
 
-The code above is an SSP example For SAP and SAR, a similar approach is
+The code above is an SSP example. For SAP and SAR, a similar approach is
 used for the assessor, using the `"assessor"` role ID instead of the
 `"cloud-service-provider"` role ID.
 
@@ -545,7 +545,7 @@ file posted on <https://fedramp.gov>.
 These are already included in the OSCAL-based FedRAMP templates as
 resources. The `resource` linking to the FedRAMP citations file is
 identified with links from the property type, `"fedramp-citations"`. The
-resource linking to the FedRAMP acronyms file is identified with the
+`resource` linking to the FedRAMP acronyms file is identified with the
 property type, `"fedramp-acronyms"`.
 
 ##### Representation
@@ -590,7 +590,7 @@ Link to FedRAMP Acronyms and Glossary:
 {{< figure src="/img/content-figure-11.png" title="FedRAMP template laws and regulations." alt="Screenshot of laws, regulations, standards, and guidance information in the FedRAMP template." >}}
 
 Additional citations must be represented as
-additional `resource` assemblies. One `resource` assembly per citation. This
+additional `resource` assemblies with one `resource` assembly per citation. This
 applies to applicable laws, regulations, standards, or guidance beyond
 FedRAMP\'s predefined set.
 
