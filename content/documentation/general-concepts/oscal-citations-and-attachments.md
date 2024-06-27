@@ -42,7 +42,7 @@ Citations use an `rlink` field with an *absolute path* to content that is
 accessible by FedRAMP and Agency reviewers from government systems.
 
 Examples include links to publicly available laws such as FISMA, and
-applicable standards, such NIST SP 800 series documents.
+applicable standards such as NIST SP 800 series documents.
 
 ## Attachments
 
@@ -71,7 +71,7 @@ Working With href Flags*.
 For example, a policy document that satisfies several control families
 is attached as a `resource` in the `back-matter`, with a UUID of
 `"3df7eeea-421b-459d-98cf-3d972bec610a"`. Each control satisfied by that
-policy, links to the policy using a URI fragment as follows:
+policy links to the policy using a URI fragment as follows:
 {{< highlight xml "linenos=table" >}}
 <link href="#3df7eeea-421b-459d-98cf-3d972bec610a" rel="policy" />
 {{< /highlight >}}
@@ -84,7 +84,7 @@ itself, or within other OSCAL documents linked via the `import` field.
 
 The policy's title, version, publication date and other details are
 defined once in the resource and are displayed anyplace the policy is
-referenced. If a newer policy is published, only the one resource in
+referenced. If a newer policy is published, only the one resource
 needs to be updated.
 
 If the policy's location is identified as `="./policies/doc.pdf"`, the
@@ -116,7 +116,7 @@ multiple `rlink` and/or `base64` fields within the same resource include:
     location of a policy document within the CSP's intranet. The same
     `resource` could have a second `rlink` field with a *relative* path to
     the same policy document. Having both allows the CSP to maintain the
-    link to authoritative location of the policy when working with the
+    link to the authoritative location of the policy when working with the
     OSCAL file internally, while allowing a cached, local copy to travel
     with the OSCAL file when delivered to FedRAMP for review.
 
@@ -126,7 +126,7 @@ multiple `rlink` and/or `base64` fields within the same resource include:
     applications.
 
 -   **Multiple Formats**: Multiple `rlink` or `base64` fields allow a
-    portable network graphic (PNG) version of an image may be provided
+    portable network graphic (PNG) version of an image to be provided
     for presentation by a web application, and a more detailed portable
     document format (PDF) version of the same image for download by
     users.
@@ -142,7 +142,7 @@ This section describes FedRAMP's processing of multiple `rlink` and
 circumstance requires otherwise.
 
 FedRAMP accepts both `base64` and `rlink` option content for diagrams and
-graphics. FedRAMP prefers documents, such as policies and plans, are
+graphics. FedRAMP prefers that documents, such as policies and plans, are
 attached using `rlink` fields and relative paths.
 
 If the tool is designed to work interactively with a user, the tool
@@ -155,7 +155,7 @@ When more than one `rlink` and/or `base64` field is present in a resource,
 FedRAMP's automated processing tools will attempt to find valid content
 using the following priority, unless specified otherwise:
 
-1.  FedRAMP tools will look first in `base64` fields
+1.  FedRAMP tools will look first in `base64` fields.
 
     a.  Start with the first `base64` field in the resource.
 
@@ -210,7 +210,7 @@ a resource.
 
 IMPORTANT: As of 1.0.0, NIST includes many aspects of OSCAL previously
 only possible with conformity tags. For citations and attachments,
-FedRAMP now uses a combination of the resource "type" property, and
+FedRAMP now uses a combination of the resource "type" property and
 link statements from relevant portions of the OSCAL content.
 
 The following represents an example linking a policy directly to the
