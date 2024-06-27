@@ -88,7 +88,7 @@ SSP, SAP, and SAR syntax, used the same way as they are explained for
 FedRAMP Low, Moderate, and High baselines.
 
 For your convenience, FedRAMP has made the FedRAMP Tailored for LI-SaaS
-baseline available now in both XML and JSON formats as follows:
+baseline available in both XML and JSON formats as follows:
 
 |**Low-Impact SaaS (Tailored)**|
 | :-- |
@@ -132,7 +132,7 @@ Create a new profile, importing to the appropriate FedRAMP profile, then use pro
 {{</ callout >}}
 
 
-The next page contains an example profile, which accomplishes the
+Below is an example profile, which accomplishes the
 following actions:
 
 -   Imports the FedRAMP Moderate baseline
@@ -146,11 +146,11 @@ following actions:
     of this appendix for more information.
 
 -   Adds a constraint to the third parameter of AC-1 (ac-1_prm_3), which
-    is more restrictive than the FedRAMP constraint, but changing it
+    is more restrictive than the FedRAMP constraint, by changing it
     from \"at least annually\" to \"at least every six months.\"
 
 -   Removes the additional FedRAMP requirement statement in AU-11 and
-    replaces it with a more restrictive statement, which now requires
+    replaces it with a more restrictive statement, which requires
     online retention of audit records for at least 180 days instead of
     90 days.
 
@@ -196,7 +196,7 @@ A complete OSCAL profile syntax reference is available here:\
                     <title>[XYZ Org]Modified Requirement</title>
                     <part id="au-11_fr_smt.1" name="item">
                         <prop name="label">Requirement:</prop>
-                        <p>The service provider retains audit records on-line for at 180 days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
+                        <p>The service provider retains audit records on-line for at least 180 days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
                     </part>
                 </part>
             </add>
