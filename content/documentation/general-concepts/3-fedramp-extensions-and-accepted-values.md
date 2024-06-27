@@ -4,7 +4,7 @@ weight: 150
 ---
 # FedRAMP Extensions and Accepted Values
 
-NIST designed the core OSCAL syntax to meet model cybersecurity
+NIST designed the core OSCAL syntax to model cybersecurity
 information that is common to any organization and compliance framework.
 They recognized that each framework and organization may have unique
 needs. Instead of trying to provide a language that meets each of those
@@ -48,12 +48,12 @@ fundamental requirements for extending OSCAL:
 
 -   The organization is responsible for defining, managing, and
     communicating all names (`name="scan-type"`) defined and tagged with
-    the above name space identifier.
+    the above namespace identifier.
 
 NIST\'s core OSCAL `prop` assemblies have no `ns` flag. If an `ns` flag is
 present, it is an organization-defined extension. This allows each
 industry standards body or organization to create their own extensions
-in their own name space without concern for overlapping names.
+in their own namespace without concern for overlapping names.
 
 The above approach ensures two different organizations can create their
 own extensions without concern for reusing the same name values. At some
@@ -80,7 +80,7 @@ possible status fields as follows:
   //prop[@name="user"][not(@ns)]
 {{< /highlight >}}
 
-**When searching an OSCAL file for a prop or prop extensions that is
+**When searching an OSCAL file for a prop or prop extension that is
 part of the core OSCAL syntax, developers must filter out any with an ns
 flag using the syntax above.**
 
@@ -132,7 +132,7 @@ _***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was orig
 ### FedRAMP Conformity Tagging
 
 FedRAMP collaborated with NIST to address the ambiguities in OSCAL
-syntax necessitating conformity tags necessary.
+syntax necessitating conformity tags.
 
 ### OSCAL and FedRAMP-Defined Identifiers
 
