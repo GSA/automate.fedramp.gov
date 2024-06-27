@@ -4,11 +4,11 @@ weight: 125
 ---
 # Working with Roles, Locations, People, and Organizations
 
-An OSCAL file defines roles, people, and organizations within the
-metadata as part of three separate assemblies:
+An OSCAL file defines roles, locations, people, and organizations within the
+metadata as part of four separate assemblies:
 
 -   **role**: A role ID and role `title` are required. Other content, such
-    as a `short-name`, `description`, or `remarks` are optional.
+    as a `short-name`, `description`, or `remarks` is optional.
 
 -   **location**: Locations, such as corporate offices and data center
     addresses, are defined as `location` assemblies
@@ -111,7 +111,7 @@ Party assemblies may be used to represent individuals, teams, or an
 entire company/agency. When representing an individual, the `type` flag
 must have a value of `"person"`. When representing a team, company or
 agency, the `type` flag must have a value of `"organization"`. FedRAMP
-artifacts typically require an individual\'s title to be identified, the
+artifacts typically require an individual\'s title to be identified; the
 `prop` `"job-title"` is designated for this purpose.
 
 Contact details, such as an individual\'s email address and phone
