@@ -22,11 +22,11 @@ It is not necessary to represent the following sections of the SSP template in O
 
 -   Any blue-text instructions found in the SSP template where the instructions are related to the content itself
 
--   Table of Contents
+-   Table of contents
 
--   Introductory and instructive content in section 1, such as references to the NIST SP 800-60 Guide to Mapping Types and the definitions from FIPS Pub 199.
+-   Introductory and instructive content in section 1, such as references to NIST SP 800-60, Guide to Mapping Types and the definitions from FIPS Pub 199
 
--   The control origination definitions are in appendix A of the SSP template; however, please note hybrid and shared are represented in OSCAL by specifying more than one control origination.
+-   The control origination definitions are in appendix A of the SSP template; however, please note that hybrid and shared are represented in OSCAL by specifying more than one control origination.
 
 The OSCAL syntax in this guide may be used to represent the High, Moderate, and Low FedRAMP SSP Templates. Simply ensure the correct FedRAMP baseline is referenced using the import-profile statement.
 
@@ -278,7 +278,7 @@ the following core OSCAL properties.
 
 **NIST Allowed Values**
 
-Valid IAL, AAL, and FAL values (as defined by NIST 800-63):
+Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 - 1
 - 2
 - 3
@@ -417,7 +417,7 @@ FedRAMP only accepts those in bold:
 
 -   If the status is "other", the remarks field is required. Otherwise, it is optional.
 
--   While under-development, and disposition are valid OSCAL values, systems with either of these operational status values are not eligible for a FedRAMP Authorization.
+-   While under-development and disposition are valid OSCAL values, systems with either of these operational status values are not eligible for a FedRAMP Authorization.
 
 ---
 #### System Functionality
