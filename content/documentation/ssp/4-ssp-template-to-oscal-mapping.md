@@ -632,6 +632,7 @@ prop (ns="https://fedramp.gov/ns/oscal")
 - fedramp-li-saas
 
 **NIST Allowed Value**
+
 Required Role ID:
 - authorizing-official
 
@@ -641,7 +642,7 @@ Required Role ID:
 ---
 ### Assignment of Security Responsibilities
 
-A role with an ID value of information-system-security-officer" is
+A role with an ID value of "information-system-security-officer" is
 required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
 System Security Officer\'s information.
 
@@ -666,7 +667,7 @@ A tool developer may elect to always create a location assembly, even when only 
 <metadata>
     <!-- cut -->
     <role id="information-system-security-officer"><!-- cut -->
-        <title>System Information System Security Officer (or Equivalent)</title>
+        <title>Information System Security Officer (or Equivalent)</title>
     </role>
     <location uuid="uuid-of-hq-location">
         <title>CSP HQ</title>
@@ -699,6 +700,7 @@ A tool developer may elect to always create a location assembly, even when only 
 {{<callout>}}
 
 **NIST Allowed Value**
+
 Required Role ID:
 - information-system-security-officer
 
@@ -1123,9 +1125,9 @@ Entries in the ports, protocols, and services table are represented as component
     <component uuid="uuid-of-service" type="service">
         <title>[SAMPLE]Service Name</title>
         <description><p>Describe the service</p></description>
-        <purpose>Describe the purpose the service is needed.</purpose>
+        <purpose>Describe the purpose for which the service is needed.</purpose>
         <link href="uuid-of-component-used-by" rel="used-by" />
-        <link href=" uuid-of-component-provided-by" rel="provided-by" />
+        <link href="uuid-of-component-provided-by" rel="provided-by" />
         <status state="operational" />
         <protocol name="http">
             <port-range start="80" end="80" transport="TCP"/>
@@ -1176,7 +1178,7 @@ The validation definition is a component definition that provides details about 
 Resource Center (CSRC) [Cryptographic Module Validation Program Database](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search).
 
 The product definition is a product with a cryptographic module. It must contain all of the typical component information suitable for reference by inventory-items and control statements. It must also include a link field with a rel value set to "validation" and an href value containing
-a URI fragment. The Fragment must start with a hashtag (#) and include the UUID value of the validation component. This links the two together.
+a URI fragment. The fragment must start with a hashtag (#) and include the UUID value of the validation component. This links the two together.
 
 {{< figure src="/img/ssp-figure-21.png" title="FedRAMP SSP template cryptographic modules table (data-in-transit)." alt="Screenshot of the cryptographic modules table (data-in-transit) in the FedRAMP SSP template." >}}
 
