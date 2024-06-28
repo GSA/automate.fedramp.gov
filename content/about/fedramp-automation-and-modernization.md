@@ -6,7 +6,7 @@ toc:
 ---
 # FedRAMP Automation and Modernization
 
-FedRAMP is committed to increasing program effectiveness through automation and technology-forward operation.  OSCAL provides a means for describing system context in richer, machine-readable form, which is a key enabler for significant improvements in assessment consistency, efficiency, and accuracy. Based on the previously described OSCAL capabilities, the following efforts will position FedRAMP to benefit greatly from OSCAL use.
+FedRAMP is committed to increasing program effectiveness through automation and technology-forward operation.  OSCAL provides a means for describing system context in richer, machine-readable form, which is a key enabler for significant improvements in assessment consistency, efficiency, and accuracy. The following efforts will position FedRAMP to benefit greatly from OSCAL use.
 
 1.  **Implement OSCAL-based data exchanges to improve the frequency and detail of data provided to FedRAMP and agencies, supporting initial and ongoing assessment use cases.** Adoption of OSCAL by FedRAMP stakeholders is critical to realizing the FedRAMP automation vision. OSCAL provides unique benefits to each stakeholder group. FedRAMP is positioned at the center of these stakeholders to provide incentives and the knowledge resources needed to further OSCAL adoption. Specific focus should be on GRC tool providers, which are crucial in providing the tools needed by other stakeholders to succeed in OSCAL adoption. FedRAMP investment in commodity OSCAL tooling to support OSCAL content validation and human documentation generation is critical in supporting the transition to OSCAL use.
 

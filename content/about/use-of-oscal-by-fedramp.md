@@ -4,7 +4,7 @@ weight: 22
 toc:
   enabled: true
 ---
-# Use of OSCAL by FedRAMP Stakeholders
+# Use of OSCAL by FedRAMP
 
 ## FedRAMP
 
