@@ -626,7 +626,7 @@ The type flag of the origin/actor field may be set to one of the following:
 
 {{</ highlight >}}
 
-The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
+The following assumes that the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 {{< highlight xml "linenos=table" >}}
 (SAR) Quantity of SSP implementation statement differential issues cited in current assessment (integer):
@@ -647,7 +647,7 @@ Within the cited risk assembly, the \"Identified Risk\" is described in the desc
 
 The Likelihood Level and Impact Level are each entered in a characterization/facet field. The FedRAMP Risk Exposure Level must be calculated by the SAR tool. If the \"state\" annotation is missing, it is assumed to be \"initial\".
 
-Initially, the status field should always be set to \"open\". If the risk is addressed by the CSP and verified by the assessor before assessment activities are complete, this may be set to \"closed\", and entry must be made in the risk-log.
+Initially, the status field should always be set to \"open\". If the risk is addressed by the CSP and verified by the assessor before assessment activities are complete, this may be set to \"closed\", and an entry must be made in the risk-log.
 
 {{< figure src="/img/sar-figure-14.png" title="Identified Risks" alt="Screenshot of the FedRAMP Historic Test Case Workbook showing the risk information." >}}
 
@@ -659,7 +659,7 @@ Initially, the status field should always be set to \"open\". If the risk is add
     - low
     - moderate
     - high
-- The risk exposure rating  is calculated, consistent with Annual SAR Table 3-6, Risk Exposure Rating
+- The risk exposure rating is calculated consistent with Annual SAR Table 3-6, Risk Exposure Rating:
 ![Risk Exposure Rating](/img/sar-figure-risk-exposure-rating.png)
 
 {{</callout>}}
@@ -708,7 +708,7 @@ Initially, the status field should always be set to \"open\". If the risk is add
 
 #### Test Case Workbook: Recommendation for Mitigation
 
-For the risk assembly, there must be a response assembly containing the assessors recommended mitigation. 
+For the risk assembly, there must be a response assembly containing the assessor's recommended mitigation. 
 The lifecycle flag must be set to \"recommendation\".
 
 There may be more than one response assembly. For example, a tool may provide a recommended remediation, and the assessor may want to add their own recommendation. This would result in two response assemblies.
@@ -889,7 +889,7 @@ There must be one risk assembly for each unique vulnerability. All devices ident
 
 The individual components and inventory-items on which the scans are performed should already be marked as to whether authenticated scanning is possible.
 
-All components and inventory-items found to have the vulnerability must be cited using their UUID in the subject field. One subject for each item.
+All components and inventory-items found to have the vulnerability must be cited using their UUID in the subject field, with one subject for each item.
 
 The uuid flag of the origin field must be set to the tool\'s UUID, and the type flag must be set to \"tool\".
 
@@ -910,7 +910,7 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
             <p>This is a statement about the identified risk.</p>
             <!-- <p>TCW: Risk Statement..</p> -->
             <p>Scans: N/A.</p>
-            <!-- <p>Pen Risk Statement.</p> -->
+            <!-- <p>Pen Test: Risk Statement.</p> -->
             <!-- <p>RET: Risk Statement.</p> -->
         </statement>
         <status>open</status>
@@ -947,7 +947,7 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
 
 The risk assembly uses facet fields to capture relevant tool output details. The facet field's system flag allows data from different tools and different security frameworks to co-exist in the same file.
 
-FedRAMP required risk-metric data, such as likelihood and impact are specified with facet fields with system flag value of \"https://fedramp.gov\". FedRAMP required risk metrics must also have the class flag set to either \"initial\" or \"residual\". There must
+FedRAMP-required risk-metric data, such as likelihood and impact, are specified with facet fields with a system flag value of \"https://fedramp.gov\". FedRAMP-required risk metrics must also have the class flag set to either \"initial\" or \"residual\". There must
 always be an initial risk metric. If adjusted, there may be a residual risk metric as well.
 
 The uuid flag of the origin field must be set to the tool\'s UUID, and the type flag must be set to \"tool\".
@@ -1008,7 +1008,7 @@ For information about the remediation assembly, see [*Test Case Workbook: Recomm
 ---
 ### Penetration Testing: Findings
 
-FedRAMP requires exactly one finding assembly for each risk identified through penetration testing. Required reporting, such as spear phishing tests, each must have their own finding assembly as well. Each finding has a related-observation referencing observation (where additional details are recorded) via the uuid flag. At the end of the finding assembly, the UUID for the penetration test lead or team member must be listed as the actor-uuid for the finding. Note that there may be more than one penetration test member listed.
+FedRAMP requires exactly one finding assembly for each risk identified through penetration testing. Required reporting, such as spear phishing tests, each must have its own finding assembly as well. Each finding has a related-observation referencing observation (where additional details are recorded) via the uuid flag. At the end of the finding assembly, the UUID for the penetration test lead or team member must be listed as the actor-uuid for the finding. Note that there may be more than one penetration test member listed.
 
 The observation assembly contains the method field which must be set to \"TEST\", and the type field which must be set to \"finding\". The observation assembly also contains the collected field which must be set to the automation tool\'s discovery timestamp, or the date and time observed. The assessors who gathered the evidence are identified at the bottom of the finding assembly using actor-uuid fields.
 
@@ -1039,7 +1039,7 @@ The href flag in the relevant-evidence field must contain a URI fragment that po
         <related-observation observation-uuid="a38f3bba-5b71-400d-b8f2-d808e1d4627f"/>
         <associated-risk risk-uuid="e552fb72-d662-4c01-b2d7-4dcb2086bb07"/>
         <remarks>
-            <p>If a penetration test result is favorable, such as to say the SOC detected the activities appropriately, no risk is required.</p>
+            <p>If a penetration test result is favorable, such as to say the SOC detected the activities appropriately, no risk assembly is required.</p>
             <p>If a penetration test result identifies a vulnerability or deficiency, the risk assembly is required.</p>
         </remarks>
     </finding>
@@ -1109,7 +1109,7 @@ The risk assembly is populated as described in previous sections.
 ### Deviations
 
 After risks are identified during an assessment, their status may change. Some are identified as false positive 
-(FP), operationally required (OR), or risk adjusted (RA). As deviations arise, the initial risk information is [not]{.underline} modified. Additional content is added to identify these changes. In each case, an additional observation is added to the finding assembly, and additional facet fields are added to the risk assembly. There may be both OR and an RA information in the same finding assembly.
+(FP), operationally required (OR), or risk adjusted (RA). As deviations arise, the initial risk information is **not** modified. Additional content is added to identify these changes. In each case, an additional observation is added to the finding assembly, and additional facet fields are added to the risk assembly. There may be both OR and RA information in the same finding assembly.
 
 #### False Positive (FP)
 
@@ -1166,7 +1166,7 @@ FedRAMP allowed values for false-positive prop:
 
 #### Operationally Required (OR)
 
-To document an operationally required risk, add a prop to the risk assembly, and keep the risk status as \"open\". Set the prop name to \" operational-requirement \", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
+To document an operationally required risk, add a prop to the risk assembly, and keep the risk status as \"open\". Set the prop name to \"operational-requirement\", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
 
 Within the observation assembly, provide a justification for the operational requirement. This must have a conformity tag with a value of \"operational-requirement\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more appropriate. 
 
@@ -1226,9 +1226,9 @@ To document an operationally required risk, add a prop to the risk assembly and 
 Within the observation assembly, provide a justification for the risk adjustment. This must have a conformity tag with a value of
 \"risk-adjustment\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more appropriate.
 
-Use facet fields to adjust risk by lowering either likelihood, impact, or both. Within the facet fields, set a prop with the name "state" to indicate whether this is an "initial" or "adjusted" risk metric.
+Use facet fields to adjust risk by lowering likelihood, impact, or both. Within the facet fields, set a prop with the name "state" to indicate whether this is an "initial" or "adjusted" risk metric.
 
-Finally, mitigating-factor assemblies. One describing each mitigating factor. If an SSP implementation statement describes the mitigating factor, link to it using the implementation-uuid flag.
+Finally, add mitigating-factor assemblies, one describing each mitigating factor. If an SSP implementation statement describes the mitigating factor, link to it using the implementation-uuid flag.
 
 {{<callout>}}
 **Using the Common Vulnerability Scoring System (CVSS)**
@@ -1261,19 +1261,18 @@ See Appendix A, CVSS Scoring for more information.
                 <actor type="tool" actor-uuid="040937c3-2e0e-407a-bb3c-d4e61ac1c460" />
             </origin>
             
-            <facet name="likelihood"       system="https://fedramp.gov" value="high">
+            <facet name="likelihood" system="https://fedramp.gov" value="high">
                 <prop name="state" value="initial"/>
             </facet>
-            <facet name="impact"           system="https://fedramp.gov" value="high">
+            <facet name="impact" system="https://fedramp.gov" value="high">
                 <prop name="state" value="initial"/>
             </facet>
             
-            <facet name="likelihood"       system="https://fedramp.gov" value="moderate">
+            <facet name="likelihood" system="https://fedramp.gov" value="moderate">
                 <prop name="state" value="adjusted"/>
             </facet>
-            <facet name="impact"           system="https://fedramp.gov" value="moderate">
+            <facet name="impact" system="https://fedramp.gov" value="moderate">
                 <prop name="state" value="adjusted"/>
-                
             </facet>
         </characterization>
         <mitigating-factor uuid="fd061039-e9b0-4b4c-a78b-ca024d411174"
@@ -1302,7 +1301,7 @@ FedRAMP allowed values for risk-adjustment prop:
 
 Once identified, risks must remain in the SAR; however, if the CSP closes the risk before testing is complete, it may be marked as closed in the SAR. To represent a risk closure, change the risk status to \"closed\", then add an entry field and risk-log assembly, with a status-change value of \"closed \".
 
-In the risk-log , describe the action(s) taken by the CSP to close the risk.
+In the risk-log, describe the action(s) taken by the CSP to close the risk.
 
 
 ##### Representation
@@ -1357,7 +1356,7 @@ In the risk-log , describe the action(s) taken by the CSP to close the risk.
 There must be a prop field with a value indicating whether the assessor recommends the system for authorization or reauthorization. This must be a FedRAMP extension with the name \"recommend-authorization\". If the recommendation is \"no\" or \"provisionally\", the first paragraph of the Continued Authorization Recommendation should be generated by a SAR tool, as follows:
 
 {{<callout>}}
-*A total of \[# of risks\] system risks were identified for \[system > name\], including \[#high\] High risks, \[#moderate\] Moderate risks, \[#low\] Low risks, and \[#operationally-required\] of operationally required risks.*
+*A total of \[# of risks\] system risks were identified for \[system > name\], including \[#high\] High risks, \[#moderate\] Moderate risks, \[#low\] Low risks, and \[#operationally-required\] operationally required risks.*
 {{</callout>}}
 
 The \"other information as may be required\" may be added as a part assembly in the assets section.
@@ -1388,8 +1387,8 @@ priority value of \"1\" represents the most important risk. \"2\" represents the
             </part>
             <part name="authorization-statement">
                 <prop name="sort-id" value="999"/>
-                <p>Based on the remaining risk noted in the [Information System Abbreviation] Risk Exposure Table,  and the continuous improvement 
-                       of security related processes and controls, [3PAO Name] [recommends |does not recommend | provisionally recommends]
+                <p>Based on the remaining risk noted in the [Information System Abbreviation] Risk Exposure Table, and the continuous improvement 
+                       of security related processes and controls, [3PAO Name] [recommends | does not recommend | provisionally recommends]
                        continued authorization be granted for [Information System Name].</p>
             </part>
         </part>
