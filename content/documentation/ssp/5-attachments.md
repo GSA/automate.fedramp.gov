@@ -11,7 +11,7 @@ policies, procedures, plans, guidance, and the rules of behavior
 documents are all treated as classic attachments, as described in the
 *Citations, Attachments, and Embedded Content in OSCAL Files* Section.
 The resource's title and description must be used to provide a
-human-readable indicator of what attachment is being referenced,
+human-readable indicator of what attachment is being referenced;
 however, OSCAL extensions must also be provided when applicable for
 machine readability. The following table describes how each attachment
 is handled:
