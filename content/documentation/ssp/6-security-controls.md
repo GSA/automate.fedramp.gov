@@ -15,8 +15,7 @@ follows:
 
 -   **Control Definitions**
 
--   **Responsible Roles Responsible Roles** and Parameter
-    Assignments
+-   **Responsible Roles and Parameter Assignments**
 
 -   **Implementation Status**
 
@@ -234,7 +233,7 @@ justification must be provided in the remarks field.
 The FedRAMP implementation-status property at the control's
 implemented-requirement level is a summary of all statement and/or
 component level core OSCAL implementation-status designations. It must
-be set to the appropriately based on the least value of child statement
+be set appropriately based on the least value of child statement
 or component level implementation-status designations. When a statement
 and/or component level implementation-status designation is not
 specified, the FedRAMP implementation-status value is assumed.
@@ -245,10 +244,10 @@ implementation-status locally.
 
 FedRAMP accepts only one of five values for control-origination:
 sp-corporate, sp-system, customer-configured, customer-provided, and
-inherited. Hybrid choices are now expressed by identifying more than one
+inherited. Hybrid choices are expressed by identifying more than one
 control-origination, each in a separate prop field.\
 For controls with a control-id ending in \"-1\", FedRAMP only accepts
-sp-corporate, and sp-system.
+sp-corporate and sp-system.
 
 **If the control origination is inherited,** there must also be a
 FedRAMP extension (prop name=\"leveraged-authorization-uuid\"
@@ -308,7 +307,7 @@ Within the OSCAL-based FedRAMP baselines, control statements and control
 objectives are tagged with a response-point FedRAMP Extension. Every
 control statement designated as a response-point in the baseline must
 have a statement with the control\'s implemented-requirement assembly.
-Please note control objective response points are used for the SAP and
+Please note that control objective response points are used for the SAP and
 SAR.
 
 When using a **FedRAMP Resolved Profile Catalog**, the following query
@@ -424,7 +423,7 @@ into its individual components and responded to separately.
         - Describes what is inherited from the underlying Infrastructure as a Service (IaaS) provider to satisfy *part b*.
 
 
-**The following pages provide examples.**
+**The following are examples.**
 
 ---
 #### Response: Example
@@ -465,12 +464,12 @@ more by-component assemblies. Each by-component assembly references a component 
             
             <by-component uuid="uuid-value" component-uuid="uuid-of-software-component">
                 <description>
-                    <p>Describe how is the software component satisfying the control.</p>
+                    <p>Describe how the software component is satisfying the control.</p>
                 </description>
             </by-component>
             <by-component uuid="uuid-value" component-uuid="uuid-of-process-component">
                 <description>
-                    <p>Describe how is the process satisfies the control.</p>
+                    <p>Describe how the process satisfies the control.</p>
                 </description>
             </by-component>
             <!-- repeat by-component assembly for each component related to part a. -->
@@ -494,7 +493,7 @@ more by-component assemblies. Each by-component assembly references a component 
 
 There must always be a **"This System"** component in the SSP. This is used in several ways:
 
--   **Holistic Overview**: If the SSP author wishes to provide a more
+-   **Holistic Overview**: The SSP author may wish to provide a more
     holistic overview of how several components work together, even if
     details are provided individually in other by-component assemblies.
 
@@ -504,7 +503,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
 
 -   **Legacy SSP Conversion**: When converting a legacy SSP to OSCAL,
     the legacy control response statements may initially be associated
-    with the **"This System"** component until the SSP author is able\
+    with the **"This System"** component until the SSP author is able
     to provide responses for individual components.
 
 {{< figure src="/img/ssp-figure-38.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response is broad and should apply to the 'this-system' component in OSCAL." >}}
@@ -788,4 +787,4 @@ description.
 -   Replace "ac-2" with target control-id.
 -   Replace "ac-2_smt.a" with target control statement-id.
 -   Replace "\[1\]" with "\[2\]", "\[3\]", etc. as needed to reference
-    is by-component statement.
+    by-component statement.
