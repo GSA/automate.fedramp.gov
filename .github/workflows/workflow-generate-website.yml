@@ -1,0 +1,122 @@
+name: Generate Website
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "release/*"
+      - "feature/*"
+  workflow_dispatch:
+    inputs:
+      linkcheck_fail_on_error:
+        description: 'a boolean flag that determines if bad links found by the link checker fail fast and stop a complete build'
+        required: false
+        default: true
+        type: boolean
+      linkcheck_create_issue:
+        description: 'create new GitHub issue if broken links found'
+        required: false
+        default: false
+        type: boolean
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  INPUT_FAIL_ON_ERROR: ${{ github.event.inputs.linkcheck_fail_on_error || 'true' }}
+  INPUT_ISSUE_ON_ERROR: ${{ github.event.inputs.linkcheck_create_issue || 'false' }}
+jobs:
+  build-and-push-website:
+    name: Build and Push Website
+    runs-on: ubuntu-20.04
+    env:
+      BUILD_PATH: ./build
+    permissions:
+      contents: write
+    steps:
+    - name: Manage GH_TOKEN
+      if: env.GH_TOKEN == ''
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+      run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
+    # use this for overything else (i.e., pull requests) where publication is not needed
+    - name: Checkout Latest
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      with:
+        submodules: recursive
+    - name: Setup Swap Space
+      # Since Hugo is requiring more memory
+      uses: pierotofy/set-swap-space@49819abfb41bd9b44fb781159c033dba90353a7c
+      with:
+        swap-size-gb: 10
+    - name: Set up NodeJS
+      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+        cache-dependency-path: package-lock.json
+    - name: Setup Dependencies
+      run: |
+        # NodeJS
+        # If you are a developer and need to modify the workflow, be sure to review
+        # the package.json and package-lock.json to ensure the following deps are
+        # at least installed (they will be updated by dependabot):
+        # - ajv-cli
+        # - ajv-formats
+        # - markdown-link-check
+        # - yaml-convert
+        npm install --loglevel verbose
+        echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
+        # Dart-Sass
+        sudo snap install dart-sass
+    # cache hugo modules
+    - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9
+      with:
+        path: /tmp/hugo_cache
+        key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-hugomod-        
+    - name: Run Hugo
+      run: |
+        #hugo mod vendor
+        hugo -e staging --logLevel debug -d _site-test
+    - name: Zip Artifacts for Upload
+      run: |
+        zip ${{ runner.temp }}/website.zip -r _site-test
+    - name: Upload generated site
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+      with:
+        name: website
+        path: |
+          ${{ runner.temp }}/website.zip
+        retention-days: 5
+    - id: linkchecker
+      name: Link Checker
+      uses: lycheeverse/lychee-action@ec3ed119d4f44ad2673a7232460dc7dff59d2421
+      with:
+        args: --exclude-file .github/workflows/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './_site-test/**/*.html' --remap "https://automate.fedramp.gov/ file://${GITHUB_WORKSPACE}/_site-test/" --exclude-mail
+        format: markdown
+        output: html-link-report.md
+        debug: true
+        fail: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
+    - name: Upload link check report
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+      with:
+        name: html-link-report
+        path: html-link-report.md
+        retention-days: 5
+    - name: Create issue if bad links detected
+      if: ${{ !cancelled() && env.lychee_exit_code != 0 && env.INPUT_ISSUE_ON_ERROR == 'true' }}
+      uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94
+      with:
+        title: Scheduled Check of Website Content Found Bad Hyperlinks
+        content-filepath: ./lychee/out.md
+        labels: |
+          bug
+          documentation
+    - name: Fail on link check error
+      if: ${{ !cancelled() && env.lychee_exit_code != 0 && env.INPUT_FAIL_ON_ERROR == 'true' }}
+      uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+      with:
+        script: |
+          core.setFailed('Link checker detected broken or invalid links, read attached report.')
