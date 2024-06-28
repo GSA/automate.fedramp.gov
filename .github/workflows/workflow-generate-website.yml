@@ -38,7 +38,7 @@ jobs:
       run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
     # use this for overything else (i.e., pull requests) where publication is not needed
     - name: Checkout Latest
-      uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       with:
         submodules: recursive
     - name: Setup Swap Space
@@ -47,7 +47,7 @@ jobs:
       with:
         swap-size-gb: 10
     - name: Set up NodeJS
-      uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
+      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
@@ -67,7 +67,7 @@ jobs:
         # Dart-Sass
         sudo snap install dart-sass
     # cache hugo modules
-    - uses: actions/cache@v2
+    - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9
       with:
         path: /tmp/hugo_cache
         key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
@@ -81,7 +81,7 @@ jobs:
       run: |
         zip ${{ runner.temp }}/website.zip -r _site-test
     - name: Upload generated site
-      uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
       with:
         name: website
         path: |
@@ -100,14 +100,14 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       continue-on-error: true
     - name: Upload link check report
-      uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
       with:
         name: html-link-report
         path: html-link-report.md
         retention-days: 5
     - name: Create issue if bad links detected
       if: ${{ !cancelled() && env.lychee_exit_code != 0 && env.INPUT_ISSUE_ON_ERROR == 'true' }}
-      uses: peter-evans/create-issue-from-file@433e51abf769039ee20ba1293a088ca19d573b7f
+      uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94
       with:
         title: Scheduled Check of Website Content Found Bad Hyperlinks
         content-filepath: ./lychee/out.md
@@ -116,7 +116,7 @@ jobs:
           documentation
     - name: Fail on link check error
       if: ${{ !cancelled() && env.lychee_exit_code != 0 && env.INPUT_FAIL_ON_ERROR == 'true' }}
-      uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410
+      uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
       with:
         script: |
           core.setFailed('Link checker detected broken or invalid links, read attached report.')
