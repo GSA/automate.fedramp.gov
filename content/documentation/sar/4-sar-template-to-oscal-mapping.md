@@ -18,15 +18,13 @@ Instead of duplicating content from those sections, this section refers to them 
 
 This section addresses the TCW, Scanner Tool Results, Risks Identified during Penetration Testing, and the Risk Exposure Table (RET) first. These are addressed first because much of the individual SAR tables are generated from OSCAL-based content.
 
-As described in the  [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section.
+As described in the [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section, NIST designed the core OSCAL syntax to model cybersecurity information that is common to most organizations and compliance frameworks; however, NIST also recognized the need to provide flexibility for organizations with unique information needs.
 
-NIST designed the core OSCAL syntax to model cybersecurity information that is common to most organization and compliance frameworks; however, NIST also recognized the need to provide flexibility or organizations with unique information needs.
+Instead of trying to provide a language that meets each organization\'s unique needs, NIST provided OSCAL with the ability to be extended.
 
-Instead of trying to provide a language that meets each organization\'s unique needs, NIST provided designed OSCAL with the ability to be extended.
+As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The extensions related to the SAP are cited in context of their use.
 
-As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The extensions related to the Security Assessment Plan (SAP) are cited in context of their use.
-
-**FedRAMP extensions and allowed values are cited in relevant portions of this document and summarized in the FedRAMP OSCAL Registry.**
+**FedRAMP extensions and allowed values are cited in relevant portions of this documentation and summarized in the FedRAMP OSCAL Registry.**
 
 {{<callout>}}
 _***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats._
@@ -65,7 +63,7 @@ The Annual SAR was used, which includes all information typically found in the I
 ---
 ### One Result Assembly for the Entire Assessment
 
-All results from the current assessment, such as observations, findings, and risks, must be in a single result assembly. Additional result assemblies are used for past assessment results. One result assembly for each past assessment results. 
+All results from the current assessment, such as observations, findings, and risks, must be in a single result assembly. Additional result assemblies are used for past assessment results, with one result assembly for each set of past assessment results. 
 
 Tool developers must use the start field for each result assembly to determine the most recent set of results present in the SAR.
 
@@ -141,9 +139,9 @@ When using a **FedRAMP Resolved Profile Catalog**, the following query will iden
 {{<callout>}}
 **HELPFUL HINTS**
 
-Use the appropriate FedRAMP resolved profile catalog, instead of the profile. This has the catalog content pre-merged, saving your tool the extra work of stepping through the profile to the catalog.
+Use the appropriate FedRAMP resolved profile catalog instead of the profile. This has the catalog content pre-merged, saving your tool the extra work of stepping through the profile to the catalog.
 
-When processing an OSCAL-based FedRAMP baseline (profile or resolved-profile-catalog), each FedRAMP Test Case Workbook objective has a corresponding part named "assessment-objective" and part(s) named "assessment-method".  The "assessment-method" parts  have "method" properties specifying applicable assessment method (EXAMINE, INTERVIEW, TEST).
+When processing an OSCAL-based FedRAMP baseline (profile or resolved-profile-catalog), each FedRAMP Test Case Workbook objective has a corresponding part named "assessment-objective" and part(s) named "assessment-method".  The "assessment-method" parts  have "method" properties specifying the applicable assessment method (EXAMINE, INTERVIEW, TEST).
 {{</callout>}}
 
 ---
@@ -177,7 +175,7 @@ The target assembly identifies which objective is being addressed by the assesso
             <actor type="party" actor-uuid="e934d8b5-13e5-4f77-b55e-871e6f2df2fe" />
         </origin>
         <target type="objective-id" target-id="ac-1.a.1_obj.1">
-            <prop name="implementation-status" ns="https://fedramp.gov/ns/oscal"       value="implemented"/>
+            <prop name="implementation-status" ns="https://fedramp.gov/ns/oscal" value="implemented"/>
             <status reason="pass">satisfied</status>
         </target>
         <related-observation observation-uuid="d02f9117-84e3-4993-af59-c5ce5e8675ab"/>
@@ -225,7 +223,7 @@ The assessors who gathered the evidence are identified at the bottom of the find
 
 {{< figure src="/img/sar-figure-11.png" title="Assessor POC" alt="Screenshot of the FedRAMP Test Case Workbook showing the assessor POC information." >}}
 
-The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
+The following assumes that the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -262,9 +260,9 @@ While each assessment procedure must have exactly one finding assembly, within t
 |**Subject**: Who was interviewed?|**subject \[type=\"party\"\]**|
 |**Subject**: What was tested/inspected?|**subject \[type=\"component\", \"inventory-item\", \"resource\" (Artifact)\]**|
 |**How**: What was used?|**reference \[type=\"tool\" or \"method\"\]**|
-|**Evidence**: What evidence supports this?|**relevant-evidence \[type=\'observation\'\]**|
+|**Evidence**: What evidence supports this?|**relevant-evidence \[type=\"observation\"\]**|
 
-**The following documentation contain specific examples of Observations and Evidence.**
+**The following documentation contains specific examples of Observations and Evidence.**
 
 ---
 #### TCW - Observations and Evidence: Examine
@@ -281,7 +279,7 @@ The origin/actor field points to an individual identified as a party in the meta
 
 The origin/related-task points to the task in the SAP schedule (or locally defined task), which describes the review of documentation.
 
-The subject cites the policy that was reviewed. While OSCAL would allow the UUID to point to the policy attached to the SSP, FedRAMP requires assessors directly attach the artifacts and evidence to the SAR. Therefore, this should typically point to a resource in the SAR.
+The subject cites the policy that was reviewed. While OSCAL would allow the UUID to point to the policy attached to the SSP, FedRAMP requires assessors to directly attach the artifacts and evidence to the SAR. Therefore, this should typically point to a resource in the SAR.
 
 ##### Representation
 {{< highlight xml "linenos=table, hl_lines=8" >}}
@@ -343,7 +341,7 @@ The type flag of the origin/actor field may be set to one of the following:
 
 {{</callout>}}
 
-Finally, the relevant-evidence assembly is used to reference evidence. It has an optional href flag that is used to reference a backmatter resource. Alternatively, the relevant-evidence assembly has a child link field then can also be used to reference a backmatter resource. Either approach is acceptable, however if both relevant-evidence/@href and relevant-evidence/link/@href are specified, the link is assumed to be the definitive reference. The previous example demonstrates using link to point back to an examined policy document.
+Finally, the relevant-evidence assembly is used to reference evidence. It has an optional href flag that is used to reference a back-matter resource. Alternatively, the relevant-evidence assembly has a child link field that can also be used to reference a back-matter resource. Either approach is acceptable; however, if both relevant-evidence/@href and relevant-evidence/link/@href are specified, the link is assumed to be the definitive reference. The previous example demonstrates using link to point back to an examined policy document.
 
 ---
 #### TCW - Observations and Evidence: Interview
@@ -362,7 +360,7 @@ The origin/related-task points to the task in the SAP schedule (or locally defin
 
 The subject points to the person interviewed, who may be listed in the SSP, SAP, or SAR.
 
-Finally, the relevant-evidence must be used to point to the attached interview notes as a URI fragment, and to provide detail as to where the relevant statements are in the notes.  While OSCAL will allow a relative external link in the href flag, FedRAMP requires each piece of evidence to be listed as a resource in the SAR back matter.
+Finally, the relevant-evidence must be used to point to the attached interview notes as a URI fragment, and to provide detail as to where the relevant statements are in the notes. While OSCAL will allow a relative external link in the href flag, FedRAMP requires each piece of evidence to be listed as a resource in the SAR back matter.
 
 ##### Representation
 {{< highlight xml "linenos=table, hl_lines=12" >}}
@@ -473,7 +471,7 @@ absolute link to the file\'s authoritative source location as well as a relative
 ---
 #### TCW - Observations and Evidence: Queries
 
-The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
+The following assumes that the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -518,7 +516,7 @@ SAP or SAR, and sometimes possibly all three depending on the context.
 
 #### Historic Test Case Workbook: Observations and Evidence
 
-When converting Historic Test Case Workbook content to OSCAL, many details broken down in a way that fits OSCAL. While refactoring legacy data to fit OSCAL is ideal and encouraged, it is not required for historic information.
+When converting Historic Test Case Workbook content to OSCAL, many details can be broken down in a way that fits OSCAL. While refactoring legacy data to fit OSCAL is ideal and encouraged, it is not required for historic information.
 
 {{< figure src="/img/sar-figure-14.png" title="Observation and Evidence" alt="Screenshot of the FedRAMP Historic Test Case Workbook showing the observation and evidence information." >}}
 
@@ -573,7 +571,7 @@ The Implementation Status, Assessment Results, and Assessor POC are handled the 
 ### Test Case Workbook: SSP Implementation Statement Differential
 
 If an SSP Implementation Statement Differential is identified, add an additional observation with a type
-value of \"ssp-statement-issue\" and cite this observation from finding assembly. The finding assembly should also include the
+value of \"ssp-statement-issue\" and cite this observation from the finding assembly. The finding assembly should also include the
 implementation-statement-uuid field with the UUID of the original statement in the SSP.
 
 If this was an issue where an inventory-item or component was not configured as described in the SSP, the related observation should
