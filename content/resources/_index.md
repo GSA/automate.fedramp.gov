@@ -18,7 +18,7 @@ The following NIST resources will help you gain a foundational understanding of 
 - Content repo: https://github.com/usnistgov/oscal-content 
 
 ### Collaborate
-Community [collaboration and contributions](https://github.com/GSA/fedramp-automation/blob/master/CONTRIBUTING.md) are essential for FedRAMP to achieve its goals for automation. The resources to collaborate with the FedRAMP automation team and to contribute to the project. 
+Community [collaboration and contributions](https://github.com/GSA/fedramp-automation/blob/master/CONTRIBUTING.md) are essential for FedRAMP to achieve its goals for automation. The following are resources for collaborating with the FedRAMP automation team and contributing to the project. 
 - Repository: https://github.com/GSA/fedramp-automation
 - Open Issues: https://github.com/GSA/fedramp-automation/issues
 - Open Pull Requests: https://github.com/GSA/fedramp-automation/pulls
