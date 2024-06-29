@@ -2,7 +2,7 @@
 title: Contents
 weight: 102
 ---
-# FedRAMP PO&AM Contents
+# FedRAMP POA&M Contents
 
 The OSCAL POA&M Model is used to represent the FedRAMP POA&M. This model
 includes:
@@ -101,7 +101,7 @@ identifies the system components impacted by the risk.**
 The risk assembly includes risk details, such as the risk statement,
 likelihood, impact, mitigating factors, deviations, remediation plan,
 and resolution tracking. OSCAL allows more than one associated-risk to
-be assigned to be assigned to a poam-item; however, FedRAMP strongly
+be assigned to a poam-item; however, FedRAMP strongly
 recommends only one associated-risk per poam-item.
 
 The CSP-assigned unique POA&M ID must be present in the poam-item
@@ -218,7 +218,7 @@ are present.
 #### Individual POA&M Entries: Asset Identifiers
 
 For scanner tool findings, impacted assets are identified using the
-subject field. One field for each impacted asset. The type flag should
+subject field, one field for each impacted asset. The type flag should
 be set to either \"inventory-item\" or \"component\". The uuid-ref flag
 must point to an inventory item or component defined in the SSP
 inventory or POA&M local-definitions.
@@ -304,7 +304,7 @@ characterization\'s origin, an actor must be specified for the tool
 itself. Assign the \"vulnerability-id\" and \"plugin-id\" FedRAMP
 extensions as properties to this actor.
 
-And information provided by the tool that characterizes the risk are
+Information provided by the tool that characterizes the risk is
 captured as facet fields. When the scanner tool provides risk values
 from other recognized systems, such as a CVE number, IAVAM severity, or
 CVSS metric, the NIST-defined name and system values must be used, in
@@ -313,11 +313,11 @@ example, if the scanner tool provides a CVE number, the risk-metric
 field\'s system flag should reflect \"http://cve.mitre.org\" as the
 system, not the scanner tool.
 
-FedRAMP required facet fields, such as likelihood and impact, have a
-system flag with a value of \"https://fedramp.gov\". FedRAMP required
+FedRAMP-required facet fields, such as likelihood and impact, have a
+system flag with a value of \"https://fedramp.gov\". FedRAMP-required
 facets must also have a prop with the name flag set to \"state\" and the
 value flag set to either \"initial\" or \"adjusted\". There must always
-be \"initial\" facets. If adjusted, there may be a \"adjusted\" facets
+be \"initial\" facets. If adjusted, there may be \"adjusted\" facets
 as well.
 
 {{< figure src="/img/poam-figure-9.png" title="FedRAMP POA&M entry weakness information." alt="Screenshot of the FedRAMP POA&M template showing entry row weakness information." >}}
@@ -338,10 +338,10 @@ Common values for the system flag include:
 If a tool provides a value with no clear source of information for defining the value, use the special "unknown" system value: 
   http://csrc.nist.gov/ns/oscal/unknown
 
-Ideally scanner tool vendors will define a "system" value for their own tools. Until that happens, FedRAMP recommends either using the URL for the vendor's web site or the NIST-defined system value for an "unknown system: 
+Ideally scanner tool vendors will define a "system" value for their own tools. Until that happens, FedRAMP recommends either using the URL for the vendor's web site or the NIST-defined system value for an "unknown" system: 
   http://csrc.nist.gov/ns/oscal/unknown
 
-Until this matures and clear system values are widely available across the industry, FedRAMP only requires the same system value be used consistently throughout the POA&M for a given tool and keep the facet values from a given tool within the same characterization assembly which cites the tool as an actor.
+Until this matures and clear system values are widely available across the industry, FedRAMP only requires that the same system value be used consistently throughout the POA&M for a given tool and keep the facet values from a given tool within the same characterization assembly which cites the tool as an actor.
 
 {{</callout>}}
 
@@ -404,8 +404,8 @@ POA&M any system vulnerabilities that are in the KEV catalog.
 
 A FedRAMP extension property with the name flag set to \"kev-catalog\"
 is used to indicate that a vulnerability is in the CISA KEV catalog. The
-\"kev-catalog\" property's value flag may be set to \"yes\" or \"no\",
-however the property need only be present when its value is \"yes\".
+\"kev-catalog\" property's value flag may be set to \"yes\" or \"no\";
+however, the property need only be present when its value is \"yes\".
 
 CSP vulnerabilities that are in the CISA KEV catalog must be remediated
 by the due date specified in the catalog. This date must be included in
@@ -518,7 +518,7 @@ The Planned Milestones are identified within the response assembly using
 the task assemblies. There must be at least one task assembly of type
 \"milestone\". There may be additional tasks assemblies of type
 \"action\" or \"milestone\". This collection of \"action\" and
-\"milestone" tasks serve as a high-level remediation timeline. A POA&M
+\"milestone" tasks serves as a high-level remediation timeline. A POA&M
 tool should offer the option of viewing either just the milestones or
 all actions and milestones.
 
@@ -575,7 +575,7 @@ complete.
 
 OSCAL supports relationships between
 tasks, via sub-tasks and task dependencies. FedRAMP does not require the
-use of sub-tasks or dependencies, however if present, such tasks are
+use of sub-tasks or dependencies; however, if present, such tasks are
 subject to the same constraints mentioned above.
 
 ### Risk Tracking
@@ -583,12 +583,12 @@ subject to the same constraints mentioned above.
 Tracking is initiated by adding the risk-log assembly to the risk
 assembly, which must have one or more entry assemblies. Each milestone
 change, vendor check-in, periodic status update, and action performed in
-the pursuit of remediating the risk are entered here as individual entry
+the pursuit of remediating the risk is entered here as individual entry
 assemblies.
 
 Each entry assembly must have a title, description, and start field.
 There may also be an end, logged-by, and related-response fields. If the
-end field is missing it is presumed to have the same value as the start
+end field is missing, it is presumed to have the same value as the start
 field. The logged-by field is optional and contains the UUID of the
 person (party) who made the entry. The related-response field is
 optional and contains the UUID of the risk response that describes the
@@ -649,7 +649,7 @@ the observation assembly must have a type tag of \"risk-tracking\".
 
 After risks are identified a deviation may be appropriate, or a vendor
 dependency may exist. As deviations are identified, the original risk
-information is [not]{.underline} modified. Additional content is added
+information is **not** modified. Additional content is added
 to identify these changes. Typically, an additional observation is added
 and linked to the poam-item, and additional facet fields are added to
 the risk assembly. There may be both Operational Requirement (OR) and
@@ -954,7 +954,7 @@ Add an entry to the risk log when investigating, as well as for each
 vendor check-in. As the CSP performs the required regular vendor
 check-ins, each must be added to the risk-log assembly as an additional
 entry. The title should be set to \"Vendor Check-in\", the start field
-must indicate when the check-in occurred. The result of the check-in
+must indicate when the check-in occurred, and the result of the check-in
 must be described in the description field.
 
 When the vendor publishes the resolution, add another risk log entry
@@ -1005,7 +1005,7 @@ link suitable for delivery to FedRAMP.
         <title>[EXAMPLE]Screen Shot</title>
         <prop name="type" ns="https://fedramp.gov/ns/oscal" value="evidence" />
         <rlink media-type="image/jpeg" href="./evidence/screen-shot.jpg"></rlink>
-        <base64 media-type="image/jepg" filename="screen-shot.jpg">00000000</base64>
+        <base64 media-type="image/jpeg" filename="screen-shot.jpg">00000000</base64>
     </resource>
 </back-matter>
 
@@ -1018,9 +1018,9 @@ they must be closed. The risk should remain in the POA&M with the
 following changes.
 
 First, in the risk assembly, change the status field to \"closed\". Then
-make a final entry in the risk-log assembly. In the entry assembly
-summarize the reason for closure in the description field, set the start
-field to indicate the date of closure, and the status-change field to
+make a final entry in the risk-log assembly. In the entry assembly,
+summarize the reason for closure in the description field, and set the start
+field to indicate the date of closure and the status-change field to
 \"closed\". Individual actions performed for closure should each have
 their own entries in the risk log.
 
