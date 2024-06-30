@@ -74,7 +74,7 @@ When FedRAMP publishes baselines for NIST SP 800-53 Revision 5, they
 will be located here:\
 <https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/baselines>
 
-## *FedRAMP Tailored*
+## FedRAMP Tailored
 
 FedRAMP Tailored for Low Impact -- Software as a Service (LI-SaaS)
 Appendix B merges SSP, SAP, and SAR information into a single document.

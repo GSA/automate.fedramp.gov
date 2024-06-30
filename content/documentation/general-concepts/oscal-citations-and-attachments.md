@@ -14,19 +14,16 @@ procedures, plans, evidence, and interconnection security agreements
 Each `resource` may be referenced from anywhere in the OSCAL file, using
 its resource UUID.
 {{< highlight xml "linenos=table" >}}
-  <back-matter>
-    <resource uuid="3df7eeea-421b-459d-98cf-3d972bec610a">
-        <title>Attachment or Document Title</title>
-        <desc>An optional description of the attachment.</desc>
-        <rlink href="./relative/path/doc.pdf" media-type="application/pdf"
-        />
-        <rlink href="/absolute/path/doc.pdf" media-type="application/pdf"
-        />
-        <base64 filename="doc.pdf" media-type="application/pdf">
-        00000000
-        </base64>
-    </resource>
-  </back-matter>
+<back-matter>
+  <resource uuid="3df7eeea-421b-459d-98cf-3d972bec610a">
+      <title>Attachment or Document Title</title>
+      <desc>An optional description of the attachment.</desc>
+      <rlink href="./relative/path/doc.pdf" media-type="application/pdf"/>
+      <rlink href="/absolute/path/doc.pdf" media-type="application/pdf"/>
+      <base64 filename="doc.pdf"
+        media-type="application/pdf">YSBGZWRSQU1QIGRvY3VtZW50Lg==</base64>
+  </resource>
+</back-matter>
 {{< /highlight >}}
 
 The `media-type` flag should be present and must be set to an [Internet
@@ -69,9 +66,10 @@ described in the [*Assigning Identifiers*](/documentation/general-concepts/worki
 
 For example, a policy document that satisfies several control families
 is attached as a `resource` in the `back-matter`, with a UUID of
-`"3df7eeea-421b-459d-98cf-3d972bec610a"`. Each control satisfied by that
+`3df7eeea-421b-459d-98cf-3d972bec610a`. Each control satisfied by that
 policy links to the policy using a URI fragment as follows:
-{{< highlight xml "linenos=table" >}}
+
+{{< highlight xml "linenos=false" >}}
 <link href="#3df7eeea-421b-459d-98cf-3d972bec610a" rel="policy" />
 {{< /highlight >}}
 
@@ -86,10 +84,10 @@ defined once in the resource and are displayed anyplace the policy is
 referenced. If a newer policy is published, only the one resource
 needs to be updated.
 
-If the policy's location is identified as `="./policies/doc.pdf"`, the
+If the policy's location is identified as `./policies/doc.pdf`, the
 OSCAL file and the doc.pdf file should be delivered together and
 packaged such that the folder containing the OSCAL file includes a
-sub-folder named `"policies"`, which contains the `"doc.pdf"` file.
+sub-folder named `policies`, which contains the `doc.pdf` file.
 
 When using attachments with relative paths, consider using a technology
 such as a ZIP archive to package and deliver attachments while
@@ -99,18 +97,15 @@ maintaining their relative position to the OSCAL file.
 
 Within a `resource`, there may be:
 
--   no `rlink` nor `base64` fields;
-
--   one or more `rlink` fields;
-
--   one or more base64-encoded data fields within the OSCAL file; or
-
--   any combination of `rlink` and `base64` fields.
+- no `rlink` nor `base64` fields;
+- one or more `rlink` fields;
+- one or more base64-encoded data fields within the OSCAL file; or
+- any combination of `rlink` and `base64` fields.
 
 OSCAL allows multiple `rlink` and `base64` fields to exist within the same `resource`. This provides the flexibility to identify multiple locations or multiple formats of the same resource. Some examples of using
 multiple `rlink` and/or `base64` fields within the same resource include:
 
--   **Multiple Locations**: Multiple `rlink` fields allow an OSCAL tool to
+- **Multiple Locations**: Multiple `rlink` fields allow an OSCAL tool to
     include one `rlink` field with an *absolute* path to the authoritative
     location of a policy document within the CSP's intranet. The same
     `resource` could have a second `rlink` field with a *relative* path to
@@ -118,13 +113,11 @@ multiple `rlink` and/or `base64` fields within the same resource include:
     link to the authoritative location of the policy when working with the
     OSCAL file internally, while allowing a cached, local copy to travel
     with the OSCAL file when delivered to FedRAMP for review.
-
--   **Multiple Quality Levels**: Multiple `rlink` or `base64` fields allow
+- **Multiple Quality Levels**: Multiple `rlink` or `base64` fields allow
     both low-resolution and high-resolution versions of the same image,
     which is sometimes used to boost the performance of web-based
     applications.
-
--   **Multiple Formats**: Multiple `rlink` or `base64` fields allow a
+- **Multiple Formats**: Multiple `rlink` or `base64` fields allow a
     portable network graphic (PNG) version of an image to be provided
     for presentation by a web application, and a more detailed portable
     document format (PDF) version of the same image for download by
@@ -132,7 +125,7 @@ multiple `rlink` and/or `base64` fields within the same resource include:
 
 ## Handling Multiple rlink and base64 Fields
 
-NIST designed `resource` assemblies to be flexible and wanted to offer
+OSCAL `resource` assemblies are designed to be flexible and offer
 developers the flexibility to implement handling of multiple `rlink` and
 `base64` fields on a case-by-case basis.
 
@@ -165,8 +158,7 @@ using the following priority, unless specified otherwise:
 
     d.  If no valid content is found after checking all `base64` fields in
         the resource, proceed to step #2.
-
-2.  If no valid base64 content is found, look in `rlink` fields.
+1.  If no valid base64 content is found, look in `rlink` fields.
 
     a.  Start with the first `rlink` field in the resource.
 
@@ -181,7 +173,7 @@ using the following priority, unless specified otherwise:
 
 ## Citation and Attachment Details
 
-IMPORTANT: As of 1.0.0, NIST includes `type`, `version`, and `published`
+IMPORTANT: As of OSCAL 1.0.0, OSCAL includes `type`, `version`, and `published`
 properties as part of core OSCAL, eliminating the requirement to treat
 this content as FedRAMP Extensions.
 
@@ -190,20 +182,19 @@ the document's title, version, and publication date.
 
 The following example demonstrates the inclusion of this content within
 a resource.
-  {{< highlight xml "linenos=table" >}}
-  <back-matter>
-    <resource uuid="3df7eeea-421b-459d-98cf-3d972bec610a">
-        <title>Attachment or Document Title</title>
-        <prop name="type" value="policy"/>
-        <prop name="version" value="2.1"/>
-        <prop name="published" value="2018-11-11T00:00:00Z"/>
-        <base64>0000000</base64>
-        <rlink href="./rel/path/doc.pdf" media-type="application/pdf" />
-        <rlink href="/absolute/path/doc.pdf" media-type="application/pdf"
-        />
-    </resource>
-  </back-matter>
-  {{< /highlight >}}
+{{< highlight xml "linenos=table" >}}
+<back-matter>
+  <resource uuid="3df7eeea-421b-459d-98cf-3d972bec610a">
+    <title>Attachment or Document Title</title>
+    <prop name="type" value="policy"/>
+    <prop name="version" value="2.1"/>
+    <prop name="published" value="2018-11-11T00:00:00Z"/>
+    <base64>0000000</base64>
+    <rlink href="./rel/path/doc.pdf" media-type="application/pdf"/>
+    <rlink href="/absolute/path/doc.pdf" media-type="application/pdf"/>
+  </resource>
+</back-matter>
+{{< /highlight >}}
 
 ## Citation and Attachment Conformity
 
@@ -215,72 +206,64 @@ link statements from relevant portions of the OSCAL content.
 The following represents an example linking a policy directly to the
 control it satisfies. (Legacy approach)
 
-  {{< highlight xml "linenos=table" >}}
-  <control-implementation>
-    <implemented-requirement control-id='ac-1'
-    uuid="[uuid-value]">
-        <statement>
-            <link href="#090ab379-2089-4830-b9fd-26d0729e22e9"
+{{< highlight xml "linenos=table" >}}
+<control-implementation>
+  <implemented-requirement control-id="ac-1" uuid="[uuid-value]">
+    <statement>
+      <link href="#090ab379-2089-4830-b9fd-26d0729e22e9"
         rel="policy" />
-        </statement>
-    </implemented-requirement>
-  </control-implementation>
-  
-  <back-matter>
-    <resource uuid="090ab379-2089-4830-b9fd-26d0729e22e9">
-        <title>Access Control and Identity Management Policy</title>
-        <description>
-        <p>Policy Document.</p>
-        </description>
-        <prop name="type" value="policy"/>
-        <base64 filename="./documents/policies/sample_policy.pdf">
-        0000
-        </base64>
-    </resource>
-  </back-matter>
-  {{< /highlight >}}
+    </statement>
+  </implemented-requirement>
+</control-implementation>
+<back-matter>
+  <resource uuid="090ab379-2089-4830-b9fd-26d0729e22e9">
+    <title>Access Control and Identity Management Policy</title>
+    <description>
+    <p>Policy Document.</p>
+    </description>
+    <prop name="type" value="policy"/>
+    <base64 filename="./documents/policies/sample_policy.pdf">QSBzYW1wbGUgcG9saWN5Lg==</base64>
+  </resource>
+</back-matter>
+{{< /highlight >}}
 
 The following represents an example linking a policy to the control it
 satisfies via the preferred component-based approach.
-  {{< highlight xml "linenos=table" >}}
-  <system-implementation>
-    <component uuid="f25e84bf-3e57-48c3-ac0b-7a567b3af79e"
-    type="policy">
-        <title>[EXAMPLE]Access Control and Identity Management
-        Policy</title>
-        <description>
-            <p>[EXAMPLE]An example component representing a policy.</p>
-        </description>
-        <link href="#090ab379-2089-4830-b9fd-26d0729e22e9" rel="policy"
-        />
-        <status state="operational"/>
-    </component>
-  </system-implementation>
-  
-  <control-implementation>
-    <implemented-requirement control-id="ac-1"
-    uuid="[uuid-value]">
-        <statement statement-id="ac-1_smt.a"
+
+{{< highlight xml "linenos=table" >}}
+<system-implementation>
+  <component uuid="f25e84bf-3e57-48c3-ac0b-7a567b3af79e" type="policy">
+    <title>[EXAMPLE]Access Control and Identity Management Policy</title>
+    <description>
+        <p>[EXAMPLE]An example component representing a policy.</p>
+    </description>
+    <link href="#090ab379-2089-4830-b9fd-26d0729e22e9" rel="policy"/>
+    <status state="operational"/>
+  </component>
+</system-implementation>
+
+<control-implementation>
+  <implemented-requirement control-id="ac-1" uuid="[uuid-value]">
+    <statement statement-id="ac-1_smt.a"
         uuid="fb4d039a-dc4f-46f5-9c1f-f6343eaf69bc">
-            <by-component
-            component-uuid="f25e84bf-3e57-48c3-ac0b-7a567b3af79e">
-                <description>
-                    <p>Describe how statement a is satisfied by this policy.</p>
-                </description>
-            </by-component>
-        </statement>
-    </implemented-requirement>
-  </control-implementation>
-  
-  <back-matter>
-    <resource uuid="090ab379-2089-4830-b9fd-26d0729e22e9">
-        <title>Access Control and Identity Management Policy</title>
+      <by-component
+          component-uuid="f25e84bf-3e57-48c3-ac0b-7a567b3af79e">
         <description>
-        <p>Policy Document.</p>
+          <p>Describe how the statement is satisfied by this policy.</p>
         </description>
-        <prop name="type">policy</prop>
-        <base64
-        filename="./documents/policies/sample_policy.pdf">0000</base64>
-    </resource>
-  </back-matter>
-  {{< /highlight >}}
+      </by-component>
+    </statement>
+  </implemented-requirement>
+</control-implementation>
+
+<back-matter>
+  <resource uuid="090ab379-2089-4830-b9fd-26d0729e22e9">
+    <title>Access Control and Identity Management Policy</title>
+    <description>
+    <p>Policy Document.</p>
+    </description>
+    <prop name="type">policy</prop>
+    <base64 filename="./documents/policies/sample_policy.pdf">QSBzYW1wbGUgcG9saWN5Lg==</base64>
+  </resource>
+</back-matter>
+{{< /highlight >}}

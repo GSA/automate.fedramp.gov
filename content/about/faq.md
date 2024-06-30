@@ -30,4 +30,4 @@ FedRAMP is also working to establish an automation platform that will provide OS
 
 ### Q: How do I get involved in this work?
 
-**A:** FedRAMP is developing its automation approach collaboratively, as open source, with the FedRAMP OSCAL community. Direct [community participation](http://localhost:1313/resources/#collaborate) is welcome and encouraged.
+**A:** FedRAMP is developing its automation approach collaboratively, as open source, with the FedRAMP OSCAL community. Direct [community participation](/resources/#collaborate) is welcome and encouraged.

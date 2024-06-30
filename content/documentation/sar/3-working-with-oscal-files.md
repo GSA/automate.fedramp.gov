@@ -149,7 +149,8 @@ Every OSCAL-based FedRAMP SAR file must have a minimum set of required fields/as
 OSCAL is designed for traceability. Because of this, the assessment report is designed to be linked to the security assessment plan. Rather than duplicating content from the SSP and SAP, the SAR is intended to reference the SSP and SAP content itself.
 
 {{<callout>}}
-##### *Unavailable or Inaccurate OSCAL-based SSP Content*
+
+##### Unavailable or Inaccurate OSCAL-based SSP Content
 *The SAR must import an OSCAL-based SAP, even if no OSCAL-based SSP exists. FedRAMP enables an assessor to use the OSCAL SAP and SAR, when no OSCAL-based SSP exists, or where the assessor finds it to be inaccurate. The [OSCAL-based FedRAMP Security Assessment Plans (SAP)](/documentation/sap/4-sap-template-to-oscal-mapping/) section describes when and how to represent missing or inaccurate SSP content.*
 
 *SAR tools must search both the SSP (if any) and the SAP for any SSP-related references. If an ID in the SAR references content in both the SSP and the SAP, the tool should treat the SAP content as an update to the SSP content. See the [OSCAL-based FedRAMP Security Assessment Plans (SAP)](/documentation/sap/4-sap-template-to-oscal-mapping/) section for more details.*
