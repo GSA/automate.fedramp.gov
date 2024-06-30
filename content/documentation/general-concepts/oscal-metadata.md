@@ -7,7 +7,7 @@ weight: 125
 An OSCAL file defines roles, locations, people, and organizations within the
 metadata as part of four separate assemblies:
 
--   **role**: A role ID and role `title` are required. Other content, such
+-   **role**: A role `id` and role `title` are required. Other content, such
     as a `short-name`, `description`, or `remarks` is optional.
 
 -   **location**: Locations, such as corporate offices and data center

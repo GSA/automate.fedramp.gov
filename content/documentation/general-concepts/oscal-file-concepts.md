@@ -18,11 +18,11 @@ linkages are established through `import` commands.
 
 \
 For example, the assessment objectives and actions that appear in a
-blank test case workbook (TCW), are defined in the FedRAMP profile, and
+blank test case workbook (TCW) are defined in the FedRAMP profile, and
 simply referenced by the SAP and SAR. Only deviations from the TCW are
 captured in the SAP or SAR.
 
-{{< figure src="/img/content-figure-2.png" title="Baseline and SSP Information is referenced instead of duplicated." alt="Figure illustrating the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
+{{< figure src="/img/content-figure-2.png" title="Baseline and SSP information is referenced instead of duplicated." alt="Figure illustrating the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
 \
 For this reason, an OSCAL-based SAP points to the OSCAL-based SSP of the
@@ -31,12 +31,12 @@ OSCAL-based SAP simply points to the SSP content for information such as
 system description, boundary, users, locations, and inventory items.
 
 The SAP also inherits the SSP's pointer to the appropriate OSCAL-based
-FedRAMP Baseline. Through that linkage, the SAP references the
+FedRAMP baseline. Through that linkage, the SAP references the
 assessment objectives and actions typically identified in the FedRAMP
 TCW.
 
 The only reason to include this content in the SAP is when the assessor
-documents a deviation from the SSP, Baseline, or TCW.
+documents a deviation from the SSP, baseline, or TCW.
 
 ## Hierarchy and Sequence
 
@@ -46,8 +46,8 @@ the OSCAL file, just below its root. If it appears within any other
 assembly, it is invalid.
 
 The same field name is interpreted differently in different assemblies.
-For example, the `title` field under metadata is the document title, while
-the `title` field under role gives a human-friendly name to that role.
+For example, the `title` field under `metadata` is the document title, while
+the `title` field under `role` gives a human-friendly name to that role.
 
 For XML, the sequence of fields and assemblies (elements) is also
 important. JSON typically does not require a specific sequence fields
@@ -91,26 +91,25 @@ Most assemblies in OSCAL follow a general pattern as follows:
     datatype and holds the intended value. The `prop` field includes an
     optional `uuid` flag to give a globally unique identifier, an optional
     `ns` field to allow for namespacing the `prop` and indicate it is
-    optional information that is not of core OSCAL syntax and a `class`
+    optional information that is not of core OSCAL syntax, and a `class`
     flag to sub-class one or more instances of the `prop` into specific
     sub-groups.
 
 -   `link` (fields): There may be many `link` fields. The `href` flag allows a
     uniform resource identifier (URI) or URI fragment to a related item.
     Often, `href` fields point to a `resource` in back matter using its UUID
-    value in the form of href="#[uuid-value]".
+    value in the form of `href="#[uuid-value]"`.
 
 -   ***assembly-specific fields***
 
 -   `remarks` (field): Typically only one `remarks` field is allowed. It is
     always optional. This is a *markup-multiline* datatype.
 
-While this is not universal in OSCAL, when any of these fields are
+While this assembly structure pattern is not universal in OSCAL, when any of these fields are
 present, they follow this pattern.
 
 The `prop` field is present to allow OSCAL extensions within each
-assembly. See *Section 3, FedRAMP Extensions and Accepted Values* for
-more information on FedRAMP's use of OSCAL extensions.
+assembly. See the [*FedRAMP Extensions and Accepted Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) documentation for more information on FedRAMP's use of OSCAL extensions.
 
 ##  OSCAL's Minimum File Requirements
 
@@ -131,7 +130,7 @@ implementation applies:
         and 800-53A.
 
     -   **profile**: Contains a control baseline, such as FedRAMP
-        Moderate
+        Moderate.
 
     -   **component**: Contains information about a product, service, or
         other security capability, such as the controls it can satisfy.
@@ -163,7 +162,7 @@ implementation applies:
     developers and content authors are encouraged to attach content here
     and reference it from within the body of an OSCAL file.
 
-The table below shows an empty OSCAL file, based purely on the NIST
+The listing below shows an empty OSCAL file, based purely on the NIST
 syntax; however, FedRAMP requires much more in a minimum file. The
 latest OSCAL-based FedRAMP template files can be found here in JSON and
 XML formats:
@@ -209,8 +208,8 @@ this is not always possible. Some syntax changes between milestone
 releases leading up to OSCAL version 1.0 are unavoidable. NIST intends
 to keep all formally published schema validation files available, which
 keeps validation and conversion tools available for older versions of
-OSCAL. See Section *2.4.6 OSCAL Syntax Versions* for more information.
-FedRAMP releases indicate, in its trailing half, the earliest version of
+OSCAL. See the [*OSCAL Syntax Versions*](#oscal-syntax-versions) section for more information.
+FedRAMP releases indicate, in their trailing half, the earliest version of
 OSCAL supported by baselines, templates, documentation, and ancillary
 utilities. See [the OSCAL Support and Deprecation Policy in the FedRAMP Automation Github repository](https://github.com/GSA/fedramp-automation/blob/e0bf4d343b8bd06daa52e7817b2215f294aeab6b/README.md#support-and-oscal-deprecation-strategy) for further details.
 
@@ -220,23 +219,19 @@ Any time a tool changes the contents of an OSCAL file, it must also:
 
 -   update the file's `uuid flag` (`/*/@uuid`) with a new UUID; and
 
--   update the `last-modified` field (`/*/metadata/last-modified`) with the current date and time. (Using the OSCAL date/time format, as described in *Section 2.6.1 [Date and Time in OSCAL Files](#date-and-time-in-oscal-files)*)
+-   update the `last-modified` field (`/*/metadata/last-modified`) with the current date and time. (Using the OSCAL date/time format, as described in the *[Metaschema Data Types](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone)* specification)
 
 Tools that open or import OSCAL files should rely on the UUID value
-provided by the `uuid` flag, and `last-modified` field as easy methods of
+provided by the `uuid` flag and the `last-modified` field as easy methods of
 knowing the file has changed.
 
 See the following for more information:
 https://pages.nist.gov/OSCAL/documentation/schema/overview/#common-high-level-structure
 
-### Cryptographic Integrity (Future)
-
-NIST intends to add a cryptographic hash feature to OSCAL during
-calendar year 2021. Once available, NIST will publish details here:
-<https://pages.nist.gov/OSCAL/concepts/layer/>
+### Cryptographic Integrity
 
 While tool developers are encouraged to perform their own integrity
-checking, it is important to note cryptographic hash algorithms will
+checking, it is important to note that cryptographic hash algorithms will
 produce a different result for inconsequential file differences, such as
 different indentation or a change in the sequence of flags.
 
@@ -265,10 +260,10 @@ critical information about any OSCAL file.
 ### OSCAL Syntax Versions
 
 NIST's approach to OSCAL development ensures the syntax validation and
-format conversion tools remain available for release of OSCAL.
+format conversion tools remain available for new releases of OSCAL.
 
 {{<callout>}}
-_NIST always makes the latest version of syntax validation and format conversion files available in the main OSCAL repository, including any changes since the last formal release._ 
+_NIST makes the latest version of syntax validation and format conversion files available in the main OSCAL repository, including any changes since the last formal release._ 
 
 To ensure stable resources, use a formal OSCAL release. NIST publishes formal OSCAL releases here:
 https://github.com/usnistgov/OSCAL/releases

@@ -9,7 +9,7 @@ OSCAL is designed so that all citations and attachments are defined once
 at the end of the file as a `resource`, and then referenced as needed
 throughout the file. This includes logos, diagrams, policies,
 procedures, plans, evidence, and interconnection security agreements
-(ICAs).
+(ISA).
 
 Each `resource` may be referenced from anywhere in the OSCAL file, using
 its resource UUID.
@@ -65,8 +65,7 @@ evidence, and POA&M deviation request evidence.
 Tools should embed (base64) or link to (rlink) an attachment once as a
 `resource` in `back-matter`, then use URI fragments to reference the
 attachment anyplace it is needed within the body of the OSCAL file, as
-described in *Section 2.5, Assigning Identifiers* or *Section 2.6.2,
-Working With href Flags*.
+described in the [*Assigning Identifiers*](/documentation/general-concepts/working-with-identifiers/#assigning-identifiers) and the [*Working With href Flags*](/documentation/general-concepts/oscal-data-types/#working-with-href-flags) sections.
 
 For example, a policy document that satisfies several control families
 is attached as a `resource` in the `back-matter`, with a UUID of
@@ -76,7 +75,7 @@ policy links to the policy using a URI fragment as follows:
 <link href="#3df7eeea-421b-459d-98cf-3d972bec610a" rel="policy" />
 {{< /highlight >}}
 
-As described in *Section 2.6.2, Working With href Flags*, when a tool
+As described in the [*Working With href Flags*](/documentation/general-concepts/oscal-data-types/#working-with-href-flags) sections, when a tool
 identifies a URI fragment in an `href` value, the leading hashtag (#) must
 be dropped and the remaining value is expected to reference an OSCAL
 addressable ID or UUID. This ID/UUID may be either within the OSCAL file

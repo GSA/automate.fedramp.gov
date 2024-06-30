@@ -358,8 +358,8 @@ FedRAMP\'s revision history requirements.
 <br />
 {{<callout>}}
 **FedRAMP Extension (Author)** \
-prop (ns="https://fedramp.gov/ns/oscal"):
-- name="party-uuid"
+prop (`ns="https://fedramp.gov/ns/oscal"`):
+- `name="party-uuid"`
 
 {{</callout>}}
 
@@ -406,7 +406,7 @@ The FedRAMP email and web site addresses are part of the organizational
 content for the FedRAMP PMO party. This information already exists in
 OSCAL-based FedRAMP Templates.
 
-There must be a role defined in the file with the ID value set to
+There must be a `role` defined in the file with the ID value set to
 `"fedramp-pmo"`. There must be a `party` defined with FedRAMP\'s details,
 and there must be a `responsible-party` defined, linking the
 `"fedramp-pmo"` `role-id` to the FedRAMP `party` uuid.
@@ -487,7 +487,7 @@ assessor\'s organization.
     <party uuid="uuid-of-person-1" type="person">
         <name>[SAMPLE]Person Name 1</name>
         <prop name="title" ns="https://fedramp.gov/ns/oscal">Individual's Title</prop>
-        <member-of-organization>uuid-of-csp-party</member-of-organization>         
+        <member-of-organization>uuid-of-csp</member-of-organization>         
     </party>
     <party uuid="uuid-of-person-2" type="person">
         <name>[SAMPLE]Person Name 2</name>
@@ -513,7 +513,7 @@ Required Role IDs:
 - `cloud-service-provider`
 
 **FedRAMP Extension (Person's Title)** \
-prop (ns="https://fedramp.gov/ns/oscal"):
+prop (`ns="https://fedramp.gov/ns/oscal"`):
 - `name="title"`
 
 {{</callout>}}
@@ -698,9 +698,9 @@ Replace "policy" with "plan", "rob", etc. for each attachment type.
 PIA Attachment (Embedded Base64 encoded):
     /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/.. /base64
 PIA Attachment (Relative Link):
-    /*/back-matter/resource/prop[@name=type][string(.)='privacy-impact-assessment']/.. /rlink/@href
+    /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/.. /rlink/@href
 Publication Date of PIA:
-    /*/back-matter/resource/prop[@name=type][string(.)='privacy-impact-assessment']/../prop[@name="publication"]
+    /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/../prop[@name="publication"]
 
 {{</ highlight >}}
 

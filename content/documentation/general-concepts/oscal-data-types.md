@@ -20,7 +20,7 @@ be in an OSCAL
 [[https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone]](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone)
 
 This means all dates and times must be represented in the OSCAL file
-using following format, unless otherwise noted:
+using the following format, unless otherwise noted:
 
 `"Y-m-dTH:i:s.uP"` (See
 [HERE](https://www.php.net/manual/en/class.datetime.php) for formatting
@@ -32,7 +32,7 @@ appear as
 
 This includes:
 
--   Numeric Year: Four-digits
+-   Numeric Year: Four-digit
 
 -   A dash
 
@@ -40,11 +40,11 @@ This includes:
 
 -   A dash
 
--   Numeric Day: Two digit, zero padded
+-   Numeric Day: Two-digit, zero padded
 
 -   The capital letter "T" (Do not use lower case)
 
--   Hour: Two digit, zero-padded, 24-hour clock (Use 18 for 6:00 pm)
+-   Hour: Two-digit, zero-padded, 24-hour clock (Use 18 for 6:00 pm)
 
 -   A colon
 
@@ -87,7 +87,7 @@ with zeros.
 
 ## UUID Datatypes
 
-Any place a UUID flag or UUID reference exits, NIST requires UUID
+Anywhere a UUID flag or UUID reference exists, NIST requires UUID
 version 4, as defined by
 [RFC-4122](https://tools.ietf.org/html/rfc4122). See here for more
 information: <https://pages.nist.gov/metaschema/specification/datatypes/#uuid>
@@ -100,20 +100,19 @@ Version 4 UUIDs are 128-bit numbers, represented as 32 hexadecimal
 All alphabetic characters (a-f) representing hexadecimal values must be
 lower case.
 
-Strictly following the RFC ensures the probability of generating an
-unintended duplicate UUID value is so close to zero it may be ignored.
+Strictly following the RFC ensures that the probability of generating an
+unintended duplicate UUID value is so close to zero that it may be ignored.
 As calculated on
 [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier),
 after generating 103 trillion version 4 UUIDs, there is a one in a
 billion chance of a duplicate.
 
 There are several open-source algorithms and built-in functions for
-generating UUID. It is important to use one that is known to be fully
+generating UUIDs. It is important to use one that is known to be fully
 compliant. Unintended duplicate UUIDs become more likely when using
 non-compliant or erroneous algorithms.
 
-**For more information about the use of UUIDs in OSCAL, see *Section*
-*2.5,* *Assigning Identifiers*.**
+**For more information about the use of UUIDs in OSCAL, see the [*Assigning Identifiers*](/documentation/general-concepts/working-with-identifiers/#assigning-identifiers) section.**
 
 ## ID Datatypes
 
@@ -121,7 +120,7 @@ NIST typically uses ID flags in OSCAL where the identifier is intended
 to be canonical, such as the identifiers for `role` IDs or NIST SP 800-53
 controls.
 
-Any place an ID flag or ID reference exits, the datatype is
+Anywhere an ID flag or reference exists, the datatype is
 [token](https://pages.nist.gov/metaschema/specification/datatypes/#token). It is
 similar to the [NCName](https://www.w3.org/TR/xmlschema-2/#NCName) as
 defined by the World Wide Web Consortium (W3C), but does not allow
@@ -142,8 +141,7 @@ start with a numeric character, which is invalid for NCName. To ensure a
 valid datatype when using a UUID value in an ID field, consider
 prepending "uuid-" to the UUID value.
 
-**For more information about the use of IDs in OSCAL, see *Section*
-*2.5,* *Assigning Identifiers*.**
+**For more information about the use of IDs in OSCAL, see the [*Assigning Identifiers*](/documentation/general-concepts/working-with-identifiers/#assigning-identifiers) section.**
 
 ## Working With href Flags
 
@@ -169,16 +167,16 @@ and be linked using a relative path.
 **Internal Locations**: These URI fragments appear as just a hashtag (#)
 followed by a name, such as `#a3e9f988-2db7-4a14-9859-0a0f5b0eebee`. This
 notation points to a location internal to the OSCAL content. Typically,
-this references to a `resource` assembly, but may reference to any field
+this references a `resource` assembly, but may reference to any field
 or assembly with a unique ID or UUID.
 
 If only a URI fragment (internal location) is present, the OSCAL tool
 must strip the hashtag (#) and treat the remaining string as a UUID
 reference to a resource. The resource may exist in the current OSCAL
 file, or one of the imported OSCAL files in the stack as described in
-*Section 2.1, File Content Concepts*.
+the [*File Content Concepts*](/documentation/general-concepts/oscal-file-concepts/#file-content) section.
 
-For example, the following OSCAL content contains a `href` flag with a URI
+For example, the following OSCAL content contains an `href` flag with a URI
 fragment:
 
 ### URI Fragment Example
@@ -200,8 +198,7 @@ the following XPath query:
 {{< highlight xml "linenos=table" >}}
 //*[@uuid="a3e9f988-2db7-4a14-9859-0a0f5b0eebee"]
 {{< /highlight >}}
-If this is found to point to a resource assembly, see the *Attachments
-and Embedded Content in OSCAL Files* section for additional handling.
+If this is found to point to a `resource` assembly, see the [*Attachments and Embedded Content*](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content) section for additional handling.
 
 The name of the field or assembly referenced by the above URI fragment
 can be determined using the following XPath 2.0 query:
@@ -212,17 +209,16 @@ To express this in XPath 1.0, you must use the following:
 {{< highlight xml "linenos=table" >}}
 name(//*[@uuid="uri-fragment" | @id="uri-fragment"])
 {{< /highlight >}}
-The above query will return "resource", if the URI Fragment references
+The above query will return "resource" if the URI fragment references
 the UUID of a `resource` assembly.
 
 ## Markup-line and Markup-multiline Fields in OSCAL
 
 As with most machine-readable formats, most of OSCAL's fields are
 intended to capture short, discrete pieces of information; however,
-sometimes users require content to be formatted using features such
-bold, underline, and italics.
+sometimes users require content to be formatted using features such as bold, underline, and italics.
 {{<callout>}}
-_For markup-line and markup-multi-line, a subset of HTML is used to format XML-based OSCAL files, while Markdown is used to format JSON-based OSCAL files._
+_For markup-line and markup-multiline, a subset of HTML is used to format XML-based OSCAL files, while Markdown is used to format JSON-based OSCAL files._
 {{</callout>}}
 
 OSCAL provides two types of fields for this purpose:
@@ -230,14 +226,14 @@ OSCAL provides two types of fields for this purpose:
 -   **markup-line**: Allows some formatting within a single line of
     text.
 
--   **Markup-multiline**: Allows all the markup-line formatting, plus
-    allows multiple lines, ordered/ unordered lists, and tables.
+-   **markup-multiline**: Allows all the markup-line formatting, plus
+    allows multiple lines, ordered/unordered lists, and tables.
 
-In OSCAL-based XML files, markup-line and -multiline uses a subset of
+In OSCAL-based XML files, markup-line and -multiline use a subset of
 HTML.
 
-In OSCAL-based JSON files, markup-line and -multiline uses a subset of
-markdown.
+In OSCAL-based JSON files, markup-line and -multiline use a subset of
+Markdown.
 
 **NIST has implemented only a subset of formatting tags from these
 standards.** This is to ensure formatted content converts completely and
@@ -249,21 +245,21 @@ Both *markup-line* and *markup-multiline* support:
 
 -   inline code and quoted text
 
--   sub/super-script
+-   sub/superscript
 
 -   images and links
 
 *Markup-multiline* also supports:
 
--   Paragraphs
+-   paragraphs
 
--   Headings (Levels 1-6)
+-   headings (Levels 1-6)
 
--   Preformatted text
+-   preformatted text
 
--   Ordered and Unordered Lists
+-   ordered and unordered lists
 
--   Tables
+-   tables
 
 For a complete list of markup-line and markup-multiline features, please
 visit:
