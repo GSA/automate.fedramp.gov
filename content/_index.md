@@ -19,13 +19,13 @@ automate risk management processes
 
 # Modernizing Security Assessments, System Authorizations, and Continuous Monitoring
 
-OSCAL offers a number of benefits for streamlining and automating components of the authorization process. Below are just a few examples:
+The *Open Security Controls Assessment Language* (OSCAL) offers a number of benefits for streamlining and automating aspects of the information system authorization process. Below are just a few examples:
 
-- **Cloud Service Providers (CSPs)** are able to create their FedRAMP authorization packages more rapidly and accurately, validating much of their content before submission to the government for review.
-- **Third Party Assessment Organizations (3PAOs)** are able to use OSCAL-based authorization package artifacts to automate the planning, execution, and reporting of cloud assessment activities.
-- **Agencies** are able to expedite their reviews of the FedRAMP authorization packages.
+- **Cloud Service Providers (CSPs)** are able to create their FedRAMP authorization packages more rapidly and accurately, validating much of the package content before submission to agencies and FedRAMP for review.
+- **Third Party Assessment Organizations (3PAOs)** are able to use OSCAL-based authorization package data to automate the planning, execution, and reporting of cloud assessment activities.
+- **Agencies** are able to expedite their reviews of authorization packages.
 
-The FedRAMP Program Management Office (PMO) expects to be able to build tooling to further reduce the cost and improve the quality of package reviews.
+FedRAMP expects to be able to build tooling to further reduce the cost and improve the quality of package reviews based on OSCAL data.
 
 **[Get started](/start) with FedRAMP OSCAL-based authorization packages today.**
 

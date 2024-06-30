@@ -6,7 +6,9 @@ toc:
 ---
 # What is OSCAL?
 
-OSCAL is a collection of data models. These data models define a specific way of representing system security information as structured data that makes it easier for a computer to process.  OSCAL currently provides seven data models described below.
+OSCAL is a collection of data models, built and maintained through community engagement facilitated by NIST.
+
+The OSCAL data models define a specific way of representing system security data in a structured way that makes it is easy for a computer to process.  OSCAL currently provides seven data models described below.
 
 ## 1. Catalog
 
@@ -14,15 +16,15 @@ The OSCAL catalog model is used to represent a collection of controls. Controls 
 
 ## 2. Profile
 
-A *profile*, which is often referred to as a *baseline*, is a selection of controls that is intended for a specific purpose. For example, it is common to provide selections of controls that address the relative sensitivity of information contained within a system. More sensitive information requires greater protections from risks. The OSCAL profile model provides a means to represent control selections in a structured form that can be imported into tools to provide up-to-date information about a control baseline. The OSCAL profile references the OSCAL control catalogs and controls used to establish the baseline.
+A *profile*, which is often referred to as a *baseline*, is a selection of controls that is intended for a specific purpose. For example, it is common to provide selections of controls that address the relative sensitivity of information contained within a system. More sensitive information requires greater protections to address potential risks. The OSCAL profile model provides a means to represent control selections and additional control tailoring in a structured form that can be imported into tools to provide up-to-date information about a control baseline. The OSCAL profile references the OSCAL control catalogs and controls used to establish the baseline.
 
 ## 3. System Security Plan
 
-The OSCAL SSP model can be used to describe a system in detail. This includes the individual information types, user types, organizational roles, services, software, hardware, policies, and procedures supported by the system. The SSP also provides a means to identify the controls implemented by the system, the controls used by the system that are inherited from other systems, and the controls provided by the system that can be inherited by other systems. This capability, provided by an OSCAL SSP, establishes a shared responsibility approach that makes clear what and who is responsible for managing control implementations that manage risks. An OSCAL SSP also allows control implementations to be described at the system service level, providing for more fine-grained control implementation information, which helps to identify where core security requirements are addressed within the system. An OSCAL SSP references the OSCAL profile that establishes the control baseline for the system.
+The OSCAL System Security Plan (SSP) model can be used to describe a system in detail. This includes the individual information types, user types, organizational roles, services, software, hardware, policies, and procedures supported by the system. The SSP also provides a means to identify the controls implemented by the system, the controls used by the system that are inherited from other systems, and the controls provided by the system that can be inherited by other systems. This capability, provided by an OSCAL SSP, establishes a shared responsibility approach that makes clear what and who is responsible for managing control implementations that manage risks. An OSCAL SSP also allows control implementations to be described at the system service level, providing for more fine-grained control implementation information, which helps to identify where core security requirements are addressed within the system. An OSCAL SSP references the OSCAL profile that establishes the control baseline for the system.
 
 ## 4. Assessment Plan
 
-Assessments of a system are performed to ensure that controls are in place and working effectively to provide the security outcomes as intended. These assessments are performed by either: 1) the organization managing the system, or 2) a trusted third party that can independently analyze the system. The OSCAL assessment plan model provides a means to describe an assessment, the aspects of the system to assess, and the methods used to perform this assessment. An OSCAL assessment plan references the OSCAL SSP for the system the assessment is to be performed on. This supports the ability to reference specific aspects of the system to focus on during the assessment.
+Assessments of a system are performed to ensure that controls are in place and working effectively to provide the intended security outcomes. These assessments are performed by either: 1) the organization managing the system, or 2) a trusted third party that can independently analyze the system. The OSCAL assessment plan model provides a means to describe an assessment, the aspects of the system to assess, and the methods used to perform this assessment. An OSCAL assessment plan references the OSCAL SSP for the system the assessment is to be performed on. This supports the ability to reference specific aspects of the system to focus on during the assessment.
 
 ## 5. Assessment Results
 
