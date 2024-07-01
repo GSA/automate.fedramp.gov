@@ -12,7 +12,7 @@ Information systems (systems) represent the use of technology, specifically a co
 
 Examples of security controls include (with SP 800-53 control identifiers):
 * **SC-8, SC-13:** Protecting information that is exchanged with and within a system using cryptographic methods that obscure the exchanged data or ensure that data has not been tampered with.
-* **RA-5:** Ensuring that software used within a system is up-to-date and free of errors that may allow a malicious actor to bypass another security control.
+* **RA-5:** Ensuring that software used within a system is up-to-date and free of known errors that may allow a malicious actor to bypass another security control.
 * **AT-1:** Defining a policy and procedure for training staff on current security risks.
 * **RA-3, RA-7:** Ensuring that new security risks are identified and managed on an ongoing basis.
 

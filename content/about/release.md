@@ -9,22 +9,22 @@ toc:
   enabled: true
 ---
 
-# Versioning Strategy
+# Release Strategy and Versioning
 
-There are a number of resources used by FedRAMP partners in efforts to get authorized, stay authorized, or to use authorized cloud services. These resources include:
+There are a number of resources used by FedRAMP partners in efforts to get authorized, stay authorized, or use authorized cloud services. These resources include:
 
 - NIST Special Publication (SP) 800-53 catalog revisions
 - NIST SP 800-53B baseline revisions
-- NIST SP 800-53A assessment procedures revisions
+- NIST SP 800-53A assessment procedure revisions
 - NIST OSCAL releases
-- FedRAMP baselines revisions
+- FedRAMP baseline revisions
 - FedRAMP OSCAL guide updates
 - NIST and FedRAMP OSCAL validations
 - A variety of FedRAMP guides and templates
 
-There is a need to coordinate a set of changes across these resources using a unified versioning approach that aggregates these changes into a single *FedRAMP version*. A FedRAMP version will provide a stable revision that can be identified in FedRAMP packages, continuous monitoring data, and tools that support the creation and maintenance of these data sets. 
+There is a need to coordinate each set of changes across these resources using a unified versioning approach that aggregates these changes into a single *FedRAMP version*. A FedRAMP version will provide a stable revision that can be identified in FedRAMP packages, continuous monitoring data, and tools that support the creation and maintenance of these data sets. 
 
-This FedRAMP version will:
+This FedRAMP versioning strategy will:
 
 - Allow versioned resources to move as a unit within a given release.
 - Support incremental change over time in versioned resources.
@@ -43,9 +43,9 @@ A SemVer is the combination of MAJOR.MINOR.PATCH as follows:
 
 Examples of FedRAMP using SemVer in a sequence:
 
-`fedramp-3.0.0` (MAJOR: 3, MINOR: 0, PATCH : 0) indicates the MAJOR release 3.
-`fedramp-3.0.1` (MAJOR: 3, MINOR: 0, PATCH : 1) indicates the first PATCH release for MAJOR release 3.
-`fedramp-3.1.0` (MAJOR: 3, MINOR: 1, PATCH : 0) indicates the first MINOR release for MAJOR release 3.
+- `fedramp-3.0.0` (MAJOR: 3, MINOR: 0, PATCH : 0) indicates the MAJOR release 3.
+- `fedramp-3.0.1` (MAJOR: 3, MINOR: 0, PATCH : 1) indicates the first PATCH release for MAJOR release 3.
+- `fedramp-3.1.0` (MAJOR: 3, MINOR: 1, PATCH : 0) indicates the first MINOR release for MAJOR release 3.
 
 The following illustrates some drivers that will motivate specific version changes.
 
@@ -57,7 +57,7 @@ Incrementing the PATCH segment will occur in the following cases:
 
 - **SP 800-53 catalog:** Editorial corrections to the text of an SP 800-53 control that do not change the control's meaning.
 - **NIST OSCAL:** An OSCAL PATCH release.
-- **FedRAMP OSCAL Guides:** Corrections to a guide that do not change a requirement or that fix an obvious error. Also, changes that improve understanding, that do not change a requirement.
+- **FedRAMP OSCAL Guides:** Corrections to a guide that do not change the meaning of a requirement, such as fixing an obvious error or improving understanding.
 - **NIST and FedRAMP OSCAL validations:** Corrections to address validation false positives.
 
 ### MINOR
@@ -74,11 +74,11 @@ Incrementing the MINOR segment will occur in the following cases:
 
 ### MAJOR
 
-When the underlying surface area of potential data changes, a MAJOR version change is used to signal backwards incompatibility
+A MAJOR version change is used to signal backwards incompatibility.
 
 Incrementing the MAJOR segment will occur in the following cases:
 
-- **SP 800-53 catalog:** Removal of a control or control enhancement, or a change to the meaning of the control.
+- **SP 800-53 catalog:** Removal of a control or control enhancement, or a change to the meaning of a control or control enhancement.
 - **NIST OSCAL:** An OSCAL MAJOR release.
 - **FedRAMP OSCAL Guides:** Changes to a guide that change a requirement or that fix a non-obvious error.
 - **NIST and FedRAMP OSCAL validations:** Changes to validations that change a requirement.

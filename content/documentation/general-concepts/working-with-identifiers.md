@@ -36,7 +36,7 @@ field or assembly. Examples include:
 
 **An ID reference** typically appears with a name and hyphen in front of
 the "id" (name-id) or "uuid" (name-uuid). It is typically a flag where
-the relationship is one-to-one, but sometimes a field when the
+the relationship is one-to-one, but is sometimes a field when the
 relationship is one-to-many. The name of an ID reference flag/field
 typically reflects the name of the field to which it points.
 
@@ -54,7 +54,7 @@ Examples include:
 
 NIST provides some standard identifiers. Where appropriate, FedRAMP has
 adopted those and defined additional identifiers as needed. To ensure
-consistent processing, FedRAMP encourage content creators to use the
+consistent processing, FedRAMP encourages content creators to use the
 NIST and FedRAMP-defined identifiers to the greatest degree practical.
 Deviation is likely to result in processing errors.
 
@@ -67,20 +67,20 @@ Some role ID values are prescribed by NIST, and others by FedRAMP. These
 are "reserved" and must not be assigned to other roles for other
 reasons. The scope of this requirement goes beyond the current OSCAL
 file to all files in the OSCAL stack as a result of import statements,
-as described in *Section 2.1, File Content Concepts*.
+as described in the [*File Content Concepts*](/documentation/general-concepts/oscal-file-concepts/#file-content) section.
 
 For UUID fields, if using a tool that properly generates version 4 UUID
 values, no two will be alike; however, buggy tools have been known to
 create unexpected duplicate values. In an abundance of caution, tool
 developers are encouraged to check for unintended duplicates whenever
-generating a new UUID values. At least during the testing phase of your
+generating new UUID values. At least during the testing phase of your
 development lifecycle.
 
 ## Searching for Information by ID or UUID Values
 
 When searching for an ID or UUID reference, the tool must look both in
-the current OSCAL file, and other files in the OSCAL stack as described
-in *Section 2.1, File Content Concepts*.
+the current OSCAL file and other files in the OSCAL stack as described
+in the [*File Content Concepts*](/documentation/general-concepts/oscal-file-concepts/#file-content) section.
 
 For example, a UUID reference in an OSCAL-based FedRAMP SAR could refer
 to a field or assembly in the SAR, SAP, or SSP. XPath and similar
@@ -90,12 +90,12 @@ This requires OSCAL tools to search the current file first. If the ID or
 UUID is not found, the tool should follow the file's import statement
 and search the next file the same way. This must be repeated until
 either the ID/UUID is found, or all files in the stack have been
-processed. Of course, tools may limit
+processed however tools should consider approaches to prevent infinite recursion.
 
 **Searching for a Field or Assembly by ID or UUID**
 
-In general, it is very simple to query for an ID or UUID value within an
-XML file. Simply use the following XPath query:
+In general, searching for an ID or UUID value within an
+XML file simply requires an XPath query such as:
 
 {{< highlight xml "linenos=table" >}}
 //*[@id='id-value']
@@ -140,8 +140,7 @@ component. It would work in the SSP, SAP, SAR and POA&M.
 {{< /highlight >}}
 
 The following will only find the UUID value if it is associated with a
-component in the system-implementation assembly of the SSP. If the UUID
-value is
+component in the system-implementation assembly of the SSP. 
 {{< highlight xml "linenos=table" >}}
 /*/system-implementation/component[@uuid='1c23ddee-7001-4512-9de1-e062faa69c0a']
 {{< /highlight >}}

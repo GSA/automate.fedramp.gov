@@ -95,7 +95,7 @@ baseline available in both XML and JSON formats as follows:
 | **XML Version:** <https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/xml/FedRAMP_rev5_LI-SaaS-baseline_profile.xml>|
 | **JSON Version:** <https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/json/FedRAMP_rev5_LI-SaaS-baseline_profile.json>|
 
-# Modifying a FedRAMP Baseline
+## Modifying a FedRAMP Baseline
 
 OSCAL is designed to allow modification of controls and baselines, while
 maintaining traceability through each layer of modification. This means
@@ -103,7 +103,7 @@ you must create a new profile as a means of modifying an existing
 profile.
 
 If you require a change to a FedRAMP baseline, you should first
-coordinate that change with the FedRAMP JAB or PMO. Assuming FedRAMP
+coordinate that change with FedRAMP. Assuming FedRAMP
 agrees with the change, the correct way to implement the change is as
 follows:
 
@@ -120,7 +120,7 @@ follows:
 
 4.  **Specify How Controls Are Organized**: FedRAMP prefers you merge
     \"as-is\" using those merge fields. This is relevant when resolving
-    the profile. See the *Profile Resolution* section of this appendix
+    the profile. See the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) documentation
     for more information.
 
 5.  **Modify the Selected Controls**: Use the `modify` assembly to make modifications to parameters and control definitions.
@@ -142,8 +142,8 @@ following actions:
 -   Explicitly removes AT-4 from the baseline
 
 -   Indicates that if this profile is resolved, the organization of the
-    controls should remain as-is. See the *Profile Resolution* section
-    of this appendix for more information.
+    controls should remain as-is. See the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) section
+    for more information.
 
 -   Adds a constraint to the third parameter of AC-1 (ac-1_prm_3), which
     is more restrictive than the FedRAMP constraint, by changing it
