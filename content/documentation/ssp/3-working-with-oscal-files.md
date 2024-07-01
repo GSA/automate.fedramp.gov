@@ -8,13 +8,13 @@ This section provides a summary of several important concepts and details that a
 
 The [*FedRAMP OSCAL Documentation*](/documentation) provides important concepts necessary for working with any OSCAL-based FedRAMP file. Familiarization with those concepts is important to understanding this guide.
 
-### XML and JSON Formats
+## XML and JSON Formats
 
 The examples provided here are in XML; however, FedRAMP accepts XML or JSON formatted OSCAL-based SSP files. NIST offers a utility that provides lossless conversion of OSCAL-compliant files between XML and JSON in either direction.
 
 You may submit your SSP to FedRAMP using either format. If necessary, FedRAMP tools will convert the files for processing.
 
-### SSP File Concepts
+## SSP File Concepts
 
 Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based versions of these files are designed to make information available through linkages, rather than duplicating information. In OSCAL, these linkages are established through import commands.
 
@@ -27,7 +27,7 @@ For example, the NIST control definitions and FedRAMP baseline content that norm
 For this reason, an OSCAL-based SSP points to the appropriate
 OSCAL-based FedRAMP baseline as determined by the system\'s FIPS-199 impact level. Instead of duplicating control details, the OSCAL-based SSP simply points to the baseline content for information such as control definition statements, FedRAMP-added guidance, parameters, and FedRAMP-required parameter constraints.
 
-#### Resolved Profile Catalogs
+### Resolved Profile Catalogs
 
 The resolved profile catalog for each FedRAMP baseline is a pre-processing of the profile and catalog to produce the resulting data. This reduces overhead for tools by eliminating the need to open and follow references from the profile to the catalog. It also includes only the catalog information relevant to the baseline, reducing the overhead of opening a larger catalog.
 
@@ -39,7 +39,7 @@ Developers should be aware that at this time, catalogs and profiles remain relat
 
 For more information about resolved profile catalogs, see the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) section.
 
-### OSCAL-based FedRAMP SSP Template
+## OSCAL-based FedRAMP SSP Template
 
 FedRAMP offers an OSCAL-based SSP shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to help get you started. This document is intended to work in concert with that shell file. The OSCAL-based FedRAMP SSP Template is available in XML and JSON formats here:
 
@@ -49,14 +49,14 @@ FedRAMP offers an OSCAL-based SSP shell file in both XML and JSON formats. This 
 -   OSCAL-based FedRAMP SSP Template (XML Format):\
     <https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/ssp/xml/FedRAMP-SSP-OSCAL-Template.xml>
 
-### OSCAL's Minimum File Requirements
+## OSCAL's Minimum File Requirements
 
 Every OSCAL-based FedRAMP SSP file must have a minimum set of required
 fields/assemblies and must follow the OSCAL SSP core syntax found here:
 
 [https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp](https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/)
 
-### Importing the FedRAMP Baseline
+## Importing the FedRAMP Baseline
 
 OSCAL is designed for traceability. Because of this, the SSP is designed
 to be linked to the FedRAMP baseline. Rather than duplicating content
@@ -86,7 +86,7 @@ including a relative path, absolute path, or URI fragment.
 If the value is a URI fragment, such as
 #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SSP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/guides/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Section 2.6, Citations, Attachments and Embedded Content in OSCAL Files* for guidance on handling.
+resource in the SSP file\'s back-matter. Refer to the [*Attachments and Embedded Content*](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content) section for guidance on handling.
 
 #### SSP Back Matter Representation
 {{< highlight xml "linenos=table" >}}
@@ -111,9 +111,9 @@ resource in the SSP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentat
 
 Note: Cloud Service Providers must import [FedRAMP profiles or resolved profile catalogs](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/baselines).
 
-### Resolution Resource Prop
+## Resolution Resource Prop
 
-FedRAMP will be implementing a separate set of automated SSP validation rules for the rev 5 OSCAL templates. To ensure FedRAMP initiates the appropriate validation rules when processing OSCAL SSPs, SSP authors should add a new prop called "resolution-resource" in the metadata section and include an associated back-matter resource as shown below:
+FedRAMP will be implementing a separate set of automated SSP validation rules for the rev 5 OSCAL templates. To ensure FedRAMP initiates the appropriate validation rules when processing OSCAL SSPs, SSP authors should add a new prop called `resolution-resource` in the metadata section and include an associated back-matter resource as shown below:
 
 #### SSP Resolution Resource
 {{< highlight xml "linenos=table" >}}
@@ -126,6 +126,7 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
         <revisions>
           <revision>
               <!-- cut -->
+          </revision>
         </revisions>
         <!-- New rev 5 prop -->
         <prop ns="https://fedramp.gov/ns/oscal" name="resolution-resource"
@@ -155,4 +156,4 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
     /*/back-matter/resource[@uuid=”uuid-of-resolution-resource”]/prop[@name=”dataset” and @class=”version”]/@value
 {{</ highlight >}}
 
-If the "resolution-resource" prop is not specified in the metadata section of the SSP, FedRAMP will assume the SSP should be validated using the rev 5 validation rules. If the "resolution-resource" prop is present, FedRAMP will use the validation rules that correspond with the version specified in the back-matter resource.
+If the `resolution-resource` prop is not specified in the metadata section of the SSP, FedRAMP will assume the SSP should be validated using the rev 5 validation rules. If the `resolution-resource` prop is present, FedRAMP will use the validation rules that correspond with the version specified in the back-matter resource.

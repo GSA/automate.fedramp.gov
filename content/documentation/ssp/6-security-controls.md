@@ -13,37 +13,37 @@ imposes specific requirements on the use of OSCAL for control implementation inf
 The modeling of controls is addressed in the following sections as
 follows:
 
--   **Control Definitions**
+-   [**Control Definitions**](#control-definitions)
 
--   **Responsible Roles and Parameter Assignments**
+-   [**Responsible Roles and Parameter Assignments**](#responsible-roles-and-parameter-assignments)
 
--   **Implementation Status**
+-   [**Implementation Status**](#implementation-status)
 
--   **Control Origination**
+-   [**Control Origination**](#control-origination)
 
--   **Control Implementation Descriptions**
+-   [**Control Implementation Descriptions**](#control-implementation-descriptions)
 
     -   **Organization**
 
-        -   **Policy and Procedure Statements**
+        -   [**Policy and Procedure Statements**](#organization-policy-and-procedure-statements)
 
-        -   **Multi-Part Statements**
+        -   [**Multi-Part Statements**](#multi-part-statement-representation)
 
-        -   **Single Statements**
+        -   [**Single Statements**](#single-statement-representation)
 
     -   **Response**
 
-        -   **Overview**
+        -   [**Overview**](#response-overview)
 
-        -   **Example**
+        -   [**Example**](#response-example)
 
-        -   **"This System"**
+        -   [**"This System"**](#response-this-system-component)
 
-        -   **Inheriting from a Leveraged Authorization**
+        -   [**Inheriting from a Leveraged Authorization**](#leveraged-authorization-response-inheriting-controls-satisfying-responsibilities)
 
-        -   **Identifying Customer Responsibilities**
+        -   [**Identifying Customer Responsibilities**](#response-identifying-inheritable-controls-and-customer-responsibilities)
 
-        -   **Providing Inheritance**
+        -   [**Providing Inheritance**](#response-identifying-inheritable-controls-and-customer-responsibilities)
 
 ---
 ### Control Definitions
@@ -51,11 +51,10 @@ follows:
 {{< figure src="/img/ssp-figure-31.png" title="SSP Template Security Control Definition" alt="Screenshot of an SSP template security control definition." >}}
 
 All control definition information is imported from the appropriate
-FedRAMP baseline (OSCAL profile).  This includes the original NIST control definition and parameter labels as well as any FedRAMP control 
-guidance and parameter constraints.
+FedRAMP baseline (OSCAL profile).  This includes the original NIST control definition and parameter labels as well as any FedRAMP control guidance and parameter constraints.
 
-Interpreting and presenting profile content is beyond the scope of this
-document. Please refer to the NIST OSCAL Profile and Catalog schema references for more information:
+Interpreting and presenting profile content is out of the scope of this
+documentation. Please refer to the NIST OSCAL Profile and Catalog schema references for more information:
 
 -   [Profile Model](https://pages.nist.gov/OSCAL/concepts/layer/control/profile/)
 
@@ -63,8 +62,8 @@ document. Please refer to the NIST OSCAL Profile and Catalog schema references f
 
 Only the control implementation information is present within an
 OSCAL-based SSP. Each control in the FedRAMP baseline must have a
-corresponding implemented-requirement assembly in the
-control-implementation assembly.
+corresponding `implemented-requirement` assembly in the
+`control-implementation` assembly.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -110,13 +109,13 @@ applicable FedRAMP baseline.
 ---
 ### Responsible Roles and Parameter Assignments
 
-Every applicable control must have at least one responsible-role
-defined. There must be a separate responsible-role assembly for each
-responsible role. OSCAL requires the specified role-id to be valid in
-the defined list of roles in the metadata. Controls with a FedRAMP
-implementation-status property value of non-applicable (see section 6.3)
-do not require a responsible-role. FedRAMP further requires the
-specified role-id must also have been referenced in the system-implementation user assembly. This equates to the FedRAMP requirement of all responsible roles appearing in the Personnel Roles and Privileges table.
+Every applicable control must have at least one `responsible-role`
+defined. There must be a separate `responsible-role` assembly for each
+responsible role. OSCAL requires the specified `role-id` to be valid in
+the defined list of roles in the `metadata`. Controls with a FedRAMP
+`implementation-status` property value of "non-applicable" (see the [*Implementation Status*](#implementation-status) section)
+do not require a `responsible-role`. FedRAMP further requires that the
+specified `role-id` must also have been referenced in the `system-implementation` `user` assembly. This equates to the FedRAMP requirement of all responsible roles appearing in the Personnel Roles and Privileges table.
 
 {{< figure src="/img/ssp-figure-32.png" title="SSP Template Security Control Parameter Assignments" alt="Screenshot of an SSP template security control parameter assignments." >}}
 

@@ -28,15 +28,15 @@ It is not necessary to represent the following sections of the SSP template in O
 
 -   The control origination definitions are in appendix A of the SSP template; however, please note that hybrid and shared are represented in OSCAL by specifying more than one control origination.
 
-The OSCAL syntax in this guide may be used to represent the High, Moderate, and Low FedRAMP SSP Templates. Simply ensure the correct FedRAMP baseline is referenced using the import-profile statement.
+The OSCAL syntax in this documentation may be used to represent the High, Moderate, Low and LI-SaaS FedRAMP SSP Templates. Simply ensure the correct FedRAMP baseline is referenced using the `import-profile` statement.
 
 **NOTE: The FedRAMP SSP template screenshots in the sections that follow vary slightly from the most current version of the FedRAMP rev 5 SSP template.**
 
 
 ---
-### System Information
+## System Information
 
-#### Cloud Service Provider (CSP) Name
+### Cloud Service Provider (CSP) Name
 
 The cloud service provider (CSP) must be provided as one of the party assemblies within the metadata.
 
@@ -61,7 +61,7 @@ Cloud Service Provider (CSP) Name:
 {{</ highlight >}}
 
 ---
-#### System Name, Abbreviation, and FedRAMP Unique Identifier
+### System Name, Abbreviation, and FedRAMP Unique Identifier
 
 The remainder of the system information is provided in the
 system-characteristics assembly.
@@ -114,7 +114,7 @@ Required Identifier Type:
 {{</ highlight >}}
 
 ---
-#### Service Model
+### Service Model
 
 The core-OSCAL system-characteristics assembly has a property for the cloud service model.
 
@@ -175,7 +175,7 @@ Valid Service Model values:
 -   If the service model is "other", the remarks field is required. Otherwise, it is optional.
 
 ---
-#### Deployment Model
+### Deployment Model
 
 The core-OSCAL system-characteristics assembly has a property for the cloud deployment model.
 
@@ -240,10 +240,9 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
 -   If the deployment model is \"hybrid\", the remarks field is required. Otherwise, it is optional.
 
 ---
-#### Digital Identity Level (DIL) Determination
+### Digital Identity Level (DIL) Determination
 
-The digital identity level identified in Table 1.0 is the same as the level in Attachment 3. It is expressed through 
-the following core OSCAL properties.
+The digital identity level identified in the FedRAMP SSP template document, illustrated in the figure below, isexpressed through the following core OSCAL properties.
 
 {{< figure src="/img/ssp-figure-8.png" title="FedRAMP SSP template DIL determination." alt="Screenshot of the DIL determination in the FedRAMP SSP template." >}}
 
@@ -297,9 +296,9 @@ Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 {{</ highlight >}}
 
 ---
-#### System Sensitivity Level 
+### System Sensitivity Level 
 
-The privacy system designation in Table 1.0 is the same as in Attachment 4. It is expressed through the following core OSCAL property.
+The privacy system designation in in the FedRAMP SSP template document, illustrated in the figure below, is expressed through the following core OSCAL property.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
@@ -349,15 +348,17 @@ Valid values for security-sensitivity-level:
 
 **NOTES:**
 
--   The identified System Sensitivity Level governs which FedRAMP baseline applies. See Appendix A for more information about importing the appropriate FedRAMP baseline.
+-   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
 
 ---
-#### System Status
+### System Status
+
+The system status in the FedRAMP SSP template document is specified in the "Fully Operational as of" table cell illustrated in the figure below.  OSCAL has a `status` assembly that is used to describe the operational status of the system.  In addition, FedRAMP has defined an extension that must be used to provide the date when the system became operational.
 
 {{< figure src="/img/ssp-figure-10.png" title="FedRAMP SSP template system status." alt="Screenshot of the system status information in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
-{{< highlight xml "linenos=table, hl_lines=24" >}}
+{{< highlight xml "linenos=table, hl_lines=18-24" >}}
 <system-security-plan>
     <metadata>
         <!-- cut CSP Name -->
@@ -377,12 +378,11 @@ Valid values for security-sensitivity-level:
         <!-- Fully Operational as of -->
         <status state="operational">
             <remarks>
-                <p>Remarks are optional if status/state is "operational".</p>
-                <p>Remarks are required otherwise.</p>
+                <p>If the status is “other”, the remarks field is required.</p>
+                <p>Otherwise, it is optional.</p>
             </remarks>
         </status>
-        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="mm/dd/yyyy"/>
-                      
+        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="mm/dd/yyyy"/>        
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
@@ -420,7 +420,9 @@ FedRAMP only accepts those in bold:
 -   While under-development and disposition are valid OSCAL values, systems with either of these operational status values are not eligible for a FedRAMP Authorization.
 
 ---
-#### System Functionality
+### System Functionality
+
+The system functionality in the FedRAMP SSP template document is specified in the “General System Description” table cell illustrated in the figure below. OSCAL has a `description` field within the `system-characteristics` assembly that is used to describe the system and its functionality.
 
 {{< figure src="/img/ssp-figure-11.png" title="FedRAMP SSP template general system description." alt="Screenshot of the general system description information in the FedRAMP SSP template." >}}
 
@@ -585,7 +587,7 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
 If the authorization-type field is "fedramp-jab", the responsible-party/party-uuid field must be the uuid value for the FedRAMP JAB.
 
 ---
-##### Federal JAB P-ATO Authorization Representation
+#### Federal JAB P-ATO Authorization Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- cut -->
@@ -726,7 +728,7 @@ Required Role ID:
 If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the system-implementation assembly. There must be one leveraged-authorization assembly and one matching component assembly for each leveraged authorization.
 
 The leveraged-authorization assembly includes the leveraged system\'s name, point of contact (POC), and authorization date. The component assembly must be linked to the leveraged-authorization assembly using a property (prop) field with the name leveraged-authorization-uuid and the
-UUID value of its associated leveraged-authorization assembly. The component assembly enables controls to reference it with the by-component responses described in *Section 6.4, Control Implementation Descriptions*. The implementation-point property value must be set to "external".
+UUID value of its associated leveraged-authorization assembly. The component assembly enables controls to reference it with the by-component responses described in the [*Control Implementation Descriptions*](/documentation/ssp/6-security-controls/#control-implementation-descriptions) section. The implementation-point property value must be set to "external".
 
 If the leveraged system owner provides a UUID for their system, such as in an OSCAL-based Inheritance and Responsibility document (similar to a CRM), it should be provided as the inherited-uuid property value.
 
@@ -737,7 +739,7 @@ If the leveraged system owner provides a UUID for their system, such as in an OS
 
 **IMPORTANT FOR LEVERAGED SYSTEMS:**
 
-While a leveraged system has no need to represent content here, its SSP must include special inheritance and responsibility information in the individual controls. See Section 6.4.8, Response: Identifying Inheritable Controls and Customer Responsibilities for more information.
+While a leveraged system has no need to represent content here, its SSP must include special inheritance and responsibility information in the individual controls. See the [*Response: Identifying Inheritable Controls and Customer Responsibilities*](/documentation/ssp/6-security-controls/#response-identifying-inheritable-controls-and-customer-responsibilities) section for more information.
 
 {{</callout>}}
 
@@ -826,56 +828,58 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 ### External Systems and Services Not Having FedRAMP Authorization
 
+FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
+
 {{< figure src="/img/ssp-figure-17.png" title="FedRAMP SSP template external systems (not FedRAMP authorized)." alt="Screenshot of the external system information for non-FedRAMP authorized services in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <!-- list any external connections as components in the system-characteristics -->
-    <component uuid="uuid-value" type="interconnection">
-        <title>[EXAMPLE]External System / Service Name</title>
-        <description>
-            <p>Briefly describe the interconnection details.</p>
-        </description>
-        <!-- Props for table 7.1 columns -->
-        <prop ns="https://fedramp.gov/ns/oscal" name="service-processor" 
-              value="[SAMPLE] Telco Name"/>
-         <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-type" value="1" />
-         <prop name="direction" value="incoming"/>
-         <prop name="direction" value="outgoing"/>
-         <prop ns="https://fedramp.gov/ns/oscal" name="nature-of-agreement" 
-               value="contract" />
-         <prop ns="https://fedramp.gov/ns/oscal" name="still-supported" value="yes" />
-         <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
-               name="interconnection-data-type" value="C.3.5.1" />
-         <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
-               name="interconnection-data-type" value="C.3.5.8" /> 
-         <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.1" 
-               name="interconnection-data-categorization" value="low" />
-         <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.8" 
-               name="interconnection-data-categorization" value="moderate" /> 
-         <prop ns="https://fedramp.gov/ns/oscal" name="authorized-users" 
-               value="SecOps engineers" />
-         <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
-               name="interconnection-compliance" value="PCI SOC 2" />
-         <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
-               name="interconnection-compliance" value="ISO/IEC 27001" />
-         <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-hosting-environment" 
-               value="PaaS" />
-         <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-risk" value="None" />
-         <prop name="isa-title" value="system interconnection agreement"/>
-         <prop name="isa-date" value="2023-01-01T00:00:00Z"/>
-         <prop name="ipv4-address" class="local" value="10.1.1.1"/>
-         <prop name="ipv4-address" class="remote" value="10.2.2.2"/>
-         <prop name="ipv6-address" value="::ffff:10.2.2.2"/>
-         <prop ns="https://fedramp.gov/ns/oscal" name="information" 
-               value="Describe the information being transmitted."/>
-         <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
-         <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" 
-               value="ipsec">
-                  <!-- cut ports, protocols -->
-        <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
-        <!-- cut repeat responsible-party assembly for each required ICA role id -->
-    </component>
+<component uuid="uuid-value" type="interconnection">
+    <title>[EXAMPLE]External System / Service Name</title>
+    <description>
+        <p>Briefly describe the interconnection details.</p>
+    </description>
+    <!-- Props for table 7.1 columns -->
+    <prop ns="https://fedramp.gov/ns/oscal" name="service-processor" 
+            value="[SAMPLE] Telco Name"/>
+        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-type" value="1" />
+        <prop name="direction" value="incoming"/>
+        <prop name="direction" value="outgoing"/>
+        <prop ns="https://fedramp.gov/ns/oscal" name="nature-of-agreement" 
+            value="contract" />
+        <prop ns="https://fedramp.gov/ns/oscal" name="still-supported" value="yes" />
+        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+            name="interconnection-data-type" value="C.3.5.1" />
+        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+            name="interconnection-data-type" value="C.3.5.8" /> 
+        <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.1" 
+            name="interconnection-data-categorization" value="low" />
+        <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.8" 
+            name="interconnection-data-categorization" value="moderate" /> 
+        <prop ns="https://fedramp.gov/ns/oscal" name="authorized-users" 
+            value="SecOps engineers" />
+        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+            name="interconnection-compliance" value="PCI SOC 2" />
+        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+            name="interconnection-compliance" value="ISO/IEC 27001" />
+        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-hosting-environment" 
+            value="PaaS" />
+        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-risk" value="None" />
+        <prop name="isa-title" value="system interconnection agreement"/>
+        <prop name="isa-date" value="2023-01-01T00:00:00Z"/>
+        <prop name="ipv4-address" class="local" value="10.1.1.1"/>
+        <prop name="ipv4-address" class="remote" value="10.2.2.2"/>
+        <prop name="ipv6-address" value="::ffff:10.2.2.2"/>
+        <prop ns="https://fedramp.gov/ns/oscal" name="information" 
+            value="Describe the information being transmitted."/>
+        <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
+        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" 
+            value="ipsec">
+                <!-- cut ports, protocols -->
+    <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
+    <!-- cut repeat responsible-party assembly for each required ICA role id -->
+</component>
 <!-- cut …. -->
 <back-matter>
     <resource uuid="uuid-value">
@@ -889,6 +893,8 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</ highlight >}}
 
 ### External System and Services (Queries)
+
+#Todo: Add 
 
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -1051,7 +1057,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
-#### Data Flow
+### Data Flow
 
 {{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template data flow." alt="Screenshot of data flow information in the FedRAMP SSP template." >}}
 
@@ -1222,7 +1228,7 @@ a URI fragment. The fragment must start with a hashtag (#) and include the UUID 
 ---
 ### Cryptographic Modules Implemented for Data-at-Rest (DAR)
 
-The approach is the same as in section 4.14 (cryptographic module data-in-transit).
+The approach is the same as in the [*cryptographic module data-in-transit*](#cryptographic-modules-implemented-for-data-in-transit-dit) section.
 
 {{< figure src="/img/ssp-figure-22.png" title="FedRAMP SSP template cryptographic modules table (data-at-rest)." alt="Screenshot of the cryptographic modules table (data-at-rest) in the FedRAMP SSP template." >}}
 
@@ -1237,14 +1243,14 @@ The approach is the same as in section 4.14 (cryptographic module data-in-transi
     <!-- Include a separate component for each relevant certificate -->
     <component uuid="uuid-value" type="validation">
         <title>Module Name</title>
-        <description><p>FIPS 140-3 Validated Module</p></description>
+        <description><p>FIPS 140-2 Validated Module</p></description>
         <prop ns="https://fedramp.gov/ns/oscal" name="asset-type" 
               value="cryptographic-module" />
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
               value="data-in-transit"/>
-        <prop name="validation-type" value="fips-140-3"/>
+        <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />
         <status state="operational" />
