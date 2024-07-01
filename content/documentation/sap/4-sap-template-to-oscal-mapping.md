@@ -123,9 +123,7 @@ for this information as follows:
 
 {{</ highlight >}}
 
-If no OSCAL-based SSP exists, as described in *Section 3.5.2, If No
-OSCAL-based SSP Exists (General)*, the resource with the no-oscal-ssp
-type must designate the system\'s identifier, name, and abbreviation.
+If no OSCAL-based SSP exists, as described in the [*If No OSCAL-based SSP Exists*](#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses) section, the `resource` with the "no-oscal-ssp" type must designate the system\'s identifier, name, and abbreviation.
 
 **NOTE:**
 
@@ -394,8 +392,9 @@ test users here. Both use FedRAMP extensions.
     (SAP) Login ID:
         (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-id'][@ns="https://fedramp.gov/ns/oscal"]
     (SAP) Inventory-ID of host:
-        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[2]/ associated-activity/subject[@type='inventory-item']/include-subject/@subject-uuid
-    NOTE: Replace "[2]" with "[2]", "[3]", etc.
+        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/ associated-activity/subject[@type='inventory-item']/include-subject/@subject-uuid
+        
+    NOTE: Replace "[1]" with "[2]", "[3]", etc.
     REMEMBER: The inventory-item could be in the SSP's system-implementation or the SAP's local-definitions.
 
 {{</ highlight >}}
@@ -433,14 +432,12 @@ to properly identify all databases for testing.
 ##### If No OSCAL-based SSP Exists or Has Inaccurate Information (Database)
 
 If no OSCAL-based SSP exists, or an item is missing completely from the
-SSP inventory, it should have already been added as described in
-*Section 4.4.1, If No OSCAL-based SSP Exists or Has Inaccurate
-Information (IP* Addresses).
+SSP inventory, it should have already been added as described in the [*If No OSCAL-based SSP Exists*](#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses) section.
 
 If a pre-existing SSP inventory item fails to properly identify a
 database, the tool should enable the assessor to add this designation
-with an entry in the SAP local-definitions*,* except the value of database
-should be used instead of web for the scan-type.
+with an entry in the SAP `local-definitions`, except the value of `database`
+should be used instead of `web` for the `scan-type`.
 
 #### Roles Testing Inclusions and Exclusions
 
@@ -453,7 +450,7 @@ roles excluded from testing. When processing an OSCAL SAP, SAP tools
 should present assessors with the roles from the associated (import-ssp)
 SSP so the assessor can select specific roles for testing. SAP tools
 should allow the assessor to easily identify roles that are excluded.
-Section 6.2 of the [*Guide to OSCAL-based System Security Plans (SSP)*](/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) describes personnel roles and privileges with examples illustrating how
+The [*SSP - Responsible Roles and Parameter Assignments*](/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) section describes personnel roles and privileges with examples illustrating how
 to identify them in an OSCAL SSP. If the \"roles\" slated for testing
 exist in the SSP, the SSP roles are referenced from the SAP using their
 SSP IDs as defined in the SSP user assemblies in the system-implementation section of the OSCAL-based SSP file. **Note that in this case, the SAP role must actually map to the uuid of the user assembly in the SSP**.
@@ -755,11 +752,11 @@ NOTE: Replace "exclude-control" with "include-control" above for any explicitly 
 
 #### Assessor\'s Name, Address, and URL
 
-The SAP\'s metadata is used to represent
-the assessor\'s name address and URL. This uses the OSCAL common role,
-party, and responsible-party assemblies. Some roles are specific to the
-SAP. In the responsible-party assembly, the party-uuid may point to a
-party in the SSP or SAP. The SAP tool must not assign a role ID or party
+The SAP\'s `metadata` is used to represent
+the assessor\'s name address and URL. This uses the OSCAL common `role`,
+`party`, and `responsible-party` assemblies. Some roles are specific to the
+SAP. In the `responsible-party` assembly, the `party-uuid` may point to a
+`party` in the SSP or SAP. The SAP tool must not assign a role ID or party
 ID that duplicates one used in the SSP.
 
 {{< figure src="/img/sap-figure-13.png" title="FedRAMP SAP template security assessment team." alt="Screenshot of the security assessment team information in the FedRAMP SAP template." >}}
@@ -814,8 +811,8 @@ ID that duplicates one used in the SSP.
 #### Security Assessment Team
 
 The SAP\'s metadata is used to represent the assessment team and
-assessment lead. This uses the OSCAL common role, party, and
-responsible-party assemblies. Some roles are specific to the SAP. The
+assessment lead. This uses the OSCAL common `role`, `party`, and
+`responsible-party` assemblies. Some roles are specific to the SAP. The
 SAP tool must not assign a role ID or party ID that duplicates one used
 in the SSP.
 
@@ -854,7 +851,7 @@ in the SSP.
 (SAP) Name of First Assessment Team Member:
     /*/metadata/party[@id=/*/metadata/responsible-party[@role-id='assessment-team'] /party-uuid[1]]/person/person-name
 (SAP) Role of First Assessment Team Member:
-    /*/metadata/role[@id='assessment-team']/title
+    /*/metadata/role[@id='assessment-team'][1]/title
 (SAP) Contact Information of First Assessment Team Member (phone):
     /*/metadata/party[@id=/*/metadata/responsible-party[@role-id='assessment-team'] /party-uuid[1]]/person/phone
 NOTE: Replace 'phone' with 'email'
@@ -1480,6 +1477,8 @@ NOTE: Replace 'person-1' with each party-uuid found in the responsible role.
 ---
 #### Limitation of Liability 
 
+The SAP muse document any limitation of liability within the `terms-and-conditions` assembly as a collection of `liability-limitation` `part` assemblies, as illustrated in the OSCAL representation below. 
+
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
@@ -1580,8 +1579,7 @@ following approaches is encouraged:
 #### Security Controls Selection Worksheet
 
 An OSCAL SAP must always explicitly select the in-scope controls from
-the applicable FedRAMP Baseline/Profile. See section 4.5 Controls
-Testing for additional guidance.
+the applicable FedRAMP Baseline/Profile. See the [*Controls Testing*](#control-testing) section for additional guidance.
 
 #### Test Case Procedures
 
@@ -1594,8 +1592,7 @@ the baseline.
 ##### Baseline Objectives and Methods
 
 To include an assessment objective and associated actions in the SAP,
-its control must be designated in-scope as described in *Sections 4.1,
-SAP Scope*. SAP tools should support and enforce this constraint.
+its control must be designated in-scope as described in the [*SAP Scope*](#scope) section. SAP tools should support and enforce this constraint.
 
 In most cases, a FedRAMP assessor must adopt these without change. In
 this case, a SAP tool may simply specify all, to indicate that all
