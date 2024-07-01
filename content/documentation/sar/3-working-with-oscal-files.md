@@ -80,7 +80,7 @@ As risks are closed during testing, the SAR tool should allow the assessor to ma
 
 Allowing for these adjustments, the Risk Exposure table is simply a view or presentation of the findings that have risks with an open status that have not been marked as a false positive. These are also the entries that are copied to the CSP\'s POA&M.
 
-{{< figure src="/img/sar-figure-5.png" title="Gathering findings and risk analysis." alt="Detailed figure showing assessment activities, including gathering of findings, risk analysis, and risk tracking.  The figure shows how identified risks are captured in the SAR and this information is used by the POA&M for risk tracking." >}}
+{{< figure src="/img/sar-figure-6.png" title="Gathering findings and risk analysis." alt="Detailed figure showing assessment activities, including gathering of findings, risk analysis, and risk tracking.  The figure shows how identified risks are captured in the SAR and this information is used by the POA&M for risk tracking." >}}
 
 A SAR allows the assessor to update finding and risk information during the assessment.
 

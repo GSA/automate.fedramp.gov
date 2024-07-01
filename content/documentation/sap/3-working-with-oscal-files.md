@@ -105,9 +105,9 @@ including a relative path, absolute path, or URI fragment.
 {{</ highlight >}}
 
 If the value is a URI fragment, such as
-#96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
+`#96445439-6ce1-4e22-beae-aa72cfe173d0`, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SAP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/documentation/general-concepts/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Citations and Attachments in OSCAL Files* for guidance on handling.
+resource in the SAP file\'s `back-matter`. Refer to the [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
 
 ##### SAP Back Matter Representation 
 {{< highlight xml "linenos=table" >}}

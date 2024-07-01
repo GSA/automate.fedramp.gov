@@ -691,16 +691,12 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
 
 When the current system is inheriting a control from or meeting customer
 responsibilities defined by an underlying authorization, the leveraged
-system must first be defined as described in *Section **Error! Reference
-source not found.**, **Error! Reference source not found.*** before it
-may be referenced in a control response. The `by-component` assembly
-references these components.
+system must first be defined as described in the [*Response: Identifying Inheritable Controls and Customer Responsibilities*](#response-identifying-inheritable-controls-and-customer-responsibilities) section, and documented a `component` int the leveraging system SSP before it may be referenced in a control response. The `by-component` assembly references these components.
 
-IMPORTANT: The leveraged system may provide a single component
+IMPORTANT: The leveraged system may provide a single `component`
 representing the entire leveraged system\
 or may provide individual system components as well. In either case, the
-inherited-uuid property in the component when defined in the leveraging
-system\'s SSP.
+`inherited-uuid` property in the `component` must have the `value` flag set to the UUID of the leveraged system or component.
 
 {{< figure src="/img/ssp-figure-41.png" title="SSP Template Control Description" alt="Screenshot of a security control description in the SSP template." >}}
 
@@ -752,7 +748,7 @@ system\'s SSP.
 
 {{</ highlight >}}
 
-**See Section 6.4.10, XPath Queries for Control Implementation Descriptions**
+**See the [XPath Queries for Control Implementation Descriptions](#xpath-queries-for-control-implementation-descriptions) section**
 
 **See the [NIST OSCAL Leveraged Authorization Presentation](https://pages.nist.gov/OSCAL/presentations/oscal-leveraged-authorizations-v6a.pdf) for more information.**
 
@@ -761,7 +757,7 @@ system\'s SSP.
 
 Use the following XPath queries to retrieve basic control response
 information. For any given control response part, tools should list the
-name of each component cited by a by-component assembly, as well as the
+name of each component cited by a `by-component` assembly, as well as the
 description.
 
 {{< figure src="/img/ssp-figure-41.png" title="SSP Template Control Description" alt="Screenshot of a security control description in the SSP template." >}}
@@ -784,7 +780,7 @@ description.
 
 **NOTES:**
 
--   Replace "ac-2" with target control-id.
--   Replace "ac-2_smt.a" with target control statement-id.
+-   Replace "ac-2" with target `control-id`.
+-   Replace "ac-2_smt.a" with target control `statement-id`.
 -   Replace "\[1\]" with "\[2\]", "\[3\]", etc. as needed to reference
-    by-component statement.
+    `by-component` `statement`.

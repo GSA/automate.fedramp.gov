@@ -44,7 +44,7 @@ This section will likely be updated as NIST continues to evolve its approach to 
 
 #### Minimum Required Components
 
-There must be a component that represents the entire system itself. It should be the only component with the component-type set to "system".
+There must be a component that represents the entire system itself. It should be the only component with the component-type set to "this-system".
 
 The following is an example of a defined component.
 
@@ -69,7 +69,7 @@ The following is an example of a defined component.
 
 #### Common Additional Components
 
-For each FIPS 140 validated module, there must be a component that represents the validation certificate itself. For more information about this, see the *FIPS 140 Validated Components* Section.
+For each FIPS 140 validated module, there must be a `component` that represents the service (e.g., cryptographic module, service, software, hardware, etc) that is validated, and another `component` of type `validation` that represents the validation certificate itself.  A reference `link` with `rel` set to "validation" and `href` set to the UUID of the validation component must be used to specify the validation for the component. 
 
 ##### Common Additional Component Representation
 {{< highlight xml "linenos=table" >}}
@@ -84,6 +84,7 @@ For each FIPS 140 validated module, there must be a component that represents th
         <description><p>Describe the service</p></description>
         <purpose>Describe the purpose for which the service is needed.</purpose>
         <prop name="used-by" value="What uses this service?"/>
+        <link rel="validation" href="#certificate-uuid-value"/>
         <status state="operational" />
         <protocol name="http">
             <port-range start="80" end="80" transport="TCP"/>
@@ -95,7 +96,7 @@ For each FIPS 140 validated module, there must be a component that represents th
     
     <!-- FIPS 140 Validation Certificate Information -->
     <!-- Include a separate component for each relevant certificate -->
-    <component uuid="uuid-value" type="validation">
+    <component uuid="certificate-uuid-value" type="validation">
         <title>Module Name</title>
         <description><p>FIPS 140 Validated Module</p></description>
         <prop name="validation-type" value="fips-140-2"/>
@@ -116,11 +117,11 @@ NIST\'s approach to component-based system modeling is to reduce redundancy of i
 
 This is a one-to-many relationship: one component to many inventory item instances.
 
-For example, if an open-source operating system (OS) is used in many places throughout the system, it is defined once as a component. All information about the product, vendor, and support are modeled within the component detail. If the OS is used four times within the system, each use is an inventory item, with details about that specific information, such as IP address.
+For example, if an open-source operating system (OS) is used in many places throughout the system, it is defined once as a component. All information about the product, vendor, and support are modeled within the component detail. If the OS is used four times within the system, each use is an inventory item, with the details pertain  to each individual use, such as IP address.
 
 {{< figure src="/img/ssp-figure-42.png" title="Relationship of Components and Inventory." alt="Figure showing the relationship between components and inventory." >}}
 
-FedRAMP requires a component assembly for each model of infrastructure device used, and each version of software and database used within the system. FedRAMP is not asking for more detail than provided in the legacy inventory workbook, only that the information is organized differently.
+FedRAMP requires a `component` assembly for each model of infrastructure device used, and each version of software and database used within the system. FedRAMP is not asking for more detail than provided in the legacy inventory workbook, only that the information is organized differently.
 
 As NIST continues to evolve its component approach, FedRAMP will re-evaluate its approach to system inventory representation.
 
@@ -129,7 +130,7 @@ As NIST continues to evolve its component approach, FedRAMP will re-evaluate its
 NIST designed OSCAL such that a system architect can express all aspects of the system as components. A component is anything that can satisfy a control
 requirement. This includes hardware, software, services, and underlying service providers, as well as policies, plans, and procedures.
 
-OSCAL is also designed to support legacy conversion of SSPs without individual components defined and enables an SSP author to migrate to the component approach gradually over time. In this instance, only a single component is initially required, representing the system as a whole and designated with the special component type, "this-system". The following provides an example of FedRAMP\'s minimum required component approach:
+OSCAL is also designed to support legacy conversion of SSPs without individual components defined and enables an SSP author to migrate to the component approach gradually over time. In this instance, only a single `component` is initially required, representing the system as a whole and designated with the special component type, "this-system". The following provides an example of FedRAMP\'s minimum required component approach:
 
 ##### Example control for legacy SSP conversion
 {{< highlight xml "linenos=table" >}}
