@@ -208,7 +208,7 @@ The target assembly identifies which objective is being addressed by the assesso
 <br />
 {{<callout>}}
 **Accepted Values**
-- The implementation-status fields must have the @ns flag with a value of https://fedramp.gov
+- The implementation-status fields must have the @ns flag with a value of https://fedramp.gov/ns/oscal
 - The implementation-status field may only have one of the following values, which match the SSP accepted values:
     - implemented, partial, planned, alternative, not-applicable
 - The status field may only have one of the following values:
@@ -570,12 +570,10 @@ The Implementation Status, Assessment Results, and Assessor POC are handled the 
 ---
 ### Test Case Workbook: SSP Implementation Statement Differential
 
-If an SSP Implementation Statement Differential is identified, add an additional observation with a type
-value of \"ssp-statement-issue\" and cite this observation from the finding assembly. The finding assembly should also include the
-implementation-statement-uuid field with the UUID of the original statement in the SSP.
+If an SSP Implementation Statement Differential is identified, add an additional `observation` with a type
+value of \"ssp-statement-issue\" and cite this `observation` from the `finding` assembly. The `finding` assembly should also include the `implementation-statement-uuid` field with the UUID of the original `statement` in the SSP.
 
-If this was an issue where an inventory-item or component was not configured as described in the SSP, the related observation should
-include the relevant inventory-item or component should be cited as subjects.
+If this was an issue where an `inventory-item` or `component` was not configured as described in the SSP, the related `observation` should cite the relevant `inventory-item` or `component` as subjects.
 
 {{< figure src="/img/sar-figure-15.png" title="SSP Implementation Statement Differential" alt="Screenshot of the FedRAMP Test Case Workbook showing the SSP implementation statement differential information." >}}
 
@@ -1237,7 +1235,7 @@ When using CVSS scoring to justify a risk adjustment, the CVSS metrics are added
 
 ``` <risk-metric name="AV" system="CVSSv3.1">network</risk-metric> ```
 
-See Appendix A, CVSS Scoring for more information.
+See the [*CVSS Scoring*](#/documentation/sar/5-generated-content/#cvss-scoring) for more information.
 
 {{</callout>}}
 
