@@ -466,7 +466,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
 {{</ highlight >}}
 
 ---
-### Information System Owner
+## Information System Owner
 
 A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner\'s information.
 
@@ -533,7 +533,7 @@ Required role ID:
 If no country is provided, FedRAMP tools will assume a US address.
 
 ---
-### Federal Authorizing Officials
+## Federal Authorizing Officials
 
 A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official\'s information.
 
@@ -642,7 +642,7 @@ Required Role ID:
 
 
 ---
-### Assignment of Security Responsibilities
+## Assignment of Security Responsibilities
 
 A role with an ID value of "information-system-security-officer" is
 required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
@@ -723,7 +723,7 @@ Required Role ID:
 {{</ highlight >}}
 
 ---
-### Leveraged FedRAMP-authorized Services
+## Leveraged FedRAMP-authorized Services
 
 If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the system-implementation assembly. There must be one leveraged-authorization assembly and one matching component assembly for each leveraged authorization.
 
@@ -826,7 +826,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
-### External Systems and Services Not Having FedRAMP Authorization
+## External Systems and Services Not Having FedRAMP Authorization
 
 FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
 
@@ -894,7 +894,7 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
 
 ### External System and Services (Queries)
 
-#Todo: Add 
+Refer to the XPath queries below and corresponding notes for guidance on what targets in an OSCAL SSP should be used to represent each column of the "External Systems and Services Not Having FedRAMP Authorization" table in the legacy SSP template.
 
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -932,11 +932,11 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
-### Illustrated Architecture and Narratives
+## Illustrated Architecture and Narratives
 
-#### Authorization Boundary
+### Authorization Boundary
 
-The OSCAL approach to this type of diagram is to treat the image data as either a linked or base64-encoded resource in the back-matter section of the OSCAL file, then reference the diagram using the link field.
+The OSCAL approach to this type of diagram is to treat the image data as either a linked or base64-encoded `resource` in the `back-matter` section of the OSCAL file, then reference the diagram using the `link` field. The narrative describing the system architecture must be provided in the `description` field of the `authorization-boundary` assembly.
 
 {{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template authorization boundary sections." alt="Screenshot of the authorization boundary information in the FedRAMP SSP template." >}}
 
@@ -995,7 +995,9 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
-#### Network Architecture
+### Network Architecture
+
+Consistent with the [*Authorization Boundary*](#authorization-boundary) guidance, the OSCAL approach to network architecture diagrams is to treat image data as either a linked or base64-encoded `resource` in the `back-matter` section of the OSCAL file, then reference the diagram using the `link` field. The narrative describing the network architecture must be provided in the `description` field of the `network-architecture` assembly.
 
 {{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template network architecture." alt="Screenshot of the network architecture information in the FedRAMP SSP template." >}}
 
@@ -1059,6 +1061,8 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 ### Data Flow
 
+Consistent with the [*Authorization Boundary*](#authorization-boundary) guidance, the OSCAL approach to data flow diagrams is to treat image data as either a linked or base64-encoded `resource` in the `back-matter` section of the OSCAL file, then reference the diagram using the `link` field. The narrative describing the data flows must be provided in the `description` field of the `data-flow` assembly.
+
 {{< figure src="/img/ssp-figure-19.png" title="FedRAMP SSP template data flow." alt="Screenshot of data flow information in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
@@ -1118,7 +1122,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
-### Ports, Protocols and Services
+## Ports, Protocols and Services
 
 Entries in the ports, protocols, and services table are represented as component assemblies, with the component-type flag set to "service". Use a protocol assembly for each protocol associated with the service. For a single port, set the port-range start flag and end flag to the same value.
 
@@ -1172,7 +1176,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
-### Cryptographic Modules Implemented for Data-in-Transit (DIT) 
+## Cryptographic Modules Implemented for Data-in-Transit (DIT) 
 
 NIST\'s component model treats independent validation of products and services as if that validation were a separate component. This means when using components with FIPS 140 validated cryptographic modules, there must be two component assemblies:
 
@@ -1226,7 +1230,7 @@ a URI fragment. The fragment must start with a hashtag (#) and include the UUID 
 {{</ highlight >}}
 
 ---
-### Cryptographic Modules Implemented for Data-at-Rest (DAR)
+## Cryptographic Modules Implemented for Data-at-Rest (DAR)
 
 The approach is the same as in the [*cryptographic module data-in-transit*](#cryptographic-modules-implemented-for-data-in-transit-dit) section.
 
