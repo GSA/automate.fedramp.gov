@@ -544,9 +544,9 @@ file posted on <https://fedramp.gov>.
 
 These are already included in the OSCAL-based FedRAMP templates as
 resources. The `resource` linking to the FedRAMP citations file is
-identified with links from the property type, `"fedramp-citations"`. The
+identified with links from the property type, `fedramp-citations`. The
 `resource` linking to the FedRAMP acronyms file is identified with the
-property type, `"fedramp-acronyms"`.
+property type, `fedramp-acronyms`.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
