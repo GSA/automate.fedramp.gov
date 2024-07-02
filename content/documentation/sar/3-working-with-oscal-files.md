@@ -4,7 +4,7 @@ weight: 102
 ---
 # FedRAMP OSCAL SAR Overview
 
-This section provides a summary of several important concepts and details that apply\ to OSCAL-based FedRAMP SAR files.
+This section provides a summary of several important concepts and details that apply to OSCAL-based FedRAMP SAR files.
 
 The [*FedRAMP OSCAL Documentation*](/documentation) provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to understanding this guide.
@@ -22,7 +22,7 @@ Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based versions
 
 {{< figure src="/img/sar-figure-1.png" title="OSCAL import linkage hierarchy." alt="Figure illustrating how the OSCAL catalog, profile, SSP, SAP, and SAR have linkages to the preceding OSCAL model. The POA&M model is omitted for simplicity." >}}
 
-For example, the assessment objectives and actions that appear in a blank test case workbook (TCW), are defined in the FedRAMP profile, and simply referenced by the SAP and SAR. Only deviations from the TCW are captured in the SAP or SAR.
+For example, the assessment objectives and actions that appear in a blank test case workbook (TCW) are defined in the FedRAMP profile and simply referenced by the SAP and SAR. Only deviations from the TCW are captured in the SAP or SAR.
 
 {{< figure src="/img/sar-figure-2.png" title="Detailed overview of OSCAL models." alt="Figure showing the main contents of the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
@@ -44,13 +44,13 @@ The SAP represents the assessment intentions before it starts and should not be 
 
 {{< figure src="/img/sar-figure-4.png" title="Assessment Plan and Results." alt="Detailed figure showing the dependency between the SAR and the SAP." >}}
 
-The SAR reference SAP content when those references are accurate and defines content locally when the assessment details deviate from the SAP. Similarly, the SAR\'s assessment log captures the actual timing of events and can be linked to the SAP\'s defined tasks (schedule).
+The SAR references SAP content when those references are accurate and defines content locally when the assessment details deviate from the SAP. Similarly, the SAR\'s assessment log captures the actual timing of events and can be linked to the SAP\'s defined tasks (schedule).
 
 FedRAMP\'s requirement to report assessment deviations can be very straightforward if the above approach is supported by tools.
 
 For schedule deviations, a SAR's tools can simply compare the SAR assessment log to the SAP tasks and report differences.
 
-Any other changes are essentially summarized in the SAR\'s local definitions. The overarching local definitions captures changes to
+Any other changes are essentially summarized in the SAR\'s local definitions. The overarching local definitions capture changes to
 defined activities or control objectives. The \"Result\" local definitions capture missing or inaccurate components, inventory items, users, and assessment tools.
 
 Instead of an assessor manually summarizing assessment deviations, a tool can simply compare the SAP and SAR content and report the
@@ -60,7 +60,7 @@ differences automatically.
 
 FedRAMP requires residual risks from an initial or annual assessment to be reflected in the POA&M. The observation and risk assemblies syntax of the SAR and POA&M are identical to facilitate ease of transfer. The SAR finding assembly and POA&M poam-item assembly are also as similar as possible to further facilitate this transfer.
 
-At the end of an assessment, copy all \"open\" risks from the SAR to POA&M. For every copied risk, also copy all related observations. Risks are linked to observations in the finding assembly.
+At the end of an assessment, copy all \"open\" risks from the SAR to the POA&M. For every copied risk, also copy all related observations. Risks are linked to observations in the finding assembly.
 
 If available, use the finding/target citation in the SAR to determine the impacted control and set the value in the risk section of the POA&M using the \"impacted-control\" FedRAMP Extension. If the identified SAR risk is not associated with a specific control, the SAR tool should prompt the assessor to assign a value for the risk in the resulting POA&M export.
 
@@ -78,15 +78,15 @@ As these findings become risks, the SAR tool should allow the risk information t
 
 As risks are closed during testing, the SAR tool should allow the assessor to mark the status as closed. Likewise, as a risk is found to be a false positive or operationally required, the tool should allow the assessor to make these changes as well. The tool should also provide for risk adjustments, by preserving the initial risk information and adding mitigating factors and adjusted risk values.
 
-Allowing for these adjustments, the Risk Exposure table is simply a view or presentation of the findings that have risks with an open status that have not been marked as a false positive. These are also the entries that are copied to the Cloud Service Provider (CSP)\'s POA&M.
+Allowing for these adjustments, the Risk Exposure table is simply a view or presentation of the findings that have risks with an open status that have not been marked as a false positive. These are also the entries that are copied to the CSP\'s POA&M.
 
-{{< figure src="/img/sar-figure-5.png" title="Gathering findings and risk analysis." alt="Detailed figure showing assessment activities, including gathering of findings, risk analysis, and risk tracking.  The figure shows how identified risks are captured in the SAR and this information is used by the POA&M for risk tracking." >}}
+{{< figure src="/img/sar-figure-6.png" title="Gathering findings and risk analysis." alt="Detailed figure showing assessment activities, including gathering of findings, risk analysis, and risk tracking.  The figure shows how identified risks are captured in the SAR and this information is used by the POA&M for risk tracking." >}}
 
 A SAR allows the assessor to update finding and risk information during the assessment.
 
 #### Previous Assessment Results
 
-The OSCAL assessment results model is designed to support both continuous assessment as well as snapshot in time assessments. Currently, FedRAMP assessments represent a snapshot in time. This means a single result assembly should be used for all of the current assessment findings.
+The OSCAL assessment results model is designed to support both continuous assessment as well as snapshot-in-time assessments. Currently, FedRAMP assessments represent a snapshot in time. This means a single result assembly should be used for all of the current assessment findings.
 
 Any findings from previous assessments may be included in the SAR by including each in its own result assembly. In this way, the assessor can include the \"snapshot\" of each previous assessment with the current assessment, eliminating the need to manually copy past findings into that portion of the TCW.
 
@@ -130,7 +130,7 @@ NOTE: Compare start dates of each result set to identify the newest.
 ### OSCAL-based FedRAMP SAR Template
 
 FedRAMP offers an OSCAL-based SAR shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to
-help get you started. This document is intended to work in concert with that file. The OSCAL-based FedRAMP SAR Template is available in XML and JSON formats here:
+help get you started. This documentation is intended to work in concert with that file. The OSCAL-based FedRAMP SAR Template is available in XML and JSON formats here:
 
 -   OSCAL-based FedRAMP SAR Template (JSON Format):\
     [https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sar/json/FedRAMP-SAR-OSCAL-Template.json](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/sar/json/FedRAMP-SAR-OSCAL-Template.json)
@@ -149,7 +149,8 @@ Every OSCAL-based FedRAMP SAR file must have a minimum set of required fields/as
 OSCAL is designed for traceability. Because of this, the assessment report is designed to be linked to the security assessment plan. Rather than duplicating content from the SSP and SAP, the SAR is intended to reference the SSP and SAP content itself.
 
 {{<callout>}}
-##### *Unavailable or Inaccurate OSCAL-based SSP Content*
+
+##### Unavailable or Inaccurate OSCAL-based SSP Content
 *The SAR must import an OSCAL-based SAP, even if no OSCAL-based SSP exists. FedRAMP enables an assessor to use the OSCAL SAP and SAR, when no OSCAL-based SSP exists, or where the assessor finds it to be inaccurate. The [OSCAL-based FedRAMP Security Assessment Plans (SAP)](/documentation/sap/4-sap-template-to-oscal-mapping/) section describes when and how to represent missing or inaccurate SSP content.*
 
 *SAR tools must search both the SSP (if any) and the SAP for any SSP-related references. If an ID in the SAR references content in both the SSP and the SAP, the tool should treat the SAP content as an update to the SSP content. See the [OSCAL-based FedRAMP Security Assessment Plans (SAP)](/documentation/sap/4-sap-template-to-oscal-mapping/) section for more details.*
@@ -223,7 +224,7 @@ FedRAMP will be implementing a separate set of automated SAR validation rules fo
    </metadata>
    <!-- cut -->
    <back-matter>
-<resource uuid="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41">
+      <resource uuid="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41">
          <title>Resolution Resource</title>
          <prop name="dataset" class="collection" value="Special Publication"/>
          <prop name="dataset" class="name" value="800-53"/>

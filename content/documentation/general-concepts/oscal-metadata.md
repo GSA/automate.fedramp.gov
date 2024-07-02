@@ -4,32 +4,28 @@ weight: 125
 ---
 # Working with Roles, Locations, People, and Organizations
 
-An OSCAL file defines roles, people, and organizations within the
-metadata as part of three separate assemblies:
+An OSCAL file defines roles, locations, people, and organizations within the
+metadata as part of four separate assemblies:
 
--   **role**: A role ID and role `title` are required. Other content, such
-    as a `short-name`, `description`, or `remarks` are optional.
+- **role**: A role `id` and `title` are required. Other content, such
+    as a `short-name`, `description`, or `remarks` is optional.
 
--   **location**: Locations, such as corporate offices and data center
+- **location**: Locations, such as corporate offices and data center
     addresses, are defined as `location` assemblies
 
--   **party**: People and organizations are defined as `party` assemblies.
+- **party**: People and organizations are defined as `party` assemblies.
     An organization is any collection of people, and can represent a
     company, agency, department, or team.
 
--   **responsible-party**: Links roles to parties. The same `role` can
+- **responsible-party**: Links roles to parties. The same `role` can
     have more than one `party` assigned to it. Also a `party` can be
     assigned to more than one `role`.
 
-### *FedRAMP Defined Party Identifiers*
+### FedRAMP Defined Party Identifiers
 
 FedRAMP has eliminated the use of FedRAMP-Defined Party Identifiers.
 
-With the transition from ID to UUID for party identifiers this is no
-longer possible. Further, this helps ensure OSCAL remains compatible
-with multiple compliance frameworks.
-
-### *Working with Role Assemblies*
+### Working with Role Assemblies
 
 All roles within the document are defined under the metadata element as
 follows:
@@ -63,22 +59,24 @@ descriptions exist using the prescribed role IDs within an OSCAL-based
 FedRAMP file. Additional roles may be added, provided these roles
 remain.
 
-**NIST-defined and FedRAMP-defined role-identifiers are cited in
+{{<callout>}}
+NIST-defined and FedRAMP-defined role-identifiers are cited in
 relevant portions of each guide, and summarized in the FedRAMP OSCAL
-Registry.**
+Registry.
+{{</callout>}}
 
-### *Working with Location Assemblies*
+### Working with Location Assemblies
 
-The `location` assembly is intended to represent the address of a location
+The `location` assembly is intended to represent a physical address,
 such as the HQ of a CSP or 3PAO, a data center, or an Agency.
 
-Some locations are required. For example, the SSP must contain the at
+Some locations are required. For example, the SSP must contain at
 least one `location` assembly with the primary business address of the
 CSP. The SAP and SAR must contain at least one `location` assembly with
 the primary business address of the assessor.
 
-OSCAL allows the `title` field to be optional. FedRAMP strongly encourages
-its use. If the `country` field is missing, FedRAMP tools will assume the
+OSCAL allows the location `title` field to be optional. FedRAMP strongly encourages
+its use. If the `country` field is missing, FedRAMP tools must assume the
 address is within the United States of America.
 
 {{< highlight xml "linenos=table" >}}
@@ -102,20 +100,20 @@ address is within the United States of America.
 Some locations require type properties to ensure FedRAMP tools can
 accurately identify required content. For example, the location assembly
 for a data center must include a `type` property with a value of
-`"data-center"`. The class may be used to indicate whether the data
-center is \"primary\" or \"alternate\".
+`data-center`. The `class` may be used to indicate whether the data
+center is `primary` or `alternate`.
 
-### *Working with Party Assemblies*
+### Working with Party Assemblies
 
 Party assemblies may be used to represent individuals, teams, or an
 entire company/agency. When representing an individual, the `type` flag
-must have a value of `"person"`. When representing a team, company or
-agency, the `type` flag must have a value of `"organization"`. FedRAMP
-artifacts typically require an individual\'s title to be identified, the
-`prop` `"job-title"` is designated for this purpose.
+must have a value of `person`. When representing a team, company or
+agency, the `type` flag must have a value of `organization`. FedRAMP
+artifacts typically require an individual's title to be identified; the
+`prop` name `job-title` is designated for this purpose.
 
-Contact details, such as an individual\'s email address and phone
-number, or a business web site, may be included and are often required
+Contact details, such as an individual's email address and phone
+number, or a business web site may be included and are often required
 within FedRAMP artifacts. A `short-name` field provides an ability to
 define an organization\'s acronym or desired abbreviation. This is
 required for the CSP, assessor, and any Agency.
@@ -128,7 +126,6 @@ required for the CSP, assessor, and any Agency.
         <short-name>CSP Acronym</short-name>
         <link href="https://www.csp.com" />
     </party>
-    
     <party uuid="uuid-of-person-1" type="person">
         <name>[SAMPLE]Person Name 1</name>
         <prop name="job-title" value="Individual's Title"/>
@@ -138,12 +135,13 @@ required for the CSP, assessor, and any Agency.
 </metadata>
 {{</ highlight >}}
 
-**FedRAMP extensions are cited in relevant portions of each guide, and summarized in the FedRAMP OSCAL Registry.**
+{{<callout>}}
+Note: FedRAMP extensions are cited in relevant portions of each guide, and summarized in the FedRAMP OSCAL Registry.
+{{</callout>}}
 
-### *Identifying Organizational Membership of Individuals*
+### Identifying Organizational Membership of Individuals
 
-An individual may be affiliated with one or more teams/organizations.\
-Use one `member-of-organization` field for each team, and one to link the
+An individual may be affiliated with one or more teams/organizations. Use one `member-of-organization` field for each team, and one to link the
 individual to their employer.
 
 {{< highlight xml "linenos=table" >}}
@@ -152,11 +150,9 @@ individual to their employer.
     <party uuid="uuid-of-csp" type="organization">
         <name>Cloud Service Provider (CSP) Name</name>
     </party>
-    
     <party uuid="uuid-of-it-dept" type="organization">
         <name>CSP's IT Department</name>
     </party>
-    
     <party uuid="uuid-of-person-1" type="person">
         <name>[SAMPLE]Person Name 1</name>
         <member-of-organization>uuid-of-csp</member-of-organization>
@@ -165,20 +161,19 @@ individual to their employer.
 </metadata>
 {{</ highlight >}}
 
-### *Identifying the Address of People and Organizations*
+### Identifying the Address of People and Organizations
 
 Representing the address of people or organizations (parties) may be
 accomplished with one of three approaches:
 
-**Preferred Approach**: When multiple parties share the same address,
+1. **Preferred Approach**: When multiple parties share the same address,
 such as multiple staff members at a company HQ, define the address once
 as a `location` assembly, then use the `location-uuid` field within each
 `party` assembly to identify the location of that individual or team.
-
-**Alternate Approach**: If the address is unique to this individual, it
+1. **Alternate Approach**: If the address is unique to this individual, it
 may be included in the `party` assembly itself.
 
-**Hybrid Approach**: It is possible to include both a `location-uuid` and
+1. **Hybrid Approach**: It is possible to include both a `location-uuid` and
 an `address` assembly within a `party` assembly. This may be used where
 multiple staff are in the same building, yet have different office
 numbers or mail stops. Use the `location-uuid` to identify the shared
@@ -201,12 +196,10 @@ approaches above when processing OSCAL files.
             <postal-code>00000</postal-code>
         </address>
     </location>
-    
     <party uuid="uuid-of-csp" type="organization">
         <name>Cloud Service Provider (CSP) Name</name>
         <location-uuid>uuid-of-hq-location</location-uuid>
     </party>
-    
     <party uuid="uuid-of-person-1" type="person">
         <name>[SAMPLE]Person Name 1</name>
         <prop name="mail-stop" value="A-1"/>
@@ -215,14 +208,14 @@ approaches above when processing OSCAL files.
 </metadata>
 {{</ highlight >}}
 
-### *Working with Responsible Party Assemblies*
+### Using Responsible Party Assemblies
 
 The responsible party assembly links party assemblies (people and
 organizations) to defined roles. FedRAMP tools rely on these linkages to
 find required content.
 
 For example, an OSCAL-based SSP must have a role defined for the System
-Owner using the role ID value \"system-owner\". The responsible-party
+Owner using the role ID value `system-owner`. The responsible-party
 assembly links this required role to the individual (party). FedRAMP
 tools follow this linkage to verify that a system owner was identified
 in the SSP, and to display that information to reviewers.

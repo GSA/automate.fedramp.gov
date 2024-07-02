@@ -16,7 +16,7 @@ cascade:
 
 ## Who Should Use This Documentation?
 
-This documentation intended for technical staff and tool developers implementing solutions for importing, exporting, and processing OSCAL-based FedRAMP content.
+This documentation is intended for technical staff and tool developers implementing solutions for importing, exporting, and processing OSCAL-based FedRAMP content.
 
 It provides guidance and examples intended to guide an organization in the production and use of OSCAL-based FedRAMP-compliant documents. Our goal is to enable your organization to develop tools that will seamlessly ensure these standards are met so your security practitioners can focus on authorization package content and accuracy rather than formatting and presentation.
 
@@ -26,41 +26,38 @@ XML and JSON use different terminology. Instead of repeatedly clarifying format-
 
 |**TERM**|**XML EQUIVALENT**|**JSON EQUIVALENT**|
 | :- | :- | :- |
-|**Field**|A single element or node that can hold a value or an attribute|A single object that can hold a value or property|
+|**Field**|A single element or text value that can hold a value or an attribute|A single object that can hold a value or property|
 |**Flag**|Attribute|Property|
-|**Assembly**|A collection of elements or nodes. Typically, a parent node with one or more child nodes.|A collection of objects. Typically, a parent object with one or more child objects.|
+|**Assembly**|A collection of elements. Typically, a parent node with one or more child nodes.|A collection of objects. Typically, a parent object with one or more child objects.|
 
-These terms are used by National Institute of Standards and Technology (NIST) in the creation of OSCAL syntax.
+These terms are used by the National Institute of Standards and Technology (NIST) in the creation of OSCAL syntax.
 
 Throughout this document, the following words are used to differentiate between requirements, recommendations, and options.
 
 |**TERM**|**MEANING**|
 | :- | :- |
 |**must**|Indicates a required action.|
-|**should**|Indicates a recommended action, but not necessarily required.|
+|**should**|Indicates an action that is very important and strongly recommended, but is not required.|
 |**may**|Indicates an optional action.|
 
 
 ## XML, JSON and YAML Formats
 
-The examples provided here are in XML; however, FedRAMP accepts XML, JSON or YAML formatted OSCAL content. NIST offers the ability to convert OSCAL-files between XML, JSON, and YAML in either direction without data loss.
+The examples provided here are in XML; however, FedRAMP accepts XML, JSON or YAML formatted OSCAL content. OSCAL offers the ability to convert OSCAL-files between XML, JSON, and YAML in either direction without data loss.
 
-You may submit your SSP, SAP, SAR, and POA&M to FedRAMP using either XML, JSON, or YAML. If necessary, FedRAMP\'s tools will convert the files for processing.
+You may submit your SSP, SAP, SAR, and POA&M to FedRAMP using XML, JSON, or YAML. If necessary, FedRAMP's tools will convert the files for processing.
 
 {{<callout>}}
 _For more information on converting OSCAL files between FORMATS, see [NIST OSCAL Tools - Data conversion](https://pages.nist.gov/OSCAL/resources/tools/#data-conversion) page._
 {{</callout>}}
 
-
 ## OSCAL-based FedRAMP Templates
 
-FedRAMP offers OSCAL-based templates in both XML and JSON formats for
-the SSP, SAP, SAR, and POA&M. These templates contain many of the
-FedRAMP required content and placeholders to help get you started. This
-document is intended to work in concert with those templates. The
+FedRAMP offers [OSCAL-based templates](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates) in both XML and JSON formats for
+the SSP, SAP, SAR, and POA&M. These templates are partially filled with
+sample content serving as placeholders to help get you started. This
+documentation is intended to work in concert with those templates. The
 OSCAL-based FedRAMP templates are available here:
-
-- [https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates)
 
 ## XML and JSON Technology Standards
 
@@ -69,7 +66,7 @@ content must honor the core syntax described at
 [https://pages.nist.gov/OSCAL/concepts/layer/](https://pages.nist.gov/OSCAL/concepts/layer/).
 
 While not mandatory, organizations adopting OSCAL are strongly
-encouraged to use the NIST-published validation and translation
+encouraged to use the [oscal-cli](https://github.com/usnistgov/oscal-cli) for validation and translation
 mechanisms. The validation mechanism ensures XML and JSON files are
 using OSCAL-compliant syntax, while the translation mechanism converts
 OSCAL content from either format to the other. NIST has an automated
@@ -82,23 +79,20 @@ _TIP: There are comments in the XML versions of the FedRAMP Templates. Unfortuna
 
 ### NIST OSCAL Syntax Validation Mechanisms
 
-Validating XML-based OSCAL files using the NIST-published schema
-validation requires:\
-[XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/)
+Validating XML-based OSCAL files using the OSCAL-published schema
+validation requires: [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/)
 
-Validating JSON-based OSCAL files using the NIST-published schema
-validation requires:\
-[JSON Schema, draft-07](https://json-schema.org/specification-links#23draft-7)
+Validating JSON-based OSCAL files using the OSCAL-published schema
+validation requires: [JSON Schema, draft-07](https://json-schema.org/specification-links#23draft-7)
 
-The [NIST OSCAL tools](https://pages.nist.gov/OSCAL/resources/tools/#validation) provide a mechanism for validating OSCAL XML and JSON content. There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as stand-alone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
+The [NIST OSCAL tools](https://pages.nist.gov/OSCAL/resources/tools/#validation) provide a mechanism for validating OSCAL XML and JSON content. There are several open-source and commercial tools that will process XSD 1.1 or JSON Schema, draft-07, either as standalone capabilities or as programming libraries. FedRAMP and NIST are unable to endorse specific products.
 
 ### NIST OSCAL Format Conversion Mechanisms
 
 The [NIST OSCAL tools](https://pages.nist.gov/OSCAL/resources/tools/#data-conversion) also provide a mechanism for converting OSCAL XML and JSON content.
 
 For more information on converting OSCAL files between supported
-formats, please see the [OSCAL
-  Converters](https://pages.nist.gov/OSCAL/concepts/layer/overview/#oscal-converters) documentation.
+formats, please see the [OSCAL Converters](https://pages.nist.gov/OSCAL/concepts/layer/overview/#oscal-converters) documentation.
 
 ## XPath Queries and References
 
@@ -127,4 +121,3 @@ _**Database Users**: Some tool developers prefer to manage OSCAL data by first i
 
 _There are also database-like XML servers, such as the open-source tool [BaseX](https://basex.org/), which allow OSCAL files to remain in their native format yet be queried more like a traditional database. These XML databases typically optimize queries for better performance. Some will handle both XML and JSON files._
 {{</callout>}}
-
