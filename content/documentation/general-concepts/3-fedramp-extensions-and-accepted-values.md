@@ -17,7 +17,7 @@ _A summary of the FedRAMP extensions and accepted values appears in the FedRAMP 
 
 FedRAMP has tailored OSCAL by specifying:
 
--   **Extensions**: allow FedRAMP\'s OSCAL-based content to capture
+-   **Extensions**: allow FedRAMP's OSCAL-based content to capture
     information that is not available in the core OSCAL syntax.
 
 -   **Accepted Values**: For many fields, FedRAMP specifies a

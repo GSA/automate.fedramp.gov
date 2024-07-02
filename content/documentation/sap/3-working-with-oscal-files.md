@@ -43,7 +43,7 @@ system being assessed. Instead of duplicating system details, the
 OSCAL-based SAP simply points to the SSP content for information such as
 system description, boundary, users, locations, and inventory items.
 
-The SAP also inherits the SSP\'s pointer to the appropriate OSCAL-based
+The SAP also inherits the SSP's pointer to the appropriate OSCAL-based
 FedRAMP Baseline. Through that linkage, the SAP references the
 assessment objectives and actions typically identified in the FedRAMP
 TCW.
@@ -107,7 +107,7 @@ including a relative path, absolute path, or URI fragment.
 If the value is a URI fragment, such as
 `#96445439-6ce1-4e22-beae-aa72cfe173d0`, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SAP file\'s `back-matter`. Refer to the [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
+resource in the SAP file's `back-matter`. Refer to the [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
 
 ##### SAP Back Matter Representation 
 {{< highlight xml "linenos=table" >}}
@@ -146,7 +146,7 @@ tool prompts the user for the updated path to the OSCAL-based SSP.
 When an assessor encounters inaccurate information in an OSCAL-based
 SSP, they should encourage the CSP to fix it and use the corrected
 version of the SSP. The CSP is responsible for all SSP content. An
-assessor\'s tools must not change an SSP.
+assessor's tools must not change an SSP.
 
 If an assessor must move forward with inaccurate SSP information, the
 SAP syntax allows for SSP information correction. Performing these
@@ -155,7 +155,7 @@ is clearly attributed to the assessor.
 
 Tool designers should ensure their tools can cite the relevant
 OSCAL-based SSP information when possible and capture assessor-corrected
-SSP information in the SAP\'s local-definitions or metadata sections
+SSP information in the SAP's local-definitions or metadata sections
 when necessary. The relevant sections of this guide describe how to
 represent inaccurate SSP information in the SAP when needed.
 
@@ -164,7 +164,7 @@ represent inaccurate SSP information in the SAP when needed.
 The OSCAL-based SAP must always have an import-ssp field, even if no
 OSCAL-based SSP is available. To compensate for this, use a URI fragment
 that points to a resource in the back-matter. The resource must have a
-\"type\" property with the value of \"no-oscal-ssp\".
+`type` property with the value of `no-oscal-ssp`.
 
 ##### SAP Representation 
 {{< highlight xml "linenos=table" >}}
@@ -204,24 +204,24 @@ that points to a resource in the back-matter. The resource must have a
 
 {{</ highlight >}}
 
-The system\'s authorization date, purpose, and description have not
+The system's authorization date, purpose, and description have not
 historically been displayed in the SAP but must be present in the SAP
 for the SAR to reference.
 
 Include the system name in the title field, and the system description
 in the description field. Add FedRAMP Extension properties to capture
-the system\'s short name as \"title-short\", FedRAMP-assigned system
-identifier as \"system-id" and describe the system\'s purpose in
-\"purpose\".
+the system's short name as `title-short`, FedRAMP-assigned system
+identifier as `system-id` and describe the system's purpose in
+`purpose`.
 
-Also include the \"import-profile\" extension and supply either a URI to
+Also include the `import-profile` extension and supply either a URI to
 the profile externally or a URI fragment with the UUID of the SAP
 resource containing the relevant profile details.
 
 In addition to defining the system here, SAP tools must place other
-relevant SSP information in the SAP\'s metadata and local-definitions
+relevant SSP information in the SAP's metadata and local-definitions
 section as needed for the SAP to reference this information, essentially
-treating all relevant SSP content as \"missing\" from an OSCAL
+treating all relevant SSP content as `missing` from an OSCAL
 perspective.
 
 The relevant sections of this guide describe how to represent missing
