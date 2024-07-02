@@ -25,7 +25,7 @@ For example, the NIST control definitions and FedRAMP baseline content that norm
 {{< figure src="/img/ssp-figure-2.png" title="Detailed overview of OSCAL models." alt="Figure showing the main contents of the OSCAL catalog, profile, SSP, SAP, SAR and POA&M models." >}}
 
 For this reason, an OSCAL-based SSP points to the appropriate
-OSCAL-based FedRAMP baseline as determined by the system\'s FIPS-199 impact level. Instead of duplicating control details, the OSCAL-based SSP simply points to the baseline content for information such as control definition statements, FedRAMP-added guidance, parameters, and FedRAMP-required parameter constraints.
+OSCAL-based FedRAMP baseline as determined by the system's FIPS-199 impact level. Instead of duplicating control details, the OSCAL-based SSP simply points to the baseline content for information such as control definition statements, FedRAMP-added guidance, parameters, and FedRAMP-required parameter constraints.
 
 ### Resolved Profile Catalogs
 
@@ -86,7 +86,7 @@ including a relative path, absolute path, or URI fragment.
 If the value is a URI fragment, such as
 #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SSP file\'s back-matter. Refer to the [*Attachments and Embedded Content*](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content) section for guidance on handling.
+resource in the SSP file's back-matter. Refer to the [*Attachments and Embedded Content*](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content) section for guidance on handling.
 
 #### SSP Back Matter Representation
 {{< highlight xml "linenos=table" >}}

@@ -80,7 +80,7 @@ The following OSCAL representation of a FedRAMP SSP attachment demonstrates the 
 
 OSCAL makes two approaches available for depicting the system inventory:
 
--   **Flat-File Approach**: Similar to today\'s FedRAMP Integrated inventory workbook where all of the information on a spreadsheet row is captured in a single assembly.
+-   **Flat-File Approach**: Similar to today's FedRAMP Integrated inventory workbook where all of the information on a spreadsheet row is captured in a single assembly.
 
 -   **Component-Based Approach**: A component is defined once with as much known detail as possible, and inventory-items point to components for common information.
 
