@@ -44,7 +44,7 @@ For more information about resolved profile catalogs, see the [*Profile Resoluti
 FedRAMP offers an OSCAL-based SSP shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to help get you started. This document is intended to work in concert with that shell file. The OSCAL-based FedRAMP SSP Template is available in XML and JSON formats here:
 
 -   OSCAL-based FedRAMP SSP Template (JSON Format):\
-    [https://github.com/GSA/fedramp-automation/raw/master/dist/rev5/content/rev5/templates/ssp/json/FedRAMP-SSP-OSCAL-Template.json](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/ssp/json/FedRAMP-SSP-OSCAL-Template.json)
+    [https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/templates/ssp/json/FedRAMP-SSP-OSCAL-Template.json](https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/templates/ssp/json/FedRAMP-SSP-OSCAL-Template.json)
 
 -   OSCAL-based FedRAMP SSP Template (XML Format):\
     <https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/ssp/xml/FedRAMP-SSP-OSCAL-Template.xml>
