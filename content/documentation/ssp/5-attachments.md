@@ -9,9 +9,9 @@ machine-readable format, while others do not. Machine-readable content
 is typically addressed within the OSCAL-based FedRAMP SSP syntax, while
 policies, procedures, plans, guidance, and the rules of behavior
 documents are all treated as classic attachments, as described in the
-*Citations, Attachments, and Embedded Content in OSCAL Files* Section.
+[*Attachments and Embedded Content*](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content) section.
 The resource's title and description must be used to provide a
-human-readable indicator of what attachment is being referenced,
+human-readable indicator of what attachment is being referenced;
 however, OSCAL extensions must also be provided when applicable for
 machine readability. The following table describes how each attachment
 is handled:
@@ -19,29 +19,26 @@ is handled:
 |**Appendix Name**|**Machine Readable**|**How to Handle in OSCAL**|
 | :-- | :-- | :-- |
 | **Appendix A: FedRAMP Security Controls** | [Yes](/documentation/ssp/6-security-controls/) | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
-| **Appendix B: Related Acronyms** | No | Attach using the back-matter, resource syntax.<br /><br />For Acronyms, resource must include a prop with @ns="https://fedramp.gov/ns/oscal", @name="type", and @value="fedramp-acronyms". |
-| **Appendix C: Security Policies and Procedures** | No | Attach using the back-matter, resource syntax.<br /><br />For Policies, resource must include a prop with @name=”type”, @value=”policy”, and @class=”control-family”.<br /><br />For Procedures, resource must include a prop with @name=”type”, @value=”procedure”, and @class=”control-family”. |
-| **Appendix D: User Guide** | No | Attach using the back-matter, resource syntax.<br /><br />For User Guides, resource must include a prop with @name=”type” and @value=”users-guide”. |
-| **Appendix E: Digital Identity Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination) | Incorporated above. See the Digital Identity Determination Section. |
-| **Appendix F: Rules of Behavior** | No | Attach using the back-matter, resource syntax.<br /><br />For Rules of Behavior, resource must include a prop with @name=”type” and @value="rules-of-behavior". |
-| **Appendix G: Information System Contingency Plan (ISCP)** | No | Attach using the back-matter, resource syntax.<br /><br />For ISCP, resource must include a prop with @name=”type”, @value="plan", and @class="information-system-contingency-plan". |
-| **Appendix H: Configuration Management Plan (CMP)** | No | Attach using the back-matter, resource syntax.<br /><br />For CMP, resource must include a prop with @name=”type”, @value="plan", and @class="configuration-management-plan". |
-| **Appendix I: Incident Response Plan (IRP)** | No | Attach using the back-matter, resource syntax.<br /><br />For IRP, resource must include a prop with @name=”type”, @value="plan", and @class="incident-response-plan". |
+| **Appendix B: Related Acronyms** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For Acronyms, resource must include a `prop` with `@ns="https://fedramp.gov/ns/oscal"`, `@name="type"`, and `@value="fedramp-acronyms"`. |
+| **Appendix C: Security Policies and Procedures** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For Policies, resource must include a `prop` with `@name=”type”`, `@value=”policy”`, and `@class=”control-family”`.<br /><br />For Procedures, resource must include a `prop` with `@name=”type”`, `@value=”procedure”`, and `@class=”control-family”`. |
+| **Appendix D: User Guide** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For User Guides, resource must include a `prop` with `@name=”type”` and `@value=”users-guide”`. |
+| **Appendix E: Digital Identity Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination) | See the [Digital Identity Determination](/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination) section. |
+| **Appendix F: Rules of Behavior** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For Rules of Behavior, resource must include a prop with `@name=”type”` and `@value="rules-of-behavior"`. |
+| **Appendix G: Information System Contingency Plan (ISCP)** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For ISCP, resource must include a `prop` with `@name=”type”`, `@value="plan"`, and `@class="information-system-contingency-plan"`. |
+| **Appendix H: Configuration Management Plan (CMP)** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For CMP, resource must include a `prop` with `@name=”type”`, `@value="plan"`, and `@class="configuration-management-plan"`. |
+| **Appendix I: Incident Response Plan (IRP)** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For IRP, resource must include a `prop` with `@name=”type”`, `@value="plan"`, and `@class="incident-response-plan"`. |
 | **Appendix J: CIS and CRM Workbook** | [Yes](/documentation/ssp/7-generated-content/) | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
-| **Appendix K: FIPS 199 Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level) | Incorporated above. See the Security Objectives Categorization (FIPS-199) Section. |
-| **Appendix L: CSO-Specific Required Laws and Regulations** | No | Attach using the back-matter, resource syntax.<br /><br />For User Guides, resource must include a prop with @name=”type” and @value=”law”. |
-| **Appendix M: Integrated Inventory Workbook** | Yes | See the System Inventory Section. |
-| **Appendix N: Continuous Monitoring Plan** | No | Attach using the back-matter, resource syntax.<br /><br />For ConMon, resource must include a prop with @name=”type”, @value="plan", and @class="incident-response-plan". |
-| **Appendix O: POA&M** | [Yes](/documentation/poam/) | This is maintained separately in an OSCAL POA&M but can be attached using the back-matter, resource syntax.<br /><br />For POA&M, resource must include a prop with @name=”type”, @value="plan", and @class="poam". |
-| **Appendix P: Supply Chain Risk Management Plan (SCRMP)** | No | Attach using the back-matter, resource syntax.<br /><br />For SCRMP, resource must include a prop with @name=”type”, @value="plan", and @class="scrmp". |
-| **Appendix Q: Cryptographic Module Table** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#cryptographic-modules-implemented-for-data-in-transit-dit) | See the Cryptographic Modules Section dealing with components. |
+| **Appendix K: FIPS 199 Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level) | See the [System Sensitivity Level (FIPS-199)](/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level) section. |
+| **Appendix L: CSO-Specific Required Laws and Regulations** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For CSO-Specific Required Laws and Regulations, resource must include a `prop` with `@name=”type”` and `@value=”law”`. |
+| **Appendix M: Integrated Inventory Workbook** | Yes | See the [System Inventory](/documentation/ssp/5-attachments/#system-inventory-approach) section. |
+| **Appendix N: Continuous Monitoring Plan** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For ConMon, resource must include a `prop` with `@name=”type”`, `@value="plan"`, and `@class="continuous-monitoring-plan"`. |
+| **Appendix O: POA&M** | [Yes](/documentation/poam/) | This is maintained separately in an OSCAL POA&M but can be attached using the `back-matter`, `resource` syntax.<br /><br />For POA&M, resource must include a `prop` with `@name=”type”`, `@value="plan"`, and `@class="poam"`. |
+| **Appendix P: Supply Chain Risk Management Plan (SCRMP)** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For SCRMP, resource must include a `prop` with `@name=”type”`, `@value="plan"`, and `@class="scrmp"`. |
+| **Appendix Q: Cryptographic Module Table** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#cryptographic-modules-implemented-for-data-in-transit-dit) | See the [Cryptographic Modules](/documentation/ssp/4-ssp-template-to-oscal-mapping/#cryptographic-modules-implemented-for-data-in-transit-dit) section dealing with components. |
 
 ---
 ### Attachments
-Classic FedRAMP attachments include a mix of items. Some lend well to
-machine-readable format, while others do not. Machine-readable content
-is typically addressed within the OSCAL-based FedRAMP SSP syntax, while
-policies, procedures, plans, guidance, and the rules of behavior documents are all treated as classic attachments, as described in the *Citations, Attachments, and Embedded Content in OSCAL Files* Section. The following table describes how each attachment is handled:
+The following OSCAL representation of a FedRAMP SSP attachment demonstrates the `back-matter` and `resource` approach that must be implemented for classic SSP attachments that are not machine-readable, such as policies, procedures, plans, guidance, and rules of behavior documents.
 
 ##### Attachment Representation
 {{< highlight xml "linenos=table" >}}

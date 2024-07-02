@@ -10,7 +10,7 @@ details that apply to OSCAL-based FedRAMP SAP files.
 The [*FedRAMP OSCAL Documentation*](/documentation)
 provides important concepts necessary for working with any OSCAL-based
 FedRAMP file. Familiarization with those concepts is important to
-understanding this guide.
+understanding this documentation.
 
 ### XML and JSON Formats
 
@@ -32,7 +32,7 @@ linkages are established through import commands.
 {{< figure src="/img/sap-figure-1.png" title="OSCAL import linkage hierarchy." alt="Figure illustrating how the OSCAL catalog, profile, SSP, SAP, and SAR have linkages to the preceding OSCAL model. The POA&M model is omitted for simplicity." >}}
 
 For example, the assessment objectives and actions that appear in a
-blank test case workbook (TCW), are defined in the FedRAMP profile, and
+blank test case workbook (TCW) are defined in the FedRAMP profile and
 simply referenced by the SAP and SAR. Only deviations from the TCW are
 captured in the SAP or SAR.
 
@@ -56,7 +56,7 @@ documents a deviation from the SSP, Baseline, or TCW.
 
 FedRAMP offers an OSCAL-based SAP shell file in both XML and JSON
 formats. This shell contains many of the FedRAMP required standards to
-help get you started. This document is intended to work in concert with
+help get you started. This documentation is intended to work in concert with
 that file. The OSCAL-based FedRAMP SAP Template is available in XML and
 JSON formats here:
 
@@ -105,9 +105,9 @@ including a relative path, absolute path, or URI fragment.
 {{</ highlight >}}
 
 If the value is a URI fragment, such as
-#96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
+`#96445439-6ce1-4e22-beae-aa72cfe173d0`, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
-resource in the SAP file\'s back-matter. Refer to the *[FedRAMP OSCAL Documentation](/documentation/general-concepts/2-working-with-oscal-files/#citations-and-attachments-in-oscal-files), Citations and Attachments in OSCAL Files* for guidance on handling.
+resource in the SAP file\'s `back-matter`. Refer to the [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
 
 ##### SAP Back Matter Representation 
 {{< highlight xml "linenos=table" >}}
@@ -164,7 +164,7 @@ represent inaccurate SSP information in the SAP when needed.
 The OSCAL-based SAP must always have an import-ssp field, even if no
 OSCAL-based SSP is available. To compensate for this, use a URI fragment
 that points to a resource in the back-matter. The resource must have a
-\"type\" property with the value of **no-oscal-ssp**
+\"type\" property with the value of \"no-oscal-ssp\".
 
 ##### SAP Representation 
 {{< highlight xml "linenos=table" >}}
@@ -225,7 +225,7 @@ treating all relevant SSP content as \"missing\" from an OSCAL
 perspective.
 
 The relevant sections of this guide describe how to represent missing
-SSP in formation in the SAP when needed.
+SSP information in the SAP when needed.
 
 ### Resolution Resource Prop
 
@@ -254,7 +254,7 @@ section and include an associated back-matter resource as shown below:
     </metadata>
     <!-- cut -->
     <back-matter>
-  <resource uuid="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41">
+        <resource uuid="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41">
           <title>Resolution Resource</title>
           <prop name="dataset" class="collection" value="Special Publication"/>
           <prop name="dataset" class="name" value="800-53"/>
@@ -266,7 +266,7 @@ section and include an associated back-matter resource as shown below:
         </resource>
 
     </back-matter>
-  </ assessment-results>
+  </assessment-results>
 
 {{</ highlight >}}
 

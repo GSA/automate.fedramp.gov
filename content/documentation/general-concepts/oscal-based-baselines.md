@@ -4,7 +4,7 @@ weight: 135
 ---
 # OSCAL-Based FedRAMP Baselines
 
-NIST designed OSCAL catalogs as the primary source of control definition
+OSCAL catalogs are designed to be the primary source of control definition
 information from a framework publisher. Catalogs are typically only
 published by organizations such as NIST for NIST SP 800-53, or ISO/IEC
 for standards such as their 27000 series. If an organization has unique
@@ -12,7 +12,7 @@ control definitions that fall outside an applicable framework, the
 organization must create a catalog containing those unique control
 definitions.
 
-NIST designed profiles as the primary means of defining a baseline of
+Profiles are designed as the primary means of defining a baseline of
 controls. An OSCAL profile may identify and even modify controls from
 one or more catalogs and even from other profiles. This approach ensures
 control additions, modifications, or removal are fully traceable back to
@@ -20,7 +20,7 @@ the source of the modification.
 
 {{< figure src="/img/content-figure-13.png" title="FedRAMP baseline." alt="Figure showing how the FedRAMP uses OSCAL profiles to define its baselines." >}}
 
-FedRAMP\'s baselines are represented as OSCAL profiles. The correct
+FedRAMP's baselines are represented as OSCAL profiles. The correct
 profile must be selected from the SSP based on the system\'s identified
 security categorization level. This can be checked using the XPath
 syntax below.
@@ -74,7 +74,7 @@ When FedRAMP publishes baselines for NIST SP 800-53 Revision 5, they
 will be located here:\
 <https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/baselines>
 
-## *FedRAMP Tailored*
+## FedRAMP Tailored
 
 FedRAMP Tailored for Low Impact -- Software as a Service (LI-SaaS)
 Appendix B merges SSP, SAP, and SAR information into a single document.
@@ -88,14 +88,14 @@ SSP, SAP, and SAR syntax, used the same way as they are explained for
 FedRAMP Low, Moderate, and High baselines.
 
 For your convenience, FedRAMP has made the FedRAMP Tailored for LI-SaaS
-baseline available now in both XML and JSON formats as follows:
+baseline available in both XML and JSON formats as follows:
 
 |**Low-Impact SaaS (Tailored)**|
 | :-- |
 | **XML Version:** <https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/xml/FedRAMP_rev5_LI-SaaS-baseline_profile.xml>|
 | **JSON Version:** <https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/json/FedRAMP_rev5_LI-SaaS-baseline_profile.json>|
 
-# Modifying a FedRAMP Baseline
+## Modifying a FedRAMP Baseline
 
 OSCAL is designed to allow modification of controls and baselines, while
 maintaining traceability through each layer of modification. This means
@@ -103,7 +103,7 @@ you must create a new profile as a means of modifying an existing
 profile.
 
 If you require a change to a FedRAMP baseline, you should first
-coordinate that change with the FedRAMP JAB or PMO. Assuming FedRAMP
+coordinate that change with FedRAMP. Assuming FedRAMP
 agrees with the change, the correct way to implement the change is as
 follows:
 
@@ -120,7 +120,7 @@ follows:
 
 4.  **Specify How Controls Are Organized**: FedRAMP prefers you merge
     \"as-is\" using those merge fields. This is relevant when resolving
-    the profile. See the *Profile Resolution* section of this appendix
+    the profile. See the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) documentation
     for more information.
 
 5.  **Modify the Selected Controls**: Use the `modify` assembly to make modifications to parameters and control definitions.
@@ -132,7 +132,7 @@ Create a new profile, importing to the appropriate FedRAMP profile, then use pro
 {{</ callout >}}
 
 
-The next page contains an example profile, which accomplishes the
+Below is an example profile, which accomplishes the
 following actions:
 
 -   Imports the FedRAMP Moderate baseline
@@ -142,21 +142,19 @@ following actions:
 -   Explicitly removes AT-4 from the baseline
 
 -   Indicates that if this profile is resolved, the organization of the
-    controls should remain as-is. See the *Profile Resolution* section
-    of this appendix for more information.
+    controls should remain as-is. See the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) section
+    for more information.
 
 -   Adds a constraint to the third parameter of AC-1 (ac-1_prm_3), which
-    is more restrictive than the FedRAMP constraint, but changing it
+    is more restrictive than the FedRAMP constraint, by changing it
     from \"at least annually\" to \"at least every six months.\"
 
 -   Removes the additional FedRAMP requirement statement in AU-11 and
-    replaces it with a more restrictive statement, which now requires
+    replaces it with a more restrictive statement, which requires
     online retention of audit records for at least 180 days instead of
     90 days.
 
-For more information on working with profiles, please visit the NIST
-OSCAL site at:\
-<https://pages.nist.gov/OSCAL>
+For more information on working with profiles, please visit the [OSCAL website](https://pages.nist.gov/OSCAL).
 
 A complete OSCAL profile syntax reference is available here:\
 [https://pages.nist.gov/OSCAL/concepts/layer/control/profile/](https://pages.nist.gov/OSCAL/concepts/layer/control/profile/)
@@ -196,7 +194,7 @@ A complete OSCAL profile syntax reference is available here:\
                     <title>[XYZ Org]Modified Requirement</title>
                     <part id="au-11_fr_smt.1" name="item">
                         <prop name="label">Requirement:</prop>
-                        <p>The service provider retains audit records on-line for at 180 days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
+                        <p>The service provider retains audit records on-line for at least 180 days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
                     </part>
                 </part>
             </add>

@@ -18,15 +18,13 @@ Instead of duplicating content from those sections, this section refers to them 
 
 This section addresses the TCW, Scanner Tool Results, Risks Identified during Penetration Testing, and the Risk Exposure Table (RET) first. These are addressed first because much of the individual SAR tables are generated from OSCAL-based content.
 
-As described in the  [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section.
+As described in the [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section, NIST designed the core OSCAL syntax to model cybersecurity information that is common to most organizations and compliance frameworks; however, NIST also recognized the need to provide flexibility for organizations with unique information needs.
 
-NIST designed the core OSCAL syntax to model cybersecurity information that is common to most organization and compliance frameworks; however, NIST also recognized the need to provide flexibility or organizations with unique information needs.
+Instead of trying to provide a language that meets each organization\'s unique needs, NIST provided OSCAL with the ability to be extended.
 
-Instead of trying to provide a language that meets each organization\'s unique needs, NIST provided designed OSCAL with the ability to be extended.
+As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The extensions related to the SAP are cited in context of their use.
 
-As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The extensions related to the Security Assessment Plan (SAP) are cited in context of their use.
-
-**FedRAMP extensions and allowed values are cited in relevant portions of this document and summarized in the FedRAMP OSCAL Registry.**
+**FedRAMP extensions and allowed values are cited in relevant portions of this documentation and summarized in the FedRAMP OSCAL Registry.**
 
 {{<callout>}}
 _***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry was originally provided as a spreadsheet. It now uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats._
@@ -65,7 +63,7 @@ The Annual SAR was used, which includes all information typically found in the I
 ---
 ### One Result Assembly for the Entire Assessment
 
-All results from the current assessment, such as observations, findings, and risks, must be in a single result assembly. Additional result assemblies are used for past assessment results. One result assembly for each past assessment results. 
+All results from the current assessment, such as observations, findings, and risks, must be in a single result assembly. Additional result assemblies are used for past assessment results, with one result assembly for each set of past assessment results. 
 
 Tool developers must use the start field for each result assembly to determine the most recent set of results present in the SAR.
 
@@ -141,9 +139,9 @@ When using a **FedRAMP Resolved Profile Catalog**, the following query will iden
 {{<callout>}}
 **HELPFUL HINTS**
 
-Use the appropriate FedRAMP resolved profile catalog, instead of the profile. This has the catalog content pre-merged, saving your tool the extra work of stepping through the profile to the catalog.
+Use the appropriate FedRAMP resolved profile catalog instead of the profile. This has the catalog content pre-merged, saving your tool the extra work of stepping through the profile to the catalog.
 
-When processing an OSCAL-based FedRAMP baseline (profile or resolved-profile-catalog), each FedRAMP Test Case Workbook objective has a corresponding part named "assessment-objective" and part(s) named "assessment-method".  The "assessment-method" parts  have "method" properties specifying applicable assessment method (EXAMINE, INTERVIEW, TEST).
+When processing an OSCAL-based FedRAMP baseline (profile or resolved-profile-catalog), each FedRAMP Test Case Workbook objective has a corresponding part named "assessment-objective" and part(s) named "assessment-method".  The "assessment-method" parts  have "method" properties specifying the applicable assessment method (EXAMINE, INTERVIEW, TEST).
 {{</callout>}}
 
 ---
@@ -177,7 +175,7 @@ The target assembly identifies which objective is being addressed by the assesso
             <actor type="party" actor-uuid="e934d8b5-13e5-4f77-b55e-871e6f2df2fe" />
         </origin>
         <target type="objective-id" target-id="ac-1.a.1_obj.1">
-            <prop name="implementation-status" ns="https://fedramp.gov/ns/oscal"       value="implemented"/>
+            <prop name="implementation-status" ns="https://fedramp.gov/ns/oscal" value="implemented"/>
             <status reason="pass">satisfied</status>
         </target>
         <related-observation observation-uuid="d02f9117-84e3-4993-af59-c5ce5e8675ab"/>
@@ -210,7 +208,7 @@ The target assembly identifies which objective is being addressed by the assesso
 <br />
 {{<callout>}}
 **Accepted Values**
-- The implementation-status fields must have the @ns flag with a value of https://fedramp.gov
+- The implementation-status fields must have the @ns flag with a value of https://fedramp.gov/ns/oscal
 - The implementation-status field may only have one of the following values, which match the SSP accepted values:
     - implemented, partial, planned, alternative, not-applicable
 - The status field may only have one of the following values:
@@ -225,7 +223,7 @@ The assessors who gathered the evidence are identified at the bottom of the find
 
 {{< figure src="/img/sar-figure-11.png" title="Assessor POC" alt="Screenshot of the FedRAMP Test Case Workbook showing the assessor POC information." >}}
 
-The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
+The following assumes that the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -262,9 +260,9 @@ While each assessment procedure must have exactly one finding assembly, within t
 |**Subject**: Who was interviewed?|**subject \[type=\"party\"\]**|
 |**Subject**: What was tested/inspected?|**subject \[type=\"component\", \"inventory-item\", \"resource\" (Artifact)\]**|
 |**How**: What was used?|**reference \[type=\"tool\" or \"method\"\]**|
-|**Evidence**: What evidence supports this?|**relevant-evidence \[type=\'observation\'\]**|
+|**Evidence**: What evidence supports this?|**relevant-evidence \[type=\"observation\"\]**|
 
-**The following documentation contain specific examples of Observations and Evidence.**
+**The following documentation contains specific examples of Observations and Evidence.**
 
 ---
 #### TCW - Observations and Evidence: Examine
@@ -281,7 +279,7 @@ The origin/actor field points to an individual identified as a party in the meta
 
 The origin/related-task points to the task in the SAP schedule (or locally defined task), which describes the review of documentation.
 
-The subject cites the policy that was reviewed. While OSCAL would allow the UUID to point to the policy attached to the SSP, FedRAMP requires assessors directly attach the artifacts and evidence to the SAR. Therefore, this should typically point to a resource in the SAR.
+The subject cites the policy that was reviewed. While OSCAL would allow the UUID to point to the policy attached to the SSP, FedRAMP requires assessors to directly attach the artifacts and evidence to the SAR. Therefore, this should typically point to a resource in the SAR.
 
 ##### Representation
 {{< highlight xml "linenos=table, hl_lines=8" >}}
@@ -343,7 +341,7 @@ The type flag of the origin/actor field may be set to one of the following:
 
 {{</callout>}}
 
-Finally, the relevant-evidence assembly is used to reference evidence. It has an optional href flag that is used to reference a backmatter resource. Alternatively, the relevant-evidence assembly has a child link field then can also be used to reference a backmatter resource. Either approach is acceptable, however if both relevant-evidence/@href and relevant-evidence/link/@href are specified, the link is assumed to be the definitive reference. The previous example demonstrates using link to point back to an examined policy document.
+Finally, the relevant-evidence assembly is used to reference evidence. It has an optional href flag that is used to reference a back-matter resource. Alternatively, the relevant-evidence assembly has a child link field that can also be used to reference a back-matter resource. Either approach is acceptable; however, if both relevant-evidence/@href and relevant-evidence/link/@href are specified, the link is assumed to be the definitive reference. The previous example demonstrates using link to point back to an examined policy document.
 
 ---
 #### TCW - Observations and Evidence: Interview
@@ -362,7 +360,7 @@ The origin/related-task points to the task in the SAP schedule (or locally defin
 
 The subject points to the person interviewed, who may be listed in the SSP, SAP, or SAR.
 
-Finally, the relevant-evidence must be used to point to the attached interview notes as a URI fragment, and to provide detail as to where the relevant statements are in the notes.  While OSCAL will allow a relative external link in the href flag, FedRAMP requires each piece of evidence to be listed as a resource in the SAR back matter.
+Finally, the relevant-evidence must be used to point to the attached interview notes as a URI fragment, and to provide detail as to where the relevant statements are in the notes. While OSCAL will allow a relative external link in the href flag, FedRAMP requires each piece of evidence to be listed as a resource in the SAR back matter.
 
 ##### Representation
 {{< highlight xml "linenos=table, hl_lines=12" >}}
@@ -473,7 +471,7 @@ absolute link to the file\'s authoritative source location as well as a relative
 ---
 #### TCW - Observations and Evidence: Queries
 
-The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
+The following assumes that the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -518,7 +516,7 @@ SAP or SAR, and sometimes possibly all three depending on the context.
 
 #### Historic Test Case Workbook: Observations and Evidence
 
-When converting Historic Test Case Workbook content to OSCAL, many details broken down in a way that fits OSCAL. While refactoring legacy data to fit OSCAL is ideal and encouraged, it is not required for historic information.
+When converting Historic Test Case Workbook content to OSCAL, many details can be broken down in a way that fits OSCAL. While refactoring legacy data to fit OSCAL is ideal and encouraged, it is not required for historic information.
 
 {{< figure src="/img/sar-figure-14.png" title="Observation and Evidence" alt="Screenshot of the FedRAMP Historic Test Case Workbook showing the observation and evidence information." >}}
 
@@ -572,12 +570,10 @@ The Implementation Status, Assessment Results, and Assessor POC are handled the 
 ---
 ### Test Case Workbook: SSP Implementation Statement Differential
 
-If an SSP Implementation Statement Differential is identified, add an additional observation with a type
-value of \"ssp-statement-issue\" and cite this observation from finding assembly. The finding assembly should also include the
-implementation-statement-uuid field with the UUID of the original statement in the SSP.
+If an SSP Implementation Statement Differential is identified, add an additional `observation` with a type
+value of \"ssp-statement-issue\" and cite this `observation` from the `finding` assembly. The `finding` assembly should also include the `implementation-statement-uuid` field with the UUID of the original `statement` in the SSP.
 
-If this was an issue where an inventory-item or component was not configured as described in the SSP, the related observation should
-include the relevant inventory-item or component should be cited as subjects.
+If this was an issue where an `inventory-item` or `component` was not configured as described in the SSP, the related `observation` should cite the relevant `inventory-item` or `component` as subjects.
 
 {{< figure src="/img/sar-figure-15.png" title="SSP Implementation Statement Differential" alt="Screenshot of the FedRAMP Test Case Workbook showing the SSP implementation statement differential information." >}}
 
@@ -628,7 +624,7 @@ The type flag of the origin/actor field may be set to one of the following:
 
 {{</ highlight >}}
 
-The following assumes, the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
+The following assumes that the first result assembly contains the current assessment, as determined in the [*One Result Assembly for the Entire Assessment*](/documentation/sar/4-sar-template-to-oscal-mapping/#one-result-assembly-for-the-entire-assessment) section.
 
 {{< highlight xml "linenos=table" >}}
 (SAR) Quantity of SSP implementation statement differential issues cited in current assessment (integer):
@@ -649,7 +645,7 @@ Within the cited risk assembly, the \"Identified Risk\" is described in the desc
 
 The Likelihood Level and Impact Level are each entered in a characterization/facet field. The FedRAMP Risk Exposure Level must be calculated by the SAR tool. If the \"state\" annotation is missing, it is assumed to be \"initial\".
 
-Initially, the status field should always be set to \"open\". If the risk is addressed by the CSP and verified by the assessor before assessment activities are complete, this may be set to \"closed\", and entry must be made in the risk-log.
+Initially, the status field should always be set to \"open\". If the risk is addressed by the CSP and verified by the assessor before assessment activities are complete, this may be set to \"closed\", and an entry must be made in the risk-log.
 
 {{< figure src="/img/sar-figure-14.png" title="Identified Risks" alt="Screenshot of the FedRAMP Historic Test Case Workbook showing the risk information." >}}
 
@@ -661,7 +657,7 @@ Initially, the status field should always be set to \"open\". If the risk is add
     - low
     - moderate
     - high
-- The risk exposure rating  is calculated, consistent with Annual SAR Table 3-6, Risk Exposure Rating
+- The risk exposure rating is calculated consistent with Annual SAR Table 3-6, Risk Exposure Rating:
 ![Risk Exposure Rating](/img/sar-figure-risk-exposure-rating.png)
 
 {{</callout>}}
@@ -710,7 +706,7 @@ Initially, the status field should always be set to \"open\". If the risk is add
 
 #### Test Case Workbook: Recommendation for Mitigation
 
-For the risk assembly, there must be a response assembly containing the assessors recommended mitigation. 
+For the risk assembly, there must be a response assembly containing the assessor's recommended mitigation. 
 The lifecycle flag must be set to \"recommendation\".
 
 There may be more than one response assembly. For example, a tool may provide a recommended remediation, and the assessor may want to add their own recommendation. This would result in two response assemblies.
@@ -891,7 +887,7 @@ There must be one risk assembly for each unique vulnerability. All devices ident
 
 The individual components and inventory-items on which the scans are performed should already be marked as to whether authenticated scanning is possible.
 
-All components and inventory-items found to have the vulnerability must be cited using their UUID in the subject field. One subject for each item.
+All components and inventory-items found to have the vulnerability must be cited using their UUID in the subject field, with one subject for each item.
 
 The uuid flag of the origin field must be set to the tool\'s UUID, and the type flag must be set to \"tool\".
 
@@ -912,7 +908,7 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
             <p>This is a statement about the identified risk.</p>
             <!-- <p>TCW: Risk Statement..</p> -->
             <p>Scans: N/A.</p>
-            <!-- <p>Pen Risk Statement.</p> -->
+            <!-- <p>Pen Test: Risk Statement.</p> -->
             <!-- <p>RET: Risk Statement.</p> -->
         </statement>
         <status>open</status>
@@ -949,7 +945,7 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
 
 The risk assembly uses facet fields to capture relevant tool output details. The facet field's system flag allows data from different tools and different security frameworks to co-exist in the same file.
 
-FedRAMP required risk-metric data, such as likelihood and impact are specified with facet fields with system flag value of \"https://fedramp.gov\". FedRAMP required risk metrics must also have the class flag set to either \"initial\" or \"residual\". There must
+FedRAMP-required risk-metric data, such as likelihood and impact, are specified with facet fields with a system flag value of \"https://fedramp.gov\". FedRAMP-required risk metrics must also have the class flag set to either \"initial\" or \"residual\". There must
 always be an initial risk metric. If adjusted, there may be a residual risk metric as well.
 
 The uuid flag of the origin field must be set to the tool\'s UUID, and the type flag must be set to \"tool\".
@@ -1010,7 +1006,7 @@ For information about the remediation assembly, see [*Test Case Workbook: Recomm
 ---
 ### Penetration Testing: Findings
 
-FedRAMP requires exactly one finding assembly for each risk identified through penetration testing. Required reporting, such as spear phishing tests, each must have their own finding assembly as well. Each finding has a related-observation referencing observation (where additional details are recorded) via the uuid flag. At the end of the finding assembly, the UUID for the penetration test lead or team member must be listed as the actor-uuid for the finding. Note that there may be more than one penetration test member listed.
+FedRAMP requires exactly one finding assembly for each risk identified through penetration testing. Required reporting, such as spear phishing tests, each must have its own finding assembly as well. Each finding has a related-observation referencing observation (where additional details are recorded) via the uuid flag. At the end of the finding assembly, the UUID for the penetration test lead or team member must be listed as the actor-uuid for the finding. Note that there may be more than one penetration test member listed.
 
 The observation assembly contains the method field which must be set to \"TEST\", and the type field which must be set to \"finding\". The observation assembly also contains the collected field which must be set to the automation tool\'s discovery timestamp, or the date and time observed. The assessors who gathered the evidence are identified at the bottom of the finding assembly using actor-uuid fields.
 
@@ -1041,7 +1037,7 @@ The href flag in the relevant-evidence field must contain a URI fragment that po
         <related-observation observation-uuid="a38f3bba-5b71-400d-b8f2-d808e1d4627f"/>
         <associated-risk risk-uuid="e552fb72-d662-4c01-b2d7-4dcb2086bb07"/>
         <remarks>
-            <p>If a penetration test result is favorable, such as to say the SOC detected the activities appropriately, no risk is required.</p>
+            <p>If a penetration test result is favorable, such as to say the SOC detected the activities appropriately, no risk assembly is required.</p>
             <p>If a penetration test result identifies a vulnerability or deficiency, the risk assembly is required.</p>
         </remarks>
     </finding>
@@ -1111,7 +1107,7 @@ The risk assembly is populated as described in previous sections.
 ### Deviations
 
 After risks are identified during an assessment, their status may change. Some are identified as false positive 
-(FP), operationally required (OR), or risk adjusted (RA). As deviations arise, the initial risk information is [not]{.underline} modified. Additional content is added to identify these changes. In each case, an additional observation is added to the finding assembly, and additional facet fields are added to the risk assembly. There may be both OR and an RA information in the same finding assembly.
+(FP), operationally required (OR), or risk adjusted (RA). As deviations arise, the initial risk information is **not** modified. Additional content is added to identify these changes. In each case, an additional observation is added to the finding assembly, and additional facet fields are added to the risk assembly. There may be both OR and RA information in the same finding assembly.
 
 #### False Positive (FP)
 
@@ -1168,7 +1164,7 @@ FedRAMP allowed values for false-positive prop:
 
 #### Operationally Required (OR)
 
-To document an operationally required risk, add a prop to the risk assembly, and keep the risk status as \"open\". Set the prop name to \" operational-requirement \", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
+To document an operationally required risk, add a prop to the risk assembly, and keep the risk status as \"open\". Set the prop name to \"operational-requirement\", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
 
 Within the observation assembly, provide a justification for the operational requirement. This must have a conformity tag with a value of \"operational-requirement\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more appropriate. 
 
@@ -1228,9 +1224,9 @@ To document an operationally required risk, add a prop to the risk assembly and 
 Within the observation assembly, provide a justification for the risk adjustment. This must have a conformity tag with a value of
 \"risk-adjustment\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more appropriate.
 
-Use facet fields to adjust risk by lowering either likelihood, impact, or both. Within the facet fields, set a prop with the name "state" to indicate whether this is an "initial" or "adjusted" risk metric.
+Use facet fields to adjust risk by lowering likelihood, impact, or both. Within the facet fields, set a prop with the name "state" to indicate whether this is an "initial" or "adjusted" risk metric.
 
-Finally, mitigating-factor assemblies. One describing each mitigating factor. If an SSP implementation statement describes the mitigating factor, link to it using the implementation-uuid flag.
+Finally, add mitigating-factor assemblies, one describing each mitigating factor. If an SSP implementation statement describes the mitigating factor, link to it using the implementation-uuid flag.
 
 {{<callout>}}
 **Using the Common Vulnerability Scoring System (CVSS)**
@@ -1239,7 +1235,7 @@ When using CVSS scoring to justify a risk adjustment, the CVSS metrics are added
 
 ``` <risk-metric name="AV" system="CVSSv3.1">network</risk-metric> ```
 
-See Appendix A, CVSS Scoring for more information.
+See the [*CVSS Scoring*](#/documentation/sar/5-generated-content/#cvss-scoring) for more information.
 
 {{</callout>}}
 
@@ -1263,19 +1259,18 @@ See Appendix A, CVSS Scoring for more information.
                 <actor type="tool" actor-uuid="040937c3-2e0e-407a-bb3c-d4e61ac1c460" />
             </origin>
             
-            <facet name="likelihood"       system="https://fedramp.gov" value="high">
+            <facet name="likelihood" system="https://fedramp.gov" value="high">
                 <prop name="state" value="initial"/>
             </facet>
-            <facet name="impact"           system="https://fedramp.gov" value="high">
+            <facet name="impact" system="https://fedramp.gov" value="high">
                 <prop name="state" value="initial"/>
             </facet>
             
-            <facet name="likelihood"       system="https://fedramp.gov" value="moderate">
+            <facet name="likelihood" system="https://fedramp.gov" value="moderate">
                 <prop name="state" value="adjusted"/>
             </facet>
-            <facet name="impact"           system="https://fedramp.gov" value="moderate">
+            <facet name="impact" system="https://fedramp.gov" value="moderate">
                 <prop name="state" value="adjusted"/>
-                
             </facet>
         </characterization>
         <mitigating-factor uuid="fd061039-e9b0-4b4c-a78b-ca024d411174"
@@ -1304,7 +1299,7 @@ FedRAMP allowed values for risk-adjustment prop:
 
 Once identified, risks must remain in the SAR; however, if the CSP closes the risk before testing is complete, it may be marked as closed in the SAR. To represent a risk closure, change the risk status to \"closed\", then add an entry field and risk-log assembly, with a status-change value of \"closed \".
 
-In the risk-log , describe the action(s) taken by the CSP to close the risk.
+In the risk-log, describe the action(s) taken by the CSP to close the risk.
 
 
 ##### Representation
@@ -1359,7 +1354,7 @@ In the risk-log , describe the action(s) taken by the CSP to close the risk.
 There must be a prop field with a value indicating whether the assessor recommends the system for authorization or reauthorization. This must be a FedRAMP extension with the name \"recommend-authorization\". If the recommendation is \"no\" or \"provisionally\", the first paragraph of the Continued Authorization Recommendation should be generated by a SAR tool, as follows:
 
 {{<callout>}}
-*A total of \[# of risks\] system risks were identified for \[system > name\], including \[#high\] High risks, \[#moderate\] Moderate risks, \[#low\] Low risks, and \[#operationally-required\] of operationally required risks.*
+*A total of \[# of risks\] system risks were identified for \[system > name\], including \[#high\] High risks, \[#moderate\] Moderate risks, \[#low\] Low risks, and \[#operationally-required\] operationally required risks.*
 {{</callout>}}
 
 The \"other information as may be required\" may be added as a part assembly in the assets section.
@@ -1390,8 +1385,8 @@ priority value of \"1\" represents the most important risk. \"2\" represents the
             </part>
             <part name="authorization-statement">
                 <prop name="sort-id" value="999"/>
-                <p>Based on the remaining risk noted in the [Information System Abbreviation] Risk Exposure Table,  and the continuous improvement 
-                       of security related processes and controls, [3PAO Name] [recommends |does not recommend | provisionally recommends]
+                <p>Based on the remaining risk noted in the [Information System Abbreviation] Risk Exposure Table, and the continuous improvement 
+                       of security related processes and controls, [3PAO Name] [recommends | does not recommend | provisionally recommends]
                        continued authorization be granted for [Information System Name].</p>
             </part>
         </part>

@@ -3,7 +3,7 @@ title: Overview
 section: /poam/
 weight: 101
 ---
-# FedRAMP OSCAL PO&AM Overview
+# FedRAMP OSCAL POA&M Overview
 
 This section provides a summary of several important concepts and
 details that apply to OSCAL-based FedRAMP POA&M files.
@@ -39,7 +39,7 @@ For more information about resolved profile catalogs, see the [*Profile Resoluti
 
 ### OSCAL-based FedRAMP POA&M Template
 
-FedRAMP offers an OSCAL-based POA&M shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to help get you started. This document is intended to work in concert with that file. The OSCAL-based FedRAMP POA&M Template is available in XML and JSON formats here:
+FedRAMP offers an OSCAL-based POA&M shell file in both XML and JSON formats. This shell contains many of the FedRAMP required standards to help get you started. This documentation is intended to work in concert with that file. The OSCAL-based FedRAMP POA&M Template is available in XML and JSON formats here:
 
 -   OSCAL-based FedRAMP POA&M Template (JSON Format):\
     <https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/templates/poam/json/FedRAMP-POAM-OSCAL-Template.json>
@@ -65,7 +65,7 @@ OSCAL is designed for traceability. Because of this, the POA&M is designed to be
 
 OSCAL syntax requires the POA&M to import an OSCAL-based SSP, even if no OSCAL-based SSP exists.
 
-FedRAMP recognizes some system owners may adopt OSCAL for the POA&M before adopting it for their SSP. Similarly, FedRAMP does not currently require monthly delivery of the SSP with the monthly Continuous Monitoring POA&M delivery.
+FedRAMP recognizes that some system owners may adopt OSCAL for the POA&M before adopting it for their SSP. Similarly, FedRAMP does not currently require monthly delivery of the SSP with the monthly Continuous Monitoring POA&M delivery.
 {{</callout>}}
 
 Use the import-ssp field to specify an existing OSCAL-based SSP. The href flag may include any valid uniform resource identifier (URI), including a relative path, absolute path, or URI fragment.
@@ -125,7 +125,7 @@ Ideally, when SSP information is missing or inaccurate the system ISSO should co
 
 If the POA&M must be updated with missing or inaccurate SSP information, the POA&M syntax allows for SSP information correction.
 
-Tool designers should ensure their tools can cite the relevant OSCAL-based SSP information when possible, and capture assessor-corrected SSP information in the POA&M\'s local-definitions or metadata sections when necessary. The relevant sections of this guide describe how to represent inaccurate SSP  information in the POA&M when needed.
+Tool designers should ensure their tools can cite the relevant OSCAL-based SSP information when possible, and capture assessor-corrected SSP information in the POA&M\'s local-definitions or metadata sections when necessary. The relevant sections of this documentation describe how to represent inaccurate SSP  information in the POA&M when needed.
 
 {{<callout>}}
 ***Monthly Continuous Monitoring (ConMon) Delivery***

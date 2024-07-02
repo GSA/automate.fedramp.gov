@@ -14,15 +14,13 @@ Profile resolution flattens or merges a profile and its imported catalog(s) and 
 {{</ callout >}}
 
 While this ensures traceability of selected controls and modified
-content, it can also be resource intensive. Profile resolution flattens
-or merges a profile and its imported catalog(s) and profiles into a
-single OSCAL file using the catalog syntax.
+content, it can also be resource intensive.
 
 {{< figure src="/img/content-figure-14.png" title="Profile Resolution." alt="Figure showing how profile resolution flattens or merges a profile and its imported catalog(s) and profiles into a single OSCAL file using the catalog syntax." >}}
 
 This single file is essentially a pre-processed result of the profile
 import and modification content. A resolved profile catalog is useful
-for the FedRAMP baselines given their static nature. Any tool that would
+for the FedRAMP baselines, given their static nature. Any tool that would
 normally open an OSCAL-based FedRAMP profile and process it against the
 NIST SP 800-53 catalog can instead simply use the resolved-profile
 catalog.
@@ -42,7 +40,7 @@ The complete profile syntax is available here:
 
 ## Resolved Profile Catalogs
 
-The resolved profile catalog for each FedRAMP baseline is a
+The resolved profile catalog for each FedRAMP baseline is
 pre-processing the profile and catalog to produce the resulting data.
 This reduces overhead for tools by eliminating the need to open and
 follow references from the profile to the catalog. It also includes only
@@ -53,12 +51,12 @@ Where available, tool developers have the option of following the links
 from the profile to the catalog as described above or using the resolved
 profile catalog.
 
-Developers should be aware that at this time catalogs and profiles
+Developers should be aware that at this time, catalogs and profiles
 remain relatively static. As OSCAL gains wider adoption, there is a risk
 that profiles and catalogs will become more dynamic, and a resolved
 profile catalog becomes more likely to be out of date. Early adopters
 may wish to start with the resolved profile catalog now, and plan to add
-functionality later for the separate profile and catalog handling later
+functionality for the separate profile and catalog handling later
 in their product roadmap.
 
 ## NIST\'s Profile Resolution Tool
