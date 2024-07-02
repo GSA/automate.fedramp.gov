@@ -31,13 +31,13 @@ This FedRAMP versioning strategy will:
 - Provide content and semantic compatibility tied to a specific version, allowing version-based data to be used by different tools.
 - Minimize disruption for tool maintainers by indicating when a major change is compatibility breaking.
 
-Traditionally, [SemVer](https://semver.org/), which is short for semantic versioning, is used as a common practice to version software. Using SemVer, version numbers convey meaning around the degree of compatibility resulting from modifications made to the underlying code or tool.
+[SemVer](https://semver.org/), which is short for semantic versioning, is used as a common practice to version software. Using SemVer, version numbers convey meaning around the degree of compatibility resulting from modifications made to the underlying code or tool.
 
-A SemVer is the combination of MAJOR.MINOR.PATCH as follows:
+A SemVer is the combination of *MAJOR*.*MINOR*.*PATCH* as follows:
 
-- Incrementing the MAJOR version indicates significant incompatible changes.
-- Incrementing the MINOR version adds functionality in a backward-compatible manner.
-- Incrementing the PATCH version indicates backward-compatible bug fixes.
+- Incrementing the **MAJOR** version indicates significant incompatible changes.
+- Incrementing the **MINOR** version adds functionality in a backward-compatible manner.
+- Incrementing the **PATCH** version indicates backward-compatible bug fixes.
 
 ## Versioning Examples
 

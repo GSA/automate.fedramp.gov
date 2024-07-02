@@ -10,43 +10,25 @@ elements are expressed using the same OSCAL syntax for the SSP, SAP,
 SAR, and POA&M. This section provides OSCAL syntax for these common
 elements, including:
 
--   Document Basics:
-
-    -   Document Title
-
-    -   Document Publication Date
-
-    -   Document Version
-
-    -   Document Sensitivity & Ownership Markings
-
-    -   Prepared By
-
-    -   Prepared For
-
-    -   Document Revision History
-
--   OSCAL-Additional Document Basics:
-
-    -   Last Modified Date
-
-    -   OSCAL Syntax Version
-
--   Logos:
-
-    -   FedRAMP Logo
-
-    -   CSP Logo
-
-    -   Assessor Logo
-
-    -   Consulting 3PAO Logo
-
--   Attachments:
-
-    -   FedRAMP Acronyms
-
-    -   FedRAMP Citations (Laws, Regulations, Standards, and Guidance)
+- Document Basics:
+    - Document Title
+    - Document Publication Date
+    - Document Version
+    - Document Sensitivity & Ownership Markings
+    - Prepared By
+    - Prepared For
+    - Document Revision History
+- OSCAL-Additional Document Basics:
+    - Last Modified Date
+    - OSCAL Syntax Version
+- Logos:
+    - FedRAMP Logo
+    - CSP Logo
+    - Assessor Logo
+    - Consulting 3PAO Logo
+- Attachments:
+    - FedRAMP Acronyms
+    - FedRAMP Citations (Laws, Regulations, Standards, and Guidance)
 
 ### Title Page
 
@@ -55,17 +37,17 @@ elements, including:
 {{<callout>}}
 The **FedRAMP Logo** is a resource in the back-matter section of the OSCAL-based FedRAMP Templates, and can be referenced with the following XPath:
 
-`   /*/metadata/party[@uuid=../responsible-party[@role-id='fedramp-pmo']/party-uuid]/link[@rel='logo']/@href`
+`/*/metadata/party[@uuid=../responsible-party[@role-id='fedramp-pmo']/party-uuid]/link[@rel='logo']/@href`
 
 As with any href value, this can include a relative or absolute URI external to the OSCAL file, or it can contain a URI fragment, pointing to a resource inside the OSCAL file itself (or other OSCAL files in the stack).
 
 If the above returns an href value beginning with a hashtag (#), the rest of the value is the UUID value for the resource containing the logo. Drop the hashtag and use the remaining value to locate the resource as follows:
 
-`   /*/back-matter/resource[@uuid='[UUID-value-returned-above]']/rlink/@href`
+`/*/back-matter/resource[@uuid='[UUID-value-returned-above]']/rlink/@href`
 
 OR
 
-`   /*/back-matter/resource[@uuid='[UUID-value-returned-above]']/base64`
+`/*/back-matter/resource[@uuid='[UUID-value-returned-above]']/base64`
 {{</callout>}}
 
 ##### Representation
@@ -104,39 +86,27 @@ OR
 </back-matter>
 {{</ highlight >}}
 
-<br />
 {{<callout>}}
-**FedRAMP Allowed Value** \
+**FedRAMP Allowed Value**\
 Required Role ID:
 - `fedramp-pmo`
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Document Title:
-    /*/metadata/title
-Document Published Version #:
-    /*/metadata/version
-Document Published Date (will need to convert data for presentation):
-    /*/metadata/published
-FedRAMP's Logo:
-    /*/metadata/party[@uuid=../responsible-party[@role-id='fedramp-pmo']/party-uuid]/link[@rel='logo']/@href
-Document Sensitivity Label (If more than one, tools should present all):
-    /*/metadata/prop[@name="marking"]
 
-{{</ highlight >}}
+- Document Title: `/*/metadata/title`
+- Document Published Version #: `/*/metadata/version`
+- Document Published Date (will need to convert data for presentation): `/*/metadata/published`
+- FedRAMP's Logo: `/*/metadata/party[@uuid=../responsible-party[@role-id='fedramp-pmo']/party-uuid]/link[@rel='logo']/@href`
+- Document Sensitivity Label (If more than one, tools should present all): `/*/metadata/prop[@name="marking"]`
 
 **NOTES:**
 
--   There may be more than one *Document Sensitivity Label* (marking) if
+- There may be more than one *Document Sensitivity Label* (marking) if
     needed.
+    - Tools should display and/or notify the user of all sensitivity markings.
 
-    -   Tools should display and/or notify the user of all sensitivity
-        markings.
-
--   The logos on older FedRAMP Templates are not necessary. This
-    includes the NIST Logo, as well as the three Joint Authorization
-    Board (JAB) Agency Logos.
+- The logos on older FedRAMP Templates are not necessary. This includes the NIST Logo, as well as the three Joint Authorization Board (JAB) Agency Logos.
 
 ### Prepared By (Third Party)
 
@@ -146,6 +116,7 @@ The FedRAMP SAP and SAR must always indicate the assessing organization
 using this Prepared By syntax.
 
 ##### Representation 
+
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="prepared-by">
@@ -180,27 +151,25 @@ using this Prepared By syntax.
 </back-matter>
 {{</ highlight >}}
 
-<br />
 {{<callout>}}
-**NIST Allowed Value** \
+**NIST Allowed Value**\
 Required Role ID:
-- `prepared-by`
 
+- `prepared-by`
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Preparer Organization's Name and Address: 
-    /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name
+
+- Preparer Organization's Name and Address: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name`
+
 NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
-{{</ highlight >}}
 
 **NOTES:**
 
--   The `responsible-party` assembly connects the role to the party and is
+- The `responsible-party` assembly connects the role to the party and is
     required for compliance.
 
--   If the content was prepared by an organization other than the CSP,
+- If the content was prepared by an organization other than the CSP,
     their logo should also appear in back-matter.
 
 ### Prepared By (CSP Self-Prepared)
@@ -250,15 +219,14 @@ Required Role ID:
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Preparer Organization's Name and Address: 
-    /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name
+
+- Preparer Organization's Name and Address: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name`
+
 NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
-{{</ highlight >}}
 
 **NOTES:**
 
--   The `responsible-party` assembly connects the role to the party and is
+- The `responsible-party` assembly connects the role to the party and is
     required for compliance.
 
 ### Prepared For (CSP)
@@ -306,13 +274,11 @@ and CSP have separately defined roles.
 {{</ highlight >}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Prepared For (CSP) Details: 
-    /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name
-Prepared For Details: 
-    /*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name
+
+- Prepared For (CSP) Details: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name`
+- Prepared For Details: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name`
+
 NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
-{{</ highlight >}}
 
 ### Document Revision History
 
@@ -355,7 +321,6 @@ FedRAMP\'s revision history requirements.
 </metadata>
 {{</ highlight >}}
 
-<br />
 {{<callout>}}
 **FedRAMP Extension (Author)** \
 prop (`ns="https://fedramp.gov/ns/oscal"`):
@@ -364,38 +329,26 @@ prop (`ns="https://fedramp.gov/ns/oscal"`):
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Number of Revision Entries:
-    count(/*/metadata/revision-history/revision)
-Revision Date for Individual Entry:
-    /*/metadata/revision-history/revision[1]/published
-Description for Individual Entry:
-    /*/metadata/revision-history/revision[1]/remarks/string()
-Version for Individual Entry:
-    /*/metadata/revision-history/revision[1]/version
-Author for Individual Entry:
-    /*/metadata/party[@uuid=/*/metadata/revision-history/revision[1]/prop [@name='party-uuid'][@ns='https://fedramp.gov/ns/oscal']]/org/short-name
 
-{{</ highlight >}}
+- Number of Revision Entries: `count(/*/metadata/revision-history/revision)`
+- Revision Date for Individual Entry: `/*/metadata/revision-history/revision[1]/published`
+- Description for Individual Entry: `/*/metadata/revision-history/revision[1]/remarks/string()`
+- Version for Individual Entry: `/*/metadata/revision-history/revision[1]/version`
+- Author for Individual Entry: `/*/metadata/party[@uuid=/*/metadata/revision-history/revision[1]/prop [@name='party-uuid'][@ns='https://fedramp.gov/ns/oscal']]/org/short-name`
 
-<br />
 {{<callout>}}
 Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 **NOTES:**
 
--   The Revision History\'s Author field is addressed using a FedRAMP
+- The Revision History\'s Author field is addressed using a FedRAMP
     extension, which points to a metadata `party`.
-
--   The published field requires the OSCAL data type,
+- The published field requires the OSCAL data type,
     [date-time-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone).
-
--   FedRAMP only requires the publication date, not the time.
-
-    -   The time portion may be replaced with all zeros.
-
-    -   FedRAMP tools should present only the date, and use a more
+- FedRAMP only requires the publication date, not the time.
+    - The time portion may be replaced with all zeros.
+    - FedRAMP tools should present only the date, and use a more
         user-friendly format.
 
 ### How to Contact Us
@@ -443,7 +396,6 @@ and there must be a `responsible-party` defined, linking the
 </metadata>
 {{</ highlight >}}
 
-<br />
 {{<callout>}}
 **FedRAMP-Role Identifiers:**
 - `fedramp-pmo`
@@ -451,12 +403,9 @@ and there must be a `responsible-party` defined, linking the
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-FedRAMP Email Address:
-    /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='fedramp-pmo'] /party-uuid]/email
-FedRAMP Web Site Address:
-    /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='fedramp-pmo'] /party-uuid]/link/@href
-{{</ highlight >}}
+
+- FedRAMP Email Address: `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='fedramp-pmo'] /party-uuid]/email`
+- FedRAMP Web Site Address: `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='fedramp-pmo'] /party-uuid]/link/@href`
 
 ### Document Approvals
 
@@ -504,10 +453,8 @@ assessor\'s organization.
 </metadata>
 {{</ highlight >}}
 
-<br />
 {{<callout>}}
-
-**Defined Identifiers** \
+**Defined Identifiers**\
 Required Role IDs:
 - `content-approver`
 - `cloud-service-provider`
@@ -515,20 +462,16 @@ Required Role IDs:
 **FedRAMP Extension (Person's Title)** \
 prop (`ns="https://fedramp.gov/ns/oscal"`):
 - `name="title"`
-
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Approver’s Name:
-    (/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]
-Approver’s Title:
-    (/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='https://fedramp.gov/ns/oscal'])[1]
-NOTE: For each additional approver, replace the "[1]" with "[2]", "[3]", and so on.
-CSP Name:
-    /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='cloud-service-provider']/party-uuid]]/party-name
 
-{{</ highlight >}}
+- Approver’s Name: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]`
+- Approver’s Title: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='https://fedramp.gov/ns/oscal'])[1]`
+
+   NOTE: For each additional approver, replace the "[1]" with "[2]", "[3]", and so on.
+
+- CSP Name: `/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='cloud-service-provider']/party-uuid]]/party-name`
 
 **NOTES:**
 
@@ -630,19 +573,14 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Number of Laws and Regulations (integer):
-    count(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])
-Laws and Regulations - Identification Number:
-    (/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../doc-id
-Laws and Regulations - Title:
-    (/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../title
-Laws and Regulations - Date:
-    (/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../prop[@name="publication"]
-Laws and Regulations - Link:
-    (/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../rlink/@href
+
+- Number of Laws and Regulations (integer): `count(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])`
+- Laws and Regulations: Identification Number: `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../doc-id`
+- Laws and Regulations: Title: `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../title`
+- Laws and Regulations: Date: `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../prop[@name="publication"]`
+- Laws and Regulations: Link: `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../rlink/@href`
+
 NOTE: For Standards and Guidance replace "law" with "standard" and "regulation" with "guidance" in the above queries to generate the Standards and Guidance tables.
-{{</ highlight >}}
 
 ### Attachments and Embedded Content
 
@@ -694,15 +632,10 @@ Replace "policy" with "plan", "rob", etc. for each attachment type.
 {{</callout>}}
 
 ##### XPath Queries
-{{< highlight xml "linenos=table" >}}
-PIA Attachment (Embedded Base64 encoded):
-    /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/.. /base64
-PIA Attachment (Relative Link):
-    /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/.. /rlink/@href
-Publication Date of PIA:
-    /*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/../prop[@name="publication"]
 
-{{</ highlight >}}
+- PIA Attachment (Embedded Base64 encoded): `/*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/../base64`
+- PIA Attachment (Relative Link): `/*/back-matter/resource/prop[@name=type][string(.)='privacy-impact-assessment']/../rlink/@href`
+- Publication Date of PIA: `/*/back-matter/resource/prop[@name=type][string(.)='privacy-impact-assessment']/../prop[@name="publication"]`
 
 Tools creating OSCAL content should include a `media-type` for all `rlink`
 and `base64` fields, as well as a `filename` for all `base64` fields.
