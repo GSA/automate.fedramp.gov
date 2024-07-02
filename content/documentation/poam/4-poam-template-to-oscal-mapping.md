@@ -105,13 +105,13 @@ be assigned to a poam-item; however, FedRAMP strongly
 recommends only one associated-risk per poam-item.
 
 The CSP-assigned unique POA&M ID must be present in the poam-item
-assembly using the FedRAMP extension, \"POAM-ID\".
+assembly using the FedRAMP extension, `POAM-ID`.
 
 The related control must be present in the risk assembly using the
-\"impacted-control-id\" FedRAMP extension.
+`impacted-control-id` FedRAMP extension.
 
 The collected field must be set to the Original Detection Date, which
-may be the tool\'s timestamp.
+may be the tool's timestamp.
 
 Within the poam-item assembly, there must be at least one observation
 assembly, and exactly one risk assembly.
@@ -155,14 +155,14 @@ assembly, and exactly one risk assembly.
 #### Individual POA&M Entries: Observations
 
 Within the observation assembly, the method field must be set to
-\"TEST\" for scanning results. Set this value to \"TEST\", \"EXAMINE\"
-or \"INTERVIEW\" as appropriate for risks identified by other means.
+`TEST` for scanning results. Set this value to `TEST`, `EXAMINE`
+or `INTERVIEW` as appropriate for risks identified by other means.
 
-The type field must be set to \"finding\".
+The type field must be set to `finding`.
 
 The uuid flag of the origin field must identify the Weakness Detector
 Source of the information. For monthly scanning, this must identify the
-automated tool\'s UUID, and the type flag must be set to \"tool\". The
+automated tool's UUID, and the type flag must be set to `tool`. The
 tool must be defined as a component in the local-definitions assembly,
 using the same syntax and approach described in [*SAP Test Plan: Testing Performed Using Automated Tools*](/documentation/sap/4-sap-template-to-oscal-mapping/#testing-performed-using-automated-tools).
 
@@ -174,7 +174,7 @@ for POA&M entries.
 At the end of the finding assembly, the UUID for the operator of the
 scanning tool may be listed as the party-uuid for the finding. There may
 be more than one. Each party-uuid must reference a party assembly in
-either the POA&M\'s metadata section, or the metadata section of the
+either the POA&M's metadata section, or the metadata section of the
 imported SSP. Tool operator information is optional, but a POA&M tool
 should display the party information if one or more party-uuid fields
 are present.
@@ -219,13 +219,13 @@ are present.
 
 For scanner tool findings, impacted assets are identified using the
 subject field, one field for each impacted asset. The type flag should
-be set to either \"inventory-item\" or \"component\". The uuid-ref flag
+be set to either `inventory-item` or `component`. The uuid-ref flag
 must point to an inventory item or component defined in the SSP
 inventory or POA&M local-definitions.
 
 All details about the asset become available as a result of that UUID
 reference, such as IP address, fully qualified domain name (FQDN), and
-the asset\'s point of contact. If an inventory-item contains an
+the asset's point of contact. If an inventory-item contains an
 implemented-component field, those linked component details are also
 considered to be part of the inventory-item itself.
 
@@ -297,27 +297,27 @@ See [POA&M - Importing the System Security Plan](/documentation/poam/3-working-w
 
 Weakness details are identified in the risk assembly. The Weakness Name
 appears in the title field, and the Weakness Description appears in the
-description field. The status field is initially set to \"open\".
+description field. The status field is initially set to `open`.
 
 The Weakness Source Identifier requires a FedRAMP extension. Within the
-characterization\'s origin, an actor must be specified for the tool
-itself. Assign the \"vulnerability-id\" and \"plugin-id\" FedRAMP
+characterization's origin, an actor must be specified for the tool
+itself. Assign the `vulnerability-id` and `plugin-id` FedRAMP
 extensions as properties to this actor.
 
 Information provided by the tool that characterizes the risk is
 captured as facet fields. When the scanner tool provides risk values
 from other recognized systems, such as a CVE number, IAVAM severity, or
-CVSS metric, the NIST-defined name and system values must be used, in
+CVSS metric, the OSCAL-defined name and system values must be used, in
 addition to the tool value being assigned to the value attribute. For
 example, if the scanner tool provides a CVE number, the risk-metric
-field\'s system flag should reflect \"http://cve.mitre.org\" as the
+field's system flag value should reflect `http://cve.mitre.org` as the
 system, not the scanner tool.
 
 FedRAMP-required facet fields, such as likelihood and impact, have a
-system flag with a value of \"https://fedramp.gov\". FedRAMP-required
-facets must also have a prop with the name flag set to \"state\" and the
-value flag set to either \"initial\" or \"adjusted\". There must always
-be \"initial\" facets. If adjusted, there may be \"adjusted\" facets
+system flag with a value of `https://fedramp.gov`. FedRAMP-required
+facets must also have a prop with the name flag set to `state` and the
+value flag set to either `initial` or `adjusted`. There must always
+be `initial` facets. If adjusted, there may be `adjusted` facets
 as well.
 
 {{< figure src="/img/poam-figure-9.png" title="FedRAMP POA&M entry weakness information." alt="Screenshot of the FedRAMP POA&M template showing entry row weakness information." >}}
@@ -338,7 +338,7 @@ Common values for the system flag include:
 If a tool provides a value with no clear source of information for defining the value, use the special "unknown" system value: 
   http://csrc.nist.gov/ns/oscal/unknown
 
-Ideally scanner tool vendors will define a "system" value for their own tools. Until that happens, FedRAMP recommends either using the URL for the vendor's web site or the NIST-defined system value for an "unknown" system: 
+Ideally scanner tool vendors will define a "system" value for their own tools. Until that happens, FedRAMP recommends either using the URL for the vendor's web site or the OSCAL-defined system value for an "unknown" system: 
   http://csrc.nist.gov/ns/oscal/unknown
 
 Until this matures and clear system values are widely available across the industry, FedRAMP only requires that the same system value be used consistently throughout the POA&M for a given tool and keep the facet values from a given tool within the same characterization assembly which cites the tool as an actor.
@@ -402,15 +402,15 @@ CSPs must track their system's vulnerabilities against the CISA catalog
 of known exploited vulnerabilities (KEV). CSPs must identify in their
 POA&M any system vulnerabilities that are in the KEV catalog.
 
-A FedRAMP extension property with the name flag set to \"kev-catalog\"
+A FedRAMP extension property with the name flag set to `kev-catalog`
 is used to indicate that a vulnerability is in the CISA KEV catalog. The
-\"kev-catalog\" property's value flag may be set to \"yes\" or \"no\";
-however, the property need only be present when its value is \"yes\".
+`kev-catalog` property's value flag may be set to `yes` or `no`;
+however, the property need only be present when its value is `yes`.
 
 CSP vulnerabilities that are in the CISA KEV catalog must be remediated
 by the due date specified in the catalog. This date must be included in
 the CSP's POA&M via a FedRAMP extension property with the name flag set
-to \"kev-due-date\". This property's value must be set to a [valid date
+to `kev-due-date`. This property's value must be set to a [valid date
 data type](https://pages.nist.gov/metaschema/specification/datatypes/#date).
 
 ##### Representation                                     
@@ -435,20 +435,20 @@ data type](https://pages.nist.gov/metaschema/specification/datatypes/#date).
 ### Recommended and Planned Remediation
 
 Within the risk assembly, there must be a response assembly containing
-the tool\'s recommended mitigation. The type flag must be set to
-\"recommendation\". The origin field\'s actor type flag must be set to
-\"tool\", and the uuid-ref must contain the UUID of the tool that
+the tool's recommended mitigation. The type flag must be set to
+`recommendation`. The origin field's actor type flag must be set to
+`tool`, and the uuid-ref must contain the UUID of the tool that
 generated the recommendation. Additional remediation recommendations may
-also be present, such as the assessor\'s recommendation copied from the
+also be present, such as the assessor's recommendation copied from the
 SAR.
 
-There must also be a response assembly containing the CSP\'s intended
-mitigation plan. The type flag must be set to \"planned\". The origin
-field\'s actor type flag must be set to \"party\", and the uuid-ref must
+There must also be a response assembly containing the CSP's intended
+mitigation plan. The type flag must be set to `planned`. The origin
+field's actor type flag must be set to `party`, and the uuid-ref must
 contain the UUID of either the CSP organization itself or the individual
 overseeing the activities, such as the ISSO.
 
-\"Resources Required\" are identified within the \"planned\" response
+`Resources Required` are identified within the `planned` response
 assembly using the required assembly. Use the description field for a
 free-form explanation of required resources. Use one or more subject
 fields to link to a specific party, component, inventory-item, system
@@ -516,18 +516,18 @@ user, or resource.
 
 The Planned Milestones are identified within the response assembly using
 the task assemblies. There must be at least one task assembly of type
-\"milestone\". There may be additional tasks assemblies of type
-\"action\" or \"milestone\". This collection of \"action\" and
-\"milestone" tasks serves as a high-level remediation timeline. A POA&M
+`milestone`. There may be additional tasks assemblies of type
+`action` or `milestone`. This collection of `action` and
+`milestone` tasks serves as a high-level remediation timeline. A POA&M
 tool should offer the option of viewing either just the milestones or
 all actions and milestones.
 
 Each task assembly must have a title field that briefly names the
 milestone and a description field. OSCAL requires both the title and
 description fields to be present; however, FedRAMP allows description to
-be empty. All \"milestone\" task assemblies must contain a timing
+be empty. All `milestone` task assemblies must contain a timing
 assembly with an on-date field, whereas the timing assembly for
-\"action\" tasks must contain either an on-date or within-date-range
+`action` tasks must contain either an on-date or within-date-range
 field. FedRAMP presumes the Scheduled Completion Date for the POA&M item
 is the farthest specified timing assembly date in the future because it
 indicates when all remediation schedule milestones and actions will be
@@ -600,7 +600,7 @@ the status information.
 
 If it is appropriate to attach evidence related to risk tracking, add an
 observation assembly with the appropriate evidence attached. If used,
-the observation assembly must have a type tag of \"risk-tracking\".
+the observation assembly must have a type tag of `risk-tracking`.
 
 {{< figure src="/img/poam-figure-12.png" title="FedRAMP POA&M entry risk tracking." alt="Screenshot of the FedRAMP POA&M template showing entry row risk tracking." >}}
 
@@ -665,16 +665,16 @@ FedRAMP's requirements for deviation requests and vendor dependency handling are
 
 #### False Positive (FP)
 
-To initially identify a false positive, add a \"false-positive\" FedRAMP
+To initially identify a false positive, add a `false-positive` FedRAMP
 Extension property to the risk field and set its value to
-\"investigating\". Once evidence is identified to support the FP, change
-the risk assembly\'s \"false-positive\" value to \"pending\" and add an
-observation with the type field set to \"false-positive\". Typically,
-the method is set to \"EXAMINE\". Add an additional related-observation
+`investigating`. Once evidence is identified to support the FP, change
+the risk assembly's `false-positive` value to `pending` and add an
+observation with the type field set to `false-positive`. Typically,
+the method is set to `EXAMINE`. Add an additional related-observation
 field linking the poam-item to the new observation.
 
-Once the FP is approved, change the \"false-positive\" extension\'s
-value to \"approved\" and close the risk as described in the [*Risk Closure*](/documentation/poam/4-poam-template-to-oscal-mapping/#risk-closure) section.
+Once the FP is approved, change the `false-positive` extension's
+value to `approved` and close the risk as described in the [*Risk Closure*](/documentation/poam/4-poam-template-to-oscal-mapping/#risk-closure) section.
 
 {{< figure src="/img/poam-figure-13.png" title="False Positive (FP)" alt="Screenshot of the FedRAMP POA&M template showing a false positive entry." >}}
 
@@ -719,18 +719,18 @@ Add an entry to the risk log when investigating, as well as for submission and a
 
 #### Operationally Required (OR)
 
-To initially identify an OR, add an \"operational-requirement\" FedRAMP
+To initially identify an OR, add an `operational-requirement` FedRAMP
 Extension property to the risk field and set its value to
-\"investigating\". Once evidence is identified to support the OR, change
-the risk assembly\'s \"operational-requirement\" value to \"pending\"
+`investigating`. Once evidence is identified to support the OR, change
+the risk assembly's `operational-requirement` value to `pending`
 and add an observation with the type field set to
-\"operational-requirement\". Typically, the method is set to EXAMINE;
+`operational-requirement`. Typically, the method is set to EXAMINE;
 however, another method may be identified if more appropriate. Add an
 additional related-observation field linking the poam-item to the new
 observation.
 
-Once the OR is approved, change the \"operational-requirement\"
-extension value to \"approved\".
+Once the OR is approved, change the `operational-requirement`
+extension value to `approved`.
 
 If a risk adjustment is also required for OR approval (such as FedRAMP
 requires for High ORs), simply also follow the instructions in the next
@@ -780,11 +780,11 @@ submission and approval events respectively.
 
 #### Risk Adjustment (RA)
 
-To initially identify an RA, add a \"risk-adjustment\" FedRAMP Extension
-property to the risk field and set its value to \"investigating\". Once
+To initially identify an RA, add a `risk-adjustment` FedRAMP Extension
+property to the risk field and set its value to `investigating`. Once
 evidence is identified or mitigating factors are implemented, change the
-risk assembly\'s \"risk-adjustment\" value to \"pending\" and add an
-observation with the type field set to \"risk-adjustment\". Typically,
+risk assembly's `risk-adjustment` value to `pending` and add an
+observation with the type field set to `risk-adjustment`. Typically,
 the method is set to EXAMINE; however, another method may be identified
 if more appropriate. Add an additional related-observation field linking
 the poam-item to the new observation.
@@ -794,8 +794,8 @@ mitigating-factor assemblies to the risk assembly. There must be at
 least one mitigating factor for an RA. Based on those factors, add
 additional facet assemblies with adjusted risk values.
 
-Once the RA is approved, change the \"risk-adjustment\" extension value
-to \"approved\".
+Once the RA is approved, change the `risk-adjustment` extension value
+to `approved`.
 
 If the RA is performed in concert with an OR (such as FedRAMP requires
 for High ORs), simply also follow the instructions in the previous
@@ -810,7 +810,7 @@ related-observation entries in the poam-item assembly.
 
 Both initial and residual risk values are calculated based on likelihood and impact values.
 
-Every POA&M entry must have initial likelihood and impact values:
+Every POA&M entry must have initial `likelihood` and `impact` values:
 
 {{< highlight xml "linenos=table" >}}
 <facet name="likelihood" value="high" system="https://fedramp.gov">
@@ -886,12 +886,12 @@ Add an entry to the risk log when investigating, for the completion of each miti
 
 #### Vendor Dependency
 
-To initially identify a vendor dependency, add a \"vendor-dependency\"
+To initially identify a vendor dependency, add a `vendor-dependency`
 FedRAMP Extension property to the risk field and set its value to
-\"investigating\". Once evidence is identified to support the
-dependency, change the risk assembly\'s \"vendor-dependency\" value to
-\"tracking\" and add an observation with the type field set to
-\"vendor-dependency\". Typically, the method is set to EXAMINE; however,
+`investigating`. Once evidence is identified to support the
+dependency, change the risk assembly's `vendor-dependency` value to
+`tracking` and add an observation with the type field set to
+`vendor-dependency`. Typically, the method is set to EXAMINE; however,
 another method may be identified if more appropriate. Add an additional
 related-observation field linking the poam-item to the new observation.
 
@@ -906,8 +906,8 @@ supporting the dependency. Attached evidence, such as screen shots, must
 be defined as a resource in the back-matter, and cited using a URI
 fragment (hashtag, followed by the UUID of the resource.)
 
-Once the vendor publishes a resolution, change the \"vendor-dependency\"
-extension value to \"resolved\".
+Once the vendor publishes a resolution, change the `vendor-dependency`
+extension value to `resolved`.
 
 {{< figure src="/img/poam-figure-16.png" title="Vendor Dependency (VD)." alt="Screenshot of the FedRAMP POA&M template showing a vendor dependency." >}}
 
@@ -953,7 +953,7 @@ If the Vendor Dependent Product Name is not already defined as an individual com
 Add an entry to the risk log when investigating, as well as for each
 vendor check-in. As the CSP performs the required regular vendor
 check-ins, each must be added to the risk-log assembly as an additional
-entry. The title should be set to \"Vendor Check-in\", the start field
+entry. The title should be set to `Vendor Check-in`, the start field
 must indicate when the check-in occurred, and the result of the check-in
 must be described in the description field.
 
@@ -965,8 +965,8 @@ reflecting the date the resolution was published.
 All evidence collected must be attached (by relative URI path or
 embedded Base64) as a resource in the back-matter. See the [*Citations and Attachments in OSCAL Files*](/documentation/general-concepts/oscal-citations-and-attachments/) section for more information.
 
-Evidence must have the FedRAMP extension \"type\" with the value set to
-\"evidence\".
+Evidence must have the FedRAMP extension `type` with the value set to
+`evidence`.
 
 Additional type fields may also be added with values such as plan,
 policy, or image. This adds clarity and can ensure specific tables are
@@ -976,15 +976,15 @@ Artifacts may be cited from an observation as an observation-source.
 
 Evidence may be cited from an observation as relative-evidence.
 
-A POA&M tool could use either an rlink or base64 field here, and may use
+A POA&M tool could use either an `rlink` or `base64` field here, and may use
 both. If both are present, FedRAMP tools will give preference to the
-base64 content. If an rlink is used, its href should have a relative
+base64 content. If an `rlink` is used, its `href` should have a relative
 path to ensure the path remains valid when the OSCAL content is
 delivered to FedRAMP.
 
-Tools may include multiple rlink fields within the same resource
+Tools may include multiple `rlink` fields within the same resource
 assembly. This may be useful if the CSP wanted to maintain an absolute
-link to the file\'s authoritative source location as well as a relative
+link to the file's authoritative source location as well as a relative
 link suitable for delivery to FedRAMP.
 
 ##### Representation                                     
@@ -1017,16 +1017,16 @@ When a risk is closed through remediation or false-positive approval,
 they must be closed. The risk should remain in the POA&M with the
 following changes.
 
-First, in the risk assembly, change the status field to \"closed\". Then
+First, in the risk assembly, change the status field to `closed`. Then
 make a final entry in the risk-log assembly. In the entry assembly,
 summarize the reason for closure in the description field, and set the start
 field to indicate the date of closure and the status-change field to
-\"closed\". Individual actions performed for closure should each have
+`closed`. Individual actions performed for closure should each have
 their own entries in the risk log.
 
 If it is appropriate to attach evidence of
 closure, add an observation assembly with the type field set to
-\"closure\", and cite the appropriate evidence.
+`closure`, and cite the appropriate evidence.
 
 {{< figure src="/img/poam-figure-17.png" title="Risk Closure." alt="Screenshot of the FedRAMP POA&M template showing closure of a risk entry." >}}
 
@@ -1083,8 +1083,8 @@ risk-assembly using risk-metric fields.
 
 Tools should accept either the upper-case abbreviation or the lower-case
 name on a field-by-field basis. For example, it should be acceptable to
-use \"AV\" for access vector, and \"privileges-required\" for privileges
-required, provided both have a system value of \"[http://www.first.org/cvss/v3.1](http://www.first.org/cvss/v3-1)\".
+use `AV` for access vector, and `privileges-required` for privileges
+required, provided both have a system value of [`http://www.first.org/cvss/v3.1`](http://www.first.org/cvss/v3-1).
 
 All CVSS metrics must be in the same CVSS version, as identified by the
 system flag, for successful computation. Tool developers should ensure

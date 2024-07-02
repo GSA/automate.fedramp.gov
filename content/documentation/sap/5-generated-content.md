@@ -17,7 +17,7 @@ the:
 
 If delivering FedRAMP content in OSCAL, assessors are no longer required
 to manually generate and maintain these artifacts, provided the content
-in their OSCAL-based FedRAMP SAP and the CSP\'s OSCAL-based FedRAMP SSP
+in their OSCAL-based FedRAMP SAP and the CSP's OSCAL-based FedRAMP SSP
 remains accurate.
 
 There are many ways a tool developer can generate these artifacts.
@@ -29,10 +29,10 @@ available to the public here:
 
 **Tool developers are also encouraged to develop their own solutions to generating this content.**
 
-### Generating the \"IP Addresses Slated for Testing\" List
+### Generating the "IP Addresses Slated for Testing" List
 
 The SAP must still identify the in-scope inventory items - either by
-reference or using the \"all\" clause. Once identified, the list of IP
+reference or using the `all` clause. Once identified, the list of IP
 addresses slated for testing should be derived from the machine-readable
 inventory found in the SSP.
 
@@ -41,10 +41,10 @@ information inventory to be missing or inaccurate, the SAP tool must
 allow the assessor to insert inventory information into the
 local-definitions section of the SAP.
 
-### Generating the \"Databases Slated for Testing\" List
+### Generating the "Databases Slated for Testing" List
 
 The SAP must still identify the in-scope inventory items - either by
-reference or using the \"all\" clause. Once identified, the list of
+reference or using the `all` clause. Once identified, the list of
 Databases slated for testing should be derived from the machine-readable
 inventory found in the SSP.
 

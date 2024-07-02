@@ -233,9 +233,9 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 
 {{< figure src="/img/content-figure-7.png" title="FedRAMP template \"Prepared For\"." alt="Screenshot of \"prepared for\" information in the FedRAMP template." >}}
 
-For FedRAMP SSP, SAP, SAR, and POA&M, the \"Prepared For\" is typically
+For FedRAMP SSP, SAP, SAR, and POA&M, the `Prepared For` is typically
 the CSP; however, it may be different if an unforeseen circumstance
-requires another party to be named. For this reason, \"Prepared For\"
+requires another party to be named. For this reason, `Prepared For`
 and CSP have separately defined roles.
 
 ##### Representation
@@ -339,7 +339,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 **NOTES:**
 
-- The Revision History\'s Author field is addressed using a FedRAMP
+- The Revision History's Author field is addressed using a FedRAMP
     extension, which points to a metadata `party`.
 - The published field requires the OSCAL data type,
     [date-time-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-time-with-timezone).
@@ -357,9 +357,9 @@ content for the FedRAMP PMO party. This information already exists in
 OSCAL-based FedRAMP Templates.
 
 There must be a `role` defined in the file with the ID value set to
-`"fedramp-pmo"`. There must be a `party` defined with FedRAMP\'s details,
+`fedramp-pmo`. There must be a `party` defined with FedRAMP's details,
 and there must be a `responsible-party` defined, linking the
-`"fedramp-pmo"` `role-id` to the FedRAMP `party` uuid.
+`fedramp-pmo` `role-id` to the FedRAMP `party` uuid.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -411,7 +411,7 @@ and there must be a `responsible-party` defined, linking the
 The OSCAL syntax is the same for document approvers in the SSP, SAP, and
 SAR. For the SSP, approvers are typically executives within the CSP. For
 the SAP and SAR, approvers are typically executives within the
-assessor\'s organization.
+assessor's organization.
 
 ##### Representation
 {{< highlight xml "linenos=table" >}}
@@ -532,10 +532,10 @@ Link to FedRAMP Acronyms and Glossary:
 Additional citations must be represented as
 additional `resource` assemblies with one `resource` assembly per citation. This
 applies to applicable laws, regulations, standards, or guidance beyond
-FedRAMP\'s predefined set.
+FedRAMP's predefined set.
 
 Each must have a type defined. The value of the type filed must be set
-to \"law\", \"regulation\", \"standard\", or \"guidance\" as
+to `law`, `regulation`, `standard`, or `guidance` as
 appropriate. There may be more than one type defined. FedRAMP tools use
 the `type` property to differentiate these resource assemblies from
 others.

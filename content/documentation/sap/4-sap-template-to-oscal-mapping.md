@@ -123,11 +123,11 @@ for this information as follows:
 
 {{</ highlight >}}
 
-If no OSCAL-based SSP exists, as described in the [*If No OSCAL-based SSP Exists*](#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses) section, the `resource` with the "no-oscal-ssp" type must designate the system\'s identifier, name, and abbreviation.
+If no OSCAL-based SSP exists, as described in the [*If No OSCAL-based SSP Exists*](#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses) section, the `resource` with the "no-oscal-ssp" type must designate the system's identifier, name, and abbreviation.
 
 **NOTE:**
 
-The system\'s authorization date, purpose, and description have not
+The system's authorization date, purpose, and description have not
 historically been displayed in the SAP but must be present when the SAR
 references this content.
 
@@ -190,10 +190,10 @@ data centers.
 
 If no OSCAL-based SSP exists, or the location of components is not
 accurately reflected in the SSP, this information may be added to the
-SAP\'s metadata section using the same syntax as the SSP. The
+SAP's metadata section using the same syntax as the SSP. The
 include-subject citations are still required as described above;
-however, the IDs point to the SAP\'s location data instead of the
-SSP\'s.
+however, the IDs point to the SAP's location data instead of the
+SSP's.
 
 The same queries work as presented above; however, the queries are used
 in the SAP instead of the SSP.
@@ -202,11 +202,11 @@ in the SAP instead of the SSP.
 #### IP Addresses Slated for Testing
 
 The SAP references SSP content for this information. Each subnet should
-be represented in the SSP as a component with type=\'subnet\'. If the
+be represented in the SSP as a component with `type="subnet"`. If the
 SSP does not enumerate subnets in this way, the SAP tool should allow
-the assessor to add them to the SAP\'s local-definitions as components.
+the assessor to add them to the SAP's local-definitions as components.
 
-Beyond subnets, this section is an enumeration of the SSP\'s
+Beyond subnets, this section is an enumeration of the SSP's
 inventory-item assemblies, which always contain the hostname and IP
 address of the item. Other details, such as the software and version
 information, may be found in the inventory item itself, or the SSP
@@ -216,7 +216,7 @@ approach or the preferred component approach.
 
 If the assessor needs to add missing component or inventory-item
 entries, or if the assessor needs to correct this information, the SAP
-tool must add this assessor-provided information to the SAP\'s
+tool must add this assessor-provided information to the SAP's
 local-definitions.
 
 See the [*Guide to OSCAL-based FedRAMP System Security Plans*](/documentation/ssp/)
@@ -281,9 +281,9 @@ component was not explicitly cited in the SAP.
 
 If no OSCAL-based SSP exists, or the inventory information is not
 accurately reflected in the SSP, this information may be added to the
-SAP\'s local-definition section as described below. The include-subject
+SAP's local-definition section as described below. The include-subject
 citations are still required as described above; however, the UUIDs
-point to the SAP\'s local definitions instead of the SSP\'s.
+point to the SAP's local definitions instead of the SSP's.
 
 ##### Representation   
 {{< highlight xml "linenos=table" >}}
@@ -442,7 +442,7 @@ should be used instead of `web` for the `scan-type`.
 #### Roles Testing Inclusions and Exclusions
 
 Historically, FedRAMP assessors often identified generalized roles for
-testing, such as \"internal\", \"external\", and \"privileged\" rather
+testing, such as `internal`, `external`, and `privileged` rather
 than citing the specific roles enumerated in the SSP. This is in
 response to a FedRAMP requirement to test roles from each perspective.
 Assessors must ensure all roles are included for testing and identify
@@ -451,7 +451,7 @@ should present assessors with the roles from the associated (import-ssp)
 SSP so the assessor can select specific roles for testing. SAP tools
 should allow the assessor to easily identify roles that are excluded.
 The [*SSP - Responsible Roles and Parameter Assignments*](/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) section describes personnel roles and privileges with examples illustrating how
-to identify them in an OSCAL SSP. If the \"roles\" slated for testing
+to identify them in an OSCAL SSP. If the `roles` slated for testing
 exist in the SSP, the SSP roles are referenced from the SAP using their
 SSP IDs as defined in the SSP user assemblies in the system-implementation section of the OSCAL-based SSP file. **Note that in this case, the SAP role must actually map to the uuid of the user assembly in the SSP**.
 
@@ -744,16 +744,16 @@ NOTE: Replace "exclude-control" with "include-control" above for any explicitly 
 -   Tools should validate the control IDs for explicitly included or
     excluded controls using the relevant baseline.
 
--   FedRAMP\'s guidance and requirements regarding which controls are
+-   FedRAMP's guidance and requirements regarding which controls are
     in-scope for each assessment do not change with OSCAL.
 
 ---
 ### SAP Test Plan
 
-#### Assessor\'s Name, Address, and URL
+#### Assessor's Name, Address, and URL
 
-The SAP\'s `metadata` is used to represent
-the assessor\'s name address and URL. This uses the OSCAL common `role`,
+The SAP's `metadata` is used to represent
+the assessor's name address and URL. This uses the OSCAL common `role`,
 `party`, and `responsible-party` assemblies. Some roles are specific to the
 SAP. In the `responsible-party` assembly, the `party-uuid` may point to a
 `party` in the SSP or SAP. The SAP tool must not assign a role ID or party
@@ -810,7 +810,7 @@ ID that duplicates one used in the SSP.
 ---
 #### Security Assessment Team
 
-The SAP\'s metadata is used to represent the assessment team and
+The SAP's metadata is used to represent the assessment team and
 assessment lead. This uses the OSCAL common `role`, `party`, and
 `responsible-party` assemblies. Some roles are specific to the SAP. The
 SAP tool must not assign a role ID or party ID that duplicates one used
@@ -862,12 +862,12 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 ---
 #### CSP Testing Points of Contact
 
-The SAP\'s metadata is used to represent the CSP\'s points of contact.
+The SAP's metadata is used to represent the CSP's points of contact.
 This uses the OSCAL common role, party, and responsible-party
 assemblies. In the responsible-party assembly, the party-uuid may point
 to a party in the SSP or SAP. The SAP tool must not assign a role ID or
 party ID that duplicates one used in the SSP. If an individual is
-already identified via a party assembly in the SSP, that individual\'s
+already identified via a party assembly in the SSP, that individual's
 information should not be duplicated in the SAP. Instead, the SAP should
 reference the SSP party ID for that individual.
 
@@ -978,7 +978,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 
 -   OSCAL syntax requires a status field within each component assembly.
     For FedRAMP, assessment tool state should typically be
-    \'operational\', otherwise a remark must be provided.
+    `operational`, otherwise a remark must be provided.
 
 ---
 #### Testing Performed Through Manual Methods
@@ -1047,7 +1047,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 ##### Including Manual Test Methods in the OSCAL SAP Test Plan Section
 
 The FedRAMP OSCAL SAP terms-and-condition assembly should contain a
-part with ns=\"https://fedramp.gov/ns/oscal\" name=\"manual-methods-testing\" when needed to facilitate rendering of
+part with `ns="https://fedramp.gov/ns/oscal" name="manual-methods-testing"` when needed to facilitate rendering of
 OSCAL SAP by tools. The insert elements can be used by tool developers
 as insertion points for data items such as test ID, test name, and test
 description if the tool is able to manage them as parameters. The use of
@@ -1211,7 +1211,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 
 -   A SAP tool should present the scan origination addresses using the
     statement:\
-    \"All scans will originate from the following IP address(es):\",
+    "All scans will originate from the following IP address(es):",
     followed by the list of addresses.
 
 ---
@@ -1255,7 +1255,7 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
 
 -   A SAP tool should present the scan origination addresses using the
     statement:\
-    \"All scans will originate from the following IP address(es):\",
+    "All scans will originate from the following IP address(es):",
     followed by the list of addresses.
 
 ---
@@ -1308,8 +1308,8 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 **NOTES:**
 
 -   An assessment tool should present a list of included activities with
-    a preceding phrase such as, \"Security testing may include the
-    following activities:\"
+    a preceding phrase such as, "Security testing may include the
+    following activities:"
 
 ---
 #### Security Testing Will Not Include
@@ -1367,14 +1367,14 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 **NOTES:**
 
 -   An assessment tool should present a list of included activities with
-    a preceding phrase such as, \"Security testing will not include any
-    of the following activities:\"
+    a preceding phrase such as, "Security testing will not include any
+    of the following activities:"
 
 ---
 #### End of Testing
 
 This indicates who the Independent Assessor (IA) should notify within
-the CSP\'s organization when testing is complete.
+the CSP's organization when testing is complete.
 
 {{< figure src="/img/sap-figure-22.png" title="FedRAMP SAP template end of testing." alt="Screenshot of the end of testing section in the FedRAMP SAP template." >}}
 
@@ -1426,7 +1426,7 @@ NOTE: Replace 'person-2' with each party-uuid found in the responsible role.
 #### Communication of Test Results
 
 This indicates who the Independent Assessor (IA) should send all the
-assessment results to at the CSP\'s organization.
+assessment results to at the CSP's organization.
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1519,7 +1519,7 @@ a case-by-case basis. Until such time as the FedRAMP PMO and JAB have a
 well-established capability for handling signatures, one of the
 following approaches is encouraged:
 
--   Manual \"Wet\" Signature Approach (Document or Letter)
+-   Manual "Wet" Signature Approach (Document or Letter)
 
 -   Digital Signature
 
@@ -1548,7 +1548,7 @@ following approaches is encouraged:
 
 {{</ highlight >}}
 
-#### Manual \"Wet\" Signature Approach (Document or Letter): Print, manually sign, scan, and attach. 
+#### Manual "Wet" Signature Approach (Document or Letter): Print, manually sign, scan, and attach. 
 
 1.  Print one of the following:
 

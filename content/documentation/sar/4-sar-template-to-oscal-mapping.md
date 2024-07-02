@@ -18,9 +18,9 @@ Instead of duplicating content from those sections, this section refers to them 
 
 This section addresses the TCW, Scanner Tool Results, Risks Identified during Penetration Testing, and the Risk Exposure Table (RET) first. These are addressed first because much of the individual SAR tables are generated from OSCAL-based content.
 
-As described in the [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section, NIST designed the core OSCAL syntax to model cybersecurity information that is common to most organizations and compliance frameworks; however, NIST also recognized the need to provide flexibility for organizations with unique information needs.
+As described in the [*FedRAMP Extensions and Allowed Values*](/documentation/general-concepts/3-fedramp-extensions-and-accepted-values/) section, the core OSCAL syntax is designed to model cybersecurity information that is common to most organizations and compliance frameworks; however, there was also a recognition of the need to provide flexibility for organizations with unique information needs.
 
-Instead of trying to provide a language that meets each organization\'s unique needs, NIST provided OSCAL with the ability to be extended.
+Instead of trying to provide a language that meets each organization's unique needs, OSCAL provides the ability to be extended.
 
 As a result, FedRAMP-compliant OSCAL files are a combination of the core OSCAL syntax and extensions defined by FedRAMP. The extensions related to the SAP are cited in context of their use.
 

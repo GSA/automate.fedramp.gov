@@ -26,8 +26,8 @@ document. This includes the:
     -   False Positive Report
 -   Document Results
 -   Manual Test Results
--   Test Case Workbook\'s System Tab
--   Test Case Workbook\'s Control Summary Tab
+-   Test Case Workbook's System Tab
+-   Test Case Workbook's Control Summary Tab
 
 If delivering SAR content in OSCAL, CSPs are no longer required to manually generate and maintain these artifacts, provided the content in their OSCAL-based FedRAMP SAR remains accurate.
 

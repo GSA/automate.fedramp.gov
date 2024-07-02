@@ -59,7 +59,7 @@ may wish to start with the resolved profile catalog now, and plan to add
 functionality for the separate profile and catalog handling later
 in their product roadmap.
 
-## NIST\'s Profile Resolution Tool
+## NIST's Profile Resolution Tool
 
 NIST created a profile resolution specification, and built a profile
 resolution capability based on that specification. The specification can
@@ -88,7 +88,7 @@ processor:
 
 <https://github.com/usnistgov/OSCAL/blob/v1.1.2/src/utils/resolver-pipeline/oscal-profile-RESOLVE.xsl>
 
-This is a new capability provided by NIST and leveraged by FedRAMP.
+This is a new capability provided by OSCAL and leveraged by FedRAMP.
 Please report bugs or provide feedback related to this tool directly to
 NIST at <oscal@nist.gov> or by submitting an issue here:
 

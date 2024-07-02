@@ -60,7 +60,7 @@ FedRAMP file. Additional roles may be added, provided these roles
 remain.
 
 {{<callout>}}
-NIST-defined and FedRAMP-defined role-identifiers are cited in
+OSCAL-defined and FedRAMP-defined role-identifiers are cited in
 relevant portions of each guide, and summarized in the FedRAMP OSCAL
 Registry.
 {{</callout>}}
@@ -115,7 +115,7 @@ artifacts typically require an individual's title to be identified; the
 Contact details, such as an individual's email address and phone
 number, or a business web site may be included and are often required
 within FedRAMP artifacts. A `short-name` field provides an ability to
-define an organization\'s acronym or desired abbreviation. This is
+define an organization's acronym or desired abbreviation. This is
 required for the CSP, assessor, and any Agency.
 
 {{< highlight xml "linenos=table" >}}
@@ -177,7 +177,7 @@ may be included in the `party` assembly itself.
 an `address` assembly within a `party` assembly. This may be used where
 multiple staff are in the same building, yet have different office
 numbers or mail stops. Use the `location-uuid` to identify the shared
-building, and only include a single `addr-line` field within the party\'s
+building, and only include a single `addr-line` field within the party's
 `address` assembly.
 
 A tool developer may elect to always create a location assembly, even

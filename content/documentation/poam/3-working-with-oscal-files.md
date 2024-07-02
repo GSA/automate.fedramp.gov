@@ -31,7 +31,7 @@ For example, the systems impacted by a vulnerability as listed in the POA&M are 
 
 For this reason, an OSCAL-based POA&M points to the OSCAL-based SSP of the system being assessed. Instead of duplicating system details, the OSCAL-based POA&M simply points to the SSP content for information such as system description, boundary, users, locations, and inventory items.
 
-The POA&M also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP Baseline. Through that linkage, the POA&M references the control baseline definitions for the system\'s baseline.
+The POA&M also inherits the SSP's pointer to the appropriate OSCAL-based FedRAMP Baseline. Through that linkage, the POA&M references the control baseline definitions for the system's baseline.
 
 {{< figure src="/img/poam-figure-3.png" title="Resolved Profile Catalog." alt="Figure showing how Resolved Profile Catalog for each FedRAMP Baseline reduces tool processing." >}}
 
@@ -85,7 +85,7 @@ Use the import-ssp field to specify an existing OSCAL-based SSP. The href flag m
   /*/import-ssp/@href
 {{</ highlight >}}
 
-If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the UUID value of a resource in the POA&M file\'s back-matter. Refer to the *[Citations and Attachments in OSCAL Files](/documentation/general-concepts/oscal-citations-and-attachments/)* section for guidance on handling.
+If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the hashtag (#) is the UUID value of a resource in the POA&M file's back-matter. Refer to the *[Citations and Attachments in OSCAL Files](/documentation/general-concepts/oscal-citations-and-attachments/)* section for guidance on handling.
 
 ##### POA&M Back Matter Representation                                      
 {{< highlight xml "linenos=table" >}}
@@ -125,7 +125,7 @@ Ideally, when SSP information is missing or inaccurate the system ISSO should co
 
 If the POA&M must be updated with missing or inaccurate SSP information, the POA&M syntax allows for SSP information correction.
 
-Tool designers should ensure their tools can cite the relevant OSCAL-based SSP information when possible, and capture assessor-corrected SSP information in the POA&M\'s local-definitions or metadata sections when necessary. The relevant sections of this documentation describe how to represent inaccurate SSP  information in the POA&M when needed.
+Tool designers should ensure their tools can cite the relevant OSCAL-based SSP information when possible, and capture assessor-corrected SSP information in the POA&M's local-definitions or metadata sections when necessary. The relevant sections of this documentation describe how to represent inaccurate SSP  information in the POA&M when needed.
 
 {{<callout>}}
 ***Monthly Continuous Monitoring (ConMon) Delivery***
@@ -137,9 +137,9 @@ For monthly ConMon deliveries, the CSP may duplicate the component and inventory
 
 FedRAMP currently requires CSPs to deliver their POA&M, system inventory, and raw scanner tool output each month. OSCAL enables the delivery of POA&M and inventory without delivering the linked SSP.
 
-In this instance, the OSCAL allows the import-ssp syntax to be omitted; however, FedRAMP still requires the system-id content containing the system\'s FedRAMP-assigned unique identifier.
+In this instance, the OSCAL allows the import-ssp syntax to be omitted; however, FedRAMP still requires the system-id content containing the system's FedRAMP-assigned unique identifier.
 
-All SSP inventory-item assemblies must be duplicated into the POA&M local-definitions assembly. Any SSP component cited by an inventory-item must also be duplicated to the POA&M\'s local-definitions assembly.
+All SSP inventory-item assemblies must be duplicated into the POA&M local-definitions assembly. Any SSP component cited by an inventory-item must also be duplicated to the POA&M's local-definitions assembly.
 
 Finally, any SSP component referenced by POA&M data must be duplicated, whether it is referenced by an inventory-item or not.
 

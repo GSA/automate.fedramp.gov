@@ -21,7 +21,7 @@ the source of the modification.
 {{< figure src="/img/content-figure-13.png" title="FedRAMP baseline." alt="Figure showing how the FedRAMP uses OSCAL profiles to define its baselines." >}}
 
 FedRAMP's baselines are represented as OSCAL profiles. The correct
-profile must be selected from the SSP based on the system\'s identified
+profile must be selected from the SSP based on the system's identified
 security categorization level. This can be checked using the XPath
 syntax below.
 
@@ -119,7 +119,7 @@ follows:
     a.  For example, if you need all but one control, you can `include all`, then `exclude` the one.
 
 4.  **Specify How Controls Are Organized**: FedRAMP prefers you merge
-    \"as-is\" using those merge fields. This is relevant when resolving
+    `as-is` using those merge fields. This is relevant when resolving
     the profile. See the [*Profile Resolution*](/documentation/general-concepts/profile-resolution/) documentation
     for more information.
 
@@ -147,7 +147,7 @@ following actions:
 
 -   Adds a constraint to the third parameter of AC-1 (ac-1_prm_3), which
     is more restrictive than the FedRAMP constraint, by changing it
-    from \"at least annually\" to \"at least every six months.\"
+    from `at least annually` to `at least every six months`.
 
 -   Removes the additional FedRAMP requirement statement in AU-11 and
     replaces it with a more restrictive statement, which requires
