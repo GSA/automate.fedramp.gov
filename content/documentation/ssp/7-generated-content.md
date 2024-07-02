@@ -35,10 +35,10 @@ There are many ways a tool developer can generate the CRM. FedRAMP plans to deve
 
 ### Working with Components
 
-NIST designed OSCAL such that a system architect can express all aspects
-of the system as components. A component is anything that can satisfy a control requirement. This includes hardware, software, services, and underlying service providers, as well as policies, plans, and procedures. There are several ways to use components in an OSCAL-based SSP. The following defines FedRAMP\'s minimum initial use.
+OSCAL is designed such that a system architect can express all aspects
+of the system as components. A component is anything that can satisfy a control requirement. This includes hardware, software, services, and underlying service providers, as well as policies, plans, and procedures. There are several ways to use components in an OSCAL-based SSP. The following defines FedRAMP's minimum initial use.
 
-This section will likely be updated as NIST continues to evolve its approach to components in OSCAL, and as FedRAMP receives feedback from stakeholders.
+This section will likely be updated as OSCAL continues to evolve its approach to components, and as FedRAMP receives feedback from stakeholders.
 
 **FedRAMP-defined component identifiers are cited in relevant portions of this documentation and summarized in the FedRAMP OSCAL Registry.**
 
@@ -113,7 +113,7 @@ For each FIPS 140 validated module, there must be a `component` that represents 
 
 #### Components as a Basis for System Inventory
 
-NIST\'s approach to component-based system modeling is to reduce redundancy of information and increase flexibility. NIST accomplishes this with separate component and inventory item modeling.
+OSCAL's approach to component-based system modeling is to reduce redundancy of information and increase flexibility. OSCAL accomplishes this with separate component and inventory item modeling.
 
 This is a one-to-many relationship: one component to many inventory item instances.
 
@@ -123,14 +123,14 @@ For example, if an open-source operating system (OS) is used in many places thro
 
 FedRAMP requires a `component` assembly for each model of infrastructure device used, and each version of software and database used within the system. FedRAMP is not asking for more detail than provided in the legacy inventory workbook, only that the information is organized differently.
 
-As NIST continues to evolve its component approach, FedRAMP will re-evaluate its approach to system inventory representation.
+As OSCAL continues to evolve its component approach, FedRAMP will re-evaluate its approach to system inventory representation.
 
 ### Converting a Legacy SSP to OSCAL
 
-NIST designed OSCAL such that a system architect can express all aspects of the system as components. A component is anything that can satisfy a control
+OSCAL is designed such that a system architect can express all aspects of the system as components. A component is anything that can satisfy a control
 requirement. This includes hardware, software, services, and underlying service providers, as well as policies, plans, and procedures.
 
-OSCAL is also designed to support legacy conversion of SSPs without individual components defined and enables an SSP author to migrate to the component approach gradually over time. In this instance, only a single `component` is initially required, representing the system as a whole and designated with the special component type, "this-system". The following provides an example of FedRAMP\'s minimum required component approach:
+OSCAL is also designed to support legacy conversion of SSPs without individual components defined and enables an SSP author to migrate to the component approach gradually over time. In this instance, only a single `component` is initially required, representing the system as a whole and designated with the special component type, "this-system". The following provides an example of FedRAMP's minimum required component approach:
 
 ##### Example control for legacy SSP conversion
 {{< highlight xml "linenos=table" >}}
@@ -170,5 +170,4 @@ OSCAL is also designed to support legacy conversion of SSPs without individual c
         </statement>
     </implemented-requirement>
 </control-implementation>
-
 {{</ highlight >}}

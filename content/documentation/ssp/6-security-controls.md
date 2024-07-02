@@ -119,7 +119,7 @@ specified `role-id` must also have been referenced in the `system-implementation
 
 {{< figure src="/img/ssp-figure-32.png" title="SSP Template Security Control Parameter Assignments" alt="Screenshot of an SSP template security control parameter assignments." >}}
 
-With the `implemented-requirement` assembly, there must be one `set-parameter` statement for each of the control\'s parameters, as specified in the FedRAMP baseline and illustrated in the example representation below. The only exception to this is with nested parameters. Some select parameters contain an assignment parameter within a selection parameter, such as appears in AC-7 (b). In these instances, only the final selected value must be provided. The nested assignment parameter may be ignored.
+With the `implemented-requirement` assembly, there must be one `set-parameter` statement for each of the control's parameters, as specified in the FedRAMP baseline and illustrated in the example representation below. The only exception to this is with nested parameters. Some select parameters contain an assignment parameter within a selection parameter, such as appears in AC-7 (b). In these instances, only the final selected value must be provided. The nested assignment parameter may be ignored.
 
 OSCAL also supports parameter setting at the component level, within a
 `by-component` assembly.
@@ -306,7 +306,7 @@ leveraged authorization as it appears in the
 Within the OSCAL-based FedRAMP baselines, control statements and control
 objectives are tagged with a response-point FedRAMP Extension. Every
 control statement designated as a response-point in the baseline must
-have a statement with the control\'s `implemented-requirement` assembly.
+have a statement with the control's `implemented-requirement` assembly.
 Please note that control objective response points are used for the SAP and
 SAR.
 

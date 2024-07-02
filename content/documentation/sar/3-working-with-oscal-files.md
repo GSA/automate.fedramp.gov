@@ -31,7 +31,7 @@ For this reason, an OSCAL-based SAR points to the OSCAL-based SAP for this asses
 In turn, the SAP points to the OSCAL-based SSP of the system being assessed. Instead of duplicating system details, the OSCAL-based SAR
 simply points to the SSP content (via the SAP) for information such as system description, boundary, users, locations, and inventory items.
 
-The SAR also inherits the SSP\'s pointer to the appropriate OSCAL-based FedRAMP Baseline via the SAP. Through that linkage, the SAR references the assessment objectives and actions typically identified in the FedRAMP TCW, as well as any changes to this content made in the SAP during planning.
+The SAR also inherits the SSP's pointer to the appropriate OSCAL-based FedRAMP Baseline via the SAP. Through that linkage, the SAR references the assessment objectives and actions typically identified in the FedRAMP TCW, as well as any changes to this content made in the SAP during planning.
 
 The only reason to include this content in the SAR is when there is a deviation from the SAP.
 
@@ -44,14 +44,14 @@ The SAP represents the assessment intentions before it starts and should not be 
 
 {{< figure src="/img/sar-figure-4.png" title="Assessment Plan and Results." alt="Detailed figure showing the dependency between the SAR and the SAP." >}}
 
-The SAR references SAP content when those references are accurate and defines content locally when the assessment details deviate from the SAP. Similarly, the SAR\'s assessment log captures the actual timing of events and can be linked to the SAP\'s defined tasks (schedule).
+The SAR references SAP content when those references are accurate and defines content locally when the assessment details deviate from the SAP. Similarly, the SAR's assessment log captures the actual timing of events and can be linked to the SAP's defined tasks (schedule).
 
-FedRAMP\'s requirement to report assessment deviations can be very straightforward if the above approach is supported by tools.
+FedRAMP's requirement to report assessment deviations can be very straightforward if the above approach is supported by tools.
 
 For schedule deviations, a SAR's tools can simply compare the SAR assessment log to the SAP tasks and report differences.
 
-Any other changes are essentially summarized in the SAR\'s local definitions. The overarching local definitions capture changes to
-defined activities or control objectives. The \"Result\" local definitions capture missing or inaccurate components, inventory items, users, and assessment tools.
+Any other changes are essentially summarized in the SAR's local definitions. The overarching local definitions capture changes to
+defined activities or control objectives. The `Result` local definitions capture missing or inaccurate components, inventory items, users, and assessment tools.
 
 Instead of an assessor manually summarizing assessment deviations, a tool can simply compare the SAP and SAR content and report the
 differences automatically. 
@@ -60,11 +60,11 @@ differences automatically.
 
 FedRAMP requires residual risks from an initial or annual assessment to be reflected in the POA&M. The observation and risk assemblies syntax of the SAR and POA&M are identical to facilitate ease of transfer. The SAR finding assembly and POA&M poam-item assembly are also as similar as possible to further facilitate this transfer.
 
-At the end of an assessment, copy all \"open\" risks from the SAR to the POA&M. For every copied risk, also copy all related observations. Risks are linked to observations in the finding assembly.
+At the end of an assessment, copy all `open` risks from the SAR to the POA&M. For every copied risk, also copy all related observations. Risks are linked to observations in the finding assembly.
 
-If available, use the finding/target citation in the SAR to determine the impacted control and set the value in the risk section of the POA&M using the \"impacted-control\" FedRAMP Extension. If the identified SAR risk is not associated with a specific control, the SAR tool should prompt the assessor to assign a value for the risk in the resulting POA&M export.
+If available, use the finding/target citation in the SAR to determine the impacted control and set the value in the risk section of the POA&M using the `impacted-control` FedRAMP Extension. If the identified SAR risk is not associated with a specific control, the SAR tool should prompt the assessor to assign a value for the risk in the resulting POA&M export.
 
-It may also be necessary to copy content from the AP or SAR into the POA&M\'s Local Definitions, such as to ensure Observation/Origin references remain valid.
+It may also be necessary to copy content from the AP or SAR into the POA&M's Local Definitions, such as to ensure Observation/Origin references remain valid.
 
 {{< figure src="/img/sar-figure-5.png" title="Assessment Results to POA&M." alt="Detailed figure showing the dependency between the POA&M and the SAR." >}}
 
@@ -78,7 +78,7 @@ As these findings become risks, the SAR tool should allow the risk information t
 
 As risks are closed during testing, the SAR tool should allow the assessor to mark the status as closed. Likewise, as a risk is found to be a false positive or operationally required, the tool should allow the assessor to make these changes as well. The tool should also provide for risk adjustments, by preserving the initial risk information and adding mitigating factors and adjusted risk values.
 
-Allowing for these adjustments, the Risk Exposure table is simply a view or presentation of the findings that have risks with an open status that have not been marked as a false positive. These are also the entries that are copied to the CSP\'s POA&M.
+Allowing for these adjustments, the Risk Exposure table is simply a view or presentation of the findings that have risks with an open status that have not been marked as a false positive. These are also the entries that are copied to the CSP's POA&M.
 
 {{< figure src="/img/sar-figure-6.png" title="Gathering findings and risk analysis." alt="Detailed figure showing assessment activities, including gathering of findings, risk analysis, and risk tracking.  The figure shows how identified risks are captured in the SAR and this information is used by the POA&M for risk tracking." >}}
 
@@ -88,7 +88,7 @@ A SAR allows the assessor to update finding and risk information during the asse
 
 The OSCAL assessment results model is designed to support both continuous assessment as well as snapshot-in-time assessments. Currently, FedRAMP assessments represent a snapshot in time. This means a single result assembly should be used for all of the current assessment findings.
 
-Any findings from previous assessments may be included in the SAR by including each in its own result assembly. In this way, the assessor can include the \"snapshot\" of each previous assessment with the current assessment, eliminating the need to manually copy past findings into that portion of the TCW.
+Any findings from previous assessments may be included in the SAR by including each in its own result assembly. In this way, the assessor can include the "snapshot" of each previous assessment with the current assessment, eliminating the need to manually copy past findings into that portion of the TCW.
 
 ##### SAR Representation
 {{< highlight xml "linenos=table" >}}
@@ -175,7 +175,7 @@ Use the import-ap field to specify an existing OSCAL-based SAP. The href flag ma
 
 {{</ highlight >}}
 
-If the value is a URI fragment, such as **#96445439-6ce1-4e22-beae-aa72cfe173d0**, the value to the right of the hashtag (#) is the universally unique identifier (UUID) value of a resource in the SAR file\'s back-matter. Refer to the [Citations, Attachments and Embedded Content in OSCAL Files](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
+If the value is a URI fragment, such as **#96445439-6ce1-4e22-beae-aa72cfe173d0**, the value to the right of the hashtag (#) is the universally unique identifier (UUID) value of a resource in the SAR file's back-matter. Refer to the [Citations, Attachments and Embedded Content in OSCAL Files](/documentation/general-concepts/oscal-citations-and-attachments/) section for guidance on handling.
 
 ##### SAR Back Matter Representation
 {{< highlight xml "linenos=table" >}}

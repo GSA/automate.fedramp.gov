@@ -151,7 +151,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
 <br />
 {{<callout>}}
 
-**NIST Allowed Values** 
+**OSCAL Allowed Values** 
 
 Valid Service Model values:
 - saas
@@ -275,7 +275,7 @@ The digital identity level identified in the FedRAMP SSP template document, illu
 <br />
 {{<callout>}}
 
-**NIST Allowed Values**
+**OSCAL Allowed Values**
 
 Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 - 1
@@ -392,7 +392,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
 <br />
 {{<callout>}}
 
-**NIST Allowed Values**
+**OSCAL Allowed Values**
 
 FedRAMP only accepts those in bold:
 - **operational**
@@ -468,7 +468,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
 ---
 ## Information System Owner
 
-A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner\'s information.
+A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner's information.
 
 {{< figure src="/img/ssp-figure-12.png" title="FedRAMP SSP template information system owner." alt="Screenshot of the system owner  information in the FedRAMP SSP template." >}}
 
@@ -507,7 +507,7 @@ A role with an ID value of \"system-owner\" is required. Use the responsible-par
 <br />
 {{<callout>}}
 
-**NIST Allowed Values**
+**OSCAL Allowed Values**
 
 Required role ID:
 - system-owner
@@ -535,7 +535,7 @@ If no country is provided, FedRAMP tools will assume a US address.
 ---
 ## Federal Authorizing Officials
 
-A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official\'s information.
+A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information.
 
 {{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
 
@@ -633,7 +633,7 @@ prop (ns="https://fedramp.gov/ns/oscal")
 - fedramp-agency
 - fedramp-li-saas
 
-**NIST Allowed Value**
+**OSCAL Allowed Value**
 
 Required Role ID:
 - authorizing-official
@@ -646,7 +646,7 @@ Required Role ID:
 
 A role with an ID value of "information-system-security-officer" is
 required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
-System Security Officer\'s information.
+System Security Officer's information.
 
 {{< figure src="/img/ssp-figure-14.png" title="FedRAMP SSP template security point of contact." alt="Screenshot of the security point of contact information (e.g., ISSO) in the FedRAMP SSP template." >}}
 
@@ -701,7 +701,7 @@ A tool developer may elect to always create a location assembly, even when only 
 <br />
 {{<callout>}}
 
-**NIST Allowed Value**
+**OSCAL Allowed Value**
 
 Required Role ID:
 - information-system-security-officer
@@ -727,7 +727,7 @@ Required Role ID:
 
 If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the system-implementation assembly. There must be one leveraged-authorization assembly and one matching component assembly for each leveraged authorization.
 
-The leveraged-authorization assembly includes the leveraged system\'s name, point of contact (POC), and authorization date. The component assembly must be linked to the leveraged-authorization assembly using a property (prop) field with the name leveraged-authorization-uuid and the
+The leveraged-authorization assembly includes the leveraged system's name, point of contact (POC), and authorization date. The component assembly must be linked to the leveraged-authorization assembly using a property (prop) field with the name leveraged-authorization-uuid and the
 UUID value of its associated leveraged-authorization assembly. The component assembly enables controls to reference it with the by-component responses described in the [*Control Implementation Descriptions*](/documentation/ssp/6-security-controls/#control-implementation-descriptions) section. The implementation-point property value must be set to "external".
 
 If the leveraged system owner provides a UUID for their system, such as in an OSCAL-based Inheritance and Responsibility document (similar to a CRM), it should be provided as the inherited-uuid property value.
@@ -1178,13 +1178,13 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 ## Cryptographic Modules Implemented for Data-in-Transit (DIT) 
 
-NIST\'s component model treats independent validation of products and services as if that validation were a separate component. This means when using components with FIPS 140 validated cryptographic modules, there must be two component assemblies:
+OSCAL's component model treats independent validation of products and services as if that validation were a separate component. This means when using components with FIPS 140 validated cryptographic modules, there must be two component assemblies:
 
--   **The Validation Definition**: A component definition that provides details about the validation.
+-   **The Validation Definition**: A component that provides details about the validation.
 
--   **The Product Definition**: A component definition that describes the hardware or software product.
+-   **The Product Definition**: A component that describes the hardware or software product.
 
-The validation definition is a component definition that provides details about the independent validation. Its type must have a value of "validation". In the case of FIPS 140 validation, this must include a link field with a rel value set to "validation-details". This link must point to the cryptographic module\'s entry in the NIST Computer Security
+The validation definition is a component that provides details about the independent validation. Its type must have a value of "validation". In the case of FIPS 140 validation, this must include a link field with a rel value set to "validation-details". This link must point to the cryptographic module's entry in the NIST Computer Security
 Resource Center (CSRC) [Cryptographic Module Validation Program Database](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search).
 
 The product definition is a product with a cryptographic module. It must contain all of the typical component information suitable for reference by inventory-items and control statements. It must also include a link field with a rel value set to "validation" and an href value containing
