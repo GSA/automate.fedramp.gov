@@ -285,7 +285,7 @@ NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/stat
 {{< figure src="/img/content-figure-8.png" title="FedRAMP template document revision history." alt="Screenshot of document revision history information in the FedRAMP template." >}}
 
 {{<callout>}}
-The `remarks` field is Markup multiline, which enables the text to be formatted. This requires special handling. See the section on [markup-line and markup-multiline Fields in OSCAL](/documentation/general-concepts/oscal-data-types/#markup-line-and-markup-multiline-fields-in-oscal), or visit: https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline <br/>
+The `remarks` field is Markup multiline, which enables the text to be formatted. This requires special handling. See the section on [markup-line and markup-multiline Fields in OSCAL](/documentation/general-concepts/oscal-data-types/#markup-line-and-markup-multiline-fields-in-oscal), or visit: https://pages.nist.gov/metaschema/specification/datatypes/#markup-multiline<br/>
 {{</callout>}}
 
 The OSCAL revision history requires one FedRAMP extension to fully meet
