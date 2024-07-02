@@ -30,7 +30,7 @@ where it is appropriate:
 -   Any blue-text instructions found in the SAP template where the
     instructions are related to the content itself.
 
--   Table of Contents.
+-   Table of contents.
 
 -   Introductory and instructive content in each section.
 
@@ -81,7 +81,7 @@ its associated documents.
          <part ns="https://fedramp.gov/ns/oscal" name="laws-regulations" >
             <title>Applicable Laws, Regulations, Standards and Guidance</title>
             <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="002"/>
-            <p>The FedRAMP-applicable laws, regulations, standards and guidance is included in the [CSO Name] SSP section – System Security Plan Approvals. Additionally, in Appendix L of the SSP, the [CSP Name] has included laws, regulations, standards, and guidance that apply specifically to this system.</p>
+            <p>The FedRAMP-applicable laws, regulations, standards and guidance are included in the [CSO Name] SSP section – System Security Plan Approvals. Additionally, in Appendix L of the SSP, the [CSP Name] has included laws, regulations, standards, and guidance that apply specifically to this system.</p>
          </part>
       </part>
       <!-- cut -->
@@ -123,9 +123,7 @@ for this information as follows:
 
 {{</ highlight >}}
 
-If no OSCAL-based SSP exists, as described in *Section 3.5.2, If No
-OSCAL-based SSP Exists (General)*, the resource with the no-oscal-ssp
-type must designate the system\'s identifier, name, and abbreviation.
+If no OSCAL-based SSP exists, as described in the [*If No OSCAL-based SSP Exists*](#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses) section, the `resource` with the "no-oscal-ssp" type must designate the system\'s identifier, name, and abbreviation.
 
 **NOTE:**
 
@@ -135,10 +133,10 @@ references this content.
 
 #### Location of Components
 
-The SAP reference location information in the SSP using its ID and must
+The SAP references location information in the SSP using its ID and must
 explicitly cite each location within the scope of the assessment. While
 all is valid OSCAL syntax, FedRAMP requires locations to be explicitly
-cited, so that the assessor can add their own description of the
+cited so that the assessor can add their own description of the
 location. Also, the SSP will likely also contain locations that are not
 data centers.
 
@@ -181,13 +179,11 @@ data centers.
         /*/metadata/location[@uuid='uuid-value-from-SAP']/address/addr-line
     NOTE: Replace addr-line with city, state, and postal-code as needed. 
     There may be more than one addr-line.
-    NOTE: Replace 'location-2' with the SSP location as cited in the SAP.
-
+    
     (SSP) CSP's Description of Location (from SSP):
         /*/metadata/location[@uuid='uuid-value-for-location-2']/remarks
     (SAP) Assessor's Description of Components at the first location:
         /*/assessment-subject[@type='location']/include-subject[1]/remarks/node()
-        
     NOTE: Replace "[1]" with "[2]", "[3]", etc.
 
 {{</ highlight >}}
@@ -213,7 +209,7 @@ the assessor to add them to the SAP\'s local-definitions as components.
 Beyond subnets, this section is an enumeration of the SSP\'s
 inventory-item assemblies, which always contain the hostname and IP
 address of the item. Other details, such as the software and version
-information, may be found in the inventory item itself or the SSP
+information, may be found in the inventory item itself, or the SSP
 inventory item may be linked to an SSP component containing those
 details, depending on whether the SSP is using the legacy (flat)
 approach or the preferred component approach.
@@ -261,7 +257,7 @@ component was not explicitly cited in the SAP.
                         type="token" />
         <include-subject subject-uuid="uuid-of-SSP-inventory-item-to-include"  
                         type="token" />
-        <include-subject subject-uuid="uuid-of-SSP-inventory-item-to-exclude"  
+        <include-subject subject-uuid="uuid-of-SSP-inventory-item-to-include"  
                         type="token" />
     </assessment-subject>
 
@@ -287,7 +283,7 @@ If no OSCAL-based SSP exists, or the inventory information is not
 accurately reflected in the SSP, this information may be added to the
 SAP\'s local-definition section as described below. The include-subject
 citations are still required as described above; however, the UUIDs
-point to the SAP\'s local definitions instead of the SSP.
+point to the SAP\'s local definitions instead of the SSP\'s.
 
 ##### Representation   
 {{< highlight xml "linenos=table" >}}
@@ -318,7 +314,7 @@ point to the SAP\'s local definitions instead of the SSP.
         <description><p>Description of the included inventory.</p></description>
         <include-subject subject-uuid="uuid-of-SAP-inventory-item-to-include" 
                         type="token" />
-        <exclude-subject subject-uuid="uuid-of-SAP-inventory-item-to-include" 
+        <include-subject subject-uuid="uuid-of-SAP-inventory-item-to-include" 
                         type="token" />
     </assessment-subject>
 
@@ -396,8 +392,9 @@ test users here. Both use FedRAMP extensions.
     (SAP) Login ID:
         (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-id'][@ns="https://fedramp.gov/ns/oscal"]
     (SAP) Inventory-ID of host:
-        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[2]/ associated-activity/subject[@type='inventory-item']/include-subject/@subject-uuid
-    NOTE: Replace "[2]" with "[2]", "[3]", etc.
+        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/ associated-activity/subject[@type='inventory-item']/include-subject/@subject-uuid
+        
+    NOTE: Replace "[1]" with "[2]", "[3]", etc.
     REMEMBER: The inventory-item could be in the SSP's system-implementation or the SAP's local-definitions.
 
 {{</ highlight >}}
@@ -405,7 +402,7 @@ test users here. Both use FedRAMP extensions.
 ---
 #### SAP Databases Slated for Testing
 
-The SSP inventory data should already indicate which assets are a database, with the following FedRAMP extension:
+The SSP inventory data should already indicate which assets are databases, with the following FedRAMP extension:
 
 {{< highlight xml "linenos=table" >}}
 <prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="database"/>
@@ -424,7 +421,7 @@ to properly identify all databases for testing.
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
-    (SSP) Host name of first database in SSP(flat file approach):
+    (SSP) Host name of first database in SSP (flat file approach):
         (/*/system-implementation/system-inventory/inventory-item/prop[@name='scan-type'][string()='database'])[1]/../prop[@name='fqdn']
     (SSP) Host name of the first database in SSP (component approach) [xPath 2.0+ only]:
         (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='https://fedramp.gov/ns/oscal']='database']/@id return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-id=$key]/prop[@name='fqdn'])[1]
@@ -435,16 +432,14 @@ to properly identify all databases for testing.
 ##### If No OSCAL-based SSP Exists or Has Inaccurate Information (Database)
 
 If no OSCAL-based SSP exists, or an item is missing completely from the
-SSP inventory, it should have already been added as described in
-*Section 4.4.1, If No OSCAL-based SSP Exists or Has Inaccurate
-Information (IP* Addresses).
+SSP inventory, it should have already been added as described in the [*If No OSCAL-based SSP Exists*](#if-no-oscal-based-ssp-exists-or-has-inaccurate-information-ip-addresses) section.
 
 If a pre-existing SSP inventory item fails to properly identify a
 database, the tool should enable the assessor to add this designation
-with an entry in the SAP local-definitions*,* except the value database
-should be used instead of web for the scan-type.
+with an entry in the SAP `local-definitions`, except the value of `database`
+should be used instead of `web` for the `scan-type`.
 
-#### Roles Testing Inclusions and Exclusion
+#### Roles Testing Inclusions and Exclusions
 
 Historically, FedRAMP assessors often identified generalized roles for
 testing, such as \"internal\", \"external\", and \"privileged\" rather
@@ -455,7 +450,7 @@ roles excluded from testing. When processing an OSCAL SAP, SAP tools
 should present assessors with the roles from the associated (import-ssp)
 SSP so the assessor can select specific roles for testing. SAP tools
 should allow the assessor to easily identify roles that are excluded.
-Section 6.2 of the [*Guide to OSCAL-based System Security Plans (SSP)*](/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) describes personnel roles and privileges with examples illustrating how
+The [*SSP - Responsible Roles and Parameter Assignments*](/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments) section describes personnel roles and privileges with examples illustrating how
 to identify them in an OSCAL SSP. If the \"roles\" slated for testing
 exist in the SSP, the SSP roles are referenced from the SAP using their
 SSP IDs as defined in the SSP user assemblies in the system-implementation section of the OSCAL-based SSP file. **Note that in this case, the SAP role must actually map to the uuid of the user assembly in the SSP**.
@@ -515,23 +510,23 @@ assessor to add a test user ID here via FedRAMP extension properties.
         <title>Role-Based Tests</title>
         <task uuid="test1-uuid" type="action">
             <title>Role Based Test #1</title>
-            <prop name="test-type" 
-                                           ns="https://fedramp.gov/ns/oscal" value="role-based"/>
-            <prop name="login-id" ns="https://fedramp.gov/ns/oscal" value="test-user"/>
+            <prop name="test-type" ns="https://fedramp.gov/ns/oscal" 
+                    value="role-based"/>
+            <prop name="login-id" ns="https://fedramp.gov/ns/oscal" 
+                    value="test-user"/>
             <!-- uuid from SSP or SAP lcocal-definitions -->
-            <prop name="user-uuid" 
-                                           ns="https://fedramp.gov/ns/oscal"
-                   value="user-uuid-value"/>
+            <prop name="user-uuid" ns="https://fedramp.gov/ns/oscal"
+                    value="user-uuid-value"/>
             <associated-activity activity-uuid="uuid-of-role-testing-activity" />
         </task>
         <task uuid="test2-uuid" type="action">
             <title>Role Based Test #2</title>
             <prop name="test-type" ns="https://fedramp.gov/ns/oscal" 
-                  value="role-based"/>
+                    value="role-based"/>
             <prop name="login-id" ns="https://fedramp.gov/ns/oscal" value="test-admin"/>
             <!-- uuid from SSP or SAP lcocal-definitions -->
             <prop name="user-uuid" ns="https://fedramp.gov/ns/oscal"
-                   value="user-uuid-value"/>
+                    value="user-uuid-value"/>
             <associated-activity activity-uuid="uuid-of-role-testing-activity" />
         </task>
     </task>
@@ -603,12 +598,12 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
     Multiline at this time. The tool must either replace each \"\[CSP
     Name\]\" and \"\[3PAO Name\]\" with the appropriate value or enable
     the assessor to manually make those changes. This feature may be
-    added to future version of OSCAL.
+    added to a future version of OSCAL.
 
 ---
 ### SAP Methodology
 
-In general, the methodology is simply a single markup multiline field, which enables the assessor to modify the content using rich text formatting. The FedRAMP SAP template includes subsections for *Control Testing, Data Gathering, Sampling,* and *Penetration Test*. Each of these sections must be present in the FedRAMP OSCAL SAP terms-and-condition assembly, within part named "methodology" as sub-parts. The subparts are specifically defined for FedRAMP SAP, so they have namespace "https://fedramp.gov/ns/oscal" and attributes are named "control-testing", "data-gathering", "sampling", and "pen-testing".
+In general, the methodology is simply a single markup multiline field, which enables the assessor to modify the content using rich text formatting. The FedRAMP SAP template includes subsections for *Control Testing, Data Gathering, Sampling,* and *Penetration Test*. Each of these sections must be present in the FedRAMP OSCAL SAP terms-and-condition assembly as subparts within a part named "methodology". The subparts are specifically defined for FedRAMP SAP, so they have namespace "https://fedramp.gov/ns/oscal" and attributes named "control-testing", "data-gathering", "sampling", and "pen-testing".
 
 {{< figure src="/img/sap-figure-10.png" title="FedRAMP SAP template methodology." alt="Screenshot of the FedRAMP SAP template where methodology information is provided." >}}
 
@@ -699,7 +694,7 @@ assessor for the assessment. The insert elements can be used by tool developers 
 An OSCAL SAP must always explicitly select the in-scope controls from
 the applicable FedRAMP Baseline/Profile. For initial assessments, this
 can be as simple as specifying include-all. For annual assessments, use
-include-control instead - one for each control included in the
+include-control instead, one for each control included in the
 assessment. Controls may also be explicitly excluded from the control
 scope.
 
@@ -750,18 +745,18 @@ NOTE: Replace "exclude-control" with "include-control" above for any explicitly 
     excluded controls using the relevant baseline.
 
 -   FedRAMP\'s guidance and requirements regarding which controls are
-    in-scope for each assessment does not change with OSCAL.
+    in-scope for each assessment do not change with OSCAL.
 
 ---
 ### SAP Test Plan
 
 #### Assessor\'s Name, Address, and URL
 
-The SAP\'s metadata is used to represent
-the assessor\'s name address and URL. This uses the OSCAL common role,
-party, and responsible-party assemblies. Some roles are specific to the
-SAP. In the responsible-party assembly, the party-uuid may point to a
-party in the SSP or SAP. The SAP tool must not assign a role ID or party
+The SAP\'s `metadata` is used to represent
+the assessor\'s name address and URL. This uses the OSCAL common `role`,
+`party`, and `responsible-party` assemblies. Some roles are specific to the
+SAP. In the `responsible-party` assembly, the `party-uuid` may point to a
+`party` in the SSP or SAP. The SAP tool must not assign a role ID or party
 ID that duplicates one used in the SSP.
 
 {{< figure src="/img/sap-figure-13.png" title="FedRAMP SAP template security assessment team." alt="Screenshot of the security assessment team information in the FedRAMP SAP template." >}}
@@ -788,7 +783,7 @@ ID that duplicates one used in the SSP.
         <name>Assessment Organization Name</name>
         <short-name>Acronym/Short Name</short-name>
         <location-uuid>sap-location-1</location-uuid>
-        <url>https://assesor.web.site</url>
+        <url>https://assessor.web.site</url>
         <prop name="iso-iec-17020-identifier" 
             ns='https://fedramp.gov/ns/oscal'>0000.00</prop>
     </party>
@@ -816,8 +811,8 @@ ID that duplicates one used in the SSP.
 #### Security Assessment Team
 
 The SAP\'s metadata is used to represent the assessment team and
-assessment lead. This uses the OSCAL common role, party, and
-responsible-party assemblies. Some roles are specific to the SAP. The
+assessment lead. This uses the OSCAL common `role`, `party`, and
+`responsible-party` assemblies. Some roles are specific to the SAP. The
 SAP tool must not assign a role ID or party ID that duplicates one used
 in the SSP.
 
@@ -856,7 +851,7 @@ in the SSP.
 (SAP) Name of First Assessment Team Member:
     /*/metadata/party[@id=/*/metadata/responsible-party[@role-id='assessment-team'] /party-uuid[1]]/person/person-name
 (SAP) Role of First Assessment Team Member:
-    /*/metadata/role[@id='assessment-team']/title
+    /*/metadata/role[@id='assessment-team'][1]/title
 (SAP) Contact Information of First Assessment Team Member (phone):
     /*/metadata/party[@id=/*/metadata/responsible-party[@role-id='assessment-team'] /party-uuid[1]]/person/phone
 NOTE: Replace 'phone' with 'email'
@@ -886,7 +881,7 @@ reference the SSP party ID for that individual.
         <desc>At least three CSP POCs must be identified in a FedRAMP SAP.</desc>
     </role>
     
-    <!-- Only define a CSP party in the SAP when no appropriate party exits in SSP -->
+    <!-- Only define a CSP party in the SAP when no appropriate party exists in SSP -->
     
     <responsible-party role-id="csp-assessment-poc">
         <!-- At least three -->
@@ -982,7 +977,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 **NOTES:**
 
 -   OSCAL syntax requires a status field within each component assembly.
-    For FedRAMP, assessment tools state should typically be
+    For FedRAMP, assessment tool state should typically be
     \'operational\', otherwise a remark must be provided.
 
 ---
@@ -1044,18 +1039,18 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 
 **NOTES:**
 
--   If a test method represents more than one test type, such as manual
+-   If a test method represents more than one test type, such as a manual
     test that is also a role-based test, the test-type property should
     appear twice, indicating each type.
  
 ---
 ##### Including Manual Test Methods in the OSCAL SAP Test Plan Section
 
-The FedRAMP OSCAL SAP terms-and-condition assembly, should contain a
-part with ns=\"https://fedramp.gov/ns/oscal\" name=\"manual-methods-testing\" when needed to facilitate rending of
+The FedRAMP OSCAL SAP terms-and-condition assembly should contain a
+part with ns=\"https://fedramp.gov/ns/oscal\" name=\"manual-methods-testing\" when needed to facilitate rendering of
 OSCAL SAP by tools. The insert elements can be used by tool developers
 as insertion points for data items such as test ID, test name, and test
-description if the tool is able manage them as parameters. The use of
+description if the tool is able to manage them as parameters. The use of
 insert within an OSCAL part is described on the [NIST OSCAL Concepts page](https://pages.nist.gov/OSCAL/concepts/layer/control/catalog/sp800-53rev5-example/#parts). The XPath queries below show how to identify manual test information within the OSCAL SAP.
 
 ##### Representation 
@@ -1166,7 +1161,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 #### Origination Addresses
 
 The scan origination IP address(es) are included in the
-assessment-platform assembly. See the next page for other disclosures.
+assessment-platform assembly. See below for other disclosures.
 
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
@@ -1223,7 +1218,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 #### Disclosures
 
 The scan origination IP address(es) are included in the
-assessment-platform assembly. See the next page for other disclosures\`.
+assessment-platform assembly. See below for other disclosures.
 
 {{< figure src="/img/sap-figure-19.png" title="FedRAMP SAP template rules of engagement and disclosures." alt="Screenshot of the rules of engagement and disclosure information in the FedRAMP SAP template." >}}
 
@@ -1233,7 +1228,7 @@ assessment-platform assembly. See the next page for other disclosures\`.
     <part name="disclosures">
         <part name="disclosure">
             <prop name="sort-id" value="001"/>
-            <p>Any testing will be performed according to terms and conditions designed                                               to minimize risk exposure that could occur during security testing.</p>
+            <p>Any testing will be performed according to terms and conditions designed to minimize risk exposure that could occur during security testing.</p>
         </part>
         <part name="disclosure">
             <prop name="sort-id" value="002"/>
@@ -1321,7 +1316,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 
 SAP authors should describe exclusive disclosures within the
 terms-and-conditions assembly, in the "excluded-activities" part and its
-"included-activity" sub-parts.
+"excluded-activity" sub-parts.
 
 {{< figure src="/img/sap-figure-21.png" title="FedRAMP SAP template terms and conditions (exclusions)." alt="Screenshot of the terms and conditions \(e.g., security testing will not include\) information in the FedRAMP SAP template." >}}
 
@@ -1355,7 +1350,7 @@ terms-and-conditions assembly, in the "excluded-activities" part and its
             <p>Intentional introduction of malicious code (viruses, Trojans, worms, etc.)</p>
         </part>
     </part>
-    </terms-and-conditions>
+</terms-and-conditions>
 
 {{</ highlight >}}
 
@@ -1482,6 +1477,8 @@ NOTE: Replace 'person-1' with each party-uuid found in the responsible role.
 ---
 #### Limitation of Liability 
 
+The SAP muse document any limitation of liability within the `terms-and-conditions` assembly as a collection of `liability-limitation` `part` assemblies, as illustrated in the OSCAL representation below. 
+
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
@@ -1551,7 +1548,7 @@ following approaches is encouraged:
 
 {{</ highlight >}}
 
-#### Manual \"Wet\" Signature Approach (Document or Letter) Print, manually sign, scan, and attach. 
+#### Manual \"Wet\" Signature Approach (Document or Letter): Print, manually sign, scan, and attach. 
 
 1.  Print one of the following:
 
@@ -1567,7 +1564,7 @@ following approaches is encouraged:
 
 4.  Attach it to the OSCAL-based SAP as a resource.
 
-#### Digital Signature Approach Render, digitally sign, and attach. 
+#### Digital Signature Approach: Render, digitally sign, and attach. 
 
 1.  Render the OSCAL-based SAP content as a PDF that resembles the
     MS-Word based FedRAMP SAP Template.
@@ -1582,8 +1579,7 @@ following approaches is encouraged:
 #### Security Controls Selection Worksheet
 
 An OSCAL SAP must always explicitly select the in-scope controls from
-the applicable FedRAMP Baseline/Profile. See section 4.5 Controls
-Testing for additional guidance.
+the applicable FedRAMP Baseline/Profile. See the [*Controls Testing*](#control-testing) section for additional guidance.
 
 #### Test Case Procedures
 
@@ -1596,8 +1592,7 @@ the baseline.
 ##### Baseline Objectives and Methods
 
 To include an assessment objective and associated actions in the SAP,
-its control must be designated in-scope as described in *Sections 4.1,
-SAP Scope*. SAP tools should support and enforce this constraint.
+its control must be designated in-scope as described in the [*SAP Scope*](#scope) section. SAP tools should support and enforce this constraint.
 
 In most cases, a FedRAMP assessor must adopt these without change. In
 this case, a SAP tool may simply specify all, to indicate that all
@@ -1679,14 +1674,14 @@ a FedRAMP "type" prop with an allowed value, sampling-methodology.
 (SAP) Link to Sampling Methodology:
     /*/back-matter/resource/prop[@name='type'] [@value='sampling-methodology']/../rlink/@href
 (SAP) Base64-encoded Sampling Methodology:
-    /*/back-matter/resource/prop[@name='type'] [@value=''sampling-methodology ']/../base64
+    /*/back-matter/resource/prop[@name='type'] [@value='sampling-methodology']/../base64
 
 {{</ highlight >}}
 
 ---
 #### SAP Penetration Testing Plan and Methodology
 
-The penetration test plan methodology may continue to be a separate,
+The penetration test plan and methodology may continue to be a separate,
 attached document. This should be provided as a back-matter resource,
 containing a FedRAMP "type" prop with an allowed value,
 penetration-test-plan.
@@ -1781,8 +1776,8 @@ significant-change-request.
 ##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Link to Significant Change Documentation:
-    /*/back-matter/resource/prop[@name='type'] [@value=' significant-change-request ']/../rlink/@href
+    /*/back-matter/resource/prop[@name='type'] [@value='significant-change-request']/../rlink/@href
 (SAP) Base64-encoded Significant Change Documentation:
-    /*/back-matter/resource/prop[@name='type'] [@value= significant-change-request ']/../base64
+    /*/back-matter/resource/prop[@name='type'] [@value='significant-change-request']/../base64
 
 {{</ highlight >}}
