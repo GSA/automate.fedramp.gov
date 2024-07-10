@@ -11,8 +11,8 @@ cascade:
 custom_css:
 - css/index.css
 ---
-{{% usa-hero image="img/homepage-banner-desktop.jpg" calloutText="Building a More Automated FedRAMP Risk Management Process" buttonURL="/about/" buttonText="Learn More" %}}
-Supporting the development of tools to streamline and automate risk management for cloud services used by the federal government{{% /usa-hero %}}
+{{% usa-hero image="img/homepage-banner-desktop.jpg" calloutText="Build a More Automated FedRAMP Risk Management Process" buttonURL="/about/" buttonText="Learn More" %}}
+Helping you to develop OSCAL-based tools to streamline and automate risk management for cloud services used by the federal government{{% /usa-hero %}}
 
 <div class="site-content-container">
 <main id="main-content" class="main-content usa-prose">
