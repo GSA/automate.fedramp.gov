@@ -40,7 +40,7 @@ params:
   usabanner: true
   sidenav:
   custom_css:
-  - /css/site.css
+  - css/site.css
   searchAffiliate: fedramp-automation
 #    debug: true
 markup:
