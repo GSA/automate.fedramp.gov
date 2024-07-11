@@ -1209,7 +1209,7 @@ a URI fragment. The fragment must start with a hashtag (#) and include the UUID 
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
-              value="data-at-rest"/>
+              value="data-in-transit"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />
@@ -1253,7 +1253,7 @@ The approach is the same as in the [*cryptographic module data-in-transit*](#cry
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
-              value="data-in-transit"/>
+              value="data-at-rest"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />
