@@ -46,6 +46,8 @@ applicable standards such as NIST SP 800 series documents.
 Unlike citations, attachments are included with the authorization
 package when submitted.
 
+Each attachment should have a title, but it is not required.
+
 Tools may either embed an attachment using the `base64` field, or point to an attachment using an `rlink` field. If no base64 embedded content is
 present, at least one `rlink` field must exist with either an *absolute
 path* to content that is accessible by FedRAMP and Agency reviewers from
