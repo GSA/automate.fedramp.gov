@@ -90,7 +90,7 @@ an address has defined its country as the United States with the abbreviation
             <city>Haven</city>
             <state>ME</state>
             <postal-code>00000</postal-code>
-            <country>us</country>
+            <country>US</country>
         </address>
         <prop name="type" class="primary" value="data-center"/>
     </location>
