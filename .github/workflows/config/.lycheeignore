@@ -2,3 +2,6 @@ https://search.usa.gov/search
 http://csrc.nist.gov/ns/*
 https://fedramp.gov/ns/*
 http://www.first.org/cvss/v3
+# TODO: Review this exemption when prudent, details in this issue:
+# https://github.com/GSA/automate.fedramp.gov/issues/54
+https://www.fedramp.gov/assets/resources/documents/CSP_Continuous_Monitoring_Strategy_Guide.pdf
