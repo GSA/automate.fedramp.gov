@@ -353,6 +353,31 @@ Valid values for security-sensitivity-level:
 -   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
 
 ---
+
+### Security Impact Level
+
+#### OSCAL Representation
+
+#### XPath Queries
+
+---
+
+### System Information and Information Types
+
+#### OSCAL Representation
+
+#### XPath Queries
+
+---
+
+### System Information and Security Objectives
+
+#### OSCAL Representation
+
+#### XPath Queries
+
+---
+
 ### System Status
 
 The system status in the FedRAMP SSP template document is specified in the "Fully Operational as of" table cell illustrated in the figure below.  OSCAL has a `status` assembly that is used to describe the operational status of the system.  In addition, FedRAMP has defined an extension that must be used to provide the date when the system became operational.
