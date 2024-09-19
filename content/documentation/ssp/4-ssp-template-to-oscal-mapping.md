@@ -537,6 +537,8 @@ If no country is provided, FedRAMP tools will assume a US address.
 
 A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information. For the responsible-party of this role, the party (referenced by  role-id) must be of type person, not organization.
 
+A role with an ID value of "authorizing-official-poc" is required to identify a point of contact for an authorizing official. For the responsible-party of this role, it can be the same party as "authorizing-official" or different depending upon the needs of the system and staff.
+
 {{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
 
 ##### Federal Agency Authorization Representation
@@ -637,6 +639,7 @@ prop (ns="https://fedramp.gov/ns/oscal")
 
 Required Role ID:
 - authorizing-official
+- authorizing-official-poc
 
 {{</callout>}}
 
@@ -645,6 +648,8 @@ Required Role ID:
 ## Assignment of Security Responsibilities
 
 A role with an ID value of "information-system-security-officer" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Information System Security Officer's information. For the responsible-party of this role, the party (referenced by  role-id) must be of type person, not organization.
+
+A role with an ID value of "information-system-security-officer-poc" is required to identify a point of contact for an information system security officer. For the responsible-party of this role, it can be the same party as "information-system-security-officer" or different depending upon the needs of the system and staff.
 
 {{< figure src="/img/ssp-figure-14.png" title="FedRAMP SSP template security point of contact." alt="Screenshot of the security point of contact information (e.g., ISSO) in the FedRAMP SSP template." >}}
 
@@ -703,6 +708,7 @@ A tool developer may elect to always create a location assembly, even when only 
 
 Required Role ID:
 - information-system-security-officer
+- information-system-security-officer-poc
 
 {{</callout>}}
 
