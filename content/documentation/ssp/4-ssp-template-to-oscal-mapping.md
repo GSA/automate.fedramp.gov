@@ -727,6 +727,77 @@ Required Role ID:
 {{</ highlight >}}
 
 ---
+
+## Additional System Roles and Responsibilities
+
+There are other important roles that are required in a FedRAMP SSP below.
+
+- The "system-poc-management" role is to identify a party responsible for information about system management.
+- The "system-poc-technical" role is to identify a party responsible for the system's technical information.
+- The "system-poc-other" role is to identify a party responsible for system informational that is not technical or management related.
+
+For any of these roles, a SSP may use the same party for one, some, or all these roles depending upon the needs of the system and staff.
+
+### OSCAL Representation
+
+#### OSCAL Representation
+{{< highlight xml "linenos=table" >}}
+<metadata>
+    <!-- cut -->
+    <role id="system-poc-management">
+        <title>POC for System's Management Information</title>
+    </role>
+    <role id="system-poc-technical">
+        <title>POC for System's Technical Information</title>
+    </role>
+    <role id="system-poc-other">
+        <title>POC for System's Other Information</title>
+    </role>
+    <location uuid="uuid-of-hq-location">
+        <title>CSP HQ</title>
+        <address type="work">
+            <addr-line>1234 Some Street</addr-line>
+            <city>Haven</city>
+            <state>ME</state>
+            <postal-code>00000</postal-code>
+        </address>
+    </location>
+    <!-- In this example it is the same party for all three. In your case, it may be different. -->
+    <party uuid="uuid-of-system-csp-poc" type="person">
+        <name>CSP POC for System Management, Technical, and Other Issues</name>
+        <prop name="job-title" value="Individual's Title"/>
+        <email-address>name@org.domain</email-address>
+        <telephone-number>202-000-0000</telephone-number>
+        <location-uuid>uuid-of-hq-location</location-uuid>
+        <member-of-organization>uuid-of-csp</member-of-organization>
+    </party>
+    <responsible-party role-id="system-poc-management">
+        <party-uuid>uuid-of-system-csp</party-uuid>
+    </responsible-party>
+    <responsible-party role-id="system-poc-technical">
+        <party-uuid>uuid-of-system-csp</party-uuid>
+    </responsible-party>
+    <responsible-party role-id="system-poc-other">
+        <party-uuid>uuid-of-system-csp</party-uuid>
+    </responsible-party>
+</metadata>
+{{</ highlight >}}
+
+### XPath Queries
+
+{{< highlight xml "linenos=table" >}}
+    System Management POC's Name:
+        /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="system-management-poc"]/party-uuid]]/name
+    System Management POC's Address:
+        /*/metadata/location[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="system-management-poc"]/party-uuid]]/location-uuid]/address/addr-line
+    System Management POC's POC's Title:
+        /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="system-management-poc"]/party-uuid]]/prop[@name='job-title']
+    Company/Organization:
+        /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="system-management-poc"]/party-uuid]]/member-of-organization]/name
+{{</ highlight >}}
+
+---
+
 ## Leveraged FedRAMP-authorized Services
 
 If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the system-implementation assembly. There must be one leveraged-authorization assembly and one matching component assembly for each leveraged authorization.
