@@ -468,7 +468,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
 ---
 ## Information System Owner
 
-A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner's information.
+A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner's information. For the responsible-party of this role, the referenced party must be of type person, not organization.
 
 {{< figure src="/img/ssp-figure-12.png" title="FedRAMP SSP template information system owner." alt="Screenshot of the system owner  information in the FedRAMP SSP template." >}}
 
@@ -535,7 +535,7 @@ If no country is provided, FedRAMP tools will assume a US address.
 ---
 ## Federal Authorizing Officials
 
-A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information.
+A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information. For the responsible-party of this role, the referenced party must be of type person, not organization.
 
 {{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
 
@@ -644,9 +644,7 @@ Required Role ID:
 ---
 ## Assignment of Security Responsibilities
 
-A role with an ID value of "information-system-security-officer" is
-required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
-System Security Officer's information.
+A role with an ID value of "information-system-security-officer" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Information System Security Officer's information. For the responsible-party of this role, the referenced party must be of type person, not organization.
 
 {{< figure src="/img/ssp-figure-14.png" title="FedRAMP SSP template security point of contact." alt="Screenshot of the security point of contact information (e.g., ISSO) in the FedRAMP SSP template." >}}
 
