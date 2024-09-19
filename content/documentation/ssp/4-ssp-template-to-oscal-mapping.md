@@ -736,7 +736,7 @@ There are other important roles that are required in a FedRAMP SSP below.
 - The "system-poc-technical" role is to identify a party responsible for the system's technical information.
 - The "system-poc-other" role is to identify a party responsible for system informational that is not technical or management related.
 
-For any of these roles, a SSP may use the same party for one, some, or all these roles depending upon the needs of the system and staff.
+For the responsible-party of this role, the party (referenced by  role-id) must be of type person, not organization. For any of these roles, a SSP may use the same party for one, some, or all these roles depending upon the needs of the system and staff.
 
 ### OSCAL Representation
 
