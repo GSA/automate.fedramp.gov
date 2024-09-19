@@ -72,6 +72,8 @@ For this reason, OSCAL requires the identifier-type flag be present and have a v
 
 {{< figure src="/img/ssp-figure-5.png" title="FedRAMP SSP template System Name and Package ID" alt="Screenshot of the system name, and package ID in the FedRAMP SSP template." >}}
 
+This assembly defines the full name of the system and its short name. A FedRAMP OSCAL SSP must define the system name and its short name.
+
 #### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=9-13" >}}
 <system-security-plan>
