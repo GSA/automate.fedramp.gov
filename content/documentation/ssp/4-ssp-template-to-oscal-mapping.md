@@ -828,6 +828,87 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
+
+## Users
+
+A FedRAMP SSP must identify the users of the system by type, privilege, and sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.
+
+### OSCAL Representation
+
+{{< highlight xml "linenos=table" >}}
+<system-implementation>
+    <user uuid="system-admin-user-uuid">
+        <title>System Administrator</title>
+        <prop name="sensitivity" ns="https://fedramp.gov/ns/oscal" value="limited" />
+        <prop name="type" value="external"/>
+        <prop name="privilege-level" value="no-logical-access" />
+        <role-id>system-admin-user</role-id>
+        <authorized-privilege>
+            <title>Full administrative access (root)</title>
+            <function-performed>install and configure software</function-performed>
+            <function-performed>OS updates, patches and hotfixes</function-performed>
+            <function-performed>perform backups</function-performed>
+        </authorized-privilege>
+    </user>
+</system-implementation>
+{{</ highlight >}}
+
+<br />
+
+{{<callout>}}
+
+**FedRAMP Extension:**
+
+prop
+- name="type"
+
+**FedRAMP Allowed Values**
+
+- internal
+- external
+- general-public
+
+**FedRAMP Extension:**
+
+prop
+- name="privilege-level"
+
+**FedRAMP Allowed Values**
+
+- privileged
+- non-privileged
+- no-logical-access
+
+**FedRAMP Extension:**
+
+prop (ns=“https://fedramp.gov/ns/oscal")
+- name="sensitivity"
+
+**FedRAMP Allowed Values**
+
+- high-risk
+- severe
+- moderate
+- limited
+- not-applicable
+
+{{</callout>}}
+
+### XPath Queries
+
+{{< highlight xml "linenos=table" >}}
+Number of entries in the role table: count(/*/system-implementation/user)
+Role: /*/system-implementation/user[1]/title
+Replace "[1]" with "[2]", "[3]", etc.
+Internal or External: /*/system-implementation/user[1]/prop[@name="type"]/@value
+Privileged, Non-Privileged, or No Logical Access: /*/system-implementation/user[1]/prop[@name="privilege-level"]/@value
+Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "https://fedramp.gov/ns/oscal"]
+Authorized Privileges: /*/system-implementation/user[1]/authorized-privilege/title
+count(/*/system-implementation/user[1]/authorized-privilege)
+Functions Performed: /*/system-implementation/user[1]/authorized-privilege[1]/function-performed[1]
+count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performed)
+{{</ highlight >}}
+
 ## External Systems and Services Not Having FedRAMP Authorization
 
 FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
