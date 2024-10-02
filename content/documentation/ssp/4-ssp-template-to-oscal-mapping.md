@@ -831,7 +831,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 ## Users
 
-A FedRAMP SSP must identify the users of the system by type, privilege, and sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.
+A FedRAMP SSP must identify the users of the system by type, privilege, and sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.  The SSP must also provide the authentication method(s) used for each identified user.
 
 ### OSCAL Representation
 
@@ -859,25 +859,27 @@ A FedRAMP SSP must identify the users of the system by type, privilege, and sens
 
 **FedRAMP Extension:**
 
-prop
+**OSCAL prop**
 - name="type"
 
-**FedRAMP Allowed Values**
+**OSCAL Allowed Values**
 
 - internal
 - external
 - general-public
 
-**FedRAMP Extension:**
+---
 
-prop
+**OSCAL prop**
 - name="privilege-level"
 
-**FedRAMP Allowed Values**
+**OSCAL Allowed Values**
 
 - privileged
 - non-privileged
 - no-logical-access
+
+---
 
 **FedRAMP Extension:**
 
@@ -892,6 +894,18 @@ prop (ns=“https://fedramp.gov/ns/oscal")
 - limited
 - not-applicable
 
+---
+
+**FedRAMP Extension:**
+
+prop (ns=“https://fedramp.gov/ns/oscal")
+- name="authentication-method"
+
+**FedRAMP Allowed Values**
+
+Values for `authentication-method` are not constrained.  However, SSP authors should provide values that are consistent with the authentication types identified in [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html#63bSec4-Table1).
+
+
 {{</callout>}}
 
 ### XPath Queries
@@ -902,7 +916,8 @@ Role: /*/system-implementation/user[1]/title
 Replace "[1]" with "[2]", "[3]", etc.
 Internal or External: /*/system-implementation/user[1]/prop[@name="type"]/@value
 Privileged, Non-Privileged, or No Logical Access: /*/system-implementation/user[1]/prop[@name="privilege-level"]/@value
-Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "https://fedramp.gov/ns/oscal"]
+Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "https://fedramp.gov/ns/oscal"]/@value
+Authentication method: /*/system-implementation/user[1]/prop[@name="authentication-method"][@ns="https://fedramp.gov/ns/oscal"]/@value
 Authorized Privileges: /*/system-implementation/user[1]/authorized-privilege/title
 count(/*/system-implementation/user[1]/authorized-privilege)
 Functions Performed: /*/system-implementation/user[1]/authorized-privilege[1]/function-performed[1]
