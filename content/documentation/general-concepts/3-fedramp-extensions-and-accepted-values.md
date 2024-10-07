@@ -1,8 +1,8 @@
 ---
-title: FedRAMP Extensions and Accepted Values
+title: FedRAMP Extensions 
 weight: 150
 ---
-# FedRAMP Extensions and Accepted Values
+# FedRAMP Extensions 
 
 The core OSCAL syntax is designed to represent cybersecurity
 information that is common to any organization and compliance framework.
@@ -120,45 +120,4 @@ the OSCAL SSP, SAP, SAR, or POA&M.
 summarized in the FedRAMP OSCAL Registry.**
 
 
-## FedRAMP Conformity Tagging
 
-FedRAMP collaborated with NIST to address the ambiguities in OSCAL
-syntax necessitating conformity tags.
-
-### OSCAL and FedRAMP-Defined Identifiers and Accepted Values
-
-OSCAL now defines *allowed values* in a way that supersedes FedRAMP's
-separate handling of *defined identifiers* and *accepted values*. To
-better align with OSCAL, FedRAMP has also shifted to this approach.
-Further, many FedRAMP *defined values* are now recognized by OSCAL as
-part of the core OSCAL syntax.
-
-Any remaining *defined identifiers* or *accepted values* are enumerated
-in the FedRAMP OSCAL registry as *allowed values*.
-
-### OSCAL and FedRAMP Allowed Values
-
-To facilitate consistent processing, the value for property names,
-annotation names, and some field values is limited to a list of
-*case-sensitive* allowed values. In many instances, OSCAL defines allowed
-values, which are enforced by OSCAL-based syntax validation mechanisms.
-
-In some cases, FedRAMP defines or adds allowed values specific to
-FedRAMP ATO processing. Where defined, only these values are recognized
-by FedRAMP processing tools.
-
-For example, every control requires an implementation status. FedRAMP
-only accepts one of five possible responses for this status, which must
-be provided using one of the specified choices.
-
-**FedRAMP allowed values are cited in relevant portions of each
-guidebook and summarized in the FedRAMP OSCAL Registry.**
-
-{{<callout>}}
-_***Revised FedRAMP Registry Approach***<br/>The FedRAMP OSCAL Registry currently uses the draft OSCAL Extensions syntax and is offered in XML and JSON formats. This enables tools to be extension-aware._
-
-- _[XML Version](https://github.com/GSA/fedramp-automation/raw/master/dist/content/rev5/resources/xml/FedRAMP_extensions.xml)_
-- _[JSON Version](https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/resources/json/FedRAMP_extensions.json)_
-
-FedRAMP is actively working on implementing a Metaschema-based approach to document all FedRAMP OSCAL extensions and constraints. The FedRAMP OSCAL extensions and constraints will be provided in XML, JSON, and YAML formats, and will replace the current FedRAMP Registry. FedRAMP also plans to provide a human-readable version of its OSCAL extensions and constraints in the future.
-{{</callout>}}
