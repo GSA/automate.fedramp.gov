@@ -31,3 +31,7 @@ FedRAMP is also working to establish an automation platform that will provide OS
 ### Q: How do I get involved in this work?
 
 **A:** FedRAMP is developing its automation approach collaboratively, as open source, with the FedRAMP OSCAL community. Direct [community participation](/resources/#collaborate) is welcome and encouraged.
+
+### Q: FedRAMP frequently provides OSCAL data in XML format? Does FedRAMP prefer OSCAL XML over OSCAL JSON or YAML?
+
+**A:** No, FedRAMP does not have a near-term or long-term preference for one of the OSCAL data formats. FedRAMP does and will provide content in all OSCAL JSON, XML, and YAML data formats. FedRAMP is committed to software, data, and documentation to support processing and creating OSCAL data in all formats.
