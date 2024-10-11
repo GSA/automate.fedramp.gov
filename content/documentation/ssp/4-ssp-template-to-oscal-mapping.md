@@ -470,7 +470,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
 ---
 ## Information System Owner
 
-A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner's information.
+A `role` with an ID value of "system-owner" is required. Use the `responsible-party` assembly to associate this `role` with the `party` assembly containing the System Owner's information.  The `responsible-party` for a "system-owner" must be a `party` of type "person".
 
 {{< figure src="/img/ssp-figure-12.png" title="FedRAMP SSP template information system owner." alt="Screenshot of the system owner  information in the FedRAMP SSP template." >}}
 
@@ -589,67 +589,10 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
 If the authorization-type field is "fedramp-jab", the responsible-party/party-uuid field must be the uuid value for the FedRAMP JAB.
 
 ---
-#### Federal JAB P-ATO Authorization Representation
-{{< highlight xml "linenos=table" >}}
-<metadata>
-    <!-- cut -->
-    <role id="authorizing-official">
-        <title>Authorizing Official</title>
-        <desc>The government executive(s) who authorize this system.</desc>
-    </role>
-    <!-- cut -->
-    <party uuid="uuid-of-fedramp-jab" type="organization">
-        <name>FedRAMP: Joint Authorization Board</name>
-        <short-name>FedRAMP JAB</short-name>
-    </party>
-    <!-- cut -->
-    <responsible-party role-id="authorizing-official">
-        <party-uuid>uuid-of-fedramp-jab</party-uuid>
-    </responsible-party>
-</metadata>
-<!-- import -->
-<system-characteristics>
-    <!-- description -->
-    <prop name="authorization-type" 
-          ns="https://fedramp.gov/ns/oscal">fedramp-jab</prop>
-    <!-- prop -->
-</system-characteristics>
-{{</ highlight >}}
-
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    Authorizing Official’s Name:
-        //metadata/party[@uuid=[//metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
-{{</ highlight >}}
-
-<br />
-{{<callout>}}
-
-**FedRAMP Extension:**
-
-prop (ns="https://fedramp.gov/ns/oscal")
-- name="authorization-type" 
-
-**FedRAMP Allowed Values**
-- fedramp-jab
-- fedramp-agency
-- fedramp-li-saas
-
-**OSCAL Allowed Value**
-
-Required Role ID:
-- authorizing-official
-
-{{</callout>}}
-
-
----
 
 ## Assignment of Security Responsibilities
 
-A role with an ID value of "information-system-security-officer" is
-required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
-System Security Officer's information.
+A `role` with an ID value of "information-system-security-officer" is required. Use the `responsible-party` assembly to associate this `role` with the `party` assembly containing the Information System Security Officer's information. The `responsible-party` for a "information-system-security-officer" must be a `party` of type "person".
 
 {{< figure src="/img/ssp-figure-14.png" title="FedRAMP SSP template security point of contact." alt="Screenshot of the security point of contact information (e.g., ISSO) in the FedRAMP SSP template." >}}
 
@@ -694,9 +637,8 @@ A tool developer may elect to always create a location assembly, even when only 
         <location-uuid>uuid-of-hq-location</location-uuid>
         <member-of-organization>uuid-of-csp</member-of-organization>
     </party>
-    <!-- repeat party assembly for each person -->
-    <responsible-party role-id="system-poc-technical">
-        <party-uuid>uuid-of-person-7</party-uuid>
+    <responsible-party role-id="information-system-security-officer">
+        <party-uuid>uuid-of-person-10</party-uuid>
     </responsible-party>
 </metadata>
 {{</ highlight >}}
@@ -724,6 +666,22 @@ Required Role ID:
     Company/Organization:
         /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="information-system-security-officer"]/party-uuid]]/member-of-organization]/name
 {{</ highlight >}}
+
+---
+
+## Summary of SSP Roles Requirements
+
+A FedRAMP OSCAL SSP must have "system-owner" `role` defined and an "information-system-security-officer" `role` defined.  Both of these roles must use the `responsible-party` assembly to associate the role to a `party` of type "person". For details, see the [System Owner](#information-system-owner) and [Assignment of Security Responsibilities](#assignment-of-security-responsibilities) sections.
+
+The roles listed below are no longer required by FedRAMP:
+- "authorizing-official"
+- "authorizing-official-poc"
+- "system-poc"
+- "system-poc-management"
+- "system-poc-technical"
+- "system-poc-other"
+
+If SSP authors include these optional roles in the SSP, they should give consideration to which `responsible-party` and corresponding `party` to associate with the role.  Generally, "poc" roles should be associated with a `party` of type "person".
 
 ---
 
