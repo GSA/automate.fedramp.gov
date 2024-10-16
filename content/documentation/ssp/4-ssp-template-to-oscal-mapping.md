@@ -300,7 +300,7 @@ Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 ---
 ### System Sensitivity Level 
 
-The privacy system designation in in the FedRAMP SSP template document, illustrated in the figure below, is expressed through the following core OSCAL property.
+The system sensitivity level in the FedRAMP SSP template document, illustrated in the figure below, is expressed through the `security-sensitivity-level` assembly.  It is the designated overall information system [FIPS-199](https://doi.org/10.6028/NIST.FIPS.199) categorization based on the system information types, and the corresponding system security impact levels.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
@@ -321,7 +321,10 @@ The privacy system designation in in the FedRAMP SSP template document, illustra
         <!-- cut DIL Determination -->
 
         <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
-        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>              
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level> 
+
+        <!-- cut system-information -->
+        <!-- cut security-impact-level -->             
          
         <!--  cut -->        
     </system-characteristics>
@@ -334,7 +337,7 @@ The privacy system designation in in the FedRAMP SSP template document, illustra
 
 **OSCAL Allowed Values**
 
-Valid values for security-sensitivity-level:
+Valid values for `security-sensitivity-level`:
 - fips-199-low
 - fips-199-moderate
 - fips-199-high
@@ -350,31 +353,218 @@ Valid values for security-sensitivity-level:
 
 **NOTES:**
 
+-   The System Sensitivity Level is generally set based on the [impact levels of the information types](#security-impact-level) and the [impact levels of the security objectives](#security-impact-level). 
 -   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
-
----
-
-### Security Impact Level
-
-#### OSCAL Representation
-
-#### XPath Queries
 
 ---
 
 ### System Information and Information Types
 
+The `system-information` assembly and its defined `information-type` assemblies are used to document all of the information types that are either stored, processed, or transmitted by the system.  The information must be based on a formal standard, such as [NIST SP 800-60](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf). 
+
+The `categorization` assembly captures the set of defined information types (e.g., from [NIST SP 800-60](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf)) that apply, using the appropriate `information-type-id` as unique identifier(s).  The referenced standard that defines the information types must be specified using the `system` attribute of the `information-type` assembly. 
+
+Each information type has confidentiality, integrity, and availability security impact prescribed by the referenced information type standard.  This is documented by setting a FIPS-199 level in the `base`field.  However, this may be adjusted by specifying a different FIPS-199 level in the `selected` field.  The `adjustment-justification` field must be used for justification any time the `selected` FIPS-199 level is not the same as the `base`.
+
 #### OSCAL Representation
+{{< highlight xml "linenos=table, hl_lines=18-50" >}}
+<system-security-plan>
+    <metadata>
+        <!-- cut CSP Name -->
+    </metadata>
+    <system-characteristics>
+        <!-- System Name & Abbreviation -->
+        <system-name>System's Full Name</system-name>
+        <system-name-short>System's Short Name or Acronym</system-name-short>        
+        <!-- FedRAMP Unique Identifier -->
+        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <!-- cut Service Model -->
+        <!-- cut Deployment Model -->
+        <!-- cut DIL Determination -->
+
+        <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+
+        <!-- system-information -->
+        <system-information>
+            <information-type uuid="06ecba4f-db96-4491-a3a2-7febfa227435">
+                <title>Information Type Name</title>
+                <description>
+                    <p>A description of the information.</p>
+                </description>
+                <categorization system="https://doi.org/10.6028/NIST.SP.800-60v2r1">
+                    <information-type-id>C.2.4.1</information-type-id>
+                </categorization>
+                <confidentiality-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </integrity-impact>
+                <availability-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </availability-impact>
+            </information-type>
+        </system-information>
+
+        <!-- cut security-impact-level -->        
+         
+        <!--  cut -->        
+    </system-characteristics>
+    <!--  cut -->     
+</system-security-plan>
+{{</ highlight >}}
+
+<br />
+{{<callout>}}
+
+**OSCAL Allowed Values**
+
+Valid values for `confidentiality-impact`, `integrity-impact`, and `availability-impact` (`base` and `selected` fields):
+- fips-199-low
+- fips-199-moderate
+- fips-199-high
+
+{{</callout>}}
+
 
 #### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    System Information:
+        /*/system-characteristics/system-information
+    System Information Types:
+        /*/system-characteristics/system-information/information-type
+    Information Categorization:
+        /*/system-characteristics/system-information/information-type/categorization
+    Information Categorization System (URI reference to standard used to categorize information types):
+        /*/system-characteristics/system-information/information-type/categorization/@system 
+    System Information Type Unique IDs:
+        /*/system-characteristics/system-information/information-type/categorization/information-type-id
+    Confidentiality Impact (base):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/base
+    Confidentiality Impact (selected):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/selected
+    Confidentiality Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/adjustment-justification
+    Integrity Impact (base):
+        /*/system-characteristics/system-information/information-type/integrity-impact/base
+    Integrity Impact (selected):
+        /*/system-characteristics/system-information/information-type/integrity-impact/selected
+    Integrity Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/integrity-impact/adjustment-justification
+    Availability Impact (base):
+        /*/system-characteristics/system-information/information-type/availability-impact/base
+    Availability Impact (selected):
+        /*/system-characteristics/system-information/information-type/availability-impact/selected
+    Availability Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/availability-impact/adjustment-justification
+{{</ highlight >}}
 
 ---
 
-### System Information and Security Objectives
+### Security Impact Level
+
+The security impact level describes the expected impact resulting from unauthorized disclosure, modification, or loss of access to information.  It is documented in the `system-impact-level` assembly derived from the confidentiality, integrity, and availability security objectives for the system, which considers the sensitivity of information within the system.  
 
 #### OSCAL Representation
+{{< highlight xml "linenos=table, hl_lines=52-57" >}}
+<system-security-plan>
+    <metadata>
+        <!-- cut CSP Name -->
+    </metadata>
+    <system-characteristics>
+        <!-- System Name & Abbreviation -->
+        <system-name>System's Full Name</system-name>
+        <system-name-short>System's Short Name or Acronym</system-name-short>        
+        <!-- FedRAMP Unique Identifier -->
+        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <!-- cut Service Model -->
+        <!-- cut Deployment Model -->
+        <!-- cut DIL Determination -->
+
+        <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+
+        <!-- system-information -->
+        <system-information>
+            <information-type uuid="06ecba4f-db96-4491-a3a2-7febfa227435">
+                <title>Information Type Name</title>
+                <description>
+                    <p>A description of the information.</p>
+                </description>
+                <categorization system="https://doi.org/10.6028/NIST.SP.800-60v2r1">
+                    <information-type-id>C.2.4.1</information-type-id>
+                </categorization>
+                <confidentiality-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </integrity-impact>
+                <availability-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </availability-impact>
+            </information-type>
+        </system-information>
+
+        <!-- Security Impact Level -->
+        <security-impact-level>
+            <security-objective-confidentiality>fips-199-moderate</security-objective-confidentiality>
+            <security-objective-integrity>fips-199-moderate</security-objective-integrity>
+            <security-objective-availability>fips-199-moderate</security-objective-availability>
+        </security-impact-level>              
+         
+        <!--  cut -->        
+    </system-characteristics>
+    <!--  cut -->     
+</system-security-plan>
+{{</ highlight >}}
+
+<br />
+{{<callout>}}
+
+**OSCAL Allowed Values**
+
+Valid values for `security-objective-confidentiality`, `security-objective-integrity`, and `security-objective-availability`:
+- fips-199-low
+- fips-199-moderate
+- fips-199-high
+
+{{</callout>}}
 
 #### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Confidentiality Security Objective:
+        /*/system-characteristics/security-impact-level/security-objective-confidentiality
+    Integrity Security Objective:
+        /*/system-characteristics/security-impact-level/security-objective-integrity
+    Availability Security Objective:
+        /*/system-characteristics/security-impact-level/security-objective-availability
+{{</ highlight >}}
 
 ---
 
