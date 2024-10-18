@@ -729,7 +729,7 @@ Required Role ID:
 
 ## Data Centers
 
-Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be the United States. It must be in [ISO 3166 Alpha-2 format](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-reference/#/system-security-plan/metadata/location/address/country) two-letter country code format (e.g., "US" in all upper case).
+Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be the United States. It must be in [ISO 3166 Alpha-2 format](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-reference/#/system-security-plan/metadata/location/address/country) two-letter country code format (i.e., "US" in all upper case).
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
