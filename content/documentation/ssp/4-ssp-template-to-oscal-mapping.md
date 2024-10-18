@@ -423,6 +423,67 @@ Valid values for security-sensitivity-level:
 -   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
 
 ---
+### System Information Type
+
+A FedRAMP SSP information-type categorization requires a correct system value. FedRAMP only supports the following system value: `https://doi.org/10.6028/NIST.SP.800-60v2r1`. Additionally, an information-type categorization must have an information type identifier.
+
+#### OSCAL Representation
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <metadata>
+        <!-- cut CSP Name -->
+    </metadata>
+    <system-characteristics>
+        <!-- System Name & Abbreviation -->
+        <system-name>System's Full Name</system-name>
+        <system-name-short>System's Short Name or Acronym</system-name-short>        
+        <!-- FedRAMP Unique Identifier -->
+        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <!-- cut Service Model -->
+        <!-- cut Deployment Model -->
+        <!-- cut DIL Determination -->
+        <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>      
+        <system-information>
+         <!-- Rev5 update - PIA/PTAs are no longer required by FedRAMP -->
+         <!-- Table K.1 - Use the information-type element to provide details about all information types that are stored, processed, or transmitted by the system -->
+         <information-type uuid="some-unique-indentifier">
+            <title>Information Type Name</title>
+            <description>
+               <p>A description of the information.</p>
+            </description>
+            <categorization system="https://doi.org/10.6028/NIST.SP.800-60v2r1">
+               <information-type-id>C.2.4.1</information-type-id>
+            </categorization>
+           <!--  cut -->
+         </information-type>
+      </system-information>
+        <!--  cut -->        
+    </system-characteristics>
+    <!--  cut -->     
+</system-security-plan>
+{{</ highlight >}}
+
+<br />
+{{<callout>}}
+
+**OSCAL Allowed Values**
+
+Valid system attribute value for information-type categorization:
+- `https://doi.org/10.6028/NIST.SP.800-60v2r1`
+
+{{</callout>}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    System Attribute:
+        /*/system-characteristics/system-information/information-type/categorization/@system eq 'https://doi.org/10.6028/NIST.SP.800-60v2r1'
+
+    Information Type Identifier:
+        /*/system-characteristics/system-information/information-type/categorization/information-type-id
+{{</ highlight >}}
+
+---
 ### System Status
 
 The system status in the FedRAMP SSP template document is specified in the "Fully Operational as of" table cell illustrated in the figure below.  OSCAL has a `status` assembly that is used to describe the operational status of the system.  In addition, FedRAMP has defined an extension that must be used to provide the date when the system became operational.
