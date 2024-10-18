@@ -535,6 +535,49 @@ Required role ID:
 If no country is provided, FedRAMP tools will assume a US address.
 
 ---
+## Federal Authorizing Officials
+
+A `role` with an ID value of "authorizing-official" is required. Use the `responsible-party` assembly to associate this role with the `party` assembly containing the Authorizing Official's information.
+
+##### Federal Agency Authorization Representation
+{{< highlight xml "linenos=table" >}}
+<metadata>
+    <role id="authorizing-official">
+        <title>Authorizing Official</title>
+    </role>
+    <party uuid="uuid-of-agency" type="organization">
+        <name>Agency Name</name>
+        <address type="work">
+            <addr-line>Address Line</addr-line>
+            <city>City</city>
+            <state>ST</state>
+            <postal-code>00000</postal-code>
+            <country>US</country>
+         </address>
+    </party>
+    <responsible-party role-id="authorizing-official">
+        <party-uuid>uuid-of-agency</party-uuid>
+    </responsible-party>
+</metadata>
+<!-- import -->
+<system-characteristics>
+    <!-- description -->
+    <prop name="authorization-type" 
+          ns="https://fedramp.gov/ns/oscal" 
+          value="fedramp-agency" />
+    <!-- prop -->
+</system-characteristics>
+{{</ highlight >}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    FedRAMP Authorization Type:
+        /*/system-characteristics/prop[@name="authorization-type"][@ns="https://fedramp.gov/ns/oscal"]/@value
+    Authorizing Official:
+        /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
+{{</ highlight >}}
+
+---
 ## Assignment of Security Responsibilities
 
 A `role` with an ID value of "information-system-security-officer" is required. Use the `responsible-party` assembly to associate this `role` with the `party` assembly containing the Information System Security Officer's information. The `responsible-party` for a "information-system-security-officer" must be a `party` of type "person".
@@ -615,10 +658,9 @@ Required Role ID:
 ---
 ## Summary of SSP Roles Requirements
 
-A FedRAMP OSCAL SSP must have "system-owner" `role` defined and an "information-system-security-officer" `role` defined.  Both of these roles must use the `responsible-party` assembly to associate the role to a `party` of type "person". For details, see the [System Owner](#information-system-owner) and [Assignment of Security Responsibilities](#assignment-of-security-responsibilities) sections.
+A FedRAMP OSCAL SSP must have "system-owner" `role` defined, an "authorizing-official" `role`, and an "information-system-security-officer" `role` defined.  The "system-owner" and "information-system-security-officer" roles must use the `responsible-party` assembly to associate the role to a `party` of type "person". For details, see the [System Owner](#information-system-owner) and [Assignment of Security Responsibilities](#assignment-of-security-responsibilities) sections.
 
 The roles listed below are no longer required by FedRAMP:
-- "authorizing-official"
 - "authorizing-official-poc"
 - "system-poc"
 - "system-poc-management"
