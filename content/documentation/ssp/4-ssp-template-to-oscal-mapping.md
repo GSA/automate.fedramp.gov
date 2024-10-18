@@ -537,9 +537,7 @@ If no country is provided, FedRAMP tools will assume a US address.
 ---
 ## Federal Authorizing Officials
 
-A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information.
-
-{{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
+A `role` with an ID value of "authorizing-official" is required. Use the `responsible-party` assembly to associate this role with the `party` assembly containing the Authorizing Official's information.
 
 ##### Federal Agency Authorization Representation
 {{< highlight xml "linenos=table" >}}
@@ -549,16 +547,16 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
     </role>
     <party uuid="uuid-of-agency" type="organization">
         <name>Agency Name</name>
-    </party>
-    <party uuid="uuid-of-person-6" type="person">
-        <name>[SAMPLE]Person Name 6</name>
-        <prop name="job-title" value="Individual's Title"/>
-            <email-address>name@example.com</email-address>
-            <telephone-number>202-000-0000</telephone-number>
-            <member-of-organization>uuid-of-agency</member-of-organization>
+        <address type="work">
+            <addr-line>Address Line</addr-line>
+            <city>City</city>
+            <state>ST</state>
+            <postal-code>00000</postal-code>
+            <country>US</country>
+         </address>
     </party>
     <responsible-party role-id="authorizing-official">
-        <party-uuid>uuid-of-person-6</party-uuid>
+        <party-uuid>uuid-of-agency</party-uuid>
     </responsible-party>
 </metadata>
 <!-- import -->
@@ -575,21 +573,11 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
 {{< highlight xml "linenos=table" >}}
     FedRAMP Authorization Type:
         /*/system-characteristics/prop[@name="authorization-type"][@ns="https://fedramp.gov/ns/oscal"]/@value
-    Authorizing Official’s Name:
-        /*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/name
-    NOTE: Replace "name" with "email-address" or "telephone-number" above as needed.
-    Authorizing Official’s Title:
-        /*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/prop[@name='job-title']
-    Authorizing Official's Agency:
-        /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/member-of-organization]/name
+    Authorizing Official:
+        /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
 {{</ highlight >}}
 
-**NOTE:**
-
-If the authorization-type field is "fedramp-jab", the responsible-party/party-uuid field must be the uuid value for the FedRAMP JAB.
-
 ---
-
 ## Assignment of Security Responsibilities
 
 A `role` with an ID value of "information-system-security-officer" is required. Use the `responsible-party` assembly to associate this `role` with the `party` assembly containing the Information System Security Officer's information. The `responsible-party` for a "information-system-security-officer" must be a `party` of type "person".
@@ -671,10 +659,9 @@ Required Role ID:
 
 ## Summary of SSP Roles Requirements
 
-A FedRAMP OSCAL SSP must have "system-owner" `role` defined and an "information-system-security-officer" `role` defined.  Both of these roles must use the `responsible-party` assembly to associate the role to a `party` of type "person". For details, see the [System Owner](#information-system-owner) and [Assignment of Security Responsibilities](#assignment-of-security-responsibilities) sections.
+A FedRAMP OSCAL SSP must have "system-owner" `role` defined, an "authorizing-official" `role`, and an "information-system-security-officer" `role` defined.  The "system-owner" and "information-system-security-officer" roles must use the `responsible-party` assembly to associate the role to a `party` of type "person". For details, see the [System Owner](#information-system-owner) and [Assignment of Security Responsibilities](#assignment-of-security-responsibilities) sections.
 
 The roles listed below are no longer required by FedRAMP:
-- "authorizing-official"
 - "authorizing-official-poc"
 - "system-poc"
 - "system-poc-management"
