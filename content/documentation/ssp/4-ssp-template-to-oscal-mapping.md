@@ -72,6 +72,8 @@ For this reason, OSCAL requires the identifier-type flag be present and have a v
 
 {{< figure src="/img/ssp-figure-5.png" title="FedRAMP SSP template System Name and Package ID" alt="Screenshot of the system name, and package ID in the FedRAMP SSP template." >}}
 
+This assembly defines the full name of the system and its short name. A FedRAMP OSCAL SSP must define the system name and its short name.
+
 #### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=9-13" >}}
 <system-security-plan>
@@ -826,6 +828,102 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
+
+## Users
+
+A FedRAMP SSP must identify the users of the system by type, privilege, and sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.  The SSP must also provide the authentication method(s) used for each identified user.
+
+### OSCAL Representation
+
+{{< highlight xml "linenos=table" >}}
+<system-implementation>
+    <user uuid="system-admin-user-uuid">
+        <title>System Administrator</title>
+        <prop name="sensitivity" ns="https://fedramp.gov/ns/oscal" value="limited" />
+        <prop name="type" value="external"/>
+        <prop name="privilege-level" value="no-logical-access" />
+        <role-id>system-admin-user</role-id>
+        <authorized-privilege>
+            <title>Full administrative access (root)</title>
+            <function-performed>install and configure software</function-performed>
+            <function-performed>OS updates, patches and hotfixes</function-performed>
+            <function-performed>perform backups</function-performed>
+        </authorized-privilege>
+    </user>
+</system-implementation>
+{{</ highlight >}}
+
+<br />
+
+{{<callout>}}
+
+**FedRAMP Extension:**
+
+**OSCAL prop**
+- name="type"
+
+**OSCAL Allowed Values**
+
+- internal
+- external
+- general-public
+
+---
+
+**OSCAL prop**
+- name="privilege-level"
+
+**OSCAL Allowed Values**
+
+- privileged
+- non-privileged
+- no-logical-access
+
+---
+
+**FedRAMP Extension:**
+
+prop (ns=“https://fedramp.gov/ns/oscal")
+- name="sensitivity"
+
+**FedRAMP Allowed Values**
+
+- high-risk
+- severe
+- moderate
+- limited
+- not-applicable
+
+---
+
+**FedRAMP Extension:**
+
+prop (ns=“https://fedramp.gov/ns/oscal")
+- name="authentication-method"
+
+**FedRAMP Allowed Values**
+
+Values for `authentication-method` are not constrained.  However, SSP authors should provide values that are consistent with the authentication types identified in [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html#63bSec4-Table1).
+
+
+{{</callout>}}
+
+### XPath Queries
+
+{{< highlight xml "linenos=table" >}}
+Number of entries in the role table: count(/*/system-implementation/user)
+Role: /*/system-implementation/user[1]/title
+Replace "[1]" with "[2]", "[3]", etc.
+Internal or External: /*/system-implementation/user[1]/prop[@name="type"]/@value
+Privileged, Non-Privileged, or No Logical Access: /*/system-implementation/user[1]/prop[@name="privilege-level"]/@value
+Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "https://fedramp.gov/ns/oscal"]/@value
+Authentication method: /*/system-implementation/user[1]/prop[@name="authentication-method"][@ns="https://fedramp.gov/ns/oscal"]/@value
+Authorized Privileges: /*/system-implementation/user[1]/authorized-privilege/title
+count(/*/system-implementation/user[1]/authorized-privilege)
+Functions Performed: /*/system-implementation/user[1]/authorized-privilege[1]/function-performed[1]
+count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performed)
+{{</ highlight >}}
+
 ## External Systems and Services Not Having FedRAMP Authorization
 
 FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
@@ -1209,7 +1307,7 @@ a URI fragment. The fragment must start with a hashtag (#) and include the UUID 
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
-              value="data-at-rest"/>
+              value="data-in-transit"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />
@@ -1253,7 +1351,7 @@ The approach is the same as in the [*cryptographic module data-in-transit*](#cry
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
-              value="data-in-transit"/>
+              value="data-at-rest"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />

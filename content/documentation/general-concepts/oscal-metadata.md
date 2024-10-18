@@ -75,9 +75,10 @@ least one `location` assembly with the primary business address of the
 CSP. The SAP and SAR must contain at least one `location` assembly with
 the primary business address of the assessor.
 
-OSCAL allows the location `title` field to be optional. FedRAMP strongly encourages
-its use. If the `country` field is missing, FedRAMP tools must assume the
-address is within the United States of America.
+OSCAL allows the location `title` field to be optional. FedRAMP requires
+an explicit `country` code. FedRAMP tools must generate and/or check that
+an address has defined its country as the United States with the abbreviation
+`US`.
 
 {{< highlight xml "linenos=table" >}}
 <metadata>
@@ -89,7 +90,7 @@ address is within the United States of America.
             <city>Haven</city>
             <state>ME</state>
             <postal-code>00000</postal-code>
-            <country>us</country>
+            <country>US</country>
         </address>
         <prop name="type" class="primary" value="data-center"/>
     </location>
