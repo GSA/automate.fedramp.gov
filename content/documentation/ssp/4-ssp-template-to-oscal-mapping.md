@@ -644,6 +644,7 @@ Required Role ID:
 
 
 ---
+
 ## Assignment of Security Responsibilities
 
 A role with an ID value of "information-system-security-officer" is
@@ -722,6 +723,54 @@ Required Role ID:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="information-system-security-officer"]/party-uuid]]/prop[@name='job-title']
     Company/Organization:
         /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="information-system-security-officer"]/party-uuid]]/member-of-organization]/name
+{{</ highlight >}}
+
+---
+
+## Data Centers
+
+Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be the United States. It must be in [ISO 3166 Alpha-2 format](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-reference/#/system-security-plan/metadata/location/address/country) two-letter country code format (i.e., "US" in all upper case).
+
+#### OSCAL Representation
+{{< highlight xml "linenos=table" >}}
+<metadata>
+    <!-- role -->
+    <location uuid="uuid-of-primary-data-center">
+       <title>Primary Data Center</title>
+       <address>
+          <addr-line>1234 Some Street</addr-line>
+          <city>Haven</city>
+          <state>ME</state>
+          <postal-code>00000</postal-code>
+          <country>US</country>
+       </address>
+       <prop name="data-center" value="some-location-value" class="primary"/>
+    </location>
+    <location uuid="uuid-of-alternate-data-center">
+       <title>Secondary Data Center</title>
+       <address>
+          <addr-line>5678 Some Street</addr-line>
+          <city>Haven</city>
+          <state>ME</state>
+          <postal-code>00000</postal-code>
+          <country>US</country>
+       </address>
+       <prop name="data-center" value="some-location-value" class="alternate"/>
+    </location>
+    <!-- party -->
+</metadata>
+{{</ highlight >}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Number of Data Centers:
+        count(/*/metadata/location[prop[@name eq 'data-center']]) > 1
+    Number of Primary Data Centers:
+        count(/*/metadata/location/prop[@name eq 'data-center'][@class eq 'primary']) = 1
+    Number of Alternate Data Centers:
+        count(/*/metadata/location/prop[@name eq 'data-center'][@class eq 'alternate']) > 0
+    Data Center Country:
+        /*/metadata/location[prop[@name eq 'data-center']]/address/country eq 'US'
 {{</ highlight >}}
 
 ---
