@@ -729,7 +729,7 @@ Required Role ID:
 
 ## Data Centers
 
-Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be within the United States.
+Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be the United States, and must be in [ISO 3166 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) two-letter country code format (e.g., "US" in all upper case).
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
