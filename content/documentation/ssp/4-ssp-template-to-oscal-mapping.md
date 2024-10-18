@@ -742,7 +742,7 @@ Each system must define at least two data centers. There must be exactly one pri
           <city>Haven</city>
           <state>ME</state>
           <postal-code>00000</postal-code>
-          <country>us</country>
+          <country>US</country>
        </address>
        <prop name="data-center" value="some-location-value" class="primary"/>
     </location>
