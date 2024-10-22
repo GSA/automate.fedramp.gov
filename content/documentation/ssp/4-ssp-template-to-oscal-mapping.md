@@ -300,7 +300,7 @@ Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 ---
 ### System Sensitivity Level 
 
-The privacy system designation in in the FedRAMP SSP template document, illustrated in the figure below, is expressed through the following core OSCAL property.
+The privacy system designation in the FedRAMP SSP template, illustrated in the figure below, is expressed through the following core OSCAL property. Specifically, a FedRAMP SSP must define its FIPS-199 system sensitivity level as one of the allowed values below, and it should match the highest security impact level for the system’s confidentiality, integrity, and availability objectives.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
@@ -321,7 +321,15 @@ The privacy system designation in in the FedRAMP SSP template document, illustra
         <!-- cut DIL Determination -->
 
         <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
-        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>              
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+
+        <!--  cut --> 
+
+        <security-impact-level>
+            <security-objective-confidentiality>fips-199-moderate</security-objective-confidentiality>
+            <security-objective-integrity>fips-199-moderate</security-objective-integrity>
+            <security-objective-availability>fips-199-moderate</security-objective-availability>
+        </security-impact-level>
          
         <!--  cut -->        
     </system-characteristics>
@@ -351,6 +359,7 @@ Valid values for security-sensitivity-level:
 **NOTES:**
 
 -   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
+-   The system sensitivity level should match the highest security impact level for the system’s confidentiality, integrity, and availability objectives, but in rare exceptions (e.g., when the AO specifies and overrides the expected security sensitivity level), they may differ. 
 
 ---
 ### System Status
