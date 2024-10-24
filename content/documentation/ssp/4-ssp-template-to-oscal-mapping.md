@@ -300,7 +300,7 @@ Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 ---
 ### System Sensitivity Level 
 
-The privacy system designation in the FedRAMP SSP template, illustrated in the figure below, is expressed through the following core OSCAL property. Specifically, a FedRAMP SSP should define its FIPS-199 system sensitivity level as one of the allowed values below, and it should match the highest security impact level for the system’s confidentiality, integrity, and availability objectives.
+The privacy system designation in the FedRAMP SSP template, illustrated in the figure below, can be expressed through a core OSCAL property that defines its FIPS-199 system sensitivity level as one of the allowed values below. The FIPS-199 system sensitivity level should match the highest security impact level for the system’s confidentiality, integrity, and availability objectives.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
