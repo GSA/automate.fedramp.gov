@@ -880,7 +880,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 ## Users
 
-A FedRAMP SSP must identify the users of the system by type, privilege, and sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.  The SSP must also provide the authentication method(s) used for each identified user.
+A FedRAMP SSP must identify the users of the system by type, privilege, sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.  The SSP must also provide the authentication method(s) used for each identified user.
 
 ### OSCAL Representation
 
