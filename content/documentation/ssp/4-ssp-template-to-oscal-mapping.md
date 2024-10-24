@@ -72,6 +72,8 @@ For this reason, OSCAL requires the identifier-type flag be present and have a v
 
 {{< figure src="/img/ssp-figure-5.png" title="FedRAMP SSP template System Name and Package ID" alt="Screenshot of the system name, and package ID in the FedRAMP SSP template." >}}
 
+This assembly defines the full name of the system and its short name. A FedRAMP OSCAL SSP must define the system name and its short name.
+
 #### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=9-13" >}}
 <system-security-plan>
@@ -468,7 +470,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
 ---
 ## Information System Owner
 
-A role with an ID value of \"system-owner\" is required. Use the responsible-party assembly to associate this role with the party assembly containing the System Owner's information.
+A `role` with an ID value of "system-owner" is required. Use the `responsible-party` assembly to associate this `role` with the `party` assembly containing the System Owner's information.  The `responsible-party` for a "system-owner" must be a `party` of type "person".
 
 {{< figure src="/img/ssp-figure-12.png" title="FedRAMP SSP template information system owner." alt="Screenshot of the system owner  information in the FedRAMP SSP template." >}}
 
@@ -535,9 +537,7 @@ If no country is provided, FedRAMP tools will assume a US address.
 ---
 ## Federal Authorizing Officials
 
-A role with an ID value of "authorizing-official" is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information.
-
-{{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
+A `role` with an ID value of "authorizing-official" is required. Use the `responsible-party` assembly to associate this role with the `party` assembly containing the Authorizing Official's information.
 
 ##### Federal Agency Authorization Representation
 {{< highlight xml "linenos=table" >}}
@@ -547,16 +547,16 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
     </role>
     <party uuid="uuid-of-agency" type="organization">
         <name>Agency Name</name>
-    </party>
-    <party uuid="uuid-of-person-6" type="person">
-        <name>[SAMPLE]Person Name 6</name>
-        <prop name="job-title" value="Individual's Title"/>
-            <email-address>name@example.com</email-address>
-            <telephone-number>202-000-0000</telephone-number>
-            <member-of-organization>uuid-of-agency</member-of-organization>
+        <address type="work">
+            <addr-line>Address Line</addr-line>
+            <city>City</city>
+            <state>ST</state>
+            <postal-code>00000</postal-code>
+            <country>US</country>
+         </address>
     </party>
     <responsible-party role-id="authorizing-official">
-        <party-uuid>uuid-of-person-6</party-uuid>
+        <party-uuid>uuid-of-agency</party-uuid>
     </responsible-party>
 </metadata>
 <!-- import -->
@@ -573,80 +573,14 @@ A role with an ID value of "authorizing-official" is required. Use the responsib
 {{< highlight xml "linenos=table" >}}
     FedRAMP Authorization Type:
         /*/system-characteristics/prop[@name="authorization-type"][@ns="https://fedramp.gov/ns/oscal"]/@value
-    Authorizing Official’s Name:
-        /*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/name
-    NOTE: Replace "name" with "email-address" or "telephone-number" above as needed.
-    Authorizing Official’s Title:
-        /*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/prop[@name='job-title']
-    Authorizing Official's Agency:
-        /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/member-of-organization]/name
+    Authorizing Official:
+        /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
 {{</ highlight >}}
-
-**NOTE:**
-
-If the authorization-type field is "fedramp-jab", the responsible-party/party-uuid field must be the uuid value for the FedRAMP JAB.
-
----
-#### Federal JAB P-ATO Authorization Representation
-{{< highlight xml "linenos=table" >}}
-<metadata>
-    <!-- cut -->
-    <role id="authorizing-official">
-        <title>Authorizing Official</title>
-        <desc>The government executive(s) who authorize this system.</desc>
-    </role>
-    <!-- cut -->
-    <party uuid="uuid-of-fedramp-jab" type="organization">
-        <name>FedRAMP: Joint Authorization Board</name>
-        <short-name>FedRAMP JAB</short-name>
-    </party>
-    <!-- cut -->
-    <responsible-party role-id="authorizing-official">
-        <party-uuid>uuid-of-fedramp-jab</party-uuid>
-    </responsible-party>
-</metadata>
-<!-- import -->
-<system-characteristics>
-    <!-- description -->
-    <prop name="authorization-type" 
-          ns="https://fedramp.gov/ns/oscal">fedramp-jab</prop>
-    <!-- prop -->
-</system-characteristics>
-{{</ highlight >}}
-
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    Authorizing Official’s Name:
-        //metadata/party[@uuid=[//metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
-{{</ highlight >}}
-
-<br />
-{{<callout>}}
-
-**FedRAMP Extension:**
-
-prop (ns="https://fedramp.gov/ns/oscal")
-- name="authorization-type" 
-
-**FedRAMP Allowed Values**
-- fedramp-jab
-- fedramp-agency
-- fedramp-li-saas
-
-**OSCAL Allowed Value**
-
-Required Role ID:
-- authorizing-official
-
-{{</callout>}}
-
 
 ---
 ## Assignment of Security Responsibilities
 
-A role with an ID value of "information-system-security-officer" is
-required. Use the responsible-party assembly to associate this role with the party assembly containing the Information 
-System Security Officer's information.
+A `role` with an ID value of "information-system-security-officer" is required. Use the `responsible-party` assembly to associate this `role` with the `party` assembly containing the Information System Security Officer's information. The `responsible-party` for a "information-system-security-officer" must be a `party` of type "person".
 
 {{< figure src="/img/ssp-figure-14.png" title="FedRAMP SSP template security point of contact." alt="Screenshot of the security point of contact information (e.g., ISSO) in the FedRAMP SSP template." >}}
 
@@ -691,9 +625,8 @@ A tool developer may elect to always create a location assembly, even when only 
         <location-uuid>uuid-of-hq-location</location-uuid>
         <member-of-organization>uuid-of-csp</member-of-organization>
     </party>
-    <!-- repeat party assembly for each person -->
-    <responsible-party role-id="system-poc-technical">
-        <party-uuid>uuid-of-person-7</party-uuid>
+    <responsible-party role-id="information-system-security-officer">
+        <party-uuid>uuid-of-person-10</party-uuid>
     </responsible-party>
 </metadata>
 {{</ highlight >}}
@@ -720,6 +653,69 @@ Required Role ID:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="information-system-security-officer"]/party-uuid]]/prop[@name='job-title']
     Company/Organization:
         /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="information-system-security-officer"]/party-uuid]]/member-of-organization]/name
+{{</ highlight >}}
+
+---
+
+## Summary of SSP Roles Requirements
+
+A FedRAMP OSCAL SSP must have "system-owner" `role` defined, an "authorizing-official" `role`, and an "information-system-security-officer" `role` defined.  The "system-owner" and "information-system-security-officer" roles must use the `responsible-party` assembly to associate the role to a `party` of type "person". For details, see the [System Owner](#information-system-owner) and [Assignment of Security Responsibilities](#assignment-of-security-responsibilities) sections.
+
+The roles listed below are no longer required by FedRAMP:
+- "authorizing-official-poc"
+- "system-poc"
+- "system-poc-management"
+- "system-poc-technical"
+- "system-poc-other"
+
+If SSP authors include these optional roles in the SSP, they should give consideration to which `responsible-party` and corresponding `party` to associate with the role.  Generally, "poc" roles should be associated with a `party` of type "person".
+
+---
+
+## Data Centers
+
+Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be the United States. It must be in [ISO 3166 Alpha-2 format](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-reference/#/system-security-plan/metadata/location/address/country) two-letter country code format (i.e., "US" in all upper case).
+
+#### OSCAL Representation
+{{< highlight xml "linenos=table" >}}
+<metadata>
+    <!-- role -->
+    <location uuid="uuid-of-primary-data-center">
+       <title>Primary Data Center</title>
+       <address>
+          <addr-line>1234 Some Street</addr-line>
+          <city>Haven</city>
+          <state>ME</state>
+          <postal-code>00000</postal-code>
+          <country>US</country>
+       </address>
+       <prop name="data-center" value="some-location-value" class="primary"/>
+    </location>
+    <location uuid="uuid-of-alternate-data-center">
+       <title>Secondary Data Center</title>
+       <address>
+          <addr-line>5678 Some Street</addr-line>
+          <city>Haven</city>
+          <state>ME</state>
+          <postal-code>00000</postal-code>
+          <country>US</country>
+       </address>
+       <prop name="data-center" value="some-location-value" class="alternate"/>
+    </location>
+    <!-- party -->
+</metadata>
+{{</ highlight >}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Number of Data Centers:
+        count(/*/metadata/location[prop[@name eq 'data-center']]) > 1
+    Number of Primary Data Centers:
+        count(/*/metadata/location/prop[@name eq 'data-center'][@class eq 'primary']) = 1
+    Number of Alternate Data Centers:
+        count(/*/metadata/location/prop[@name eq 'data-center'][@class eq 'alternate']) > 0
+    Data Center Country:
+        /*/metadata/location[prop[@name eq 'data-center']]/address/country eq 'US'
 {{</ highlight >}}
 
 ---
@@ -826,6 +822,102 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 {{</callout>}}
 
 ---
+
+## Users
+
+A FedRAMP SSP must identify the users of the system by type, privilege, sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.  The SSP must also provide the authentication method(s) used for each identified user.
+
+### OSCAL Representation
+
+{{< highlight xml "linenos=table" >}}
+<system-implementation>
+    <user uuid="system-admin-user-uuid">
+        <title>System Administrator</title>
+        <prop name="sensitivity" ns="https://fedramp.gov/ns/oscal" value="limited" />
+        <prop name="type" value="external"/>
+        <prop name="privilege-level" value="no-logical-access" />
+        <role-id>system-admin-user</role-id>
+        <authorized-privilege>
+            <title>Full administrative access (root)</title>
+            <function-performed>install and configure software</function-performed>
+            <function-performed>OS updates, patches and hotfixes</function-performed>
+            <function-performed>perform backups</function-performed>
+        </authorized-privilege>
+    </user>
+</system-implementation>
+{{</ highlight >}}
+
+<br />
+
+{{<callout>}}
+
+**FedRAMP Extension:**
+
+**OSCAL prop**
+- name="type"
+
+**OSCAL Allowed Values**
+
+- internal
+- external
+- general-public
+
+---
+
+**OSCAL prop**
+- name="privilege-level"
+
+**OSCAL Allowed Values**
+
+- privileged
+- non-privileged
+- no-logical-access
+
+---
+
+**FedRAMP Extension:**
+
+prop (ns=“https://fedramp.gov/ns/oscal")
+- name="sensitivity"
+
+**FedRAMP Allowed Values**
+
+- high-risk
+- severe
+- moderate
+- limited
+- not-applicable
+
+---
+
+**FedRAMP Extension:**
+
+prop (ns=“https://fedramp.gov/ns/oscal")
+- name="authentication-method"
+
+**FedRAMP Allowed Values**
+
+Values for `authentication-method` are not constrained.  However, SSP authors should provide values that are consistent with the authentication types identified in [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html#63bSec4-Table1).
+
+
+{{</callout>}}
+
+### XPath Queries
+
+{{< highlight xml "linenos=table" >}}
+Number of entries in the role table: count(/*/system-implementation/user)
+Role: /*/system-implementation/user[1]/title
+Replace "[1]" with "[2]", "[3]", etc.
+Internal or External: /*/system-implementation/user[1]/prop[@name="type"]/@value
+Privileged, Non-Privileged, or No Logical Access: /*/system-implementation/user[1]/prop[@name="privilege-level"]/@value
+Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "https://fedramp.gov/ns/oscal"]/@value
+Authentication method: /*/system-implementation/user[1]/prop[@name="authentication-method"][@ns="https://fedramp.gov/ns/oscal"]/@value
+Authorized Privileges: /*/system-implementation/user[1]/authorized-privilege/title
+count(/*/system-implementation/user[1]/authorized-privilege)
+Functions Performed: /*/system-implementation/user[1]/authorized-privilege[1]/function-performed[1]
+count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performed)
+{{</ highlight >}}
+
 ## External Systems and Services Not Having FedRAMP Authorization
 
 FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
@@ -1209,7 +1301,7 @@ a URI fragment. The fragment must start with a hashtag (#) and include the UUID 
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
-              value="data-at-rest"/>
+              value="data-in-transit"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />
@@ -1253,7 +1345,7 @@ The approach is the same as in the [*cryptographic module data-in-transit*](#cry
         <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
-              value="data-in-transit"/>
+              value="data-at-rest"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
         <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" rel="validation-details" />
