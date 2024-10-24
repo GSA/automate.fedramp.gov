@@ -21,6 +21,7 @@ elements, including:
 - OSCAL-Additional Document Basics:
     - Last Modified Date
     - OSCAL Syntax Version
+    - FedRAMP Version
 - Logos:
     - FedRAMP Logo
     - CSP Logo
@@ -57,7 +58,8 @@ OR
     <published>2022-06-01T00:00:00.000Z</published>
     <last-modified>2023-03-03T00:00:00.000Z </last-modified>
     <version>0.0</version>
-    <oscal-version>1.0.4</oscal-version>
+    <oscal-version>1.1.2</oscal-version>
+    <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="fedramp-3.0.0rc1-oscal-1.1.2"/>
     <prop name="marking" value="Controlled Unclassified Information" />
     <role id="fedramp-pmo">
         <title>FedRAMP PMO</title>
@@ -299,7 +301,7 @@ FedRAMP's revision history requirements.
         <revision>
             <published>2022-06-01T00:00:00.000Z</published>
             <version>1.0</version>
-            <oscal-version>1.0.4</oscal-version>
+            <oscal-version>1.1.2</oscal-version>
             <prop name="party-uuid" ns="https://fedramp.gov/ns/oscal"
                 value="f84d8edc-d83e-440d-96c9-09b28c395ad5"/>
             <remarks><p>Initial publication.</p></remarks>
@@ -307,7 +309,7 @@ FedRAMP's revision history requirements.
         <revision>
             <published>2022-06-01T00:00:00.000Z</published>
             <version>2.0</version>
-            <oscal-version>1.0.4</oscal-version>
+            <oscal-version>1.1.2</oscal-version>
             <prop name="party-uuid" ns="https://fedramp.gov/ns/oscal"
                 value="2e0db7cf-08f5-472e-9360-fb3a9698476d"/>
             <remarks><p>Updated for annual assessment.</p></remarks>
@@ -347,6 +349,27 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
     - The time portion may be replaced with all zeros.
     - FedRAMP tools should present only the date, and use a more
         user-friendly format.
+
+### FedRAMP Version
+
+All documents in a digital authorization package for FedRAMP must specify the version that identifies which FedRAMP policies, guidance, and technical specifications its authors used during the creation and maintenance of the package.
+
+FedRAMP maintains an official list of the versions on the [fedramp-automation releases](https://github.com/GSA/fedramp-automation/releases) page. Unless noted otherwise, a valid version is a [published tag name](https://github.com/GSA/fedramp-automation/tags).
+
+##### Representation
+{{< highlight xml "linenos=table, hl_lines=7" >}}
+<metadata>
+    <title>FedRAMP System Security Plan (SSP)</title>
+    <published>2022-06-01T00:00:00.000Z</published>
+    <last-modified>2023-03-03T00:00:00.000Z </last-modified>
+    <version>0.0</version>
+    <oscal-version>1.1.2</oscal-version>
+    <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="fedramp-3.0.0rc1-oscal-1.1.2"/>
+</metadata>
+{{</ highlight >}}
+
+##### XPath Query
+`/*/metadata/prop[@name='fedramp-version'][@ns='https://fedramp.gov/ns/oscal']/@value`
 
 ### How to Contact Us
 
