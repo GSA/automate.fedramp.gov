@@ -178,11 +178,11 @@ Sensitivity Level:
 
 ## Best Practices
 
-1. Always assign a unique UUID to each user definition
-2. Include clear, descriptive titles for each user type
-3. Ensure all required properties are specified
-4. Use consistent naming conventions for role-ids
-5. Document any custom properties in the system's metadata
+1. Always assign a unique UUID to each user definition.
+2. Include clear, descriptive titles for each user type.
+3. Ensure all required properties are specified.
+4. Use consistent naming conventions for role-ids.
+5. Document any custom properties in the system's metadata.
 
 ### Service Model
 
