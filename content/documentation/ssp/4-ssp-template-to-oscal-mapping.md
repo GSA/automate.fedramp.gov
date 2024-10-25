@@ -115,7 +115,7 @@ Required Identifier Type:
 
 ---
 
-# User Model
+# Users
 
 The user model in a FedRAMP System Security Plan (SSP) is represented in the OSCAL system-implementation assembly. Each user is defined with specific properties that describe their type, privileges, roles, and other key attributes.
 
