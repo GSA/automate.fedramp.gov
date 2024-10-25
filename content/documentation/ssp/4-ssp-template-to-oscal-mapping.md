@@ -674,7 +674,7 @@ If SSP authors include these optional roles in the SSP, they should give conside
 
 ## Data Centers
 
-Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in the data center's address must be the United States. It must be in [ISO 3166 Alpha-2 format](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-reference/#/system-security-plan/metadata/location/address/country) two-letter country code format (i.e., "US" in all upper case).
+Each system must define at least two data centers. There must be exactly one primary data center, and there must be at least one alternate data center. Additionally, the country specified in a data center's address must be the United States. It must be in [ISO 3166 Alpha-2 format](https://pages.nist.gov/OSCAL-Reference/models/v1.1.2/system-security-plan/xml-reference/#/system-security-plan/metadata/location/address/country) two-letter country code format (i.e., "US" in all upper case).
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
@@ -689,7 +689,7 @@ Each system must define at least two data centers. There must be exactly one pri
           <postal-code>00000</postal-code>
           <country>US</country>
        </address>
-       <prop name="data-center" value="some-location-value" class="primary"/>
+       <prop name="type" class="primary" value="data-center"/>
     </location>
     <location uuid="uuid-of-alternate-data-center">
        <title>Secondary Data Center</title>
@@ -700,7 +700,7 @@ Each system must define at least two data centers. There must be exactly one pri
           <postal-code>00000</postal-code>
           <country>US</country>
        </address>
-       <prop name="data-center" value="some-location-value" class="alternate"/>
+       <prop name="type" class="alternate" value="data-center"/>
     </location>
     <!-- party -->
 </metadata>
@@ -709,13 +709,13 @@ Each system must define at least two data centers. There must be exactly one pri
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Number of Data Centers:
-        count(/*/metadata/location[prop[@name eq 'data-center']]) > 1
+        count(/*/metadata/location[prop[@value eq 'data-center']]) > 1
     Number of Primary Data Centers:
-        count(/*/metadata/location/prop[@name eq 'data-center'][@class eq 'primary']) = 1
+        count(/*/metadata/location/prop[@value eq 'data-center'][@class eq 'primary']) = 1
     Number of Alternate Data Centers:
-        count(/*/metadata/location/prop[@name eq 'data-center'][@class eq 'alternate']) > 0
+        count(/*/metadata/location/prop[@value eq 'data-center'][@class eq 'alternate']) > 0
     Data Center Country:
-        /*/metadata/location[prop[@name eq 'data-center']]/address/country eq 'US'
+        /*/metadata/location[prop[@value eq 'data-center']]/address/country eq 'US'
 {{</ highlight >}}
 
 ---
