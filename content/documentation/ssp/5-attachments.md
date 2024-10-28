@@ -19,7 +19,7 @@ is handled:
 |**Appendix Name**|**Machine Readable**|**How to Handle in OSCAL**|
 | :-- | :-- | :-- |
 | **Appendix A: FedRAMP Security Controls** | [Yes](/documentation/ssp/6-security-controls/) | This can be generated from the content in the Security Controls section and does not need to be maintained separately or attached. |
-| **Appendix B: Related Acronyms** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For Acronyms, resource must include a `prop` with `@ns="https://fedramp.gov/ns/oscal"`, `@name="type"`, and `@value="fedramp-acronyms"`. |
+| **Appendix B: Related Acronyms** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For Acronyms, resource must include a `prop` with `@ns="http://fedramp.gov/ns/oscal"`, `@name="type"`, and `@value="fedramp-acronyms"`. |
 | **Appendix C: Security Policies and Procedures** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For Policies, resource must include a `prop` with `@name=”type”`, `@value=”policy”`, and `@class=”control-family”`.<br /><br />For Procedures, resource must include a `prop` with `@name=”type”`, `@value=”procedure”`, and `@class=”control-family”`. |
 | **Appendix D: User Guide** | No | Attach using the `back-matter`, `resource` syntax.<br /><br />For User Guides, resource must include a `prop` with `@name=”type”` and `@value=”users-guide”`. |
 | **Appendix E: Digital Identity Worksheet** | [Yes](/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination) | See the [Digital Identity Determination](/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination) section. |
@@ -47,9 +47,9 @@ The following OSCAL representation of a FedRAMP SSP attachment demonstrates the 
     <resource uuid="uuid-value">
         <title>Document Title</title>
         <desc>Policy document</desc>
-        <prop name="type" ns="https://fedramp.gov/ns/oscal" value="policy"/>
-        <prop name="publication" ns="https://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
-        <prop name="version" ns="https://fedramp.gov/ns/oscal" value="1.2"/>
+        <prop name="type" ns="http://fedramp.gov/ns/oscal" value="policy"/>
+        <prop name="publication" ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
+        <prop name="version" ns="http://fedramp.gov/ns/oscal" value="1.2"/>
         <!-- Add rlink with relative path or embed with base64 encoding -->
         <base64>00000000</base64>
     </resource>
@@ -64,13 +64,13 @@ The following OSCAL representation of a FedRAMP SSP attachment demonstrates the 
 ##### XPath Queries 
 {{< highlight xml "linenos=table" >}}
   The Number of Policies Attached:
-    count(/*/back-matter/resource/prop[@name="type"][@ns="https://fedramp.gov/ns/oscal"][string(./@value)="policy"])
+    count(/*/back-matter/resource/prop[@name="type"][@ns="http://fedramp.gov/ns/oscal"][string(./@value)="policy"])
   Attachment (Embedded Base64 encoded):
     /*/back-matter/resource[@id="att-policy-1"]/base64
   OR (Relative Link):
     /*/back-matter/resource[@id="att-policy-1"]/rlink/@href
   Title of First Policy Document:
-    /*/back-matter/resource/prop[@name="type"][@ns="https://fedramp.gov/ns/oscal"][string(.)="policy"][1]/../prop[@name="title"][@ns="https://fedramp.gov/ns/oscal"]
+    /*/back-matter/resource/prop[@name="type"][@ns="http://fedramp.gov/ns/oscal"][string(.)="policy"][1]/../prop[@name="title"][@ns="http://fedramp.gov/ns/oscal"]
 {{</ highlight >}}
 
 ---
@@ -125,7 +125,7 @@ For example, if the same Linux operating system is used as the platform for all 
             <prop name="asset-tag" value="Asset Tag"/>
             <prop name="vlan-id" value="VLAN Identifier"/>
             <prop name="network-id" value="Network Identifier"/>
-            <prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="infrastructure"/>
+            <prop name="scan-type" ns="http://fedramp.gov/ns/oscal" value="infrastructure"/>
             <prop name="allows-authenticated-scan"  value="no">
                 <remarks><p>If no, explain why. If yes, omit remarks field.</p></remarks>
             </prop>
@@ -170,7 +170,7 @@ asset-administrator is managing a system or an application. Currently, any FedRA
         <prop name="vendor-name" value="Vendor Name"/>
         <prop name="model" value="Model Number"/>
         <prop name="patch-level" value="Patch-Level"/>
-        <prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="infrastructure"/>
+        <prop name="scan-type" ns="http://fedramp.gov/ns/oscal" value="infrastructure"/>
         <prop name="allows-authenticated-scan"  value="no">
             <remarks><p>If no, explain why. If yes, omit remarks field.</p></remarks>
         </prop>
@@ -254,11 +254,11 @@ approach.
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   IPv4 Address of All Inventory Items Identified for Infrastructure Scanning:
-    distinct-values( (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='https://fedramp.gov/ns/oscal']='infrastructure']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/ prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='https://fedramp.gov/ns/oscal']  [string(.)='infrastructure']]) )
+    distinct-values( (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='http://fedramp.gov/ns/oscal']='infrastructure']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/ prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='http://fedramp.gov/ns/oscal']  [string(.)='infrastructure']]) )
   IPv4 Address of All Inventory Items Identified for Web Scanning: 
-    distinct-values( (let $key:=/*/system-implementation/component[prop[@name='scan-type'][@ns='https://fedramp.gov/ns/oscal']='web']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='https://fedramp.gov/ns/oscal'][string(.)='web']]))
+    distinct-values( (let $key:=/*/system-implementation/component[prop[@name='scan-type'][@ns='http://fedramp.gov/ns/oscal']='web']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='http://fedramp.gov/ns/oscal'][string(.)='web']]))
   IPv4 Address of All Inventory Items Identified for Database Scanning: 
-    distinct-values( (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='https://fedramp.gov/ns/oscal']='database']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='https://fedramp.gov/ns/oscal'][string(.)='database']]))
+    distinct-values( (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='http://fedramp.gov/ns/oscal']='database']/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/prop[@name='ipv4-address']) | (/*/system-implementation/system-inventory/inventory-item/prop[@name='ipv4-address'][../prop[@name='scan-type'][@ns='http://fedramp.gov/ns/oscal'][string(.)='database']]))
   IPv4 Address of All Items Where an Authenticated Scan is Possible:
     distinct-values( (/*/system-implementation/system-inventory/inventory-item/prop [@name='ipv4-address'][../prop[@name="allows-authenticated-scan"][@value='yes']] ) | (let $key:=/*/system-implementation/component[prop [@name='allows-authenticated-scan'][@value='yes']]/@uuid return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-uuid=$key]/prop[@name='ipv4-address']))
   IPv4 Address of All Items Where an Authenticated Scan is Not Possible:

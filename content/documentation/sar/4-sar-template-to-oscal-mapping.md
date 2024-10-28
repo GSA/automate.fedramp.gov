@@ -127,12 +127,12 @@ When using a **FedRAMP Resolved Profile Catalog**, the following query will iden
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 (Baseline) Response Points for AC-1:
-  //control[@id='ac-1']/part[@name='objective']//prop[@name='response-point'] [@ns='https://fedramp.gov/ns/oscal']/../@id
+  //control[@id='ac-1']/part[@name='objective']//prop[@name='response-point'] [@ns='http://fedramp.gov/ns/oscal']/../@id
 
 (Baseline) Response Points for AC Family:
-  //group[@id='ac']/control/part[@name='objective']//prop[@name='response-point'] [@ns='https://fedramp.gov/ns/oscal']/../@id
+  //group[@id='ac']/control/part[@name='objective']//prop[@name='response-point'] [@ns='http://fedramp.gov/ns/oscal']/../@id
 (Baseline) Response Points for entire baseline:
-  //control/part[@name='objective']//prop[@name='response-point'] [@ns='https://fedramp.gov/ns/oscal']/../@id
+  //control/part[@name='objective']//prop[@name='response-point'] [@ns='http://fedramp.gov/ns/oscal']/../@id
 
 {{</ highlight >}}
 <br />
@@ -175,7 +175,7 @@ The target assembly identifies which objective is being addressed by the assesso
             <actor type="party" actor-uuid="e934d8b5-13e5-4f77-b55e-871e6f2df2fe" />
         </origin>
         <target type="objective-id" target-id="ac-1.a.1_obj.1">
-            <prop name="implementation-status" ns="https://fedramp.gov/ns/oscal" value="implemented"/>
+            <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="implemented"/>
             <status reason="pass">satisfied</status>
         </target>
         <related-observation observation-uuid="d02f9117-84e3-4993-af59-c5ce5e8675ab"/>
@@ -193,7 +193,7 @@ The target assembly identifies which objective is being addressed by the assesso
             <actor type="party" actor-uuid="e934d8b5-13e5-4f77-b55e-871e6f2df2fe" />
         </origin>
         <target type="objective-id" target-id="ac-1.a.1_obj.2">
-            <prop name="implementation-status" ns="https://fedramp.gov/ns/oscal" value="implemented"/>
+            <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="implemented"/>
             <status reason="pass">satisfied</status>
         </target>
         <related-observation observation-uuid="d02f9117-84e3-4993-af59-c5ce5e8675ab"/>
@@ -208,7 +208,7 @@ The target assembly identifies which objective is being addressed by the assesso
 <br />
 {{<callout>}}
 **Accepted Values**
-- The implementation-status fields must have the @ns flag with a value of https://fedramp.gov/ns/oscal
+- The implementation-status fields must have the @ns flag with a value of http://fedramp.gov/ns/oscal
 - The implementation-status field may only have one of the following values, which match the SSP accepted values:
     - implemented, partial, planned, alternative, not-applicable
 - The status field may only have one of the following values:
@@ -228,7 +228,7 @@ The following assumes that the first result assembly contains the current assess
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
 (SAR) Implementation Status:
-  /*/result[1]/finding/target[@type='objective-id'][@target-id='ac-1.a.1_obj.1'] /prop[@name='implementation-status'][@ns='https://fedramp.gov/ns/oscal']
+  /*/result[1]/finding/target[@type='objective-id'][@target-id='ac-1.a.1_obj.1'] /prop[@name='implementation-status'][@ns='http://fedramp.gov/ns/oscal']
 (SAR) Assessment Result:
   /*/result[1]/finding/target[@type='objective-id'][@target-id='ac-1.a.1_obj.1'] /status
 (SAR) Quantity of Assessor POC's cited for this objective (integer):
@@ -557,7 +557,7 @@ The Implementation Status, Assessment Results, and Assessor POC are handled the 
         <description/>
         <target type="objective-id" target-id="ac-1.1_obj.3">
             <prop name="implementation-status" 
-                ns="https://fedramp.gov/ns/oscal" value="implemented"/>
+                ns="http://fedramp.gov/ns/oscal" value="implemented"/>
             <status>satisfied</status>
         </target>
     </finding>
@@ -679,10 +679,10 @@ Initially, the status field should always be set to \"open\". If the risk is add
             <origin>
                 <actor type="party" actor-uuid="f4568fda-c6d2-4640-adec-0012015af7d0" />
             </origin>
-            <facet name="likelihood" system="https://fedramp.gov/ns/oscal" value="high">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial" />
             </facet>
-            <facet name="impact" system="https://fedramp.gov/ns/oscal" value="moderate">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="initial" />
             </facet>
         </characterization>
@@ -694,7 +694,7 @@ Initially, the status field should always be set to \"open\". If the risk is add
         <origin><!-- cut --></origin>
         <target type="objective-id" target-id="ac-1.a.1_obj.1">
             <prop name="implementation-status" 
-                ns="https://fedramp.gov/ns/oscal" value="implemented"/>
+                ns="http://fedramp.gov/ns/oscal" value="implemented"/>
             <status>not-satisfied</status>
         </target>
         <related-observation observation-uuid="d02f9117-84e3-4993-af59-c5ce5e8675ab"/>
@@ -748,10 +748,10 @@ The response origin field\'s type flag should be set to \"party\", and the actor
             <origin>
                 <actor type="party" actor-uuid="f4568fda-c6d2-4640-adec-0012015af7d0" />
             </origin>
-            <facet name="likelihood" system="https://fedramp.gov/ns/oscal" value="high">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial" />
             </facet>
-            <facet name="impact" system="https://fedramp.gov/ns/oscal" value="moderate">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="initial" />
             </facet>
         </characterization>
@@ -917,10 +917,10 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
             <origin>
                 <actor type="party" actor-uuid="f4568fda-c6d2-4640-adec-0012015af7d0" />
             </origin>
-            <facet name="likelihood" system="https://fedramp.gov" value="high">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial"/>
             </facet>
-            <facet name="likelihood" system="https://fedramp.gov" value="moderate">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="initial"/>
             </facet>
         </characterization>
@@ -945,7 +945,7 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
 
 The risk assembly uses facet fields to capture relevant tool output details. The facet field's system flag allows data from different tools and different security frameworks to co-exist in the same file.
 
-FedRAMP-required risk-metric data, such as likelihood and impact, are specified with facet fields with a system flag value of \"https://fedramp.gov\". FedRAMP-required risk metrics must also have the class flag set to either \"initial\" or \"residual\". There must
+FedRAMP-required risk-metric data, such as likelihood and impact, are specified with facet fields with a system flag value of \"http://fedramp.gov/ns/oscal\". FedRAMP-required risk metrics must also have the class flag set to either \"initial\" or \"residual\". There must
 always be an initial risk metric. If adjusted, there may be a residual risk metric as well.
 
 The uuid flag of the origin field must be set to the tool\'s UUID, and the type flag must be set to \"tool\".
@@ -981,17 +981,17 @@ The uuid flag of the origin field must be set to the tool\'s UUID, and the type 
             <facet name="AV" system="http://www.first.org/cvss/v3.1" 
                 value="network" />
             
-            <facet name="likelihood" system="https://fedramp.gov" value="high">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial"/>
             </facet>
-            <facet name="impact" system="https://fedramp.gov" value="high">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial"/>
             </facet>
             
-            <facet name="likelihood" system="https://fedramp.gov" value="moderate">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="residual"/>
             </facet>
-            <facet name="impact" system="https://fedramp.gov" value="moderate">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="residual"/>
             </facet>
         </characterization>
@@ -1071,16 +1071,16 @@ The risk assembly is populated as described in previous sections.
         <statement>
             <p>Statement about the risk identified by penetration testing.</p>
         </statement>
-        <prop name="priority" ns="https://fedramp.gov/ns/oscal" value="1"/>
+        <prop name="priority" ns="http://fedramp.gov/ns/oscal" value="1"/>
         <status>open</status>  
         <characterization>
             <origin>
                 <actor type="party" actor-uuid="f4568fda-c6d2-4640-adec-0012015af7d0" />
             </origin>
-            <facet name="likelihood" system="https://fedramp.gov" value="high">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial" />
             </facet>
-            <facet name="impact" system="https://fedramp.gov" value="high">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial" />
             </facet>
         </characterization> 
@@ -1112,7 +1112,7 @@ After risks are identified during an assessment, their status may change. Some a
 #### False Positive (FP)
 
 To document a false positive, add a prop to the risk assembly, and change the risk status to \"closed\". Set the prop name to
-\"false-positive\", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
+\"false-positive\", the ns to \"http://fedramp.gov/ns/oscal\", and the value to \"pending\".
 
 Within the observation assembly, provide a description of the false positive. This must have a conformity tag with a value of \"false-positive\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more
 appropriate.
@@ -1143,7 +1143,7 @@ resource.)
     
     <risk uuid="e552fb72-d662-4c01-b2d7-4dcb2086bb07">
         <!-- title, description -->
-        <prop name="false-positive" ns="https://fedramp.gov/ns/oscal" 
+        <prop name="false-positive" ns="http://fedramp.gov/ns/oscal" 
             value="pending"/>
         <!-- risk statement -->
         <status>closed</status>
@@ -1164,7 +1164,7 @@ FedRAMP allowed values for false-positive prop:
 
 #### Operationally Required (OR)
 
-To document an operationally required risk, add a prop to the risk assembly, and keep the risk status as \"open\". Set the prop name to \"operational-requirement\", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
+To document an operationally required risk, add a prop to the risk assembly, and keep the risk status as \"open\". Set the prop name to \"operational-requirement\", the ns to \"http://fedramp.gov/ns/oscal\", and the value to \"pending\".
 
 Within the observation assembly, provide a justification for the operational requirement. This must have a conformity tag with a value of \"operational-requirement\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more appropriate. 
 
@@ -1196,7 +1196,7 @@ Finally, add a separate relevant-evidence assembly for each piece of evidence su
     
     <risk uuid="e552fb72-d662-4c01-b2d7-4dcb2086bb07">
         <!-- title, description -->
-        <prop name="operational-requirement" ns="https://fedramp.gov/ns/oscal" 
+        <prop name="operational-requirement" ns="http://fedramp.gov/ns/oscal" 
             value="pending"/>
         
         <!-- risk statement -->
@@ -1219,7 +1219,7 @@ FedRAMP allowed values for operational-requirement prop:
 #### Risk Adjustment (RA)
 
 To document an operationally required risk, add a prop to the risk assembly and keep the risk status as \"open\". Set the prop name to
-\"risk-adjustment\", the ns to \"https://fedramp.gov/ns/oscal\", and the value to \"pending\".
+\"risk-adjustment\", the ns to \"http://fedramp.gov/ns/oscal\", and the value to \"pending\".
 
 Within the observation assembly, provide a justification for the risk adjustment. This must have a conformity tag with a value of
 \"risk-adjustment\". Typically, the observation method is set to EXAMINE; however, another method may be identified if more appropriate.
@@ -1252,24 +1252,24 @@ See the [*CVSS Scoring*](#/documentation/sar/5-generated-content/#cvss-scoring) 
     </observation>
     
     <risk uuid="ae628cc5-b64c-4030-af30-57e6b24a6ae7">
-        <prop name="risk-adjustment" ns="https://fedramp.gov/ns/oscal" 
+        <prop name="risk-adjustment" ns="http://fedramp.gov/ns/oscal" 
             value="pending"/>
         <characterization>
             <origin>
                 <actor type="tool" actor-uuid="040937c3-2e0e-407a-bb3c-d4e61ac1c460" />
             </origin>
             
-            <facet name="likelihood" system="https://fedramp.gov" value="high">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial"/>
             </facet>
-            <facet name="impact" system="https://fedramp.gov" value="high">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="high">
                 <prop name="state" value="initial"/>
             </facet>
             
-            <facet name="likelihood" system="https://fedramp.gov" value="moderate">
+            <facet name="likelihood" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="adjusted"/>
             </facet>
-            <facet name="impact" system="https://fedramp.gov" value="moderate">
+            <facet name="impact" system="http://fedramp.gov/ns/oscal" value="moderate">
                 <prop name="state" value="adjusted"/>
             </facet>
         </characterization>
@@ -1371,7 +1371,7 @@ priority value of \"1\" represents the most important risk. \"2\" represents the
         <responsible-role role-id="assessment-lead"><party-uuid><!-- uuid-of-assessment-lead --></party-uuid></responsible-role>
         <part name="authorization-statements">
             <prop name="recommend-authorization" 
-                ns="https://fedramp.gov/ns/oscal" value="yes"/>
+                ns="http://fedramp.gov/ns/oscal" value="yes"/>
             <part name="authorization-statement">
                 <prop name="sort-id" value="001"/>
                 <p>[3PAO] attests to the accuracy of the information provided in this FedRAMP Security Assessment Report for the annual assessment
@@ -1400,7 +1400,7 @@ priority value of \"1\" represents the most important risk. \"2\" represents the
         <statement>
             <p>This is a statement about the identified risk as provided by the tool.</p>
         </statement>
-        <prop name="priority" ns="https://fedramp.gov/ns/oscal" value="1"/>
+        <prop name="priority" ns="http://fedramp.gov/ns/oscal" value="1"/>
     </risk>
 </result>
 

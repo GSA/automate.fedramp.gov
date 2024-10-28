@@ -179,7 +179,7 @@ in the remarks field.
 **If the implementation-status is planned,** a brief description of the
 plan to address the gap, including major milestones must be explained in
 the `remarks` field. There must also be a prop
-(name=\"planned-completion-date\" ns=\"https://fedramp.gov/ns/oscal\")
+(name=\"planned-completion-date\" ns=\"http://fedramp.gov/ns/oscal\")
 field containing the intended completion date. With XML, `prop` fields
 must appear before other sibling fields (such as `set-parmeter`, `responsible-role`, etc.), even though that sequence is
 counter-intuitive in this situation.
@@ -198,15 +198,15 @@ justification must be provided in the `remarks` field.
 <control-implementation>
     <implemented-requirement uuid="uuid-value" control-id="ac-1">
         <prop name="planned-completion-date" 
-            ns="https://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
+            ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
         <prop name="implementation-status" 
-            ns="https://fedramp.gov/ns/oscal" value="implemented" />
+            ns="http://fedramp.gov/ns/oscal" value="implemented" />
         <prop name="implementation-status"
-            ns="https://fedramp.gov/ns/oscal" value="partial" />
+            ns="http://fedramp.gov/ns/oscal" value="partial" />
         <prop name="implementation-status" 
-            ns="https://fedramp.gov/ns/oscal" value="planned" />
+            ns="http://fedramp.gov/ns/oscal" value="planned" />
         <prop name="implementation-status" 
-            ns="https://fedramp.gov/ns/oscal" value="not-applicable"/>      
+            ns="http://fedramp.gov/ns/oscal" value="not-applicable"/>      
         <!-- responsible-role, statement, by-component -->
     </implemented-requirement>  
 </control-implementation>
@@ -219,13 +219,13 @@ justification must be provided in the `remarks` field.
   Implementation Status (may return more than 1 result for a given control) :
     /*/control-implementation/implemented-requirement[@control-id="ac-1"] /prop[@name="implementation-status"]/@value
   Gap Description (If implementation-status="partial"):
-    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="partial"][@ns="https://fedramp.gov/ns/oscal"]/remarks/node()
+    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="partial"][@ns="http://fedramp.gov/ns/oscal"]/remarks/node()
   Planned Completion Date (If implementation-status="planned"):
-    /*/control-implementation/implemented-requirement[@control-id="ac-1"]/prop[@name="planned-completion-date"][@ns="https://fedramp.gov/ns/oscal"]/@value
+    /*/control-implementation/implemented-requirement[@control-id="ac-1"]/prop[@name="planned-completion-date"][@ns="http://fedramp.gov/ns/oscal"]/@value
   Plan for Completion (If implementation-status="planned"):
-    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="planned"][@ns="https://fedramp.gov/ns/oscal"]/remarks/node()
+    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="planned"][@ns="http://fedramp.gov/ns/oscal"]/remarks/node()
   Not Applicable (N/A) Justification (If implementation-status="na"):
-    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="not-applicable"][@ns="https://fedramp.gov/ns/oscal"]/remarks/node()
+    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="not-applicable"][@ns="http://fedramp.gov/ns/oscal"]/remarks/node()
 
 {{</ highlight >}}
 
@@ -251,7 +251,7 @@ sp-corporate and sp-system.
 
 **If the control origination is inherited,** there must also be a
 FedRAMP extension (prop name=\"leveraged-authorization-uuid\"
-ns=\"https://fedramp.gov/ns/oscal\") field containing the UUID of the
+ns=\"http://fedramp.gov/ns/oscal\") field containing the UUID of the
 leveraged authorization as it appears in the
 /\*/system-implementation/leveraged-authorization assembly.
 
@@ -270,13 +270,13 @@ leveraged authorization as it appears in the
     <implemented-requirement uuid="uuid-value" control-id="ac-2">
         <prop name="leveraged-authorization-uuid" 
             value="uuid-of-leveraged-authorization"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="control-origination" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" 
             value="sp-corporate" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="control-origination" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" 
             value="sp-system" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="control-origination" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" 
             value="customer-configured" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="control-origination" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" 
             value="inherited" />
         <!-- responsible-role -->
     </implemented-requirement>
@@ -288,9 +288,9 @@ leveraged authorization as it appears in the
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Number of Control Originations:
-    count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="https://fedramp.gov/ns/oscal"])
+    count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"])
   Control Origination(could return more than 1 result):
-    /*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="https://fedramp.gov/ns/oscal"][1]/@value
+    /*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"][1]/@value
   Inherited From: System Name (If control-origination="inherited"):
     /*/system-implementation/leveraged-authorization[@uuid=/*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="leveraged-authorization-uuid"]]/title
   Inherited From: Authorization Date (If control-origination="inherited"):
@@ -316,7 +316,7 @@ will identify the response points for a given control.
 ##### XPath Query
 {{< highlight xml "linenos=table" >}}
   Response Points for AC-1:
-    //control[@id='ac-1']/part[@name='statement']//prop[@name='response-point'][@ns='https://fedramp.gov/ns/oscal']/../@id
+    //control[@id='ac-1']/part[@name='statement']//prop[@name='response-point'][@ns='http://fedramp.gov/ns/oscal']/../@id
 
 {{</ highlight >}}
 
