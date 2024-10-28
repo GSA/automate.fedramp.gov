@@ -117,7 +117,7 @@ Required Identifier Type:
 
 # Users
 
-A FedRAMP System Security Plan (SSP) must document in its description of the system implementation the different kinds of users that interact with the system. For the list of kinds of users, each one must define its respective type, role(s), privilege(s), and sensitively level for how they interact with the system.
+A FedRAMP System Security Plan (SSP) must document in its description of the system implementation the different kinds of users that interact with the system. For the list of kinds of users, each one must define its respective type, role(s), privilege(s), and sensitivity level for how they interact with the system.
 
 ## OSCAL Representation
 
