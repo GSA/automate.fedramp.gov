@@ -116,6 +116,76 @@ Required Identifier Type:
 {{</ highlight >}}
 
 ---
+
+# Users
+
+A FedRAMP System Security Plan (SSP) must document in its description of the system implementation the different kinds of users that interact with the system. For the list of kinds of users, each one must define its respective type, role(s), privilege(s), and sensitivity level for how they interact with the system.
+
+## OSCAL Representation
+
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <system-implementation>
+        <user uuid="44444444-0000-4000-9000-000000000004">
+            <title>System Administrator</title>
+            <prop name="type" value="internal"/>
+            <prop name="privilege-level" value="read-write"/>
+            <prop ns="https://fedramp.gov/ns/oscal" name="sensitivity" value="high-risk"/>
+            <role-id>system-admin</role-id>
+        </user>
+    </system-implementation>
+</system-security-plan>
+{{</ highlight >}}
+
+## Required Properties
+
+Each user definition must include the following properties:
+
+1. **User Type** (`type`):
+   - Specifies whether the user is internal or external to the organization
+   - Values: `internal`, `external`
+
+2. **Privilege Level** (`privilege-level`):
+   - Defines the user's access rights
+   - Values: `read`, `read-write`, `write`, `full-access`
+
+3. **Role ID** (`role-id`):
+   - References a defined role in the system
+   - Example: `system-admin`, `end-user`, `security-auditor`
+
+4. **Sensitivity Level** (`sensitivity`):
+   - Indicates the risk level associated with the user's access
+   - Values: `high-risk`, `moderate-risk`, `low-risk`
+
+## XPath Queries
+
+To retrieve user information:
+
+{{< highlight xml "linenos=table" >}}
+User Title:
+    /*/system-implementation/user/title
+
+User Type:
+    /*/system-implementation/user/prop[@name="type"]/@value
+
+Privilege Level:
+    /*/system-implementation/user/prop[@name="privilege-level"]/@value
+
+Role ID:
+    /*/system-implementation/user/role-id
+
+Sensitivity Level:
+    /*/system-implementation/user/prop[@ns='https://fedramp.gov/ns/oscal'][@name="sensitivity"]/@value
+{{</ highlight >}}
+
+## Best Practices
+
+1. Always assign a unique UUID to each user definition.
+2. Include clear, descriptive titles for each user type.
+3. Ensure all required properties are specified.
+4. Use consistent naming conventions for role-ids.
+5. Document any custom properties in the system's metadata.
+
 ### Service Model
 
 The core-OSCAL system-characteristics assembly has a property for the cloud service model.
