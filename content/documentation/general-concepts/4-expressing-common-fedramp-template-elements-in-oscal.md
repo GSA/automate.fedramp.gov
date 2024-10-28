@@ -320,7 +320,7 @@ FedRAMP's revision history requirements.
             <published>2022-06-01T00:00:00.000Z</published>
             <version>1.0</version>
             <oscal-version>1.1.2</oscal-version>
-            <prop name="party-uuid" ns="https://fedramp.gov/ns/oscal"
+            <prop name="party-uuid" ns="http://fedramp.gov/ns/oscal"
                 value="f84d8edc-d83e-440d-96c9-09b28c395ad5"/>
             <remarks><p>Initial publication.</p></remarks>
         </revision>
@@ -328,7 +328,7 @@ FedRAMP's revision history requirements.
             <published>2022-06-01T00:00:00.000Z</published>
             <version>2.0</version>
             <oscal-version>1.1.2</oscal-version>
-            <prop name="party-uuid" ns="https://fedramp.gov/ns/oscal"
+            <prop name="party-uuid" ns="http://fedramp.gov/ns/oscal"
                 value="2e0db7cf-08f5-472e-9360-fb3a9698476d"/>
             <remarks><p>Updated for annual assessment.</p></remarks>
         </revision>
@@ -340,7 +340,7 @@ FedRAMP's revision history requirements.
 
 {{<callout>}}
 **FedRAMP Extension (Author)** \
-prop (`ns="https://fedramp.gov/ns/oscal"`):
+prop (`ns="http://fedramp.gov/ns/oscal"`):
 - `name="party-uuid"`
 
 {{</callout>}}
@@ -351,7 +351,7 @@ prop (`ns="https://fedramp.gov/ns/oscal"`):
 - Revision Date for Individual Entry: `/*/metadata/revision-history/revision[1]/published`
 - Description for Individual Entry: `/*/metadata/revision-history/revision[1]/remarks/string()`
 - Version for Individual Entry: `/*/metadata/revision-history/revision[1]/version`
-- Author for Individual Entry: `/*/metadata/party[@uuid=/*/metadata/revision-history/revision[1]/prop [@name='party-uuid'][@ns='https://fedramp.gov/ns/oscal']]/org/short-name`
+- Author for Individual Entry: `/*/metadata/party[@uuid=/*/metadata/revision-history/revision[1]/prop [@name='party-uuid'][@ns='http://fedramp.gov/ns/oscal']]/org/short-name`
 
 {{<callout>}}
 Replace XPath predicate "[1]" with "[2]", "[3]", etc.
@@ -473,12 +473,12 @@ assessor's organization.
     </party>
     <party uuid="uuid-of-person-1" type="person">
         <name>[SAMPLE]Person Name 1</name>
-        <prop name="title" ns="https://fedramp.gov/ns/oscal">Individual's Title</prop>
+        <prop name="title" ns="http://fedramp.gov/ns/oscal">Individual's Title</prop>
         <member-of-organization>uuid-of-csp</member-of-organization>         
     </party>
     <party uuid="uuid-of-person-2" type="person">
         <name>[SAMPLE]Person Name 2</name>
-        <prop name="title" ns="https://fedramp.gov/ns/oscal">Individual's Title</prop>
+        <prop name="title" ns="http://fedramp.gov/ns/oscal">Individual's Title</prop>
         <member-of-organization>uuid-of-csp</member-of-organization>         
     </party>
     <responsible-party role-id="cloud-service-provider">
@@ -498,14 +498,14 @@ Required Role IDs:
 - `cloud-service-provider`
 
 **FedRAMP Extension (Person's Title)** \
-prop (`ns="https://fedramp.gov/ns/oscal"`):
+prop (`ns="http://fedramp.gov/ns/oscal"`):
 - `name="title"`
 {{</callout>}}
 
 ##### XPath Queries
 
 - Approver’s Name: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]`
-- Approver’s Title: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='https://fedramp.gov/ns/oscal'])[1]`
+- Approver’s Title: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='http://fedramp.gov/ns/oscal'])[1]`
 
    NOTE: For each additional approver, replace the "[1]" with "[2]", "[3]", and so on.
 
@@ -545,13 +545,13 @@ property type, `fedramp-acronyms`.
     
     <resource uuid="985475ee-d4d6-4581-8fdf-d84d3d8caa48">
         <title>FedRAMP Applicable Laws and Regulations</title>
-        <prop ns="https://fedramp.gov/ns/oscal" name="type" value="fedramp-citations"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="type" value="fedramp-citations"/>
         <rlink href="https://-cut-/SSP-A12-FedRAMP-Laws-and-Regulations-Template.xlsx"/>
     </resource>
     
     <resource uuid="1a23a771-d481-4594-9a1a-71d584fa4123">
         <title>FedRAMP Master Acronym and Glossary</title>
-        <prop ns="https://fedramp.gov/ns/oscal" name="type" value="fedramp-acronyms"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="type" value="fedramp-acronyms"/>
         <rlink href="https://-cut-/FedRAMP_Master_Acronym_and_Glossary.pdf" />
     </resource>
     
