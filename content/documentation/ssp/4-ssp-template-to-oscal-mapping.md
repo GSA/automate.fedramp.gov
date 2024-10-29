@@ -426,7 +426,7 @@ Valid values for security-sensitivity-level:
 ### System Information and Information Types
 
 The `system-information` assembly and its defined `information-type` assemblies identify all of the information types that the system stores, processes, or transmits. FedRAMP requires digital authorization packages always use [the NIST SP 800-60 categorization system](https://doi.org/10.6028/NIST.SP.800-60v2r1) for information types. 
-The `categorization` assembly captures the set of defined information types, which must be sourced from [NIST SP 800-60](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf), using the appropriate `information-type-id` as unique identifier(s). The referenced standard that defines the information types must be specified using the `system` attribute of the `information-type` assembly.
+FedRAMP requires the  `categorization` for each `information-type` to identify the `information-type-id` with IDs. Because FedRAMP requires [the NIST SP 800-60 categorization system](https://doi.org/10.6028/NIST.SP.800-60v2r1) for digital authorization packages, the `system` for each `information-type-id` must be `"https://doi.org/10.6028/NIST.SP.800-60v2r1"`.
 Each information type has confidentiality, integrity, and availability (CIA) security impact levels recommended by NIST SP 800-60, which vary by information type. These recommended levels are set as the "base" values in the `base` field. However, an Authorizing Official may approve adjustments to these levels, documented by setting different values in the `selected` field. The `adjustment-justification` field must be used to provide a rationale whenever the `selected` FIPS-199 levels differ from the recommended `base` levels.
 
 #### OSCAL Representation
