@@ -423,6 +423,121 @@ Valid values for security-sensitivity-level:
 -   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
 
 ---
+### System Information and Information Types
+
+The `system-information` assembly and its defined `information-type` assemblies identify all of the information types that the system stores, processes, or transmits. FedRAMP requires digital authorization packages always use [the NIST SP 800-60 categorization system](https://doi.org/10.6028/NIST.SP.800-60v2r1) for information types. 
+FedRAMP requires the  `categorization` for each `information-type` to identify the `information-type-id` with IDs. Because it is required by FedRAMP that [the NIST SP 800-60 categorization system](https://doi.org/10.6028/NIST.SP.800-60v2r1) is used for digital authorization packages, the `system` for each `information-type-id` must be `"https://doi.org/10.6028/NIST.SP.800-60v2r1"`.
+Each information type has confidentiality, integrity, and availability (CIA) security impact levels recommended by NIST SP 800-60, which vary by information type. These recommended levels are set as the "base" values in the `base` field. However, an Authorizing Official may approve adjustments to these levels, documented by setting different values in the `selected` field. The `adjustment-justification` field must be used to provide a rationale whenever the `selected` FIPS-199 levels differ from the recommended `base` levels.
+
+#### OSCAL Representation
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <metadata>
+        <!-- cut CSP Name -->
+    </metadata>
+    <system-characteristics>
+        <!-- System Name & Abbreviation -->
+        <system-name>System's Full Name</system-name>
+        <system-name-short>System's Short Name or Acronym</system-name-short>        
+        <!-- FedRAMP Unique Identifier -->
+        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <!-- cut Service Model -->
+        <!-- cut Deployment Model -->
+        <!-- cut DIL Determination -->
+
+        <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+
+        <!-- system-information -->
+        <system-information>
+            <information-type uuid="06ecba4f-db96-4491-a3a2-7febfa227435">
+                <title>Information Type Name</title>
+                <description>
+                    <p>A description of the information.</p>
+                </description>
+                <categorization system="https://doi.org/10.6028/NIST.SP.800-60v2r1">
+                    <information-type-id>C.2.4.1</information-type-id>
+                </categorization>
+                <confidentiality-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </integrity-impact>
+                <availability-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </availability-impact>
+            </information-type>
+        </system-information>
+
+        <!-- cut security-impact-level -->        
+         
+        <!--  cut -->        
+    </system-characteristics>
+    <!--  cut -->     
+</system-security-plan>
+{{</ highlight >}}
+
+<br />
+{{<callout>}}
+
+**OSCAL Allowed Values**
+
+Valid values for confidentiality-impact, integrity-impact, and availability-impact (base and selected fields):
+- fips-199-low
+- fips-199-moderate
+- fips-199-high
+
+Valid value for system attribute of the categorization field:
+- https://doi.org/10.6028/NIST.SP.800-60v2r1
+
+{{</callout>}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    System Information:
+        /*/system-characteristics/system-information
+    System Information Types:
+        /*/system-characteristics/system-information/information-type
+    Information Categorization:
+        /*/system-characteristics/system-information/information-type/categorization
+    Information Categorization System (URI reference to standard used to categorize information types):
+        /*/system-characteristics/system-information/information-type/categorization/@system 
+    System Information Type Unique IDs:
+        /*/system-characteristics/system-information/information-type/categorization/information-type-id
+    Confidentiality Impact (base):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/base
+    Confidentiality Impact (selected):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/selected
+    Confidentiality Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/adjustment-justification
+    Integrity Impact (base):
+        /*/system-characteristics/system-information/information-type/integrity-impact/base
+    Integrity Impact (selected):
+        /*/system-characteristics/system-information/information-type/integrity-impact/selected
+    Integrity Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/integrity-impact/adjustment-justification
+    Availability Impact (base):
+        /*/system-characteristics/system-information/information-type/availability-impact/base
+    Availability Impact (selected):
+        /*/system-characteristics/system-information/information-type/availability-impact/selected
+    Availability Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/availability-impact/adjustment-justification
+{{</ highlight >}}
+
+---
 ### System Status
 
 The system status in the FedRAMP SSP template document is specified in the "Fully Operational as of" table cell illustrated in the figure below.  OSCAL has a `status` assembly that is used to describe the operational status of the system.  In addition, FedRAMP has defined an extension that must be used to provide the date when the system became operational.
