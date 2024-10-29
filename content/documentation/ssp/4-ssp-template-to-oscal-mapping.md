@@ -300,7 +300,7 @@ Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
 ---
 ### System Sensitivity Level 
 
-A FedRAMP SSP in OSCAL defines the system's sensitivity level and supporting information with `security-sensitivity-level` and `security-impact-level` adjacent to one another, not in a separate attachment like the SSP Appendix K FIPS Pub Level document, as illustrated below. The security sensitivity level should match the highest security impact level for the system’s confidentiality, integrity, and availability objectives for its `security-impact-level`.
+A FedRAMP SSP in OSCAL defines the system's sensitivity level and supporting information with `security-sensitivity-level` and `security-impact-level` included together, rather than in a separate attachment like the SSP Appendix K FIPS Pub Level document, as illustrated below. The security sensitivity level should match the highest security impact level for the system’s confidentiality, integrity, and availability objectives for its `security-impact-level`.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
