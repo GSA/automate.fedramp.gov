@@ -423,9 +423,11 @@ Valid values for security-sensitivity-level:
 -   The identified System Sensitivity Level governs which FedRAMP baseline applies. See the [*Importing the FedRAMP Baseline*](/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline) section for more information about importing the appropriate FedRAMP baseline.
 
 ---
-### System Information Type
+### System Information and Information Types
 
-A FedRAMP SSP information-type categorization requires a correct system value. FedRAMP only supports the following system value: `https://doi.org/10.6028/NIST.SP.800-60v2r1`. Additionally, an information-type categorization must have an information type identifier.
+The `system-information` assembly and its defined `information-type` assemblies are used to document all of the information types that are either stored, processed, or transmitted by the system. The information must be based on a formal standard, such as [NIST SP 800-60](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf). 
+The `categorization` assembly captures the set of defined information types (e.g., from [NIST SP 800-60](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-60v2r1.pdf)) that apply, using the appropriate `information-type-id` as unique identifier(s). The referenced standard that defines the information types must be specified using the `system` attribute of the `information-type` assembly.
+Each information type has confidentiality, integrity, and availability security impact prescribed by the referenced information type standard. This is documented by setting a FIPS-199 level in the `base`field. However, this may be adjusted by specifying a different FIPS-199 level in the `selected` field.  The `adjustment-justification` field must be used for justification any time the `selected` FIPS-199 level is not the same as the `base`.
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
@@ -442,22 +444,46 @@ A FedRAMP SSP information-type categorization requires a correct system value. F
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
+
         <!-- FIPS PUB 199 Level (SSP Attachment 10) -->
-        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>      
+        <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+
+        <!-- system-information -->
         <system-information>
-         <!-- Rev5 update - PIA/PTAs are no longer required by FedRAMP -->
-         <!-- Table K.1 - Use the information-type element to provide details about all information types that are stored, processed, or transmitted by the system -->
-         <information-type uuid="some-unique-indentifier">
-            <title>Information Type Name</title>
-            <description>
-               <p>A description of the information.</p>
-            </description>
-            <categorization system="https://doi.org/10.6028/NIST.SP.800-60v2r1">
-               <information-type-id>C.2.4.1</information-type-id>
-            </categorization>
-           <!--  cut -->
-         </information-type>
-      </system-information>
+            <information-type uuid="06ecba4f-db96-4491-a3a2-7febfa227435">
+                <title>Information Type Name</title>
+                <description>
+                    <p>A description of the information.</p>
+                </description>
+                <categorization system="https://doi.org/10.6028/NIST.SP.800-60v2r1">
+                    <information-type-id>C.2.4.1</information-type-id>
+                </categorization>
+                <confidentiality-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </confidentiality-impact>
+                <integrity-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </integrity-impact>
+                <availability-impact>
+                    <base>fips-199-moderate</base>
+                    <selected>fips-199-moderate</selected>
+                    <adjustment-justification>
+                        <p>Required if the base and selected values do not match.</p>
+                    </adjustment-justification>
+                </availability-impact>
+            </information-type>
+        </system-information>
+
+        <!-- cut security-impact-level -->        
+         
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
@@ -469,18 +495,46 @@ A FedRAMP SSP information-type categorization requires a correct system value. F
 
 **OSCAL Allowed Values**
 
-Valid system attribute value for information-type categorization:
-- `https://doi.org/10.6028/NIST.SP.800-60v2r1`
+Valid values for confidentiality-impact, integrity-impact, and availability-impact (base and selected fields):
+- fips-199-low
+- fips-199-moderate
+- fips-199-high
+
+Valid value for system attribute of the categorization field:
+- https://doi.org/10.6028/NIST.SP.800-60v2r1
 
 {{</callout>}}
 
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
-    System Attribute:
-        /*/system-characteristics/system-information/information-type/categorization/@system eq 'https://doi.org/10.6028/NIST.SP.800-60v2r1'
-
-    Information Type Identifier:
+    System Information:
+        /*/system-characteristics/system-information
+    System Information Types:
+        /*/system-characteristics/system-information/information-type
+    Information Categorization:
+        /*/system-characteristics/system-information/information-type/categorization
+    Information Categorization System (URI reference to standard used to categorize information types):
+        /*/system-characteristics/system-information/information-type/categorization/@system 
+    System Information Type Unique IDs:
         /*/system-characteristics/system-information/information-type/categorization/information-type-id
+    Confidentiality Impact (base):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/base
+    Confidentiality Impact (selected):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/selected
+    Confidentiality Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/confidentiality-impact/adjustment-justification
+    Integrity Impact (base):
+        /*/system-characteristics/system-information/information-type/integrity-impact/base
+    Integrity Impact (selected):
+        /*/system-characteristics/system-information/information-type/integrity-impact/selected
+    Integrity Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/integrity-impact/adjustment-justification
+    Availability Impact (base):
+        /*/system-characteristics/system-information/information-type/availability-impact/base
+    Availability Impact (selected):
+        /*/system-characteristics/system-information/information-type/availability-impact/selected
+    Availability Impact (adjustment justification):
+        /*/system-characteristics/system-information/information-type/availability-impact/adjustment-justification
 {{</ highlight >}}
 
 ---
