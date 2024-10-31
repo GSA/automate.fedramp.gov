@@ -88,7 +88,7 @@ This assembly defines the full name of the system and its short name. A FedRAMP 
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>        
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->
@@ -206,7 +206,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- Service Model -->
         <prop name="cloud-service-model" value="saas">
             <remarks>
@@ -267,7 +267,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- Service Model -->
         <prop name="cloud-service-model" value="saas">
             <remarks>
@@ -329,7 +329,7 @@ The digital identity level identified in the FedRAMP SSP template document, illu
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
 
@@ -385,7 +385,7 @@ A FedRAMP SSP in OSCAL defines the system's sensitivity level and supporting inf
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
@@ -449,7 +449,7 @@ Each information type has confidentiality, integrity, and availability (CIA) sec
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
