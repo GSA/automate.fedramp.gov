@@ -33,7 +33,7 @@ cybersecurity frameworks. They designed OSCAL to be extended where
 unique needs existed.
 
 {{<callout>}}
-_All FedRAMP extensions include a namespace (ns) flag set to `https://fedramp.gov/ns/oscal`._
+_All FedRAMP extensions include a namespace (ns) flag set to `http://fedramp.gov/ns/oscal`._
 {{</callout>}}
 
 NIST allows organizations to extend OSCAL anyplace `prop` fields or `part`
@@ -57,7 +57,7 @@ in their own name space without concern for overlapping names. The above
 approach ensures two different organizations can create their
 own extensions without concern for reusing the same name values.
 
-All FedRAMP extensions must have a namespace (`ns`) flag set to `https://fedramp.gov/ns/oscal`.
+All FedRAMP extensions must have a namespace (`ns`) flag set to `http://fedramp.gov/ns/oscal`.
 
 For example, if the core OSCAL syntax has a `status` field, but both
 FedRAMP and the payment card industry (PCI) require their own
@@ -83,12 +83,12 @@ flag using the syntax above.**
 
 #### FedRAMP Status Representation                                           
 {{< highlight xml "linenos=table" >}}
-  <prop name="status" ns="https://fedramp.gov/ns/oscal" value="FedRAMP Status" /> 
+  <prop name="status" ns="http://fedramp.gov/ns/oscal" value="FedRAMP Status" /> 
 {{< /highlight >}}
 
 #### XPath Query
 {{< highlight xml "linenos=table" >}}
-  //prop[@name="status"][@ns="https://fedramp.gov/ns/oscal"]
+  //prop[@name="status"][@ns="http://fedramp.gov/ns/oscal"]
 {{< /highlight >}}
 
 #### (Possible) PCI Status Representation
@@ -109,7 +109,7 @@ and `ns` flags as a pair.
 
 All FedRAMP extensions will appear as:
 {{< highlight xml "linenos=table" >}}
-  <prop name="____" ns="https://fedramp.gov/ns/oscal" value="Value"/>
+  <prop name="____" ns="http://fedramp.gov/ns/oscal" value="Value"/>
 {{< /highlight >}}
 
 **NOTE:** The catalog and profile OSCAL models also allow the `part`
