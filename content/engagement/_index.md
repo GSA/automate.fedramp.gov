@@ -1,9 +1,9 @@
 ---
-title: Engage with FedRAMP
+title: Engage Us
 menu:
   primary:
-    name: Engage
-    weight: 100
+    name: Engage Us
+    weight: 50
 cascade:
   suppresstopiclist: true
   toc:
@@ -12,10 +12,10 @@ cascade:
     activerenderdepth: 2
     inactiverenderdepth: 1
 ---
-# Engage with FedRAMP
+# Engage Us
 
-FedRAMP has multiple ways for you to engage with its portfolio of automation efforts and collaborate with the team.
+You can engage FedRAMP and its automation initiatives in multiple ways.
 
-- You can participate in [pilots](https://www.fedramp.gov/fedramp-pilots/), like the [Digital Authorization Pilot](https://www.fedramp.gov/digital-authorization-package-pilot/), to use tools, data, and documentation from FedRAMP's automation portfolio, evaluate them, and to provide feedback or make changes.
-- You can attend our [meetings](./meetings/) to receive briefings from FedRAMP or ask questions about the automation portfolio and related initiatives.
-- You can provide feedback, propose changes, or make changes via GitHub or email. See [the contact page](../contact/) for more information.
+- You can participate in [pilots](https://www.fedramp.gov/fedramp-pilots/), like the [Digital Authorization Pilot](https://www.fedramp.gov/digital-authorization-package-pilot/). You will use the FedRAMP Automation Team's tools, data, and documentation, evaluate them, and provide feedback.
+- You can attend FedRAMP Automation Team [meetings](./meetings/). You can provide feedback or directly propose changes.
+- You can provide feedback, propose changes, or propose changes via GitHub or email. See [the contact page](../contact/) for more information.
