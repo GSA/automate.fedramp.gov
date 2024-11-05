@@ -31,13 +31,17 @@ This FedRAMP versioning strategy will:
 - Provide content and semantic compatibility tied to a specific version, allowing version-based data to be used by different tools.
 - Minimize disruption for tool maintainers by indicating when a major change is compatibility breaking.
 
-[SemVer](https://semver.org/), which is short for semantic versioning, is used as a common practice to version software. Using SemVer, version numbers convey meaning around the degree of compatibility resulting from modifications made to the underlying code or tool.
+[Semantic Versioning (SemVer)](https://semver.org/), which is short for semantic versioning, is used as a common practice to version software. Using SemVer, version numbers convey meaning around the degree of compatibility resulting from modifications made to the underlying code or tool.
 
-A SemVer is the combination of *MAJOR*.*MINOR*.*PATCH* as follows:
+A SemVer version is the combination of *MAJOR*.*MINOR*.*PATCH* as follows:
 
 - Incrementing the **MAJOR** version indicates significant incompatible changes.
 - Incrementing the **MINOR** version adds functionality in a backward-compatible manner.
 - Incrementing the **PATCH** version indicates backward-compatible bug fixes.
+
+{{<callout>}}
+In the past, FedRAMP used Spock versioning, per [Architectural Decision Record #2](https://github.com/GSA/fedramp-automation/blob/fcdd25e3177d4bf31178041648fdc74d610146e9/documents/adr/0002-git-release-version-strategy.md). The last release that uses the deprecated release and version guidance is [FedRAMP Version 2.0.0 for OSCAL 1.0.4](https://github.com/GSA/fedramp-automation/releases/tag/fedramp-2.0.0-oscal-1.0.4).
+{{</callout>}}
 
 ## Versioning Examples
 
@@ -47,7 +51,11 @@ Examples of FedRAMP using SemVer in a sequence:
 - `3.0.1` (MAJOR: 3, MINOR: 0, PATCH : 1) indicates the first PATCH release for MAJOR release 3.
 - `3.1.0` (MAJOR: 3, MINOR: 1, PATCH : 0) indicates the first MINOR release for MAJOR release 3.
 
-The following illustrates some drivers that will motivate specific version changes.
+{{<callout>}}
+The last version to use Spock versioning is [FedRAMP Version 2.0.0 for OSCAL 1.0.4 (`fedramp-2.0.0-oscal-1.0.4`)](https://github.com/GSA/fedramp-automation/releases/tag/fedramp-2.0.0-oscal-1.0.4). All subsequent releases will use version tag described above.
+{{</callout>}}
+
+The following illustrates some drivers that will motivate specific version changes. OSCAL data within a release will use `oscal-version` in `metadata` to identify the minimally required version.
 
 ### PATCH
 
