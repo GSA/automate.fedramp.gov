@@ -43,9 +43,9 @@ A SemVer is the combination of *MAJOR*.*MINOR*.*PATCH* as follows:
 
 Examples of FedRAMP using SemVer in a sequence:
 
-- `fedramp-3.0.0` (MAJOR: 3, MINOR: 0, PATCH : 0) indicates the MAJOR release 3.
-- `fedramp-3.0.1` (MAJOR: 3, MINOR: 0, PATCH : 1) indicates the first PATCH release for MAJOR release 3.
-- `fedramp-3.1.0` (MAJOR: 3, MINOR: 1, PATCH : 0) indicates the first MINOR release for MAJOR release 3.
+- `3.0.0` (MAJOR: 3, MINOR: 0, PATCH : 0) indicates the MAJOR release 3.
+- `3.0.1` (MAJOR: 3, MINOR: 0, PATCH : 1) indicates the first PATCH release for MAJOR release 3.
+- `3.1.0` (MAJOR: 3, MINOR: 1, PATCH : 0) indicates the first MINOR release for MAJOR release 3.
 
 The following illustrates some drivers that will motivate specific version changes.
 
