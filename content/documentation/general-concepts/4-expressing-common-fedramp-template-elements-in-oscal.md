@@ -188,14 +188,24 @@ content. The FedRAMP SAP and SAR must never be CSP self-prepared.
         <title>Prepared By</title>
         <description><p>Description</p></description>
     </role>
-    <!-- cut: location assemblies-->
+     <location uuid="27b78960-59ef-4619-82b0-ae20b9c709ac">
+      <title>CSP HQ</title>
+      <address type="work">
+        <addr-line>Suite 0000</addr-line>
+        <addr-line>1234 Some Street</addr-line>
+        <city>Haven</city>
+        <state>ME</state>
+        <postal-code>00000</postal-code>
+        <country>US</country>
+      </address>
+    </location>
     <party id="2e0db7cf-08f5-472e-9360-fb3a9698476d">
         <name>Cloud Service Provider (CSP) Name</name>
         <short-name>CSP Acronym/Short Name</short-name>
-        <location-uuid>[uuid-value-of-location]</location-uuid>
+        <location-uuid>27b78960-59ef-4619-82b0-ae20b9c709ac</location-uuid>
     </party>
     <responsible-party role-id="prepared-by">
-        <party-id>c2e0db7cf-08f5-472e-9360-fb3a9698476dsp</party-id>
+        <party-id>2e0db7cf-08f5-472e-9360-fb3a9698476d</party-id>
     </responsible-party>
 </metadata>
 
@@ -252,11 +262,21 @@ and CSP have separately defined roles.
         <title>Cloud Service Provider</title>
         <short-name>CSP</short-name>
     </role>
-    <!-- cut: location assemblies-->
+    <location uuid="27b78960-59ef-4619-82b0-ae20b9c709ac">
+      <title>CSP HQ</title>
+      <address type="work">
+        <addr-line>Suite 0000</addr-line>
+        <addr-line>1234 Some Street</addr-line>
+        <city>Haven</city>
+        <state>ME</state>
+        <postal-code>00000</postal-code>
+        <country>US</country>
+      </address>
+    </location>
     <party id="2e0db7cf-08f5-472e-9360-fb3a9698476d">
         <name>Cloud Service Provider (CSP) Name</name>
         <short-name>CSP Acronym/Short Name</short-name>
-        <location-uuid>[uuid-value-of-location]</location-uuid>
+        <location-uuid>27b78960-59ef-4619-82b0-ae20b9c709ac</location-uuid>
     </party>
     <!-- cut: other party assemblies -->
     <responsible-party role-id="prepared-for">
