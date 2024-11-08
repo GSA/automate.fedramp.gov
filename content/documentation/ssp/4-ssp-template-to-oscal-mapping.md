@@ -549,7 +549,7 @@ Valid value for system attribute of the categorization field:
 ---
 ### System Status
 
-The system status in the FedRAMP SSP template document is specified in the "Fully Operational as of" table cell illustrated in the figure below.  OSCAL has a `status` assembly that is used to describe the operational status of the system.  In addition, FedRAMP has defined an extension that must be used to provide the date when the system became operational.
+The system status in the FedRAMP SSP template document is specified in the "Fully Operational as of" table cell illustrated in the figure below.  OSCAL has a `status` assembly that is used to describe the operational status of the system.  In addition, FedRAMP has defined the "fully-operational-date" extension `prop` that must be used to provide the date when the system became operational.  A system must be operational prior to seeking FedRAMP authorization, thus the "fully-operational-date" must be less than or equal to the current date.
 
 {{< figure src="/img/ssp-figure-10.png" title="FedRAMP SSP template system status." alt="Screenshot of the system status information in the FedRAMP SSP template." >}}
 
@@ -578,7 +578,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
                 <p>Otherwise, it is optional.</p>
             </remarks>
         </status>
-        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="mm/dd/yyyy"/>        
+        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="2024-11-05-00:00"/>        
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
@@ -611,8 +611,8 @@ FedRAMP only accepts those in bold:
 
 **NOTE:**
 
+-   The value of the "fully-operational-date" `prop` must be a [date-with-timezone](https://pages.nist.gov/metaschema/specification/datatypes/#date-with-timezone) type.
 -   If the status is "other", the remarks field is required. Otherwise, it is optional.
-
 -   While under-development and disposition are valid OSCAL values, systems with either of these operational status values are not eligible for a FedRAMP Authorization.
 
 ---
