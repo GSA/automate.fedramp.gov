@@ -1238,7 +1238,10 @@ The OSCAL approach to this type of diagram is to treat the image data as either 
         <!-- 8.1 Illustrated Architecture (Boundary) -->
         <diagram uuid="uuid-value">
             <description><p>A diagram-specific explanation.</p></description>
-            <link href="#uuid-of-boundary-diagram-1" rel="diagram" />
+            <!-- href can reference a resource in the back-matter OR link the diagram inline  -->
+            <link href="#d2eb3c18-6754-4e3a-a933-03d289e3fad1" rel="diagram" />
+            <!-- OR -->
+            <link href="./diagram.png" rel="diagram" />
             <caption>Authorization Boundary Diagram</caption>
         </diagram>
         <!-- repeat diagram assembly for each additional boundary diagram -->
@@ -1299,7 +1302,10 @@ Consistent with the [*Authorization Boundary*](#authorization-boundary) guidance
         <!-- 8.1 Illustrated Architecture (Network) -->
         <diagram uuid="uuid-value">
             <description><p>A diagram-specific explanation.</p></description>
-            <link href="#uuid-of-network-diagram-1" rel="diagram" />
+            <!-- href can reference a resource in the back-matter OR link the diagram inline  -->
+            <link href="#d2eb3c18-6754-4e3a-a933-03d289e3fad2" rel="diagram" />
+            <!-- OR -->
+            <link href="./diagram.png" rel="diagram" />
             <caption>Network Diagram</caption>
         </diagram>
         <!-- repeat diagram assembly for each additional network diagram -->
@@ -1363,7 +1369,10 @@ Consistent with the [*Authorization Boundary*](#authorization-boundary) guidance
         <!-- 8.1 Illustrated Architecture (Data Flow) -->
         <diagram uuid="uuid-value">
             <description><p>A diagram-specific explanation.</p></description>
-            <link href="#uuid-of-dataflow-diagram-1" rel="diagram" />
+            <!-- href can reference a resource in the back-matter OR link the diagram inline  -->
+            <link href="#d2eb3c18-6754-4e3a-a933-03d289e3fad3" rel="diagram" />
+            <!-- OR -->
+            <link href="./diagram.png" rel="diagram" />
             <caption>Data Flow Diagram</caption>
         </diagram>
         <!-- repeat diagram assembly for each additional data flow diagram -->
