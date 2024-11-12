@@ -60,7 +60,7 @@ OR
     <version>0.0</version>
     <oscal-version>1.1.2</oscal-version>
     <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="fedramp-3.0.0rc1-oscal-1.1.2"/>
-    <prop name="marking" value="Controlled Unclassified Information" />
+    <prop name="marking" value="cui"/>
     <role id="fedramp-pmo">
         <title>FedRAMP PMO</title>
         <description><p>Description</p></description>
@@ -69,7 +69,7 @@ OR
     <party uuid="77e0e2c8-2560-4fe9-ac78-c3ff4ffc9f6d" type="organization">
         <name>FedRAMP: Program Management Office</name>
         <short-name>FedRAMP PMO</short-name>
-        <link href="#a2381e87-3d04-4108-a30b-b4d2f36d001f" rel="logo" />
+        <link href="#a2381e87-3d04-4108-a30b-b4d2f36d001f" rel="logo"/>
     </party>
     <responsible-party role-id="fedramp-pmo">
         <party-id>77e0e2c8-2560-4fe9-ac78-c3ff4ffc9f6d</party-id>
@@ -104,9 +104,7 @@ Required Role ID:
 
 **NOTES:**
 
-- There may be more than one *Document Sensitivity Label* (marking) if
-    needed.
-    - Tools should display and/or notify the user of all sensitivity markings.
+- There may be more than one *Document Sensitivity Label* (`marking`), if needed. The only required value is `cui` (Controlled Unclassified Information). Tools should display and/or notify the user of all sensitivity markings.
 
 - The logos on older FedRAMP Templates are not necessary. This includes the NIST Logo, as well as the three Joint Authorization Board (JAB) Agency Logos.
 
