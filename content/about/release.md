@@ -40,7 +40,7 @@ A SemVer version is the combination of *MAJOR*.*MINOR*.*PATCH* as follows:
 - Incrementing the **PATCH** version indicates backward-compatible bug fixes.
 
 {{<callout>}}
-In the past, FedRAMP used Spock versioning, per [Architectural Decision Record #2](https://github.com/GSA/fedramp-automation/blob/fcdd25e3177d4bf31178041648fdc74d610146e9/documents/adr/0002-git-release-version-strategy.md) and deprecated it in [ADR #10](https://github.com/aj-stein-gsa/fedramp-automation/blob/1f854385d1d75c4040d2e611b33909f13cb761c1/documents/adr/0010-semantic-versions-only.md). The last release that uses the deprecated release and version guidance is [FedRAMP Version 2.0.0 for OSCAL 1.0.4](https://github.com/GSA/fedramp-automation/releases/tag/fedramp-2.0.0-oscal-1.0.4).
+In the past, FedRAMP used Spock versioning, per [Architectural Decision Record #2](https://github.com/GSA/fedramp-automation/blob/fcdd25e3177d4bf31178041648fdc74d610146e9/documents/adr/0002-git-release-version-strategy.md) and deprecated it in [ADR #10](https://github.com/GSA/fedramp-automation/blob/e3b9676fe25bd0513132aa606cfd6a93b9874bd4/documents/adr/0010-semantic-versions-only.md). The last release that uses the deprecated release and version guidance is [FedRAMP Version 2.0.0 for OSCAL 1.0.4](https://github.com/GSA/fedramp-automation/releases/tag/fedramp-2.0.0-oscal-1.0.4).
 {{</callout>}}
 
 ## Versioning Examples
@@ -52,7 +52,7 @@ Examples of FedRAMP using SemVer in a sequence:
 - `3.1.0` (MAJOR: 3, MINOR: 1, PATCH : 0) indicates the first MINOR release for MAJOR release 3.
 
 {{<callout>}}
-The last version to use Spock versioning, per [ADR #10](https://github.com/aj-stein-gsa/fedramp-automation/blob/1f854385d1d75c4040d2e611b33909f13cb761c1/documents/adr/0010-semantic-versions-only.md), is [FedRAMP Version 2.0.0 for OSCAL 1.0.4 (`fedramp-2.0.0-oscal-1.0.4`)](https://github.com/GSA/fedramp-automation/releases/tag/fedramp-2.0.0-oscal-1.0.4). All subsequent releases will use version tag described above.
+The last version to use Spock versioning, per [ADR #10](https://github.com/GSA/fedramp-automation/blob/e3b9676fe25bd0513132aa606cfd6a93b9874bd4/documents/adr/0010-semantic-versions-only.md), is [FedRAMP Version 2.0.0 for OSCAL 1.0.4 (`fedramp-2.0.0-oscal-1.0.4`)](https://github.com/GSA/fedramp-automation/releases/tag/fedramp-2.0.0-oscal-1.0.4). All subsequent releases will use version tag described above.
 {{</callout>}}
 
 The following illustrates some drivers that will motivate specific version changes. OSCAL data within a release will use `oscal-version` in `metadata` to identify the minimally required version.
