@@ -59,7 +59,7 @@ OR
     <last-modified>2023-03-03T00:00:00.000Z </last-modified>
     <version>0.0</version>
     <oscal-version>1.1.2</oscal-version>
-    <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="fedramp-3.0.0rc1-oscal-1.1.2"/>
+    <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="3.0.0-rc1"/>
     <prop name="marking" value="cui"/>
     <role id="fedramp-pmo">
         <title>FedRAMP PMO</title>
@@ -382,7 +382,7 @@ FedRAMP maintains an official list of the versions on the [fedramp-automation re
     <last-modified>2023-03-03T00:00:00.000Z </last-modified>
     <version>0.0</version>
     <oscal-version>1.1.2</oscal-version>
-    <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="fedramp-3.0.0rc1-oscal-1.1.2"/>
+    <prop name="fedramp-version" ns="https://fedramp.gov/ns/oscal" value="3.0.0-rc1"/>
 </metadata>
 {{</ highlight >}}
 
