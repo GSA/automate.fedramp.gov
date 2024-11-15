@@ -115,7 +115,7 @@ artifacts typically require an individual's title to be identified; the
 
 Contact details, such as an individual's email address and phone
 number, or a business web site may be included and are often required
-within FedRAMP artifacts. All parties require `name` field. 
+within FedRAMP artifacts. All parties require a `name` field. 
 
 {{< highlight xml "linenos=table" >}}
 <metadata>
