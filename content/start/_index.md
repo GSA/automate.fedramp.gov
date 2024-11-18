@@ -58,7 +58,7 @@ Clone the FedRAMP Automation repository for access to FedRAMP OSCAL models, exam
 2. **Explore the directory structure** to familiarize yourself with the contents.  Key directories include:
   - **dist/content**: Contains FedRAMP OSCAL baselines ([profiles and resolved profile catalogs](/documentation/general-concepts/oscal-based-baselines/)), FedRAMP OSCAL templates ([SSP](/documentation/ssp/3-working-with-oscal-files/#oscal-based-fedramp-ssp-template), [SAP](/documentation/sap/3-working-with-oscal-files/#oscal-based-fedramp-sap-template), [SAR](/documentation/sar/3-working-with-oscal-files/#oscal-based-fedramp-sar-template), and [POA&M](/documentation/poam/3-working-with-oscal-files/#oscal-based-fedramp-poam-template)), and other resources.
   - **documents**: Contains the FedRAMP OSCAL Guides. NOTE - these guides are replaced by the documentation and guidance provided by this website.
-  - **presentations**: Contains presentations from the OSCAL Data Bites monthly community meetings.
+  - **presentations**: Contains presentations from the OSCAL Data Bytes monthly community meetings.
   - **src**: Contains the source files for FedRAMP OSCAL content (baselines and templates) and examples (e.g., validation).
 ---
 
@@ -84,6 +84,6 @@ Engage with other OSCAL users and developers to share knowledge and to get assis
 
 **Resources:**
 - Explore [OSCAL resources](/resources/).
-- Attend a FedRAMP [OSCAL Data Bites session](/resources/#data-bites).
+- Attend a FedRAMP [OSCAL Data Bytes session](/resources/#data-Bytes).
 - Ask questions at [https://github.com/GSA/fedramp-automation/issues](https://github.com/GSA/fedramp-automation/issues).
 - Email us at oscal@fedramp.gov.
