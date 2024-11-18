@@ -16,7 +16,7 @@ toc:
 
 ### Q: What are the plans for pilot programs related to OSCAL and how can we get involved?
 
-**A:** FedRAMP is looking for partners (CSPs, tool suppliers, federal agencies, 3PAOs, and others) to participate in targeted pilot projects that will advance the program’s ability to operationalize its OSCAL-based automation capabilities.  FedRAMP will release more details on how to get involved early summer of 2024. Please [signup](https://forms.gle/3YV5MArL6vmbJDhx7) for FedRAMP Data Bites to ensure you can follow the latest news.
+**A:** FedRAMP is looking for partners (CSPs, tool suppliers, federal agencies, 3PAOs, and others) to participate in targeted pilot projects that will advance the program’s ability to operationalize its OSCAL-based automation capabilities.  FedRAMP will release more details on how to get involved early summer of 2024. Please [signup](https://forms.gle/3YV5MArL6vmbJDhx7) for FedRAMP Data Bytes to ensure you can follow the latest news.
 
 ### Q: Will FedRAMP release any learning resources for stakeholders who are not very familiar with OSCAL?
 
