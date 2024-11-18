@@ -33,4 +33,4 @@ The following are resources for collaborating with the FedRAMP automation team a
 
 Get involved in critical discussions that are shaping the future of OSCAL at FedRAMP.
 
-The FedRAMP OSCAL **Data Bites** series is a monthly meeting space for dialogue between developers who use OSCAL and the FedRAMP automation team. Please [sign up](https://forms.gle/3YV5MArL6vmbJDhx7) to receive monthly invites and notifications.
+The FedRAMP OSCAL **Data Bytes** series is a monthly meeting space for dialogue between developers who use OSCAL and the FedRAMP automation team. Please [sign up](https://forms.gle/3YV5MArL6vmbJDhx7) to receive monthly invites and notifications.
