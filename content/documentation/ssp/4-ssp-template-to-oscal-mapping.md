@@ -915,10 +915,10 @@ Each system must define at least two data centers. There must be exactly one pri
 ---
 ## Leveraged FedRAMP-authorized Services
 
-If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the system-implementation assembly. There must be one leveraged-authorization assembly and one matching component assembly for each leveraged authorization.
+If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the `system-implementation` assembly. There must be one `leveraged-authorization` assembly and one matching `component` assembly for each leveraged authorization.
 
-The leveraged-authorization assembly includes the leveraged system's name, point of contact (POC), and authorization date. The component assembly must be linked to the leveraged-authorization assembly using a property (prop) field with the name leveraged-authorization-uuid and the
-UUID value of its associated leveraged-authorization assembly. The component assembly enables controls to reference it with the by-component responses described in the [*Control Implementation Descriptions*](/documentation/ssp/6-security-controls/#control-implementation-descriptions) section. The implementation-point property value must be set to "external".
+The `leveraged-authorization` assembly includes the leveraged system's name, point of contact (POC), and authorization date. The `component` assembly must be linked to the `leveraged-authorization` assembly using a property (prop) field with the name "leveraged-authorization-uuid" and the
+UUID value of its associated `leveraged-authorization` assembly. The `component` assembly enables controls to reference it with the `by-component` responses described in the [*Control Implementation Descriptions*](/documentation/ssp/6-security-controls/#control-implementation-descriptions) section. The "implementation-point" property value must be set to "external".
 
 If the leveraged system owner provides a UUID for their system, such as in an OSCAL-based Inheritance and Responsibility document (similar to a CRM), it should be provided as the inherited-uuid property value.
 
@@ -936,40 +936,57 @@ While a leveraged system has no need to represent content here, its SSP must inc
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <metadata>
-    <!-- CSP name -->
-    <party uuid="uuid-value">
+    <!-- This CSP name -->
+    <party uuid="11111111-1111-3333-0000-000000000001">
+        <name>This Cloud Service Provider</name>
+    </party>
+    <!-- Leveraged CSP name -->
+    <party uuid="11111111-2222-4444-0000-000000000001">
         <name>Example IaaS Provider</name>
         <short-name>E.I.P.</short-name>
     </party>
 </metadata>
 <!-- cut import-profile, system-characteristics -->
 <system-implementation>
-    <leveraged-authorization uuid="uuid-value" >
+    <leveraged-authorization uuid="11111111-3333-5555-0000-000000000001" >
         <title>Name of Underlying System</title>
         <!-- FedRAMP Package ID -->
         <prop name="leveraged-system-identifier" 
             ns="https://fedramp.gov/ns/oscal" 
-            value="Package_ID value" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" 
-              value="fedramp-agency"/>
+            value="F9999999999" />
+        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type"
+            value="fedramp-agency"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
         <link href="//path/to/leveraged_system_legacy_crm.xslt" />
         <link href="//path/to/leveraged_system_responsibility_and_inheritance.xml" />
         <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
-    <!-- CSO name & service description -->
-    <component uuid="uuid-of-leveraged-system" type="leveraged-system">
+    <!-- Leveraged authorization component -->
+    <component uuid="uuid-of-leveraged-system" type="system">
         <title>Name of Leveraged System</title>
         <description>
             <p>Briefly describe leveraged system.</p>
         </description>
+        <!-- UUID for the leveraged-authorization -->
         <prop name="leveraged-authorization-uuid" 
-              value="5a9c98ab-8e5e-433d-a7bd-515c07cd1497" />
+            value="11111111-3333-5555-0000-000000000001" />
+        <!-- UUID for the leveraged system's SSP -->
         <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001" />
         <prop name="implementation-point" value="external"/>
         <!-- FedRAMP prop extensions for table 6.1 columns -->
+        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" 
+            value="contract" />
+        <prop name="information-type" ns="http://fedramp.gov/ns/oscal" value="C.3.5.4" />
         <status state="operational"/>
+        <!-- responsible-role is used to identify roles that represent the "authorized users" in SSP tables 6.1 and 7.1 -->
+        <responsible-role role-id="system-admin">
+            <party-uuid>11111111-1111-3333-0000-000000000001</party-uuid>
+            <remarks>
+            <p>Using responsible-role to represent the CSPs "authorized users" </p>
+            <p>who have access the leveraged authorization service.</p>
+            </remarks>
+        </responsible-role>
     </component>
 </system-implementation>
 {{</ highlight >}}
@@ -977,10 +994,15 @@ While a leveraged system has no need to represent content here, its SSP must inc
 <br />
 {{<callout>}}
 
-The title field must match an existing [FedRAMP authorized Cloud_Service_Provider_Package](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json) property value.
+**ADDITIONAL NOTES:**
 
-A leveraged-system-identifier property must be provided within each leveraged-authorization field.  The value of this property must be from the same Cloud Service Provider as identified in the title field.
-
+- The `title` field must match an existing [FedRAMP authorized Cloud_Service_Provider_Package](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json) property value.
+- A "leveraged-system-identifier" FedRAMP extension `prop` must be provided within each `leveraged-authorization` field.  The value of this property must be from the same Cloud Service Provider as identified in the `title` field.
+- Every leveraged authorization entry must be associated with exactly one `component` of type "system".
+- Every "system" `component` that is associated with a leveraged authorization must have exactly one `nature-of-agreement` FedRAMP extension `prop`.
+- Every "system" `component` that is associated with a leveraged authorization must have at least one `information-type` FedRAMP extension `prop`.
+- Every "system" `component` that is associated with a leveraged authorization must have at least one leveraged authorization users.  This is specified using a `responsible-role` with a given `role-id`. 
+- Every "system" `component` that is associated with a leveraged authorization must have exactly one `implementation-point` property, and its value must be set to "external".
 
 {{</callout>}}
 
