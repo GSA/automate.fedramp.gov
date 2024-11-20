@@ -953,8 +953,6 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" 
               value="fedramp-agency"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
-        <link href="//path/to/leveraged_system_legacy_crm.xslt" />
-        <link href="//path/to/leveraged_system_responsibility_and_inheritance.xml" />
         <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
