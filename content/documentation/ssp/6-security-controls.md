@@ -704,7 +704,7 @@ or may provide individual system components as well. In either case, the
 {{< highlight xml "linenos=table" >}}
 <system-implementation>
     <component uuid="uuid-value" type="this-system"><!-- cut --></component>
-    <component uuid="uuid-value" type="leveraged-system">
+    <component uuid="uuid-value" type="system">
         <title><b>LEVERAGED SYSTEM as a whole (IaaS)</b></title>
         <prop name="leveraged-authorization-uuid" value="uuid-of-LA-in-this-SSP" />
         <prop name="inherited-uuid" value="uuid-of-component-in-leveraged-SSP" />
