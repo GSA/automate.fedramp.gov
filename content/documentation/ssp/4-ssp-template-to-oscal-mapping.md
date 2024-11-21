@@ -996,7 +996,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
 
 **ADDITIONAL NOTES:**
 
-- The `title` field must match an existing [FedRAMP authorized Cloud_Service_Provider_Package](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json) property value.
+- The `title` field must match an existing FedRAMP-authorized cloud service provider's name on the [FedRAMP Marketplace](https://marketplace.fedramp.gov/); its name in the `Cloud Service Provider` column in that data from the Marketplace's Export as CSV Data function; or the `Cloud_Service_Provider_Package` key's value for [a record in the equivalent data from FedRAMP Marketplace in the JSON data format](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json).
 - A "leveraged-system-identifier" FedRAMP extension `prop` must be provided within each `leveraged-authorization` field.  The value of this property must be from the same Cloud Service Provider as identified in the `title` field.
 - Every leveraged authorization entry must be associated with exactly one `component` of type "system".
 - Every "system" `component` that is associated with a leveraged authorization must have exactly one `nature-of-agreement` FedRAMP extension `prop`.
