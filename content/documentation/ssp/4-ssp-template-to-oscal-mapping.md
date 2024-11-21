@@ -980,20 +980,21 @@ The title field must match an existing [FedRAMP authorized Cloud_Service_Provide
 
 A leveraged-system-identifier property must be provided within each leveraged-authorization field.  The value of this property must be from the same Cloud Service Provider as identified in the title field.
 
+The nature-of-agreement property identifies the appropriate type of agreement between the documented system and its leveraged authorizations documented in an SSP.
+
 {{</callout>}}
 
 {{<callout>}}
 
-##### FedRAMP Allowed Values
-The `nature-of-agreement` property identifies the appropriate type of agreement between the documented system and its leveraged authorizations documented in an SSP.
+**FedRAMP Allowed Values**
 
-FedRAMP defines the following allowed values for the `nature-of-agreement` property:
-- `contract`: A contract between the CSP and the organization that owns the leveraged system.
-- `eula`: An end-user license agreement between the CSP and the organization that owns the leveraged system.
-- `license`: An application license agreement between the CSP and the organization that owns the leveraged system.
-- `mou`: A memorandum of understanding between the CSP and the organization that owns the leveraged system.
-- `other`: An untypical agreement between the CSP and the organization that owns the leveraged system. Explain in remarks.
-- `sla`: A service-level agreement between the CSP and the organization that owns the leveraged system.
+FedRAMP defines the following allowed values for the nature-of-agreement property:
+- contract
+- eula
+- license
+- mou
+- other
+- sla
 
 {{</callout>}}
 
