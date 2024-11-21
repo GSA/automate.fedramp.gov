@@ -965,6 +965,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <prop name="leveraged-authorization-uuid" 
               value="5a9c98ab-8e5e-433d-a7bd-515c07cd1497" />
         <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001" />
+        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="sla"/>
         <prop name="implementation-point" value="external"/>
         <!-- FedRAMP prop extensions for table 6.1 columns -->
         <status state="operational"/>
@@ -979,6 +980,20 @@ The title field must match an existing [FedRAMP authorized Cloud_Service_Provide
 
 A leveraged-system-identifier property must be provided within each leveraged-authorization field.  The value of this property must be from the same Cloud Service Provider as identified in the title field.
 
+{{</callout>}}
+
+{{<callout>}}
+
+##### FedRAMP Allowed Values
+The `nature-of-agreement` property identifies the appropriate type of agreement between the documented system and its leveraged authorizations documented in an SSP.
+
+FedRAMP defines the following allowed values for the `nature-of-agreement` property:
+- `contract`: A contract between the CSP and the organization that owns the leveraged system.
+- `eula`: An end-user license agreement between the CSP and the organization that owns the leveraged system.
+- `license`: An application license agreement between the CSP and the organization that owns the leveraged system.
+- `mou`: A memorandum of understanding between the CSP and the organization that owns the leveraged system.
+- `other`: An untypical agreement between the CSP and the organization that owns the leveraged system. Explain in remarks.
+- `sla`: A service-level agreement between the CSP and the organization that owns the leveraged system.
 
 {{</callout>}}
 
