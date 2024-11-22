@@ -915,10 +915,10 @@ Each system must define at least two data centers. There must be exactly one pri
 ---
 ## Leveraged FedRAMP-Authorized Services
 
-If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the `system-implementation` assembly. There must be one `leveraged-authorization` assembly and one matching `component` assembly for each leveraged authorization.
+If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the `system-implementation` assembly. There must be one `leveraged-authorization` assembly and one matching `component` assembly for each leveraged authorization. A leveraged authorization must define a FIPS-199 impact level (low, moderate, or high) that aligns with or exceeds the security sensitivity level of the leveraging system.
 
 The `leveraged-authorization` assembly includes the leveraged system's name, point of contact (POC), and authorization date. The `component` assembly must be linked to the `leveraged-authorization` assembly using a property (prop) field with the name "leveraged-authorization-uuid" and the
-UUID value of its associated `leveraged-authorization` assembly. The `component` assembly enables controls to reference it with the `by-component` responses described in the [*Control Implementation Descriptions*](/documentation/ssp/6-security-controls/#control-implementation-descriptions) section. The "implementation-point" property value must be set to "external".
+UUID value of its associated `leveraged-authorization` assembly. The `component` assembly enables controls to reference it with the `by-component` responses described in the [*Control Implementation Descriptions*](/documentation/ssp/6-security-controls/#control-implementation-descriptions) section. The "implementation-point" property value must be set to "external". The component assembly must define an `authentication-method` with remarks that explain the method if authentication is used, justify the absence of authentication if not used, or provide an explanation of why authentication is not applicable.
 
 If the leveraged system owner provides a UUID for their system, such as in an OSCAL-based Inheritance and Responsibility document (similar to a CRM), it should be provided as the inherited-uuid property value.
 
@@ -946,7 +946,10 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <short-name>E.I.P.</short-name>
     </party>
 </metadata>
-<!-- cut import-profile, system-characteristics -->
+<!-- cut import-profile, -->
+<system-characteristics>
+    <security-sensitivity-level>fips-199-moderate</security-sensitivity-level>
+</system-characteristics>
 <system-implementation>
     <leveraged-authorization uuid="11111111-3333-5555-0000-000000000001" >
         <title>Name of Underlying System</title>
@@ -960,8 +963,20 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
-    <!-- Leveraged authorization component -->
-    <component uuid="uuid-of-leveraged-system" type="system">
+    <!-- CSO name & service description -->
+    <component uuid="00000000-0000-0000-0000-000000000000" type="system">
+      <prop name="leveraged-authorization-uuid" value="11111111-3333-5555-0000-000000000001"/>
+      <prop name="implementation-point" value="external"/>
+      <prop ns="http://fedramp.gov/ns/oscal" name="nature-of-agreement" value="sla"/>
+      <prop ns="http://fedramp.gov/ns/oscal" name="authentication-method" value="yes">
+        <remarks>
+          <p>If 'yes', describe the authentication method.</p>
+          <p>If 'no', explain why no authentication is used.</p>
+          <p>If 'not-applicable', attest explain why authentication is not applicable in the remarks.</p>
+        </remarks>
+      </prop>
+    </component>
+    <component uuid="uuid-of-leveraged-system" type="leveraged-system">
         <title>Name of Leveraged System</title>
         <description>
             <p>Briefly describe leveraged system.</p>
@@ -1019,6 +1034,11 @@ FedRAMP defines the following allowed values for the nature-of-agreement propert
 - mou
 - other
 - sla
+
+FedRAMP defines the following allowed values for an authentication-method's value property:
+- yes
+- no
+- not-applicable
 
 {{</callout>}}
 
