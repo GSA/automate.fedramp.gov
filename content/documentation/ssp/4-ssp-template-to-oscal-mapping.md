@@ -1033,47 +1033,6 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 ---
 
-## External Systems
-
-For external systems, a FedRAMP SSP must specify the type of an agreement between the documented system and any external system documented in the SSP.
-
-The nature-of-agreement property identifies the acceptable agreement types.
-
-#### OSCAL Representation
-{{< highlight xml "linenos=table" >}}
-<system-implementation>
-    <component uuid="uuid-of-external-system" type="system">
-      <title>Name of The External System</title>
-      <description>
-          <p>Briefly describe the external system.</p>
-      </description>
-      <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001"/>
-      <prop name="implementation-point" value="external"/>
-      <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="isa"/>
-      <status state="operational"/>
-    </component>
-</system-implementation>
-{{</ highlight >}}
-
-<br/>
-
-{{<callout>}}
-
-**FedRAMP Allowed Values**
-
-FedRAMP defines the following allowed values for the nature-of-agreement property:
-- contract
-- eula
-- isa
-- license
-- mou
-- other
-- sla
-
-{{</callout>}}
-
----
-
 ## Users
 
 A FedRAMP SSP must identify the users of the system by type, privilege, sensitivity level, the ID of the associated role, and a list of one or more authorized privileges.  The SSP must also provide the authentication method(s) used for each identified user.
@@ -1171,14 +1130,16 @@ count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performe
 
 ## External Systems and Services Not Having FedRAMP Authorization
 
-FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
+FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.
+
+The nature-of-agreement property identifies acceptable agreement types.
 
 {{< figure src="/img/ssp-figure-17.png" title="FedRAMP SSP template external systems (not FedRAMP authorized)." alt="Screenshot of the external system information for non-FedRAMP authorized services in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <!-- list any external connections as components in the system-characteristics -->
-<component uuid="uuid-value" type="interconnection">
+<component uuid="uuid-value" type="system">
     <title>[EXAMPLE]External System / Service Name</title>
     <description>
         <p>Briefly describe the interconnection details.</p>
@@ -1219,6 +1180,7 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
         <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" 
             value="ipsec">
+        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="isa"/>
                 <!-- cut ports, protocols -->
     <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
     <!-- cut repeat responsible-party assembly for each required ICA role id -->
@@ -1234,6 +1196,25 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
     <!-- repeat citation assembly for each ICA -->
 </back-matter>
 {{</ highlight >}}
+
+<br/>
+
+{{<callout>}}
+
+**FedRAMP Allowed Values**
+
+FedRAMP defines the following allowed values for the nature-of-agreement property:
+- contract
+- eula
+- isa
+- license
+- mou
+- other
+- sla
+
+{{</callout>}}
+
+<br/>
 
 ### External System and Services (Queries)
 
