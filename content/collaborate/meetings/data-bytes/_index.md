@@ -23,6 +23,7 @@ You can sign up for this monthly meeting by [filling in this request form](https
 
 Below is a list of presentations from past Data Bytes meetings.
 
+- [Meeting Slides from November 21, 2024](/pdf/developer_data_bytes_20241121.pdf)
 - [Meeting Slides from October 24, 2024](/pdf/developer_data_bytes_20241024.pdf)
 - [Meeting Slides from September 26, 2024](/pdf/developer_data_bytes_20240926.pdf)
 - [Meeting Slides from August 22, 2024](/pdf/developer_data_bytes_20240822.pdf)
