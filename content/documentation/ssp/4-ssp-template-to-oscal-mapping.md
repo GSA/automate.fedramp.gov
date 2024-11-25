@@ -913,7 +913,7 @@ Each system must define at least two data centers. There must be exactly one pri
 {{</ highlight >}}
 
 ---
-## Leveraged FedRAMP-authorized Services
+## Leveraged FedRAMP-Authorized Services
 
 If this system is leveraging the authorization of one or more systems, such as a SaaS running on an IaaS, each leveraged system must be represented within the `system-implementation` assembly. There must be one `leveraged-authorization` assembly and one matching `component` assembly for each leveraged authorization.
 
@@ -957,8 +957,6 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type"
             value="fedramp-agency"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
-        <link href="//path/to/leveraged_system_legacy_crm.xslt" />
-        <link href="//path/to/leveraged_system_responsibility_and_inheritance.xml" />
         <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
@@ -970,9 +968,9 @@ While a leveraged system has no need to represent content here, its SSP must inc
         </description>
         <!-- UUID for the leveraged-authorization -->
         <prop name="leveraged-authorization-uuid" 
-            value="11111111-3333-5555-0000-000000000001" />
-        <!-- UUID for the leveraged system's SSP -->
-        <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001" />
+              value="5a9c98ab-8e5e-433d-a7bd-515c07cd1497"/>
+        <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001"/>
+        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="sla"/>
         <prop name="implementation-point" value="external"/>
         <!-- FedRAMP prop extensions for table 6.1 columns -->
         <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" 
@@ -1003,6 +1001,24 @@ While a leveraged system has no need to represent content here, its SSP must inc
 - Every "system" `component` that is associated with a leveraged authorization must have at least one `information-type` FedRAMP extension `prop`.
 - Every "system" `component` that is associated with a leveraged authorization must have at least one leveraged authorization users.  This is specified using a `responsible-role` with a given `role-id`. 
 - Every "system" `component` that is associated with a leveraged authorization must have exactly one `implementation-point` property, and its value must be set to "external".
+
+The nature-of-agreement property identifies the appropriate type of agreement between the documented system and its leveraged authorizations documented in an SSP.
+
+{{</callout>}}
+
+<br/>
+
+{{<callout>}}
+
+**FedRAMP Allowed Values**
+
+FedRAMP defines the following allowed values for the nature-of-agreement property:
+- contract
+- eula
+- license
+- mou
+- other
+- sla
 
 {{</callout>}}
 
@@ -1136,14 +1152,16 @@ count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performe
 
 ## External Systems and Services Not Having FedRAMP Authorization
 
-FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.  
+FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.
+
+The nature-of-agreement property identifies acceptable agreement types.
 
 {{< figure src="/img/ssp-figure-17.png" title="FedRAMP SSP template external systems (not FedRAMP authorized)." alt="Screenshot of the external system information for non-FedRAMP authorized services in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <!-- list any external connections as components in the system-characteristics -->
-<component uuid="uuid-value" type="interconnection">
+<component uuid="uuid-value" type="system">
     <title>[EXAMPLE]External System / Service Name</title>
     <description>
         <p>Briefly describe the interconnection details.</p>
@@ -1184,6 +1202,7 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
         <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" 
             value="ipsec">
+        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="isa"/>
                 <!-- cut ports, protocols -->
     <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
     <!-- cut repeat responsible-party assembly for each required ICA role id -->
@@ -1199,6 +1218,25 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
     <!-- repeat citation assembly for each ICA -->
 </back-matter>
 {{</ highlight >}}
+
+<br/>
+
+{{<callout>}}
+
+**FedRAMP Allowed Values**
+
+FedRAMP defines the following allowed values for the nature-of-agreement property:
+- contract
+- eula
+- isa
+- license
+- mou
+- other
+- sla
+
+{{</callout>}}
+
+<br/>
 
 ### External System and Services (Queries)
 
