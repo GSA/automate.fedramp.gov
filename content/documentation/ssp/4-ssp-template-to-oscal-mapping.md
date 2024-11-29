@@ -1154,6 +1154,8 @@ count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performe
 
 FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.
 
+For components that describe external systems and services that are not FedRAMP-authorized and not part of a leveraged authorization, the component must identify the kind of connection security in use to protect data in transit (e.g. IPSec VPN).
+
 The nature-of-agreement property identifies acceptable agreement types.
 
 {{< figure src="/img/ssp-figure-17.png" title="FedRAMP SSP template external systems (not FedRAMP authorized)." alt="Screenshot of the external system information for non-FedRAMP authorized services in the FedRAMP SSP template." >}}
@@ -1161,7 +1163,7 @@ The nature-of-agreement property identifies acceptable agreement types.
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <!-- list any external connections as components in the system-characteristics -->
-<component uuid="uuid-value" type="system">
+<component uuid="uuid-value" type="service">
     <title>[EXAMPLE]External System / Service Name</title>
     <description>
         <p>Briefly describe the interconnection details.</p>
@@ -1200,7 +1202,7 @@ The nature-of-agreement property identifies acceptable agreement types.
         <prop ns="https://fedramp.gov/ns/oscal" name="information" 
             value="Describe the information being transmitted."/>
         <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" 
+        <prop ns="https://fedramp.gov/ns/oscal" name="connection-security" 
             value="ipsec">
         <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="isa"/>
                 <!-- cut ports, protocols -->
