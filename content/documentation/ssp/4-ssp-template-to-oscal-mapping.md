@@ -972,7 +972,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <remarks>
           <p>If 'yes', describe the authentication method.</p>
           <p>If 'no', explain why no authentication is used.</p>
-          <p>If 'not-applicable', attest explain why authentication is not applicable in the remarks.</p>
+          <p>If 'not-applicable', explain why authentication is not applicable in the remarks.</p>
         </remarks>
       </prop>
     </component>
