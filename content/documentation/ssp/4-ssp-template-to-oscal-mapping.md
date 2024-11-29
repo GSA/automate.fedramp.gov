@@ -1481,6 +1481,8 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 Entries in the ports, protocols, and services table are represented as component assemblies, with the component-type flag set to "service". Use a protocol assembly for each protocol associated with the service. For a single port, set the port-range start flag and end flag to the same value.
 
+For components that describe [external systems and services that are not FedRAMP authorized and not part of a leveraged authorization](#ports-protocols-and-services), the component must identify the kind of connection security in use to protect data in transit (e.g. IPSec VPN).
+
 {{< figure src="/img/ssp-figure-20.png" title="FedRAMP SSP template ports, protocols, and services." alt="Screenshot of the ports, protocols, and services information in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
@@ -1491,6 +1493,7 @@ Entries in the ports, protocols, and services table are represented as component
         <title>[SAMPLE]Service Name</title>
         <description><p>Describe the service</p></description>
         <purpose>Describe the purpose for which the service is needed.</purpose>
+        <prop ns="http://fedramp.gov/ns/oscal" name="connection-security" value="ipsec" />
         <link href="uuid-of-component-used-by" rel="used-by" />
         <link href="uuid-of-component-provided-by" rel="provided-by" />
         <status state="operational" />
