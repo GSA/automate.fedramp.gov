@@ -970,9 +970,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
       <prop ns="http://fedramp.gov/ns/oscal" name="nature-of-agreement" value="sla"/>
       <prop ns="http://fedramp.gov/ns/oscal" name="authentication-method" value="yes">
         <remarks>
-          <p>If 'yes', describe the authentication method.</p>
-          <p>If 'no', explain why no authentication is used.</p>
-          <p>If 'not-applicable', explain why authentication is not applicable in the remarks.</p>
+          <p>This component has an authentication method which we document as required here.</p>
         </remarks>
       </prop>
     </component>
