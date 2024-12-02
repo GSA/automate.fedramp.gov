@@ -1154,7 +1154,7 @@ count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performe
 
 FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.
 
-For components that describe external systems and services that are not FedRAMP-authorized and not part of a leveraged authorization, the component must identify the kind of connection security in use to protect data in transit (e.g. IPSec VPN).
+For components that describe external systems and services that are not FedRAMP-authorized and not part of a leveraged authorization, the component must identify the kind of connection security in use to protect data in transit (for example, IPSec VPN).
 
 The nature-of-agreement property identifies acceptable agreement types.
 
@@ -1483,7 +1483,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 
 Entries in the ports, protocols, and services table are represented as component assemblies, with the component-type flag set to "service". Use a protocol assembly for each protocol associated with the service. For a single port, set the port-range start flag and end flag to the same value.
 
-For components that describe [external systems and services that are not FedRAMP authorized and not part of a leveraged authorization](#ports-protocols-and-services), the component must identify the kind of connection security in use to protect data in transit (e.g. IPSec VPN).
+For components that describe [external systems and services that are not FedRAMP authorized and not part of a leveraged authorization](#ports-protocols-and-services), the component must identify the kind of connection security in use to protect data in transit (for example, IPSec VPN).
 
 {{< figure src="/img/ssp-figure-20.png" title="FedRAMP SSP template ports, protocols, and services." alt="Screenshot of the ports, protocols, and services information in the FedRAMP SSP template." >}}
 
