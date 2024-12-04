@@ -21,7 +21,7 @@ Participants can find meeting information by [subscribing to the mailing list](h
 
 Below is a list of presentations from past Data Bytes meetings.
 
-
+- [Meeting Slides from December 4, 2024](/pdf/oscal_implementers_20241204.pdf)
 - [Meeting Slides from November 13, 2024](/pdf/oscal_implementers_20241113.pdf)
 - [Meeting Slides from October 30, 2024](/pdf/oscal_implementers_20241030.pdf)
 - [Meeting Slides from October 23, 2024](/pdf/oscal_implementers_20241023.pdf)
