@@ -1499,7 +1499,7 @@ Replace XPath predicate "[1]" with "[2]", "[3]", etc.
 ---
 ## Ports, Protocols and Services
 
-Entries in the ports, protocols, and services table are represented as component assemblies, with the component-type flag set to "service". Use a protocol assembly for each protocol associated with the service. For a single port, set the port-range start flag and end flag to the same value.
+Entries in the ports, protocols, and services table are represented as component assemblies, with the component-type flag set to "service". Use a protocol assembly for each protocol associated with the service. For a single port, set the port-range start flag and end flag to the same value. A component must reference the existing component(s) that use it via network communication by including a `used-by` link to identify the component.
 
 For components that describe [external systems and services that are not FedRAMP authorized and not part of a leveraged authorization](#ports-protocols-and-services), the component must identify the kind of connection security in use to protect data in transit (for example, IPSec VPN).
 
@@ -1517,10 +1517,10 @@ For components that describe [external systems and services that are not FedRAMP
         <link href="uuid-of-component-used-by" rel="used-by" />
         <link href="uuid-of-component-provided-by" rel="provided-by" />
         <status state="operational" />
-        <protocol name="http">
+        <protocol name="http" uuid="uuid-of-protocol">
             <port-range start="80" end="80" transport="TCP"/>
         </protocol>
-        <protocol name="https">
+        <protocol name="https" uuid="uuid-of-protocol">
             <port-range start="443" end="443" transport="TCP"/>
         </protocol>
     </component>
@@ -1546,6 +1546,8 @@ For components that describe [external systems and services that are not FedRAMP
         /*/system-implementation/component[@type='service'][1]/purpose
     Used By (1st service):
         /*/system-implementation/component[@uuid='uuid-of-component-used-by']/title
+    Used By Link
+        /*/system-implementation/component[protocol]/link[@rel='used-by']
 {{</ highlight >}}
 
 <br />
