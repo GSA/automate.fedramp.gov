@@ -1333,7 +1333,12 @@ The OSCAL approach to this type of diagram is to treat the image data as either 
 
 <back-matter>
     <resource uuid="uuid-of-boundary-diagram-1">
-        <description><p>The primary authorization boundary diagram.</p></description>
+        <description>
+            <p>The primary authorization boundary diagram.</p>
+        </description>
+        <prop name="type" value="image" class="authorization-boundary" />
+        <!-- Use rlink and/or base64 -->
+        <rlink href="./attachments/diagrams/boundary.png"/>
         <base64 filename="architecture-main.png" media-type="image/png">00000000</base64>
     </resource>
 </back-matter>
@@ -1393,15 +1398,18 @@ Consistent with the [*Authorization Boundary*](#authorization-boundary) guidance
     <!-- data-flow -->
 </system-characteristics>
 
-
 <!-- cut -->
-
 
 <back-matter>
     <!-- citation -->
     <resource uuid=" uuid-of-network-diagram-1">
-        <description><p>The primary network architecture diagram.</p></description>
-        <rlink href="./diagrams/network.png" media-type="image/png"/>
+        <description>
+            <p>The primary network architecture diagram.</p>
+        </description>
+        <prop name="type" value="image" class="network-architecture" />
+        <!-- Use rlink and/or base64 -->
+        <rlink href="./attachments/diagrams/network.png"/>
+        <base64 filename="network.png" media-type="image/png">00000000</base64>
     </resource>
 </back-matter>
 {{</ highlight >}}
@@ -1465,10 +1473,13 @@ Consistent with the [*Authorization Boundary*](#authorization-boundary) guidance
 <back-matter>
     <!-- citation -->
     <resource uuid="uuid-of-dataflow-diagram-1">
-        <description><p>The primary data flow diagram.</p></description>
-        <base64 filename="data-flow-1.png" media-type="image/png">
-            0000<!-- base64 cut -->0000
-        </base64>
+        <description>
+            <p>The primary data flow diagram.</p>
+        </description>
+        <prop name="type" value="image" class="data-flow" />
+        <!-- Use rlink and/or base64 -->
+        <rlink href="./attachments/diagrams/dataflow.png"/>
+        <base64 filename="dataflow.png" media-type="image/png">00000000</base64>
     </resource>
 </back-matter>
 {{</ highlight >}}
