@@ -1,4 +1,4 @@
----
+content/_index.md---
 title: "FedRAMP Automation"
 toc:
   display: false
