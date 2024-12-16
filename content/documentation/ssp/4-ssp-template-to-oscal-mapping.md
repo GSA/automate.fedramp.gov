@@ -130,7 +130,7 @@ A FedRAMP System Security Plan (SSP) must document in its description of the sys
             <title>System Administrator</title>
             <prop name="type" value="internal"/>
             <prop name="privilege-level" value="read-write"/>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sensitivity" value="high-risk"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sensitivity" value="high-risk"/>
             <role-id>system-admin</role-id>
         </user>
     </system-implementation>
@@ -175,7 +175,7 @@ Role ID:
     /*/system-implementation/user/role-id
 
 Sensitivity Level:
-    /*/system-implementation/user/prop[@ns='https://fedramp.gov/ns/oscal'][@name="sensitivity"]/@value
+    /*/system-implementation/user/prop[@ns='http://fedramp.gov/ns/oscal'][@name="sensitivity"]/@value
 {{</ highlight >}}
 
 ## Best Practices
@@ -578,7 +578,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
                 <p>Otherwise, it is optional.</p>
             </remarks>
         </status>
-        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="2024-11-05-00:00"/>        
+        <prop ns="http://fedramp.gov/ns/oscal" name="fully-operational-date" value="2024-11-05-00:00"/>        
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
@@ -766,7 +766,7 @@ A `role` with an ID value of "authorizing-official" is required. Use the `respon
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
     FedRAMP Authorization Type:
-        /*/system-characteristics/prop[@name="authorization-type"][@ns="https://fedramp.gov/ns/oscal"]/@value
+        /*/system-characteristics/prop[@name="authorization-type"][@ns="http://fedramp.gov/ns/oscal"]/@value
     Authorizing Official:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
 {{</ highlight >}}
@@ -955,11 +955,11 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <title>Name of Underlying System</title>
         <!-- FedRAMP Package ID -->
         <prop name="leveraged-system-identifier" 
-            ns="https://fedramp.gov/ns/oscal" 
+            ns="http://fedramp.gov/ns/oscal" 
             value="F9999999999" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type"
+        <prop ns="http://fedramp.gov/ns/oscal" name="authorization-type"
             value="fedramp-agency"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
         <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
@@ -983,10 +983,10 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <prop name="leveraged-authorization-uuid" 
               value="5a9c98ab-8e5e-433d-a7bd-515c07cd1497"/>
         <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001"/>
-        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="sla"/>
+        <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" value="sla"/>
         <prop name="implementation-point" value="external"/>
         <!-- FedRAMP prop extensions for table 6.1 columns -->
-        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" 
+        <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" 
             value="contract" />
         <prop name="information-type" ns="http://fedramp.gov/ns/oscal" value="C.3.5.4" />
         <status state="operational"/>
@@ -1219,10 +1219,10 @@ The nature-of-agreement property identifies acceptable agreement types.
         <prop name="ipv6-address" value="::ffff:10.2.2.2"/>
         <prop ns="http://fedramp.gov/ns/oscal" name="information" 
             value="Describe the information being transmitted."/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="connection-security" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="connection-security" 
             value="ipsec">
-        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="isa"/>
+        <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" value="isa"/>
                 <!-- cut ports, protocols -->
     <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
     <!-- cut repeat responsible-party assembly for each required ICA role id -->
