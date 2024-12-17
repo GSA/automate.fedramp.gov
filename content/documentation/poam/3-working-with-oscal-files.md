@@ -92,7 +92,7 @@ If the value is a URI fragment, such as #96445439-6ce1-4e22-beae-aa72cfe173d0, t
 <back-matter> 
   <resource uuid="96445439-6ce1-4e22-beae-aa72cfe173d0"> 
     <title>[System Name] [FIPS-199 Level] SSP</title> 
-    <prop name="type" ns="https://fedramp.gov/ns/oscal" value="system-security-plan"/> 
+    <prop name="type" ns="http://fedramp.gov/ns/oscal" value="system-security-plan"/> 
     <!-- Specify the XML or JSON file location. Only one required. --> 
     <rlink media-type="application/xml" href="./CSP_System_SSP.xml" /> 
     <rlink media-type="application/json" href="./CSP_System_SSP.json" /> 
@@ -145,7 +145,7 @@ Finally, any SSP component referenced by POA&M data must be duplicated, whether 
 
 ##### POA&M Representation                                      
 {{< highlight xml "linenos=table" >}}
-<system-id identifier-type="https://fedramp.gov">F00000000</system-id> 
+<system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id> 
 <local-definitions> 
   <component uuid="uuid-value" type="software"> 
     <!-- cut --> 
@@ -187,7 +187,7 @@ FedRAMP will be implementing a separate set of automated POA&M validation rules 
       <!-- cut --> 
     </revisions> 
     <!-- New rev 5 prop --> 
-    <prop ns="https://fedramp.gov/ns/oscal" name="resolution-resource" value="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41" /> 
+    <prop ns="http://fedramp.gov/ns/oscal" name="resolution-resource" value="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41" /> 
   </metadata> 
   <!-- cut --> 
   <back-matter> 

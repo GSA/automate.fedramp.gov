@@ -179,15 +179,15 @@ that points to a resource in the back-matter. The resource must have a
           <prop name="type" value="no-oscal-ssp"/>
           <prop name="type" value="system-security-plan"/>
           <prop name="title-short" 
-                ns="https://fedramp.gov/ns/oscal" value="SFN"/>
+                ns="http://fedramp.gov/ns/oscal" value="SFN"/>
           <prop name="authorization-date" 
-                ns="https://fedramp.gov/ns/oscal" 
+                ns="http://fedramp.gov/ns/oscal" 
                 value="2017-01-02T00:00:00Z"/>
           <prop name="system-id" 
-                ns="https://fedramp.gov/ns/oscal" value="FR00000000"/>
-          <prop name="import-profile" ns="https://fedramp.gov/ns/oscal"
+                ns="http://fedramp.gov/ns/oscal" value="FR00000000"/>
+          <prop name="import-profile" ns="http://fedramp.gov/ns/oscal"
                 value="#uuid-of-resource"/>
-          <prop name="purpose" ns="https://fedramp.gov/ns/oscal"
+          <prop name="purpose" ns="http://fedramp.gov/ns/oscal"
                 value="Briefly state the system's purpose, for the SAP and
                       SAR."/>
           <rlink href="/documents/CSP_System_SSP.docx" 
@@ -248,7 +248,7 @@ section and include an associated back-matter resource as shown below:
               <!-- cut -->
         </revisions>
         <!-- New rev 5 prop -->
-        <prop ns="https://fedramp.gov/ns/oscal" 
+        <prop ns="http://fedramp.gov/ns/oscal" 
               name="resolution-resource"
               value="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41" />
     </metadata>
