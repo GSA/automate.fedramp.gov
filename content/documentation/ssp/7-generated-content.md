@@ -26,7 +26,7 @@ There are many ways a tool developer can generate the CRM. FedRAMP plans to deve
 ##### Useful CRM XPath Queries 
 {{< highlight xml "linenos=table" >}}
   Flat-File CRM Query:
-    //control-implementation/implemented-requirement/prop[@name="control-origination"][@ns="https://fedramp.gov/ns/oscal"][@value="customer-configured" or @value="customer-provided"]/remarks/node()
+    //control-implementation/implemented-requirement/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"][@value="customer-configured" or @value="customer-provided"]/remarks/node()
   Component-based CRM Query:
     //control-implementation/implemented-requirement/statement/by-component[@component-id="customer"]/description
 

@@ -64,23 +64,23 @@ its associated documents.
 
    <terms-and-conditions>
       <!-- Section 2 Background -->
-      <part ns="https://fedramp.gov/ns/oscal" name="background">
+      <part ns="http://fedramp.gov/ns/oscal" name="background">
          <title>Background</title>
          <p>Insert text from FedRAMP template</p>
          <p> Insert text from FedRAMP template </p>
-         <part ns="https://fedramp.gov/ns/oscal" name="nist-sp800-39">
+         <part ns="http://fedramp.gov/ns/oscal" name="nist-sp800-39">
             <p> Insert text from FedRAMP template</p>
          </part>
          <!-- Section 2.1 -->
-         <part ns="https://fedramp.gov/ns/oscal" name="purpose">
+         <part ns="http://fedramp.gov/ns/oscal" name="purpose">
             <title>Purpose</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="001"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="001"/>
             <p>This SAP has been developed by [IA Name] and is for [an initial assessment/an annual assessment/an annual assessment and significant change assessment/a significant change assessment] of the [CSP Name], [CSO Name]. The SAP provides the goals for the assessment and details how the assessment will be conducted.</p>
          </part>
          <!-- Section 2.2 -->
-         <part ns="https://fedramp.gov/ns/oscal" name="laws-regulations" >
+         <part ns="http://fedramp.gov/ns/oscal" name="laws-regulations" >
             <title>Applicable Laws, Regulations, Standards and Guidance</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="002"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="002"/>
             <p>The FedRAMP-applicable laws, regulations, standards and guidance are included in the [CSO Name] SSP section – System Security Plan Approvals. Additionally, in Appendix L of the SSP, the [CSP Name] has included laws, regulations, standards, and guidance that apply specifically to this system.</p>
          </part>
       </part>
@@ -94,9 +94,9 @@ its associated documents.
     (SAP) IA Name:
         /assessment-plan/metadata/party[@uuid="uuid-of-ia"]/name 
     (SAP) Initial assessment, annual assessment, or significant change?
-        /assessment-plan/metadata/prop[@ns="https://fedramp.gov/ns/oscal" and @name="assessment-type"]/@value
+        /assessment-plan/metadata/prop[@ns="http://fedramp.gov/ns/oscal" and @name="assessment-type"]/@value
     (SAP) Are there no/one/many significant changes in SAP scope?
-        /assessment-plan/metadata/prop[@ns="https://fedramp.gov/ns/oscal" and @name="significant-changes-scope"]/@value
+        /assessment-plan/metadata/prop[@ns="http://fedramp.gov/ns/oscal" and @name="significant-changes-scope"]/@value
     (SAP) CSP Name:
         /assessment-plan/metadata/party[@uuid="uuid-of-csp"]/name
     (SSP) CSO Name:
@@ -115,7 +115,7 @@ for this information as follows:
 {{< highlight xml "linenos=table" >}}
     Table 2-1
     (SSP) Unique Identifier:
-        /*/system-characteristics/system-id[@identifier-type='https://fedramp.gov']
+        /*/system-characteristics/system-id[@identifier-type='http://fedramp.gov/ns/oscal']
     (SSP) Information System Name:
         /*/system-characteristics/system-name
     (SSP) Information System Abbreviation:
@@ -173,7 +173,7 @@ data centers.
         /*/assessment-subject[@type='location']/include-subject[1]/@subject-uuid
     NOTE: Replace "[1]" with "[2]", "[3]", etc.
     (SSP) Data Center Site Name (Lookup in SSP, using ID cited in SAP):
-        /*/metadata/location[@id='location-2']/prop[@name='title'] [@ns='https://fedramp.gov/ns/oscal']
+        /*/metadata/location[@id='location-2']/prop[@name='title'] [@ns='http://fedramp.gov/ns/oscal']
     NOTE: Replace 'location-2' with the SSP location as cited in the SAP.
     (SSP or SAP) Address:
         /*/metadata/location[@uuid='uuid-value-from-SAP']/address/addr-line
@@ -336,7 +336,7 @@ The SSP inventory data should already indicate which assets have a web
 interface, with the following FedRAMP extension:
 
 {{< highlight xml "linenos=table" >}}
-    <prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="web" />
+    <prop name="scan-type" ns="http://fedramp.gov/ns/oscal" value="web" />
 {{</ highlight >}}
 
 This typically appears in the inventory-item itself with the legacy
@@ -362,7 +362,7 @@ test users here. Both use FedRAMP extensions.
         <activity uuid="uuid-of-web-application-activity">
             <title>Web Application Test #1</title>
             <description><p>Describe this web application test.</p></description>
-            <prop name="type" ns="https://fedramp.gov/ns/oscal" value="web-application"/>
+            <prop name="type" ns="http://fedramp.gov/ns/oscal" value="web-application"/>
         </activity>
     </local-definitions>
     <!-- cut: terms-and-conditions, reviewed-controls, assessment-subject -->
@@ -370,10 +370,10 @@ test users here. Both use FedRAMP extensions.
         <title>Web Application Tests</title>
         <task uuid="uuid-value">
             <title>Web Application Test #1</title>
-            <prop name="type" ns="https://fedramp.gov/ns/oscal" value="web-application"/>
-            <prop name="login-url" ns="https://fedramp.gov/ns/oscal"
+            <prop name="type" ns="http://fedramp.gov/ns/oscal" value="web-application"/>
+            <prop name="login-url" ns="http://fedramp.gov/ns/oscal"
                 value="https://service.offering.com/login"/>
-            <prop name="login-id" ns="https://fedramp.gov/ns/oscal" value="test-user"/>
+            <prop name="login-id" ns="http://fedramp.gov/ns/oscal" value="test-user"/>
             <associated-activity activity-uuid="uuid-of-web-application-activity">
                 <subject type="inventory-item">
                     <include-subject subject-uuid="uuid-of-SSP-inventory-item" 
@@ -388,11 +388,11 @@ test users here. Both use FedRAMP extensions.
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
     (SAP) Login URL:
-        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-url'][@ns="https://fedramp.gov/ns/oscal"]
+        (/*//task[prop[@name='type'][@ns="http://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-url'][@ns="http://fedramp.gov/ns/oscal"]
     (SAP) Login ID:
-        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-id'][@ns="https://fedramp.gov/ns/oscal"]
+        (/*//task[prop[@name='type'][@ns="http://fedramp.gov/ns/oscal"][@value='web-application']])[1]/prop[@name='login-id'][@ns="http://fedramp.gov/ns/oscal"]
     (SAP) Inventory-ID of host:
-        (/*//task[prop[@name='type'][@ns="https://fedramp.gov/ns/oscal"][@value='web-application']])[1]/ associated-activity/subject[@type='inventory-item']/include-subject/@subject-uuid
+        (/*//task[prop[@name='type'][@ns="http://fedramp.gov/ns/oscal"][@value='web-application']])[1]/ associated-activity/subject[@type='inventory-item']/include-subject/@subject-uuid
         
     NOTE: Replace "[1]" with "[2]", "[3]", etc.
     REMEMBER: The inventory-item could be in the SSP's system-implementation or the SAP's local-definitions.
@@ -405,7 +405,7 @@ test users here. Both use FedRAMP extensions.
 The SSP inventory data should already indicate which assets are databases, with the following FedRAMP extension:
 
 {{< highlight xml "linenos=table" >}}
-<prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="database"/>
+<prop name="scan-type" ns="http://fedramp.gov/ns/oscal" value="database"/>
 {{</ highlight >}}
 
 This typically appears in the inventory-item itself with the legacy
@@ -424,7 +424,7 @@ to properly identify all databases for testing.
     (SSP) Host name of first database in SSP (flat file approach):
         (/*/system-implementation/system-inventory/inventory-item/prop[@name='scan-type'][string()='database'])[1]/../prop[@name='fqdn']
     (SSP) Host name of the first database in SSP (component approach) [xPath 2.0+ only]:
-        (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='https://fedramp.gov/ns/oscal']='database']/@id return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-id=$key]/prop[@name='fqdn'])[1]
+        (let $key:=/*/system-implementation/component[prop [@name='scan-type'] [@ns='http://fedramp.gov/ns/oscal']='database']/@id return /*/system-implementation/system-inventory/inventory-item [implemented-component/@component-id=$key]/prop[@name='fqdn'])[1]
 
 {{</ highlight >}}
 
@@ -469,7 +469,7 @@ generic roles locally in the SAP local-definitions assembly.
     <!-- add user assembly for each role to be assessed -->
     <user uuid=”uuid-value”>
         <title>Assessor Specified Role</title>
-        <prop name=”sensitivity” ns=”https://fedramp.gov/ns/oscal” value=”limited” />
+        <prop name=”sensitivity” ns=”http://fedramp.gov/ns/oscal” value=”limited” />
         <prop name=”type” value=”external”/>
         <prop name=”privilege-level” value=”no-logical-access” />
         <role-id>id-for-assessor-specified-role</role-id>
@@ -510,22 +510,22 @@ assessor to add a test user ID here via FedRAMP extension properties.
         <title>Role-Based Tests</title>
         <task uuid="test1-uuid" type="action">
             <title>Role Based Test #1</title>
-            <prop name="test-type" ns="https://fedramp.gov/ns/oscal" 
+            <prop name="test-type" ns="http://fedramp.gov/ns/oscal" 
                     value="role-based"/>
-            <prop name="login-id" ns="https://fedramp.gov/ns/oscal" 
+            <prop name="login-id" ns="http://fedramp.gov/ns/oscal" 
                     value="test-user"/>
             <!-- uuid from SSP or SAP lcocal-definitions -->
-            <prop name="user-uuid" ns="https://fedramp.gov/ns/oscal"
+            <prop name="user-uuid" ns="http://fedramp.gov/ns/oscal"
                     value="user-uuid-value"/>
             <associated-activity activity-uuid="uuid-of-role-testing-activity" />
         </task>
         <task uuid="test2-uuid" type="action">
             <title>Role Based Test #2</title>
-            <prop name="test-type" ns="https://fedramp.gov/ns/oscal" 
+            <prop name="test-type" ns="http://fedramp.gov/ns/oscal" 
                     value="role-based"/>
-            <prop name="login-id" ns="https://fedramp.gov/ns/oscal" value="test-admin"/>
+            <prop name="login-id" ns="http://fedramp.gov/ns/oscal" value="test-admin"/>
             <!-- uuid from SSP or SAP lcocal-definitions -->
-            <prop name="user-uuid" ns="https://fedramp.gov/ns/oscal"
+            <prop name="user-uuid" ns="http://fedramp.gov/ns/oscal"
                     value="user-uuid-value"/>
             <associated-activity activity-uuid="uuid-of-role-testing-activity" />
         </task>
@@ -603,7 +603,7 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
 ---
 ### SAP Methodology
 
-In general, the methodology is simply a single markup multiline field, which enables the assessor to modify the content using rich text formatting. The FedRAMP SAP template includes subsections for *Control Testing, Data Gathering, Sampling,* and *Penetration Test*. Each of these sections must be present in the FedRAMP OSCAL SAP terms-and-condition assembly as subparts within a part named "methodology". The subparts are specifically defined for FedRAMP SAP, so they have namespace "https://fedramp.gov/ns/oscal" and attributes named "control-testing", "data-gathering", "sampling", and "pen-testing".
+In general, the methodology is simply a single markup multiline field, which enables the assessor to modify the content using rich text formatting. The FedRAMP SAP template includes subsections for *Control Testing, Data Gathering, Sampling,* and *Penetration Test*. Each of these sections must be present in the FedRAMP OSCAL SAP terms-and-condition assembly as subparts within a part named "methodology". The subparts are specifically defined for FedRAMP SAP, so they have namespace "http://fedramp.gov/ns/oscal" and attributes named "control-testing", "data-gathering", "sampling", and "pen-testing".
 
 {{< figure src="/img/sap-figure-10.png" title="FedRAMP SAP template methodology." alt="Screenshot of the FedRAMP SAP template where methodology information is provided." >}}
 
@@ -614,28 +614,28 @@ In general, the methodology is simply a single markup multiline field, which ena
       <part name="methodology">
          <title>Methodology</title>
          <!-- Section 5.1 Control Testing -->
-         <part ns="https://fedramp.gov/ns/oscal" name="control-testing">
+         <part ns="http://fedramp.gov/ns/oscal" name="control-testing">
             <title>Control Testing</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="001"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="001"/>
             <p>[IA Name] will ... </p>
          </part>
          <!-- Section 5.2 Data Gathering -->
-         <part ns="https://fedramp.gov/ns/oscal" name="data-gathering">
+         <part ns="http://fedramp.gov/ns/oscal" name="data-gathering">
             <title>Data Gathering</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="002"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="002"/>
             <p>[IA Name] data gathering activities will ... </p>
          </part>
          <!-- Section 5.3 Sampling -->
-         <part ns="https://fedramp.gov/ns/oscal" name="sampling">  
+         <part ns="http://fedramp.gov/ns/oscal" name="sampling">  
             <title>Sampling</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="003"/>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sampling" value="no"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="003"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sampling" value="no"/>
             <p>The sampling methodology for evidence/artifact gathering, related to controls assessment, is described in Appendix B.</p>
             <p>[IA Name] [will/will not] ... </p>
           </part>
          <!-- Section 5.4 Penetration Test -->
-         <part ns="https://fedramp.gov/ns/oscal" name="pen-testing">
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="004"/>
+         <part ns="http://fedramp.gov/ns/oscal" name="pen-testing">
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="004"/>
             <p>The Penetration Test Plan and Methodology is attached in Appendix C.</p>
          </part>
       </part>      
@@ -657,10 +657,10 @@ assessor for the assessment. The insert elements can be used by tool developers 
          <title>Methodology</title>
 
          <!-- Section 5.3 Sampling -->
-         <part ns="https://fedramp.gov/ns/oscal" name="sampling">  
+         <part ns="http://fedramp.gov/ns/oscal" name="sampling">  
             <title>Sampling</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="003"/>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sampling" value="no"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="003"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sampling" value="no"/>
             <p>The sampling methodology for evidence/artifact gathering, related to controls assessment, is described in Appendix B.</p>
             <p>[IA Name] [will/will not] ... </p>
           </part>
@@ -785,7 +785,7 @@ ID that duplicates one used in the SSP.
         <location-uuid>sap-location-1</location-uuid>
         <url>https://assessor.web.site</url>
         <prop name="iso-iec-17020-identifier" 
-            ns='https://fedramp.gov/ns/oscal'>0000.00</prop>
+            ns='http://fedramp.gov/ns/oscal'>0000.00</prop>
     </party>
     <responsible-party role-id="assessor">
         <party-uuid>uuid-of-assessor</party-uuid>
@@ -803,7 +803,7 @@ ID that duplicates one used in the SSP.
 (SAP) Assessor's Web Site:
     /*/metadata/party[@id=(/*/metadata/responsible-party[@role-id='assessor']/party-uuid)] /org/url
 (SAP) 3PAO's A2LA Certification Number:
-    /*/metadata/party[@id=(/*/metadata/responsible-party[@role-id='assessor']/party-uuid)] /org/prop[@name='iso-iec-17020-identifier'][@ns='https://fedramp.gov/ns/oscal']
+    /*/metadata/party[@id=(/*/metadata/responsible-party[@role-id='assessor']/party-uuid)] /org/prop[@name='iso-iec-17020-identifier'][@ns='http://fedramp.gov/ns/oscal']
 
 {{</ highlight >}}
 
@@ -1047,7 +1047,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 ##### Including Manual Test Methods in the OSCAL SAP Test Plan Section
 
 The FedRAMP OSCAL SAP terms-and-condition assembly should contain a
-part with `ns="https://fedramp.gov/ns/oscal" name="manual-methods-testing"` when needed to facilitate rendering of
+part with `ns="http://fedramp.gov/ns/oscal" name="manual-methods-testing"` when needed to facilitate rendering of
 OSCAL SAP by tools. The insert elements can be used by tool developers
 as insertion points for data items such as test ID, test name, and test
 description if the tool is able to manage them as parameters. The use of
@@ -1057,12 +1057,12 @@ insert within an OSCAL part is described on the [NIST OSCAL Concepts page](https
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
       <!-- Section 6 Test Plan -->
-      <part ns="https://fedramp.gov/ns/oscal" name="test-plan">
+      <part ns="http://fedramp.gov/ns/oscal" name="test-plan">
          <title>Test Plan</title>
          <!-- Section 6.4 Testing performed using manual methods -->
-         <part ns="https://fedramp.gov/ns/oscal" name="manual-methods-testing">
+         <part ns="http://fedramp.gov/ns/oscal" name="manual-methods-testing">
             <title>Testing Performed Using Manual Methods</title>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sort-id" value="004"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sort-id" value="004"/>
             <!-- Table 6-4 Describe what technical tests will be performed through manual methods without the use of automated tools. -->
             <table>
                <tr>
@@ -1087,7 +1087,7 @@ insert within an OSCAL part is described on the [NIST OSCAL Concepts page](https
 ##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Test ID:
-    /assessment-plan/local-definitions[1]/activity[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="label"]/@value
+    /assessment-plan/local-definitions[1]/activity[1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="label"]/@value
 (SAP) Test Name:
     /assessment-plan/local-definitions[1]/activity[1]/title
 (SAP) Description:
@@ -1457,7 +1457,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 (SSP) Name of the first person or organization:
     /*/metadata/party[@id='person-1']/person/person-name
 (SSP) Role/Title of the first person:
-    /*/metadata/party[@id='person-1']/person/prop[@name='title'] [@ns='https://fedramp.gov/ns/oscal']
+    /*/metadata/party[@id='person-1']/person/prop[@name='title'] [@ns='http://fedramp.gov/ns/oscal']
 (SSP) Phone for the first person or organization:
     /*/metadata/party[@id='person-1']//phone
 (SSP) Email for the first person or organization:
@@ -1657,7 +1657,7 @@ a FedRAMP "type" prop with an allowed value, sampling-methodology.
          <description>
             <p>Embed or reference copies of the sampling methodology for security controls assessment and vulnerability scanning (if applicable).</p>
          </description>
-         <prop ns="https://fedramp.gov/ns/oscal" name="type" 
+         <prop ns="http://fedramp.gov/ns/oscal" name="type" 
                value="sampling-methodology"/>
          <!-- Use rlink and/or base64 -->
          <rlink href="./sampling-methodology-reference-1.pdf" 
@@ -1715,7 +1715,7 @@ penetration-test-plan.
                <tr> . . . </tr>
             </table>
          </description>
-         <prop ns="https://fedramp.gov/ns/oscal" name="type" 
+         <prop ns="http://fedramp.gov/ns/oscal" name="type" 
                value="penetration-test-plan"/>
          <!-- Use rlink and/or base64 -->
          <rlink href="./pen_test_plan.pdf" media-type="application/pdf"/>
@@ -1761,7 +1761,7 @@ significant-change-request.
                <tr> . . . </tr>
             </table>
          </description>
-         <prop ns="https://fedramp.gov/ns/oscal" name="type" 
+         <prop ns="http://fedramp.gov/ns/oscal" name="type" 
                value="significant-change-request"/>
          <!-- Use rlink and/or base64 -->
          <rlink href="./fedramp_scr_form.pdf" media-type="application/pdf"/>

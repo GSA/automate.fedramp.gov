@@ -182,7 +182,7 @@ If the value is a URI fragment, such as **#96445439-6ce1-4e22-beae-aa72cfe173d0*
 <back-matter>
     <resource id="96445439-6ce1-4e22-beae-aa72cfe173d0">
         <title>[System Name] [FIPS-199 Level] SAP</title>
-        <prop name="type" ns="https://fedramp.gov/ns/oscal" value="sap"/>
+        <prop name="type" ns="http://fedramp.gov/ns/oscal" value="sap"/>
         <!-- Only one required. (XML or JSON, rlink or base64) -->
         <rlink media-type="application/xml" href="./CSP_System_SAP.xml" />
         <rlink media-type="application/json" href="./CSP_System_SAP.json" />
@@ -219,7 +219,7 @@ FedRAMP will be implementing a separate set of automated SAR validation rules fo
             <!-- cut -->
       </revisions>
       <!-- New rev 5 prop -->
-      <prop ns="https://fedramp.gov/ns/oscal" name="resolution-resource"
+      <prop ns="http://fedramp.gov/ns/oscal" name="resolution-resource"
          value="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41" />
    </metadata>
    <!-- cut -->

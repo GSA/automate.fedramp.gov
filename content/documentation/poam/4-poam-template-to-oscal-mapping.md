@@ -71,7 +71,7 @@ the title value used in the metadata section.
 <poam-item uuid="6f5fff73-cac6-4da0-a0d9-0f931a5efafa">
     <title>[EXAMPLE]POA&amp;M Item</title>
     <description/>
-    <prop ns="https://fedramp.gov/ns/oscal" name="POAM-ID" value="V-1"/>
+    <prop ns="http://fedramp.gov/ns/oscal" name="POAM-ID" value="V-1"/>
     <related-observation observation-uuid="0aa54106-8a63-4953-ac0d-30ff91f8d4ab" />
     <associated-risk risk-uuid="9cbd98f3-abcb-4948-ad06-14e0bcba742f" />
     <remarks>
@@ -127,7 +127,7 @@ assembly, and exactly one risk assembly.
     <!-- observation -->
     
     <risk uuid="9cbd98f3-abcb-4948-ad06-14e0bcba742f">
-        <prop name="impacted-control-id" ns="https://fedramp.gov/ns/oscal" 
+        <prop name="impacted-control-id" ns="http://fedramp.gov/ns/oscal" 
               value="ac-2" />
         <!-- risk details: likelihood, impact, mitigation, deviation, remediation -->
     </risk>
@@ -137,7 +137,7 @@ assembly, and exactly one risk assembly.
     <poam-item uuid="0be71cd3-f850-47db-836f-14511edbd90e">
         <title>[EXAMPLE]POA&amp;M Item</title>
         <description/>
-        <prop name="POAM-ID" ns="https://fedramp.gov/ns/oscal" value="V-1"/>
+        <prop name="POAM-ID" ns="http://fedramp.gov/ns/oscal" value="V-1"/>
         <related-observation observation-uuid="0aa54106-8a63-4953-ac0d-30ff91f8d4ab" />
         <associated-risk risk-uuid="9cbd98f3-abcb-4948-ad06-14e0bcba742f" />
     </poam-item>
@@ -187,8 +187,8 @@ are present.
     <component uuid="9d194268-a9d1-4c38-839f-9c4aa57bf71e" type="software">
         <title>XYZ Vulnerability Scanning Tool</title>
         <description/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="vendor" value="Vendor Name"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="name" value="Tool Name"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="vendor" value="Vendor Name"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="name" value="Tool Name"/>
         <prop name="version" value="1.2.3"/>
         <status state="operational"/>
     </component>
@@ -263,7 +263,7 @@ See [POA&M - Importing the System Security Plan](/documentation/poam/3-working-w
             <p>A virtual component.</p>
         </description>
         <prop name="asset-type" value="operating-system" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="name" value=" Linux Flavor"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="name" value=" Linux Flavor"/>
         <prop name="version" value="1.2.0" />
         <status state="operational" />
     </component>
@@ -314,7 +314,7 @@ field's system flag value should reflect `http://cve.mitre.org` as the
 system, not the scanner tool.
 
 FedRAMP-required facet fields, such as likelihood and impact, have a
-system flag with a value of `https://fedramp.gov`. FedRAMP-required
+system flag with a value of `http://fedramp.gov/ns/oscal`. FedRAMP-required
 facets must also have a prop with the name flag set to `state` and the
 value flag set to either `initial` or `adjusted`. There must always
 be `initial` facets. If adjusted, there may be `adjusted` facets
@@ -328,7 +328,7 @@ as well.
 The facet fields are designed to allow risk values and identifiers from different frameworks, systems, and tools to co-exist in the same risk assembly. For example, a scanning tool may provide risk values assigned by the tool itself, as well as a CVE identifier, IAVM severity score, and CVSS metrics. If the system is subject to multiple frameworks using different risk score values or risk calculation methods, they may each be expressed in their own characterization assembly.
 
 Common values for the system flag include:
-- FedRAMP: https://fedramp.gov
+- FedRAMP: http://fedramp.gov/ns/oscal
 - USCERT IAVM: https://us-cert.cisa.gov
 - CVE: http://cve.mitre.org
 - CVSS: (v2): http://www.first.org/cvss/v2, 
@@ -355,7 +355,7 @@ Until this matures and clear system values are widely available across the indus
         <p>If no risk statement from tool, set to 'No Risk Statement'.</p>
     </statement>
 
-    <prop ns="https://fedramp.gov/ns/oscal" name="impacted-control-id"
+    <prop ns="http://fedramp.gov/ns/oscal" name="impacted-control-id"
           value="control-id" />
 
     <status>open</status>
@@ -364,9 +364,9 @@ Until this matures and clear system values are widely available across the indus
         <origin>
             <actor type="tool" actor-uuid="9d194268-a9d1-4c38-839f-9c4aa57bf71e">
                 <prop name="vulnerability-id" 
-                    ns="https://fedramp.gov/ns/oscal" value="VulID-001"/>
+                    ns="http://fedramp.gov/ns/oscal" value="VulID-001"/>
                 <prop name="plugin-id"  
-                    ns="https://fedramp.gov/ns/oscal" value="Plugin-ID"/>
+                    ns="http://fedramp.gov/ns/oscal" value="Plugin-ID"/>
             </actor>
         </origin>
         <facet name="iavam-severity" value="high" system="https://us-cert.cisa.gov" />
@@ -381,13 +381,13 @@ Until this matures and clear system values are widely available across the indus
         <origin>
             <actor type="party" uuid-ref="49f73135-efab-4275-9a79-003656ad890" />
         </origin>
-        <facet name="likelihood" value="high" system="https://fedramp.gov">
+        <facet name="likelihood" value="high" system="http://fedramp.gov/ns/oscal">
             <prop name="state" value="initial" />
         </facet>
-        <facet name="impact" value="high" system="https://fedramp.gov">
+        <facet name="impact" value="high" system="http://fedramp.gov/ns/oscal">
             <prop name="state" value="initial" />
         </facet>
-        <facet name="priority" value="1" system="https://fedramp.gov" />
+        <facet name="priority" value="1" system="http://fedramp.gov/ns/oscal" />
     </characterization>
 </risk>
 
@@ -423,8 +423,8 @@ data type](https://pages.nist.gov/metaschema/specification/datatypes/#date).
         <p>This is the tool-provided statement about the identified risk.</p>
         <p>If no risk statement from tool, set to 'No Risk Statement'.</p>
     </statement>
-    <prop name="kev-catalog" ns="https://fedramp.gov/ns/oscal" value="yes"/>
-    <prop name="kev-due-date" ns="https://fedramp.gov/ns/oscal" value="2022-09-30"/>
+    <prop name="kev-catalog" ns="http://fedramp.gov/ns/oscal" value="yes"/>
+    <prop name="kev-due-date" ns="http://fedramp.gov/ns/oscal" value="2022-09-30"/>
     <status>open</status>
     <!-- characterizations -->
 
@@ -627,7 +627,7 @@ the observation assembly must have a type tag of `risk-tracking`.
             <description><p>Description of the result of the vendor check-in.</p>
             </description>
             <start>2023-07-07T00:00:00Z</start>
-            <prop name="vendor-dependency" ns="https://fedramp.gov/ns/oscal" 
+            <prop name="vendor-dependency" ns="http://fedramp.gov/ns/oscal" 
                   value="vendor-check-in" />
         </entry>
         <entry uuid="0b09e341-cf3c-4de7-b728-751c6e88b653">
@@ -698,11 +698,11 @@ value to `approved` and close the risk as described in the [*Risk Closure*](/doc
     <title>Vulnerability Title</title>
     <description><p>Vulnerability description</p></description>
     <statement><p>Risk statement.</p></statement>
-    <prop name="impacted-control-id" ns="https://fedramp.gov/ns/oscal" value="ac-2" />
-    <prop name="vendor-dependency" ns="https://fedramp.gov/ns/oscal" value="tracking" />
-    <prop name="operational-requirement" ns="https://fedramp.gov/ns/oscal" value="approved" />
-    <prop name="false-positive" ns="https://fedramp.gov/ns/oscal" value="approved" />
-    <prop name="risk-adjustment" ns="https://fedramp.gov/ns/oscal" value="withdrawn" />
+    <prop name="impacted-control-id" ns="http://fedramp.gov/ns/oscal" value="ac-2" />
+    <prop name="vendor-dependency" ns="http://fedramp.gov/ns/oscal" value="tracking" />
+    <prop name="operational-requirement" ns="http://fedramp.gov/ns/oscal" value="approved" />
+    <prop name="false-positive" ns="http://fedramp.gov/ns/oscal" value="approved" />
+    <prop name="risk-adjustment" ns="http://fedramp.gov/ns/oscal" value="withdrawn" />
     <status>open</status>
 </risk>
 
@@ -761,8 +761,8 @@ related-observation entries in the poam-item assembly.
     <title>Vulnerability Title</title>
     <description><p>Vulnerability description</p></description>
     <statement><p>Risk statement.</p></statement>
-    <prop name="impacted-control-id" ns="https://fedramp.gov/ns/oscal" value="ac-2" />
-    <prop name="operational-requirement" ns="https://fedramp.gov/ns/oscal" value="approved" />
+    <prop name="impacted-control-id" ns="http://fedramp.gov/ns/oscal" value="ac-2" />
+    <prop name="operational-requirement" ns="http://fedramp.gov/ns/oscal" value="approved" />
     <status>open</status>
 </risk>
 
@@ -813,10 +813,10 @@ Both initial and residual risk values are calculated based on likelihood and imp
 Every POA&M entry must have initial `likelihood` and `impact` values:
 
 {{< highlight xml "linenos=table" >}}
-<facet name="likelihood" value="high" system="https://fedramp.gov">
+<facet name="likelihood" value="high" system="http://fedramp.gov/ns/oscal">
   <prop name="state" value="initial" />
 </facet>
-<facet name="impact" value="high" system="https://fedramp.gov">
+<facet name="impact" value="high" system="http://fedramp.gov/ns/oscal">
   <prop name="state" value="initial" />
 </facet>
 {{</ highlight >}}
@@ -824,7 +824,7 @@ Every POA&M entry must have initial `likelihood` and `impact` values:
 When justifying a risk adjustment, either the likelihood or impact may be lowered. It is possible to justify lowering both. Even if just one value is lowered, both residual risk values must be present:
 
 {{< highlight xml "linenos=table" >}}
-<facet name="likelihood" value="low" system="https://fedramp.gov">
+<facet name="likelihood" value="low" system="http://fedramp.gov/ns/oscal">
   <prop name="state" value="adjusted" />
 </facet>
 {{</ highlight >}}
@@ -849,22 +849,22 @@ Add an entry to the risk log when investigating, for the completion of each miti
     <collected>2023-10-10T00:00:00Z</collected>
 </observation>
 <risk uuid="ae628cc5-b64c-4030-af30-57e6b24a6ae7">
-    <prop name="risk-adjustment" ns="https://fedramp.gov/ns/oscal" value="approved" />
+    <prop name="risk-adjustment" ns="http://fedramp.gov/ns/oscal" value="approved" />
     <characterization>
-        <facet name="likelihood" value="high" system="https://fedramp.gov">
+        <facet name="likelihood" value="high" system="http://fedramp.gov/ns/oscal">
             <prop name="state" value="initial" />
         </facet>
-        <facet name="impact" value="high" system="https://fedramp.gov">
+        <facet name="impact" value="high" system="http://fedramp.gov/ns/oscal">
             <prop name="state" value="initial" />
         </facet>
-        <facet name="likelihood" value="moderate" system="https://fedramp.gov">
+        <facet name="likelihood" value="moderate" system="http://fedramp.gov/ns/oscal">
             <prop name="state" value="adjusted">
                 <remarks>
                     <p>Explain why likelihood was adjusted.</p>
                 </remarks>
             </prop>
         </facet>        
-        <facet name="impact" value="low" system="https://fedramp.gov">
+        <facet name="impact" value="low" system="http://fedramp.gov/ns/oscal">
             <prop name="state" value="adjusted">
                 <remarks>
                     <p>Explain why impact was adjusted.</p>
@@ -936,8 +936,8 @@ If the Vendor Dependent Product Name is not already defined as an individual com
     <title>Vulnerability Title</title>
     <description><p>Vulnerability description</p></description>
     <statement><p>Risk statement.</p></statement>
-    <prop name="impacted-control-id" ns="https://fedramp.gov/ns/oscal" value="ac-2" />
-    <prop name="vendor-dependency" ns="https://fedramp.gov/ns/oscal" value="tracking" />
+    <prop name="impacted-control-id" ns="http://fedramp.gov/ns/oscal" value="ac-2" />
+    <prop name="vendor-dependency" ns="http://fedramp.gov/ns/oscal" value="tracking" />
     <status>open</status>
 </risk>
 
@@ -993,8 +993,8 @@ link suitable for delivery to FedRAMP.
 <back-matter>
     <resource uuid="f32b7ab1-baf1-451a-b3a1-1dfdadbe8dc7">
         <title>[EXAMPLE]AC Policy</title>
-        <prop name="type" ns="https://fedramp.gov/ns/oscal" value="evidence" />
-        <prop name="type" ns="https://fedramp.gov/ns/oscal" value="policy" />
+        <prop name="type" ns="http://fedramp.gov/ns/oscal" value="evidence" />
+        <prop name="type" ns="http://fedramp.gov/ns/oscal" value="policy" />
         <prop name="version">2.1</prop>
         <prop name="publication">2018-11-11T00:00:00Z</prop>
         <rlink media-type="application/pdf" href="./artifacts/AC_Policy.pdf"></rlink>
@@ -1003,7 +1003,7 @@ link suitable for delivery to FedRAMP.
   
     <resource uuid="53af7193-b25d-4ed2-a82f-5954d2d0df61">
         <title>[EXAMPLE]Screen Shot</title>
-        <prop name="type" ns="https://fedramp.gov/ns/oscal" value="evidence" />
+        <prop name="type" ns="http://fedramp.gov/ns/oscal" value="evidence" />
         <rlink media-type="image/jpeg" href="./evidence/screen-shot.jpg"></rlink>
         <base64 media-type="image/jpeg" filename="screen-shot.jpg">00000000</base64>
     </resource>

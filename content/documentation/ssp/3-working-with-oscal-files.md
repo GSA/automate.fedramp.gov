@@ -129,7 +129,7 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
           </revision>
         </revisions>
         <!-- New rev 5 prop -->
-        <prop ns="https://fedramp.gov/ns/oscal" name="resolution-resource"
+        <prop ns="http://fedramp.gov/ns/oscal" name="resolution-resource"
           value="ace2963d-ecb4-4be5-bdd0-1f6fd7610f41" />
     </metadata>
     <!-- cut -->

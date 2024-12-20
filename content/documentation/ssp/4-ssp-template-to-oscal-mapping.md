@@ -68,7 +68,7 @@ system-characteristics assembly.
 
 The FedRAMP-assigned application number is the unique ID for a FedRAMP system. OSCAL supports several system identifiers, which may be assigned by different organizations.
 
-For this reason, OSCAL requires the identifier-type flag be present and have a value that uniquely identifies the issuing organization. FedRAMP requires its value to be "https://fedramp.gov" for all FedRAMP-issued application numbers.
+For this reason, OSCAL requires the identifier-type flag be present and have a value that uniquely identifies the issuing organization. FedRAMP requires its value to be "http://fedramp.gov/ns/oscal" for all FedRAMP-issued application numbers.
 
 {{< figure src="/img/ssp-figure-5.png" title="FedRAMP SSP template System Name and Package ID" alt="Screenshot of the system name, and package ID in the FedRAMP SSP template." >}}
 
@@ -88,7 +88,7 @@ This assembly defines the full name of the system and its short name. A FedRAMP 
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>        
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->
@@ -101,7 +101,7 @@ This assembly defines the full name of the system and its short name. A FedRAMP 
 **FedRAMP Allowed Value** 
 
 Required Identifier Type:
-- identifier-type="https://fedramp.gov"
+- identifier-type="http://fedramp.gov/ns/oscal"
 
 {{</callout>}}
 
@@ -112,7 +112,7 @@ Required Identifier Type:
     Information System Abbreviation:
         /*/system-characteristics/system-name-short
     FedRAMP Unique Identifier:
-        /*/system-characteristics/system-id[@identifier-type="https://fedramp.gov"]
+        /*/system-characteristics/system-id[@identifier-type="http://fedramp.gov/ns/oscal"]
 {{</ highlight >}}
 
 ---
@@ -130,7 +130,7 @@ A FedRAMP System Security Plan (SSP) must document in its description of the sys
             <title>System Administrator</title>
             <prop name="type" value="internal"/>
             <prop name="privilege-level" value="read-write"/>
-            <prop ns="https://fedramp.gov/ns/oscal" name="sensitivity" value="high-risk"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="sensitivity" value="high-risk"/>
             <role-id>system-admin</role-id>
         </user>
     </system-implementation>
@@ -175,7 +175,7 @@ Role ID:
     /*/system-implementation/user/role-id
 
 Sensitivity Level:
-    /*/system-implementation/user/prop[@ns='https://fedramp.gov/ns/oscal'][@name="sensitivity"]/@value
+    /*/system-implementation/user/prop[@ns='http://fedramp.gov/ns/oscal'][@name="sensitivity"]/@value
 {{</ highlight >}}
 
 ## Best Practices
@@ -206,7 +206,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- Service Model -->
         <prop name="cloud-service-model" value="saas">
             <remarks>
@@ -267,7 +267,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- Service Model -->
         <prop name="cloud-service-model" value="saas">
             <remarks>
@@ -329,7 +329,7 @@ The digital identity level identified in the FedRAMP SSP template document, illu
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
 
@@ -385,7 +385,7 @@ A FedRAMP SSP in OSCAL defines the system's sensitivity level and supporting inf
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
@@ -449,7 +449,7 @@ Each information type has confidentiality, integrity, and availability (CIA) sec
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
@@ -578,7 +578,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
                 <p>Otherwise, it is optional.</p>
             </remarks>
         </status>
-        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="2024-11-05-00:00"/>        
+        <prop ns="http://fedramp.gov/ns/oscal" name="fully-operational-date" value="2024-11-05-00:00"/>        
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
@@ -606,7 +606,7 @@ FedRAMP only accepts those in bold:
     Remarks on System's Operational Status:
         /*/system-characteristics/status/remarks/node()
     Fully Operational As Of Date:
-        /*/system-characteristics/prop[@name="fully-operational-date"][@ns="https://fedramp.gov/ns/oscal"]/@value
+        /*/system-characteristics/prop[@name="fully-operational-date"][@ns="http://fedramp.gov/ns/oscal"]/@value
 {{</ highlight >}}
 
 **NOTE:**
@@ -757,7 +757,7 @@ A `role` with an ID value of "authorizing-official" is required. Use the `respon
 <system-characteristics>
     <!-- description -->
     <prop name="authorization-type" 
-          ns="https://fedramp.gov/ns/oscal" 
+          ns="http://fedramp.gov/ns/oscal" 
           value="fedramp-agency" />
     <!-- prop -->
 </system-characteristics>
@@ -766,7 +766,7 @@ A `role` with an ID value of "authorizing-official" is required. Use the `respon
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
     FedRAMP Authorization Type:
-        /*/system-characteristics/prop[@name="authorization-type"][@ns="https://fedramp.gov/ns/oscal"]/@value
+        /*/system-characteristics/prop[@name="authorization-type"][@ns="http://fedramp.gov/ns/oscal"]/@value
     Authorizing Official:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
 {{</ highlight >}}
@@ -955,11 +955,11 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <title>Name of Underlying System</title>
         <!-- FedRAMP Package ID -->
         <prop name="leveraged-system-identifier" 
-            ns="https://fedramp.gov/ns/oscal" 
+            ns="http://fedramp.gov/ns/oscal" 
             value="F9999999999" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type"
+        <prop ns="http://fedramp.gov/ns/oscal" name="authorization-type"
             value="fedramp-agency"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
         <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
@@ -983,10 +983,10 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <prop name="leveraged-authorization-uuid" 
               value="5a9c98ab-8e5e-433d-a7bd-515c07cd1497"/>
         <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001"/>
-        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="sla"/>
+        <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" value="sla"/>
         <prop name="implementation-point" value="external"/>
         <!-- FedRAMP prop extensions for table 6.1 columns -->
-        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" 
+        <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" 
             value="contract" />
         <prop name="information-type" ns="http://fedramp.gov/ns/oscal" value="C.3.5.4" />
         <status state="operational"/>
@@ -1049,21 +1049,21 @@ FedRAMP defines the following allowed values for an authentication-method's valu
     Description of first leveraged system CSO service (component):
         (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/description)[1]
     Authorization type of first leveraged system:
-        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="authorization-type"]/@value
+        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="authorization-type"]/@value
     FedRAMP package ID# of the first leveraged system:
-        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="leveraged-system-identifier"]/@value
+        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="leveraged-system-identifier"]/@value
     Nature of Agreement for first leveraged system:
-        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="https://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value)[1]
+        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="http://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value)[1]
     FedRAMP impact level of the first leveraged system:
-        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="impact-level"]/@value
+        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="impact-level"]/@value
     Data Types transmitted to, stored or processed by the first leveraged system CSO:
-        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value)
+        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value)
     Authorized Users of the first leveraged system CSO:
         //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]
     Corresponding Access Level:
         //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@name="privilege-level"]/@value
     Corresponding Authentication method:
-        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="authentication-method"]/@value
+        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="authentication-method"]/@value
 {{</ highlight >}}
 
 <br />
@@ -1083,7 +1083,7 @@ A FedRAMP SSP must identify the users of the system by type, privilege, sensitiv
 <system-implementation>
     <user uuid="system-admin-user-uuid">
         <title>System Administrator</title>
-        <prop name="sensitivity" ns="https://fedramp.gov/ns/oscal" value="limited" />
+        <prop name="sensitivity" ns="http://fedramp.gov/ns/oscal" value="limited" />
         <prop name="type" value="external"/>
         <prop name="privilege-level" value="no-logical-access" />
         <role-id>system-admin-user</role-id>
@@ -1127,7 +1127,7 @@ A FedRAMP SSP must identify the users of the system by type, privilege, sensitiv
 
 **FedRAMP Extension:**
 
-prop (ns=“https://fedramp.gov/ns/oscal")
+prop (ns=“http://fedramp.gov/ns/oscal")
 - name="sensitivity"
 
 **FedRAMP Allowed Values**
@@ -1142,7 +1142,7 @@ prop (ns=“https://fedramp.gov/ns/oscal")
 
 **FedRAMP Extension:**
 
-prop (ns=“https://fedramp.gov/ns/oscal")
+prop (ns=“http://fedramp.gov/ns/oscal")
 - name="authentication-method"
 
 **FedRAMP Allowed Values**
@@ -1160,8 +1160,8 @@ Role: /*/system-implementation/user[1]/title
 Replace "[1]" with "[2]", "[3]", etc.
 Internal or External: /*/system-implementation/user[1]/prop[@name="type"]/@value
 Privileged, Non-Privileged, or No Logical Access: /*/system-implementation/user[1]/prop[@name="privilege-level"]/@value
-Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "https://fedramp.gov/ns/oscal"]/@value
-Authentication method: /*/system-implementation/user[1]/prop[@name="authentication-method"][@ns="https://fedramp.gov/ns/oscal"]/@value
+Sensitivity Level: /*/system-implementation/user[1]/prop[@name="sensitivity"][@ns= "http://fedramp.gov/ns/oscal"]/@value
+Authentication method: /*/system-implementation/user[1]/prop[@name="authentication-method"][@ns="http://fedramp.gov/ns/oscal"]/@value
 Authorized Privileges: /*/system-implementation/user[1]/authorized-privilege/title
 count(/*/system-implementation/user[1]/authorized-privilege)
 Functions Performed: /*/system-implementation/user[1]/authorized-privilege[1]/function-performed[1]
@@ -1187,42 +1187,42 @@ The nature-of-agreement property identifies acceptable agreement types.
         <p>Briefly describe the interconnection details.</p>
     </description>
     <!-- Props for table 7.1 columns -->
-    <prop ns="https://fedramp.gov/ns/oscal" name="service-processor" 
+    <prop ns="http://fedramp.gov/ns/oscal" name="service-processor" 
             value="[SAMPLE] Telco Name"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-type" value="1" />
+        <prop ns="http://fedramp.gov/ns/oscal" name="interconnection-type" value="1" />
         <prop name="direction" value="incoming"/>
         <prop name="direction" value="outgoing"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="nature-of-agreement" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="nature-of-agreement" 
             value="contract" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="still-supported" value="yes" />
-        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="still-supported" value="yes" />
+        <prop ns="http://fedramp.gov/ns/oscal" class="fedramp" 
             name="interconnection-data-type" value="C.3.5.1" />
-        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+        <prop ns="http://fedramp.gov/ns/oscal" class="fedramp" 
             name="interconnection-data-type" value="C.3.5.8" /> 
-        <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.1" 
+        <prop ns="http://fedramp.gov/ns/oscal" class="C.3.5.1" 
             name="interconnection-data-categorization" value="low" />
-        <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.8" 
+        <prop ns="http://fedramp.gov/ns/oscal" class="C.3.5.8" 
             name="interconnection-data-categorization" value="moderate" /> 
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorized-users" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="authorized-users" 
             value="SecOps engineers" />
-        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+        <prop ns="http://fedramp.gov/ns/oscal" class="fedramp" 
             name="interconnection-compliance" value="PCI SOC 2" />
-        <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" 
+        <prop ns="http://fedramp.gov/ns/oscal" class="fedramp" 
             name="interconnection-compliance" value="ISO/IEC 27001" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-hosting-environment" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="interconnection-hosting-environment" 
             value="PaaS" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-risk" value="None" />
+        <prop ns="http://fedramp.gov/ns/oscal" name="interconnection-risk" value="None" />
         <prop name="isa-title" value="system interconnection agreement"/>
         <prop name="isa-date" value="2023-01-01T00:00:00Z"/>
         <prop name="ipv4-address" class="local" value="10.1.1.1"/>
         <prop name="ipv4-address" class="remote" value="10.2.2.2"/>
         <prop name="ipv6-address" value="::ffff:10.2.2.2"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="information" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="information" 
             value="Describe the information being transmitted."/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="connection-security" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
+        <prop ns="http://fedramp.gov/ns/oscal" name="connection-security" 
             value="ipsec">
-        <prop name="nature-of-agreement" ns="https://fedramp.gov/ns/oscal" value="isa"/>
+        <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" value="isa"/>
                 <!-- cut ports, protocols -->
     <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
     <!-- cut repeat responsible-party assembly for each required ICA role id -->
@@ -1265,31 +1265,31 @@ Refer to the XPath queries below and corresponding notes for guidance on what ta
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
     Interconnection # for first external system:
-        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-type"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-type"]/@value
     System/Service/API/CLI Name:
         /*/system-implementation/component[@type='interconnection']/title
     Connection Details:
         /*/system-implementation/component[@type='interconnection'][1]/prop[@name="direction"]/@value
     Nature of Agreement for first external system:
-        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="http://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value
     Still Supported (Y/N):
-        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="still-supported"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="http://fedramp.gov/ns/oscal" and @name="still-supported"]/@value
     Data Types:
-        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value
     Data Categorization:
-        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-categorization"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-data-categorization"]/@value
     Authorized Users:
         //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]
     Corresponding Access Level:
         //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop @name="privilege-level"]/@value
     Other Compliance Programs:
-        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-compliance"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-compliance"]/@value
     Description:
         /*/system-implementation/component[@type='interconnection'][1]/description
     Hosting Environment: 
-        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-hosting-environment"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-hosting-environment"]/@value
     Risk/Impact/Mitigation: 
-        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-risk"]/@value
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="http://fedramp.gov/ns/oscal" and @name="interconnection-risk"]/@value
 {{</ highlight >}}
 
 <br />
@@ -1595,11 +1595,11 @@ a URI fragment. The fragment must start with a hashtag (#) and include the UUID 
     <component uuid="uuid-value" type="validation">
         <title>Module Name</title>
         <description><p>FIPS 140-2 Validated Module</p></description>
-        <prop ns="https://fedramp.gov/ns/oscal" name="asset-type" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="asset-type" 
               value="cryptographic-module" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
               value="data-in-transit"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
@@ -1639,11 +1639,11 @@ The approach is the same as in the [*cryptographic module data-in-transit*](#cry
     <component uuid="uuid-value" type="validation">
         <title>Module Name</title>
         <description><p>FIPS 140-2 Validated Module</p></description>
-        <prop ns="https://fedramp.gov/ns/oscal" name="asset-type" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="asset-type" 
               value="cryptographic-module" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="vendor-name" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="vendor-name" 
               value="CM Vendor"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
+        <prop ns="http://fedramp.gov/ns/oscal" name="cryptographic-module-usage" 
               value="data-at-rest"/>
         <prop name="validation-type" value="fips-140-2"/>
         <prop name="validation-reference" value="0000"/>
