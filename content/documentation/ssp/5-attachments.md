@@ -56,7 +56,7 @@ The following OSCAL representation of a FedRAMP SSP attachment demonstrates the 
     </resource>
     <resource uuid="uuid-value-2">
         <title>Document Title</title>
-        <desc>Policy document</desc>
+        <description>Policy document</description>
         <prop name="type" ns="http://fedramp.gov/ns/oscal" value="policy"/>
         <!--For this resource, a property of "last-accessed" is defined, with a value of a datetime with a timezone in RFC3339's "full-date" format-->
         <prop name="last-accessed" ns="http://fedramp.gov/ns/oscal" value="2024-12-23T14:30:00-05:00"/>
