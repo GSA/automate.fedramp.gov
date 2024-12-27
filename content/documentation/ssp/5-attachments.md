@@ -46,7 +46,7 @@ The following OSCAL representation of a FedRAMP SSP attachment demonstrates the 
 <back-matter>
     <resource uuid="uuid-value-1">
         <title>Document Title</title>
-        <desc>Policy document</desc>
+        <description>Policy document</description>
         <prop name="type" ns="http://fedramp.gov/ns/oscal" value="policy"/>
         <!--For this resource, a property of published is used to define the published date-->
         <prop name="published" ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
