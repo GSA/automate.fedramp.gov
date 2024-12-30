@@ -38,22 +38,32 @@ is handled:
 
 ---
 ### Attachments
-The following OSCAL representation of a FedRAMP SSP attachment demonstrates the `back-matter` and `resource` approach that must be implemented for classic SSP attachments that are not machine-readable, such as policies, procedures, plans, guidance, and rules of behavior documents.
+The following OSCAL representation of a FedRAMP SSP attachment demonstrates the `back-matter` and `resource` approach that must be implemented for classic SSP attachments that are not machine-readable, such as policies, procedures, plans, guidance, and rules of behavior documents. For each attachment, an SSP should provide a publication date where possible. However, in some cases, a back matter attachment may not have a specific publication date. In that case, an SSP may define a last accessed property with a value of a datetime with a timezone that represents when that resource was last viewed or referenced, with a value that conforms with RFC3339's "full-date" format. 
 
 ##### Attachment Representation
 {{< highlight xml "linenos=table" >}}
 <!-- cut -->
 <back-matter>
-    <resource uuid="uuid-value">
+    <resource uuid="uuid-value-1">
         <title>Document Title</title>
-        <desc>Policy document</desc>
+        <description>Policy document</description>
         <prop name="type" ns="http://fedramp.gov/ns/oscal" value="policy"/>
-        <prop name="publication" ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
+        <!--For this resource, a property of published is used to define the published date-->
+        <prop name="published" ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
         <prop name="version" ns="http://fedramp.gov/ns/oscal" value="1.2"/>
         <!-- Add rlink with relative path or embed with base64 encoding -->
         <base64>00000000</base64>
     </resource>
-    <resource uuid="uuid-value" />
+    <resource uuid="uuid-value-2">
+        <title>Document Title</title>
+        <description>Policy document</description>
+        <prop name="type" ns="http://fedramp.gov/ns/oscal" value="policy"/>
+        <!--For this resource, a property of "last-accessed" is defined, with a value of a datetime with a timezone in RFC3339's "full-date" format-->
+        <prop name="last-accessed" ns="http://fedramp.gov/ns/oscal" value="2024-12-23T14:30:00-05:00"/>
+        <prop name="version" ns="http://fedramp.gov/ns/oscal" value="1.2"/>
+        <!-- Add rlink with relative path or embed with base64 encoding -->
+        <base64>00000000</base64>
+    </resource>
     <!-- cut: policies 3 - 13 -->
     <resource uuid="uuid-value" />
     <resource uuid="uuid-value" />
