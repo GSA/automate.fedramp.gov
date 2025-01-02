@@ -1171,9 +1171,11 @@ count(/*/system-implementation/user[1]/authorized-privilege[1]/function-performe
 
 ## External Systems and Services Not Having FedRAMP Authorization
 
-FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in the OSCAL representation below.
+FedRAMP authorized services should be used, whenever possible, since their risk is defined.  However, there are instances where CSOs have external systems or services that are not FedRAMP authorized.  In OSCAL, these external systems and services must be identified using `component` assemblies with additional FedRAMP namespace and class properties as shown in example 1 of the OSCAL representation below.
 
 For components that describe external systems and services that are not FedRAMP-authorized and not part of a leveraged authorization, the component must identify the kind of connection security in use to protect data in transit (for example, IPSec VPN).
+
+Additionally, container images or operating system virtual machines used by the CSO must be identified with FedRAMP and class properties as shown in example 2 of the OSCAL representation below, including a property with a name of `checksum` and a string value of the checksum of the image used.
 
 The nature-of-agreement property identifies acceptable agreement types.
 
@@ -1182,6 +1184,7 @@ The nature-of-agreement property identifies acceptable agreement types.
 #### OSCAL Representation
 {{< highlight xml "linenos=table" >}}
 <!-- list any external connections as components in the system-characteristics -->
+<!-- Example 1, external service -->
 <component uuid="uuid-value" type="service">
     <title>[EXAMPLE]External System / Service Name</title>
     <description>
@@ -1229,6 +1232,29 @@ The nature-of-agreement property identifies acceptable agreement types.
                 <!-- cut ports, protocols -->
     <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
     <!-- cut repeat responsible-party assembly for each required ICA role id -->
+</component>
+<!-- Example 2, a container image -->
+<component uuid="11111111-2222-4000-8000-009000309803" type="software">
+      <title>Official container image for Debian Stable</title>
+      <description>
+        <p>FUNCTION: This container image is the base operating system used in the example. A notional CSP, like Awesome Cloud, would update and customize this image for business, reliability, and security needs.</p>
+      </description>
+      <prop name="asset-type" value="image"/>
+      <prop name="checksum" ns="http://fedramp.gov/ns/oscal" value="504931a74cb58330cafb9f59f5e553af3cc63af205dc955f7f80dc981276def0"/>
+      <prop ns="http://fedramp.gov/ns/oscal" name="scan-type" value="infrastructure"/>
+      <prop name="vendor-name" value="Software in the Public Interest"/>
+      <prop name="model" value="stable-slim"/>
+      <prop name="version" value="11"/>
+      <prop name="patch-level" value="Patch Level"/>
+      <link rel="validation" href="#11111111-2222-4000-8000-009000000002"/>
+      <link href="https://hub.docker.com/layers/library/debian/stable/images/sha256-e83913597ca9deb9d699316a9a9d806c2a87ed61195ac66ae0a8ac55089a84b9"/>
+      <status state="operational"/>
+      <responsible-role role-id="admin-unix">
+        <party-uuid>11111111-2222-4000-8000-004000000010</party-uuid>
+      </responsible-role>
+      <remarks>
+        <p>This example container image is for a non-commercial, community-maintained Linux distribution as a non-normative example with a currently valid checksum. See a link above to the example image metadata and technical details from its officially published location on the Docker Hub registry.</p>
+      </remarks>
 </component>
 <!-- cut …. -->
 <back-matter>
