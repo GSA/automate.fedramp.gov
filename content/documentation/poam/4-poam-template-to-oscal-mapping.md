@@ -20,7 +20,58 @@ includes:
 
 ### Representing the POA&M
 
-This is based on the Excel-based [FedRAMP POA&M Template.](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsx)
+The POA&M can be represented in two formats:
+
+#### Legacy Excel Format
+
+The legacy format uses the Excel-based [FedRAMP POA&M Template](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsx). When using this format in OSCAL, reference it in a resource assembly, not that this is not the preffered format, and upgrading to oscal content is advised:
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <!-- document date -->
+    <prop name="version" value="Document Version"/>
+    <prop ns="http://fedramp.gov/ns/oscal" name="type" value="fedramp-poam"/>
+    <rlink href="https://www.fedramp.gov/assets/resources/templates/SSP-A12-FedRAMP-Laws-and-Regulations-Template.xlsx" media-type="application/vnd.ms-excel"/>
+</resource>
+```
+
+#### OSCAL POA&M Format 
+
+The OSCAL POA&M format represents the POA&M data natively in OSCAL XML. When using this format, include both the OSCAL XML rlink file reference. base64-encoded content is currently not supportted.
+
+```xml
+<resource uuid="11111111-2222-4000-8000-001000000048">
+    <title>Plan of Actions and Milestones (POAM)</title>
+    <prop name="published" value="2023-05-31T00:00:00Z"/>
+    <!-- document date -->
+    <prop name="version" value="Document Version"/>
+    <prop ns="http://fedramp.gov/ns/oscal" name="type" value="fedramp-poam"/>
+    <rlink media-type="application/xml;oscal-model=poam" href="fedramp-poam-example.oscal.xml"/>
+    <base64 filename="SAMPLE_POAM_20230531.xml" media-type="application/xml">00000000</base64>
+</resource>
+```
+
+#### Network Component Links
+
+When network components need to reference specific POA&M items, use a link element with a resource-fragment that points to the POA&M item's UUID:
+
+```xml
+<link href='#11111111-2222-4000-8000-001000000048' rel='poam-item' resource-fragment="b953b9fc-7e7e-410d-989b-c065d0a458d3"/>
+```
+
+This links to a POA&M item defined as:
+
+```xml
+<poam-item uuid="b953b9fc-7e7e-410d-989b-c065d0a458d3">
+    <title>example poam item</title>
+    <description>
+        <p>poam item description</p>
+    </description>
+    <associated-risk risk-uuid="485cfb95-20c7-45b0-991c-3f86a8e0cbd4" />
+</poam-item>
+```
 
 Content that is common across OSCAL file types is described in the
 *[FedRAMP OSCAL Documentation](/documentation).*
