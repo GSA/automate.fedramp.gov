@@ -24,7 +24,7 @@ The POA&M can be represented in two formats:
 
 #### Legacy Excel Format
 
-The legacy format uses the Excel-based [FedRAMP POA&M Template](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsx). When using this format in OSCAL, reference it in a resource assembly, not that this is not the preffered format, and upgrading to oscal content is advised:
+The legacy format uses the Excel-based [FedRAMP POA&M Template](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsx). When using this format in OSCAL, reference it in a resource assembly. Please note that this is not the preferred format, and upgrading to OSCAL content is advised:
 
 ```xml
 <resource uuid="11111111-2222-4000-8000-001000000048">
