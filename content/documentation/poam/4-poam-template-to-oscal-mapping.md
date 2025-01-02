@@ -37,7 +37,7 @@ The legacy format uses the Excel-based [FedRAMP POA&M Template](https://www.fedr
 </resource>
 ```
 
-#### OSCAL POA&M Format 
+#### OSCAL POA&M Format (Preferred)
 
 The OSCAL POA&M format represents the POA&M data natively in OSCAL XML. When using this format, include both the OSCAL XML rlink file reference. base64-encoded content is currently not supportted.
 
