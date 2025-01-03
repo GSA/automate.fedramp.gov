@@ -105,8 +105,9 @@ For example, if the same Linux operating system is used as the platform for all 
 <system-implementation>
     <!-- interconnection -->
     <system-inventory>
-        <inventory-item uuid="uuid-value" asset-id="unique-asset-id">
+        <inventory-item uuid="uuid-value">
             <description><p>Flat-File Example (No implemented-component).</p></description>
+            <prop name="asset-id" value="unique-asset-id"/>
             <prop name="ipv4-address" value="0.0.0.0"/>
             <prop name="ipv6-address" value="0000:0000:0000:0000"/>
             <prop name="virtual" value="no"/>
@@ -189,8 +190,9 @@ asset-administrator is managing a system or an application. Currently, any FedRA
     </component>
     <!-- service, interconnection -->
     <system-inventory>
-        <inventory-item uuid="uuid-value" asset-id="unique-asset-id">
+        <inventory-item uuid="uuid-value">
             <description><p>If needed, describe this instance.</p></description>
+            <prop name="asset-id" value="unique-asset-id"/>
             <prop name="ipv4-address" value="0.0.0.0"/>
             <prop name="public" value="no"/>
             <prop name="fqdn" value="example.com"/>
