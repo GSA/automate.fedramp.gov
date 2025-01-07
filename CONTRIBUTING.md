@@ -1,4 +1,5 @@
-# Welcome!
+docker-compose build
+docker-compose uphugo server -v --debug --minify --bind [ipv4-address] -b http://[ipv4-address]:1313/fedramp-automationhugo server -v --debug --minifyhugo versiongit submodule update --init# Welcome!
 
 We are glad you’re thinking about contributing to the FedRAMP Automation Website project!
 
