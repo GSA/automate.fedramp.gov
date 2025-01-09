@@ -988,7 +988,8 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <!-- FedRAMP prop extensions for table 6.1 columns -->
         <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" 
             value="contract" />
-        <prop name="information-type" ns="http://fedramp.gov/ns/oscal" value="C.3.5.4" />
+        <prop name="information-type" ns="http://fedramp.gov/ns/oscal" class="incoming" value="C.3.5.4"/>
+        <prop name="information-type" ns="http://fedramp.gov/ns/oscal" class="outgoing" value="C.3.5.1"/>
         <status state="operational"/>
         <!-- responsible-role is used to identify roles that represent the "authorized users" in SSP tables 6.1 and 7.1 -->
         <responsible-role role-id="system-admin">
@@ -1223,6 +1224,8 @@ The nature-of-agreement property identifies acceptable agreement types.
         <prop ns="http://fedramp.gov/ns/oscal" name="connection-security" 
             value="ipsec">
         <prop name="nature-of-agreement" ns="http://fedramp.gov/ns/oscal" value="isa"/>
+        <prop name="information-type" ns="http://fedramp.gov/ns/oscal" class="incoming" value="C.3.5.4"/>
+        <prop name="information-type" ns="http://fedramp.gov/ns/oscal" class="outgoing" value="C.3.5.1"/>
                 <!-- cut ports, protocols -->
     <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />                                    
     <!-- cut repeat responsible-party assembly for each required ICA role id -->
