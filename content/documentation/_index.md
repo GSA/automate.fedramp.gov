@@ -24,21 +24,23 @@ It provides guidance and examples intended to guide an organization in the produ
 
 XML and JSON use different terminology. Instead of repeatedly clarifying format-specific terminology, this document uses the following format-agnostic terminology through the document. 
 
-|**TERM**|**XML EQUIVALENT**|**JSON EQUIVALENT**|
-| :- | :- | :- |
-|**Field**|A single element or text value that can hold a value or an attribute|A single object that can hold a value or property|
-|**Flag**|Attribute|Property|
-|**Assembly**|A collection of elements. Typically, a parent node with one or more child nodes.|A collection of objects. Typically, a parent object with one or more child objects.|
+|**OSCAL<br />TERM**|**XML EQUIVALENT**|**JSON EQUIVALENT**|
+| :-: | :- | :- |
+|**Field**|An atomic xml element that can contain a value.<br/>An OSCAL field may have OSCAL Flags (XML attributes) associated with it. | An atomic JSON object that can contain a value.<br /> An OSCAL field may have OSCAL Flags (atomic JSON child objects) associated with it. |
+|**Flag**| An XML Attribute | An atomic JSON child object |
+|**Assembly**|A collection of related XML elements under a parent element.|A collection of related JSON objects under a parent object.|
 
-These terms are used by the National Institute of Standards and Technology (NIST) in the creation of OSCAL syntax.
+These terms are used by the National Institute of Standards and Technology (NIST) in the definition of OSCAL syntax.
 
 Throughout this document, the following words are used to differentiate between requirements, recommendations, and options.
 
 |**TERM**|**MEANING**|
 | :- | :- |
-|**must**|Indicates a required action.|
-|**should**|Indicates an action that is very important and strongly recommended, but is not required.|
-|**may**|Indicates an optional action.|
+|**MUST**|Indicates a required action.|
+|**MUST NOT**|Indicates a prohibited action.|
+|**SHOULD**|Indicates an action that is very important and strongly recommended, but is not required.|
+|**SHOULD NOT**|Indicates an action that carries risks, and avoidance is strongly recommended; however, the action is not strictly prohibited.|
+|**MAY**|Indicates an optional action.|
 
 
 ## XML, JSON and YAML Formats
