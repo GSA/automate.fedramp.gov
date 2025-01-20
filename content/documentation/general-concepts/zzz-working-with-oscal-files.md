@@ -1,7 +1,9 @@
 ---
-title: Overview
-weight: 101
+title: Merge content with general-concepts/oscal-content-overview.md and ssp/overview-general.md
+weight: 999
 ---
+
+
 # FedRAMP OSCAL SSP Overview
 
 This section provides a summary of several important concepts and details that apply to OSCAL-based FedRAMP SSP files.

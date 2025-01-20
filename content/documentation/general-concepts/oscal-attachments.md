@@ -1,9 +1,9 @@
 ---
-title: OSCAL Citations and Attachments
-weight: 130
+title: OSCAL Attachments
+weight: 150
 ---
 
-# Citations and Attachments in OSCAL Files
+# Attachments in OSCAL Content
 
 OSCAL is designed so that all citations and attachments are defined once
 at the end of the file as a `resource`, and then referenced as needed

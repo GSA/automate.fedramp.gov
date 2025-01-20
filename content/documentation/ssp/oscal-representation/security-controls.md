@@ -1,8 +1,8 @@
 ---
 title: Security Controls
-weight: 105
+weight: 340
 ---
-# FedRAMP SSP Security Controls
+# Security Controls
 
 {{< figure src="/img/ssp-figure-30.png" title="SSP Template Security Control" alt="Screenshot of an SSP template security control." >}}
 

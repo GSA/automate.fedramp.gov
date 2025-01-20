@@ -1,6 +1,6 @@
 ---
-title: OSCAL Metadata
-weight: 140
+title: Metaschema Validation
+weight: 125
 ---
 # Working with Roles, Locations, People, and Organizations
 
