@@ -1,6 +1,6 @@
 ---
 title: Profile Resolution
-weight: 140
+weight: 177
 ---
 # Profile Resolution
 

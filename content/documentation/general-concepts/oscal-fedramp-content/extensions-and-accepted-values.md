@@ -1,6 +1,6 @@
 ---
-title: FedRAMP Extensions and Accepted Values
-weight: 150
+title: FedRAMP Extensions and Allowed Values
+weight: 163
 ---
 # FedRAMP Extensions and Accepted Values
 

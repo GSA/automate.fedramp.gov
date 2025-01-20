@@ -1,6 +1,6 @@
 ---
-title: OSCAL Layers of Validation
-weight: 110
+title: Validating OSCAL Content
+weight: 200
 ---
 # Multiple Layers of Validation
 

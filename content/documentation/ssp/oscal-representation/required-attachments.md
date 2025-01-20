@@ -1,8 +1,8 @@
 ---
-title: Appendices & Attachments
-weight: 104
+title: Required Attachments
+weight: 339
 ---
-# FedRAMP OSCAL Appendices & Attachments
+# FedRAMP Appendicies and Required Attachments
 
 Classic FedRAMP attachments include a mix of items. Some lend well to
 machine-readable format, while others do not. Machine-readable content

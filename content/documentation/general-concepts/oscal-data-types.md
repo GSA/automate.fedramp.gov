@@ -1,6 +1,6 @@
 ---
 title: OSCAL Data Types
-weight: 117
+weight: 120
 ---
 # Handling of OSCAL Data Types
 

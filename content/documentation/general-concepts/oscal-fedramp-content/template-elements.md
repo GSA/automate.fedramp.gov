@@ -1,6 +1,6 @@
 ---
-title: Expressing FedRAMP Template Metadata
-weight: 124
+title: Common FedRAMP Template Elements
+weight: 167
 ---
 # Expressing FedRAMP Template Metadata in OSCAL
 

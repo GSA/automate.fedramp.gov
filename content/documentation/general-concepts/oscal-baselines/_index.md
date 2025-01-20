@@ -1,6 +1,6 @@
 ---
-title: OSCAL-based FedRAMP Baselines
-weight: 135
+title: OSCAL Baselines
+weight: 170
 ---
 # OSCAL-Based FedRAMP Baselines
 
