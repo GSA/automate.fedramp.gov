@@ -1,6 +1,6 @@
 ---
 title: Generated Content
-weight: 330
+weight: 340
 ---
 # Generating Content from OSCAL-based SSP
 
@@ -64,7 +64,6 @@ The following is an example of a defined component.
     </component>
     
 </system-implementation>
-
 {{</ highlight >}}
 
 #### Common Additional Components
