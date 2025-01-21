@@ -62,6 +62,9 @@ jobs:
         # - ajv-formats
         # - markdown-link-check
         # - yaml-convert
+        npx oscal@latest use latest
+        npx oscal-cli metaschema convert --to=JSON -m=https://raw.githubusercontent.com/usnistgov/OSCAL/refs/heads/main/src/metaschema/oscal_complete_metaschema.xml https://raw.githubusercontent.com/GSA/fedramp-automation/refs/heads/develop/src/validations/constraints/fedramp-external-constraints.xml fedramp_external_constraints.json --overwrite
+        npx oscal-cli metaschema convert --to=JSON -m=https://raw.githubusercontent.com/usnistgov/OSCAL/refs/heads/main/src/metaschema/oscal_complete_metaschema.xml https://raw.githubusercontent.com/GSA/fedramp-automation/refs/heads/develop/src/validations/constraints/fedramp-external-allowed-values.xml fedramp_allowed_values.json --overwrite
         npm install --loglevel verbose
         echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
         # Dart-Sass

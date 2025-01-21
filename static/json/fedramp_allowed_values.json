@@ -1,0 +1,1217 @@
+{
+  "metaschema-meta-constraints" : {
+    "contexts" : [ {
+      "metapaths" : [ {
+        "target" : "/catalog"
+      }, {
+        "target" : "/profile"
+      }, {
+        "target" : "/component-definition"
+      }, {
+        "target" : "/system-security-plan"
+      }, {
+        "target" : "/assessment-plan"
+      }, {
+        "target" : "/assessment-results"
+      }, {
+        "target" : "/plan-of-action-and-milestones"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "allowed-values",
+          "target" : "metadata/party/address/@type",
+          "enums" : [ {
+            "value" : "work",
+            "remark" : "Work"
+          } ],
+          "remarks" : {
+            "remark" : "FedRAMP requires work addresses."
+          },
+          "description" : "The type of address for the party",
+          "formal-name" : "Address Type",
+          "id" : "address-type"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "back-matter/resource/prop[@name='type'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "law",
+            "remark" : "Law or Statute"
+          }, {
+            "value" : "regulation",
+            "remark" : "Regulation or Directive"
+          }, {
+            "value" : "standard",
+            "remark" : "Industry Standard"
+          }, {
+            "value" : "guidance",
+            "remark" : "Guidance"
+          }, {
+            "value" : "policy",
+            "remark" : "Policy"
+          }, {
+            "value" : "procedure",
+            "remark" : "Procedure"
+          }, {
+            "value" : "guide",
+            "remark" : "Guidance Document"
+          }, {
+            "value" : "rules-of-behavior",
+            "remark" : "Rules of Behavior"
+          }, {
+            "value" : "plan",
+            "remark" : "Plan"
+          }, {
+            "value" : "system-security-plan",
+            "remark" : "System Security Plan"
+          }, {
+            "value" : "artifact",
+            "remark" : "Artifact"
+          }, {
+            "value" : "evidence",
+            "remark" : "Evidence"
+          }, {
+            "value" : "screen-shot",
+            "remark" : "Screen Shot"
+          }, {
+            "value" : "image",
+            "remark" : "Image"
+          }, {
+            "value" : "tool-report",
+            "remark" : "Tool Report"
+          }, {
+            "value" : "raw-tool-output",
+            "remark" : "Raw Tool Output"
+          }, {
+            "value" : "interview-notes",
+            "remark" : "Interview Notes"
+          }, {
+            "value" : "questionnaire",
+            "remark" : "Questions"
+          }, {
+            "value" : "report",
+            "remark" : "Report"
+          }, {
+            "value" : "fedramp-citations",
+            "remark" : "FedRAMP Citations"
+          }, {
+            "value" : "fedramp-acronyms",
+            "remark" : "FedRAMP Acronyms"
+          }, {
+            "value" : "fedramp-logo",
+            "remark" : "FedRAMP Logo"
+          }, {
+            "value" : "separation-of-duties-matrix",
+            "remark" : "Separation of Duties Matrix"
+          }, {
+            "value" : "logo",
+            "remark" : "Logo"
+          }, {
+            "value" : "personally-identifiable-information",
+            "remark" : "Personal Identifiable Information (PII)"
+          }, {
+            "value" : "agreement",
+            "remark" : "Agreement"
+          }, {
+            "value" : "isa-agreement",
+            "remark" : "Interconnection Security Agreement"
+          }, {
+            "value" : "incident-response-plan",
+            "remark" : "Incident Response Plan"
+          }, {
+            "value" : "information-security-policies-and-procedures",
+            "remark" : "Incident Security Policies and Procedures"
+          }, {
+            "value" : "users-guide",
+            "remark" : "User Guide"
+          }, {
+            "value" : "privacy-impact-assessment",
+            "remark" : "Privacy Impact Assessment"
+          }, {
+            "value" : "information-system-contingency-plan",
+            "remark" : "Information System Contingency Plan"
+          }, {
+            "value" : "configuration-management-plan",
+            "remark" : "configuration-management-plan"
+          }, {
+            "value" : "fedramp-poam",
+            "remark" : "A Plan of Action and Milestones represented either using the FedRAMP template or FedRAMP-compliant OSCAL."
+          } ],
+          "remarks" : {
+            "remark" : "Not all values apply to all FedRAMP artifacts."
+          },
+          "description" : "Identifies the type of attachment.",
+          "formal-name" : "Attachment Type",
+          "id" : "attachment-type"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-characteristics/prop[@name='authorization-type'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "fedramp-jab",
+            "remark" : "FedRAMP JAB P-ATO"
+          }, {
+            "value" : "fedramp-agency",
+            "remark" : "FedRAMP Agency ATO"
+          }, {
+            "value" : "fedramp-li-saas",
+            "remark" : "FedRAMP Tailored for LI-SaaS"
+          } ],
+          "description" : "The FedRAMP Authorization Type",
+          "formal-name" : "Authorization Type",
+          "id" : "authorization-type"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-characteristics/prop[@name='cloud-service-model']/@value",
+          "enums" : [ {
+            "value" : "iaas",
+            "remark" : "Infrastructure as a Service"
+          }, {
+            "value" : "paas",
+            "remark" : "Platform as a Service"
+          }, {
+            "value" : "saas",
+            "remark" : "Software as a Service"
+          }, {
+            "value" : "other",
+            "remark" : "Other"
+          } ],
+          "description" : "The cloud service model used by the system.",
+          "formal-name" : "Cloud Service Model",
+          "id" : "cloud-service-model"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component/@type",
+          "enums" : [ {
+            "value" : "interconnection",
+            "remark" : "A connection to something outside this system."
+          }, {
+            "value" : "software",
+            "remark" : "Any software, operating system, or firmware."
+          }, {
+            "value" : "hardware",
+            "remark" : "A physical device."
+          }, {
+            "value" : "service",
+            "remark" : "A service that may provide APIs."
+          }, {
+            "value" : "policy",
+            "remark" : "An enforceable policy."
+          }, {
+            "value" : "physical",
+            "remark" : "A tangible asset used to provide physical protections or countermeasures."
+          }, {
+            "value" : "process-procedure",
+            "remark" : "A list of steps or actions to take to achieve some end result."
+          }, {
+            "value" : "plan",
+            "remark" : "An applicable plan."
+          }, {
+            "value" : "guidance",
+            "remark" : "Any guideline or recommendation."
+          }, {
+            "value" : "standard",
+            "remark" : "Any organizational or industry standard."
+          }, {
+            "value" : "validation",
+            "remark" : "An external assessment performed on some other component, that has been validated by a third-party."
+          }, {
+            "value" : "this-system",
+            "remark" : "The system as a whole."
+          }, {
+            "value" : "system",
+            "remark" : "An external system, which may be a leveraged system or the other side of an interconnection."
+          }, {
+            "value" : "network",
+            "remark" : "A physical or virtual network."
+          }, {
+            "value" : "client",
+            "remark" : "A client that may use a service."
+          }, {
+            "value" : "connection",
+            "remark" : "A logical connection between two or more network nodes."
+          } ],
+          "description" : "Identifies the component type.",
+          "formal-name" : "Component Type",
+          "id" : "component-type"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component/prop[@name='connection-security' and @ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "ipsec-ikev1",
+            "remark" : "Internet Protocol Security (IPSec) Internet Key Exchange (IKE) Version 1"
+          }, {
+            "value" : "ipsec-ikev2",
+            "remark" : "Internet Protocol Security (IPSec) Internet Key Exchange (IKE) Version 2"
+          }, {
+            "value" : "ipsec",
+            "remark" : "Internet Protocol Security (IPSec)"
+          }, {
+            "value" : "ssh-1",
+            "remark" : "Secure Shell 1 (SSH-1)"
+          }, {
+            "value" : "ssh-2",
+            "remark" : "Secure Shell 2 (SSH-2)"
+          }, {
+            "value" : "ssl-1.0",
+            "remark" : "Secure Sockets Layer (SSL) 1.0"
+          }, {
+            "value" : "ssl-2.0",
+            "remark" : "Secure Sockets Layer (SSL) 2.0"
+          }, {
+            "value" : "ssl-3.0",
+            "remark" : "Secure Sockets Layer (SSL) 3.0"
+          }, {
+            "value" : "tls-1.0",
+            "remark" : "Transport Layer Security (TLS) Version 1.0"
+          }, {
+            "value" : "tls-1.1",
+            "remark" : "Transport Layer Security (TLS) Version 1.1"
+          }, {
+            "value" : "tls-1.2",
+            "remark" : "Transport Layer Security (TLS) Version 1.2"
+          }, {
+            "value" : "tls-1.3",
+            "remark" : "Transport Layer Security (TLS) Version 1.3"
+          }, {
+            "value" : "vpn",
+            "remark" : "Virtual Private Network (VPN)"
+          } ],
+          "allow-other" : "yes",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#external-systems-and-services-not-having-fedramp-authorization",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "Identifies connection security value.",
+          "formal-name" : "Connection Security",
+          "id" : "connection-security",
+          "level" : "WARNING"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "control-implementation/implemented-requirement/statement/by-component/implementation-status/@state",
+          "enums" : [ {
+            "value" : "implemented",
+            "remark" : "The control is fully implemented."
+          }, {
+            "value" : "partial",
+            "remark" : "The control is partially implemented."
+          }, {
+            "value" : "planned",
+            "remark" : "There is a plan for implementing the control as explained in the remarks."
+          }, {
+            "value" : "alternative",
+            "remark" : "There is an alternative implementation for this control as explained in the remarks."
+          }, {
+            "value" : "not-applicable",
+            "remark" : "This control does not apply to this system as justified in the remarks."
+          } ],
+          "description" : "The implementation status of the control.",
+          "formal-name" : "Control Implementation Status",
+          "id" : "control-implementation-status"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-characteristics/prop[@name='cloud-deployment-model']/@value",
+          "enums" : [ {
+            "value" : "public-cloud",
+            "remark" : "Public Cloud"
+          }, {
+            "value" : "private-cloud",
+            "remark" : "Private Cloud"
+          }, {
+            "value" : "government-only-cloud",
+            "remark" : "U.S. Government Only"
+          }, {
+            "value" : "hybrid-cloud",
+            "remark" : "Hybrid"
+          }, {
+            "value" : "other",
+            "remark" : "Other"
+          } ],
+          "description" : "The cloud deployment model.",
+          "formal-name" : "Deployment Model",
+          "id" : "deployment-model"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component[(@type='service' and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type='service' and prop[@name='implementation-point' and @value='internal'] and prop[@name='direction']) or (@type='software' and prop[@name='asset-type' and @value='cli'] and prop[@name='direction'])]/prop[@name='nature-of-agreement' and @ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "contract",
+            "remark" : "A contract between the CSP and the organization that owns the external system."
+          }, {
+            "value" : "eula",
+            "remark" : "An end-user license agreement between the CSP and the organization that owns the external system."
+          }, {
+            "value" : "isa",
+            "remark" : "An interconnection security agreement between the CSP and the organization that owns the external system."
+          }, {
+            "value" : "license",
+            "remark" : "An application license agreement between the CSP and the organization that owns the external system."
+          }, {
+            "value" : "mou",
+            "remark" : "A memorandum of understanding between the CSP and the organization that owns the external system."
+          }, {
+            "value" : "other",
+            "remark" : "An non-typical agreement between the CSP and the organization that owns the external system. Explain in remarks."
+          }, {
+            "value" : "sla",
+            "remark" : "A service-level agreement between the CSP and the organization that owns the external system."
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#external-systems-and-services-not-having-fedramp-authorization",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "Identifies nature of agreement for external systems.",
+          "formal-name" : "Nature of Agreement for External Systems",
+          "id" : "external-system-nature-of-agreement"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "metadata/prop[@name='fedramp-version'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "fedramp-3.0.0rc1-oscal-1.1.2",
+            "remark" : "FedRAMP Version"
+          } ],
+          "description" : "Identifies the FedRAMP version of the document.",
+          "formal-name" : "FedRAMP Version",
+          "id" : "fedramp-version"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "//component/prop[@name='information-type' and @ns='http://fedramp.gov/ns/oscal']/@class",
+          "enums" : [ {
+            "value" : "incoming",
+            "remark" : "An incoming data flow to the system for this information type"
+          }, {
+            "value" : "outgoing",
+            "remark" : "An outgoing data flow from the system for this information type"
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "The class of an information type property categorizes the direction of the data flow relative to the system described in the SSP.",
+          "formal-name" : "Information Type",
+          "id" : "information-type"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "(system-characteristics/system-information/information-type/categorization[@system='https://doi.org/10.6028/NIST.SP.800-60v2r1']/information-type-id | //component[(@type='system' and prop[@name='leveraged-authorization-uuid']) or (@type=('service', 'software') and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type=('service', 'software') and prop[@name='implementation-point' and @value='internal'] and prop[@name='communicates-externally' and @value='yes' and @ns='http://fedramp.gov/ns/oscal'])]/prop[@ns='http://fedramp.gov/ns/oscal' and @name='information-type']/@value)",
+          "enums" : [ {
+            "value" : "C.2.1.1",
+            "remark" : "Controls and Oversight: Corrective Action Information Type as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.1.2",
+            "remark" : "Controls and Oversight: Program Evaluation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.1.3",
+            "remark" : "Controls and Oversight: Program Monitoring as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.2.1",
+            "remark" : "Regulatory Development: Policy and Guidance Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.2.2",
+            "remark" : "Regulatory Development: Public Comment Tracking as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.2.3",
+            "remark" : "Regulatory Development: Regulatory Creation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.2.4",
+            "remark" : "Regulatory Development: Rule Publication as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.1",
+            "remark" : "Planning and Budgeting: Budget Formulation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.2",
+            "remark" : "Planning and Budget: Capital Planning as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.3",
+            "remark" : "Planning and Budget: Enterprise Architecture as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.4",
+            "remark" : "Planning and Budget: Strategic Planning as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.5",
+            "remark" : "Planning and Budget: Budget Execution as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.6",
+            "remark" : "Planning and Budget: Workforce Planning as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.7",
+            "remark" : "Planning and Budget: Management Improvement as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.8",
+            "remark" : "Planning and Budget: Budget and Performance Integration as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.3.9",
+            "remark" : "Planning and Budget: Tax and Fiscal Policy as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.4.1",
+            "remark" : "Internal Risk Management and Mitigation: Contingency Planning as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.4.2",
+            "remark" : "Internal Risk Management and Mitigation: Continuity of Operations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.4.3",
+            "remark" : "Internal Risk Management and Mitigation: Service Recovery as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.5.1",
+            "remark" : "Revenue Collection: Debt Collection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.5.2",
+            "remark" : "Revenue Collection: User Fee Collection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.5.3",
+            "remark" : "Revenue Collection: Federal Asset Sales as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.6.1",
+            "remark" : "Public Affairs: Customer Services as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.6.2",
+            "remark" : "Public Affairs: Official Information Dissemination as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.6.3",
+            "remark" : "Public Affairs: Product Outreach as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.6.4",
+            "remark" : "Public Affairs: Public Relations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.7.1",
+            "remark" : "Legislative Relations: Legislation Tracking as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.7.2",
+            "remark" : "Legislative Relations: Legislative Testimony as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.7.3",
+            "remark" : "Legislative Relations: Proposal Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.7.4",
+            "remark" : "Legislative Relations: Congressional Liaison Operations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.1",
+            "remark" : "General Government: Central Fiscal Operations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.2",
+            "remark" : "General Government: Legislative Functions as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.3",
+            "remark" : "General Government: Executive Functions as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.4",
+            "remark" : "General Government: Central Property Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.5",
+            "remark" : "General Government: Central Personnel Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.6",
+            "remark" : "General Government: Taxation Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.7",
+            "remark" : "General Government: Central Records and Statistics Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.8",
+            "remark" : "General Government: Income Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.9",
+            "remark" : "General Government: Personal Identity and Authentication Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.10",
+            "remark" : "General Government: Entitlement Event Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.11",
+            "remark" : "General Government: Representative Payee Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.2.8.12",
+            "remark" : "General Government: General Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.1.1",
+            "remark" : "Administrative Management: Facilities, Fleet, and Equipment Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.1.2",
+            "remark" : "Administrative Management: Help Desk Services as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.1.3",
+            "remark" : "Administrative Management: Security Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.1.4",
+            "remark" : "Administrative Management: Travel Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.1.5",
+            "remark" : "Administrative Management: Workplace Policy Development and Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.1",
+            "remark" : "Financial Management: Assets and Liability Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.2",
+            "remark" : "Financial Management: Reporting and Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.3",
+            "remark" : "Financial Management: Funds Control as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.4",
+            "remark" : "Financial Management: Accounting as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.5",
+            "remark" : "Financial Management: Payments as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.6",
+            "remark" : "Financial Management: Collections and Receivables as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.2.7",
+            "remark" : "Financial Management: Cost Accounting; Performance Measurement as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.1",
+            "remark" : "Human Resource Management: HR Strategy as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.2",
+            "remark" : "Human Resource Management: Staff Acquisition as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.3",
+            "remark" : "Human Resource Management: Organization \\& Position Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.4",
+            "remark" : "Human Resource Management: Compensation Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.5",
+            "remark" : "Human Resource Management: Benefits Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.6",
+            "remark" : "Human Resource Management: Employee Performance Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.7",
+            "remark" : "Human Resource Management: Employee Relations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.8",
+            "remark" : "Human Resource Management: Labor Relations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.9",
+            "remark" : "Human Resource Management: Separation Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.3.10",
+            "remark" : "Human Resource Management: Human Resources Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.4.1",
+            "remark" : "Supply Chain Management: Goods Acquisition as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.4.2",
+            "remark" : "Supply Chain Management: Inventory Control as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.4.3",
+            "remark" : "Supply Chain Management: Logistics Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.4.4",
+            "remark" : "Supply Chain Management: Services Acquisition as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.1",
+            "remark" : "Information and Technology Management: System Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.2",
+            "remark" : "Information and Technology Management: Lifecycle/Change Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.3",
+            "remark" : "Information and Technology Management: System Maintenance as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.4",
+            "remark" : "Information and Technology Management: IT Infrastructure Maintenance as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.5",
+            "remark" : "Information and Technology Management: Information Security as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.6",
+            "remark" : "Information and Technology Management: Record Retention as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.7",
+            "remark" : "Information and Technology Management: Information Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.8",
+            "remark" : "Information and Technology Management: System and Network Monitoring as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "C.3.5.9",
+            "remark" : "Information and Technology Management: Information Sharing as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.2.1",
+            "remark" : "Homeland Security: Border and Transportation Security as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.2.2",
+            "remark" : "Homeland Security: Key Asset and Critical Infrastructure Protection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.2.3",
+            "remark" : "Homeland Security: Catastrophic Defense as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.2.4",
+            "remark" : "Homeland Security: Executive Functions of the Executive Office of the President as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.3.1",
+            "remark" : "Intelligence Operations: Domestic Intelligence as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.4.1",
+            "remark" : "Disaster Management: Disaster Monitoring and Prediction as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.4.2",
+            "remark" : "Disaster Management: Disaster Preparedness and Planning as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.4.3",
+            "remark" : "Disaster Management: Disaster Repair and Restoration as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.4.4",
+            "remark" : "Disaster Management: Emergency Response as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.5.1",
+            "remark" : "International Affairs and Commerce: Foreign Affairs as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.5.2",
+            "remark" : "International Affairs and Commerce: International Development and Humanitarian Aid as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.5.3",
+            "remark" : "International Affairs and Commerce: Global Trade as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.6.1",
+            "remark" : "Natural Resources: Water Resource Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.6.2",
+            "remark" : "Natural Resources: Conservation, Marine and Land Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.6.3",
+            "remark" : "Natural Resources: Recreational Resource Management and Tourism as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.6.4",
+            "remark" : "Natural Resources: Agricultural Innovation and Services as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.7.1",
+            "remark" : "Energy: Energy Supply as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.7.2",
+            "remark" : "Energy: Energy Conservation and Preparedness as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.7.3",
+            "remark" : "Energy: Energy Resource Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.7.4",
+            "remark" : "Energy: Energy Production as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.8.1",
+            "remark" : "Environmental Management: Environmental Monitoring and Forecasting as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.8.2",
+            "remark" : "Environmental Management: Environmental Remediation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.9.1",
+            "remark" : "Economic Development: Business and Industry Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.9.2",
+            "remark" : "Economic Development: Intellectual Property Protection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.9.3",
+            "remark" : "Economic Development: Financial Sector Oversight as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.9.4",
+            "remark" : "Economic Development: Industry Sector Income Stabilization as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.10.1",
+            "remark" : "Community and Social Services: Home-ownership Promotion as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.10.2",
+            "remark" : "Community and Social Services: Community and Regional Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.10.3",
+            "remark" : "Community and Social Services: Social Services as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.10.4",
+            "remark" : "Community and Social Services: Postal Services as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.11.1",
+            "remark" : "Transportation: Ground Transportation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.11.2",
+            "remark" : "Transportation: Water Transportation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.11.3",
+            "remark" : "Transportation: Air Transportation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.11.4",
+            "remark" : "Transportation: Space Operations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.12.1",
+            "remark" : "Education: Elementary, Secondary, and Vocational Education as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.12.2",
+            "remark" : "Education: Higher Education as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.12.3",
+            "remark" : "Education: Cultural and Historic Preservation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.12.4",
+            "remark" : "Education: Cultural and Historic Exhibition as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.13.1",
+            "remark" : "Workforce Management: Training and Employment as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.13.2",
+            "remark" : "Workforce Management: Labor Rights Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.13.3",
+            "remark" : "Workforce Management: Worker Safety as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.14.1",
+            "remark" : "Health: Access to Care as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.14.2",
+            "remark" : "Health: Population Health Management and Consumer Safety as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.14.3",
+            "remark" : "Health: Health Care Administration as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.14.4",
+            "remark" : "Health: Health Care Delivery Services as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.14.5",
+            "remark" : "Health: Health Care Research and Practitioner Education as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.15.1",
+            "remark" : "Income Security: General Retirement and Disability as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.15.2",
+            "remark" : "Income Security: Unemployment Compensation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.15.3",
+            "remark" : "Income Security: Housing Assistance as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.15.4",
+            "remark" : "Income Security: Food and Nutrition Assistance as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.15.5",
+            "remark" : "Income Security: Survivor Compensation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.1",
+            "remark" : "Law Enforcement: Criminal Apprehension as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.2",
+            "remark" : "Law Enforcement: Criminal Investigation and Surveillance as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.3",
+            "remark" : "Law Enforcement: Citizen Protection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.4",
+            "remark" : "Law Enforcement: Leadership Protection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.5",
+            "remark" : "Law Enforcement: Property Protection as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.6",
+            "remark" : "Law Enforcement: Substance Control as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.7",
+            "remark" : "Law Enforcement: Crime Prevention as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.16.8",
+            "remark" : "Law Enforcement: Trade Law Enforcement as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.17.1",
+            "remark" : "Litigation and Judicial Activities: Judicial Hearings as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.17.2",
+            "remark" : "Litigation and Judicial Activities: Legal Defense as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.17.3",
+            "remark" : "Litigation and Judicial Activities: Legal Investigation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.17.4",
+            "remark" : "Litigation and Judicial Activities: Legal Prosecution and Litigation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.17.5",
+            "remark" : "Litigation and Judicial Activities: Resolution Facilitation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.18.1",
+            "remark" : "Federal Correctional Activities: Criminal Incarceration as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.18.2",
+            "remark" : "Federal Correctional Activities: Criminal Rehabilitation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.19.1",
+            "remark" : "General Sciences and Innovation: Scientific and Technological Research and Innovation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.19.2",
+            "remark" : "General Science and Innovation: Space Exploration and Innovation as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.20.1",
+            "remark" : "Knowledge Creation and Management: Research and Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.20.2",
+            "remark" : "Knowledge Creation and Management: General Purpose Data and Statistics as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.20.3",
+            "remark" : "Knowledge Creation and Management: Advising and Consulting as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.20.4",
+            "remark" : "Knowledge Creation and Management: Knowledge Dissemination as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.21.1",
+            "remark" : "Regulatory Compliance and Enforcement: Inspections and Auditing as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.21.2",
+            "remark" : "Regulatory Compliance and Enforcement: Standards Setting/Reporting Guideline Development as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.21.3",
+            "remark" : "Regulatory Compliance and Enforcement: Permits and Licensing as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.22.1",
+            "remark" : "Public Goods Creation and Management: Manufacturing as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.22.2",
+            "remark" : "Public Goods Creation and Management: Construction as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.22.3",
+            "remark" : "Public Goods Creation and Management: Public Resources, Facility and Infrastructure Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.22.4",
+            "remark" : "Public Goods Creation and Management: Information Infrastructure Management as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.23.1",
+            "remark" : "Federal Financial Assistance: Federal Grants (Non-State) as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.23.2",
+            "remark" : "Federal Financial Assistance: Direct Transfers to Individuals as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.23.3",
+            "remark" : "Federal Financial Assistance: Subsidies Information as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.23.4",
+            "remark" : "Federal Financial Assistance: Tax Credits as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.24.1",
+            "remark" : "Credit and Insurance: Direct Loans as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.24.2",
+            "remark" : "Credit and Insurance: Loan Guarantees as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.24.3",
+            "remark" : "Credit and Insurance: General Insurance as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.25.1",
+            "remark" : "Transfers to Local;State Government: Formula Grants as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.25.2",
+            "remark" : "Transfers to Local;State Government: Project/Competitive Grants as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.25.3",
+            "remark" : "Transfers to Local;State Governments: Earmarked Grants as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.25.4",
+            "remark" : "Transfers to Local;State Governments: State Loans as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.26.1",
+            "remark" : "Direct Services for Citizens: Military Operations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          }, {
+            "value" : "D.26.2",
+            "remark" : "Direct Services for Citizens: Civilian Operations as defined by [NIST.SP.800-60v2r1](https://doi.org/10.6028/NIST.SP.800-60v2r1)"
+          } ],
+          "description" : "Contains a list of all supported information types from NIST SP 800-60 Volume 2 Revision 1.",
+          "formal-name" : "NIST SP 800-60 Volume 2 Revision 1 Information Types",
+          "id" : "information-type-800-60-v2r1"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-characteristics/system-information/information-type/categorization/@system",
+          "enums" : [ {
+            "value" : "https://doi.org/10.6028/NIST.SP.800-60v2r1",
+            "remark" : "NIST SP 800-60 Volume 2 Revision 1"
+          } ],
+          "description" : "The system used for categorizing information types.",
+          "formal-name" : "Information Type Categorization System",
+          "id" : "information-type-system"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component[@type='interconnection']/prop[@name='interconnection-direction'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "in",
+            "remark" : "Incoming"
+          }, {
+            "value" : "out",
+            "remark" : "Outgoing"
+          }, {
+            "value" : "in/out",
+            "remark" : "Bi-Directional"
+          } ],
+          "description" : "Identifies the direction of information flow for the interconnection.",
+          "formal-name" : "Interconnection Direction",
+          "id" : "interconnection-direction"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component[@type='interconnection']/prop[@name='interconnection-security'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "ipsec",
+            "remark" : "IPsec"
+          }, {
+            "value" : "vpn",
+            "remark" : "Virtual Private Network"
+          }, {
+            "value" : "tls",
+            "remark" : "Transport-Layer Security"
+          }, {
+            "value" : "dtls",
+            "remark" : "Transport-Layer Security"
+          }, {
+            "value" : "certificate",
+            "remark" : "Certificate Authentication Security"
+          }, {
+            "value" : "secure-file-transfer",
+            "remark" : "Secure File Transfer"
+          }, {
+            "value" : "other",
+            "remark" : "Other"
+          } ],
+          "description" : "Identifies the type of security applied to the interconnection.",
+          "formal-name" : "Interconnection Security",
+          "id" : "interconnection-security"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "(//inventory-item | //component)/prop[@name='allows-authenticated-scan']/@value",
+          "enums" : [ {
+            "value" : "yes",
+            "remark" : "Yes"
+          }, {
+            "value" : "no",
+            "remark" : "No"
+          } ],
+          "description" : "Indicates if the asset is capable of having an authenticated scan.",
+          "formal-name" : "Allows Authenticated Scan",
+          "id" : "inventory-item-allows-authenticated-scan"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "(//inventory-item | //component)/prop[@name='public']/@value",
+          "enums" : [ {
+            "value" : "yes",
+            "remark" : "Yes"
+          }, {
+            "value" : "no",
+            "remark" : "No"
+          } ],
+          "description" : "Indicates if the asset is exposed to the public Internet.",
+          "formal-name" : "Public",
+          "id" : "inventory-item-public"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "(//inventory-item/prop[@name='virtual'] | //component/prop[@name='virtual'])/@value",
+          "enums" : [ {
+            "value" : "yes",
+            "remark" : "Yes"
+          }, {
+            "value" : "no",
+            "remark" : "No"
+          } ],
+          "description" : "Indicates if the asset is virtual.",
+          "formal-name" : "Virtual",
+          "id" : "inventory-item-virtual"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component[@type='system'][prop[@name='leveraged-authorization-uuid']]/prop[@name='nature-of-agreement'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "contract",
+            "remark" : "A contract between the CSP and the organization that owns the leveraged system."
+          }, {
+            "value" : "eula",
+            "remark" : "An end-user license agreement between the CSP and the organization that owns the leveraged system."
+          }, {
+            "value" : "license",
+            "remark" : "An application license agreement between the CSP and the organization that owns the leveraged system."
+          }, {
+            "value" : "mou",
+            "remark" : "A memorandum of understanding between the CSP and the organization that owns the leveraged system."
+          }, {
+            "value" : "other",
+            "remark" : "An untypical agreement between the CSP and the organization that owns the leveraged system. Explain in remarks."
+          }, {
+            "value" : "sla",
+            "remark" : "A service-level agreement between the CSP and the organization that owns the leveraged system."
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "Identifies nature of agreement for leveraged authorizations.",
+          "formal-name" : "Nature of Agreement for Leveraged Authorizations",
+          "id" : "leveraged-authorization-nature-of-agreement"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "metadata/prop[@name='marking']/@value",
+          "enums" : [ {
+            "value" : "cui",
+            "remark" : "Controlled Unclassified Information"
+          } ],
+          "allow-other" : "yes",
+          "description" : "Identifies the FedRAMP data sensitivity classification of the document.",
+          "formal-name" : "FedRAMP Data Sensitivity Classification",
+          "id" : "marking"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/user/prop[@name='privilege-level'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "read",
+            "remark" : "Read"
+          }, {
+            "value" : "read-write",
+            "remark" : "Read-Write"
+          }, {
+            "value" : "write",
+            "remark" : "Write"
+          }, {
+            "value" : "no-access",
+            "remark" : "No Access"
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "The privilege level of the user.",
+          "formal-name" : "Privilege Level",
+          "id" : "privilege-level"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation//prop[@name='scan-type'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "infrastructure",
+            "remark" : "Infrastructure and Operating System Scan"
+          }, {
+            "value" : "database",
+            "remark" : "Database Scan"
+          }, {
+            "value" : "web",
+            "remark" : "Web Scan"
+          }, {
+            "value" : "other",
+            "remark" : "Other"
+          } ],
+          "description" : "Identifies the type of scan.",
+          "formal-name" : "Scan Type",
+          "id" : "scan-type"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/component/prop[@name='authentication-method' and @ns='http://fedramp.gov/ns/oscal']/@value",
+          "enums" : [ {
+            "value" : "yes",
+            "remark" : "Yes"
+          }, {
+            "value" : "no",
+            "remark" : "No"
+          }, {
+            "value" : "not-applicable",
+            "remark" : "Not-Applicable"
+          } ],
+          "remarks" : {
+            "remark" : "yes: An authentication mechanism exists, and is described in the remarks.\n\nno: An authentication mechanism does not exist, the reason authentication is not necessary is described in the remarks.\n\nnot-applicable: The authentication requirement is not applicable, and is described in the remarks."
+          },
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "Identifies if user authentication is required.",
+          "formal-name" : "User Authentication",
+          "id" : "user-authentication"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "//user/prop[@ns='http://fedramp.gov/ns/oscal' and @name='privilege-level']/@value",
+          "enums" : [ {
+            "value" : "read",
+            "remark" : "Read"
+          }, {
+            "value" : "read-write",
+            "remark" : "Read-Write"
+          }, {
+            "value" : "write",
+            "remark" : "Write"
+          }, {
+            "value" : "no-access",
+            "remark" : "No Access"
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "The privilege level of the user.",
+          "formal-name" : "Privilege Level",
+          "id" : "user-privilege-level"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "//user/prop[@ns='http://fedramp.gov/ns/oscal' and @name='sensitivity']/@value",
+          "enums" : [ {
+            "value" : "high-risk",
+            "remark" : "High Risk"
+          }, {
+            "value" : "severe",
+            "remark" : "Severe"
+          }, {
+            "value" : "moderate",
+            "remark" : "Moderate"
+          }, {
+            "value" : "limited",
+            "remark" : "Limited"
+          }, {
+            "value" : "not-applicable",
+            "remark" : "Not Applicable"
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "Sensitivity level of the user.",
+          "formal-name" : "User Sensitvity Level",
+          "id" : "user-sensitivity-level"
+        }, {
+          "object-type" : "allowed-values",
+          "target" : "system-implementation/user/prop[@name='type']/@value",
+          "enums" : [ {
+            "value" : "internal",
+            "remark" : "Internal"
+          }, {
+            "value" : "external",
+            "remark" : "External"
+          }, {
+            "value" : "privileged",
+            "remark" : "Privileged"
+          } ],
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "description" : "The type of user.",
+          "formal-name" : "User Type",
+          "id" : "user-type"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-characteristics/security-sensitivity-level"
+      }, {
+        "target" : "/system-security-plan/system-characteristics/security-impact-level/(security-objective-confidentiality|security-objective-integrity|security-objective-availability)"
+      }, {
+        "target" : "/system-security-plan/system-characteristics/system-information/information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)"
+      }, {
+        "target" : "/system-security-plan/system-implementation/leveraged-authorization"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "allowed-values",
+          "target" : "$security-level-target",
+          "enums" : [ {
+            "value" : "fips-199-low",
+            "remark" : "Low"
+          }, {
+            "value" : "fips-199-moderate",
+            "remark" : "Moderate"
+          }, {
+            "value" : "fips-199-high",
+            "remark" : "High"
+          } ],
+          "description" : "The security objective level as defined by [NIST SP 800-60](https://doi.org/10.6028/NIST.SP.800-60v1r1).",
+          "formal-name" : "Security Impact Level",
+          "id" : "security-level"
+        } ],
+        "lets" : [ {
+          "var" : "security-level-target",
+          "expression" : "if (prop[@name='impact-level' and @ns='http://fedramp.gov/ns/oscal']) then prop[@name='impact-level' and @ns='http://fedramp.gov/ns/oscal']/@value else ."
+        } ]
+      }
+    } ]
+  }
+}
