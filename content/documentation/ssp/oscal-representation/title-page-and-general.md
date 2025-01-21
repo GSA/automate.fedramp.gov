@@ -15,10 +15,9 @@ Content that is common across OSCAL file types is described in the *[FedRAMP OSC
 - [**How to Contact Us**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#how-to-contact-us)
 - [**Document Approvers**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#document-approvals)
 - [**Acronyms and Glossary**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-standard-attachments-acronyms-lawsregulations)
-- [**Laws, Regulations, Standards and Guidance**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#additional-laws-regulations-standards-or-guidance)
-- [**Attachments and Citations**](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content)
 
-It is not necessary to represent the following sections of the SSP template in OSCAL; however, tools should present users with this content where it is appropriate:
+
+It is not necessary to represent the following sections of the SSP template in OSCAL; however, tools SHOULD present users with this content where it is appropriate:
 
 -   Any blue-text instructions found in the SSP template where the instructions are related to the content itself
 
