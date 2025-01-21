@@ -1,10 +1,7 @@
 ---
-title: FedRAMP OSCAL SSP
+title: SSP Template Topic Areas
 weight: 330
-
+suppresstopiclist: false
 ---
-# Representing FedRAMP SSP content in OSCAL
+# SSP Template Topic Areas
 
-
-
-**FedRAMP extensions and allowed values are cited in relevant portions of this content.**

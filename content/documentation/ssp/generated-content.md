@@ -1,6 +1,6 @@
 ---
 title: Generated Content
-weight: 106
+weight: 330
 ---
 # Generating Content from OSCAL-based SSP
 

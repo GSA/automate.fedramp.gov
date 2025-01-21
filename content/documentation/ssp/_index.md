@@ -1,13 +1,8 @@
 ---
-title: FedRAMP OSCAL SSP
+title: Representing a FedRAMP SSP in OSCAL
 weight: 300
-menu:
-  primary:
-    name: System Security Plan
-    parent: Documentation
-    weight: 50
 ---
-# FedRAMP OSCAL SSP
+# Representing a FedRAMP SSP in OSCAL
 
 The following guidelines describe how to express a FedRAMP System Security Plan (SSP) in OSCAL. This includes:
 
