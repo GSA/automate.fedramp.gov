@@ -1,7 +1,7 @@
 ---
 title: FedRAMP Constraints Browser
 ---
-# Fedramp Constraints
+# FedRAMP Constraints
 
 <div>
     <input type="text" id="searchInput" placeholder="Search constraints...">
