@@ -4,7 +4,7 @@ title: FedRAMP Constraints Browser
 # FedRAMP Constraints
 
 <div>
-    <input type="text" id="searchInput" placeholder="Search constraints...">
+    <input type="text" id="searchInput" placeholder="Search constraints by ID, description, etc. ...">
 </div>
 <div id="constraintsList"></div>
 
