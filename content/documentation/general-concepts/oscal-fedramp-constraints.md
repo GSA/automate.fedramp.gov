@@ -22,7 +22,7 @@ title: FedRAMP Constraints Browser
             $.getJSON('/json/fedramp_external_constraints.json'),
             $.getJSON('/json/fedramp_allowed_values.json')
         ]).then(function([constraints, allowedValues]) {
-            allConstraints=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.rules)).filter(x=>typeof x.id!='undefined');
+            allConstraints=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.rules)).filter(x=>typeof x.id!='undefined').sort((a,b)=>a.id.localeCompare(b.id));
             displayConstraints(filterConstraints(allConstraints, searchTerm));
             
             if (selectedId) {
