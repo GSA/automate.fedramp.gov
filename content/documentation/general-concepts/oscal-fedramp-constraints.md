@@ -52,6 +52,23 @@ title: FedRAMP Constraints Browser
                     $('<pre>').text(item['test']),
                     $('<p>').text(item['message']),
                 );
+                
+                // Add enum values for allowed-values type
+                if (item['object-type'] === 'allowed-values' && item.enums) {
+                    const $enumDiv = $('<div>').addClass('enum-values');
+                    $enumDiv.append($('<h4>').text('Allowed Values:'));
+                    
+                    item.enums.forEach(function(enumItem) {
+                        const $enumValue = $('<div>').addClass('enum-value');
+                        $enumValue.append(
+                            $('<code>').text(enumItem.value),
+                        );
+                        $enumDiv.append($enumValue);
+                    });
+                    
+                    $div.append($enumDiv);
+                }
+
 
                 // Description
                 $div.append($('<p>').text(item.description));
