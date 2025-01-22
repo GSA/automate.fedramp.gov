@@ -12,20 +12,35 @@ title: FedRAMP Constraints Browser
     $(document).ready(function() {
         let allConstraints = [];
         let selectedId = new URLSearchParams(window.location.search).get('constraint-id');
+        let searchTerm = new URLSearchParams(window.location.search).get('search') || '';
+
+        // Set initial search value from URL
+        $('#searchInput').val(searchTerm);
 
         // Load both JSON files
         Promise.all([
             $.getJSON('/json/fedramp_external_constraints.json'),
             $.getJSON('/json/fedramp_allowed_values.json')
         ]).then(function([constraints, allowedValues]) {
-            allConstraints=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.rules))
-            console.log(allConstraints)
-            displayConstraints(allConstraints);
+            allConstraints=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.rules)).filter(x=>typeof x.id!='undefined');
+            displayConstraints(filterConstraints(allConstraints, searchTerm));
             
             if (selectedId) {
                 $(`#${selectedId}`).addClass('selected');
             }
         });
+
+        function filterConstraints(constraints, term) {
+            if (!term) return constraints;
+            term = term.toLowerCase();
+            return constraints.filter(item => 
+                item['formal-name']?.toLowerCase().includes(term) ||
+                item['object-type']?.toLowerCase().includes(term) ||
+                item['id']?.toLowerCase().includes(term) ||
+                item['message']?.toLowerCase().includes(term) ||
+                item.enums?.some(enumItem => enumItem.value?.toLowerCase().includes(term))
+            );
+        }
 
         function displayConstraints(constraints) {
             const $list = $('#constraintsList');
@@ -39,96 +54,50 @@ title: FedRAMP Constraints Browser
                         $('.constraint-item').removeClass('selected');
                         $(this).addClass('selected');
                         selectedId = item.id;
-                        // Update URL
-                        const url = new URL(window.location);
-                        url.searchParams.set('constraint-id', selectedId);
-                        history.pushState({}, '', url);
+                        updateURL();
                     });
 
-                // Title and type
                 $div.append(
                     $('<h3>').text(item['formal-name']),
                     $('<span>').text(item['id']),
-                    $('<pre>').text(item['test']),
                     $('<p>').text(item['message']),
+                    $('<pre style="white-space:pre-line">').text(item['test']),
+                    $('<p>').text(item.description),
+                    item['props']&&$('<a>').text("learn more").attr('href',item['props'].find(x=>x.name==='help-url').value),
                 );
-                
-                // Add enum values for allowed-values type
+
                 if (item['object-type'] === 'allowed-values' && item.enums) {
-                    const $enumDiv = $('<div>').addClass('enum-values');
+                    const $enumDiv = $('<div style="white-space:pre-line">');
                     $enumDiv.append($('<h4>').text('Allowed Values:'));
                     
                     item.enums.forEach(function(enumItem) {
-                        const $enumValue = $('<div>').addClass('enum-value');
-                        $enumValue.append(
-                            $('<code>').text(enumItem.value),
-                        );
+                        const $enumValue = $('<span style="padding:4px">').addClass('enum-value');
+                        $enumValue.append($('<code>').text(enumItem.value));
                         $enumDiv.append($enumValue);
                     });
                     
                     $div.append($enumDiv);
                 }
 
-
-                // Description
-                $div.append($('<p>').text(item.description));
-
-                // Message for constraints
-                if (item.type === 'constraint' && item.message) {
-                    $div.append(
-                        $('<p>').append(
-                            $('<strong>').text('Message: '),
-                            document.createTextNode(item.message)
-                        )
-                    );
-                }
-
-                // Enum values for allowed-values
-                if (item.type === 'allowed-values' && item.enums) {
-                    const $ul = $('<ul>');
-                    item.enums.forEach(function(enumItem) {
-                        $ul.append(
-                            $('<li>').append(
-                                $('<code>').text(enumItem.value),
-                                enumItem.description ? 
-                                    document.createTextNode(': ' + enumItem.description) : 
-                                    ''
-                            )
-                        );
-                    });
-                    $div.append($('<p>').text('Allowed Values:'), $ul);
-                }
-
-                // Help URL
-                if (item.helpUrl) {
-                    $div.append(
-                        $('<a>')
-                            .attr('href', item.helpUrl)
-                            .attr('target', '_blank')
-                            .text('View Documentation')
-                    );
-                }
-
                 $list.append($div);
             });
         }
 
-        // Search functionality
-        $('#searchInput').on('input', function(info) {
-            console.log($(this).val());
-            const searchTerm = (($(this).val())+"").toLowerCase();
-            const filtered = allConstraints.filter(item => 
-                item['formal-name']&&item['formal-name'].toLowerCase().includes(searchTerm) ||
-                item['id']&&item['id'].toLowerCase().includes(searchTerm)||
-                item['message']&&item['message'].toLowerCase().includes(searchTerm)
+        function updateURL() {
+            const url = new URL(window.location);
+            if (selectedId) url.searchParams.set('constraint-id', selectedId);
+            if (searchTerm) url.searchParams.set('search', searchTerm);
+            history.pushState({}, '', url);
+        }
 
-);
-            console.log(filtered.length)
+        $('#searchInput').on('input', function() {
+            searchTerm = $(this).val();
+            const filtered = filterConstraints(allConstraints, searchTerm);
             displayConstraints(filtered);
-            // Restore selection after filtering
             if (selectedId) {
                 $(`#${selectedId}`).addClass('selected');
             }
+            updateURL();
         });
     });
 </script>
