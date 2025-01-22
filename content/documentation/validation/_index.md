@@ -1,7 +1,12 @@
 ---
 title: Validating OSCAL Content
-weight: 200
+weight: 800
 suppresstopiclist: false
+menu:
+  primary:
+    name: Validating OSCAL Content
+    parent: Documentation
+    weight: 800
 ---
 # Validating OSCAL Content
 

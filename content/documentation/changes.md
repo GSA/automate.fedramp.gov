@@ -1,6 +1,11 @@
 ---
 title: Significant Changes
-weight: 001
+weight: 100
+menu:
+  primary:
+    name: Significant Changes
+    parent: Documentation
+    weight: 50
 ---
 # Significant Changes
 

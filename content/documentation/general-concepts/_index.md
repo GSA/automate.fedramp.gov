@@ -1,21 +1,25 @@
 ---
-title: General Concepts
-weight: 100
+title: Relevant OSCAL Concepts
+weight: 200
+menu:
+  primary:
+    name: Relevant OSCAL Concepts
+    parent: Documentation
+    weight: 200
 ---
 
 # General FedRAMP OSCAL Concepts
 
 This section covers several important concepts and details that apply to OSCAL-based FedRAMP content.
 
-- [OSCAL Content Overview](./oscal-content-overview.md)
-- [OSCAL Data Types](./oscal-data-types.md)
-- [OSCAL Identifiers](./oscal-identifiers.md)
-- [OSCAL Metadata](./oscal-metadata.md)
-- [OSCAL File Attachments](./oscal-attachments.md)
-- [OSCAL-based FedRAMP Content](./oscal-fedramp-content/_index.md)
-  - [FedRAMP Extensions and Allowed Values](./oscal-fedramp-content/extensions-and-accepted-values.md)
-  - [Common FedRAMP Template Elements](./oscal-fedramp-content/template-elements.md)
-- [OSCAL Baselines](./oscal-baselines/_index.md)
-  - [FedRAMP Baselines](./oscal-baselines/fedramp-baselines.md)
-  - [Profile Resolution](./oscal-baselines/profile-resolution.md)
+- [OSCAL Content Overview](./oscal-content-overview)
+- [OSCAL Data Types](./oscal-data-types)
+- [OSCAL Identifiers](./oscal-identifiers)
+- [OSCAL Metadata](./oscal-metadata)
+- [OSCAL File Attachments](./oscal-attachments)
+- [FedRAMP Extensions and Allowed Values](./oscal-fedramp-content/extensions-and-accepted-values)
+- [OSCAL Baselines](./oscal-baselines/_index)
+  - [FedRAMP Baselines](./oscal-baselines/fedramp-baselines)
+  - [Profile Resolution](./oscal-baselines/profile-resolution)
+- [Common FedRAMP Template Elements](./common-fedramp-elements)
 

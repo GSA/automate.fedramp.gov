@@ -1,5 +1,5 @@
 ---
-title: OSCAL Content Validation Overview
+title: Validation Overview
 weight: 210
 ---
 # OSCAL Content Validation Overview

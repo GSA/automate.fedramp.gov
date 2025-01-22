@@ -1,15 +1,22 @@
 ---
 title: FedRAMP OSCAL SSP
-weight: 300
+weight: 400
+menu:
+  primary:
+    name: System Security Plan
+    parent: Documentation
+    weight: 400
 ---
 # Representing a FedRAMP SSP in OSCAL
+
 
 The following guidelines describe how to express a FedRAMP System Security Plan (SSP) in OSCAL. This includes:
 
 - [OSCAL-based FedRAMP SSP Overview](./overview)
+- [Specifying the FedRAMP Baseline](./fedramp-baseline-specification)
 - [OSCAL SSP Components Overview](./overview-components)
 - [OSCAL Representation:](./oscal-representation/_index)
-  - [Title Page and System Information](./oscal-representation/title-page-and-general)
+  - [Common Template Elements](./oscal-representation/common-elements)
   - [System Owner and Assignment of Responsibility](./oscal-representation/owner-and-responsibility)
   - [Illustrated Architecture and Narratives](./oscal-representation/diagrams-boundary-net-dataflow)
   - [Leveraged Authorization and Services](./oscal-representation/leveraged-authorizations)
@@ -23,6 +30,8 @@ The following guidelines describe how to express a FedRAMP System Security Plan 
   - [Cryptographic Modules](./oscal-representation/cryptographic-modules)
   - [Acronyms, Laws and Regulations](./oscal-representation/acronyms-laws-regulations)
 - [Generated Content](./generated-content)
+
+
 
 
 **FedRAMP extensions and allowed values are cited in relevant portions of this content.**

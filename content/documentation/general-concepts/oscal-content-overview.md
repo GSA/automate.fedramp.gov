@@ -7,7 +7,13 @@ weight: 110
 This section covers several important concepts and details that apply to
 OSCAL-based FedRAMP files.
 
-## File Content 
+## XML, JSON and YAML Formats
+
+The examples provided here are in XML; however, FedRAMP accepts XML, JSON or YAML formatted OSCAL-based SSP files. NIST offers a utility that provides lossless conversion of OSCAL-compliant files between these formats in any direction.
+
+You may submit your SSP to FedRAMP using any of the OSCAL format. If necessary, FedRAMP tools will convert the files for processing.
+
+## Links, Not Copies 
 
 Unlike the traditional MS Word-based SSP, SAP, and SAR, the OSCAL-based
 versions of these files are designed to make information available

@@ -1,7 +1,7 @@
 ---
 title: OSCAL Components
-weight: 320
+weight: 340
 ---
 # OSCAL SSP Components Overview
 
-content here
+component content here
