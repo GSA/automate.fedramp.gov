@@ -2,10 +2,111 @@
 title: The OSCAL CLI
 weight: 230
 ---
-# The OSCAL Command Line Interface (CLI)
 
-The [oscal-cli command-line tool](https://github.com/metaschema-framework/oscal-cli) allows users to easily convert, validate, and process OSCAL data for a variety of use cases.  When using [FedRAMP's OSCAL Constraints](https://github.com/GSA/fedramp-automation/tree/develop/src/validations/constraints#what-are-they) with oscal-cli, users can easily and efficiently check if their OSCAL content is valid under FedRAMP’s requirements. The tool checks whether [Digital Authorization Package data](https://www.fedramp.gov/updates/pilots/digital-authorization-package/), such as System Security Plans (SSPs), meet FedRAMP's requirements before the formal review process, and further provides precise feedback for correcting invalid FedRAMP OSCAL content. 
-Our development efforts involve developing constraints that determine automatically whether packages provide enough information, in the correct format, and in a way that meets FedRAMP’s preliminary expectations. The current release of OSCAL-CLI can fully ingest and validate OSCAL System Security Plans. More extensive validation checks are under development. 
-The oscal-cli is intended for use by FedRAMP OSCAL implementers and practitioners, Cloud Service Providers (CSPs), OSCAL tool developers, 3rd Party Assessment Organizations (3PAOs), and federal agencies. Our goal with this tooling is to empower our stakeholders to ensure all preliminary FedRAMP OSCAL requirements are met prior to submission. Use of this tooling will have the added benefit of reducing the number of review passbacks due to incomplete or invalid packages, as customers will be able to address those issues proactively, prior to submission. . 
-The current release of oscal-cli as well as continued development efforts to expand the coverage of our tooling and further automate the review of security artifacts can be viewed in our [the fedramp-automation repository on Github](https://github.com/GSA/fedramp-automation). We welcome any and all feedback.
+# OSCAL CLI Documentation for FedRAMP
 
+## Overview
+
+The OSCAL Command Line Interface (CLI) is a tool for validating and processing OSCAL content against FedRAMP requirements.
+
+## Get Started
+
+Follow installation instructions from the metaschema framework repository
+
+https://github.com/metaschema-framework/oscal-cli
+
+## Commands
+
+### Validate
+Validates OSCAL content against schemas and additional constraints.
+
+```bash
+oscal-cli validate <file> -c <constraint-file> [options]
+```
+
+### Metaschema Validate
+Validates metaschema files against constraint definitions.
+
+```bash
+oscal-cli metaschema validate <file> -c <style-guide> [options]
+```
+
+### Profile Resolution
+Resolves OSCAL profiles by combining baseline controls with modifications.
+
+```bash
+oscal-cli resolve-profile <profile-file>
+```
+
+## FedRAMP Validation Examples
+
+### Validating SSP Against FedRAMP Constraints
+
+```bash
+oscal-cli validate path/to/ssp.xml \
+  -c path/to/fedramp-external-allowed-values.xml \
+  -c path/to/fedramp-external-constraints.xml
+```
+
+## Understanding Validation Errors
+
+### Common Error Messages
+
+1. UUID Warning:
+```
+[WARNING] [.../protocol[1]] It is a best practice to provide a UUID.
+```
+**Resolution**: Add a unique UUID to the specified element.
+
+2. Constraint Violations:
+- Invalid allowed values
+- Missing required fields
+- Pattern matching failures
+
+## SARIF Output Integration
+
+SARIF (Static Analysis Results Interchange Format) provides detailed validation results viewable in VS Code.
+
+### Generate SARIF Output
+
+```bash
+oscal-cli validate path/to/file.xml \
+  -c path/to/constraints.xml \
+  --sarif-include-pass \
+  -o results.sarif.json
+```
+
+### SARIF Features
+- Detailed error locations
+- Stack traces for debugging
+- Pass/fail results for each rule
+- VS Code integration for visual feedback
+
+## Best Practices
+
+1. Always validate against both allowed values and external constraints
+2. Enable SARIF output for detailed debugging in VS Code
+3. Address warnings even if they don't cause validation failures
+4. Keep constraint files updated with latest FedRAMP requirements
+
+## Command Options Reference
+
+### Global Options
+- `--help`: Display command help
+- `-o, --output`: Specify output file
+- `--sarif-include-pass`: Include passing results in SARIF output
+- `--show-stack-trace`: Display full error stack traces
+
+### Validation Options
+- `-c, --constraint`: Specify constraint file (multiple allowed)
+- `    --as=<FORMAT>                  `   source format: XML, JSON, or YAML
+- ` -c <URL>                          `   additional constraint definitions
+- `    --disable-constraint-validation`   do not perform constraint validation
+- `    --disable-schema-validation`       do not perform schema validation
+- ` -h,--help               `             display help message
+- `    --no-color           `             do not colorize output
+- ` -o <FILE>               `             write SARIF results to the provided FILE
+- ` -q,--quiet              `             minimize output to include only errors
+- `    --sarif-include-pass`              include pass results in SARIF
+- `    --show-stack-trace `               display the stack trace associated with an error
+- `    --version       `                  display the application version
