@@ -18,7 +18,7 @@ The following guidelines describe how to express a FedRAMP System Security Plan 
 - [OSCAL Representation:](./oscal-representation/_index)
   - [Common Template Elements](./oscal-representation/common-elements)
   - [System Owner and Assignment of Responsibility](./oscal-representation/owner-and-responsibility)
-  - [Illustrated Architecture and Narratives](./oscal-representation/diagrams-boundary-net-dataflow)
+  - [Illustrated Architecture and Narratives](./oscal-representation/illustrated-architecture)
   - [Leveraged Authorization and Services](./oscal-representation/leveraged-authorizations)
   - [External Systems and Services](./oscal-representation/external-systems-services)
   - [Digital Identity Worksheet](./oscal-representation/digital-identity)
