@@ -5,9 +5,11 @@ weight: 336
 
 ## Digital Identity Level (DIL) Determination
 
-The digital identity level identified in the FedRAMP SSP template document, illustrated in the figure below, isexpressed through the following core OSCAL properties.
+The digital identity level, as defined in [NIST SP 800-63](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf), is identified in the FedRAMP SSP template document as illustrated in the figure below with values of "low", "moderate", and "high".
 
 {{< figure src="/img/ssp-figure-8.png" title="FedRAMP SSP template DIL determination." alt="Screenshot of the DIL determination in the FedRAMP SSP template." >}}
+
+The digital identity level can be expressed through the OSCAL properties of "identity-assurance-level", "authenticator-assurance-level", and "federation-assurance-level", as represented below.
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=14-17" >}}
@@ -40,10 +42,10 @@ The digital identity level identified in the FedRAMP SSP template document, illu
 
 **OSCAL Allowed Values**
 
-Valid IAL, AAL, and FAL values (as defined by NIST SP 800-63):
-- 1
-- 2
-- 3
+Valid IAL, AAL, and FAL values (as defined by [NIST SP 800-63](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf)):
+- 1 (low)
+- 2 (moderate)
+- 3 (high)
 
 {{</callout>}}
 
