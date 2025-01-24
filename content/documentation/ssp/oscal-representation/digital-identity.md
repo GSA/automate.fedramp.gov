@@ -12,7 +12,44 @@ The digital identity level, as defined in [NIST SP 800-63](https://nvlpubs.nist.
 The digital identity level can be expressed through the OSCAL properties of "identity-assurance-level", "authenticator-assurance-level", and "federation-assurance-level", as represented below.
 
 #### OSCAL Representation
-{{< highlight xml "linenos=table, hl_lines=14-17" >}}
+{{< tabs JSON XML YAML >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "metadata": {
+      // cut CSP Name
+    },
+    "system-characteristics": {
+      "system-name": "System's Full Name",
+      "system-name-short": "System's Short Name or Acronym",
+      "system-id": {
+        "@identifier-type": "http://fedramp.gov",
+        "#text": "F00000000"
+      },
+      // cut Service Model
+      // cut Deployment Model
+      "prop": [
+        {
+          "@name": "identity-assurance-level",
+          "@value": 1
+        },
+        {
+          "@name": "authenticator-assurance-level",
+          "@value": 1
+        },
+        {
+          "@name": "federation-assurance-level",
+          "@value": 1
+        }
+      ]
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
 <system-security-plan>
     <metadata>
         <!-- cut CSP Name -->
@@ -35,7 +72,28 @@ The digital identity level can be expressed through the OSCAL properties of "ide
     </system-characteristics>
     <!--  cut -->     
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  metadata:
+    # cut CSP Name
+
+  system-characteristics:
+    system-name: System's Full Name
+    system-name-short: System's Short Name or Acronym
+    system-id:
+      identifier-type: http://fedramp.gov
+      value: F00000000
+
+    identity-assurance-level: "1"
+    authenticator-assurance-level: "1"
+    federation-assurance-level: "1"
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 <br />
 {{<callout>}}
