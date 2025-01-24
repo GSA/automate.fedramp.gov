@@ -4,9 +4,13 @@ weight: 337
 ---
 ## FIPS-199 Categorization
 
-The FIPS-199 Categorization in the FedRAMP SSP template, illustrated in the figure below, is expressed through the following core OSCAL property.
+The [FIPS-199 Categorization](https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.199.pdf) is identified in the FedRAMP SSP template document as illustrated in the figure below.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
+
+The FIPS-199 Categorization can be expressed through the core OSCAL property of "security-sensitivity-level", as illustrated below. 
+
+__Note that "security-sensitivity-level" is not defined as a "prop" element with an attribute of "name", but rather as its own element.__
 
 #### OSCAL Representation
 {{< highlight xml "linenos=table, hl_lines=15-16" >}}
