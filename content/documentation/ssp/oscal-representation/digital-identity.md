@@ -16,34 +16,27 @@ The digital identity level can be expressed through the OSCAL properties of "ide
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
-  "system-security-plan": {
-    "metadata": {
-      // cut CSP Name
+  "system-security-plan" : {
+    "system-characteristics" : {
+      "system-ids" : [ {
+        "identifier-type" : "http://fedramp.gov",
+        "id" : "F00000000"
+      } ],
+      "system-name" : "System's Full Name",
+      "props" : [ {
+        "name" : "identity-assurance-level",
+        "value" : "1"
+      }, {
+        "name" : "authenticator-assurance-level",
+        "value" : "1"
+      }, {
+        "name" : "federation-assurance-level",
+        "value" : "1"
+      } ],
+      "system-name-short" : "System's Short Name or Acronym"
     },
-    "system-characteristics": {
-      "system-name": "System's Full Name",
-      "system-name-short": "System's Short Name or Acronym",
-      "system-id": {
-        "@identifier-type": "http://fedramp.gov",
-        "#text": "F00000000"
-      },
-      // cut Service Model
-      // cut Deployment Model
-      "prop": [
-        {
-          "@name": "identity-assurance-level",
-          "@value": 1
-        },
-        {
-          "@name": "authenticator-assurance-level",
-          "@value": 1
-        },
-        {
-          "@name": "federation-assurance-level",
-          "@value": 1
-        }
-      ]
-    }
+    "metadata" : { },
+    "uuid" : "12345678-1234-4321-8765-123456789012"
   }
 }
 {{< /highlight >}}
@@ -78,19 +71,21 @@ The digital identity level can be expressed through the OSCAL properties of "ide
 {{< highlight yaml "linenos=table" >}}
 ---
 system-security-plan:
-  metadata:
-    # cut CSP Name
-
+  metadata: {}
   system-characteristics:
+    props:
+    - value: "1"
+      name: identity-assurance-level
+    - value: "1"
+      name: authenticator-assurance-level
+    - value: "1"
+      name: federation-assurance-level
     system-name: System's Full Name
-    system-name-short: System's Short Name or Acronym
-    system-id:
+    system-ids:
+    - id: F00000000
       identifier-type: http://fedramp.gov
-      value: F00000000
-
-    identity-assurance-level: "1"
-    authenticator-assurance-level: "1"
-    federation-assurance-level: "1"
+    system-name-short: System's Short Name or Acronym
+  uuid: 12345678-1234-4321-8765-123456789012
 {{< /highlight >}}
 {{% /tab %}}
 {{< /tabs >}}
