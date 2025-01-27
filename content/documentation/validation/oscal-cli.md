@@ -33,7 +33,7 @@ oscal-cli metaschema validate <file> -c <style-guide> [options]
 ```
 
 ### Profile Resolution
-Resolves OSCAL profiles by combining baseline controls with modifications.
+Creates a new tailored OSCAL catalog by combining baseline imported controls and applying any modifications, as specified in the source profile.
 
 ```bash
 oscal-cli resolve-profile <profile-file>
