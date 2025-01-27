@@ -292,7 +292,7 @@ components:
         value: OS1
 {{< /highlight >}}
 {{% /tab %}}
-{{< /tabs >}}
+{{% /tabs %}}
 
 ## Best Practices
 

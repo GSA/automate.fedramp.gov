@@ -60,7 +60,7 @@ If the scan-type is set to 'other' or 'not-applicable', a remarks field must be 
 
 {{< tabs JSON XML YAML >}}
 {{% tab %}}
-{{< highlight json "linenos=table" >}}
+```json 
 {
   "uuid": "comp-001",
   "type": "software",
@@ -101,10 +101,10 @@ If the scan-type is set to 'other' or 'not-applicable', a remarks field must be 
     }
   ]
 }
-{{< /highlight >}}
+```
 {{% /tab %}}
 {{% tab %}}
-{{< highlight xml "linenos=table" >}}
+```xml
 <component uuid="comp-001" type="software">
     <!-- Basic scan configuration -->
     <prop name="is-scanned" value="yes"/>
@@ -130,9 +130,10 @@ If the scan-type is set to 'other' or 'not-applicable', a remarks field must be 
         </remarks>
     </prop>
 </component>
+```
 {{% /tab %}}
 {{% tab %}}
-{{< highlight yaml "linenos=table" >}}
+```yaml
 uuid: comp-001
 type: software
 props:
@@ -167,7 +168,7 @@ props:
           environment. Security is maintained through strict access controls and
           continuous configuration validation. Standard vulnerability scanning
           would not provide meaningful results for this component type.    
-{{< /highlight >}}
+```
 {{% /tab %}}
 {{< /tabs >}}
 
