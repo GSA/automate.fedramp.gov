@@ -58,7 +58,53 @@ If the scan-type is set to 'other' or 'not-applicable', a remarks field must be 
 
 ## Example Implementation
 
-```xml
+{{< tabs JSON XML YAML >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "uuid": "comp-001",
+  "type": "software",
+  "props": [
+    {
+      "name": "is-scanned",
+      "value": "yes"
+    },
+    {
+      "name": "scan-type",
+      "ns": "http://fedramp.gov/ns/oscal",
+      "value": "web"
+    },
+    {
+      "name": "scan-type",
+      "ns": "http://fedramp.gov/ns/oscal",
+      "value": "database"
+    },
+    {
+      "name": "scan-type",
+      "ns": "http://fedramp.gov/ns/oscal",
+      "value": "other",
+      "remarks": {
+        "paragraphs": [
+          "Custom security scanning tool (SecurityScan Pro v3.2) used for specialized application components. This tool provides deep inspection of proprietary protocols and custom configurations specific to our implementation."
+        ]
+      }
+    },
+    {
+      "name": "scan-type",
+      "ns": "http://fedramp.gov/ns/oscal",
+      "value": "not-applicable",
+      "remarks": {
+        "paragraphs": [
+          "This is a read-only configuration component that runs in an isolated environment. Security is maintained through strict access controls and continuous configuration validation. Standard vulnerability scanning would not provide meaningful results for this component type."
+        ]
+      }
+    }
+  ]
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
 <component uuid="comp-001" type="software">
     <!-- Basic scan configuration -->
     <prop name="is-scanned" value="yes"/>
@@ -84,7 +130,46 @@ If the scan-type is set to 'other' or 'not-applicable', a remarks field must be 
         </remarks>
     </prop>
 </component>
-```
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+uuid: comp-001
+type: software
+properties:
+  - name: is-scanned
+    value: "yes"
+  
+  - name: scan-type
+    namespace: http://fedramp.gov/ns/oscal
+    value: web
+  
+  - name: scan-type
+    namespace: http://fedramp.gov/ns/oscal
+    value: database
+  
+  - name: scan-type
+    namespace: http://fedramp.gov/ns/oscal
+    value: other
+    remarks:
+      paragraphs:
+        - >-
+          Custom security scanning tool (SecurityScan Pro v3.2) used for specialized
+          application components. This tool provides deep inspection of proprietary
+          protocols and custom configurations specific to our implementation.
+  
+  - name: scan-type
+    namespace: http://fedramp.gov/ns/oscal
+    value: not-applicable
+    remarks:
+      paragraphs:
+        - >-
+          This is a read-only configuration component that runs in an isolated
+          environment. Security is maintained through strict access controls and
+          continuous configuration validation. Standard vulnerability scanning
+          would not provide meaningful results for this component type.    
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Best Practices
 
