@@ -135,7 +135,7 @@ If the scan-type is set to 'other' or 'not-applicable', a remarks field must be 
 {{< highlight yaml "linenos=table" >}}
 uuid: comp-001
 type: software
-properties:
+props:
   - name: is-scanned
     value: "yes"
   
@@ -158,7 +158,7 @@ properties:
           protocols and custom configurations specific to our implementation.
   
   - name: scan-type
-    namespace: http://fedramp.gov/ns/oscal
+    ns: http://fedramp.gov/ns/oscal
     value: not-applicable
     remarks:
       paragraphs:
