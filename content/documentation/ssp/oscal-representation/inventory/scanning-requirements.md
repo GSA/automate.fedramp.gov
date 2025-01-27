@@ -4,7 +4,6 @@ weight: 130
 ---
 # Scanning and Security Requirements
 
-{{% alert tip %}}
 **Why Scanning Matters in FedRAMP**
 
 Security scanning is a critical component of FedRAMP's continuous monitoring strategy. Regular scanning helps identify vulnerabilities, misconfigurations, and potential security weaknesses before they can be exploited. By requiring clear documentation of scanning practices for each component:
@@ -14,7 +13,6 @@ Security scanning is a critical component of FedRAMP's continuous monitoring str
 - Organizations can justify and document cases where standard scanning approaches may not be applicable
 
 This structured approach to scanning documentation ensures that no component falls through the cracks in the security monitoring process.
-{{% /alert %}}
 
 ## Scan Inclusion Requirements
 
