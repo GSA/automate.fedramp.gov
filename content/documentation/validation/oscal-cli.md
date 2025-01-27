@@ -19,7 +19,7 @@ The following are a brief summary of the most commonly used OSCAL CLI commands w
 
 
 ### Validate
-Validates OSCAL content against schemas and additional constraints.
+Checks that the specified OSCAL file is well-formed and valid per OSCAL model and any additional specified constraints. 
 
 ```bash
 oscal-cli validate <file> -c <constraint-file> [options]
