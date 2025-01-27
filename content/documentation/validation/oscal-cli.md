@@ -25,8 +25,8 @@ Checks that the specified OSCAL file is well-formed and valid per OSCAL model an
 oscal-cli validate <file> -c <constraint-file> [options]
 ```
 
-### Metaschema Validate
-Validates metaschema files against constraint definitions.
+### Convert  
+Converts an OSCAL source file to the specified file format (e.g., XML, JSON, or YAML). 
 
 ```bash
 oscal-cli metaschema validate <file> -c <style-guide> [options]
