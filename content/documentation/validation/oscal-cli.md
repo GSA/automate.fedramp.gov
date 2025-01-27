@@ -39,6 +39,13 @@ Creates a new tailored OSCAL catalog by combining baseline imported controls and
 oscal-cli resolve-profile <profile-file>
 ```
 
+### Metaschema Validate
+Validates that a metaschema file is well-formed and valid per the specified constraint definitions.
+
+```bash
+oscal-cli metaschema validate <file> -c <style-guide> [options]
+```
+
 ## FedRAMP Validation Examples
 
 ### Validating SSP Against FedRAMP Constraints
