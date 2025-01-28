@@ -45,7 +45,7 @@ Every inventory item where the (component) "asset-type" is "software" must have 
 ## Software/OS Version Requirements
 
 **Description:**  
-Every software inventory item must have a "software-version" property (preferred) or "os-version" property where appropriate. Version information is crucial for security assessment and vulnerability management.
+Every software inventory item must have a "software-version" property (preferred) or "os-version" property where appropriate. Version information is crucial for security assessment, vulnerability management, and supply chain security.
 
 **Why Version Tracking Matters:**
 - Enables precise vulnerability matching
