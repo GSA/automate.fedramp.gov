@@ -36,7 +36,7 @@ Every inventory item where the (component) "asset-type" is "software" must have 
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
 
-**XPath Expression:** `//inventory-item{count(/prop[@name='vendor-name' and @ns='http://fedramp.gov/ns/oscal']) + //component[@uuid=implemented-component/@component-uuid]/prop[@name='vendor-name' and @ns='http://fedramp.gov/ns/oscal'])}`
+**XPath:** `//inventory-item/(. | //component[@uuid=./implemented-component/@component-uuid])[count(./prop[@name=('software-name', 'os-name') and @value='software']) >= 1]`
 
 ## Software/OS Version Requirements
 
