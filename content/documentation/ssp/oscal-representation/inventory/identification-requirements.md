@@ -23,9 +23,7 @@ Every inventory item must have a property named "vendor-name" in the FedRAMP Ext
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
 
-**XPath Context:** `//inventory-item`  
-**XPath Target:** `. | //component[@uuid=./implemented-component/@component-uuid]`  
-**XPath Expression:** `count(./prop[@name='vendor-name' @ns='http://fedramp.gov/ns/oscal' ]) >= 1`
+**XPath:** `//inventory-item/(. | //component[@uuid=./implemented-component/@component-uuid])[count(./prop[@name='vendor-name' @ns='http://fedramp.gov/ns/oscal' ]) >= 1]`
 
 ## Software/OS Name Requirements
 
@@ -38,9 +36,7 @@ Every inventory item where the (component) "asset-type" is "software" must have 
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
 
-**XPath Context:** `//inventory-item`  
-**XPath Target:** `. | //component[@uuid=./implemented-component/@component-uuid]`  
-**XPath Expression:** `count(./prop[@name=('software-name', 'os-name') ]) >= 1`
+**XPath Expression:** `//inventory-item{count(/prop[@name='vendor-name' and @ns='http://fedramp.gov/ns/oscal']) + //component[@uuid=implemented-component/@component-uuid]/prop[@name='vendor-name' and @ns='http://fedramp.gov/ns/oscal'])}`
 
 ## Software/OS Version Requirements
 
@@ -55,9 +51,7 @@ Every software inventory item must have a "software-version" property (preferred
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
 
-**XPath Context:** `//inventory-item`  
-**XPath Target:** `. | //component[@uuid=./implemented-component/@component-uuid]`  
-**XPath Expression:** `count(./prop[@name=('software-version', 'os-version') ]) >= 1`
+**XPath:** `//inventory-item/(. | //component[@uuid=./implemented-component/@component-uuid])[count(./prop[@name=('software-version', 'os-version') ]) >= 1]`
 
 ## Asset Type and Function Requirements
 
@@ -71,9 +65,7 @@ Every inventory item must have an "asset-type" property that clearly identifies 
 
 **Syntax Type:** Optional core OSCAL syntax
 
-**XPath Context:** `//inventory-item`  
-**XPath Target:** `. | //component[@uuid=./implemented-component/@component-uuid]`  
-**XPath Expression:** `count(./prop[@name='asset-type' ]) >= 1`
+**XPath:** `//inventory-item/(. | //component[@uuid=./implemented-component/@component-uuid])[count(./prop[@name='asset-type' ]) >= 1]`
 
 ## Hardware Model Requirements
 
@@ -87,9 +79,7 @@ Inventory items representing hardware devices must have a "hardware-model" prope
 
 **Syntax Type:** Optional core OSCAL syntax
 
-**XPath Context:** `//inventory-item`  
-**XPath Target:** `(. | //component[@uuid=./implemented-component/@component-uuid])/prop[@name='asset-type' @value='hardware']`  
-**XPath Expression:** `count(./prop[@name='hardware-model' ]) >= 1`
+**XPath:** `//inventory-item/((. | //component[@uuid=./implemented-component/@component-uuid])/prop[@name='asset-type' @value='hardware'])[count(./prop[@name='hardware-model' ]) >= 1]`
 
 ## Diagram Label Requirements
 
@@ -105,14 +95,10 @@ Every inventory item must have a "diagram-label" FedRAMP Extension to support cl
 **Syntax Type:** Mix of required, optional, and extended syntax
 
 **First Constraint (Inventory Items):**  
-**XPath Context:** `//inventory-item`  
-**XPath Target:** `. | //component[@uuid=./implemented-component/@component-uuid]`  
-**XPath Expression:** `count(./prop[@name='diagram-label' @ns='http://fedramp.gov/ns/oscal']) >= 1`
+**XPath:** `//inventory-item/(. | //component[@uuid=./implemented-component/@component-uuid])[count(./prop[@name='diagram-label' @ns='http://fedramp.gov/ns/oscal']) >= 1]`
 
 **Second Constraint (Standalone Components):**  
-**XPath Context:** `//component[not(@uuid=//inventory-item/implemented-component/@component-uuid) and @type=('hardware', 'software', 'service', 'interconnection')]`  
-**XPath Target:** `.`  
-**XPath Expression:** `count(./prop[@name='diagram-label' @ns='http://fedramp.gov/ns/oscal']) = 1`
+**XPath:** `//component[not(@uuid=//inventory-item/implemented-component/@component-uuid) and @type=('hardware', 'software', 'service', 'interconnection')][count(./prop[@name='diagram-label' @ns='http://fedramp.gov/ns/oscal']) = 1]`
 
 ## Example Implementation
 {{< tabs JSON XML YAML >}}
