@@ -19,7 +19,7 @@ By maintaining detailed component identification, organizations can better manag
 ## Vendor Name Requirements
 
 **Description:**  
-Every inventory item must have a "vendor-name" FedRAMP Extension either within the inventory item itself or within the component linked by the inventory item. This requirement ensures clear identification of component manufacturers and supports supply chain security.
+Every inventory item must have a property named "vendor-name" in the FedRAMP Extensions namespace ("http://fedramp.gov/ns/oscal"). There are two approaches to encode this information in an OSCAL SSP. The SSP can encode this property directly within the inventory item itself. Alternatively, the SSP can encode the property in the component associated with that inventory-item via the implemented-component, reducing redundancy of that identical property. This requirement ensures clear identification of component manufacturers and supports supply chain security.
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
 
