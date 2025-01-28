@@ -8,7 +8,7 @@ A FedRAMP SSP identifies the system categorization [per FIPS-190](https://doi.or
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
-The FIPS-199 Categorization can be expressed through the core OSCAL property of "security-sensitivity-level", as illustrated below. 
+An OSCAL-based FedRAMP SSP can express a system categorization using FIPS-199 through the core OSCAL property named "security-sensitivity-level", as illustrated below. 
 
 __Note that "security-sensitivity-level" is not defined as a "prop" element with an attribute of "name", but rather as its own element.__
 
