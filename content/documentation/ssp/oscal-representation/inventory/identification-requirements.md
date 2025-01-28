@@ -62,7 +62,7 @@ Every software inventory item must have a "software-version" property (preferred
 ## Asset Type and Function Requirements
 
 **Description:**  
-Every inventory item must have an "asset-type" property that clearly identifies its role in the system. This property can be specified either within the inventory item itself or within the component linked by the inventory item.
+Every inventory item must have an "asset-type" property that clearly identifies its role in the system. This property can be specified either within the component associated to that inventory item with its implemented-component.
 
 **Important Notes:**
 - Mandatory for OS/Infrastructure and Containers
