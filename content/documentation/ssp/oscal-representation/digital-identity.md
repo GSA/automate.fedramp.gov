@@ -5,7 +5,7 @@ weight: 336
 
 ## Digital Identity Level (DIL) Determination
 
-The digital identity level, as defined in [NIST SP 800-63](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf), is identified in the FedRAMP SSP template document as illustrated in the figure below with values of "low", "moderate", and "high".
+The Digital Identity Level, as defined in [NIST SP 800-63](https://doi.org/10.6028/NIST.SP.800-63-3), is identified in the FedRAMP SSP template document as illustrated in the figure below with values of "Low", "Moderate", and "High".
 
 {{< figure src="/img/ssp-figure-8.png" title="FedRAMP SSP template DIL determination." alt="Screenshot of the DIL determination in the FedRAMP SSP template." >}}
 
