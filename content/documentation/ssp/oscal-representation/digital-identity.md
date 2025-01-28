@@ -9,7 +9,7 @@ The Digital Identity Level, as defined in [NIST SP 800-63](https://doi.org/10.60
 
 {{< figure src="/img/ssp-figure-8.png" title="FedRAMP SSP template DIL determination." alt="Screenshot of the DIL determination in the FedRAMP SSP template." >}}
 
-The digital identity level can be expressed through the OSCAL properties of "identity-assurance-level", "authenticator-assurance-level", and "federation-assurance-level", as represented below.
+The Digital Identity Level can be expressed through the OSCAL properties named "identity-assurance-level", "authenticator-assurance-level", and "federation-assurance-level", as represented below.
 
 #### OSCAL Representation
 {{< tabs JSON XML YAML >}}
