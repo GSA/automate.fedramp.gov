@@ -19,7 +19,7 @@ The digital identity level can be expressed through the OSCAL properties of "ide
   "system-security-plan" : {
     "system-characteristics" : {
       "system-ids" : [ {
-        "identifier-type" : "http://fedramp.gov",
+        "identifier-type" : "http://fedramp.gov/ns/oscal",
         "id" : "F00000000"
       } ],
       "system-name" : "System's Full Name",
