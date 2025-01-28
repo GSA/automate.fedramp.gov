@@ -13,7 +13,28 @@ An OSCAL-based FedRAMP SSP can express a system categorization using FIPS-199 th
 __Note that "security-sensitivity-level" is not defined as a "prop" element with an attribute of "name", but rather as its own element.__
 
 #### OSCAL Representation
-{{< highlight xml "linenos=table, hl_lines=15-16" >}}
+{{< tabs JSON XML YAML >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+ "system-security-plan" : {
+   "uuid" : "12345678-1234-4321-8765-123456789012",
+   "system-characteristics" : {
+     "system-name-short" : "System's Short Name or Acronym",
+     "system-ids" : [ {
+       "id" : "F00000000",
+       "identifier-type" : "http://fedramp.gov"
+     } ],
+     "security-sensitivity-level" : "fips-199-moderate",
+     "system-name" : "System's Full Name"
+   },
+   "metadata" : { }
+ }
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
 <system-security-plan>
     <metadata>
         <!-- cut CSP Name -->
@@ -35,7 +56,27 @@ __Note that "security-sensitivity-level" is not defined as a "prop" element with
     </system-characteristics>
     <!--  cut -->     
 </system-security-plan>
-{{</ highlight >}}
+
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+ uuid: 12345678-1234-4321-8765-123456789012
+ system-characteristics:
+   system-name-short: System's Short Name or Acronym
+   system-ids:
+   - id: F00000000
+     identifier-type: http://fedramp.gov
+   security-sensitivity-level: fips-199-moderate
+   system-name: System's Full Name
+ metadata: {}
+
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
+
 
 <br />
 {{<callout>}}
