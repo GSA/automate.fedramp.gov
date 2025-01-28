@@ -11,12 +11,12 @@ The FedRAMP PMO no longer maintains/publishes the FedRAMP Master Acronym and Glo
 
 The FedRAMP MS Word-based SSP, SAP and SAR templates included links to the FedRAMP Laws and Regulations file.
 
-These are already included in the OSCAL-based FedRAMP templates as resources. The `resource` linking to the FedRAMP citations file is identified with links from the property type, `fedramp-citations`. 
+These are already included in the OSCAL-based FedRAMP templates as resources. The `resource` linking to the FedRAMP citations file is identified with links from the property type, "fedramp-citations". 
 
-The fedramp-citations resource MUST have:
+The `fedramp-citations` resource MUST have:
 - title
-- a "type" property with an @value attribute set to "citation" and an @class attribute set to "fedramp-citations"
-- an rlink with an @href that links to the appropriate [artifact](https://www.fedramp.gov/assets/resources/templates/FedRAMP-Laws-Regulations-Standards-and-Guidance-Reference.xlsx) on fedramp.gov. 
+- a `type` property with an `@value` attribute set to "citation" and an `@class` attribute set to "fedramp-citations"
+- an rlink with an `@href` that links to the appropriate [artifact](https://www.fedramp.gov/assets/resources/templates/FedRAMP-Laws-Regulations-Standards-and-Guidance-Reference.xlsx) on fedramp.gov. 
 
 #### Representation
 {{< tabs JSON XML YAML >}}
@@ -131,7 +131,7 @@ Link to FedRAMP Acronyms and Glossary:
 
 Additional citations must be represented as additional `resource` assemblies with one `resource` assembly per citation. This applies to applicable laws, regulations, standards, or guidance beyond FedRAMP's predefined set.
 
-Each must have a type defined. The value of the type filed must be set to `law`, `regulation`, `standard`, or `guidance` as appropriate. There may be more than one type defined. FedRAMP tools use the `type` property to differentiate these resource assemblies from others.
+Each must have a type defined. The value of the `type` filed must be set to "law", "regulation", "standard", or "guidance" as appropriate. There may be more than one type defined. FedRAMP tools use the `type` property to differentiate these resource assemblies from others.
 
 #### Representation
 {{< tabs JSON XML YAML >}}
