@@ -5,7 +5,7 @@ weight: 343
 # Acronyms, Laws and Regulations
 
 ## Acronyms
-The FedRAMP PMO no longer maintains/publishes the FedRAMP Master Acronym and Glossary. As such, there is no requirement for reference to this document, which was formerly Appendix B. 
+The FedRAMP PMO no longer maintains/publishes the FedRAMP Master Acronym and Glossary. As such, there is no requirement for reference to this document.
 
 ## FedRAMP Citations
 
