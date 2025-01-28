@@ -83,7 +83,7 @@ system-security-plan:
     system-name: System's Full Name
     system-ids:
     - id: F00000000
-      identifier-type: http://fedramp.gov
+      identifier-type: http://fedramp.gov/ns/oscal
     system-name-short: System's Short Name or Acronym
   uuid: 12345678-1234-4321-8765-123456789012
 {{< /highlight >}}
