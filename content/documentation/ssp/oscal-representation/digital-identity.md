@@ -95,10 +95,10 @@ system-security-plan:
 
 **OSCAL Allowed Values**
 
-Valid IAL, AAL, and FAL values (as defined by [NIST SP 800-63](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf)):
-- 1 (low)
-- 2 (moderate)
-- 3 (high)
+Valid IAL, AAL, and FAL values (as defined by [NIST SP 800-63](https://doi.org/10.6028/NIST.SP.800-63-3)):
+- 1 (Low)
+- 2 (Moderate)
+- 3 (High)
 
 {{</callout>}}
 
