@@ -114,9 +114,6 @@ system-security-plan:
      uuid: 77777777-0000-4000-9000-000000000006
      purpose: Describe the purpose for which the service is needed.
  uuid: 12345678-1234-4321-8765-123456789012
-
-
-
 {{< /highlight >}}
 {{% /tab %}}
 {{< /tabs >}}
