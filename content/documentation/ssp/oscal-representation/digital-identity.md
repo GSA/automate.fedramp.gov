@@ -44,26 +44,38 @@ The Digital Identity Level can be expressed through the OSCAL properties named "
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <system-security-plan>
-    <metadata>
-        <!-- cut CSP Name -->
-    </metadata>
-    <system-characteristics>
-        <!-- System Name & Abbreviation -->
-        <system-name>System's Full Name</system-name>
-        <system-name-short>System's Short Name or Acronym</system-name-short>        
-        <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type="http://fedramp.gov">F00000000</system-id>
-        <!-- cut Service Model -->
-        <!-- cut Deployment Model -->
 
-        <!-- DIL Determination -->
-        <prop name="identity-assurance-level" value="1"/>
-        <prop name="authenticator-assurance-level" value="1"/>
-        <prop name="federation-assurance-level" value="1"/>  
-              
-        <!--  cut -->        
+    <system-characteristics>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
+        <system-name>System's Full Name</system-name>
+        <system-name-short>System's Short Name or Acronym</system-name-short>
+        <description>
+        <p>[Insert CSO Name] is delivered as [a/an] [insert based on the Service Model above] offering
+            using a multi-tenant [insert based on the Deployment Model above] cloud computing
+            environment. It is available to [Insert scope of customers in accordance with instructions
+            above (for example, the public, federal, state, local, and tribal governments, as well as
+            research institutions, federal contractors, government contractors etc.)].</p>
+        <p>NOTE: Additional description, including the purpose and functions of this system may be
+            added here. This includes any narrative text usually included in section 9.1 of the SSP.</p>
+        <p>NOTE: The description is expected to be at least 32 words in length.</p>
+        </description>
+        <prop name="cloud-service-model" value="saas">
+            <remarks>
+                <p>Remarks are required if service model is "other". Optional otherwise.</p>
+            </remarks>
+        </prop>
+        <prop name="cloud-deployment-model" value="government-only-cloud">
+            <remarks>
+                <p>Remarks are required if deployment model is "hybrid-cloud" or "other". Optional
+                otherwise.</p>
+            </remarks>
+        </prop>
+        <prop name="identity-assurance-level" value="2"/>
+        <prop name="authenticator-assurance-level" value="2"/>
+        <prop name="federation-assurance-level" value="2"/>
+
     </system-characteristics>
-    <!--  cut -->     
+
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
