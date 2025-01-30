@@ -4,7 +4,7 @@ weight: 337
 ---
 ## FIPS-199 Categorization
 
-A FedRAMP SSP identifies the system categorization [per FIPS-190](https://doi.org/10.6028/NIST.FIPS.199) as illustrated below.
+A FedRAMP SSP identifies the system categorization [per FIPS-199](https://doi.org/10.6028/NIST.FIPS.199) as illustrated below.
 
 {{< figure src="/img/ssp-figure-9.png" title="FedRAMP SSP template system sensitivity level." alt="Screenshot of the FIPS 199 system sensitivity level in the FedRAMP SSP template." >}}
 
