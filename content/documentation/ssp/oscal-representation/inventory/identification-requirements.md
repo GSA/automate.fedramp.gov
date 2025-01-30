@@ -70,7 +70,7 @@ Every inventory item must have an "asset-type" property that clearly identifies 
 ## Hardware Model Requirements
 
 **Description:**  
-Inventory items representing hardware devices must have a "hardware-model" property. This requirement ensures proper identification of physical components and supports asset management.
+Inventory items representing hardware devices must have a property named `hardware-model`. This requirement ensures proper identification of physical components and supports asset management.
 
 **When Required:**
 - For all physical hardware components
