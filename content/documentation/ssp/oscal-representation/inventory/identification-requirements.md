@@ -28,7 +28,7 @@ Every `inventory-item` must have a property named `vendor-name` in the FedRAMP E
 ## Software/OS Name Requirements
 
 **Description:**  
-Every inventory item where the (component) "asset-type" is "software" must have a "software-name" property (preferred) or "os-name" property where appropriate. This information can be specified either within the inventory item itself or within the component associated to that inventory item with its implemented-component.
+Every `inventory-item` where the (component) `asset-type` is `software` must have a property named `software-name` `os-name` where appropriate. This information can be specified either within the `inventory-item` itself or within the component associated to that inventory item with its `implemented-component`.
 
 **Why Two Properties?**
 - "software-name" is the preferred property for all software components
