@@ -9,7 +9,7 @@ weight: 120
 Proper identification of system components is fundamental to FedRAMP's security assessment process. Clear and consistent component identification enables:
 
 - Accurate tracking of the system and its dependencies in the authorization boundary
-- Precise mapping of security controls to components
+- Precise mapping of security controls implementations to their respective components
 - Efficient vulnerability management and patching
 - Clear communication between CSPs, assessors, and agencies
 - Effective supply chain risk management
