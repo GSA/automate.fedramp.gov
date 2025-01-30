@@ -28,7 +28,7 @@ Every software inventory item must have a property named `is-scanned` either wit
 ## Scan Type Requirements
 
 **Description:**  
-Every software inventory item must indicate one or more scan types, either within the inventory item itself or within the component linked by the inventory item. This requirement ensures that appropriate scanning methodologies are applied based on the component's nature and function.
+Every software `inventory-item` must indicate one or more scan types, either within the inventory item itself or within the component linked by the inventory item. This requirement ensures that appropriate scanning methodologies are applied based on the component's nature and function.
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
 
