@@ -10,7 +10,7 @@ FedRAMP has a [template for the Rules of Behavior](https://www.fedramp.gov/asset
 - If provided, the "published" `prop` value must match the lexical form of the 'date-time-with-timezone' data type (e.g., 2025-01-01T00:00:00Z).
 - Any specified `rlink` must be resolvable and accessible by FedRAMP
 
-#### Representation: User Guide Back Matter Resource
+#### Representation: Rules of Behavior Back Matter Resource
 {{< tabs JSON XML YAML>}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
