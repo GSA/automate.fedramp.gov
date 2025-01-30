@@ -52,7 +52,7 @@ Every software `inventory-item` must indicate one or more scan types, either wit
   - *Requires*: Justification in remarks
 
 **Remarks Requirement:**  
-If the scan-type is set to 'other' or 'not-applicable', a remarks field must be present explaining why standard scanning methods are not suitable and what alternative security measures are in place.
+If the `scan-type` property's value is `other` or `not-applicable`, a `remarks` field must be present explaining why standard scanning methods are not suitable and what alternative security measures are in place.
 
 **XPath Expression for Remarks:** `exists(target=". | //component[@uuid=./implemented-component/@component-uuid]/prop[@name='scan-type' @ns='http://fedramp.gov/ns/oscal' @value=('other', 'not-applicable')]/remarks")`
 
