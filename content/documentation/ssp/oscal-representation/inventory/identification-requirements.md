@@ -84,7 +84,7 @@ Inventory items representing hardware devices must have a property named `hardwa
 ## Diagram Label Requirements
 
 **Description:**  
-Every inventory item must have a "diagram-label" FedRAMP Extension to support clear system documentation and visualization. Additionally, all components not linked to inventory items must also have this label.
+Every inventory item must have a property named `diagram-label` in the FedRAMP Extension namespace (`http://fedramp.gov/ns/oscal`) to support clear system documentation and visualization. Additionally, all components not linked to an `inventory-item` must also have this property.
 
 **Purpose:**
 - Provides clear reference points in system diagrams
