@@ -9,7 +9,7 @@ FedRAMP no longer maintains the FedRAMP Master Acronym and Glossary. Digital aut
 
 ## FedRAMP Citations
 
-The FedRAMP MS Word-based SSP, SAP and SAR templates included links to the FedRAMP Laws and Regulations file.
+The [FedRAMP SSP, SAP, and SAR templates](https://www.fedramp.gov/documents-templates/) included links to the [FedRAMP Laws and Regulations Reference](https://www.fedramp.gov/assets/resources/templates/FedRAMP-Laws-Regulations-Standards-and-Guidance-Reference.xlsx).
 
 These are already included in the OSCAL-based FedRAMP templates as resources. The `resource` linking to the FedRAMP citations file is identified with links from the property type, "fedramp-citations". 
 
