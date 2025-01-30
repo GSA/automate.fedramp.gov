@@ -116,5 +116,5 @@ system-security-plan:
 **NOTE**
 
 - The Configuration Management Plan must be associated with CM-9 parts (a) through (e).
-- CSPs should to create a `component` for the Configuration Management Plan so it can be referenced via a `by-component` assembly in the control implementation statement for CM-9 parts (a) through (e). Follow the same approach as [Policies and Procedures](/documentation/ssp/oscal-representation/required-attachments/policies-and-procedures) attachments.
+- CSPs should create a `component` for the Configuration Management Plan so it can be referenced via a `by-component` assembly in the control implementation statement for CM-9 parts (a) through (e). Follow the same approach as [Policies and Procedures](/documentation/ssp/oscal-representation/required-attachments/policies-and-procedures) attachments.
 {{</callout>}}

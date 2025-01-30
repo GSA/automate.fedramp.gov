@@ -114,5 +114,5 @@ system-security-plan:
 **NOTE**
 
 - The Rules of Behavior must be associated with PL-4 part (a).
-- CSPs should to create a `component` for the Rules of Behavior so it can be referenced via a `by-component` assembly in the control implementation statement for PL-4 part (a). Follow the same approach as [Policies and Procedures](/documentation/ssp/oscal-representation/required-attachments/policies-and-procedures) attachments.
+- CSPs should create a `component` for the Rules of Behavior so it can be referenced via a `by-component` assembly in the control implementation statement for PL-4 part (a). Follow the same approach as [Policies and Procedures](/documentation/ssp/oscal-representation/required-attachments/policies-and-procedures) attachments.
 {{</callout>}}

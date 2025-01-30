@@ -116,5 +116,5 @@ system-security-plan:
 **NOTE**
 
 - The Contingency Plan must be associated with CP-2 part (a).
-- CSPs should to create a `component` for the Contingency Plan so it can be referenced via a `by-component` assembly in the control implementation statement for CP-2 part (a). Follow the same approach as [Policies and Procedures](/documentation/ssp/oscal-representation/required-attachments/policies-and-procedures) attachments.
+- CSPs should create a `component` for the Contingency Plan so it can be referenced via a `by-component` assembly in the control implementation statement for CP-2 part (a). Follow the same approach as [Policies and Procedures](/documentation/ssp/oscal-representation/required-attachments/policies-and-procedures) attachments.
 {{</callout>}}
