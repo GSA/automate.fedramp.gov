@@ -17,7 +17,7 @@ This structured approach to scanning documentation ensures that no component fal
 ## Scan Inclusion Requirements
 
 **Description:**  
-Every software inventory item must have an "is-scanned" property either within the inventory item itself or within the component linked by the inventory item. This property serves as a clear indicator of whether the component is included in security scanning processes.
+Every software inventory item must have a property named `is-scanned` either within the `inventory-item` itself or within the component referenced in the `inventory-item` by its `implemented-component`. This property serves as a clear indicator of whether the component is included in security scanning processes.
 
 **Syntax Type:** Optional core OSCAL syntax
 
