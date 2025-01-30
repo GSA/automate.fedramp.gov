@@ -11,7 +11,7 @@ FedRAMP no longer maintains the FedRAMP Master Acronym and Glossary. Digital aut
 
 The [FedRAMP SSP, SAP, and SAR templates](https://www.fedramp.gov/documents-templates/) included links to the [FedRAMP Laws and Regulations Reference](https://www.fedramp.gov/assets/resources/templates/FedRAMP-Laws-Regulations-Standards-and-Guidance-Reference.xlsx).
 
-These are already included in the OSCAL-based FedRAMP templates as resources. The `resource` linking to the FedRAMP citations file is identified with links from the property type, "fedramp-citations". 
+These are already included in the OSCAL-based FedRAMP templates as resources. For a FedRAMP OSCAL SSP, there must be a `resource` with an address of the FedRAMP Laws and Regulations Reference file in its `rlink` assembly. Additionally, the resource must define a property named `type` with a value `fedramp-citations` in the FedRAMP Extension namespace (`http://fedramp.gov/ns/oscal`).
 
 The `fedramp-citations` resource MUST have:
 - title
