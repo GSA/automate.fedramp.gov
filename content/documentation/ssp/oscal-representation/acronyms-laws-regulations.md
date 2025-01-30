@@ -5,7 +5,7 @@ weight: 343
 # Acronyms, Laws and Regulations
 
 ## Acronyms
-The FedRAMP PMO no longer maintains/publishes the FedRAMP Master Acronym and Glossary. As such, there is no requirement for reference to this document.
+FedRAMP no longer maintains the FedRAMP Master Acronym and Glossary. Digital authorization package artifacts in the OSCAL format do not need to reference it.
 
 ## FedRAMP Citations
 
