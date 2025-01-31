@@ -46,7 +46,7 @@ Every software `inventory-item` must have a property named `software-version` (p
 **Why Version Tracking Matters:**
 - Enables precise vulnerability matching
 - Supports patch management
-- Facilitates compliance verification
+- Facilitates security assessments as part of risk management
 - Helps identify end-of-life components
 
 **Syntax Type:** FedRAMP constraint in the FedRAMP-specific namespace
@@ -56,7 +56,7 @@ Every software `inventory-item` must have a property named `software-version` (p
 ## Asset Type and Function Requirements
 
 **Description:**  
-Every inventory item must have an "asset-type" property that clearly identifies its role in the system. This property can be specified either within the component associated to that inventory item with its implemented-component.
+Every inventory item must have a property named `asset-type` that clearly identifies its role in the system. This property can be specified either within the component associated to that inventory item with its `implemented-component`.
 
 **Important Notes:**
 - Mandatory for OS/Infrastructure and Containers
