@@ -49,13 +49,31 @@ There must be a component that represents the entire system itself. It should be
 The following is an example of a defined component.
 
 ##### Minimum Required Component Representation
+{{< tabs JSON XML YAML >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+"system-implementation": {
+    "components": [
+        {
+            "uuid": "11111111-2222-4000-8000-009000000000",
+            "type": "this-system",
+            "title": "This System",
+            "description": "This component represents the entire authorization boundary, as depicted in the system authorization boundary diagram.\n\nFedRAMP requires exactly one \\\"this-system\\\" component, which is used in control implementation responses and interconnections.",
+            "status": {"state": "operational"},
+            "remarks": "A FedRAMP SSP must always have exactly one \\\"this-system\\\" component that represents the whole system.\n\nIt does not need system details, as those exist elsewhere in this SSP."
+        }
+    ]
+}
+
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <!-- system-characteristics -->
 <system-implementation>
     <!-- user -->
-    
     <!-- This System -->
-    <component uuid="uuid-value" type="this-system" >
+    <component uuid="uuid-value" type="this-system">
         <title>This System</title>
         <description><p>
             The entire system as depicted in the system authorization boundary.
@@ -64,51 +82,184 @@ The following is an example of a defined component.
     </component>
     
 </system-implementation>
-{{</ highlight >}}
+
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+system-implementation:
+    components:
+    - uuid: 11111111-2222-4000-8000-009000000000
+      type: this-system
+      title: This System
+      description: |-
+        This component represents the entire authorization boundary, as depicted in the system authorization boundary diagram.
+
+        FedRAMP requires exactly one \"this-system\" component, which is used in control implementation responses and interconnections.
+      status:
+        state: operational
+      remarks: |-
+        A FedRAMP SSP must always have exactly one \"this-system\" component that represents the whole system.
+        It does not need system details, as those exist elsewhere in this SSP.
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 #### Common Additional Components
 
 For each FIPS 140 validated module, there must be a `component` that represents the service (e.g., cryptographic module, service, software, hardware, etc) that is validated, and another `component` of type `validation` that represents the validation certificate itself.  A reference `link` with `rel` set to "validation" and `href` set to the UUID of the validation component must be used to specify the validation for the component. 
 
 ##### Common Additional Component Representation
+{{< tabs JSON XML YAML >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+"system-implementation": {
+    "components": [
+        {
+            "uuid": "11111111-2222-4000-8000-009001200001",
+            "type": "validation",
+            "title": "OpenSSL FIPS 140-2 Validation",
+            "description": "Describe any relevant information regarding this validation of the CM.",
+            "props": [
+                {
+                    "name": "asset-type",
+                    "value": "cryptographic-module"
+                },
+                {
+                    "name": "validation-type",
+                    "value": "fips-140-2"
+                },
+                {
+                    "name": "validation-reference",
+                    "value": "4811"
+                }
+            ],
+            "links": [
+                {
+                    "href": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4811",
+                    "rel": "proof-of-compliance"
+                }
+            ],
+            "status": {"state": "operational"},
+            "remarks": "."
+        },
+        {
+            "uuid": "11111111-2222-4000-8000-009000500006",
+                "type": "service",
+                "title": "Email Service",
+                "description": "Email Service",
+                "links": [
+                    {
+                        "href": "#11111111-2222-4000-8000-009000500005",
+                        "rel": "used-by"
+                    }
+                ],
+                "status": {"state": "operational"},
+                "protocols": [
+                    {
+                        "name": "smtp",
+                        "port-ranges": [
+                            {
+                                "start": 23,
+                                "end": 23,
+                                "transport": "TCP"
+                            },
+                            {
+                                "start": 23,
+                                "end": 23,
+                                "transport": "UDP"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+    ]
+}
+
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <!-- system-characteristics -->
 <system-implementation>
-    <!-- user -->
-    <!-- System Component -->
-    
-    <!-- Ports, Protocols and Services Entry -->
-    <component uuid="uuid-of-service" type="service">
-        <title>[SAMPLE]Service Name</title>
-        <description><p>Describe the service</p></description>
-        <purpose>Describe the purpose for which the service is needed.</purpose>
-        <prop name="used-by" value="What uses this service?"/>
-        <link rel="validation" href="#certificate-uuid-value"/>
-        <status state="operational" />
-        <protocol name="http">
-            <port-range start="80" end="80" transport="TCP"/>
-        </protocol>
-        <protocol name="https">
-            <port-range start="443" end="443" transport="TCP"/>
-        </protocol>
+<!-- FIPS 140 Validation Certificate Information -->
+    <component uuid="11111111-2222-4000-8000-009001200001" type="validation">
+      <title>Module Name</title>
+      <description>
+        <p>Describe any relevant information regarding this validation</p>
+      </description>
+      <prop name="asset-type" value="cryptographic-module"/>
+      <prop name="validation-type" value="fips-140-2"/>
+      <prop name="validation-reference" value="4811"/>
+      <link rel="proof-of-compliance"
+        href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4811"/>
+      <status state="operational"/>
+      <remarks>
+        <p>.</p>
+      </remarks>
+    </component>
+    <!--Ports, Protocols, and Services Entry-->
+    <component type="service" uuid="11111111-2222-4000-8000-009000500006">
+      <title>Email Service</title>
+      <description>
+        <p>Email Service</p>
+      </description>
+      <link href="#11111111-2222-4000-8000-009000500005" rel="used-by"/>
+      <status state="operational"/>
+      <protocol name="smtp">
+        <port-range start="23" end="23" transport="TCP"/>
+        <port-range start="23" end="23" transport="UDP"/>
+      </protocol>
     </component>
     
-    <!-- FIPS 140 Validation Certificate Information -->
-    <!-- Include a separate component for each relevant certificate -->
-    <component uuid="certificate-uuid-value" type="validation">
-        <title>Module Name</title>
-        <description><p>FIPS 140 Validated Module</p></description>
-        <prop name="validation-type" value="fips-140-2"/>
-            <prop name="validation-reference" value="0000"/>
-            <link href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/0000" />
-            <status state="operational" />
-    </component>
     
-    <!-- service -->
 </system-implementation>
-<!-- control-implementation -->
 
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+system-implementation:
+    components:
+    - uuid: 11111111-2222-4000-8000-009001200001
+    type: validation
+    title: OpenSSL FIPS 140-2 Validation
+    description: Describe any relevant information regarding this validation of the CM.
+    props:
+    - name: asset-type
+        value: cryptographic-module
+    - name: validation-type
+        value: fips-140-2
+    - name: validation-reference
+        value: '4811'
+    links:
+    - href: https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4811
+        rel: proof-of-compliance
+    status:
+        state: operational
+    remarks: .
+    - uuid: 11111111-2222-4000-8000-009000500006
+      type: service
+      title: Email Service
+      description: Email Service
+      links:
+      - href: '#11111111-2222-4000-8000-009000500005'
+        rel: used-by
+      status:
+        state: operational
+      protocols:
+      - name: smtp
+        port-ranges:
+        - start: 23
+          end: 23
+          transport: TCP
+        - start: 23
+          end: 23
+          transport: UDP
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 #### Components as a Basis for System Inventory
 
@@ -132,41 +283,210 @@ requirement. This includes hardware, software, services, and underlying service 
 OSCAL is also designed to support legacy conversion of SSPs without individual components defined and enables an SSP author to migrate to the component approach gradually over time. In this instance, only a single `component` is initially required, representing the system as a whole and designated with the special component type, "this-system". The following provides an example of FedRAMP's minimum required component approach:
 
 ##### Example control for legacy SSP conversion
+{{< tabs JSON XML YAML >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+"system-implementation": {
+    "components": [
+        {
+            "uuid": "11111111-2222-4000-8000-009000000000",
+            "type": "this-system",
+            "title": "This System",
+            "description": "This component represents the entire authorization boundary, as depicted in the system authorization boundary diagram.\n\nFedRAMP requires exactly one \\\"this-system\\\" component, which is used in control implementation responses and interconnections.",
+            "status": {"state": "operational"},
+            "remarks": "A FedRAMP SSP must always have exactly one \\\"this-system\\\" component that represents the whole system.\n\nIt does not need system details, as those exist elsewhere in this SSP."
+        }
+    ]
+}
+"control-implementation": {
+    "description": "This description field is required by OSCAL.\n\nFedRAMP does not require any specific information here.\n\n\n\n",
+    "implemented-requirements": [
+        {
+            "uuid": "11111111-2222-4000-8000-012000010000",
+            "control-id": "ac-1",
+            "statements": [
+                {
+                    "statement-id": "ac-1_smt.a",
+                    "uuid": "11111111-2222-4000-8000-012000010100",
+                    "by-components": [
+                        {
+                            "component-uuid": "11111111-2222-4000-8000-009000000000",
+                            "uuid": "11111111-2222-4000-8000-012000010101",
+                            "description": "Describe how Part a is satisfied within the system": 
+                            "implementation status": {"state": "implemented"},
+                            "responsible-roles": [
+                                {
+                                    "role-id": "isso",
+                                    "party-uuids": ["11111111-2222-4000-8000-004000000008"]
+                                }
+                            ],
+                            "remarks": "Insert remarks here"
+                        },
+                    ]
+                },
+                {
+                    "statement-id": "ac-1_smt.b.1",
+                    "uuid": "11111111-2222-4000-8000-012000010100",
+                    "by-components": [
+                        {
+                            "component-uuid": "11111111-2222-4000-8000-009000000000",
+                            "uuid": "11111111-2222-4000-8000-012000010101",
+                            "description": "Describe how Part b1 is satisfied within the system as a whole.\n\nFedRAMP prefers all policies and procedures be attached as a resource in the back-matter. The link points to a resource.",
+                            "implementation-status": {"state": "implemented"},
+                            "responsible-roles": [
+                                {
+                                    "role-id": "isso",
+                                    "party-uuids": ["11111111-2222-4000-8000-004000000008"]
+                                }
+                            ],
+                            "remarks": "Insert remarks here"
+                        },
+                    ]
+                },
+                
+            ]
+        }
+    ]
+}
+
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <!-- system-characteristics -->
 <system-implementation>
-    <!-- Include a separate component for each relevant certificate -->
+    <!-- user -->
+    <!-- This System -->
     <component uuid="uuid-value" type="this-system">
-        <title>System Name</title>
-        <description>
-            <p>Component representing the entire system.</p>
-        </description>
+        <title>This System</title>
+        <description><p>
+            The entire system as depicted in the system authorization boundary.
+        </p></description>
+        <status state="operational" />
     </component>
 </system-implementation>
 <control-implementation>
-    <description><p>FedRAMP SSP Template Section 13</p></description>
-    <implemented-requirement control-id="ac-1" uuid="uuid-value">
-        <statement statement-id="ac-1_stmt.a" uuid="uuid-value">
-            <by-component component-uuid="Component-uuid-value" uuid="uuid-value">
-                <description>
-                    <p>Describe how Part a is satisfied within the system.</p>
-                </description>
-            </by-component>
-        </statement>
-        <statement statement-id="ac-1_stmt.b.1" uuid="uuid-value">
-            <by-component component-uuid="Component-uuid-value" uuid="uuid-value">
-                <description>
-                    <p>Describe how Part b 1 is satisfied within the system.</p>
-                </description>
-            </by-component>
-        </statement>
-        <statement statement-id="ac-1_stmt.b.2" uuid="uuid-value">
-            <by-component component-uuid="Component-uuid-value" uuid="uuid-value">
-                <description>
-                    <p>Describe how Part b 2 is satisfied within the system.</p>
-                </description>
-            </by-component>
-        </statement>
+    <description>
+      <p>This description field is required by OSCAL.</p>
+      <p>FedRAMP does not require any specific information here.</p>
+    </description>
+    <implemented-requirement control-id="ac-1" uuid="11111111-2222-4000-8000-012000010000">
+      <statement statement-id="ac-1_smt.a" uuid="11111111-2222-4000-8000-012000010100">
+        <by-component component-uuid="11111111-2222-4000-8000-009000000000"
+          uuid="11111111-2222-4000-8000-012000010101">
+          <description>
+            <p>Describe how Part a is satisfied within the system as a whole.</p>
+          </description>
+          <implementation-status state="implemented"/>
+          <responsible-role role-id="isso">
+            <party-uuid>11111111-2222-4000-8000-004000000008</party-uuid>
+          </responsible-role>
+          <remarks>
+            Insert Remarks here
+          </remarks>
+        </by-component>
+        <by-component component-uuid="11111111-2222-4000-8000-009000600001"
+          uuid="11111111-2222-4000-8000-012000010102">
+          <description>
+            <p>Describe how this policy satisfies part a.</p>
+          </description>
+          <implementation-status state="implemented"/>
+          <responsible-role role-id="isso">
+            <party-uuid>11111111-2222-4000-8000-004000000008</party-uuid>
+          </responsible-role>
+          <remarks>
+            <p>This is the "policy" component, which represents the Access Control and Identity
+              Management Policy.</p>
+          </remarks>
+        </by-component>
+      </statement>
+      <statement statement-id="ac-1_smt.b" uuid="11111111-2222-4000-8000-012000010200">
+        <by-component component-uuid="11111111-2222-4000-8000-009000000000"
+          uuid="11111111-2222-4000-8000-012000010201">
+          <description>
+            <p>Describe how Part b is satisfied within the system as a whole.</p>
+          </description>
+          <prop ns="http://fedramp.gov/ns/oscal" name="planned-completion-date" value="2024-01-31Z"/>
+          <implementation-status state="partial">
+            <remarks>
+              <p>Describe the plan to complete the implementation.</p>
+            </remarks>
+          </implementation-status>
+          <responsible-role role-id="isso">
+            <party-uuid>11111111-2222-4000-8000-004000000008</party-uuid>
+          </responsible-role>
+          <remarks>
+            Insert remarks here
+          </remarks>
+        </by-component>
+     </statement>
     </implemented-requirement>
 </control-implementation>
-{{</ highlight >}}
+
+
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+system-implementation:
+    components:
+    - uuid: 11111111-2222-4000-8000-009000000000
+      type: this-system
+      title: This System
+      description: |-
+        This component represents the entire authorization boundary, as depicted in the system authorization boundary diagram.
+        state: operational
+      remarks: |-
+        A FedRAMP SSP must always have exactly one \"this-system\" component that represents the whole system.
+        It does not need system details, as those exist elsewhere in this SSP.
+control-implementation:
+    description: |+
+      This description field is required by OSCAL.
+      FedRAMP does not require any specific information here.
+    implemented-requirements:
+    - uuid: 11111111-2222-4000-8000-012000010000
+      control-id: ac-1
+      statements:
+      - statement-id: ac-1_smt.a
+        uuid: 11111111-2222-4000-8000-012000010100
+        by-components:
+        - component-uuid: 11111111-2222-4000-8000-009000000000
+          uuid: 11111111-2222-4000-8000-012000010101
+          description: |-
+            Describe how Part a is satisfied within the system as a whole.
+            FedRAMP prefers all policies and procedures be attached as a resource in the back-matter. The link points to a resource.
+          implementation-status:
+            state: implemented
+          responsible-roles:
+          - role-id: isso
+            party-uuids:
+            - 11111111-2222-4000-8000-004000000008
+          remarks: |
+            This is the \"this-system\" component, which represents the system as a whole.
+
+            There are two reasons to provide a response here:
+
+            * When first converting a legacy/Word-based SSP to OSCAL, the entire control response may be placed here until it can be parsed out into appropriate component responses.
+            * When it is necessary to explain how two or more components work together to satisfy this requirement.
+      - statement-id: ac-1_smt.b
+        uuid: 11111111-2222-4000-8000-012000010200
+        by-components:
+        - component-uuid: 11111111-2222-4000-8000-009000000000
+          uuid: 11111111-2222-4000-8000-012000010201
+          description: Describe how Part b is satisfied within the system as a whole.
+          props:
+          - name: planned-completion-date
+            ns: http://fedramp.gov/ns/oscal
+            value: 2024-01-31Z
+          implementation-status:
+            state: partial
+            remarks: Describe the plan to complete the implementation.
+          responsible-roles:
+          - role-id: isso
+            party-uuids:
+            - 11111111-2222-4000-8000-004000000008
+          remarks: |
+            This is the \"this-system\" component, which represents the system as a whole.
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
