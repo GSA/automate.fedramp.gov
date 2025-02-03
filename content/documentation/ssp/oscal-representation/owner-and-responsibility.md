@@ -4,11 +4,11 @@ weight: 110
 ---
 # System Owner and Assignment of Responsibility
 
-FedRAMP requires clearly defined roles and assignment of responsibility for those roles in a SSP. The cloud service offering's system owner, security officer, and the agency authorizing official are important roles described below.
+FedRAMP requires clearly defined roles and assignment of responsibility for those roles in a SSP. The cloud service offering's system owner, security officer, and the customer agency's authorizing official are important roles described below.
 
-## Party and Roles in OSCAL
+## Parties and Roles in OSCAL
 
-In a FedRAMP OSCAL SSP, OSCAL must encode information about the relevant `party` that can fulfill a role before assignment of responsibility. This data includes a required unique identifier; required type of `party` (whether it is an individual person or organization); an optional binding between a party (`member-of-organization`) and their organization if that party is a person; and information about their location for address and contact information.
+In a FedRAMP OSCAL SSP, OSCAL must encode information about the relevant `party`, define a `role`, and only then bind them together. For a `party`, this data includes a required unique identifier; required type of `party` (whether it is an individual person or organization); an optional binding between a party (`member-of-organization`) and their organization if that party is a person; and information about their location for address and contact information.
 
 ## System Owner
 
