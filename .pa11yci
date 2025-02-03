@@ -1,0 +1,10 @@
+{
+    "defaults": {
+      "standard": "WCAG2AA",
+      "runners": ["axe"],
+      "concurrency": 1
+    },
+    "urls": [
+      "http://localhost:8080"
+    ]
+  }

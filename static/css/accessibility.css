@@ -1,0 +1,18 @@
+
+/* Apply high contrast to specific elements */
+
+.usa-nav__link:not(button) {
+  color: #111 !important;
+}
+.usa-nav span ,
+.usa-nav button:not([aria-expanded="true"]) ,
+.usa-nav button:not([aria-expanded="true"]) {
+  color: #111;
+}
+
+
+
+/* Cookie notice with WCAG AA compliant contrast */
+#cookie-notice-accept.btn-primary {
+  color: #004c82 !important;
+}
