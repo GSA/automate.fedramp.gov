@@ -175,23 +175,63 @@ XML formats:
 
 [https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/templates)
 
-#### An Empty OSCAL File Representation
+### An Empty OSCAL File Representation
+{{< tabs JSON XML YAML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "OSCAL-root-element": {
+        "uuid": "[generated-uuid]",
+        "metadata": {
+            "title": "Document Title",
+            "published": "2024-12-31T23:59:59Z",
+            "last-modified": "2025-03-06T00:00:00.000Z",
+            "version": "fedramp-3.0.0rc1-oscal-1.1.2",
+            "oscal-version": "1.1.3",
+        //body assemblies
+        "back-matter": {
+            //back-matter assemblies
+            }
+        }
+    }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<OSCAL-root-element xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    uuid="[generated-uuid]">
+<OSCAL-root-element xmlns="http://csrc.nist.gov/ns/oscal/1.0" uuid="[generated-uuid]">
   <metadata>
     <title>Document Title</title>
-    <last-modified>2023-03-06T00:00:00.000Z</last-modified>
-    <version>0.0</version>
-    <oscal-version>1.0.4</oscal-version>
+    <published>2024-12-31T23:59:59Z</published>
+    <last-modified>2025-03-06T00:00:00.000Z</last-modified>
+    <version>fedramp-3.0.0rc1-oscal-1.1.2</version>
+    <oscal-version>1.1.3</oscal-version>
   </metadata>
-
-  <!-- body cut -->
-
-  <back-matter />
+  <!-- body assemblies -->
+  <back-matter>
+  <!-- back-matter assemblies -->
+  </back-matter>
 </OSCAL-root-element>
-{{< /highlight >}}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+OSCAL-root-element:
+  uuid: [generated-uuid]
+  metadata:
+    title: 'Document Title'
+    published: '2024-12-31T23:59:59Z'
+    last-modified: '2025-03-06T00:00:00.000Z'
+    version: fedramp-3.0.0rc1-oscal-1.1.2
+    oscal-version: 1.1.3
+  [body assemblies]
+  back-matter:
+    [back-matter assemblies]
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
 
 ### UTF-8 Character Encoding
