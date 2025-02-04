@@ -8,15 +8,12 @@ weight: 130
 
 There are four ways identifiers are typically used in OSCAL:
 
--   **ID flag**: uniquely identifies a field or assembly.
-
--   **UUID flag**: An [RFC-4122](https://tools.ietf.org/html/rfc4122)
+1.  **ID flag**: uniquely identifies a field or assembly.
+2.  **UUID flag**: An [RFC-4122](https://tools.ietf.org/html/rfc4122)
     compliant universally unique identifier, version 4.
-
--   **ID/UUID Reference**: a flag or field that points to another field
+3.  **ID/UUID Reference**: a flag or field that points to another field
     or assembly using its unique ID or UUID flag value.
-
--   **Uniform Resource Identifier (URI) Fragment**: A value in a flag or
+4.  **Uniform Resource Identifier (URI) Fragment**: A value in a flag or
     field with a [URI data
     type](https://pages.nist.gov/OSCAL/resources/concepts/uri-use/#oscal-uri-data-types).
     A [URI fragment](https://tools.ietf.org/html/rfc3986#section-3.5)
@@ -30,12 +27,54 @@ There are four ways identifiers are typically used in OSCAL:
 _UUIDs are intended to be managed by tools "behind the scenes," and should not typically be exposed to users for manipulating SSP, SAP, SAR and POA&M content._
 {{</callout>}}
 
-**Identifiers** appear as an "**id**" or "**uuid**" flag to a data
-field or assembly. Examples include:
+**Identifiers** appear as an "**id**" or "**uuid**" flag to a data field or assembly. Here are some examples:
 
--   `<control id="ac-1">`: Uniquely identifies the control.
+-   Unique control identifier example:
+{{< tabs JSON XML YAML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "control-id": "ac-1"
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<control id="ac-1">
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+    control-id: ac-1
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
--   `<party uuid="8e83458e-dde5-4ee2-88bc-152f8da3fc31">`: Uniquely identifies the party.
+-   Unique party identifier example:
+{{< tabs JSON XML YAML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+   "parties": [
+       {
+           "uuid": "11111111-2222-4000-8000-004000000001"
+       }
+   ]
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<party uuid="11111111-2222-4000-8000-004000000001">
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+    parties:
+    - uuid: 11111111-2222-4000-8000-004000000001
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
 **An ID reference** in the OSCAL models typically appears with a name and hyphen in front of
 the "id" (name-id) or "uuid" (name-uuid). It is typically a flag where
@@ -43,13 +82,61 @@ the relationship is one-to-one, but is sometimes a field when the
 relationship is one-to-many. The name of an ID reference flag/field
 typically reflects the name of the field or assembly to which it points.
 
-Examples include:
+The following are some examples:
 
--   `<responsible-party role-id="prepared-by">`: points to a role
-    identified by "prepared-by".
+-   A responsible party role identified by the `prepared-by` value:
+{{< tabs JSON XML YAML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "responsible-parties": [
+        {
+            "role-id": "prepared-by"
+        }
+    ]
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<responsible-party role-id="prepared-by">
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+    responsible-parties:
+    - role-id: prepared-by
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
--   `<implemented-requirement id="imp-req-01" control-id="ac-2">`: points to the control identified by
-    "ac-2".
+-   A control identified by the `ac-2` value:
+{{< tabs JSON XML YAML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "implemented-requirements": [
+        {
+            "id": "imp-req-01",
+            "control-id": "ac-2"
+        }
+    ]
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<implemented-requirement id="imp-req-01" control-id="ac-2">
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+    implemented-requirements:
+    - id: imp-req-01
+      control-id: ac-2
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
 OSCAL provides some standard identifiers. Where appropriate, FedRAMP has
 adopted those and defined additional identifiers as needed. To ensure
@@ -95,9 +182,7 @@ XML file simply requires an XPath query such as:
 
 {{< highlight xml "linenos=table" >}}
 //*[@id='id-value']
-
 <!-- OR  -->
-
 //*[@uuid='uuid-value']
 {{< /highlight >}}
 
@@ -110,15 +195,35 @@ Often flags that reference OSCAL information using its ID or UUID will
 have a name and context that clarifies the expected target. For example,
 a flag may appear as follows:
 
+{{< tabs JSON XML YAML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "field-name":
+        {
+            "component-uuid": "11111111-2222-4000-8000-004000000001"
+        }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<field-name component-uuid='1c23ddee-7001-4512-9de1-e062faa69c0a' />
-{{< /highlight >}}
+<field-name component-uuid='11111111-2222-4000-8000-004000000001'/>
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+    field-name:
+    - component-uuid: 11111111-2222-4000-8000-004000000001
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
 To ensure this UUID value points to a component, use the following XPath
 query: 
 
 {{< highlight xml "linenos=table" >}}
-boolean(//*[@uuid='1c23ddee-7001-4512-9de1-e062faa69c0a']/name()='component')
+boolean(//*[@uuid='11111111-2222-4000-8000-004000000001']/name()='component')
 {{< /highlight >}}
 
 If the above expression returns true, the UUID points to a component as
@@ -132,11 +237,11 @@ specific name.
 The following will only find the UUID value if it is associated with a
 component. It would work in the SSP, SAP, SAR and POA&M.
 {{< highlight xml "linenos=table" >}}
-//component[@uuid='1c23ddee-7001-4512-9de1-e062faa69c0a']
+//component[@uuid='11111111-2222-4000-8000-004000000001']
 {{< /highlight >}}
 
 The following will only find the UUID value if it is associated with a
 component in the system-implementation assembly of the SSP. 
 {{< highlight xml "linenos=table" >}}
-/*/system-implementation/component[@uuid='1c23ddee-7001-4512-9de1-e062faa69c0a']
+/*/system-implementation/component[@uuid='11111111-2222-4000-8000-004000000001']
 {{< /highlight >}}
