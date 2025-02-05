@@ -24,7 +24,10 @@ weight: 240
             $.getJSON('/json/fedramp_allowed_values.json')
         ]).then(function([constraints, allowedValues]) {
             allConstraints=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.rules)).filter(x=>typeof x.id!='undefined').sort((a,b)=>a.id.localeCompare(b.id));
-            displayConstraints(filterConstraints(allConstraints, searchTerm));
+            const allVariables=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.lets)).sort((a,b)=>a.var.localeCompare(b.var)).filter(Boolean);
+
+
+            displayConstraints(filterConstraints(allConstraints, searchTerm),allVariables);
             
             if (selectedId) {
                 $(`#${selectedId}`).addClass('selected');
@@ -43,7 +46,7 @@ weight: 240
             );
         }
 
-        function displayConstraints(constraints) {
+        function displayConstraints(constraints,variables) {
             const $list = $('#constraintsList');
             $list.empty();
 
@@ -62,7 +65,8 @@ weight: 240
                     $('<h3>').text(item['formal-name']),
                     $('<span>').text(item['id']),
                     $('<p>').text(item['message']),
-                    $('<pre style="white-space:pre-line">').text(item['test']),
+                    $('<pre style="white-space:pre-line">').text("TARGET:" + item['test']),
+                    $('<pre style="white-space:pre-line">').text("TEST: "+item['target']),
                     $('<p>').text(item.description),
                     item['props']&&$('<a>').text("learn more").attr('href',item['props'].find(x=>x.name==='help-url').value),
                 );
