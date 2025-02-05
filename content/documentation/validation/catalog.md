@@ -23,11 +23,24 @@ weight: 240
             $.getJSON('/json/fedramp_external_constraints.json'),
             $.getJSON('/json/fedramp_allowed_values.json')
         ]).then(function([constraints, allowedValues]) {
-            allConstraints=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.rules)).filter(x=>typeof x.id!='undefined').sort((a,b)=>a.id.localeCompare(b.id));
-            const allVariables=([constraints,allowedValues].flatMap(x=>x["metaschema-meta-constraints"]).flatMap(x=>x["contexts"]).flatMap(x=>x.constraints).flatMap(x=>x.lets)).sort((a,b)=>a.var.localeCompare(b.var)).filter(Boolean);
+            // Process constraints while preserving context information
+            allConstraints = [constraints, allowedValues]
+                .flatMap(x => x["metaschema-meta-constraints"])
+                .flatMap(metaConstraint => 
+                    metaConstraint["contexts"].flatMap(context => 
+                        context.constraints.rules.map(rule => ({
+                                ...rule,
+                                contextMetapaths: context.metapaths,
+                                contextName: context.name,
+                                variables: context.constraints.lets || []
+                            }))
+                        )
+                    
+                )
+                .filter(x => typeof x.id !== 'undefined')
+                .sort((a, b) => a.id.localeCompare(b.id));
 
-
-            displayConstraints(filterConstraints(allConstraints, searchTerm),allVariables);
+            displayConstraints(filterConstraints(allConstraints, searchTerm));
             
             if (selectedId) {
                 $(`#${selectedId}`).addClass('selected');
@@ -42,11 +55,13 @@ weight: 240
                 item['object-type']?.toLowerCase().includes(term) ||
                 item['id']?.toLowerCase().includes(term) ||
                 item['message']?.toLowerCase().includes(term) ||
+                item['contextName']?.toLowerCase().includes(term) ||
+                item['contextTarget']?.toLowerCase().includes(term) ||
                 item.enums?.some(enumItem => enumItem.value?.toLowerCase().includes(term))
             );
         }
 
-        function displayConstraints(constraints,variables) {
+        function displayConstraints(constraints) {
             const $list = $('#constraintsList');
             $list.empty();
 
@@ -64,16 +79,61 @@ weight: 240
                 $div.append(
                     $('<h3>').text(item['formal-name']),
                     $('<span>').text(item['id']),
-                    $('<p>').text(item['message']),
-                    $('<pre style="white-space:pre-line">').text("TARGET:" + item['test']),
-                    $('<pre style="white-space:pre-line">').text("TEST: "+item['target']),
-                    $('<p>').text(item.description),
-                    item['props']&&$('<a>').text("learn more").attr('href',item['props'].find(x=>x.name==='help-url').value),
+                    $('<p>').text(item['message'])
                 );
 
+                // Add context section with h4
+                const $contextDiv = $('<div>').addClass('context-section');
+                $contextDiv.append(
+                    $('<h4>').text('Context'),
+                );
+                item.contextMetapaths.filter(Boolean).forEach(function(path) {
+                        const $enumValue = $('<code style="padding:4px">').addClass('enum-value');
+$contextDiv.append(
+                   $enumValue.append(path.target),
+                );                                   
+                                    });
+                $div.append($contextDiv);
+
+                // Add constraint section with h4
+                const $constraintDiv = $('<div>').addClass('constraint-section');
+                if(item['test']){
+                  $constraintDiv.append("<h4>Test</h4>");
+                  $constraintDiv.append($('<code style="white-space:pre-line">').text(item['test']))
+                }
+                if(item['target']){
+                  $constraintDiv.append("<h4>Target</h4>");
+                  $constraintDiv.append($('<code style="white-space:pre-line">').text(item['target']))
+                }
+                $div.append($constraintDiv);
+                console.log(item.variables);
+                // Add variables section with h4 if variables exist
+                if (item.variables && item.variables.length > 0) {
+                    const $variablesDiv = $('<div>').addClass('variables-section');
+                    $variablesDiv.append($('<h4>').text('Variables'));
+                    
+                    const $variablesList = $('<ul>');
+                    item.variables.forEach(function(variable) {
+                        $variablesList.append(
+                            $('<li>')
+                                .append($('<h5>').text("$"+variable.var))
+                                .append($('<span>').text(variable.expression))
+                        );
+                    });
+                    $variablesDiv.append($variablesList);
+                    $div.append($variablesDiv);
+                }
+
+                $div.append($('<p>').text(item.description));
+
+                if (item['props']) {
+                    $div.append($('<a>').text("learn more").attr('href', item['props'].find(x => x.name === 'help-url').value));
+                }
+
+                // Add allowed values section with h4 if they exist
                 if (item['object-type'] === 'allowed-values' && item.enums) {
-                    const $enumDiv = $('<div style="white-space:pre-line">');
-                    $enumDiv.append($('<h4>').text('Allowed Values:'));
+                    const $enumDiv = $('<div>').addClass('allowed-values-section');
+                    $enumDiv.append($('<h4>').text('Allowed Values'));
                     
                     item.enums.forEach(function(enumItem) {
                         const $enumValue = $('<span style="padding:4px">').addClass('enum-value');
@@ -121,13 +181,32 @@ weight: 240
     .constraint-item h3 {
         margin-top: 0;
     }
+    .constraint-item h4 {
+        margin: 10px 0 5px 0;
+        color: #666;
+    }
+    .context-section,
+    .constraint-section,
+    .variables-section,
+    .allowed-values-section {
+        margin: 10px 0;
+    }
+    .variables-section ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 5px 0;
+    }
+    .variables-section li {
+        margin: 3px 0;
+    }
     #searchInput {
         width: 100%;
         padding: 5px;
         margin-bottom: 10px;
     }
-    ul {
-        margin: 5px 0;
-        padding-left: 20px;
+    code {
+        background-color: #f5f5f5;
+        padding: 2px 4px;
+        border-radius: 3px;
     }
 </style>
