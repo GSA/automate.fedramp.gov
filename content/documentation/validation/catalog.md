@@ -28,14 +28,60 @@ weight: 240
                 .flatMap(x => x["metaschema-meta-constraints"])
                 .flatMap(metaConstraint => 
                     metaConstraint["contexts"].flatMap(context => 
-                        context.constraints.rules.map(rule => ({
+                        context.constraints.rules.flatMap(rule => {
+                            // Get all variables that are referenced in test or target
+                            const referencedVars = new Set();
+                            const varMap = new Map();
+                            
+                            // Create a map of variable names to their values
+                            context.constraints.lets?.forEach(v => {
+                                varMap.set(v.var, v.value);
+                            });
+
+                            // Function to find variables in a string
+                            function findVarsInString(str) {
+                                const vars = new Set();
+                                if (!str) return vars;
+                                
+                                // Match $varname or ${varname} patterns
+                                const matches = str.match(/\$\{?([a-zA-Z0-9_-]+)\}?/g) || [];
+                                matches.forEach(match => {
+                                    const varName = match.replace(/[\$\{\}]/g, '');
+                                    vars.add(varName);
+                                });
+                                return vars;
+                            }
+
+                            // Function to recursively find all referenced variables
+                            function findAllReferencedVars(varName, visited = new Set()) {
+                                if (visited.has(varName)) return;
+                                visited.add(varName);
+                                referencedVars.add(varName);
+
+                                const value = varMap.get(varName);
+                                if (value) {
+                                    const nestedVars = findVarsInString(value);
+                                    nestedVars.forEach(v => findAllReferencedVars(v, visited));
+                                }
+                            }
+                            
+                            const testVars = findVarsInString(rule.test);
+                            const targetVars = findVarsInString(rule.target);
+                            
+                            testVars.forEach(v => findAllReferencedVars(v));
+                            targetVars.forEach(v => findAllReferencedVars(v));
+                        
+                            // Filter variables to only include referenced ones
+                            const filteredVars = context.constraints.lets?.filter(v => referencedVars.has(v.var)) || [];
+
+                            return {
                                 ...rule,
                                 contextMetapaths: context.metapaths,
                                 contextName: context.name,
-                                variables: context.constraints.lets || []
-                            }))
-                        )
-                    
+                                variables: filteredVars
+                            };
+                        })
+                    )
                 )
                 .filter(x => typeof x.id !== 'undefined')
                 .sort((a, b) => a.id.localeCompare(b.id));
@@ -79,34 +125,36 @@ weight: 240
                 $div.append(
                     $('<h3>').text(item['formal-name']),
                     $('<span>').text(item['id']),
-                    $('<p>').text(item['message'])
+                   
                 );
-
+                if(item['message']){
+                    $div.append($('<h4>').text('Message'),
+                    $('<p>').text(item['message']))
+                }
                 // Add context section with h4
                 const $contextDiv = $('<div>').addClass('context-section');
                 $contextDiv.append(
                     $('<h4>').text('Context'),
                 );
-                item.contextMetapaths.filter(Boolean).forEach(function(path) {
+ item.contextMetapaths.filter(Boolean).forEach(function(path) {
                         const $enumValue = $('<code style="padding:4px">').addClass('enum-value');
 $contextDiv.append(
                    $enumValue.append(path.target),
                 );                                   
                                     });
-                $div.append($contextDiv);
+$div.append($contextDiv);
 
                 // Add constraint section with h4
                 const $constraintDiv = $('<div>').addClass('constraint-section');
-                if(item['test']){
+ if(item['test']){
                   $constraintDiv.append("<h4>Test</h4>");
                   $constraintDiv.append($('<code style="white-space:pre-line">').text(item['test']))
                 }
                 if(item['target']){
                   $constraintDiv.append("<h4>Target</h4>");
                   $constraintDiv.append($('<code style="white-space:pre-line">').text(item['target']))
-                }
-                $div.append($constraintDiv);
-                console.log(item.variables);
+                }                $div.append($constraintDiv);
+
                 // Add variables section with h4 if variables exist
                 if (item.variables && item.variables.length > 0) {
                     const $variablesDiv = $('<div>').addClass('variables-section');
@@ -116,8 +164,8 @@ $contextDiv.append(
                     item.variables.forEach(function(variable) {
                         $variablesList.append(
                             $('<li>')
-                                .append($('<h5>').text("$"+variable.var))
-                                .append($('<span>').text(variable.expression))
+                                .append($('<pre>').text(variable.var))
+                                .append($('<code>').text(variable.expression))
                         );
                     });
                     $variablesDiv.append($variablesList);
@@ -192,12 +240,20 @@ $contextDiv.append(
         margin: 10px 0;
     }
     .variables-section ul {
-        list-style-type: none;
-        padding-left: 0;
-        margin: 5px 0;
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 8px 0;
     }
     .variables-section li {
-        margin: 3px 0;
+        margin: 6px 0;
+        line-height: 1.4;
+    }
+    .variables-section code {
+        font-weight: bold;
+        margin-right: 4px;
+    }
+    .variable-value {
+        color: #555;
     }
     #searchInput {
         width: 100%;
