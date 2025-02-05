@@ -223,7 +223,6 @@ system-security-plan:
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   uuid="11111111-2222-4000-8000-000000000000">
   <metadata>
@@ -249,35 +248,107 @@ system-security-plan:
 
 ## Authorizing Official
 
-A role with an ID value of `authorizing-official` is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information.
+In the FedRAMP SSP template, a CSP and customer agency must identify the agency's authorizing official for its use of the cloud service offering like the example below.
 
 {{< figure src="/img/ssp-figure-13.png" title="FedRAMP SSP template federal authorizing officials." alt="Screenshot of the federal authorizing official information in the FedRAMP SSP template." >}}
 
-##### Federal Agency Authorization Representation
+A FedRAMP OSCAL SSP encodes the customer agency's authorizing official like the example below.
+
+{{< tabs YAML JSON XML >}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  uuid: 11111111-2222-4000-8000-000000000000
+  metadata:
+    parties:
+    - short-name: GAN
+      uuid: 11111111-2222-4000-8000-004000000005
+      name: Government Agency Name
+      type: organization
+    - email-addresses:
+      - name@gan.gov
+      member-of-organizations:
+      - 11111111-2222-4000-8000-004000000005
+      uuid: 11111111-2222-4000-8000-004000000012
+      name: "[SAMPLE]Person Name 3"
+      type: person
+    responsible-parties:
+    - party-uuids:
+      - 11111111-2222-4000-8000-004000000012
+      role-id: authorizing-official
+    roles:
+    - id: authorizing-official
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "uuid": "11111111-2222-4000-8000-000000000000",
+    "metadata": {
+      "roles": [
+        {
+          "id": "authorizing-official"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "authorizing-official",
+          "party-uuids": [
+            "11111111-2222-4000-8000-004000000012"
+          ]
+        }
+      ],
+      "parties": [
+        {
+          "type": "organization",
+          "name": "Government Agency Name",
+          "uuid": "11111111-2222-4000-8000-004000000005",
+          "short-name": "GAN"
+        },
+        {
+          "type": "person",
+          "name": "[SAMPLE]Person Name 3",
+          "uuid": "11111111-2222-4000-8000-004000000012",
+          "member-of-organizations": [
+            "11111111-2222-4000-8000-004000000005"
+          ],
+          "email-addresses": [
+            "name@gan.gov"
+          ]
+        }
+      ]
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<metadata>
-    <role id="authorizing-official">
-        <title>Authorizing Official</title>
-    </role>
-    <party uuid="uuid-of-agency" type="organization">
-        <name>Agency Name</name>
-    </party>
-    <party uuid="uuid-of-person-6" type="person">
-        <name>[SAMPLE]Person Name 6</name>
-        <prop name="job-title" value="Individual's Title"/>
-            <email-address>name@example.com</email-address>
-            <telephone-number>202-000-0000</telephone-number>
-            <member-of-organization>uuid-of-agency</member-of-organization>
-    </party>
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  uuid="11111111-2222-4000-8000-000000000000">
+  <metadata>
     <role id="authorizing-official"/>
+    <party uuid="11111111-2222-4000-8000-004000000005" type="organization">
+      <name>Government Agency Name</name>
+      <short-name>GAN</short-name>
+    </party>
+    <party uuid="11111111-2222-4000-8000-004000000012" type="person">
+      <name>[SAMPLE]Person Name 3</name>
+      <email-address>name@gan.gov</email-address>
+      <member-of-organization>11111111-2222-4000-8000-004000000005</member-of-organization>
+    </party>   
     <responsible-party role-id="authorizing-official">
-        <party-uuid>uuid-of-person-6</party-uuid>
+        <party-uuid>11111111-2222-4000-8000-004000000012</party-uuid>
     </responsible-party>
-</metadata>>
-<system-characteristics>
-    <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" value="fedramp-agency" />
-</system-characteristics>
-{{</ highlight >}}
+  </metadata> 
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
+
 
 #### XPath Queries
 {{< highlight xml "linenos=table" >}}
@@ -296,36 +367,80 @@ A role with an ID value of `authorizing-official` is required. Use the responsib
 
 If the authorization-type field is "fedramp-jab", the responsible-party/party-uuid field must be the uuid value for the FedRAMP JAB.
 
+{{< tabs YAML JSON XML >}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
 ---
-#### Federal JAB P-ATO Authorization Representation
-{{< tabs JSON XML YAML >}}
+system-security-plan:
+  system-characteristics:
+    props:
+    - ns: http://fedramp.gov/ns/oscal
+      name: authorization-type
+      value: fedramp-jab
+  metadata:
+    responsible-parties:
+    - role-id: authorizing-official
+      party-uuids:
+      - 11111111-2222-4000-8000-004000000012
+    roles:
+    - id: authorizing-official
+    parties:
+    - short-name: GAN
+      uuid: 11111111-2222-4000-8000-004000000005
+      name: Government Agency Name
+      type: organization
+    - member-of-organizations:
+      - 11111111-2222-4000-8000-004000000005
+      uuid: 11111111-2222-4000-8000-004000000012
+      name: "[SAMPLE]Person Name 3"
+      type: person
+      email-addresses:
+      - name@gan.gov
+    - short-name: FedRAMP JAB
+      uuid: 11111111-2222-4000-8000-004000000003
+      name: "Federal Risk and Authorization Management Program: Joint Authorization Board"
+      type: organization
+  uuid: 11111111-2222-4000-8000-000000000000
+{{< /highlight >}}
+{{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
-  "system-security-plan" : {
-    "uuid" : "11111111-2222-4000-8000-000000000000",
-    "metadata" : {
-      "parties" : [ {
-        "short-name" : "FedRAMP JAB",
-        "type" : "organization",
-        "name" : "FedRAMP: Joint Authorization Board",
-        "uuid" : "11111111-2222-4000-8000-004000000003"
-      } ],
-      "roles" : [ {
-        "id" : "authorizing-official",
-        "title" : "Authorizing Official"
-      } ],
-      "responsible-parties" : [ {
-        "party-uuids" : [ "11111111-2222-4000-8000-004000000003" ],
-        "role-id" : "authorizing-official"
-      } ]
-    },
-    "system-characteristics" : {
-      "props" : [ {
-        "ns" : "https://fedramp.gov/ns/oscal",
-        "value" : "fedramp-jab",
-        "name" : "authorization-type"
-      } ]
+  "system-security-plan": {
+    "uuid": "11111111-2222-4000-8000-000000000000",
+    "metadata": {
+      "roles": [
+        {
+          "id": "authorizing-official"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "authorizing-official",
+          "party-uuids": [
+            "11111111-2222-4000-8000-004000000012"
+          ]
+        }
+      ],
+      "parties": [
+        {
+          "type": "organization",
+          "name": "Government Agency Name",
+          "uuid": "11111111-2222-4000-8000-004000000005",
+          "short-name": "GAN"
+        },
+        {
+          "type": "person",
+          "name": "[SAMPLE]Person Name 3",
+          "uuid": "11111111-2222-4000-8000-004000000012",
+          "member-of-organizations": [
+            "11111111-2222-4000-8000-004000000005"
+          ],
+          "email-addresses": [
+            "name@gan.gov"
+          ]
+        }
+      ]
     }
   }
 }
@@ -333,50 +448,32 @@ If the authorization-type field is "fedramp-jab", the responsible-party/party-uu
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<system-security-plan>
-    <metadata>
-        <role id="authorizing-official">
-            <title>Authorizing Official</title>
-            <desc>The government executive(s) who authorize this system.</desc>
-        </role>
-        <party uuid="uuid-of-fedramp-jab" type="organization">
-            <name>FedRAMP: Joint Authorization Board</name>
-            <short-name>FedRAMP JAB</short-name>
-        </party>
-        <responsible-party role-id="authorizing-official">
-            <party-uuid>uuid-of-fedramp-jab</party-uuid>
-        </responsible-party>
-    </metadata>
-    <system-characteristics>
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" value="fedramp-jab"/>
-    </system-characteristics>
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  uuid="11111111-2222-4000-8000-000000000000">
+  <metadata>
+    <role id="authorizing-official"/>
+    <party uuid="11111111-2222-4000-8000-004000000005" type="organization">
+      <name>Government Agency Name</name>
+      <short-name>GAN</short-name>
+    </party>
+    <party uuid="11111111-2222-4000-8000-004000000012" type="person">
+      <name>[SAMPLE]Person Name 3</name>
+      <email-address>name@gan.gov</email-address>
+      <member-of-organization>11111111-2222-4000-8000-004000000005</member-of-organization>
+    </party>
+    <party uuid="11111111-2222-4000-8000-004000000003" type="organization">
+      <name>Federal Risk and Authorization Management Program: Joint Authorization Board</name>
+      <short-name>FedRAMP JAB</short-name>
+    </party>    
+    <responsible-party role-id="authorizing-official">
+        <party-uuid>11111111-2222-4000-8000-004000000012</party-uuid>
+    </responsible-party>
+  </metadata>
+  <system-characteristics>
+    <prop ns="http://fedramp.gov/ns/oscal" name="authorization-type" value="fedramp-jab"/>
+  </system-characteristics>  
 </system-security-plan>
-{{< /highlight >}}
-{{% /tab %}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
-Converting 'file:/private/tmp/example.xml'.
----
-system-security-plan:
-  system-characteristics:
-    props:
-    - name: authorization-type
-      value: fedramp-jab
-      ns: https://fedramp.gov/ns/oscal
-  metadata:
-    responsible-parties:
-    - role-id: authorizing-official
-      party-uuids:
-      - 11111111-2222-4000-8000-004000000003
-    roles:
-    - title: Authorizing Official
-      id: authorizing-official
-    parties:
-    - uuid: 11111111-2222-4000-8000-004000000003
-      name: "FedRAMP: Joint Authorization Board"
-      type: organization
-      short-name: FedRAMP JAB
-  uuid: 11111111-2222-4000-8000-000000000000
 {{< /highlight >}}
 {{% /tab %}}
 {{< /tabs >}}
