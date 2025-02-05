@@ -18,118 +18,120 @@ In the FedRAMP SSP template, a CSP must identify the system owner for the cloud 
 
 A FedRAMP OSCAL SSP encodes the system owner like the example below.
 
-{{< tabs JSON XML YAML >}}
+{{< tabs YAML JSON XML >}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  metadata:
+    parties:
+    - type: organization
+      name: Cloud Service Provider (CSP) Name
+      uuid: 11111111-2222-4000-8000-004000000001
+      short-name: CSP Acronym/Short Name
+      location-uuids:
+      - 11111111-2222-4000-8000-003000000001
+    - type: person
+      name: "[SAMPLE]Person Name 1"
+      props:
+      - name: job-title
+        value: Individual's Title
+      - name: mail-stop
+        value: Mailstop A-1
+      uuid: 11111111-2222-4000-8000-004000000010
+      member-of-organizations:
+      - 11111111-2222-4000-8000-004000000001
+      email-addresses:
+      - name@example.com
+    roles:
+    - id: system-owner
+    responsible-parties:
+    - role-id: system-owner
+      party-uuids:
+      - 11111111-2222-4000-8000-004000000010
+  uuid: 11111111-2222-4000-8000-000000000000
+{{< /highlight >}}
+{{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
-  "system-security-plan" : {
-    "metadata" : {
+  "system-security-plan": {
+    "metadata": {
+      "roles": [
+        {
+          "id": "system-owner"
+        }
+      ],
       "parties": [
         {
-            "uuid": "11111111-2222-4000-8000-004000000010",
-            "type": "person",
-            "name": "[SAMPLE]Person Name 1",
-            "props": [
-                {
-                    "name": "job-title",
-                    "value": "Individual's Title"
-                },
-                {
-                    "name": "mail-stop",
-                    "value": "Mailstop A-1"
-                }
-            ],
-            "email-addresses": ["name@example.com"],
-            "telephone-numbers": [
-                {"number": "2020000001"}
-            ],
-            "location-uuids": ["11111111-2222-4000-8000-003000000001"],
-            "member-of-organizations": ["11111111-2222-4000-8000-004000000001"]
+          "name": "Cloud Service Provider (CSP) Name",
+          "type": "organization",
+          "location-uuids": [
+            "11111111-2222-4000-8000-003000000001"
+          ],
+          "short-name": "CSP Acronym/Short Name",
+          "uuid": "11111111-2222-4000-8000-004000000001"
         },
         {
-            "uuid": "11111111-2222-4000-8000-004000000001",
-            "type": "organization",
-            "name": "Cloud Service Provider (CSP) Name",
-            "short-name": "CSP Acronym/Short Name",
-            "links": [
-                {
-                    "href": "#11111111-2222-4000-8000-001000000052",
-                    "rel": "logo"
-                }
-            ],
-            "location-uuids": ["11111111-2222-4000-8000-003000000001"],
-            "remarks": "Replace sample CSP information.\n\nCSP information must be present and associated with the \\\"cloud-service-provider\\\" role via `responsible-party`."
+          "props": [
+            {
+              "value": "Individual's Title",
+              "name": "job-title"
+            },
+            {
+              "value": "Mailstop A-1",
+              "name": "mail-stop"
+            }
+          ],
+          "name": "[SAMPLE]Person Name 1",
+          "type": "person",
+          "email-addresses": [
+            "name@example.com"
+          ],
+          "member-of-organizations": [
+            "11111111-2222-4000-8000-004000000001"
+          ],
+          "uuid": "11111111-2222-4000-8000-004000000010"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "party-uuids": [
+            "11111111-2222-4000-8000-004000000010"
+          ],
+          "role-id": "system-owner"
         }
       ]
     },
-    "uuid" : "12345678-1234-4321-8765-123456789012"
+    "uuid": "11111111-2222-4000-8000-000000000000"
   }
 }
 {{< /highlight >}}
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<system-security-plan uuid="12345678-1234-4321-8765-123456789012">
-    <metadata>
-      <party uuid="11111111-2222-4000-8000-004000000010" type="person">
-        <name>[SAMPLE]Person Name 1</name>
-        <prop name="job-title" value="Individual's Title"/>
-        <prop name="mail-stop" value="Mailstop A-1"/>
-        <email-address>name@example.com</email-address>
-        <telephone-number>2020000001</telephone-number>
-        <location-uuid>11111111-2222-4000-8000-003000000001</location-uuid>
-        <member-of-organization>11111111-2222-4000-8000-004000000001</member-of-organization>
-      </party>
-      <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
-        <name>Cloud Service Provider (CSP) Name</name>
-        <short-name>CSP Acronym/Short Name</short-name>
-        <link href="#11111111-2222-4000-8000-001000000052" rel="logo"/>
-        <location-uuid>11111111-2222-4000-8000-003000000001</location-uuid>
-        <remarks>
-          <p>Replace sample CSP information.</p>
-          <p>CSP information must be present and associated with the "cloud-service-provider" role via
-              <code>responsible-party</code>.</p>
-        </remarks>
-      </party>      
-    </metadata>
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  uuid="11111111-2222-4000-8000-000000000000">
+  <metadata>
+    <role id="system-owner"/>
+    <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
+      <name>Cloud Service Provider (CSP) Name</name>
+      <short-name>CSP Acronym/Short Name</short-name>
+      <location-uuid>11111111-2222-4000-8000-003000000001</location-uuid>
+    </party>
+    <party uuid="11111111-2222-4000-8000-004000000010" type="person">
+      <name>[SAMPLE]Person Name 1</name>
+      <prop name="job-title" value="Individual's Title"/>
+      <prop name="mail-stop" value="Mailstop A-1"/>
+      <email-address>name@example.com</email-address>
+      <member-of-organization>11111111-2222-4000-8000-004000000001</member-of-organization>
+    </party>    
+    <responsible-party role-id="system-owner">
+        <party-uuid>11111111-2222-4000-8000-004000000010</party-uuid>
+    </responsible-party>
+  </metadata>
 </system-security-plan>
-{{< /highlight >}}
-{{% /tab %}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
----
-system-security-plan:
-  uuid: 12345678-1234-4321-8765-123456789012
-  metadata:
-    - uuid: 11111111-2222-4000-8000-004000000010
-      type: person
-      name: '[SAMPLE]Person Name 1'
-      props:
-      - name: job-title
-        value: Individual's Title
-      - name: mail-stop
-        value: Mailstop A-1
-      email-addresses:
-      - name@example.com
-      telephone-numbers:
-      - number: '2020000001'
-      location-uuids:
-      - 11111111-2222-4000-8000-003000000001
-      member-of-organizations:
-      - 11111111-2222-4000-8000-004000000001
-    - uuid: 11111111-2222-4000-8000-004000000001
-      type: organization
-      name: Cloud Service Provider (CSP) Name
-      short-name: CSP Acronym/Short Name
-      links:
-      - href: '#11111111-2222-4000-8000-001000000052'
-        rel: logo
-      location-uuids:
-      - 11111111-2222-4000-8000-003000000001
-      remarks: |-
-        Replace sample CSP information.
-
-        CSP information must be present and associated with the \"cloud-service-provider\" role via `responsible-party`.
 {{< /highlight >}}
 {{% /tab %}}
 {{< /tabs >}}
