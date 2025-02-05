@@ -89,7 +89,11 @@ if (visited.has(varName)) return;
             displayConstraints(filterConstraints(allConstraints, searchTerm));
             
             if (selectedId) {
-                $(`#${selectedId}`).addClass('selected')
+                const $selectedElement = $(`#${selectedId}`);
+                $selectedElement.addClass('selected');
+                setTimeout(() => {
+                    $selectedElement[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
             }
 
         });
@@ -121,6 +125,8 @@ if (visited.has(varName)) return;
                         $(this).addClass('selected');
                         selectedId = item.id;
                         updateURL();
+                        // Smooth scroll to clicked element
+                        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     });
 
                 $div.append(
