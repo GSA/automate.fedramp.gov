@@ -110,7 +110,6 @@ system-security-plan:
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   uuid="11111111-2222-4000-8000-000000000000">
   <metadata>
@@ -222,7 +221,6 @@ system-security-plan:
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   uuid="11111111-2222-4000-8000-000000000000">
   <metadata>
@@ -326,7 +324,6 @@ system-security-plan:
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   uuid="11111111-2222-4000-8000-000000000000">
   <metadata>
@@ -448,7 +445,6 @@ system-security-plan:
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   uuid="11111111-2222-4000-8000-000000000000">
   <metadata>
