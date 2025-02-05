@@ -143,6 +143,110 @@ In the FedRAMP SSP template, a CSP must identify the information system security
 
 {{< figure src="/img/ssp-figure-13.png" title="Assignment of Responsibility" alt="Screenshot of the SSP template's assignment of responsibility information." >}}
 
+A FedRAMP OSCAL SSP encodes the security officer responsible for the system like the example below.
+
+{{< tabs YAML JSON XML >}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  uuid: 11111111-2222-4000-8000-000000000000
+  metadata:
+    parties:
+    - short-name: CSP Acronym/Short Name
+      location-uuids:
+      - 11111111-2222-4000-8000-003000000001
+      type: organization
+      name: Cloud Service Provider (CSP) Name
+      uuid: 11111111-2222-4000-8000-004000000001
+    - member-of-organizations:
+      - 11111111-2222-4000-8000-004000000001
+      email-addresses:
+      - name@example.com
+      type: person
+      name: "[SAMPLE]Person Name 2"
+      uuid: 11111111-2222-4000-8000-004000000011
+    roles:
+    - id: information-system-security-officer
+    responsible-parties:
+    - party-uuids:
+      - 11111111-2222-4000-8000-004000000011
+      role-id: information-system-security-officer
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "uuid": "11111111-2222-4000-8000-000000000000",
+    "metadata": {
+      "responsible-parties": [
+        {
+          "role-id": "information-system-security-officer",
+          "party-uuids": [
+            "11111111-2222-4000-8000-004000000011"
+          ]
+        }
+      ],
+      "parties": [
+        {
+          "name": "Cloud Service Provider (CSP) Name",
+          "uuid": "11111111-2222-4000-8000-004000000001",
+          "short-name": "CSP Acronym/Short Name",
+          "location-uuids": [
+            "11111111-2222-4000-8000-003000000001"
+          ],
+          "type": "organization"
+        },
+        {
+          "name": "[SAMPLE]Person Name 2",
+          "uuid": "11111111-2222-4000-8000-004000000011",
+          "member-of-organizations": [
+            "11111111-2222-4000-8000-004000000001"
+          ],
+          "email-addresses": [
+            "name@example.com"
+          ],
+          "type": "person"
+        }
+      ],
+      "roles": [
+        {
+          "id": "information-system-security-officer"
+        }
+      ]
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  uuid="11111111-2222-4000-8000-000000000000">
+  <metadata>
+    <role id="information-system-security-officer"/>
+    <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
+      <name>Cloud Service Provider (CSP) Name</name>
+      <short-name>CSP Acronym/Short Name</short-name>
+      <location-uuid>11111111-2222-4000-8000-003000000001</location-uuid>
+    </party>
+    <party uuid="11111111-2222-4000-8000-004000000011" type="person">
+      <name>[SAMPLE]Person Name 2</name>
+      <email-address>name@example.com</email-address>
+      <member-of-organization>11111111-2222-4000-8000-004000000001</member-of-organization>
+    </party>
+    <responsible-party role-id="information-system-security-officer">
+        <party-uuid>11111111-2222-4000-8000-004000000011</party-uuid>
+    </responsible-party>
+  </metadata>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Authorizing Official
 
 A role with an ID value of `authorizing-official` is required. Use the responsible-party assembly to associate this role with the party assembly containing the Authorizing Official's information.
