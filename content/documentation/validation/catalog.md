@@ -35,7 +35,7 @@ weight: 240
                             
                             // Create a map of variable names to their values
                             context.constraints.lets?.forEach(v => {
-                                varMap.set(v.var, v.value);
+                                varMap.set(v.var, v.expression);
                             });
 
                             // Function to find variables in a string
@@ -54,11 +54,13 @@ weight: 240
 
                             // Function to recursively find all referenced variables
                             function findAllReferencedVars(varName, visited = new Set()) {
-                                if (visited.has(varName)) return;
+                                console.log(varName);
+if (visited.has(varName)) return;
                                 visited.add(varName);
                                 referencedVars.add(varName);
 
                                 const value = varMap.get(varName);
+                                console.log(varMap,varName);
                                 if (value) {
                                     const nestedVars = findVarsInString(value);
                                     nestedVars.forEach(v => findAllReferencedVars(v, visited));
@@ -67,13 +69,11 @@ weight: 240
                             
                             const testVars = findVarsInString(rule.test);
                             const targetVars = findVarsInString(rule.target);
-                            
                             testVars.forEach(v => findAllReferencedVars(v));
                             targetVars.forEach(v => findAllReferencedVars(v));
                         
                             // Filter variables to only include referenced ones
                             const filteredVars = context.constraints.lets?.filter(v => referencedVars.has(v.var)) || [];
-
                             return {
                                 ...rule,
                                 contextMetapaths: context.metapaths,
@@ -89,8 +89,9 @@ weight: 240
             displayConstraints(filterConstraints(allConstraints, searchTerm));
             
             if (selectedId) {
-                $(`#${selectedId}`).addClass('selected');
+                $(`#${selectedId}`).addClass('selected')
             }
+
         });
 
         function filterConstraints(constraints, term) {
@@ -150,7 +151,7 @@ $div.append($contextDiv);
                   $constraintDiv.append("<h4>Test</h4>");
                   $constraintDiv.append($('<code style="white-space:pre-line">').text(item['test']))
                 }
-                if(item['target']){
+                if(item['target']&&item['target']!='.'){
                   $constraintDiv.append("<h4>Target</h4>");
                   $constraintDiv.append($('<code style="white-space:pre-line">').text(item['target']))
                 }                $div.append($constraintDiv);
@@ -165,14 +166,17 @@ $div.append($contextDiv);
                         $variablesList.append(
                             $('<li>')
                                 .append($('<pre>').text(variable.var))
-                                .append($('<code>').text(variable.expression))
+                                .append($('<code style="white-space:pre-line">').text(variable.expression))
                         );
                     });
                     $variablesDiv.append($variablesList);
                     $div.append($variablesDiv);
                 }
 
+                if(item['description']){
+                $div.append("<h4>Description</h4>");
                 $div.append($('<p>').text(item.description));
+                }             
 
                 if (item['props']) {
                     $div.append($('<a>').text("learn more").attr('href', item['props'].find(x => x.name === 'help-url').value));
@@ -207,9 +211,6 @@ $div.append($contextDiv);
             searchTerm = $(this).val();
             const filtered = filterConstraints(allConstraints, searchTerm);
             displayConstraints(filtered);
-            if (selectedId) {
-                $(`#${selectedId}`).addClass('selected');
-            }
             updateURL();
         });
     });
@@ -232,30 +233,7 @@ $div.append($contextDiv);
     .constraint-item h4 {
         margin: 10px 0 5px 0;
         color: #666;
-    }
-    .context-section,
-    .constraint-section,
-    .variables-section,
-    .allowed-values-section {
-        margin: 10px 0;
-    }
-    .variables-section ul {
-        list-style-type: disc;
-        padding-left: 20px;
-        margin: 8px 0;
-    }
-    .variables-section li {
-        margin: 6px 0;
-        line-height: 1.4;
-    }
-    .variables-section code {
-        font-weight: bold;
-        margin-right: 4px;
-    }
-    .variable-value {
-        color: #555;
-    }
-    #searchInput {
+    }    #searchInput {
         width: 100%;
         padding: 5px;
         margin-bottom: 10px;
