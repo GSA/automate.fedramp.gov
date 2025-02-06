@@ -44,6 +44,7 @@ The cloud service provider (CSP) must be provided as one of the party assemblies
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 system-security-plan:
   metadata:
     party:
@@ -122,6 +123,7 @@ This assembly defines the full name of the system and its short name. A FedRAMP 
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 system-security-plan:
   metadata:
     party:
@@ -222,6 +224,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
 
 {{% tab %}}
 {{< highlight yaml "linenos=table, hl_lines=13-17" >}}
+---
 system-security-plan:
   metadata:
     party:
@@ -348,6 +351,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
 
 {{% tab %}}
 {{< highlight yaml "linenos=table, hl_lines=18-21" >}}
+---
 system-security-plan:
   metadata:
     party:
@@ -468,6 +472,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
 
 {{% tab %}}
 {{< highlight yaml "linenos=table, hl_lines=10-19" >}}
+---
 system-security-plan:
   metadata: {}
   system-characteristics:
@@ -579,6 +584,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
 
 {{% tab %}}
 {{< highlight yaml "linenos=table, hl_lines=10-11" >}}
+---
 system-security-plan:
   metadata: {}
   system-characteristics:
