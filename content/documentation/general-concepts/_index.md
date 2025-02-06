@@ -1,5 +1,5 @@
 ---
-title: Relevant OSCAL Concepts
+title: General OSCAL Concepts
 weight: 200
 menu:
   primary:
