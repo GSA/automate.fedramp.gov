@@ -223,6 +223,7 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 system-security-plan:
   system-implementation:
     component:
