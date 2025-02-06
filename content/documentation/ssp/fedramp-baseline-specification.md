@@ -49,10 +49,12 @@ including a relative path, absolute path, or URI fragment.
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 system-security-plan:
   import-profile:
     href: "path/to/profile.yaml"
 # OR
+---
 system-security-plan:
   import-profile:
     href: "#96445439-6ce1-4e22-beae-aa72cfe173d0"
@@ -110,6 +112,7 @@ resource in the SSP file's back-matter. Refer to the [*Attachments and Embedded 
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 system-security-plan:
   back-matter:
     resource:
@@ -227,6 +230,7 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 system-security-plan:
   metadata:
     title: FedRAMP System Security Plan (SSP)
