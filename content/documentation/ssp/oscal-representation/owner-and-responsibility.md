@@ -18,40 +18,7 @@ In the FedRAMP SSP template, a CSP must identify the system owner for the cloud 
 
 A FedRAMP OSCAL SSP encodes the system owner like the example below.
 
-{{< tabs YAML JSON XML >}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
----
-system-security-plan:
-  metadata:
-    parties:
-    - type: organization
-      name: Cloud Service Provider (CSP) Name
-      uuid: 11111111-2222-4000-8000-004000000001
-      short-name: CSP Acronym/Short Name
-      location-uuids:
-      - 11111111-2222-4000-8000-003000000001
-    - type: person
-      name: "[SAMPLE]Person Name 1"
-      props:
-      - name: job-title
-        value: Individual's Title
-      - name: mail-stop
-        value: Mailstop A-1
-      uuid: 11111111-2222-4000-8000-004000000010
-      member-of-organizations:
-      - 11111111-2222-4000-8000-004000000001
-      email-addresses:
-      - name@example.com
-    roles:
-    - id: system-owner
-    responsible-parties:
-    - role-id: system-owner
-      party-uuids:
-      - 11111111-2222-4000-8000-004000000010
-  uuid: 11111111-2222-4000-8000-000000000000
-{{< /highlight >}}
-{{% /tab %}}
+{{< tabs JSON YAML XML >}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
@@ -109,6 +76,39 @@ system-security-plan:
 {{< /highlight >}}
 {{% /tab %}}
 {{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  metadata:
+    parties:
+    - type: organization
+      name: Cloud Service Provider (CSP) Name
+      uuid: 11111111-2222-4000-8000-004000000001
+      short-name: CSP Acronym/Short Name
+      location-uuids:
+      - 11111111-2222-4000-8000-003000000001
+    - type: person
+      name: "[SAMPLE]Person Name 1"
+      props:
+      - name: job-title
+        value: Individual's Title
+      - name: mail-stop
+        value: Mailstop A-1
+      uuid: 11111111-2222-4000-8000-004000000010
+      member-of-organizations:
+      - 11111111-2222-4000-8000-004000000001
+      email-addresses:
+      - name@example.com
+    roles:
+    - id: system-owner
+    responsible-parties:
+    - role-id: system-owner
+      party-uuids:
+      - 11111111-2222-4000-8000-004000000010
+  uuid: 11111111-2222-4000-8000-000000000000
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   uuid="11111111-2222-4000-8000-000000000000">
@@ -144,35 +144,7 @@ In the FedRAMP SSP template, a CSP must identify the information system security
 
 A FedRAMP OSCAL SSP encodes the security officer responsible for the system like the example below.
 
-{{< tabs YAML JSON XML >}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
----
-system-security-plan:
-  uuid: 11111111-2222-4000-8000-000000000000
-  metadata:
-    parties:
-    - short-name: CSP Acronym/Short Name
-      location-uuids:
-      - 11111111-2222-4000-8000-003000000001
-      type: organization
-      name: Cloud Service Provider (CSP) Name
-      uuid: 11111111-2222-4000-8000-004000000001
-    - member-of-organizations:
-      - 11111111-2222-4000-8000-004000000001
-      email-addresses:
-      - name@example.com
-      type: person
-      name: "[SAMPLE]Person Name 2"
-      uuid: 11111111-2222-4000-8000-004000000011
-    roles:
-    - id: information-system-security-officer
-    responsible-parties:
-    - party-uuids:
-      - 11111111-2222-4000-8000-004000000011
-      role-id: information-system-security-officer
-{{< /highlight >}}
-{{% /tab %}}
+{{< tabs JSON YAML XML >}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
@@ -218,7 +190,35 @@ system-security-plan:
   }
 }
 {{< /highlight >}}
-{{% /tab %}}
+{{% /tab %}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  uuid: 11111111-2222-4000-8000-000000000000
+  metadata:
+    parties:
+    - short-name: CSP Acronym/Short Name
+      location-uuids:
+      - 11111111-2222-4000-8000-003000000001
+      type: organization
+      name: Cloud Service Provider (CSP) Name
+      uuid: 11111111-2222-4000-8000-004000000001
+    - member-of-organizations:
+      - 11111111-2222-4000-8000-004000000001
+      email-addresses:
+      - name@example.com
+      type: person
+      name: "[SAMPLE]Person Name 2"
+      uuid: 11111111-2222-4000-8000-004000000011
+    roles:
+    - id: information-system-security-officer
+    responsible-parties:
+    - party-uuids:
+      - 11111111-2222-4000-8000-004000000011
+      role-id: information-system-security-officer
+{{< /highlight >}}
+{{% /tab %}}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
@@ -252,33 +252,7 @@ In the FedRAMP SSP template, a CSP and customer agency must identify the agency'
 
 A FedRAMP OSCAL SSP encodes the customer agency's authorizing official like the example below.
 
-{{< tabs YAML JSON XML >}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
----
-system-security-plan:
-  uuid: 11111111-2222-4000-8000-000000000000
-  metadata:
-    parties:
-    - short-name: GAN
-      uuid: 11111111-2222-4000-8000-004000000005
-      name: Government Agency Name
-      type: organization
-    - email-addresses:
-      - name@gan.gov
-      member-of-organizations:
-      - 11111111-2222-4000-8000-004000000005
-      uuid: 11111111-2222-4000-8000-004000000012
-      name: "[SAMPLE]Person Name 3"
-      type: person
-    responsible-parties:
-    - party-uuids:
-      - 11111111-2222-4000-8000-004000000012
-      role-id: authorizing-official
-    roles:
-    - id: authorizing-official
-{{< /highlight >}}
-{{% /tab %}}
+{{< tabs JSON YAML XML >}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
@@ -320,6 +294,32 @@ system-security-plan:
     }
   }
 }
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  uuid: 11111111-2222-4000-8000-000000000000
+  metadata:
+    parties:
+    - short-name: GAN
+      uuid: 11111111-2222-4000-8000-004000000005
+      name: Government Agency Name
+      type: organization
+    - email-addresses:
+      - name@gan.gov
+      member-of-organizations:
+      - 11111111-2222-4000-8000-004000000005
+      uuid: 11111111-2222-4000-8000-004000000012
+      name: "[SAMPLE]Person Name 3"
+      type: person
+    responsible-parties:
+    - party-uuids:
+      - 11111111-2222-4000-8000-004000000012
+      role-id: authorizing-official
+    roles:
+    - id: authorizing-official
 {{< /highlight >}}
 {{% /tab %}}
 {{% tab %}}
@@ -364,42 +364,7 @@ system-security-plan:
 
 If the authorization-type field is "fedramp-jab", the responsible-party/party-uuid field must be the uuid value for the FedRAMP JAB.
 
-{{< tabs YAML JSON XML >}}
-{{% tab %}}
-{{< highlight yaml "linenos=table" >}}
----
-system-security-plan:
-  system-characteristics:
-    props:
-    - ns: http://fedramp.gov/ns/oscal
-      name: authorization-type
-      value: fedramp-jab
-  metadata:
-    responsible-parties:
-    - role-id: authorizing-official
-      party-uuids:
-      - 11111111-2222-4000-8000-004000000012
-    roles:
-    - id: authorizing-official
-    parties:
-    - short-name: GAN
-      uuid: 11111111-2222-4000-8000-004000000005
-      name: Government Agency Name
-      type: organization
-    - member-of-organizations:
-      - 11111111-2222-4000-8000-004000000005
-      uuid: 11111111-2222-4000-8000-004000000012
-      name: "[SAMPLE]Person Name 3"
-      type: person
-      email-addresses:
-      - name@gan.gov
-    - short-name: FedRAMP JAB
-      uuid: 11111111-2222-4000-8000-004000000003
-      name: "Federal Risk and Authorization Management Program: Joint Authorization Board"
-      type: organization
-  uuid: 11111111-2222-4000-8000-000000000000
-{{< /highlight >}}
-{{% /tab %}}
+{{< tabs JSON YAML XML >}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
@@ -441,6 +406,41 @@ system-security-plan:
     }
   }
 }
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-characteristics:
+    props:
+    - ns: http://fedramp.gov/ns/oscal
+      name: authorization-type
+      value: fedramp-jab
+  metadata:
+    responsible-parties:
+    - role-id: authorizing-official
+      party-uuids:
+      - 11111111-2222-4000-8000-004000000012
+    roles:
+    - id: authorizing-official
+    parties:
+    - short-name: GAN
+      uuid: 11111111-2222-4000-8000-004000000005
+      name: Government Agency Name
+      type: organization
+    - member-of-organizations:
+      - 11111111-2222-4000-8000-004000000005
+      uuid: 11111111-2222-4000-8000-004000000012
+      name: "[SAMPLE]Person Name 3"
+      type: person
+      email-addresses:
+      - name@gan.gov
+    - short-name: FedRAMP JAB
+      uuid: 11111111-2222-4000-8000-004000000003
+      name: "Federal Risk and Authorization Management Program: Joint Authorization Board"
+      type: organization
+  uuid: 11111111-2222-4000-8000-000000000000
 {{< /highlight >}}
 {{% /tab %}}
 {{% tab %}}
