@@ -11,22 +11,49 @@ The cloud service provider (CSP) must be provided as one of the party assemblies
 {{< figure src="/img/ssp-figure-4.png" title="FedRAMP SSP template CSP Name" alt="Screenshot of the CSP name in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
-{{< highlight xml "linenos=table, hl_lines=5" >}}
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
 <system-security-plan>
     <metadata>
         <!-- CSP Name -->
-        <party uuid=”uuid-of-csp” type=”organization”>
+        <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
             <name>Cloud Service Provider (CSP) Name</name>
         </party>
     </metadata>
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
 
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-Cloud Service Provider (CSP) Name:
-    /*/metadata/party[@uuid='uuid-of-csp']/name
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "metadata": {
+      "party": {
+        "uuid": "11111111-2222-4000-8000-004000000001",
+        "type": "organization",
+        "name": "Cloud Service Provider (CSP) Name"
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+system-security-plan:
+  metadata:
+    party:
+      uuid: "11111111-2222-4000-8000-004000000001"
+      type: organization
+      name: "Cloud Service Provider (CSP) Name"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---
 ### System Name, Abbreviation, and FedRAMP Unique Identifier
@@ -43,11 +70,14 @@ For this reason, OSCAL requires the identifier-type flag be present and have a v
 This assembly defines the full name of the system and its short name. A FedRAMP OSCAL SSP must define the system name and its short name.
 
 #### OSCAL Representation
-{{< highlight xml "linenos=table, hl_lines=9-13" >}}
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
 <system-security-plan>
     <metadata>
         <!-- CSP Name -->
-        <party uuid="uuid-of-csp" type="organization">
+        <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
             <name>Cloud Service Provider (CSP) Name</name>
         </party>
     </metadata>
@@ -61,7 +91,55 @@ This assembly defines the full name of the system and its short name. A FedRAMP 
     </system-characteristics>
     <!--  cut -->
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "metadata": {
+      "party": {
+        "uuid": "11111111-2222-4000-8000-004000000001",
+        "type": "organization",
+        "name": "Cloud Service Provider (CSP) Name"
+      }
+    },
+    "system-characteristics": {
+      "system-name": "System's Full Name",
+      "system-name-short": "System's Short Name or Acronym",
+      "system-id": {
+        "identifier-type": "http://fedramp.gov",
+        "value": "F00000000"
+      }
+      // cut
+    }
+    // cut
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+system-security-plan:
+  metadata:
+    party:
+      uuid: "11111111-2222-4000-8000-004000000001"
+      type: organization
+      name: "Cloud Service Provider (CSP) Name"
+  system-characteristics:
+    system-name: "System's Full Name"
+    system-name-short: "System's Short Name or Acronym"
+    system-id:
+      identifier-type: "http://fedramp.gov"
+      value: "F00000000"
+    # cut
+  # cut
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 <br />
 {{<callout>}}
@@ -73,16 +151,6 @@ Required Identifier Type:
 
 {{</callout>}}
 
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    Information System Name:
-        /*/system-characteristics/system-name
-    Information System Abbreviation:
-        /*/system-characteristics/system-name-short
-    FedRAMP Unique Identifier:
-        /*/system-characteristics/system-id[@identifier-type="https://fedramp.gov"]
-{{</ highlight >}}
-
 ---
 ### Service Model
 
@@ -91,11 +159,14 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
 {{< figure src="/img/ssp-figure-6.png" title="FedRAMP SSP template cloud service model" alt="Screenshot of the cloud service model in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table, hl_lines=14-19" >}}
 <system-security-plan>
     <metadata>
         <!-- CSP Name -->
-        <party uuid="uuid-of-csp" type="organization">
+        <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
             <name>Cloud Service Provider (CSP) Name</name>
         </party>
     </metadata>
@@ -111,12 +182,67 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
                 <p>Remarks are required if service model is "other". Optional otherwise.</p>
             </remarks>
         </prop>
-
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table, hl_lines=17-23" >}}
+{
+  "system-security-plan": {
+    "metadata": {
+      "party": {
+        "uuid": "11111111-2222-4000-8000-004000000001",
+        "type": "organization",
+        "name": "Cloud Service Provider (CSP) Name"
+      }
+    },
+    "system-characteristics": {
+      "system-name": "System's Full Name",
+      "system-name-short": "System's Short Name or Acronym",
+      "system-id": {
+        "identifier-type": "http://fedramp.gov",
+        "value": "F00000000"
+      },
+      "prop": {
+        "name": "cloud-service-model",
+        "value": "saas",
+        "remarks": {
+          "p": "Remarks are required if service model is \"other\". Optional otherwise."
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table, hl_lines=13-17" >}}
+system-security-plan:
+  metadata:
+    party:
+      uuid: "11111111-2222-4000-8000-004000000001"
+      type: organization
+      name: "Cloud Service Provider (CSP) Name"
+  system-characteristics:
+    system-name: "System's Full Name"
+    system-name-short: "System's Short Name or Acronym"
+    system-id:
+      identifier-type: "http://fedramp.gov"
+      value: "F00000000"
+    prop:
+      name: "cloud-service-model"
+      value: "saas"
+      remarks:
+        p: "Remarks are required if service model is \"other\". Optional otherwise."
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 <br />
 {{<callout>}}
@@ -131,14 +257,6 @@ Valid Service Model values:
 
 {{</callout>}}
 
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    Service Model:
-        /*/system-characteristics/prop[@name="cloud-service-model"]/@value
-    Remarks on System's Service Model:
-        /*/system-characteristics/prop[@name="cloud-service-model"]/remarks/node()
-{{</ highlight >}}
-
 **NOTE:**
 
 -   A cloud service provider may define two or more cloud service models for the cloud service offering defined in the system security plan if applicable for customer use (IaaS and PaaS; IaaS and PaaS and SaaS; PaaS and SaaS). Cloud service providers may use a "cloud-service-model" prop for each applicable cloud service model.
@@ -152,11 +270,14 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
 {{< figure src="/img/ssp-figure-7.png" title="FedRAMP SSP template cloud deployment model" alt="Screenshot of the cloud deployment model in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table, hl_lines=20-25" >}}
 <system-security-plan>
     <metadata>
         <!-- CSP Name -->
-        <party uuid="uuid-of-csp" type="organization">
+        <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
             <name>Cloud Service Provider (CSP) Name</name>
         </party>
     </metadata>
@@ -182,7 +303,76 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
     </system-characteristics>
     <!--  cut -->     
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table, hl_lines=25-31" >}}
+{
+  "system-security-plan": {
+    "metadata": {
+      "party": {
+        "uuid": "11111111-2222-4000-8000-004000000001",
+        "type": "organization",
+        "name": "Cloud Service Provider (CSP) Name"
+      }
+    },
+    "system-characteristics": {
+      "system-name": "System's Full Name",
+      "system-name-short": "System's Short Name or Acronym",
+      "system-id": {
+        "identifier-type": "http://fedramp.gov",
+        "value": "F00000000"
+      },
+      "prop": [
+        {
+          "name": "cloud-service-model",
+          "value": "saas",
+          "remarks": {
+            "p": "Remarks are required if service model is \"other\". Optional otherwise."
+          }
+        },
+        {
+          "name": "cloud-deployment-model",
+          "value": "public-cloud",
+          "remarks": {
+            "p": "Remarks are required if deployment model is \"hybrid\". Optional otherwise."
+          }
+        }
+      ]
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table, hl_lines=18-21" >}}
+system-security-plan:
+  metadata:
+    party:
+      uuid: "11111111-2222-4000-8000-004000000001"
+      type: organization
+      name: "Cloud Service Provider (CSP) Name"
+  system-characteristics:
+    system-name: "System's Full Name"
+    system-name-short: "System's Short Name or Acronym"
+    system-id:
+      identifier-type: "http://fedramp.gov"
+      value: "F00000000"
+    prop:
+      - name: "cloud-service-model"
+        value: "saas"
+        remarks:
+          p: "Remarks are required if service model is \"other\". Optional otherwise."
+      - name: "cloud-deployment-model"
+        value: "public-cloud"
+        remarks:
+          p: "Remarks are required if deployment model is \"hybrid\". Optional otherwise."
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 <br />
 {{<callout>}}
@@ -193,14 +383,6 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
     Valid: public-cloud, private-cloud, government-only-cloud, hybrid-cloud, other
 
 {{</callout>}}
-
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    Deployment Model:
-        /*/system-characteristics/prop[@name="cloud-deployment-model"]/@value
-    Remarks on System's Deployment Model:
-        /*/system-characteristics/prop[@name="cloud-deployment-model"]/remarks/node()
-{{</ highlight >}}
 
 **NOTE:**
 
@@ -216,6 +398,9 @@ The system status in the FedRAMP SSP template document is specified in the "Full
 {{< figure src="/img/ssp-figure-10.png" title="FedRAMP SSP template system status." alt="Screenshot of the system status information in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table, hl_lines=18-24" >}}
 <system-security-plan>
     <metadata>
@@ -226,7 +411,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type=“http://fedramp.gov/ns/oscal”>F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
@@ -245,7 +430,67 @@ The system status in the FedRAMP SSP template document is specified in the "Full
     </system-characteristics>
     <!--  cut -->     
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table, hl_lines=12-25" >}}
+{
+  "system-security-plan": {
+    "metadata": {},
+    "system-characteristics": {
+      "system-name": "System's Full Name",
+      "system-name-short": "System's Short Name or Acronym",
+      "system-id": {
+        "identifier-type": "http://fedramp.gov/ns/oscal",
+        "value": "F00000000"
+      },
+      "security-sensitivity-level": "fips-199-moderate",
+      "status": {
+        "state": "operational",
+        "remarks": {
+          "p": [
+            "If the status is “other”, the remarks field is required.",
+            "Otherwise, it is optional."
+          ]
+        }
+      },
+      "prop": {
+        "ns": "https://fedramp.gov/ns/oscal",
+        "name": "fully-operational-date",
+        "value": "mm/dd/yyyy"
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table, hl_lines=10-19" >}}
+system-security-plan:
+  metadata: {}
+  system-characteristics:
+    system-name: "System's Full Name"
+    system-name-short: "System's Short Name or Acronym"
+    system-id:
+      identifier-type: "http://fedramp.gov/ns/oscal"
+      value: "F00000000"
+    security-sensitivity-level: "fips-199-moderate"
+    status:
+      state: operational
+      remarks:
+        p:
+          - "If the status is “other”, the remarks field is required."
+          - "Otherwise, it is optional."
+    prop:
+      ns: "https://fedramp.gov/ns/oscal"
+      name: "fully-operational-date"
+      value: "mm/dd/yyyy"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 <br />
 {{<callout>}}
@@ -261,16 +506,6 @@ FedRAMP only accepts those in bold:
 
 {{</callout>}}
 
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    System's Operational Status:
-        /*/system-characteristics/status/@state
-    Remarks on System's Operational Status:
-        /*/system-characteristics/status/remarks/node()
-    Fully Operational As Of Date:
-        /*/system-characteristics/prop[@name="fully-operational-date"][@ns="https://fedramp.gov/ns/oscal"]/@value
-{{</ highlight >}}
-
 **NOTE:**
 
 -   If the status is "other", the remarks field is required. Otherwise, it is optional.
@@ -285,6 +520,9 @@ The system functionality in the FedRAMP SSP template document is specified in th
 {{< figure src="/img/ssp-figure-11.png" title="FedRAMP SSP template general system description." alt="Screenshot of the general system description information in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table, hl_lines=19-24" >}}
 <system-security-plan>
     <metadata>
@@ -295,7 +533,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
         <system-name>System's Full Name</system-name>
         <system-name-short>System's Short Name or Acronym</system-name-short>        
         <!-- FedRAMP Unique Identifier -->
-        <system-id identifier-type=“http://fedramp.gov/ns/oscal”>F00000000</system-id>
+        <system-id identifier-type="http://fedramp.gov/ns/oscal">F00000000</system-id>
         <!-- cut Service Model -->
         <!-- cut Deployment Model -->
         <!-- cut DIL Determination -->
@@ -308,19 +546,51 @@ The system functionality in the FedRAMP SSP template document is specified in th
         <description>
             <p>Describe the purpose and functions of this system here.</p>
             <!-- list of services/features in scope -->
-            <!-– (use paragraph, list item, or table) -->          
+            <!-- (use paragraph, list item, or table) -->          
         </description>
 
     </system-characteristics>
     <!--  cut -->     
 </system-security-plan>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
 
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    System Function or Purpose: First paragraph in description
-        /*/system-characteristics/description/node()
+{{% tab %}}
+{{< highlight json "linenos=table, hl_lines=12-14" >}}
+{
+  "system-security-plan": {
+    "metadata": {},
+    "system-characteristics": {
+      "system-name": "System's Full Name",
+      "system-name-short": "System's Short Name or Acronym",
+      "system-id": {
+        "identifier-type": "http://fedramp.gov/ns/oscal",
+        "value": "F00000000"
+      },
+      "security-sensitivity-level": "fips-199-moderate",
+      "description": {
+        "p": "Describe the purpose and functions of this system here."
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight yaml "linenos=table, hl_lines=10-11" >}}
+system-security-plan:
+  metadata: {}
+  system-characteristics:
+    system-name: "System's Full Name"
+    system-name-short: "System's Short Name or Acronym"
+    system-id:
+      identifier-type: "http://fedramp.gov/ns/oscal"
+      value: "F00000000"
+    security-sensitivity-level: "fips-199-moderate"
+    description:
+      p: "Describe the purpose and functions of this system here."
+{{< /highlight >}}
+{{% /tab %}}
 
-
+{{< /tabs >}}
