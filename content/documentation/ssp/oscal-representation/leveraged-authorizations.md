@@ -23,28 +23,26 @@ While a leveraged system has no need to represent content here, its SSP must inc
 {{</callout>}}
 
 #### OSCAL Representation
+{{< tabs XML JSON YAML >}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <!-- CSP name -->
-    <party uuid="uuid-value">
+    <party uuid="22222222-2222-4000-8000-c0040000000a">
         <name>Example IaaS Provider</name>
         <short-name>E.I.P.</short-name>
     </party>
 </metadata>
 <!-- cut import-profile, system-characteristics -->
 <system-implementation>
-    <leveraged-authorization uuid="uuid-value" >
+    <leveraged-authorization uuid="11111111-2222-4000-8000-019000000001">
         <title>Name of Underlying System</title>
         <!-- FedRAMP Package ID -->
-        <prop name="leveraged-system-identifier" 
-            ns="https://fedramp.gov/ns/oscal" 
-            value="Package_ID value" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" 
-              value="fedramp-agency"/>
+        <prop name="leveraged-system-identifier" ns="https://fedramp.gov/ns/oscal" value="Package_ID value" />
+        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" value="fedramp-agency"/>
         <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
-        <link href="//path/to/leveraged_system_legacy_crm.xslt" />
-        <link href="//path/to/leveraged_system_responsibility_and_inheritance.xml" />
-        <party-uuid>uuid-of-leveraged-system-poc</party-uuid>
+        <party-uuid>11111111-2222-4000-8000-c0040000000a</party-uuid>
         <date-authorized>2015-01-01</date-authorized>
     </leveraged-authorization>
     <!-- CSO name & service description -->
@@ -53,15 +51,122 @@ While a leveraged system has no need to represent content here, its SSP must inc
         <description>
             <p>Briefly describe leveraged system.</p>
         </description>
-        <prop name="leveraged-authorization-uuid" 
-              value="5a9c98ab-8e5e-433d-a7bd-515c07cd1497" />
-        <prop name="inherited-uuid" value="11111111-0000-4000-9001-000000000001" />
+        <prop name="leveraged-authorization-uuid" value="11111111-2222-4000-8000-019000000001" />
+        <prop name="inherited-uuid" value="22222222-0000-4000-9001-009000000001" />
         <prop name="implementation-point" value="external"/>
         <!-- FedRAMP prop extensions for table 6.1 columns -->
         <status state="operational"/>
     </component>
 </system-implementation>
-{{</ highlight >}}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "metadata": {
+    "party": {
+      "uuid": "22222222-2222-4000-8000-c0040000000a",
+      "name": "Example IaaS Provider",
+      "short-name": "E.I.P."
+    }
+  },
+  "system-implementation": {
+    "leveraged-authorization": {
+      "uuid": "11111111-2222-4000-8000-019000000001",
+      "title": "Name of Underlying System",
+      "prop": [
+        {
+          "name": "leveraged-system-identifier",
+          "ns": "https://fedramp.gov/ns/oscal",
+          "value": "Package_ID value"
+        },
+        {
+          "ns": "https://fedramp.gov/ns/oscal",
+          "name": "authorization-type",
+          "value": "fedramp-agency"
+        },
+        {
+          "ns": "https://fedramp.gov/ns/oscal",
+          "name": "impact-level",
+          "value": "moderate"
+        }
+      ],
+      "party-uuid": "11111111-2222-4000-8000-c0040000000a",
+      "date-authorized": "2015-01-01"
+    },
+    "component": {
+      "uuid": "uuid-of-leveraged-system",
+      "type": "leveraged-system",
+      "title": "Name of Leveraged System",
+      "description": {
+        "p": "Briefly describe leveraged system."
+      },
+      "prop": [
+        {
+          "name": "leveraged-authorization-uuid",
+          "value": "11111111-2222-4000-8000-019000000001"
+        },
+        {
+          "name": "inherited-uuid",
+          "value": "22222222-0000-4000-9001-009000000001"
+        },
+        {
+          "name": "implementation-point",
+          "value": "external"
+        }
+      ],
+      "status": {
+        "state": "operational"
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+metadata:
+  party:
+    uuid: "22222222-2222-4000-8000-c0040000000a"
+    name: "Example IaaS Provider"
+    short-name: "E.I.P."
+system-implementation:
+  leveraged-authorization:
+    uuid: "11111111-2222-4000-8000-019000000001"
+    title: "Name of Underlying System"
+    prop:
+      - name: leveraged-system-identifier
+        ns: "https://fedramp.gov/ns/oscal"
+        value: "Package_ID value"
+      - ns: "https://fedramp.gov/ns/oscal"
+        name: authorization-type
+        value: fedramp-agency
+      - ns: "https://fedramp.gov/ns/oscal"
+        name: impact-level
+        value: moderate
+    party-uuid: "11111111-2222-4000-8000-c0040000000a"
+    date-authorized: "2015-01-01"
+  component:
+    uuid: "uuid-of-leveraged-system"
+    type: leveraged-system
+    title: "Name of Leveraged System"
+    description:
+      p: "Briefly describe leveraged system."
+    prop:
+      - name: leveraged-authorization-uuid
+        value: "11111111-2222-4000-8000-019000000001"
+      - name: inherited-uuid
+        value: "22222222-0000-4000-9001-009000000001"
+      - name: implementation-point
+        value: external
+    status:
+      state: operational
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 <br />
 {{<callout>}}
@@ -70,38 +175,7 @@ The title field must match an existing [FedRAMP authorized Cloud_Service_Provide
 
 A leveraged-system-identifier property must be provided within each leveraged-authorization field.  The value of this property must be from the same Cloud Service Provider as identified in the title field.
 
-
 {{</callout>}}
-
-#### XPath Queries
-{{< highlight xml "linenos=table" >}}
-    Name of first leveraged system:
-        /*/system-implementation/leveraged-authorization[1]/title
-    Name of first leveraged system CSO service (component):
-        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/title)[1]
-    Description of first leveraged system CSO service (component):
-        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/description)[1]
-    Authorization type of first leveraged system:
-        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="authorization-type"]/@value
-    FedRAMP package ID# of the first leveraged system:
-        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="leveraged-system-identifier"]/@value
-    Nature of Agreement for first leveraged system:
-        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="https://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value)[1]
-    FedRAMP impact level of the first leveraged system:
-        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="impact-level"]/@value
-    Data Types transmitted to, stored or processed by the first leveraged system CSO:
-        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value)
-    Authorized Users of the first leveraged system CSO:
-        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]
-    Corresponding Access Level:
-        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@name="privilege-level"]/@value
-    Corresponding Authentication method:
-        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="authentication-method"]/@value
-{{</ highlight >}}
-
 <br />
-{{<callout>}}
-Replace XPath predicate "[1]" with "[2]", "[3]", etc.
-{{</callout>}}
 
 ---
