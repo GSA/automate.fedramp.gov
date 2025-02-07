@@ -6,7 +6,7 @@ weight: 342
 
 ## Cryptographic Modules Tables
 
-FedRAMP requests that cryptographic module information be enumerated in three scenarios:
+FedRAMP requires a system's documentation to identify cryptographic module information be enumerated in three scenarios:
 
 - [Data in Transit (DIT)](#cryptographic-modules-implemented-for-data-in-transit-dit) - must document information about the modules used at each end  of the cryptographic communication.
 - [Data at Rest (DAR)](#cryptographic-modules-implemented-for-data-at-rest-dar) - must document information about encryption modules used to protect stored data, such as in a database or on storage volume/disk.
@@ -67,7 +67,6 @@ Cryptographic module's allowed values for "function" are:
 Cryptographic module must have
   - At least one "provided-by" `link` indicating where the module exists (e.g., source "operating-system" `component`).
   - At least one "used-by" `link` indicating which component(s) use this cryptographic module.
-  - At least one "provided-by" `link` indicating where the module exists (e.g., source "operating-system" `component`).
   - At least one "validation" `link` that references a FIPS 140-2 or 140-3 "validation" `component`.  
     - A cryptographic module may identify more than one "validation" component, but at least one must be a FIPS "validation" component.
 
