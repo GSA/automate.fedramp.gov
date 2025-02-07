@@ -19,7 +19,6 @@ The [FedRAMP SSP Appendix Q (Cryptographic Modules Table)](https://www.fedramp.g
 
 | Field                      | DIT | DAR | Other | OSCAL Representation |
 |----------------------------|:---:|:---:|:---:|:--------------------:|
-| Ref #                      | x (1)  | x   | x     | TBD. In OSCAL, component references can be established via UUID, eliminating the need for a separate "Ref #" field. |
 | Area of Use (DIT/DAR/Other)  | x (1)   | x   | x     | `//component[@type=("software", "service")]/description` describing the component or asset where the FIPS-140 validated cryptographic module is located. |
 | **Crypto-Module Validation**   ||||                      |
 | - Cert #                   | x (1) | x   | x     | The validation component's reference number (e.g., [CMVP](https://csrc.nist.gov/projects/cryptographic-module-validation-program) certificate number) - `//component[@type="validation"]/prop[@name="validation-reference"]` |
