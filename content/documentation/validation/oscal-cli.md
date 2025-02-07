@@ -29,7 +29,7 @@ oscal-cli validate <file> -c <constraint-file> [options]
 Converts an OSCAL source file to the specified file format (e.g., XML, JSON, or YAML). 
 
 ```bash
-oscal-cli metaschema validate <file> -c <style-guide> [options]
+oscal-cli convert --to=FORMAT <source-file-or-URL> <destination-file>
 ```
 
 ### Profile Resolution
