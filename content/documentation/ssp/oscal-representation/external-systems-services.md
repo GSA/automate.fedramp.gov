@@ -9,59 +9,7 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
 {{< figure src="/img/ssp-figure-17.png" title="FedRAMP SSP template external systems (not FedRAMP authorized)." alt="Screenshot of the external system information for non-FedRAMP authorized services in the FedRAMP SSP template." >}}
 
 #### OSCAL Representation
-{{< tabs XML JSON YAML >}}
-
-{{% tab %}}
-{{< highlight xml "linenos=table" >}}
-<system-security-plan>
-  <system-implementation>
-    <component uuid="11111111-2222-4000-8000-009000200001" type="interconnection">
-      <title>[EXAMPLE]External System / Service Name</title>
-      <description>
-        <p>Briefly describe the interconnection details.</p>
-      </description>
-      <!-- Props for table 7.1 columns -->
-      <prop ns="https://fedramp.gov/ns/oscal" name="service-processor" value="[SAMPLE] Telco Name"/>
-      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-type" value="1" />
-      <prop name="direction" value="incoming"/>
-      <prop name="direction" value="outgoing"/>
-      <prop ns="https://fedramp.gov/ns/oscal" name="nature-of-agreement" value="contract" />
-      <prop ns="https://fedramp.gov/ns/oscal" name="still-supported" value="yes" />
-      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-data-type" value="C.3.5.1" />
-      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-data-type" value="C.3.5.8" />
-      <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.1" name="interconnection-data-categorization" value="low" />
-      <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.8" name="interconnection-data-categorization" value="moderate" />
-      <prop ns="https://fedramp.gov/ns/oscal" name="authorized-users" value="SecOps engineers" />
-      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-compliance" value="PCI SOC 2" />
-      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-compliance" value="ISO/IEC 27001" />
-      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-hosting-environment" value="PaaS" />
-      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-risk" value="None" />
-      <prop name="isa-title" value="system interconnection agreement"/>
-      <prop name="isa-date" value="2023-01-01T00:00:00Z"/>
-      <prop name="ipv4-address" class="local" value="10.1.1.1"/>
-      <prop name="ipv4-address" class="remote" value="10.2.2.2"/>
-      <prop name="ipv6-address" value="::ffff:10.2.2.2"/>
-      <prop ns="https://fedramp.gov/ns/oscal" name="information" value="Describe the information being transmitted."/>
-      <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
-      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" value="ipsec">
-        <!-- cut ports, protocols -->
-        <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />
-        <!-- cut repeat responsible-party assembly for each required ICA role id -->
-      </prop>
-    </component>
-  </system-implementation>
-  <back-matter>
-    <resource uuid="11111111-2222-4000-8000-001000000050">
-      <title>[SAMPLE]Interconnection Security Agreement Title</title>
-      <prop name="version" value="Document Version"/>
-      <rlink href="./documents/ISAs/ISA-1.docx"/>
-      <citation><!-- cut --></citation>
-    </resource>
-    <!-- repeat citation assembly for each ICA -->
-  </back-matter>
-</system-security-plan>
-{{< /highlight >}}
-{{% /tab %}}
+{{< tabs JSON XML YAML >}}
 
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -218,6 +166,58 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
     }
   }
 }
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+  <system-implementation>
+    <component uuid="11111111-2222-4000-8000-009000200001" type="interconnection">
+      <title>[EXAMPLE]External System / Service Name</title>
+      <description>
+        <p>Briefly describe the interconnection details.</p>
+      </description>
+      <!-- Props for table 7.1 columns -->
+      <prop ns="https://fedramp.gov/ns/oscal" name="service-processor" value="[SAMPLE] Telco Name"/>
+      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-type" value="1" />
+      <prop name="direction" value="incoming"/>
+      <prop name="direction" value="outgoing"/>
+      <prop ns="https://fedramp.gov/ns/oscal" name="nature-of-agreement" value="contract" />
+      <prop ns="https://fedramp.gov/ns/oscal" name="still-supported" value="yes" />
+      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-data-type" value="C.3.5.1" />
+      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-data-type" value="C.3.5.8" />
+      <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.1" name="interconnection-data-categorization" value="low" />
+      <prop ns="https://fedramp.gov/ns/oscal" class="C.3.5.8" name="interconnection-data-categorization" value="moderate" />
+      <prop ns="https://fedramp.gov/ns/oscal" name="authorized-users" value="SecOps engineers" />
+      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-compliance" value="PCI SOC 2" />
+      <prop ns="https://fedramp.gov/ns/oscal" class="fedramp" name="interconnection-compliance" value="ISO/IEC 27001" />
+      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-hosting-environment" value="PaaS" />
+      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-risk" value="None" />
+      <prop name="isa-title" value="system interconnection agreement"/>
+      <prop name="isa-date" value="2023-01-01T00:00:00Z"/>
+      <prop name="ipv4-address" class="local" value="10.1.1.1"/>
+      <prop name="ipv4-address" class="remote" value="10.2.2.2"/>
+      <prop name="ipv6-address" value="::ffff:10.2.2.2"/>
+      <prop ns="https://fedramp.gov/ns/oscal" name="information" value="Describe the information being transmitted."/>
+      <prop ns="https://fedramp.gov/ns/oscal" name="port" class="remote" value="80"/>
+      <prop ns="https://fedramp.gov/ns/oscal" name="interconnection-security" value="ipsec">
+        <!-- cut ports, protocols -->
+        <link href="#uuid-of-ICA-resource-in-back-matter" rel="isa-agreement" />
+        <!-- cut repeat responsible-party assembly for each required ICA role id -->
+      </prop>
+    </component>
+  </system-implementation>
+  <back-matter>
+    <resource uuid="11111111-2222-4000-8000-001000000050">
+      <title>[SAMPLE]Interconnection Security Agreement Title</title>
+      <prop name="version" value="Document Version"/>
+      <rlink href="./documents/ISAs/ISA-1.docx"/>
+      <citation><!-- cut --></citation>
+    </resource>
+    <!-- repeat citation assembly for each ICA -->
+  </back-matter>
+</system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
 
