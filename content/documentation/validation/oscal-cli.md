@@ -11,11 +11,11 @@ The OSCAL Command Line Interface (CLI) is a tool for validating and processing O
 
 ## Get Started
 
-To learn more about how to use the OSCAL CLI and FedRAMP constraints to validate your FedRAMP OSCAL documents, please see the [FedRAMP OSCAL Constraints](https://github.com/GSA/fedramp-automation/blob/8c9fa7685dee736d3ba17bbb98858ad20fbd194a/src/validations/constraints/README.md) documentation on GitHub.
+To learn more about how to use the oscal-cli and FedRAMP constraints to validate your FedRAMP OSCAL documents, please see the [FedRAMP OSCAL Constraints](https://github.com/GSA/fedramp-automation/blob/8c9fa7685dee736d3ba17bbb98858ad20fbd194a/src/validations/constraints/README.md) documentation on GitHub.
 
 ## Commands
 
-The following are a brief summary of the most commonly used OSCAL CLI commands when working with FedRAMP OSCAL documents.
+The following are a brief summary of the most commonly used oscal-cli commands when working with FedRAMP OSCAL documents.
 
 
 ### Validate
@@ -40,7 +40,7 @@ oscal-cli resolve-profile <profile-file>
 ```
 
 ### Metaschema Validate
-Validates that a metaschema file is well-formed and valid per the specified constraint definitions.
+Validates that a Metaschema file is well-formed and valid per the specified constraint definitions.
 
 ```bash
 oscal-cli metaschema validate <file> -c <style-guide> [options]

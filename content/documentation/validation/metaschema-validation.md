@@ -13,7 +13,7 @@ The use of Metaschema for OSCAL modeling allows for developers to use [Metaschem
 
 There are currently [six types of constraints](https://framework.metaschema.dev/specification/syntax/constraints/#constraint-types), `allowed-values`; `expect`; `has-cardinality`; `index`; `index-has-key`; `is-unique`; and `matches`, to address different use cases and common patterns of requirement definition. Each constraint type has a similar structure.
 
-Metaschema validation is a crucial step in ensuring OSCAL documents comply with both the OSCAL schema requirements and FedRAMP-specific constraints. This validation process occurs at two levels:
+Metaschema validation is a crucial step in ensuring OSCAL documents comply with both the OSCAL schema requirements and FedRAMP-specific constraints. This [validation process](https://pages.nist.gov/OSCAL/resources/concepts/validation/) occurs at two levels:
 
 1. Basic OSCAL schema validation
 2. FedRAMP-specific constraints validation
@@ -26,7 +26,7 @@ Basic validation ensures your OSCAL document follows the core OSCAL schema requi
 - Contains required elements and properties
 - Uses correct data types
 
-A successful basic validation indicates your document is metaschema-valid according to OSCAL specifications. For detailed information on using the OSCAL CLI for validation, see the [OSCAL CLI documentation](oscal-cli).
+A successful basic validation indicates your document is metaschema-valid according to OSCAL specifications. For detailed information on using the OSCAL CLI for validation, see the [oscal-cli documentation](oscal-cli).
 
 ## FedRAMP Constraints Validation
 
@@ -36,7 +36,7 @@ While basic validation ensures OSCAL compliance, FedRAMP requires additional val
 - Proper formatting of FedRAMP-required content
 - Relationship rules between elements
 
-The OSCAL CLI supports both basic schema validation and FedRAMP constraints validation. See the [OSCAL CLI documentation](oscal-cli) for detailed command examples and options.
+The oscal-cli supports both basic schema validation and FedRAMP constraints validation. See the [oscal-cli documentation](oscal-cli) for detailed command examples and options.
 
 ## Understanding Validation Results
 
@@ -65,4 +65,4 @@ The validation process can be integrated with development tools through SARIF ou
 - Detailed error descriptions
 - Validation result tracking
 
-For detailed information about validation options and SARIF integration, refer to the [OSCAL CLI documentation](oscal-cli).
+For detailed information about validation options and SARIF integration, refer to the [oscal-cli documentation](oscal-cli).
