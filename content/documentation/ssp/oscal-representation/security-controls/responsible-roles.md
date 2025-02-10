@@ -21,32 +21,97 @@ OSCAL also supports parameter setting at the component level, within a
 `by-component` assembly.
 
 ##### Representation
-{{< highlight xml "linenos=table" >}}
-<metadata>
-    <role id="admin-unix">
-        <title>Unix Administrator</title>
-    </role>
-</metadata>
-<!-- Fragment: -->
-<system-implementation>
-    <user uuid="uuid-value">
-        <role-id>admin-unix</role-id>
-    </user>
-</system-implementation >
-<!-- system-implementation -->
-<control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <!-- cut -->
-        <responsible-role role-id="admin-unix" />
-        <set-parameter param-id="ac-2_prm_1">
-            <value>System Manager, System Architect, ISSO</value>
-        </set-parameter >
-        <!-- cut -->
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "metadata": {
+      "role": {
+        "id": "admin-unix",
+        "title": "Unix Administrator"
+      }
+    },
+    "system-implementation": {
+      "user": {
+        "uuid": "uuid-value",
+        "role-id": "admin-unix"
+      }
+    },
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000020000",
+        "control-id": "ac-2",
+        "responsible-role": {
+          "role-id": "admin-unix"
+        },
+        "set-parameter": {
+          "param-id": "ac-2_prm_1",
+          "value": "System Manager, System Architect, ISSO"
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+  <metadata>
+    <role id="admin-unix">
+      <title>Unix Administrator</title>
+    </role>
+  </metadata>
+  <!-- Fragment: -->
+  <system-implementation>
+    <user uuid="uuid-value">
+      <role-id>admin-unix</role-id>
+    </user>
+  </system-implementation>
+  <!-- system-implementation -->
+  <control-implementation>
+    <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+      <!-- cut -->
+      <responsible-role role-id="admin-unix" />
+      <set-parameter param-id="ac-2_prm_1">
+        <value>System Manager, System Architect, ISSO</value>
+      </set-parameter>
+      <!-- cut -->
+    </implemented-requirement>
+  </control-implementation>
+  <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  metadata:
+    role:
+      id: "admin-unix"
+      title: "Unix Administrator"
+  system-implementation:
+    user:
+      uuid: "uuid-value"
+      role-id: "admin-unix"
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000020000"
+      control-id: "ac-2"
+      responsible-role:
+        role-id: "admin-unix"
+      set-parameter:
+        param-id: "ac-2_prm_1"
+        value: "System Manager, System Architect, ISSO"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}

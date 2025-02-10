@@ -31,19 +31,79 @@ statement assemblies: Part (a)(1), Part (a)(2), Part (b)(1), and Part
 (b)(2).
 
 ##### Policy and Procedure Representation
-{{< highlight xml "linenos=table" >}}
-<!-- system-implementation -->
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <statement statement-id="ac-1_smt.a.1"><!-- cut --></statement>
-        <statement statement-id="ac-1_smt.a.2"><!-- cut --></statement>
-        <statement statement-id="ac-1_smt.b.1"><!-- cut --></statement>
-        <statement statement-id="ac-1_smt.b.2"><!-- cut --></statement>
-    </implemented-requirement>
-</control-implementation>
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "statement": [
+          {
+            "statement-id": "ac-1_smt.a.1",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-1_smt.a.2",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-1_smt.b.1",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-1_smt.b.2",
+            "_comment": "cut"
+          }
+        ]
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <!-- system-implementation -->
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+            <statement statement-id="ac-1_smt.a.1"><!-- cut --></statement>
+            <statement statement-id="ac-1_smt.a.2"><!-- cut --></statement>
+            <statement statement-id="ac-1_smt.b.1"><!-- cut --></statement>
+            <statement statement-id="ac-1_smt.b.2"><!-- cut --></statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      statement:
+        - statement-id: "ac-1_smt.a.1"
+          _comment: "cut"
+        - statement-id: "ac-1_smt.a.2"
+          _comment: "cut"
+        - statement-id: "ac-1_smt.b.1"
+          _comment: "cut"
+        - statement-id: "ac-1_smt.b.2"
+          _comment: "cut"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---
 ### Organization: Multi-Part Statements 
@@ -52,18 +112,66 @@ There must be one statement assembly for each lettered part, such as
 with AC-2, parts a, b, c, etc.
 
 ##### Multi-Part Statement Representation
-{{< highlight xml "linenos=table" >}}
-<!-- system-implementation -->
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <statement statement-id="ac-2_smt.a"><!-- cut --></statement>
-        <!-- repeat for b, c, d, e, f, g, h, i, j -->
-        <statement statement-id="ac-2_smt.k"><!-- cut --></statement>
-    </implemented-requirement>
-</control-implementation>
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000020000",
+        "control-id": "ac-2",
+        "statement": [
+          {
+            "statement-id": "ac-2_smt.a",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-2_smt.k",
+            "_comment": "cut"
+          }
+        ]
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <!-- system-implementation -->
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+            <statement statement-id="ac-2_smt.a"><!-- cut --></statement>
+            <!-- repeat for b, c, d, e, f, g, h, i, j -->
+            <statement statement-id="ac-2_smt.k"><!-- cut --></statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000020000"
+      control-id: "ac-2"
+      statement:
+        - statement-id: "ac-2_smt.a"
+          _comment: "cut"
+        - statement-id: "ac-2_smt.k"
+          _comment: "cut"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---
 ### Organization: Single Statement
@@ -72,16 +180,54 @@ If there are no lettered parts in the control definition, such as with
 AC-2 (1), there must be exactly one statement assembly.
 
 ##### Single-Statement Representation
-{{< highlight xml "linenos=table" >}}
-<!-- system-implementation -->
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement control-id="ac-2.1">
-        <statement statement-id="ac-2.1_smt"><!-- cut --></statement>
-    </implemented-requirement>
-</control-implementation>
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "control-id": "ac-2.1",
+        "statement": {
+          "statement-id": "ac-2.1_smt",
+          "_comment": "cut"
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <!-- system-implementation -->
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement control-id="ac-2.1">
+            <statement statement-id="ac-2.1_smt"><!-- cut --></statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      control-id: "ac-2.1"
+      statement:
+        statement-id: "ac-2.1_smt"
+        _comment: "cut"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---
 ### Response: Overview
@@ -137,53 +283,163 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
 {{< figure src="/img/ssp-figure-37.png" title="SSP Template Security Control Response" alt="Figure illustrating how component-level control implementation statements are used in OSCAL control implementation statements." >}}
 
 ##### Representation
+{{< tabs JSON XML YAML >}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "system-implementation": {
+      "component": [
+        {
+          "uuid": "11111111-2222-4000-8000-009000300100",
+          "type": "software",
+          "title": "Component Title",
+          "description": {
+            "p": "Description of the component."
+          },
+          "status": {
+            "state": "implemented"
+          }
+        },
+        {
+          "uuid": "11111111-2222-4000-8000-009000800002",
+          "type": "process-procedure",
+          "title": "Process Title",
+          "description": {
+            "p": "Description of the component."
+          },
+          "status": {
+            "state": "implemented"
+          },
+          "responsible-role": {
+            "role-id": "admin-unix",
+            "party-uuid": "3360e343-9860-4bda-9dfc-ff427c3dfab6"
+          }
+        }
+      ]
+    },
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000020000",
+        "control-id": "ac-2",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000020100",
+          "statement-id": "ac-2_smt.a",
+          "by-component": [
+            {
+              "uuid": "11111111-2222-4000-8000-009000800001",
+              "component-uuid": "uuid-of-software-component",
+              "description": {
+                "p": "Describe how the software component is satisfying the control."
+              }
+            },
+            {
+              "uuid": "11111111-2222-4000-8000-009000800002",
+              "component-uuid": "uuid-of-process-component",
+              "description": {
+                "p": "Describe how the process satisfies the control."
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<system-implementation>
-    <!-- leveraged-authorization, user -->
-    <component uuid="uuid-value" type="software">
-        <title>Component Title</title>
-        <description>
-            <p>Description of the component.</p>
-        </description>
-        <status state="operational"/>
-    </component>
-    
-    <component uuid="uuid-value" type="process">
-        <title>Process Title</title>
-        <description>
-            <p>Description of the component.</p>
-        </description>
-        <status state="operational"/>
-        <responsible-role role-id="admin-unix">
-            <party-uuid>3360e343-9860-4bda-9dfc-ff427c3dfab6</party-uuid>
-        </responsible-role>
-    </component>
-</system-implementation>
+<system-security-plan>
+    <system-implementation>
+        <!-- leveraged-authorization, user -->
+        <component uuid="11111111-2222-4000-8000-009000300100" type="software">
+            <title>Component Title</title>
+            <description>
+                <p>Description of the component.</p>
+            </description>
+            <status state="implemented"/>
+        </component>
+        <component uuid="11111111-2222-4000-8000-009000800002" type="process-procedure">
+            <title>Process Title</title>
+            <description>
+                <p>Description of the component.</p>
+            </description>
+            <status state="implemented"/>
+            <responsible-role role-id="admin-unix">
+                <party-uuid>3360e343-9860-4bda-9dfc-ff427c3dfab6</party-uuid>
+            </responsible-role>
+        </component>
+    </system-implementation>
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+            <statement uuid="11111111-2222-4000-8000-012000020100" statement-id="ac-2_smt.a">
+                <by-component uuid="11111111-2222-4000-8000-009000800001" component-uuid="uuid-of-software-component">
+                    <description>
+                        <p>Describe how the software component is satisfying the control.</p>
+                    </description>
+                </by-component>
+                <by-component uuid="11111111-2222-4000-8000-009000800002" component-uuid="uuid-of-process-component">
+                    <description>
+                        <p>Describe how the process satisfies the control.</p>
+                    </description>
+                </by-component>
+                <!-- repeat by-component assembly for each component related to part a. -->
+            </statement>
+            <!-- repeat statement assembly for statement part (b, c, etc.) as needed. -->
+        </implemented-requirement>
+    </control-implementation>
+    <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
 
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <statement uuid="uuid-value" statement-id="ac-2_smt.a">
-            
-            <by-component uuid="uuid-value" component-uuid="uuid-of-software-component">
-                <description>
-                    <p>Describe how the software component is satisfying the control.</p>
-                </description>
-            </by-component>
-            <by-component uuid="uuid-value" component-uuid="uuid-of-process-component">
-                <description>
-                    <p>Describe how the process satisfies the control.</p>
-                </description>
-            </by-component>
-            <!-- repeat by-component assembly for each component related to part a. -->
-            
-        </statement>
-        <!-- repeat statement assembly for statement part (b, c, etc.) as needed. -->
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-implementation:
+    component:
+      - uuid: "11111111-2222-4000-8000-009000300100"
+        type: "software"
+        title: "Component Title"
+        description:
+          p: "Description of the component."
+        status:
+          state: "implemented"
+      - uuid: "11111111-2222-4000-8000-009000800002"
+        type: "process-procedure"
+        title: "Process Title"
+        description:
+          p: "Description of the component."
+        status:
+          state: "implemented"
+        responsible-role:
+          role-id: "admin-unix"
+          party-uuid: "3360e343-9860-4bda-9dfc-ff427c3dfab6"
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000020000"
+      control-id: "ac-2"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000020100"
+        statement-id: "ac-2_smt.a"
+        by-component:
+          - uuid: "11111111-2222-4000-8000-009000800001"
+            component-uuid: "uuid-of-software-component"
+            description:
+              p: "Describe how the software component is satisfying the control."
+          - uuid: "11111111-2222-4000-8000-009000800002"
+            component-uuid: "uuid-of-process-component"
+            description:
+              p: "Describe how the process satisfies the control."
+{{< /highlight >}}
+{{% /tab %}}
 
-{{</ highlight >}}
+{{< /tabs >}}
 
 **NOTES:**
 
@@ -212,38 +468,115 @@ There must always be a **"This System"** component in the SSP. This is used in s
 {{< figure src="/img/ssp-figure-38.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response is broad and should apply to the 'this-system' component in OSCAL." >}}
 
 ##### Representation
+{{< tabs JSON XML YAML >}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "system-implementation": {
+      "component": {
+        "uuid": "11111111-2222-4000-8000-009000000000",
+        "type": "this-system",
+        "title": "This System",
+        "description": {
+          "p": "Description of the component."
+        },
+        "status": {
+          "state": "implemented"
+        }
+      }
+    },
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000020000",
+        "control-id": "ac-2",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000020100",
+          "statement-id": "ac-2_smt.a",
+          "by-component": {
+            "uuid": "11111111-2222-4000-8000-012000020102",
+            "component-uuid": "11111111-2222-4000-8000-009000000000",
+            "description": {
+              "p": [
+                "Describe how individual components are working together.",
+                "Describe how the system - as a whole - is satisfying this statement.",
+                "This can include policy, procedures, hardware, software, etc."
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<system-implementation>
-    <!-- leveraged-authorization, user -->
-    <component uuid="uuid-value" type="this-system">
-        <title>This System</title>
-        <description>
-            <p>Description of the component.</p>
-        </description>
-        <status state="operational"/>
-    </component>
-</system-implementation>
+<system-security-plan>
+    <system-implementation>
+        <!-- leveraged-authorization, user -->
+        <component uuid="11111111-2222-4000-8000-009000000000" type="this-system">
+            <title>This System</title>
+            <description>
+                <p>Description of the component.</p>
+            </description>
+            <status state="implemented"/>
+        </component>
+    </system-implementation>
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+            <statement uuid="11111111-2222-4000-8000-012000020100" statement-id="ac-2_smt.a">
+                <by-component uuid="11111111-2222-4000-8000-012000020102" component-uuid="11111111-2222-4000-8000-009000000000">
+                    <description>
+                        <p>Describe how individual components are working together.</p>
+                        <p>Describe how the system - as a whole - is satisfying this statement.</p>
+                        <p>This can include policy, procedures, hardware, software, etc.</p>
+                    </description>
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+    <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
 
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <statement uuid="uuid-value" statement-id="ac-2_smt.a">
-            
-            <by-component uuid="uuid-value" component-uuid="uuid-of-this-system-component">
-                <description>
-                    <p>Describe how individual components are working together.</p>
-                    <p>Describe how the system - as a whole - is satisfying this statement.</p>
-                    <p>This can include policy, procedures, hardware, software, etc.</p>
-                </description>
-            </by-component>
-            
-        </statement>
-        <!-- repeat statement assembly for statement part (b, c, etc.) as needed. -->
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-implementation:
+    component:
+      uuid: "11111111-2222-4000-8000-009000000000"
+      type: "this-system"
+      title: "This System"
+      description:
+        p: "Description of the component."
+      status:
+        state: "implemented"
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000020000"
+      control-id: "ac-2"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000020100"
+        statement-id: "ac-2_smt.a"
+        by-component:
+          uuid: "11111111-2222-4000-8000-012000020102"
+          component-uuid: "11111111-2222-4000-8000-009000000000"
+          description:
+            p:
+              - "Describe how individual components are working together."
+              - "Describe how the system - as a whole - is satisfying this statement."
+              - "This can include policy, procedures, hardware, software, etc."
+{{< /highlight >}}
+{{% /tab %}}
 
-{{</ highlight >}}
+{{< /tabs >}}
 
 **NOTES:**
 
@@ -263,68 +596,252 @@ assembly for **"this system"**, the link must be within the same `by-component` 
 {{< figure src="/img/ssp-figure-39.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response should link to the appropriate artifact." >}}
 
 ##### Representation: Legacy Approach Example - No Policy Component
-{{< highlight xml "linenos=table" >}}
-<control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <statement uuid="uuid-value" statement-id="ac-1_smt.a">
-            <by-component component-uuid="uuid-of-this-system" uuid="uuid-value">
-                <description>
-                    <p>Describe how Part a is satisfied within the system.</p>
-                </description>
-                <link href="#uuid-of-policy-resource-in-back-matter" rel="policy" />
-            </by-component>
-        </statement>
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000010100",
+          "statement-id": "ac-1_smt.a",
+          "by-component": {
+            "component-uuid": "11111111-2222-4000-8000-009000000000",
+            "uuid": "11111111-2222-4000-8000-012000020102",
+            "description": {
+              "p": "Describe how Part a is satisfied within the system."
+            },
+            "link": {
+              "href": "#11111111-2222-4000-8000-001000000005",
+              "rel": "policy"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <control-implementation>
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+            <statement uuid="11111111-2222-4000-8000-012000010100" statement-id="ac-1_smt.a">
+                <by-component component-uuid="11111111-2222-4000-8000-009000000000" uuid="11111111-2222-4000-8000-012000020102">
+                    <description>
+                        <p>Describe how Part a is satisfied within the system.</p>
+                    </description>
+                    <link href="#11111111-2222-4000-8000-001000000005" rel="policy" />
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+    <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000010100"
+        statement-id: "ac-1_smt.a"
+        by-component:
+          component-uuid: "11111111-2222-4000-8000-009000000000"
+          uuid: "11111111-2222-4000-8000-012000020102"
+          description:
+            p: "Describe how Part a is satisfied within the system."
+          link:
+            href: "#11111111-2222-4000-8000-001000000005"
+            rel: "policy"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 For the component approach, use the component representing the policy.
 The link should be in the component, but may be added directly to the
 `by-component` as well.
 
 ##### Representation: Component Approach Example
-{{< highlight xml "linenos=table" >}}
-<system-implementation>
-    <!-- leveraged-authorization, user -->
-    <component uuid="uuid-value" type="policy">
-        <title>Access Control and Identity Management Policy</title>
-        <description>
-            <p>An example component representing a policy.</p>
-        </description>
-        <link href="#uuid-of-policy-resource-in-back-matter" rel="policy" />
-        <status state="operational"/>
-    </component>
-</system-implementation>
-<control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <statement uuid="uuid-value" statement-id="ac-1_smt.a">
-            <by-component component-uuid="uuid-of-policy-component" uuid="uuid-value">
-                <description>
-                    <p>Describe how this policy satisfies Part a.</p>
-                </description>
-            </by-component>
-        </statement>
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "system-implementation": {
+      "component": {
+        "uuid": "11111111-2222-4000-8000-009000600001",
+        "type": "policy",
+        "title": "Access Control and Identity Management Policy",
+        "description": {
+          "p": "An example component representing a policy."
+        },
+        "link": {
+          "href": "#11111111-2222-4000-8000-001000000005",
+          "rel": "policy"
+        },
+        "status": {
+          "state": "implemented"
+        }
+      }
+    },
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000010100",
+          "statement-id": "ac-1_smt.a",
+          "by-component": {
+            "component-uuid": "11111111-2222-4000-8000-009000600001",
+            "uuid": "11111111-2222-4000-8000-012000010101",
+            "description": {
+              "p": "Describe how this policy satisfies Part a."
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <system-implementation>
+        <!-- leveraged-authorization, user -->
+        <component uuid="11111111-2222-4000-8000-009000600001" type="policy">
+            <title>Access Control and Identity Management Policy</title>
+            <description>
+                <p>An example component representing a policy.</p>
+            </description>
+            <link href="#11111111-2222-4000-8000-001000000005" rel="policy" />
+            <status state="implemented"/>
+        </component>
+    </system-implementation>
+    <control-implementation>
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+            <statement uuid="11111111-2222-4000-8000-012000010100" statement-id="ac-1_smt.a">
+                <by-component component-uuid="11111111-2222-4000-8000-009000600001" uuid="11111111-2222-4000-8000-012000010101">
+                    <description>
+                        <p>Describe how this policy satisfies Part a.</p>
+                    </description>
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+    <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-implementation:
+    component:
+      uuid: "11111111-2222-4000-8000-009000600001"
+      type: "policy"
+      title: "Access Control and Identity Management Policy"
+      description:
+        p: "An example component representing a policy."
+      link:
+        href: "#11111111-2222-4000-8000-001000000005"
+        rel: "policy"
+      status:
+        state: "implemented"
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000010100"
+        statement-id: "ac-1_smt.a"
+        by-component:
+          component-uuid: "11111111-2222-4000-8000-009000600001"
+          uuid: "11111111-2222-4000-8000-012000010101"
+          description:
+            p: "Describe how this policy satisfies Part a."
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 For either example above, the policy must be present as a `resource` in `back-matter`.
 
 ##### In Back Matter
+{{< tabs JSON XML YAML >}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "back-matter": {
+    "resource": {
+      "uuid": "11111111-2222-4000-8000-001000000005",
+      "title": "Access Control and Identity Management Policy",
+      "rlink": {
+        "media-type": "application/pdf",
+        "href": "./documents/policies/sample_policy.pdf"
+      },
+      "base64": {
+        "filename": "sample_policy.pdf",
+        "media-type": "application/pdf",
+        "value": "00000000"
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <back-matter>
-    <resource uuid="uuid-value">
+    <resource uuid="11111111-2222-4000-8000-001000000005">
         <title>Access Control and Identity Management Policy</title>
         <rlink media-type="application/pdf" href="./documents/policies/sample_policy.pdf" />
         <base64 filename="sample_policy.pdf" media-type="application/pdf">00000000</base64>
     </resource>
 </back-matter>
+{{< /highlight >}}
+{{% /tab %}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+back-matter:
+  resource:
+    uuid: "11111111-2222-4000-8000-001000000005"
+    title: "Access Control and Identity Management Policy"
+    rlink:
+      media-type: "application/pdf"
+      href: "./documents/policies/sample_policy.pdf"
+    base64:
+      filename: "sample_policy.pdf"
+      media-type: "application/pdf"
+      value: "00000000"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---
 ### Response: Identifying Inheritable Controls and Customer Responsibilities
@@ -340,50 +857,173 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
 `provided-uuid` flag to the `responsibility` field.
 
 ##### Representation
-{{< highlight xml "linenos=table" >}}
-<!-- system-implementation -->
-<control-implementation><!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <statement uuid="uuid-value" statement-id="ac-2_smt.a">
-            <by-component uuid="uuid-value" component-uuid="uuid-of-this-system-component">
-                <description>
-                    <p>Describe how the system - as a whole - is satisfying this statement.</p>
-                </description>
-                <export>
-                    <responsibility uuid="uuid-value">
-                        <description>
-                            <p>Leveraging system's responsibilities in satisfaction of AC-2.</p>
-                            <p>Not linked to inheritance, so this is always required.</p>
-                        </description>
-                        <responsible-role role-id="customer" />
-                    </responsibility>
-                </export>
-            </by-component>            
-            <by-component uuid="uuid-value" component-uuid="uuid-of-software-component">
-                <description>
-                    <p>Describe how the software is satisfying this statement.</p>
-                </description>
-                <export>
-                    <provided uuid="uuid-value">
-                        <description>
-                            <p>Customer appropriate description of what may be inherited.</p>
-                        </description>
-                        <responsible-role role-id="poc-for-customers" />
-                    </provided>
-                    
-                    <responsibility uuid="uuid-value" provided-uuid="uuid-of-provided">
-                        <description>
-                            <p>Customer responsibilities if inheriting this capability.</p>
-                        </description>
-                        <responsible-role role-id="customer" />
-                    </responsibility>
-                </export>
-            </by-component>
-        </statement>
-    </implemented-requirement>
-</control-implementation>
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000020000",
+        "control-id": "ac-2",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000020100",
+          "statement-id": "ac-2_smt.a",
+          "by-component": [
+            {
+              "uuid": "11111111-2222-4000-8000-012000010101",
+              "component-uuid": "11111111-2222-4000-8000-009000000000",
+              "description": {
+                "p": "Describe how the system - as a whole - is satisfying this statement."
+              },
+              "export": {
+                "responsibility": {
+                  "uuid": "11111111-2222-4000-8000-016000000001",
+                  "provided-uuid": "11111111-2222-4000-8000-015000000001",
+                  "description": {
+                    "p": [
+                      "Leveraging system's responsibilities in satisfaction of AC-2.",
+                      "Not linked to inheritance, so this is always required."
+                    ]
+                  },
+                  "responsible-role": {
+                    "role-id": "customer"
+                  }
+                }
+              }
+            },
+            {
+              "uuid": "11111111-2222-4000-8000-012000010102",
+              "component-uuid": "11111111-2222-4000-8000-009000300001",
+              "description": {
+                "p": "Describe how the software is satisfying this statement."
+              },
+              "export": {
+                "provided": {
+                  "uuid": "11111111-2222-4000-8000-015000000001",
+                  "description": {
+                    "p": "Customer appropriate description of what may be inherited."
+                  },
+                  "responsible-role": {
+                    "role-id": "poc-for-customers"
+                  }
+                },
+                "responsibility": {
+                  "uuid": "11111111-2222-4000-8000-016000000001",
+                  "provided-uuid": "11111111-2222-4000-8000-015000000001",
+                  "description": {
+                    "p": "Customer responsibilities if inheriting this capability."
+                  },
+                  "responsible-role": {
+                    "role-id": "customer"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <control-implementation>
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+            <statement uuid="11111111-2222-4000-8000-012000020100" statement-id="ac-2_smt.a">
+                <by-component uuid="11111111-2222-4000-8000-012000010101" component-uuid="11111111-2222-4000-8000-009000000000">
+                    <description>
+                        <p>Describe how the system - as a whole - is satisfying this statement.</p>
+                    </description>
+                    <export>
+                        <responsibility uuid="11111111-2222-4000-8000-016000000001" provided-uuid="11111111-2222-4000-8000-015000000001">
+                            <description>
+                                <p>Leveraging system's responsibilities in satisfaction of AC-2.</p>
+                                <p>Not linked to inheritance, so this is always required.</p>
+                            </description>
+                            <responsible-role role-id="customer" />
+                        </responsibility>
+                    </export>
+                </by-component>
+                <by-component uuid="11111111-2222-4000-8000-012000010102" component-uuid="11111111-2222-4000-8000-009000300001">
+                    <description>
+                        <p>Describe how the software is satisfying this statement.</p>
+                    </description>
+                    <export>
+                        <provided uuid="11111111-2222-4000-8000-015000000001">
+                            <description>
+                                <p>Customer appropriate description of what may be inherited.</p>
+                            </description>
+                            <responsible-role role-id="poc-for-customers" />
+                        </provided>
+                        <responsibility uuid="11111111-2222-4000-8000-016000000001" provided-uuid="11111111-2222-4000-8000-015000000001">
+                            <description>
+                                <p>Customer responsibilities if inheriting this capability.</p>
+                            </description>
+                            <responsible-role role-id="customer" />
+                        </responsibility>
+                    </export>
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000020000"
+      control-id: "ac-2"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000020100"
+        statement-id: "ac-2_smt.a"
+        by-component:
+          - uuid: "11111111-2222-4000-8000-012000010101"
+            component-uuid: "11111111-2222-4000-8000-009000000000"
+            description:
+              p: "Describe how the system - as a whole - is satisfying this statement."
+            export:
+              responsibility:
+                uuid: "11111111-2222-4000-8000-016000000001"
+                provided-uuid: "11111111-2222-4000-8000-015000000001"
+                description:
+                  p:
+                    - "Leveraging system's responsibilities in satisfaction of AC-2."
+                    - "Not linked to inheritance, so this is always required."
+                responsible-role:
+                  role-id: "customer"
+          - uuid: "11111111-2222-4000-8000-012000010102"
+            component-uuid: "11111111-2222-4000-8000-009000300001"
+            description:
+              p: "Describe how the software is satisfying this statement."
+            export:
+              provided:
+                uuid: "11111111-2222-4000-8000-015000000001"
+                description:
+                  p: "Customer appropriate description of what may be inherited."
+                responsible-role:
+                  role-id: "poc-for-customers"
+              responsibility:
+                uuid: "11111111-2222-4000-8000-016000000001"
+                provided-uuid: "11111111-2222-4000-8000-015000000001"
+                description:
+                  p: "Customer responsibilities if inheriting this capability."
+                responsible-role:
+                  role-id: "customer"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 **See the [*XPath Queries for Control Implementation Descriptions*](#xpath-queries-for-control-implementation-descriptions) section.**
 

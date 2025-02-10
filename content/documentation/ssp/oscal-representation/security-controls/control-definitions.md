@@ -23,32 +23,91 @@ corresponding `implemented-requirement` assembly in the
 `control-implementation` assembly.
 
 ##### Representation
-{{< highlight xml "linenos=table" >}}
-    <!-- metadata -->
-    <import-profile href="https://path/to/xml/FedRAMP_MODERATE-baseline_profile.xml"/>
-    <!-- system-characteristics -->
-    <!-- system-implementation -->
-    <control-implementation>
-        <description>
-            <p>This field required by OSCAL, but may be left blank.</p>
-            <p>FedRAMP requires no specific content here.</p>
-        </description>
-        
-        <!-- one implemented-requirement assembly for each required control -->
-        <implemented-requirement uuid="uuid-value" control-id="ac-1">
-            <!-- Control content cut - See next pages for detail -->
-        </implemented-requirement>
-        <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <!-- Control content cut - See next pages for detail -->
-        </implemented-requirement>
-        <implemented-requirement uuid="uuid-value" control-id="ac-2.1">
-        <!-- Control content cut - See next pages for detail -->
-        </implemented-requirement>
-        
-    </control-implementation>
-    <!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "import-profile": {
+      "href": "https://path/to/xml/FedRAMP_MODERATE-baseline_profile.xml"
+    },
+    "control-implementation": {
+      "description": {
+        "p": [
+          "This field required by OSCAL, but may be left blank.",
+          "FedRAMP requires no specific content here."
+        ]
+      },
+      "implemented-requirement": [
+        {
+          "uuid": "11111111-2222-4000-8000-012000010000",
+          "control-id": "ac-1"
+        },
+        {
+          "uuid": "11111111-2222-4000-8000-012000020000",
+          "control-id": "ac-2"
+        },
+        {
+          "uuid": "11111111-2222-4000-8000-012000030000",
+          "control-id": "ac-2.1"
+        }
+      ]
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+  <!-- metadata -->
+  <import-profile href="https://path/to/xml/FedRAMP_MODERATE-baseline_profile.xml"/>
+  <!-- system-implementation -->
+  <control-implementation>
+    <description>
+      <p>This field required by OSCAL, but may be left blank.</p>
+      <p>FedRAMP requires no specific content here.</p>
+    </description>
+    <!-- one implemented-requirement assembly for each required control -->
+    <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+      <!-- Control content cut - See next pages for detail -->
+    </implemented-requirement>
+    <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+      <!-- Control content cut - See next pages for detail -->
+    </implemented-requirement>
+    <implemented-requirement uuid="11111111-2222-4000-8000-012000030000" control-id="ac-2.1">
+      <!-- Control content cut - See next pages for detail -->
+    </implemented-requirement>
+  </control-implementation>
+  <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  import-profile:
+    href: "https://path/to/xml/FedRAMP_MODERATE-baseline_profile.xml"
+  control-implementation:
+    description:
+      p:
+        - "This field required by OSCAL, but may be left blank."
+        - "FedRAMP requires no specific content here."
+    implemented-requirement:
+      - uuid: "11111111-2222-4000-8000-012000010000"
+        control-id: "ac-1"
+      - uuid: "11111111-2222-4000-8000-012000020000"
+        control-id: "ac-2"
+      - uuid: "11111111-2222-4000-8000-012000030000"
+        control-id: "ac-2.1"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}

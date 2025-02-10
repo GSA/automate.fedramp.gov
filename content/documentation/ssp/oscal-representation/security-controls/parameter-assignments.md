@@ -23,7 +23,7 @@ OSCAL also supports parameter setting at the component level, within a `by-compo
 {
     "control-implementation": {
         "implemented-requirement": {
-            "uuid": "uuid-value",
+            "uuid": "11111111-2222-4000-8000-012000020000",
             "control-id": "ac-2",
             "set-parameter": [
                 {
@@ -39,7 +39,7 @@ OSCAL also supports parameter setting at the component level, within a `by-compo
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
+    <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
         <set-parameter param-id="ac-2_prm_1">
             <value>System Manager, System Architect, ISSO</value>
         </set-parameter>
@@ -50,9 +50,10 @@ OSCAL also supports parameter setting at the component level, within a `by-compo
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
 control-implementation:
   implemented-requirement:
-    uuid: uuid-value
+    uuid: 11111111-2222-4000-8000-012000020000
     control-id: ac-2
     set-parameter:
       - param-id: ac-2_prm_1

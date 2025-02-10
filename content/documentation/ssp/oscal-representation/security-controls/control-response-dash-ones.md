@@ -32,19 +32,79 @@ statement assemblies: Part (a)(1), Part (a)(2), Part (b)(1), and Part
 (b)(2).
 
 ##### Policy and Procedure Representation
-{{< highlight xml "linenos=table" >}}
-<!-- system-implementation -->
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <statement statement-id="ac-1_smt.a.1"><!-- cut --></statement>
-        <statement statement-id="ac-1_smt.a.2"><!-- cut --></statement>
-        <statement statement-id="ac-1_smt.b.1"><!-- cut --></statement>
-        <statement statement-id="ac-1_smt.b.2"><!-- cut --></statement>
-    </implemented-requirement>
-</control-implementation>
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "statement": [
+          {
+            "statement-id": "ac-1_smt.a.1",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-1_smt.a.2",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-1_smt.b.1",
+            "_comment": "cut"
+          },
+          {
+            "statement-id": "ac-1_smt.b.2",
+            "_comment": "cut"
+          }
+        ]
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <!-- system-implementation -->
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+            <statement statement-id="ac-1_smt.a.1"><!-- cut --></statement>
+            <statement statement-id="ac-1_smt.a.2"><!-- cut --></statement>
+            <statement statement-id="ac-1_smt.b.1"><!-- cut --></statement>
+            <statement statement-id="ac-1_smt.b.2"><!-- cut --></statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      statement:
+        - statement-id: "ac-1_smt.a.1"
+          _comment: "cut"
+        - statement-id: "ac-1_smt.a.2"
+          _comment: "cut"
+        - statement-id: "ac-1_smt.b.1"
+          _comment: "cut"
+        - statement-id: "ac-1_smt.b.2"
+          _comment: "cut"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---
 ### Response: Overview
@@ -112,38 +172,116 @@ There must always be a **"This System"** component in the SSP. This is used in s
 {{< figure src="/img/ssp-figure-38.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response is broad and should apply to the 'this-system' component in OSCAL." >}}
 
 ##### Representation
+{{< tabs JSON XML YAML >}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "system-implementation": {
+      "component": {
+        "uuid": "11111111-2222-4000-8000-009000000000",
+        "type": "this-system",
+        "title": "This System",
+        "description": {
+          "p": "Description of the component."
+        },
+        "status": {
+          "state": "operational"
+        }
+      }
+    },
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000020000",
+        "control-id": "ac-2",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000020100",
+          "statement-id": "ac-2_smt.a",
+          "by-component": {
+            "uuid": "11111111-2222-4000-8000-012000020102",
+            "component-uuid": "11111111-2222-4000-8000-009000000000",
+            "description": {
+              "p": [
+                "Describe how individual components are working together.",
+                "Describe how the system - as a whole - is satisfying this statement.",
+                "This can include policy, procedures, hardware, software, etc."
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<system-implementation>
-    <!-- leveraged-authorization, user -->
-    <component uuid="uuid-value" type="this-system">
-        <title>This System</title>
-        <description>
-            <p>Description of the component.</p>
-        </description>
-        <status state="operational"/>
-    </component>
-</system-implementation>
+<system-security-plan>
+    <system-implementation>
+        <!-- leveraged-authorization, user -->
+        <component uuid="11111111-2222-4000-8000-009000000000" type="this-system">
+            <title>This System</title>
+            <description>
+                <p>Description of the component.</p>
+            </description>
+            <status state="operational"/>
+        </component>
+    </system-implementation>
+    <control-implementation>
+        <!-- cut -->
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
+            <statement uuid="11111111-2222-4000-8000-012000020100" statement-id="ac-2_smt.a">
+                <by-component uuid="11111111-2222-4000-8000-012000020102" component-uuid="11111111-2222-4000-8000-009000000000">
+                    <description>
+                        <p>Describe how individual components are working together.</p>
+                        <p>Describe how the system - as a whole - is satisfying this statement.</p>
+                        <p>This can include policy, procedures, hardware, software, etc.</p>
+                    </description>
+                </by-component>
+            </statement>
+            <!-- repeat statement assembly for additional statement parts as needed -->
+        </implemented-requirement>
+    </control-implementation>
+    <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
 
-<control-implementation>
-    <!-- cut -->
-    <implemented-requirement uuid="uuid-value" control-id="ac-2">
-        <statement uuid="uuid-value" statement-id="ac-2_smt.a">
-            
-            <by-component uuid="uuid-value" component-uuid="uuid-of-this-system-component">
-                <description>
-                    <p>Describe how individual components are working together.</p>
-                    <p>Describe how the system - as a whole - is satisfying this statement.</p>
-                    <p>This can include policy, procedures, hardware, software, etc.</p>
-                </description>
-            </by-component>
-            
-        </statement>
-        <!-- repeat statement assembly for statement part (b, c, etc.) as needed. -->
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-implementation:
+    component:
+      uuid: "11111111-2222-4000-8000-009000000000"
+      type: "this-system"
+      title: "This System"
+      description:
+        p: "Description of the component."
+      status:
+        state: "operational"
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000020000"
+      control-id: "ac-2"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000020100"
+        statement-id: "ac-2_smt.a"
+        by-component:
+          uuid: "11111111-2222-4000-8000-012000020102"
+          component-uuid: "11111111-2222-4000-8000-009000000000"
+          description:
+            p:
+              - "Describe how individual components are working together."
+              - "Describe how the system - as a whole - is satisfying this statement."
+              - "This can include policy, procedures, hardware, software, etc."
+{{< /highlight >}}
+{{% /tab %}}
 
-{{</ highlight >}}
+{{< /tabs >}}
 
 **NOTES:**
 
@@ -163,67 +301,253 @@ assembly for **"this system"**, the link must be within the same `by-component` 
 {{< figure src="/img/ssp-figure-39.png" title="SSP Template Security Control Response" alt="Figure illustrating how legacy SSP template control response should link to the appropriate artifact." >}}
 
 ##### Representation: Legacy Approach Example - No Policy Component
-{{< highlight xml "linenos=table" >}}
-<control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <statement uuid="uuid-value" statement-id="ac-1_smt.a">
-            <by-component component-uuid="uuid-of-this-system" uuid="uuid-value">
-                <description>
-                    <p>Describe how Part a is satisfied within the system.</p>
-                </description>
-                <link href="#uuid-of-policy-resource-in-back-matter" rel="policy" />
-            </by-component>
-        </statement>
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000010100",
+          "statement-id": "ac-1_smt.a",
+          "by-component": {
+            "component-uuid": "11111111-2222-4000-8000-009000000000",
+            "uuid": "11111111-2222-4000-8000-012000010101",
+            "description": {
+              "p": "Describe how Part a is satisfied within the system."
+            },
+            "link": {
+              "href": "#11111111-2222-4000-8000-001000000005",
+              "rel": "policy"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <control-implementation>
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+            <statement uuid="11111111-2222-4000-8000-012000010100" statement-id="ac-1_smt.a">
+                <by-component component-uuid="11111111-2222-4000-8000-009000000000" uuid="11111111-2222-4000-8000-012000010101">
+                    <description>
+                        <p>Describe how Part a is satisfied within the system.</p>
+                    </description>
+                    <link href="#11111111-2222-4000-8000-001000000005" rel="policy" />
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000010100"
+        statement-id: "ac-1_smt.a"
+        by-component:
+          component-uuid: "11111111-2222-4000-8000-009000000000"
+          uuid: "11111111-2222-4000-8000-012000010101"
+          description:
+            p: "Describe how Part a is satisfied within the system."
+          link:
+            href: "#11111111-2222-4000-8000-001000000005"
+            rel: "policy"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 For the component approach, use the component representing the policy.
 The link should be in the component, but may be added directly to the
 `by-component` as well.
 
 ##### Representation: Component Approach Example
-{{< highlight xml "linenos=table" >}}
-<system-implementation>
-    <!-- leveraged-authorization, user -->
-    <component uuid="uuid-value" type="policy">
-        <title>Access Control and Identity Management Policy</title>
-        <description>
-            <p>An example component representing a policy.</p>
-        </description>
-        <link href="#uuid-of-policy-resource-in-back-matter" rel="policy" />
-        <status state="operational"/>
-    </component>
-</system-implementation>
-<control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <statement uuid="uuid-value" statement-id="ac-1_smt.a">
-            <by-component component-uuid="uuid-of-policy-component" uuid="uuid-value">
-                <description>
-                    <p>Describe how this policy satisfies Part a.</p>
-                </description>
-            </by-component>
-        </statement>
-    </implemented-requirement>
-</control-implementation>
-<!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "system-implementation": {
+      "component": {
+        "uuid": "11111111-2222-4000-8000-009000600001",
+        "type": "policy",
+        "title": "Access Control and Identity Management Policy",
+        "description": {
+          "p": "An example component representing a policy."
+        },
+        "link": {
+          "href": "#11111111-2222-4000-8000-001000000005",
+          "rel": "policy"
+        },
+        "status": {
+          "state": "operational"
+        }
+      }
+    },
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "statement": {
+          "uuid": "11111111-2222-4000-8000-012000010100",
+          "statement-id": "ac-1_smt.a",
+          "by-component": {
+            "component-uuid": "11111111-2222-4000-8000-009000600001",
+            "uuid": "11111111-2222-4000-8000-012000010101",
+            "description": {
+              "p": "Describe how this policy satisfies Part a."
+            }
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <system-implementation>
+        <component uuid="11111111-2222-4000-8000-009000600001" type="policy">
+            <title>Access Control and Identity Management Policy</title>
+            <description>
+                <p>An example component representing a policy.</p>
+            </description>
+            <link href="#11111111-2222-4000-8000-001000000005" rel="policy" />
+            <status state="operational"/>
+        </component>
+    </system-implementation>
+    <control-implementation>
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+            <statement uuid="11111111-2222-4000-8000-012000010100" statement-id="ac-1_smt.a">
+                <by-component component-uuid="11111111-2222-4000-8000-009000600001" uuid="11111111-2222-4000-8000-012000010101">
+                    <description>
+                        <p>Describe how this policy satisfies Part a.</p>
+                    </description>
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-implementation:
+    component:
+      uuid: "11111111-2222-4000-8000-009000600001"
+      type: "policy"
+      title: "Access Control and Identity Management Policy"
+      description:
+        p: "An example component representing a policy."
+      link:
+        href: "#11111111-2222-4000-8000-001000000005"
+        rel: "policy"
+      status:
+        state: "operational"
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      statement:
+        uuid: "11111111-2222-4000-8000-012000010100"
+        statement-id: "ac-1_smt.a"
+        by-component:
+          component-uuid: "11111111-2222-4000-8000-009000600001"
+          uuid: "11111111-2222-4000-8000-012000010101"
+          description:
+            p: "Describe how this policy satisfies Part a."
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 For either example above, the policy must be present as a `resource` in `back-matter`.
 
 ##### In Back Matter
-{{< highlight xml "linenos=table" >}}
-<back-matter>
-    <resource uuid="uuid-value">
-        <title>Access Control and Identity Management Policy</title>
-        <rlink media-type="application/pdf" href="./documents/policies/sample_policy.pdf" />
-        <base64 filename="sample_policy.pdf" media-type="application/pdf">00000000</base64>
-    </resource>
-</back-matter>
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "back-matter": {
+      "resource": {
+        "uuid": "11111111-2222-4000-8000-001000000005",
+        "title": "Access Control and Identity Management Policy",
+        "rlink": {
+          "media-type": "application/pdf",
+          "href": "./documents/policies/sample_policy.pdf"
+        },
+        "base64": {
+          "filename": "sample_policy.pdf",
+          "media-type": "application/pdf",
+          "value": "00000000"
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <back-matter>
+        <resource uuid="11111111-2222-4000-8000-001000000005">
+            <title>Access Control and Identity Management Policy</title>
+            <rlink media-type="application/pdf" href="./documents/policies/sample_policy.pdf" />
+            <base64 filename="sample_policy.pdf" media-type="application/pdf">00000000</base64>
+        </resource>
+    </back-matter>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  back-matter:
+    resource:
+      uuid: "11111111-2222-4000-8000-001000000005"
+      title: "Access Control and Identity Management Policy"
+      rlink:
+        media-type: "application/pdf"
+        href: "./documents/policies/sample_policy.pdf"
+      base64:
+        filename: "sample_policy.pdf"
+        media-type: "application/pdf"
+        value: "00000000"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ---

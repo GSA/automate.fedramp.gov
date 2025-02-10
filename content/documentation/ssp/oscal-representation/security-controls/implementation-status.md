@@ -30,26 +30,96 @@ justification must be provided in the `remarks` field.
 {{< figure src="/img/ssp-figure-33.png" title="SSP Template Security Control Implementation Status" alt="Screenshot of an SSP template security control implementation status." >}}
 
 ##### Representation
-{{< highlight xml "linenos=table" >}}
-<!-- system-implementation -->
-<control-implementation>
-    <implemented-requirement uuid="uuid-value" control-id="ac-1">
-        <prop name="planned-completion-date" 
-            ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
-        <prop name="implementation-status" 
-            ns="http://fedramp.gov/ns/oscal" value="implemented" />
-        <prop name="implementation-status"
-            ns="http://fedramp.gov/ns/oscal" value="partial" />
-        <prop name="implementation-status" 
-            ns="http://fedramp.gov/ns/oscal" value="planned" />
-        <prop name="implementation-status" 
-            ns="http://fedramp.gov/ns/oscal" value="not-applicable"/>      
-        <!-- responsible-role, statement, by-component -->
-    </implemented-requirement>  
-</control-implementation>
-<!-- back-matter -->
+{{< tabs JSON XML YAML >}}
 
-{{</ highlight >}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "control-implementation": {
+      "implemented-requirement": {
+        "uuid": "11111111-2222-4000-8000-012000010000",
+        "control-id": "ac-1",
+        "prop": [
+          {
+            "name": "planned-completion-date",
+            "ns": "http://fedramp.gov/ns/oscal",
+            "value": "2021-01-01Z"
+          },
+          {
+            "name": "implementation-status",
+            "ns": "http://fedramp.gov/ns/oscal",
+            "value": "implemented"
+          },
+          {
+            "name": "implementation-status",
+            "ns": "http://fedramp.gov/ns/oscal",
+            "value": "partial"
+          },
+          {
+            "name": "implementation-status",
+            "ns": "http://fedramp.gov/ns/oscal",
+            "value": "planned"
+          },
+          {
+            "name": "implementation-status",
+            "ns": "http://fedramp.gov/ns/oscal",
+            "value": "not-applicable"
+          }
+        ]
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+  <control-implementation>
+    <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
+      <prop name="planned-completion-date" ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
+      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="implemented"/>
+      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="partial"/>
+      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="planned"/>
+      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="not-applicable"/>
+      <!-- responsible-role, statement, by-component -->
+    </implemented-requirement>
+  </control-implementation>
+  <!-- back-matter -->
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  control-implementation:
+    implemented-requirement:
+      uuid: "11111111-2222-4000-8000-012000010000"
+      control-id: "ac-1"
+      prop:
+        - name: "planned-completion-date"
+          ns: "http://fedramp.gov/ns/oscal"
+          value: "2021-01-01Z"
+        - name: "implementation-status"
+          ns: "http://fedramp.gov/ns/oscal"
+          value: "implemented"
+        - name: "implementation-status"
+          ns: "http://fedramp.gov/ns/oscal"
+          value: "partial"
+        - name: "implementation-status"
+          ns: "http://fedramp.gov/ns/oscal"
+          value: "planned"
+        - name: "implementation-status"
+          ns: "http://fedramp.gov/ns/oscal"
+          value: "not-applicable"
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
