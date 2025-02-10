@@ -57,24 +57,6 @@ A successful validation will show no errors and indicate the document is both:
    - Missing FedRAMP-required fields
    - Incorrect relationship patterns
 
-## Best Practices
-
-1. Always validate at both levels:
-   - Basic OSCAL schema validation
-   - FedRAMP constraints validation
-
-2. Use SARIF output for detailed analysis:
-   ```bash
-   oscal-cli validate path/to/document.xml \
-     -c path/to/constraints.xml \
-     --sarif-include-pass \
-     -o results.sarif.json
-   ```
-
-3. Address all warnings, even if they don't cause validation failures
-
-4. Keep constraint files updated with latest FedRAMP requirements
-
 ## Development Tool Integration
 
 The validation process can be integrated with development tools through SARIF output. For example, VS Code integration provides:

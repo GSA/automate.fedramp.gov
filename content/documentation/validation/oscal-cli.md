@@ -92,10 +92,20 @@ oscal-cli validate path/to/file.xml \
 
 ## Best Practices
 
-1. Always validate against both allowed values and external constraints
-2. Enable SARIF output for detailed debugging in VS Code
-3. Address warnings even if they don't cause validation failures
-4. Keep constraint files updated with latest FedRAMP requirements
+1. Always validate at both levels:
+   - Basic OSCAL schema validation
+   - FedRAMP constraints validation
+2. Always validate against both allowed values and external constraints
+3. Use SARIF output for detailed analysis:
+   ```bash
+   oscal-cli validate path/to/document.xml \
+     -c path/to/constraints.xml \
+     --sarif-include-pass \
+     -o results.sarif.json
+   ```
+4. Address all warnings, even if they don't cause validation failures
+5. Keep constraint files updated with latest FedRAMP requirements
+
 
 ## Command Options Reference
 
@@ -118,3 +128,4 @@ oscal-cli validate path/to/file.xml \
 - `    --sarif-include-pass`              include pass results in SARIF
 - `    --show-stack-trace `               display the stack trace associated with an error
 - `    --version       `                  display the application version
+
