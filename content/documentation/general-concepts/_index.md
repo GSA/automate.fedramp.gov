@@ -3,7 +3,7 @@ title: General OSCAL Concepts
 weight: 200
 menu:
   primary:
-    name: Relevant OSCAL Concepts
+    name: General OSCAL Concepts
     parent: Documentation
     weight: 200
 ---
