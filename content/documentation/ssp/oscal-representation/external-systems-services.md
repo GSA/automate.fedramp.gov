@@ -322,6 +322,44 @@ system-security-plan:
 
 {{< /tabs >}}
 
+### External System and Services (Queries)
+
+Refer to the XPath queries below and corresponding notes for guidance on what targets in an OSCAL SSP should be used to represent each column of the "External Systems and Services Not Having FedRAMP Authorization" table in the legacy SSP template.
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Interconnection # for first external system:
+        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-type"]/@value
+    System/Service/API/CLI Name:
+        /*/system-implementation/component[@type='interconnection']/title
+    Connection Details:
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@name="direction"]/@value
+    Nature of Agreement for first external system:
+        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value
+    Still Supported (Y/N):
+        /*/system-implementation/component[@type='interconnection'][1]/ prop[@ns="https://fedramp.gov/ns/oscal" and @name="still-supported"]/@value
+    Data Types:
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value
+    Data Categorization:
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-categorization"]/@value
+    Authorized Users:
+        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]
+    Corresponding Access Level:
+        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop @name="privilege-level"]/@value
+    Other Compliance Programs:
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-compliance"]/@value
+    Description:
+        /*/system-implementation/component[@type='interconnection'][1]/description
+    Hosting Environment: 
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-hosting-environment"]/@value
+    Risk/Impact/Mitigation: 
+        /*/system-implementation/component[@type='interconnection'][1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-risk"]/@value
+{{</ highlight >}}
+
 <br />
+
+{{<callout>}}
+Replace XPath predicate "[1]" with "[2]", "[3]", etc.
+{{</callout>}}
 
 ---

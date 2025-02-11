@@ -63,6 +63,12 @@ system-security-plan:
 
 {{< /tabs >}}
 
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+  (SSP) URI to Baseline:
+    /*/import-profile/@href
+{{</ highlight >}}
+
 If the value is a URI fragment, such as
 #96445439-6ce1-4e22-beae-aa72cfe173d0, the value to the right of the
 hashtag (#) is the universally unique identifier (UUID) value of a
@@ -128,6 +134,14 @@ system-security-plan:
 {{% /tab %}}
 
 {{< /tabs >}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+  (SSP) Referenced OSCAL-based FedRAMP Baseline XML: 
+    /*/back-matter/resource[@uuid='96445439-6ce1-4e22-beae-aa72cfe173d0'] /rlink[@media-type='application/xml']/@href
+  OR JSON:
+    /*/back-matter/resource[@uuid='96445439-6ce1-4e22-beae-aa72cfe173d0'] /rlink[@media-type='application/json']/@href
+{{</ highlight >}}
 
 Note: Cloud Service Providers must import [FedRAMP profiles or resolved profile catalogs](https://github.com/GSA/fedramp-automation/tree/master/dist/content/rev5/baselines).
 
@@ -266,5 +280,14 @@ system-security-plan:
 {{% /tab %}}
 
 {{< /tabs >}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+  (SSP) UUID of “resolution-resource”:
+    /*/metadata/prop[@name=”resolution-resource”]/@value
+  (SSP)Target baseline version:
+    /*/back-matter/resource[@uuid=”uuid-of-resolution-resource”]/prop[@name=”dataset” and @class=”version”]/@value
+{{</ highlight >}}
+
 
 If the `resolution-resource` prop is not specified in the metadata section of the SSP, FedRAMP will assume the SSP should be validated using the rev 5 validation rules. If the `resolution-resource` prop is present, FedRAMP will use the validation rules that correspond with the version specified in the back-matter resource.

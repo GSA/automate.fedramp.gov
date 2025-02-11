@@ -176,6 +176,37 @@ The title field must match an existing [FedRAMP authorized Cloud_Service_Provide
 A leveraged-system-identifier property must be provided within each leveraged-authorization field.  The value of this property must be from the same Cloud Service Provider as identified in the title field.
 
 {{</callout>}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Name of first leveraged system:
+        /*/system-implementation/leveraged-authorization[1]/title
+    Name of first leveraged system CSO service (component):
+        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/title)[1]
+    Description of first leveraged system CSO service (component):
+        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/description)[1]
+    Authorization type of first leveraged system:
+        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="authorization-type"]/@value
+    FedRAMP package ID# of the first leveraged system:
+        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="leveraged-system-identifier"]/@value
+    Nature of Agreement for first leveraged system:
+        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="https://fedramp.gov/ns/oscal" and @name="nature-of-agreement"]/@value)[1]
+    FedRAMP impact level of the first leveraged system:
+        /system-security-plan/system-implementation[1]/leveraged-authorization[1]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="impact-level"]/@value
+    Data Types transmitted to, stored or processed by the first leveraged system CSO:
+        (//*/component/prop[@name="leveraged-authorization-uuid" and @value="uuid-of-leveraged-system"]/parent::component/prop[@ns="https://fedramp.gov/ns/oscal" and @name="interconnection-data-type"]/@value)
+    Authorized Users of the first leveraged system CSO:
+        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]
+    Corresponding Access Level:
+        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@name="privilege-level"]/@value
+    Corresponding Authentication method:
+        //system-security-plan/system-implementation/user[@uuid="uuid-of-user"]/prop[@ns="https://fedramp.gov/ns/oscal" and @name="authentication-method"]/@value
+{{</ highlight >}}
+
 <br />
+
+{{<callout>}}
+Replace XPath predicate "[1]" with "[2]", "[3]", etc.
+{{</callout>}}
 
 ---

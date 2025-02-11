@@ -56,6 +56,12 @@ system-security-plan:
 
 {{< /tabs >}}
 
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+Cloud Service Provider (CSP) Name:
+    /*/metadata/party[@uuid='uuid-of-csp']/name
+{{</ highlight >}}
+
 ---
 ### System Name, Abbreviation, and FedRAMP Unique Identifier
 
@@ -152,6 +158,16 @@ Required Identifier Type:
 - identifier-type="https://fedramp.gov"
 
 {{</callout>}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Information System Name:
+        /*/system-characteristics/system-name
+    Information System Abbreviation:
+        /*/system-characteristics/system-name-short
+    FedRAMP Unique Identifier:
+        /*/system-characteristics/system-id[@identifier-type="https://fedramp.gov"]
+{{</ highlight >}}
 
 ---
 ### Service Model
@@ -259,6 +275,14 @@ Valid Service Model values:
 - other
 
 {{</callout>}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Service Model:
+        /*/system-characteristics/prop[@name="cloud-service-model"]/@value
+    Remarks on System's Service Model:
+        /*/system-characteristics/prop[@name="cloud-service-model"]/remarks/node()
+{{</ highlight >}}
 
 **NOTE:**
 
@@ -388,6 +412,14 @@ system-security-plan:
 
 {{</callout>}}
 
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    Deployment Model:
+        /*/system-characteristics/prop[@name="cloud-deployment-model"]/@value
+    Remarks on System's Deployment Model:
+        /*/system-characteristics/prop[@name="cloud-deployment-model"]/remarks/node()
+{{</ highlight >}}
+
 **NOTE:**
 
 -   A cloud service provider may define one and only one cloud deployment model in the system security plan for a cloud service offering.
@@ -511,6 +543,16 @@ FedRAMP only accepts those in bold:
 
 {{</callout>}}
 
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    System's Operational Status:
+        /*/system-characteristics/status/@state
+    Remarks on System's Operational Status:
+        /*/system-characteristics/status/remarks/node()
+    Fully Operational As Of Date:
+        /*/system-characteristics/prop[@name="fully-operational-date"][@ns="https://fedramp.gov/ns/oscal"]/@value
+{{</ highlight >}}
+
 **NOTE:**
 
 -   If the status is "other", the remarks field is required. Otherwise, it is optional.
@@ -600,3 +642,10 @@ system-security-plan:
 {{% /tab %}}
 
 {{< /tabs >}}
+
+#### XPath Queries
+{{< highlight xml "linenos=table" >}}
+    System Function or Purpose: First paragraph in description
+        /*/system-characteristics/description/node()
+
+{{</ highlight >}}
