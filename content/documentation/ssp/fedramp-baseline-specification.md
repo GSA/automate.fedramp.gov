@@ -285,7 +285,7 @@ system-security-plan:
 {{< highlight xml "linenos=table" >}}
   (SSP) UUID of “resolution-resource”:
     /*/metadata/prop[@name=”resolution-resource”]/@value
-  (SSP)Target baseline version:
+  (SSP) Target baseline version:
     /*/back-matter/resource[@uuid=”uuid-of-resolution-resource”]/prop[@name=”dataset” and @class=”version”]/@value
 {{</ highlight >}}
 
