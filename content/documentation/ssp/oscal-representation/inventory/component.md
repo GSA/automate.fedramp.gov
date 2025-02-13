@@ -17,55 +17,288 @@ For example, if the same Linux operating system is used as the platform for all 
 #### Component-based Approach
 
 ##### Component-based Representation
+{{< tabs JSON XML YAML >}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+  "system-security-plan": {
+    "system-implementation": {
+      "component": {
+        "uuid": "11111111-2222-4000-8000-009001200003",
+        "type": "software",
+        "prop": [
+          {
+            "name": "virtual",
+            "value": "no"
+          },
+          {
+            "name": "software-name",
+            "value": "software-name"
+          },
+          {
+            "name": "version",
+            "value": "V 0.0.0"
+          },
+          {
+            "name": "asset-type",
+            "value": "operating-system"
+          },
+          {
+            "name": "vendor-name",
+            "value": "Vendor Name"
+          },
+          {
+            "name": "model",
+            "value": "Model Number"
+          },
+          {
+            "name": "patch-level",
+            "value": "Patch-Level"
+          },
+          {
+            "ns": "https://fedramp.gov/ns/oscal",
+            "name": "scan-type",
+            "value": "infrastructure"
+          },
+          {
+            "name": "allows-authenticated-scan",
+            "value": "no",
+            "remarks": {
+              "p": "If no, explain why. If yes, omit remarks field."
+            }
+          },
+          {
+            "name": "baseline-configuration-name",
+            "value": "Baseline Config. Name"
+          },
+          {
+            "name": "function",
+            "value": "Required brief, text-based description.",
+            "remarks": {
+              "p": "Optional, longer, formatted description."
+            }
+          }
+        ],
+        "link": {
+          "rel": "validation",
+          "href": "#11111111-2222-4000-8000-009001200001"
+        },
+        "status": {
+          "state": "operational"
+        },
+        "responsible-party": [
+          {
+            "role-id": "asset-owner",
+            "party-id": "person-7"
+          },
+          {
+            "role-id": "asset-administrator",
+            "party-id": "it-dept"
+          }
+        ]
+      },
+      "system-inventory": {
+        "inventory-item": {
+          "uuid": "11111111-2222-4000-8000-011000000002",
+          "description": {
+            "p": "If needed, describe this instance."
+          },
+          "prop": [
+            {
+              "name": "ipv4-address",
+              "value": "0.0.0.0"
+            },
+            {
+              "name": "asset-id",
+              "value": "unique-asset-ID-02"
+            },
+            {
+              "name": "public",
+              "value": "no"
+            },
+            {
+              "name": "fqdn",
+              "value": "example.com"
+            },
+            {
+              "name": "uri",
+              "value": "https://example/query?key=value#anchor"
+            },
+            {
+              "name": "mac-address",
+              "value": ">00:00:00:00:00:00"
+            },
+            {
+              "name": "serial-number",
+              "value": "Serial #"
+            },
+            {
+              "name": "vlan-id",
+              "value": "VLAN Identifier"
+            },
+            {
+              "name": "network-id",
+              "value": "Network Identifier"
+            },
+            {
+              "name": "is-scanned",
+              "value": "yes"
+            }
+          ],
+          "implemented-component": {
+            "component-uuid": "11111111-2222-4000-8000-009001200003"
+          },
+          "remarks": {
+            "p": "COMMENTS: Additional information about this item."
+          }
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<!-- cut -->
-<system-implementation>
-    <component uuid="uuid-value" type="software">
-        <prop name="virtual" value="no"/>
-        <prop name="software-name" value="software-name"/>
-        <prop name="version" value="V 0.0.0"/>
-        <prop name="asset-type" value="operating-system"/>
-        <prop name="vendor-name" value="Vendor Name"/>
-        <prop name="model" value="Model Number"/>
-        <prop name="patch-level" value="Patch-Level"/>
-        <prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="infrastructure"/>
-        <prop name="allows-authenticated-scan"  value="no">
-            <remarks><p>If no, explain why. If yes, omit remarks field.</p></remarks>
-        </prop>
-        <prop name="baseline-configuration-name" value="Baseline Config. Name" />
-        <prop name="function" value="Required brief, text-based description.">
-            <remarks><p>Optional, longer, formatted description.</p></remarks>
-        </prop>
-        <link rel="validation" href="#uuid-of-validation-component" />
-        <status state="operational"/>
-        <responsible-party role-id="asset-owner">
-            <party-id>person-7</party-id>
-        </responsible-party>
-        <responsible-party role-id="asset-administrator">
-            <party-id>it-dept</party-id>
-        </responsible-party>
+<system-security-plan>
+  <system-implementation>
+    <component uuid="11111111-2222-4000-8000-009001200003" type="software">
+      <prop name="virtual" value="no"/>
+      <prop name="software-name" value="software-name"/>
+      <prop name="version" value="V 0.0.0"/>
+      <prop name="asset-type" value="operating-system"/>
+      <prop name="vendor-name" value="Vendor Name"/>
+      <prop name="model" value="Model Number"/>
+      <prop name="patch-level" value="Patch-Level"/>
+      <prop name="scan-type" ns="https://fedramp.gov/ns/oscal" value="infrastructure"/>
+      <prop name="allows-authenticated-scan" value="no">
+        <remarks>
+          <p>If no, explain why. If yes, omit remarks field.</p>
+        </remarks>
+      </prop>
+      <prop name="baseline-configuration-name" value="Baseline Config. Name"/>
+      <prop name="function" value="Required brief, text-based description.">
+        <remarks>
+          <p>Optional, longer, formatted description.</p>
+        </remarks>
+      </prop>
+      <link rel="validation" href="#11111111-2222-4000-8000-009001200001"/>
+      <status state="operational"/>
+      <responsible-party role-id="asset-owner">
+        <party-id>person-7</party-id>
+      </responsible-party>
+      <responsible-party role-id="asset-administrator">
+        <party-id>it-dept</party-id>
+      </responsible-party>
     </component>
-    <!-- service, interconnection -->
     <system-inventory>
-        <inventory-item uuid="uuid-value" asset-id="unique-asset-id">
-            <description><p>If needed, describe this instance.</p></description>
-            <prop name="ipv4-address" value="0.0.0.0"/>
-            <prop name="public" value="no"/>
-            <prop name="fqdn" value="example.com"/>
-            <prop name="uri" value="https://example/query?key=value#anchor"/>
-            <prop name="mac-address" value=">00:00:00:00:00:00"/>
-            <prop name="serial-number" value="Serial #"/>
-            <prop name="vlan-id" value="VLAN Identifier"/>
-            <prop name="network-id" value="Network Identifier"/>
-            <prop name="is-scanned" value="yes" />
-            <implemented-component component-uuid="component-uuid-value " />
-            <remarks><p>COMMENTS: Additional information about this item.</p></remarks>
-        </inventory-item>
-        <!-- Repeat the inventory-item assembly for each use of the above component -->
+      <inventory-item uuid="11111111-2222-4000-8000-011000000002">
+        <description>
+          <p>If needed, describe this instance.</p>
+        </description>
+        <prop name="asset-id" value="unique-asset-ID-02"/>
+        <prop name="ipv4-address" value="0.0.0.0"/>
+        <prop name="public" value="no"/>
+        <prop name="fqdn" value="example.com"/>
+        <prop name="uri" value="https://example/query?key=value#anchor"/>
+        <prop name="mac-address" value=">00:00:00:00:00:00"/>
+        <prop name="serial-number" value="Serial #"/>
+        <prop name="vlan-id" value="VLAN Identifier"/>
+        <prop name="network-id" value="Network Identifier"/>
+        <prop name="is-scanned" value="yes"/>
+        <implemented-component component-uuid="11111111-2222-4000-8000-009001200003"/>
+        <remarks>
+          <p>COMMENTS: Additional information about this item.</p>
+        </remarks>
+      </inventory-item>
     </system-inventory>
-    <!-- system-implementation remarks -->
-</system-implementation>
-{{</ highlight >}}
+  </system-implementation>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-implementation:
+    component:
+      uuid: 11111111-2222-4000-8000-009001200003
+      type: software
+      prop:
+        - name: virtual
+          value: 'no'
+        - name: software-name
+          value: software-name
+        - name: version
+          value: V 0.0.0
+        - name: asset-type
+          value: operating-system
+        - name: vendor-name
+          value: Vendor Name
+        - name: model
+          value: Model Number
+        - name: patch-level
+          value: Patch-Level
+        - ns: 'https://fedramp.gov/ns/oscal'
+          name: scan-type
+          value: infrastructure
+        - name: allows-authenticated-scan
+          value: 'no'
+          remarks:
+            p: 'If no, explain why. If yes, omit remarks field.'
+        - name: baseline-configuration-name
+          value: Baseline Config. Name
+        - name: function
+          value: 'Required brief, text-based description.'
+          remarks:
+            p: 'Optional, longer, formatted description.'
+    link:
+      rel: validation
+      href: '#11111111-2222-4000-8000-009001200001'
+    status:
+      state: operational
+    responsible-party:
+      - role-id: asset-owner
+        party-id: person-7
+      - role-id: asset-administrator
+        party-id: it-dept
+    system-inventory:
+      inventory-item:
+        uuid: 11111111-2222-4000-8000-011000000002
+        description:
+          p: 'If needed, describe this instance.'
+        prop:
+          - name: ipv4-address
+            value: 0.0.0.0
+          - name: asset-id
+            value: unique-asset-ID-02
+          - name: public
+            value: 'no'
+          - name: fqdn
+            value: example.com
+          - name: uri
+            value: 'https://example/query?key=value#anchor'
+          - name: mac-address
+            value: '>00:00:00:00:00:00'
+          - name: serial-number
+            value: 'Serial #'
+          - name: vlan-id
+            value: VLAN Identifier
+          - name: network-id
+            value: Network Identifier
+          - name: is-scanned
+            value: 'yes'
+        implemented-component:
+          component-uuid: 11111111-2222-4000-8000-009001200003
+        remarks:
+          p: 'COMMENTS: Additional information about this item.'
+{{< /highlight >}}
+{{% /tab %}}
+
+{{< /tabs >}}
 
 **Notes:**
 
