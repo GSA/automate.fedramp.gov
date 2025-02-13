@@ -34,10 +34,7 @@ corresponding `implemented-requirement` assembly in the
     },
     "control-implementation": {
       "description": {
-        "p": [
-          "This field required by OSCAL, but may be left blank.",
-          "FedRAMP requires no specific content here."
-        ]
+        "p": "This field required by OSCAL, but may be left blank.\n\nFedRAMP requires no specific content here.",
       },
       "implemented-requirement": [
         {
