@@ -40,17 +40,20 @@ in an OSCAL-based FedRAMP SSP.
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
-    // metadata
-    // The import-profile href flag must point to the appropriate FedRAMP Baseline.
-    "import-profile": {
-        "href": "https://path/to/FedRAMP_MODERATE-baseline_profile.xml"
-    },
-    // system-characteristics
+    "system-security-plan": {
+        // metadata
+        // The import-profile href flag must point to the appropriate FedRAMP Baseline.
+        "import-profile": {
+            "href": "https://path/to/FedRAMP_MODERATE-baseline_profile.xml"
+        },
+        // system-characteristics
+    }
 }
 {{</ highlight >}}
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+system-security-plan:
   # metadata
   # The import-profile href flag must point to the appropriate FedRAMP Baseline.
   import-profile:
@@ -60,10 +63,12 @@ in an OSCAL-based FedRAMP SSP.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<!-- metadata -->
-<!-- The import-profile href flag must point to the appropriate FedRAMP Baseline. -->
-<import-profile href="https://path/to/FedRAMP_MODERATE-baseline_profile.xml"/>
-<!-- system-characteristics -->
+<system-security-plan>
+    <!-- metadata -->
+    <!-- The import-profile href flag must point to the appropriate FedRAMP Baseline. -->
+    <import-profile href="https://path/to/FedRAMP_MODERATE-baseline_profile.xml"/>
+    <!-- system-characteristics -->
+</system-security-plan>
 {{</ highlight >}}
 {{% /tab %}}
 {{</ tabs >}}
