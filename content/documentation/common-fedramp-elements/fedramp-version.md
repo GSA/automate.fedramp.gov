@@ -21,7 +21,7 @@ FedRAMP maintains an official list of the versions on the [fedramp-automation re
             "title": "FedRAMP System Security Plan (SSP)",
             "published": "2022-06-01T00:00:00.000Z",
             "last-modified": "2023-03-03T00:00:00.000Z ",
-            "version": 0,
+            "version": "1.0.0",
             "oscal-version": "1.1.2",
             "prop": {
                 "name": "fedramp-version",
@@ -41,7 +41,7 @@ system-security-plan:
     title: FedRAMP System Security Plan (SSP)
     published: '2022-06-01T00:00:00.000Z'
     last-modified: '2023-03-03T00:00:00.000Z '
-    version: 0
+    version: 1.1.0
     oscal-version: 1.1.2
     prop:
       name: fedramp-version
@@ -56,7 +56,7 @@ system-security-plan:
         <title>FedRAMP System Security Plan (SSP)</title>
         <published>2022-06-01T00:00:00.000Z</published>
         <last-modified>2023-03-03T00:00:00.000Z </last-modified>
-        <version>0.0</version>
+        <version>1.0.0</version>
         <oscal-version>1.1.2</oscal-version>
         <prop name="fedramp-version" ns="http://fedramp.gov/ns/oscal" value="3.0.0-rc1"/>
     </metadata>
