@@ -21,7 +21,7 @@ using the following format, unless otherwise noted:
 For example, a publication date of 5:30 pm EST on January 10, 2020 must
 appear as `2020-01-10T17:30:00.00-05:00`
 
-This includes:
+This includes the following items:
 
 - Numeric Year: Four-digit
 - A dash
@@ -140,42 +140,34 @@ information.
 
 The following OSCAL content contains a `href` flag with a URI fragment:
 
-{{< tabs JSON XML YAML>}}
+{{< tabs JSON YAML XML>}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
-    "system-characteristics": {
-        "authorization-boundary": {
-            "diagrams": [
-                {
-                    "uuid": "11111111-2222-4000-8000-007000000001",
-                    "links": [
-                        {
-                            "href": "#11111111-2222-4000-8000-001000000054"
-                        }
-                    ],
-                    "caption": "Authorization Boundary Diagram"
-                }
-            ]
+    "system-security-plan": {
+        "system-characteristics": {
+            "authorization-boundary": {
+                "diagrams": [
+                    {
+                        "uuid": "11111111-2222-4000-8000-007000000001",
+                        "links": [
+                            {
+                                "href": "#11111111-2222-4000-8000-001000000054"
+                            }
+                        ],
+                        "caption": "Authorization Boundary Diagram"
+                    }
+                ]
+            }
         }
     }
 }
 {{</ highlight >}}
 {{% /tab %}}
 {{% tab %}}
-{{< highlight xml "linenos=table" >}}
-<system-characteristics>
-  <authorization-boundary>
-    <diagram uuid="11111111-2222-4000-8000-007000000001">
-      <link href="#11111111-2222-4000-8000-001000000054"/>
-      <caption>Authorization Boundary Diagram</caption>
-    </diagram>
-  </authorization-boundary>
-</system-characteristics>
-{{</ highlight >}}
-{{% /tab %}}
-{{% tab %}}
 {{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
   system-characteristics:
     authorization-boundary:
       diagrams:
@@ -183,6 +175,20 @@ The following OSCAL content contains a `href` flag with a URI fragment:
         links:
         - href: '#11111111-2222-4000-8000-001000000054'
         caption: Authorization Boundary Diagram
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<system-security-plan>
+    <system-characteristics>
+      <authorization-boundary>
+        <diagram uuid="11111111-2222-4000-8000-007000000001">
+          <link href="#11111111-2222-4000-8000-001000000054"/>
+          <caption>Authorization Boundary Diagram</caption>
+        </diagram>
+      </authorization-boundary>
+    </system-characteristics>
+</system-security-plan>
 {{</ highlight >}}
 {{% /tab %}}
 {{</ tabs >}}
