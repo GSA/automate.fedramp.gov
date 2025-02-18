@@ -5,9 +5,11 @@ weight: 301
 
 # FedRAMP Version
 
-All documents in a digital authorization package for FedRAMP must specify the version that identifies which FedRAMP policies, guidance, and technical specifications its authors used during the creation and maintenance of the package.
+All documents in a digital authorization package for FedRAMP must specify the version that identifies which FedRAMP policies, guidance, and 
+technical specifications its authors used during the creation and maintenance of the package.
 
-FedRAMP maintains an official list of the versions on the [fedramp-automation releases](https://github.com/GSA/fedramp-automation/releases) page. Unless noted otherwise, a valid version is a [published tag name](https://github.com/GSA/fedramp-automation/tags).
+FedRAMP maintains an official list of the versions on the [fedramp-automation releases](https://github.com/GSA/fedramp-automation/releases) page. 
+Unless noted otherwise, a valid version is a [published tag name](https://github.com/GSA/fedramp-automation/tags).
 
 
 ## Representation
@@ -19,14 +21,14 @@ FedRAMP maintains an official list of the versions on the [fedramp-automation re
     "system-security-plan": {
         "metadata": {
             "title": "FedRAMP System Security Plan (SSP)",
-            "published": "2022-06-01T00:00:00.000Z",
-            "last-modified": "2023-03-03T00:00:00.000Z ",
-            "version": "1.0.0",
-            "oscal-version": "1.1.2",
+            "published": "2024-12-31T23:59:59Z",
+            "last-modified": "2025-01-08T04:18:29Z",
+            "version": "fedramp-3.0.0rc1-oscal-1.1.2",
+            "oscal-version": "1.1.3",
             "prop": {
                 "name": "fedramp-version",
                 "ns": "http://fedramp.gov/ns/oscal",
-                "value": "3.0.0-rc1"
+                "value": "fedramp-3.0.0rc1-oscal-1.1.2"
             }
         }
     }
@@ -39,14 +41,14 @@ FedRAMP maintains an official list of the versions on the [fedramp-automation re
 system-security-plan:
   metadata:
     title: FedRAMP System Security Plan (SSP)
-    published: '2022-06-01T00:00:00.000Z'
-    last-modified: '2023-03-03T00:00:00.000Z '
-    version: 1.1.0
-    oscal-version: 1.1.2
+    published: '2024-12-31T23:59:59Z'
+    last-modified: '2025-01-08T04:18:29Z'
+    version: 'fedramp-3.0.0rc1-oscal-1.1.2'
+    oscal-version: 1.1.3
     prop:
       name: fedramp-version
       ns: http://fedramp.gov/ns/oscal
-      value: 3.0.0-rc1
+      value: fedramp-3.0.0rc1-oscal-1.1.2
 {{</ highlight >}}
 {{% /tab %}}
 {{% tab %}}
@@ -54,11 +56,11 @@ system-security-plan:
 <system-security-plan>
     <metadata>
         <title>FedRAMP System Security Plan (SSP)</title>
-        <published>2022-06-01T00:00:00.000Z</published>
-        <last-modified>2023-03-03T00:00:00.000Z </last-modified>
-        <version>1.0.0</version>
-        <oscal-version>1.1.2</oscal-version>
-        <prop name="fedramp-version" ns="http://fedramp.gov/ns/oscal" value="3.0.0-rc1"/>
+        <published>2024-12-31T23:59:59Z</published>
+        <last-modified>2025-01-08T04:18:29Z</last-modified>
+        <version>fedramp-3.0.0rc1-oscal-1.1.2</version>
+        <oscal-version>1.1.3</oscal-version>
+        <prop name="fedramp-version" ns="http://fedramp.gov/ns/oscal" value="fedramp-3.0.0rc1-oscal-1.1.2"/>
     </metadata>
 </system-security-plan>
 {{</ highlight >}}
