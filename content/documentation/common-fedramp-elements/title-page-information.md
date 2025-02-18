@@ -1,11 +1,11 @@
 ---
 title: Title Page
-weight: 302
+weight: 303
 ---
 
 # Title Page
 
-FedRAMP OSCAL templates include document title page. The screen shot below shows the title page of the FedRAMP SSP template.
+All FedRAMP OSCAL templates include document title page. The screen shot below shows the title page of the FedRAMP SSP template.
 
 {{< figure src="/img/content-figure-5.png" height="500px" title="FedRAMP SSP template title page" alt="Screenshot of the FedRAMP SSP template title page." >}}
 
@@ -57,7 +57,7 @@ To locate the resource represented by the UUID value, use the following XPath ex
                 {
                     "id": "fedramp-pmo",
                     "title": "FedRAMP PMO",
-                    "description": "Description"
+                    "description": "FedRAMP PMO."
                 },
             ],
             // The "location" assemblies.
@@ -93,7 +93,7 @@ To locate the resource represented by the UUID value, use the following XPath ex
                     "rlink": {"href": "https://www.fedramp.gov/assets/img/logo-main-fedramp.png"},
                     "base64": {
                         "filename": "FedRAMP_LOGO.png",
-                        "#text": // Base64-encoded logo."00000000"
+                        "value": "a2381e87-3d04-4108-a30b-b4d2f36d001f"
                     }
                 }
             ]
@@ -121,15 +121,15 @@ system-security-plan:
     role:
       id: fedramp-pmo
       title: FedRAMP PMO
-      description: "Description."
+      description: "FedRAMP PMO."
     # The "location" assemblies.
     party:
       uuid: 77e0e2c8-2560-4fe9-ac78-c3ff4ffc9f6d
       type: organization
-      name: 'FedRAMP: Program Management Office'
+      name: "FedRAMP: Program Management Office"
       short-name: FedRAMP PMO
       link:
-        href: '#a2381e87-3d04-4108-a30b-b4d2f36d001f'
+        href: "#a2381e87-3d04-4108-a30b-b4d2f36d001f"
         rel: logo
     responsible-party:
       role-id: fedramp-pmo
@@ -138,8 +138,7 @@ system-security-plan:
   back-matter:
     resource:
       uuid: a2381e87-3d04-4108-a30b-b4d2f36d001f
-      description:
-        p: FedRAMP Logo
+      description: "FedRAMP Logo"
       prop:
         name: type
         value: logo
@@ -147,7 +146,7 @@ system-security-plan:
         href: https://www.fedramp.gov/assets/img/logo-main-fedramp.png
       base64:
         filename: FedRAMP_LOGO.png
-        '#text': # Base64-encoded logo."00000000"
+        value: "a2381e87-3d04-4108-a30b-b4d2f36d001f"
 {{</ highlight >}}
 {{% /tab %}}
 {{% tab %}}
@@ -163,7 +162,9 @@ system-security-plan:
         <prop name="marking" value="cui"/>
         <role id="fedramp-pmo">
             <title>FedRAMP PMO</title>
-            <description><p>Description</p></description>
+            <description>
+                <p>FedRAMP PMO.</p>
+            </description>
         </role>
         <!-- The "location" assemblies. -->
         <party uuid="77e0e2c8-2560-4fe9-ac78-c3ff4ffc9f6d" type="organization">
@@ -175,15 +176,13 @@ system-security-plan:
             <party-id>77e0e2c8-2560-4fe9-ac78-c3ff4ffc9f6d</party-id>
         </responsible-party>
     </metadata>
-    <!-- OSCAL file body. -->
+    <!-- The OSCAL file body. -->
     <back-matter>
         <resource uuid="a2381e87-3d04-4108-a30b-b4d2f36d001f">
             <description><p>FedRAMP Logo</p></description>
             <prop name="type" value="logo" />
             <rlink href="https://www.fedramp.gov/assets/img/logo-main-fedramp.png"/>
-            <base64 filename="FedRAMP_LOGO.png">
-                <!-- Base64-encoded logo. -->00000000
-            </base64>
+            <base64 filename="FedRAMP_LOGO.png">a2381e87-3d04-4108-a30b-b4d2f36d001f</base64>
         </resource>
     </back-matter>
 </system-security-plan>
@@ -191,12 +190,13 @@ system-security-plan:
 {{% /tab %}}
 {{</ tabs >}}
 
-<br>
+<br/>
 {{<callout>}}
-FedRAMP Allowed Value\
-Required Role ID: `fedramp-pmo`
+**FedRAMP Allowed Value**
+<br/>
+Required role ID: `fedramp-pmo`
 {{</callout>}}
-<br>
+<br/>
 
 ## XPath Queries
 - Document Title: `/*/metadata/title`
