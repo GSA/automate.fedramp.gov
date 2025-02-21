@@ -64,9 +64,7 @@ For example, if the same Linux operating system is used as the platform for all 
           {
             "name": "allows-authenticated-scan",
             "value": "no",
-            "remarks": {
-              "p": "If no, explain why. If yes, omit remarks field."
-            }
+            "remarks": "If no, explain why. If yes, omit remarks field."
           },
           {
             "name": "baseline-configuration-name",
@@ -75,9 +73,7 @@ For example, if the same Linux operating system is used as the platform for all 
           {
             "name": "function",
             "value": "Required brief, text-based description.",
-            "remarks": {
-              "p": "Optional, longer, formatted description."
-            }
+            "remarks": "Optional, longer, formatted description."
           }
         ],
         "link": {
@@ -101,9 +97,7 @@ For example, if the same Linux operating system is used as the platform for all 
       "system-inventory": {
         "inventory-item": {
           "uuid": "11111111-2222-4000-8000-011000000002",
-          "description": {
-            "p": "If needed, describe this instance."
-          },
+          "description": "If needed, describe this instance.",
           "prop": [
             {
               "name": "ipv4-address",
@@ -149,9 +143,7 @@ For example, if the same Linux operating system is used as the platform for all 
           "implemented-component": {
             "component-uuid": "11111111-2222-4000-8000-009001200003"
           },
-          "remarks": {
-            "p": "COMMENTS: Additional information about this item."
-          }
+          "remarks": "COMMENTS: Additional information about this item."
         }
       }
     }
@@ -229,7 +221,7 @@ system-security-plan:
       type: software
       prop:
         - name: virtual
-          value: 'no'
+          value: "no"
         - name: software-name
           value: software-name
         - name: version
@@ -242,19 +234,17 @@ system-security-plan:
           value: Model Number
         - name: patch-level
           value: Patch-Level
-        - ns: 'https://fedramp.gov/ns/oscal'
+        - ns: "https://fedramp.gov/ns/oscal"
           name: scan-type
           value: infrastructure
         - name: allows-authenticated-scan
-          value: 'no'
-          remarks:
-            p: 'If no, explain why. If yes, omit remarks field.'
+          value: "no"
+          remarks: If no, explain why. If yes, omit remarks field.
         - name: baseline-configuration-name
           value: Baseline Config. Name
         - name: function
-          value: 'Required brief, text-based description.'
-          remarks:
-            p: 'Optional, longer, formatted description.'
+          value: Required brief, text-based description.
+          remarks: Optional, longer, formatted description.
     link:
       rel: validation
       href: '#11111111-2222-4000-8000-009001200001'
@@ -268,33 +258,32 @@ system-security-plan:
     system-inventory:
       inventory-item:
         uuid: 11111111-2222-4000-8000-011000000002
-        description:
-          p: 'If needed, describe this instance.'
+        description: If needed, describe this instance.
         prop:
           - name: ipv4-address
             value: 0.0.0.0
           - name: asset-id
             value: unique-asset-ID-02
           - name: public
-            value: 'no'
+            value: "no"
           - name: fqdn
             value: example.com
           - name: uri
-            value: 'https://example/query?key=value#anchor'
+            value: "https://example/query?key=value#anchor"
           - name: mac-address
-            value: '>00:00:00:00:00:00'
+            value: "00:00:00:00:00:00"
           - name: serial-number
-            value: 'Serial #'
+            value: "Serial #"
           - name: vlan-id
             value: VLAN Identifier
           - name: network-id
             value: Network Identifier
           - name: is-scanned
-            value: 'yes'
+            value: "yes"
+
         implemented-component:
           component-uuid: 11111111-2222-4000-8000-009001200003
-        remarks:
-          p: 'COMMENTS: Additional information about this item.'
+        remarks: "COMMENTS: Additional information about this item."
 {{< /highlight >}}
 {{% /tab %}}
 

@@ -199,9 +199,7 @@ FedRAMP will be implementing a separate set of automated SSP validation rules fo
             "value": "gov.nist.csrc"
           }
         ],
-        "remarks": {
-          "p": "This \"resolution resource\" is used by FedRAMP as a local, authoritative indicator of what version SSP (rev 4 or rev 5) this OSCAL document is for."
-        }
+        "remarks": "This \"resolution resource\" is used by FedRAMP as a local, authoritative indicator of what version SSP (rev 4 or rev 5) this OSCAL document is for."
       }
     }
   }
@@ -274,8 +272,8 @@ system-security-plan:
         - name: dataset
           class: organization
           value: gov.nist.csrc
-      remarks:
-        p: 'This "resolution resource" is used by FedRAMP as a local, authoritative indicator of what version SSP (rev 4 or rev 5) this OSCAL document is for.'
+      remarks: This "resolution resource" is used by FedRAMP as a local, authoritative indicator of what version SSP (rev 4 or rev 5) this OSCAL document is for.
+
 {{< /highlight >}}
 {{% /tab %}}
 

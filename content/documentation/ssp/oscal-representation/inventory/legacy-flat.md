@@ -22,9 +22,7 @@ With the **legacy/flat approach**, all content on a spreadsheet row appears in a
       "system-inventory": {
         "inventory-item": {
           "uuid": "11111111-2222-4000-8000-011000000002",
-          "description": {
-            "p": "Flat-File Example (No implemented-component)."
-          },
+          "description": "Flat-File Example (No implemented-component).",
           "prop": [
             {
               "name": "ipv4-address",
@@ -110,9 +108,7 @@ With the **legacy/flat approach**, all content on a spreadsheet row appears in a
             {
               "name": "allows-authenticated-scan",
               "value": "no",
-              "remarks": {
-                "p": "If no, explain why. If yes, omit remarks field."
-              }
+              "remarks": "If no, explain why. If yes, omit remarks field."
             },
             {
               "name": "baseline-configuration-name",
@@ -151,9 +147,8 @@ With the **legacy/flat approach**, all content on a spreadsheet row appears in a
           "implemented-component": {
             "component-uuid": "11111111-2222-4000-8000-009001200003"
           },
-          "remarks": {
-            "p": "COMMENTS: Additional information about this item."
-          }
+          "remarks": "COMMENTS: Additional information about this item."
+          
         }
       }
     }
@@ -229,27 +224,26 @@ system-security-plan:
     system-inventory:
       inventory-item:
         uuid: 11111111-2222-4000-8000-011000000002
-        description:
-          p: Flat-File Example (No implemented-component).
+        description: Flat-File Example (No implemented-component).
         prop:
           - name: asset-id
             value: unique-asset-ID-02
           - name: ipv4-address
             value: 0.0.0.0
           - name: ipv6-address
-            value: '0000:0000:0000:0000'
+            value: "0000:0000:0000:0000"
           - name: virtual
-            value: 'no'
+            value: "no"
           - name: public
-            value: 'no'
+            value: "no"
           - name: fqdn
             value: example.com
           - name: uri
-            value: 'https://example/query?key=value#anchor'
+            value: "https://example/query?key=value#anchor"
           - name: netbios-name
             value: netbios-name
           - name: mac-address
-            value: '00:00:00:00:00:00'
+            value: "00:00:00:00:00:00"
           - name: software-name
             value: software-name
           - name: version
@@ -263,31 +257,30 @@ system-security-plan:
           - name: patch-level
             value: Patch-Level
           - name: serial-number
-            value: 'Serial #'
+            value: "Serial #"
           - name: asset-tag
             value: Asset Tag
           - name: vlan-id
             value: VLAN Identifier
           - name: network-id
             value: Network Identifier
-          - ns: 'https://fedramp.gov/ns/oscal'
+          - ns: "https://fedramp.gov/ns/oscal"
             name: scan-type
             value: infrastructure
           - name: allows-authenticated-scan
-            value: 'no'
-            remarks:
-              p: 'If no, explain why. If yes, omit remarks field.'
+            value: "no"
+            remarks: If no, explain why. If yes, omit remarks field.
           - name: baseline-configuration-name
             value: Baseline Config. Name
           - name: physical-location
             value: Physical location of Asset
           - name: is-scanned
-            value: 'yes'
+            value: "yes"
           - name: function
-            value: 'Required brief, text-based description.'
+            value: Required brief, text-based description.
         link:
           rel: validation
-          href: '#11111111-2222-4000-8000-009001200001'
+          href: "#11111111-2222-4000-8000-009001200001"
         status:
           state: operational
         responsible-party:
@@ -297,8 +290,7 @@ system-security-plan:
             party-id: it-dept
         implemented-component:
           component-uuid: 11111111-2222-4000-8000-009001200003
-        remarks:
-          p: 'COMMENTS: Additional information about this item.'
+        remarks: "COMMENTS: Additional information about this item."
 
 {{< /highlight >}}
 {{% /tab %}}

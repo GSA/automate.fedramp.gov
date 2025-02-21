@@ -200,9 +200,7 @@ The core-OSCAL system-characteristics assembly has a property for the cloud serv
       "prop": {
         "name": "cloud-service-model",
         "value": "saas",
-        "remarks": {
-          "p": "Remarks are required if service model is \"other\". Optional otherwise."
-        }
+        "remarks": "Remarks are required if service model is \"other\". Optional otherwise."
       }
     }
   }
@@ -256,8 +254,7 @@ system-security-plan:
     prop:
       name: "cloud-service-model"
       value: "saas"
-      remarks:
-        p: "Remarks are required if service model is \"other\". Optional otherwise."
+      remarks: "Remarks are required if service model is \"other\". Optional otherwise."
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -321,16 +318,12 @@ The core-OSCAL system-characteristics assembly has a property for the cloud depl
         {
           "name": "cloud-service-model",
           "value": "saas",
-          "remarks": {
-            "p": "Remarks are required if service model is \"other\". Optional otherwise."
-          }
+          "remarks": "Remarks are required if service model is \"other\". Optional otherwise."
         },
         {
           "name": "cloud-deployment-model",
           "value": "public-cloud",
-          "remarks": {
-            "p": "Remarks are required if deployment model is \"hybrid\". Optional otherwise."
-          }
+          "remarks": "Remarks are required if deployment model is \"hybrid\". Optional otherwise."
         }
       ]
     }
@@ -391,12 +384,10 @@ system-security-plan:
     prop:
       - name: "cloud-service-model"
         value: "saas"
-        remarks:
-          p: "Remarks are required if service model is \"other\". Optional otherwise."
+        remarks: "Remarks are required if service model is \"other\". Optional otherwise."
       - name: "cloud-deployment-model"
         value: "public-cloud"
-        remarks:
-          p: "Remarks are required if deployment model is \"hybrid\". Optional otherwise."
+        remarks: "Remarks are required if deployment model is \"hybrid\". Optional otherwise."
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -451,12 +442,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
       "security-sensitivity-level": "fips-199-moderate",
       "status": {
         "state": "operational",
-        "remarks": {
-          "p": [
-            "If the status is “other”, the remarks field is required.",
-            "Otherwise, it is optional."
-          ]
-        }
+        "remarks": "If the status is “other”, the remarks field is required. Otherwise, it is optional."
       },
       "prop": {
         "ns": "https://fedramp.gov/ns/oscal",
@@ -516,10 +502,7 @@ system-security-plan:
     security-sensitivity-level: "fips-199-moderate"
     status:
       state: operational
-      remarks:
-        p:
-          - "If the status is “other”, the remarks field is required."
-          - "Otherwise, it is optional."
+      remarks: If the status is “other”, the remarks field is required. Otherwise, it is optional.
     prop:
       ns: "https://fedramp.gov/ns/oscal"
       name: "fully-operational-date"
@@ -582,9 +565,7 @@ The system functionality in the FedRAMP SSP template document is specified in th
         "value": "F00000000"
       },
       "security-sensitivity-level": "fips-199-moderate",
-      "description": {
-        "p": "Describe the purpose and functions of this system here."
-      }
+      "description": "Describe the purpose and functions of this system here."
     }
   }
 }
@@ -636,8 +617,7 @@ system-security-plan:
       identifier-type: "http://fedramp.gov/ns/oscal"
       value: "F00000000"
     security-sensitivity-level: "fips-199-moderate"
-    description:
-      p: "Describe the purpose and functions of this system here."
+    description: Describe the purpose and functions of this system here.
 {{< /highlight >}}
 {{% /tab %}}
 

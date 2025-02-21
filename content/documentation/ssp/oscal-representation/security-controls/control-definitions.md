@@ -33,9 +33,7 @@ corresponding `implemented-requirement` assembly in the
       "href": "https://path/to/xml/FedRAMP_MODERATE-baseline_profile.xml"
     },
     "control-implementation": {
-      "description": {
-        "p": "This field required by OSCAL, but may be left blank.\n\nFedRAMP requires no specific content here.",
-      },
+      "description": "This field required by OSCAL, but may be left blank.\n\nFedRAMP requires no specific content here.",
       "implemented-requirement": [
         {
           "uuid": "11111111-2222-4000-8000-012000010000",

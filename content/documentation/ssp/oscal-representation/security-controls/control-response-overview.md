@@ -295,9 +295,7 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
           "uuid": "11111111-2222-4000-8000-009000300100",
           "type": "software",
           "title": "Component Title",
-          "description": {
-            "p": "Description of the component."
-          },
+          "description": "Description of the component.",
           "status": {
             "state": "implemented"
           }
@@ -306,9 +304,7 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
           "uuid": "11111111-2222-4000-8000-009000800002",
           "type": "process-procedure",
           "title": "Process Title",
-          "description": {
-            "p": "Description of the component."
-          },
+          "description": "Description of the component.",
           "status": {
             "state": "implemented"
           },
@@ -330,16 +326,12 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
             {
               "uuid": "11111111-2222-4000-8000-009000800001",
               "component-uuid": "uuid-of-software-component",
-              "description": {
-                "p": "Describe how the software component is satisfying the control."
-              }
+              "description": "Describe how the software component is satisfying the control."
             },
             {
               "uuid": "11111111-2222-4000-8000-009000800002",
               "component-uuid": "uuid-of-process-component",
-              "description": {
-                "p": "Describe how the process satisfies the control."
-              }
+              "description": "Describe how the process satisfies the control."
             }
           ]
         }
@@ -406,15 +398,13 @@ system-security-plan:
       - uuid: "11111111-2222-4000-8000-009000300100"
         type: "software"
         title: "Component Title"
-        description:
-          p: "Description of the component."
+        description: "Description of the component."
         status:
           state: "implemented"
       - uuid: "11111111-2222-4000-8000-009000800002"
         type: "process-procedure"
         title: "Process Title"
-        description:
-          p: "Description of the component."
+        description: "Description of the component."
         status:
           state: "implemented"
         responsible-role:
@@ -430,12 +420,10 @@ system-security-plan:
         by-component:
           - uuid: "11111111-2222-4000-8000-009000800001"
             component-uuid: "uuid-of-software-component"
-            description:
-              p: "Describe how the software component is satisfying the control."
+            description: "Describe how the software component is satisfying the control."
           - uuid: "11111111-2222-4000-8000-009000800002"
             component-uuid: "uuid-of-process-component"
-            description:
-              p: "Describe how the process satisfies the control."
+            description: "Describe how the process satisfies the control."
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -479,9 +467,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
         "uuid": "11111111-2222-4000-8000-009000000000",
         "type": "this-system",
         "title": "This System",
-        "description": {
-          "p": "Description of the component."
-        },
+        "description": "Description of the component.",
         "status": {
           "state": "implemented"
         }
@@ -497,13 +483,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
           "by-component": {
             "uuid": "11111111-2222-4000-8000-012000020102",
             "component-uuid": "11111111-2222-4000-8000-009000000000",
-            "description": {
-              "p": [
-                "Describe how individual components are working together.",
-                "Describe how the system - as a whole - is satisfying this statement.",
-                "This can include policy, procedures, hardware, software, etc."
-              ]
-            }
+            "description": "Describe how individual components are working together. Describe how the system - as a whole - is satisfying this statement. This can include policy, procedures, hardware, software, etc."
           }
         }
       }
@@ -554,8 +534,7 @@ system-security-plan:
       uuid: "11111111-2222-4000-8000-009000000000"
       type: "this-system"
       title: "This System"
-      description:
-        p: "Description of the component."
+      description: "Description of the component."
       status:
         state: "implemented"
   control-implementation:
@@ -568,11 +547,10 @@ system-security-plan:
         by-component:
           uuid: "11111111-2222-4000-8000-012000020102"
           component-uuid: "11111111-2222-4000-8000-009000000000"
-          description:
-            p:
-              - "Describe how individual components are working together."
-              - "Describe how the system - as a whole - is satisfying this statement."
-              - "This can include policy, procedures, hardware, software, etc."
+          description: |
+            Describe how individual components are working together.
+            Describe how the system - as a whole - is satisfying this statement.
+            This can include policy, procedures, hardware, software, etc.
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -612,9 +590,7 @@ assembly for **"this system"**, the link must be within the same `by-component` 
           "by-component": {
             "component-uuid": "11111111-2222-4000-8000-009000000000",
             "uuid": "11111111-2222-4000-8000-012000020102",
-            "description": {
-              "p": "Describe how Part a is satisfied within the system."
-            },
+            "description": "Describe how Part a is satisfied within the system.",
             "link": {
               "href": "#11111111-2222-4000-8000-001000000005",
               "rel": "policy"
@@ -662,8 +638,7 @@ system-security-plan:
         by-component:
           component-uuid: "11111111-2222-4000-8000-009000000000"
           uuid: "11111111-2222-4000-8000-012000020102"
-          description:
-            p: "Describe how Part a is satisfied within the system."
+          description: "Describe how Part a is satisfied within the system."
           link:
             href: "#11111111-2222-4000-8000-001000000005"
             rel: "policy"
@@ -688,9 +663,7 @@ The link should be in the component, but may be added directly to the
         "uuid": "11111111-2222-4000-8000-009000600001",
         "type": "policy",
         "title": "Access Control and Identity Management Policy",
-        "description": {
-          "p": "An example component representing a policy."
-        },
+        "description": "An example component representing a policy.",
         "link": {
           "href": "#11111111-2222-4000-8000-001000000005",
           "rel": "policy"
@@ -710,9 +683,7 @@ The link should be in the component, but may be added directly to the
           "by-component": {
             "component-uuid": "11111111-2222-4000-8000-009000600001",
             "uuid": "11111111-2222-4000-8000-012000010101",
-            "description": {
-              "p": "Describe how this policy satisfies Part a."
-            }
+            "description": "Describe how this policy satisfies Part a."
           }
         }
       }
@@ -761,8 +732,7 @@ system-security-plan:
       uuid: "11111111-2222-4000-8000-009000600001"
       type: "policy"
       title: "Access Control and Identity Management Policy"
-      description:
-        p: "An example component representing a policy."
+      description: "An example component representing a policy."
       link:
         href: "#11111111-2222-4000-8000-001000000005"
         rel: "policy"
@@ -778,8 +748,7 @@ system-security-plan:
         by-component:
           component-uuid: "11111111-2222-4000-8000-009000600001"
           uuid: "11111111-2222-4000-8000-012000010101"
-          description:
-            p: "Describe how this policy satisfies Part a."
+          description: "Describe how this policy satisfies Part a."
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -874,19 +843,12 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
             {
               "uuid": "11111111-2222-4000-8000-012000010101",
               "component-uuid": "11111111-2222-4000-8000-009000000000",
-              "description": {
-                "p": "Describe how the system - as a whole - is satisfying this statement."
-              },
+              "description": "Describe how the system - as a whole - is satisfying this statement.",
               "export": {
                 "responsibility": {
                   "uuid": "11111111-2222-4000-8000-016000000001",
                   "provided-uuid": "11111111-2222-4000-8000-015000000001",
-                  "description": {
-                    "p": [
-                      "Leveraging system's responsibilities in satisfaction of AC-2.",
-                      "Not linked to inheritance, so this is always required."
-                    ]
-                  },
+                  "description": "Leveraging system's responsibilities in satisfaction of AC-2. Not linked to inheritance, so this is always required.",
                   "responsible-role": {
                     "role-id": "customer"
                   }
@@ -896,15 +858,11 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
             {
               "uuid": "11111111-2222-4000-8000-012000010102",
               "component-uuid": "11111111-2222-4000-8000-009000300001",
-              "description": {
-                "p": "Describe how the software is satisfying this statement."
-              },
+              "description": "Describe how the software is satisfying this statement.",
               "export": {
                 "provided": {
                   "uuid": "11111111-2222-4000-8000-015000000001",
-                  "description": {
-                    "p": "Customer appropriate description of what may be inherited."
-                  },
+                  "description": "Customer appropriate description of what may be inherited.",
                   "responsible-role": {
                     "role-id": "poc-for-customers"
                   }
@@ -912,9 +870,7 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
                 "responsibility": {
                   "uuid": "11111111-2222-4000-8000-016000000001",
                   "provided-uuid": "11111111-2222-4000-8000-015000000001",
-                  "description": {
-                    "p": "Customer responsibilities if inheriting this capability."
-                  },
+                  "description": "Customer responsibilities if inheriting this capability.",
                   "responsible-role": {
                     "role-id": "customer"
                   }
@@ -990,34 +946,29 @@ system-security-plan:
         by-component:
           - uuid: "11111111-2222-4000-8000-012000010101"
             component-uuid: "11111111-2222-4000-8000-009000000000"
-            description:
-              p: "Describe how the system - as a whole - is satisfying this statement."
+            description: "Describe how the system - as a whole - is satisfying this statement."
             export:
               responsibility:
                 uuid: "11111111-2222-4000-8000-016000000001"
                 provided-uuid: "11111111-2222-4000-8000-015000000001"
-                description:
-                  p:
-                    - "Leveraging system's responsibilities in satisfaction of AC-2."
-                    - "Not linked to inheritance, so this is always required."
+                description: |
+                  Leveraging system's responsibilities in satisfaction of AC-2.
+                  Not linked to inheritance, so this is always required.
                 responsible-role:
                   role-id: "customer"
           - uuid: "11111111-2222-4000-8000-012000010102"
             component-uuid: "11111111-2222-4000-8000-009000300001"
-            description:
-              p: "Describe how the software is satisfying this statement."
+            description: "Describe how the software is satisfying this statement."
             export:
               provided:
                 uuid: "11111111-2222-4000-8000-015000000001"
-                description:
-                  p: "Customer appropriate description of what may be inherited."
+                description: "Customer appropriate description of what may be inherited."
                 responsible-role:
                   role-id: "poc-for-customers"
               responsibility:
                 uuid: "11111111-2222-4000-8000-016000000001"
                 provided-uuid: "11111111-2222-4000-8000-015000000001"
-                description:
-                  p: "Customer responsibilities if inheriting this capability."
+                description: "Customer responsibilities if inheriting this capability."
                 responsible-role:
                   role-id: "customer"
 {{< /highlight >}}

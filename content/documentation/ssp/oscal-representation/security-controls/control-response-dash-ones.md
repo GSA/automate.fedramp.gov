@@ -183,9 +183,7 @@ There must always be a **"This System"** component in the SSP. This is used in s
         "uuid": "11111111-2222-4000-8000-009000000000",
         "type": "this-system",
         "title": "This System",
-        "description": {
-          "p": "Description of the component."
-        },
+        "description": "Description of the component.",
         "status": {
           "state": "operational"
         }
@@ -201,13 +199,11 @@ There must always be a **"This System"** component in the SSP. This is used in s
           "by-component": {
             "uuid": "11111111-2222-4000-8000-012000020102",
             "component-uuid": "11111111-2222-4000-8000-009000000000",
-            "description": {
-              "p": [
-                "Describe how individual components are working together.",
-                "Describe how the system - as a whole - is satisfying this statement.",
-                "This can include policy, procedures, hardware, software, etc."
-              ]
-            }
+            "description": [
+              "Describe how individual components are working together.",
+              "Describe how the system - as a whole - is satisfying this statement.",
+              "This can include policy, procedures, hardware, software, etc."
+            ]
           }
         }
       }
@@ -259,8 +255,7 @@ system-security-plan:
       uuid: "11111111-2222-4000-8000-009000000000"
       type: "this-system"
       title: "This System"
-      description:
-        p: "Description of the component."
+      description: Description of the component.
       status:
         state: "operational"
   control-implementation:
@@ -273,11 +268,10 @@ system-security-plan:
         by-component:
           uuid: "11111111-2222-4000-8000-012000020102"
           component-uuid: "11111111-2222-4000-8000-009000000000"
-          description:
-            p:
-              - "Describe how individual components are working together."
-              - "Describe how the system - as a whole - is satisfying this statement."
-              - "This can include policy, procedures, hardware, software, etc."
+          description: |
+            Describe how individual components are working together.
+            Describe how the system - as a whole - is satisfying this statement.
+            This can include policy, procedures, hardware, software, etc.
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -317,9 +311,7 @@ assembly for **"this system"**, the link must be within the same `by-component` 
           "by-component": {
             "component-uuid": "11111111-2222-4000-8000-009000000000",
             "uuid": "11111111-2222-4000-8000-012000010101",
-            "description": {
-              "p": "Describe how Part a is satisfied within the system."
-            },
+            "description": "Describe how Part a is satisfied within the system.",
             "link": {
               "href": "#11111111-2222-4000-8000-001000000005",
               "rel": "policy"
@@ -366,8 +358,7 @@ system-security-plan:
         by-component:
           component-uuid: "11111111-2222-4000-8000-009000000000"
           uuid: "11111111-2222-4000-8000-012000010101"
-          description:
-            p: "Describe how Part a is satisfied within the system."
+          description: Describe how Part a is satisfied within the system.
           link:
             href: "#11111111-2222-4000-8000-001000000005"
             rel: "policy"
@@ -392,9 +383,7 @@ The link should be in the component, but may be added directly to the
         "uuid": "11111111-2222-4000-8000-009000600001",
         "type": "policy",
         "title": "Access Control and Identity Management Policy",
-        "description": {
-          "p": "An example component representing a policy."
-        },
+        "description": "An example component representing a policy.",
         "link": {
           "href": "#11111111-2222-4000-8000-001000000005",
           "rel": "policy"
@@ -414,9 +403,7 @@ The link should be in the component, but may be added directly to the
           "by-component": {
             "component-uuid": "11111111-2222-4000-8000-009000600001",
             "uuid": "11111111-2222-4000-8000-012000010101",
-            "description": {
-              "p": "Describe how this policy satisfies Part a."
-            }
+            "description": "Describe how this policy satisfies Part a."
           }
         }
       }
@@ -463,8 +450,7 @@ system-security-plan:
       uuid: "11111111-2222-4000-8000-009000600001"
       type: "policy"
       title: "Access Control and Identity Management Policy"
-      description:
-        p: "An example component representing a policy."
+      description: "An example component representing a policy."
       link:
         href: "#11111111-2222-4000-8000-001000000005"
         rel: "policy"
@@ -480,8 +466,7 @@ system-security-plan:
         by-component:
           component-uuid: "11111111-2222-4000-8000-009000600001"
           uuid: "11111111-2222-4000-8000-012000010101"
-          description:
-            p: "Describe how this policy satisfies Part a."
+          description: "Describe how this policy satisfies Part a."
 {{< /highlight >}}
 {{% /tab %}}
 

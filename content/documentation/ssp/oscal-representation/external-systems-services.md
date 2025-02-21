@@ -20,9 +20,7 @@ FedRAMP authorized services should be used, whenever possible, since their risk 
         "uuid": "11111111-2222-4000-8000-009000200001",
         "type": "interconnection",
         "title": "[EXAMPLE]External System / Service Name",
-        "description": {
-          "p": "Briefly describe the interconnection details."
-        },
+        "description": "Briefly describe the interconnection details.",
         "prop": [
           {
             "ns": "https://fedramp.gov/ns/oscal",
@@ -230,8 +228,7 @@ system-security-plan:
       uuid: 11111111-2222-4000-8000-009000200001
       type: interconnection
       title: "[EXAMPLE]External System / Service Name"
-      description:
-        p: "Briefly describe the interconnection details."
+      description: "Briefly describe the interconnection details."
       prop:
         - ns: "https://fedramp.gov/ns/oscal"
           name: service-processor

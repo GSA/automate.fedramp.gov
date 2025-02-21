@@ -22,9 +22,7 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
           "uuid": "11111111-2222-4000-8000-009000300001",
           "type": "software",
           "title": "Component Title",
-          "description": {
-            "p": "Description of the component."
-          },
+          "description": "Description of the component.",
           "status": {
             "state": "operational"
           }
@@ -33,9 +31,7 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
           "uuid": "11111111-2222-4000-8000-009000800001",
           "type": "process-procedure",
           "title": "Process Title",
-          "description": {
-            "p": "Description of the component."
-          },
+          "description": "Description of the component.",
           "status": {
             "state": "operational"
           },
@@ -57,16 +53,12 @@ more `by-component` assemblies. Each `by-component` assembly references a `compo
             {
               "uuid": "11111111-2222-4000-8000-012000020101",
               "component-uuid": "11111111-2222-4000-8000-009000000000",
-              "description": {
-                "p": "Describe how the software component is satisfying the control."
-              }
+              "description": "Describe how the software component is satisfying the control."
             },
             {
               "uuid": "11111111-2222-4000-8000-012000020103",
               "component-uuid": "11111111-2222-4000-8000-009000000014",
-              "description": {
-                "p": "Describe how the process satisfies the control."
-              }
+              "description": "Describe how the process satisfies the control."
             }
           ]
         }
@@ -130,15 +122,13 @@ system-security-plan:
       - uuid: "11111111-2222-4000-8000-009000300001"
         type: "software"
         title: "Component Title"
-        description:
-          p: "Description of the component."
+        description: "Description of the component."
         status:
           state: "operational"
       - uuid: "11111111-2222-4000-8000-009000800001"
         type: "process-procedure"
         title: "Process Title"
-        description:
-          p: "Description of the component."
+        description: "Description of the component."
         status:
           state: "operational"
         responsible-role:
@@ -154,12 +144,10 @@ system-security-plan:
         by-component:
           - uuid: "11111111-2222-4000-8000-012000020101"
             component-uuid: "11111111-2222-4000-8000-009000000000"
-            description:
-              p: "Describe how the software component is satisfying the control."
+            description: "Describe how the software component is satisfying the control."
           - uuid: "11111111-2222-4000-8000-012000020103"
             component-uuid: "11111111-2222-4000-8000-009000000014"
-            description:
-              p: "Describe how the process satisfies the control."
+            description: "Describe how the process satisfies the control."
 {{< /highlight >}}
 {{% /tab %}}
 

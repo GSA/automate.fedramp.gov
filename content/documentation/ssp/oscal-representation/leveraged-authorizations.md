@@ -63,9 +63,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
       "uuid": "uuid-of-leveraged-system",
       "type": "leveraged-system",
       "title": "Name of Leveraged System",
-      "description": {
-        "p": "Briefly describe leveraged system."
-      },
+      "description": "Briefly describe leveraged system.",
       "prop": [
         {
           "name": "leveraged-authorization-uuid",
@@ -152,8 +150,7 @@ system-implementation:
     uuid: "uuid-of-leveraged-system"
     type: leveraged-system
     title: "Name of Leveraged System"
-    description:
-      p: "Briefly describe leveraged system."
+    description: "Briefly describe leveraged system."
     prop:
       - name: leveraged-authorization-uuid
         value: "11111111-2222-4000-8000-019000000001"

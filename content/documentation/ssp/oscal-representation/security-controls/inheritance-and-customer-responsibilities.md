@@ -32,19 +32,12 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
             {
               "uuid": "11111111-2222-4000-8000-012000020102",
               "component-uuid": "11111111-2222-4000-8000-009000000000",
-              "description": {
-                "p": "Describe how the system - as a whole - is satisfying this statement."
-              },
+              "description": "Describe how the system - as a whole - is satisfying this statement.",
               "export": {
                 "responsibility": {
                   "uuid": "11111111-2222-4000-8000-016000000001",
                   "provided-uuid": "11111111-2222-4000-8000-015000000001",
-                  "description": {
-                    "p": [
-                      "Leveraging system's responsibilities in satisfaction of AC-2.",
-                      "Not linked to inheritance, so this is always required."
-                    ]
-                  },
+                  "description": "Leveraging system's responsibilities in satisfaction of AC-2. Not linked to inheritance, so this is always required.",
                   "responsible-role": {
                     "role-id": "customer"
                   }
@@ -54,15 +47,11 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
             {
               "uuid": "11111111-2222-4000-8000-012000020103",
               "component-uuid": "11111111-2222-4000-8000-009000000014",
-              "description": {
-                "p": "Describe how the software is satisfying this statement."
-              },
+              "description": "Describe how the software is satisfying this statement.",
               "export": {
                 "provided": {
                   "uuid": "11111111-2222-4000-8000-015000000002",
-                  "description": {
-                    "p": "Customer appropriate description of what may be inherited."
-                  },
+                  "description": "Customer appropriate description of what may be inherited.",
                   "responsible-role": {
                     "role-id": "poc-for-customers"
                   }
@@ -70,9 +59,7 @@ assembly. Use `provided` to identify a capability that may be inherited by a lev
                 "responsibility": {
                   "uuid": "11111111-0000-4000-9009-002001002002",
                   "provided-uuid": "11111111-2222-4000-8000-015000000002",
-                  "description": {
-                    "p": "Customer responsibilities if inheriting this capability."
-                  },
+                  "description": "Customer responsibilities if inheriting this capability.",
                   "responsible-role": {
                     "role-id": "customer"
                   }
@@ -150,34 +137,29 @@ system-security-plan:
         by-component:
           - uuid: "11111111-2222-4000-8000-012000020102"
             component-uuid: "11111111-2222-4000-8000-009000000000"
-            description:
-              p: "Describe how the system - as a whole - is satisfying this statement."
+            description: Describe how the system - as a whole - is satisfying this statement.
             export:
               responsibility:
                 uuid: "11111111-2222-4000-8000-016000000001"
                 provided-uuid: "11111111-2222-4000-8000-015000000001"
-                description:
-                  p:
-                    - "Leveraging system's responsibilities in satisfaction of AC-2."
-                    - "Not linked to inheritance, so this is always required."
+                description: |
+                  Leveraging system's responsibilities in satisfaction of AC-2.
+                  Not linked to inheritance, so this is always required.
                 responsible-role:
                   role-id: "customer"
           - uuid: "11111111-2222-4000-8000-012000020103"
             component-uuid: "11111111-2222-4000-8000-009000000014"
-            description:
-              p: "Describe how the software is satisfying this statement."
+            description: "Describe how the software is satisfying this statement."
             export:
               provided:
                 uuid: "11111111-2222-4000-8000-015000000002"
-                description:
-                  p: "Customer appropriate description of what may be inherited."
+                description: "Customer appropriate description of what may be inherited."
                 responsible-role:
                   role-id: "poc-for-customers"
               responsibility:
                 uuid: "11111111-0000-4000-9009-002001002002"
                 provided-uuid: "11111111-2222-4000-8000-015000000002"
-                description:
-                  p: "Customer responsibilities if inheriting this capability."
+                description: "Customer responsibilities if inheriting this capability."
                 responsible-role:
                   role-id: "customer"
 {{< /highlight >}}
@@ -259,29 +241,21 @@ or may provide individual system components as well. In either case, the
             {
               "uuid": "11111111-2222-4000-8000-012000020101",
               "component-uuid": "11111111-2222-4000-8000-009000000000",
-              "description": {
-                "p": "Describe what is satisfied by this system."
-              }
+              "description": "Describe what is satisfied by this system."
             },
             {
               "uuid": "11111111-2222-4000-8000-012000020101",
               "component-uuid": "11111111-2222-4000-8000-009000000000",
-              "description": {
-                "p": "Describe what is inherited from the leveraged system in satisfaction of this control statement."
-              },
+              "description": "Describe what is inherited from the leveraged system in satisfaction of this control statement.",
               "inherited": {
                 "provided-uuid": "11111111-0000-4000-9009-002001002001",
                 "uuid": "11111111-2222-4000-8000-017000000001",
-                "description": {
-                  "p": "Optional: Information provided by leveraged system."
-                }
+                "description": "Optional: Information provided by leveraged system."
               },
               "satisfied": {
                 "responsibility-uuid": "11111111-0000-4000-9009-002001002002",
                 "uuid": "11111111-2222-4000-8000-018000000001",
-                "description": {
-                  "p": "Description of how the responsibility was satisfied."
-                }
+                "description": "Description of how the responsibility was satisfied."
               }
             }
           ]
@@ -378,22 +352,18 @@ system-security-plan:
         by-component:
           - uuid: "11111111-2222-4000-8000-012000020101"
             component-uuid: "11111111-2222-4000-8000-009000000000"
-            description:
-              p: "Describe what is satisfied by this system."
+            description: "Describe what is satisfied by this system."
           - uuid: "11111111-2222-4000-8000-012000020101"
             component-uuid: "11111111-2222-4000-8000-009000000000"
-            description:
-              p: "Describe what is inherited from the leveraged system in satisfaction of this control statement."
+            description: "Describe what is inherited from the leveraged system in satisfaction of this control statement."
             inherited:
               provided-uuid: "11111111-0000-4000-9009-002001002001"
               uuid: "11111111-2222-4000-8000-017000000001"
-              description:
-                p: "Optional: Information provided by leveraged system."
+              description: "Optional: Information provided by leveraged system."
             satisfied:
               responsibility-uuid: "11111111-0000-4000-9009-002001002002"
               uuid: "11111111-2222-4000-8000-018000000001"
-              description:
-                p: "Description of how the responsibility was satisfied."
+              description: "Description of how the responsibility was satisfied."
 {{< /highlight >}}
 {{% /tab %}}
 
