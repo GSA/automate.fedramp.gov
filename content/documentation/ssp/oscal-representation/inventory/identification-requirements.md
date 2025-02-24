@@ -60,7 +60,6 @@ Every inventory item must have a property named `asset-type` that clearly identi
 
 **Important Notes:**
 - Mandatory for OS/Infrastructure and Containers
-- Should be left blank for Software and Database components
 - Helps determine applicable security controls and scanning requirements
 
 **Syntax Type:** Optional core OSCAL syntax
