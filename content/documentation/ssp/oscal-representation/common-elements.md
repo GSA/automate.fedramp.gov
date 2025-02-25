@@ -11,7 +11,6 @@ Content that is common across OSCAL file types is described in the *[FedRAMP OSC
 - [**Title Page**](/documentation/common-fedramp-elements/title-page-information)
 - [**Prepared By/For**](/documentation/common-fedramp-elements/prepared-by-for)
 - [**Revision History**](/documentation/common-fedramp-elements/document-revision-history)
-- [**How to Contact Us**](/documentation/common-fedramp-elements/fedramp-contact-information)
 - [**Document Approvers**](/documentation/common-fedramp-elements/document-approvals)
 - [**Acronyms and Glossary**](/documentation/common-fedramp-elements/attachments)
 
