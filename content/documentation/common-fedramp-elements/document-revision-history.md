@@ -9,7 +9,7 @@ The OSCAL revision history requires one FedRAMP extension to meet FedRAMP's revi
 
 {{< figure src="/img/content-figure-8.png" title="Document revision history in a FedRAMP template" alt="Screenshot of document revision history information in the FedRAMP template." >}}
 
-The revision history's author is populated from the FedRAMP's `party-uuid` flag, which points to a metadata `party` UUID value.
+The revision history's author information is derived from FedRAMP's `party-uuid` flag, which points to a metadata `party` UUID value.
 
 {{<callout>}}
 **FedRAMP Revision Author** \
@@ -35,7 +35,6 @@ and [NIST markup-multiline](https://pages.nist.gov/metaschema/specification/data
 {{< highlight json "linenos=table" >}}
 {
     "metadata": {
-        // title, published, last-modified, version, oscal-version
         "revisions": [
             {
                 "published": "2025-03-30T00:00:00Z",
@@ -45,12 +44,39 @@ and [NIST markup-multiline](https://pages.nist.gov/metaschema/specification/data
                     {
                         "name": "party-uuid",
                         "ns": "http://fedramp.gov/ns/oscal",
-                        "value": "11111111-2222-4000-8000-004000000001"
+                        "value": "9f411fde-00b2-45b4-8043-129da20ce6dd"
                     }
                 ],
                 "remarks": "Initial publication."
             }
-        ]
+        ],
+
+        "roles": [
+            {
+                "id": "prepared-by",
+                "title": "Prepared By",
+                "description": "Cloud Service Provider"
+            },
+        ],
+
+        "parties": [
+            {
+                "uuid": "9f411fde-00b2-45b4-8043-129da20ce6dd",
+                "type": "organization",
+                "name": "Cloud Service Provider"
+            }
+        ],
+
+        "responsible-parties": [
+            {
+                "role-id": "cloud-service-provider",
+                "party-uuids": ["9f411fde-00b2-45b4-8043-129da20ce6dd"]
+            },
+            {
+                "role-id": "prepared-by",
+                "party-uuids": ["9f411fde-00b2-45b4-8043-129da20ce6dd"]
+            },
+        ],
     }
 }
 {{</ highlight >}}
@@ -59,33 +85,67 @@ and [NIST markup-multiline](https://pages.nist.gov/metaschema/specification/data
 {{< highlight yaml "linenos=table" >}}
 ---
 metadata:
-  # title, published, last-modified, version, oscal-version
   revisions:
   - published: '2025-03-30T00:00:00Z'
     version: '1.0'
-    oscal-version: 1.0.4
+    oscal-version: '1.0.4'
     props:
     - name: party-uuid
       ns: http://fedramp.gov/ns/oscal
-      value: 11111111-2222-4000-8000-004000000001
+      value: 9f411fde-00b2-45b4-8043-129da20ce6dd
     remarks: Initial publication.
+
+    roles:
+    - id: prepared-by
+      title: Prepared By
+      description: Cloud Service Provider
+
+    parties:
+    - uuid: 9f411fde-00b2-45b4-8043-129da20ce6dd
+      type: organization
+      name: Cloud Service Provider
+
+    responsible-parties:
+    - role-id: cloud-service-provider
+      party-uuids:
+      - 9f411fde-00b2-45b4-8043-129da20ce6dd
+    - role-id: prepared-by
+      party-uuids:
+      - 9f411fde-00b2-45b4-8043-129da20ce6dd
 {{</ highlight >}}
 {{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <metadata>
-    <!-- title, published, last-modified, version, oscal-version -->
     <revisions>
         <revision>
             <published>2025-03-30T00:00:00Z</published>
             <version>1.0</version>
             <oscal-version>1.0.4</oscal-version>
-            <prop ns="http://fedramp.gov/ns/oscal" name="party-uuid" value="11111111-2222-4000-8000-004000000001"/>
+            <prop ns="http://fedramp.gov/ns/oscal" name="party-uuid" value="9f411fde-00b2-45b4-8043-129da20ce6dd"/>
             <remarks>
                 <p>Initial publication.</p>
             </remarks>
         </revision>
     </revisions>
+
+    <role id="prepared-by">
+      <title>Prepared By</title>
+      <description>
+        <p>Cloud Service Provider</p>
+      </description>
+    </role>
+
+    <party uuid="9f411fde-00b2-45b4-8043-129da20ce6dd" type="organization">
+        <name>Cloud Service Provider</name>
+    </party>
+
+    <responsible-party role-id="cloud-service-provider">
+        <party-uuid>9f411fde-00b2-45b4-8043-129da20ce6dd</party-uuid>
+    </responsible-party>
+    <responsible-party role-id="prepared-by">
+        <party-uuid>9f411fde-00b2-45b4-8043-129da20ce6dd</party-uuid>
+    </responsible-party>
 </metadata>
 {{</ highlight >}}
 {{% /tab %}}
@@ -98,7 +158,7 @@ metadata:
 *Note:* To locate information for a specific revision, replace `[1]` with `[2]`, `[3]`, and so on.
 {{</callout>}}
 
-| Revision&nbsp;search                  | XPath&nbsp;query                                                                                                                                |
+| Item                                  | XPath&nbsp;query                                                                                                                                |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Number of revision entries            | `count(/*/metadata/revision-history/revision)`                                                                                                  |
 | Revision date for an individual entry | `/*/metadata/revision-history/revision[1]/published`                                                                                            |
