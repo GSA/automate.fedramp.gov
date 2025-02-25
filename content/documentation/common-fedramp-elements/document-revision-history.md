@@ -39,7 +39,7 @@ and [NIST markup-multiline](https://pages.nist.gov/metaschema/specification/data
             {
                 "published": "2025-03-30T00:00:00Z",
                 "version": "1.0",
-                "oscal-version": "1.0.4",
+                "oscal-version": "1.1.3",
                 "props": [
                     {
                         "name": "party-uuid",
@@ -88,7 +88,7 @@ metadata:
   revisions:
   - published: '2025-03-30T00:00:00Z'
     version: '1.0'
-    oscal-version: '1.0.4'
+    oscal-version: '1.1.3'
     props:
     - name: party-uuid
       ns: http://fedramp.gov/ns/oscal
@@ -121,7 +121,7 @@ metadata:
         <revision>
             <published>2025-03-30T00:00:00Z</published>
             <version>1.0</version>
-            <oscal-version>1.0.4</oscal-version>
+            <oscal-version>1.1.3</oscal-version>
             <prop ns="http://fedramp.gov/ns/oscal" name="party-uuid" value="9f411fde-00b2-45b4-8043-129da20ce6dd"/>
             <remarks>
                 <p>Initial publication.</p>
