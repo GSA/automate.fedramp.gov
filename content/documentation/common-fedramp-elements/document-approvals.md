@@ -2,75 +2,185 @@
 title: Document Approvals
 weight: 315
 ---
-## Document Approvals
+# Document Approvals
 
-{{< figure src="/img/content-figure-10.png" title="FedRAMP template document approvals." alt="Screenshot of document approvals information in the FedRAMP template." >}}
+OSCAL syntax for document approvers is the same in the SSP, SAP, and SAR.
 
-The OSCAL syntax is the same for document approvers in the SSP, SAP, and
-SAR. For the SSP, approvers are typically executives within the CSP. For
-the SAP and SAR, approvers are typically executives within the
-assessor's organization.
+SSP approvers are typically CSP executives.
 
-##### Representation
+SAP and SAR are normally approved by executives from the assessor's organization.
+
+The screen shot below shows the document approval section in the FedRAMP SSP template.
+
+{{< figure src="/img/content-figure-10.png" title="Document approvers in the FedRAMP SSP template" alt="Screenshot of document approvals information in the FedRAMP template." >}}
+
+
+## Representation
+
+{{< tabs JSON YAML XML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "metadata": {
+        "roles": [
+            {
+                "id": "content-approver",
+                "title": "Document Approval",
+                "description": "Individuals responsible for the accuracy of this document."
+            },
+            {
+                "id": "cloud-service-provider",
+                "title": "Cloud Service Provider",
+            },
+        ],
+
+        "parties": [
+            {
+                "uuid": "816b232b-d718-4999-a506-9832329d5faa",
+                "type": "organization",
+                "name": "Name of the CSP",
+            },
+            {
+                "uuid": "f8a45bc6-d9eb-41f9-a375-2345d161a12",
+                "type": "person",
+                "name": "Name of person 1",
+                "props": [
+                    {
+                        "name": "job-title",
+                        "value": "Title of person 1"
+                    },
+                ],
+                "member-of-organizations": ["816b232b-d718-4999-a506-9832329d5faa"],
+            },
+            {
+                "uuid": "d5fc263c-b32f-4caa-9454-01e74a39c97e",
+                "type": "person",
+                "name": "Name of person 2",
+                "props": [
+                    {
+                        "name": "job-title",
+                        "value": "Title of person 2"
+                    }
+                ],
+                "member-of-organizations": ["816b232b-d718-4999-a506-9832329d5faa"],
+            },
+        ],
+
+        "responsible-parties": [
+            {
+                "role-id": "cloud-service-provider",
+                "party-uuids": ["816b232b-d718-4999-a506-9832329d5faa"]
+            },
+            {
+                "role-id": "content-approver",
+                "party-uuids": [
+                    "f8a45bc6-d9eb-41f9-a375-2345d161a12",
+                    "d5fc263c-b32f-4caa-9454-01e74a39c97e"
+                ],
+            },
+        ]
+    }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+metadata:
+    roles:
+    - id: content-approver
+      title: Document Approval
+      description: Individuals responsible for the accuracy of this document.
+    - id: cloud-service-provider
+      title: Cloud Service Provider
+
+    parties:
+    - uuid: 816b232b-d718-4999-a506-9832329d5faa
+      type: organization
+      name: 'Name of the CSP'
+    - uuid: f8a45bc6-d9eb-41f9-a375-2345d161a12
+      type: person
+      name: 'Name of person 1'
+      props:
+      - name: job-title
+        value: 'Title of person 1'
+      member-of-organizations:
+      - 816b232b-d718-4999-a506-9832329d5faa
+    - uuid: d5fc263c-b32f-4caa-9454-01e74a39c97e
+      type: person
+      name: 'Name of person 2'
+      props:
+      - name: job-title
+        value: 'Title of person 2'
+      member-of-organizations:
+      - 816b232b-d718-4999-a506-9832329d5faa
+
+    responsible-parties:
+    - role-id: cloud-service-provider
+      party-uuids:
+      - 816b232b-d718-4999-a506-9832329d5faa
+    - role-id: content-approver
+      party-uuids:
+      - f8a45bc6-d9eb-41f9-a375-2345d161a12
+      - d5fc263c-b32f-4caa-9454-01e74a39c97e
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<!-- Representation -->
 <metadata>
-    <!-- title, published ... prop, link -->
     <role id="content-approver">
-        <title>[SSP, SAP, or SAR] Approval</title>
-        <desc>The executive(s) accountable for the accuracy of this content.</desc>
+        <title>Document Approval</title>
+        <description>
+            <p>Individuals responsible for the accuracy of this document.</p>
+        </description>
     </role>
     <role id="cloud-service-provider">
         <title>Cloud Service Provider</title>
-        <short-name>CSP</short-name>
     </role>
-    <party uuid="uuid-of-csp" type="organization">
-        <name>Cloud Service Provider (CSP) Name</name>
-        <short-name>CSP Acronym/Short Name</short-name>
+    
+    <party uuid="816b232b-d718-4999-a506-9832329d5faa" type="organization">
+        <name>Name of the CSP</name>
     </party>
-    <party uuid="uuid-of-person-1" type="person">
-        <name>[SAMPLE]Person Name 1</name>
-        <prop name="title" ns="http://fedramp.gov/ns/oscal">Individual's Title</prop>
-        <member-of-organization>uuid-of-csp</member-of-organization>         
+    <party uuid="f8a45bc6-d9eb-41f9-a375-2345d161a12c" type="person">
+        <name>Name of person 1</name>
+        <prop name="job-title" value="Title of person 1"/>
+        <member-of-organization>816b232b-d718-4999-a506-9832329d5faa</member-of-organization>
     </party>
-    <party uuid="uuid-of-person-2" type="person">
-        <name>[SAMPLE]Person Name 2</name>
-        <prop name="title" ns="http://fedramp.gov/ns/oscal">Individual's Title</prop>
-        <member-of-organization>uuid-of-csp</member-of-organization>         
+    <party uuid="d5fc263c-b32f-4caa-9454-01e74a39c97e" type="person">
+        <name>Name of person 2</name>
+        <prop name="job-title" value="Title of person 2"/>
+        <member-of-organization>816b232b-d718-4999-a506-9832329d5faa</member-of-organization>
     </party>
+    
     <responsible-party role-id="cloud-service-provider">
-        <party-uuid>uuid-of-csp</party-uuid>
+        <party-uuid>816b232b-d718-4999-a506-9832329d5faa</party-uuid>
     </responsible-party>
     <responsible-party role-id="content-approver">
-        <party-uuid>uuid-of-person-1</party-uuid>
-        <party-uuid>uuid-of-person-2</party-uuid>
+        <party-uuid>f8a45bc6-d9eb-41f9-a375-2345d161a12c</party-uuid>
+        <party-uuid>d5fc263c-b32f-4caa-9454-01e74a39c97e</party-uuid>
     </responsible-party>
 </metadata>
 {{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
+
+<br/>
 
 {{<callout>}}
 **Defined Identifiers**\
-Required Role IDs:
+Required role IDs:
 - `content-approver`
 - `cloud-service-provider`
 
-**FedRAMP Extension (Person's Title)** \
-prop (`ns="http://fedramp.gov/ns/oscal"`):
-- `name="title"`
+**FedRAMP Extension for Person's Title** \
+`<prop ns="http://fedramp.gov/ns/oscal" name="title">`
 {{</callout>}}
 
-##### XPath Queries
+## XPath Queries
 
-- Approver’s Name: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]`
-- Approver’s Title: `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='http://fedramp.gov/ns/oscal'])[1]`
-
-   NOTE: For each additional approver, replace the "[1]" with "[2]", "[3]", and so on.
-
-- CSP Name: `/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='cloud-service-provider']/party-uuid]]/party-name`
-
-**NOTES:**
-
-The code above is an SSP example. For SAP and SAR, a similar approach is
-used for the assessor, using the `"assessor"` role ID instead of the
-`"cloud-service-provider"` role ID.
+| Item             | XPath&nbsp;query                                                                                                                                                                                                                                                                 |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Approver’s name  | `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]`<br/>{{<callout>}}*NOTE:* For each additional approver, replace `[1]` with `[2]`, `[3]`, and so on.{{</callout>}}                                              |
+| Approver’s title | `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='http://fedramp.gov/ns/oscal'])[1]`<br/>{{<callout>}}*NOTE:* For each additional approver, replace `[1]` with `[2]`, `[3]`, and so on.{{</callout>}} |
+| CSP's name       | SSP:<br/>`/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='cloud-service-provider']/party-uuid]]/party-name`<br/><br/>SAP and SAR:<br/>`/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='assessor']/party-uuid]]/party-name`                     |
 
