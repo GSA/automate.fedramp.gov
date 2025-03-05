@@ -6,17 +6,15 @@ weight: 320
 
 Attachments, such as policies and procedures, provide additional information, supplementing FedRAMP requirements.  
 
-Tools creating OSCAL content should
-- For all `rlink` and `base64` fields, include the `media-type` flag 
-- For all `base64` fields, include the `filename` flag
+Tools creating OSCAL content should include
+- The `media-type` flag for all `rlink` and `base64` fields  
+- The `filename` flag for all `base64` fields 
 
 Tools should process `rlink` and `base64` content with or without these fields.
 When present, the `rlink` and `base64` fields should be used during validation or rendering of the linked or embedded content.
 
 
-## FedRAMP Standard Attachments
-
-FedRAMP standard attachments refer to laws and regulations.
+## FedRAMP Laws and Regulations
 
 The FedRAMP MS Word-based SSP, SAP and SAR templates include links to the FedRAMP **Laws and Regulations** file.
 Laws and regulations are specified in the OSCAL-based FedRAMP templates as resources.
@@ -124,7 +122,7 @@ back-matter:
 
 ## Additional Laws, Regulations, Standards, and Guidance
 
-The screen shot below shows the **Laws and Regulations** section in the FedRAMP SSP template.
+The screen shot below shows the CSO-specific **Laws and Regulations** section in the FedRAMP SSP template.
 
 {{< figure src="/img/content-figure-11.png" title="Laws and regulations in the FedRAMP SSP template" alt="Screenshot of laws, regulations, standards, and guidance information in the FedRAMP template." >}}
 
@@ -321,10 +319,6 @@ procedures, plans, guides, and rules of behavior) are also treated as attachment
 
 Diagrams and images that normally appear in documents (for example, the authorization boundary diagram) are attached in the `back-matter` assembly and referenced from the body of an OSCAL file.
 
-The screen shot below shows the list of required attachments in the FedRAMP SSP template.
-
-{{< figure src="/img/content-figure-12.png" title="Attachments and embedded content in the FedRAMP SSP template" alt="Screenshot of attachments and embedded content information in the FedRAMP template." >}}
-
 
 ### Representation
 
@@ -453,15 +447,16 @@ back-matter:
 ### XPath Queries
 
 {{<callout>}}
-*Note:* For each attachment type, replace `policy` with `plan`, `rob`, and so on. 
+*Note:* The [validation rule catalog](/documentation/validation/catalog/?search=attachment-type) contains the list of allowed values for the `type` flag.
+For attachments other than `procedure`, in XPath expressions below, replace `procedure` with the attachment type you want to find.
 {{</callout>}}
 
 
-| Item                                     | XPath&nbsp;query                                                                                                                |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Embedded base64-encoded PIA attachment   | `/*/back-matter/resource/prop[@name='type'][string(.)='privacy-impact-assessment']/../base64` |
-| Relative link of a PIA attachment        | `/*/back-matter/resource/prop[@name=type][string(.)='privacy-impact-assessment']/../rlink/@href` |
-| PIA publication date                     | `/*/back-matter/resource/prop[@name=type][string(.)='privacy-impact-assessment']/../prop[@name="publication"]` |
+| Item                                               | XPath&nbsp;query                                                                               |
+| -------------------------------------------------- | -----------------------------------------------------------------------------------------------|
+| Embedded base64&#8209;encoded procedure attachment | `/*/back-matter/resource/prop[@name='type'][string(.)='procedure']/../base64`                  |
+| Relative link of a procedure attachment            | `/*/back-matter/resource/prop[@name=type][string(.)='procedure']/../rlink/@href`               |
+| Procedure publication date                         | `/*/back-matter/resource/prop[@name=type][string(.)='procedure']/../prop[@name="publication"]` |
 
 
 
