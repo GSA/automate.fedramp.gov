@@ -10,9 +10,12 @@ menu:
 # Representing a FedRAMP SSP in OSCAL
 
 
-The following guidelines describe how to express a FedRAMP System Security Plan (SSP) in OSCAL. This includes:
+The guidelines in this section describe how to express a FedRAMP System Security Plan (SSP) in OSCAL.
+
+FedRAMP extensions and allowed values are described in relevant subsection.
 
 - [OSCAL-based FedRAMP SSP Overview](./overview)
+- [Approvals](./approvals)
 - [Specifying the FedRAMP Baseline](./fedramp-baseline-specification)
 - [OSCAL SSP Components Overview](./overview-components)
 - [OSCAL Representation:](./oscal-representation/_index)
@@ -31,7 +34,3 @@ The following guidelines describe how to express a FedRAMP System Security Plan 
   - [Acronyms, Laws and Regulations](./oscal-representation/acronyms-laws-regulations)
 - [Generated Content](./generated-content)
 
-
-
-
-**FedRAMP extensions and allowed values are cited in relevant portions of this content.**
