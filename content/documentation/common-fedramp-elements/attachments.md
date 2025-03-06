@@ -99,7 +99,7 @@ back-matter:
        <short-name>FedRAMP PMO</short-name>
        <link href="#8b7b9208-767b-4c19-876a-06d9af3ab66f" rel="reference"/>
     </party>  
-<metadata>
+</metadata>
 
 <back-matter>
     <resource uuid="8b7b9208-767b-4c19-876a-06d9af3ab66f">
@@ -180,7 +180,7 @@ FedRAMP tools use the `type` field to differentiate these `resource` assemblies.
                     "filename": "document.pdf",
                     "media-type": "application/pdf",
                     "value": "00000000"
-                },
+                }
             },
             {
                 "uuid": "a8a0cc81-800f-479f-93d3-8b8743d9b98d",
@@ -302,9 +302,9 @@ back-matter:
 | Item                                  | XPath&nbsp;query                                                                                                                |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Total number of laws and regulations  | `count(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])`                            |
-| Identification number                 | `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../doc-id`                    |
+| Identification number                 | `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../document-id`               |
 | Title                                 | `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../title`                     |
-| Date                                  | `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../prop[@name="publication"]` |
+| Date                                  | `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../prop[@name="published"]`   |
 | Link                                  | `(/*/back-matter/resource/prop[@name="type"][(string(.) = "law") or (string(.)="regulation")])[1]/../rlink/@href`               |
 
 
@@ -455,8 +455,8 @@ For attachments other than `procedure`, in XPath expressions below, replace `pro
 | Item                                               | XPath&nbsp;query                                                                               |
 | -------------------------------------------------- | -----------------------------------------------------------------------------------------------|
 | Embedded base64&#8209;encoded procedure attachment | `/*/back-matter/resource/prop[@name='type'][string(.)='procedure']/../base64`                  |
-| Relative link of a procedure attachment            | `/*/back-matter/resource/prop[@name=type][string(.)='procedure']/../rlink/@href`               |
-| Procedure publication date                         | `/*/back-matter/resource/prop[@name=type][string(.)='procedure']/../prop[@name="publication"]` |
+| Relative link of a procedure attachment            | `/*/back-matter/resource/prop[@name='type'][string(.)='procedure']/../rlink/@href`             |
+| Procedure publication date                         | `/*/back-matter/resource/prop[@name='type'][string(.)='procedure']/../prop[@name="published"]` |
 
 
 
