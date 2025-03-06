@@ -15,7 +15,6 @@ The guidelines in this section describe how to express a FedRAMP System Security
 FedRAMP extensions and allowed values are described in relevant subsection.
 
 - [OSCAL-based FedRAMP SSP Overview](./overview)
-- [Approvals](./approvals)
 - [Specifying the FedRAMP Baseline](./fedramp-baseline-specification)
 - [OSCAL SSP Components Overview](./overview-components)
 - [OSCAL Representation:](./oscal-representation/_index)
@@ -33,4 +32,4 @@ FedRAMP extensions and allowed values are described in relevant subsection.
   - [Cryptographic Modules](./oscal-representation/cryptographic-modules)
   - [Acronyms, Laws and Regulations](./oscal-representation/acronyms-laws-regulations)
 - [Generated Content](./generated-content)
-
+- [Approvals](./approvals)

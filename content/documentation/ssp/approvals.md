@@ -33,7 +33,7 @@ Typically, SSP documents are reviewed and approved by CSP executives. The screen
                 {
                     "uuid": "816b232b-d718-4999-a506-9832329d5faa",
                     "type": "organization",
-                    "name": "Name of the CSP",
+                    "name": "Name of the CSP"
                 },
                 {
                     "uuid": "f8a45bc6-d9eb-41f9-a375-2345d161a12",
@@ -71,7 +71,7 @@ Typically, SSP documents are reviewed and approved by CSP executives. The screen
                     "party-uuids": [
                         "f8a45bc6-d9eb-41f9-a375-2345d161a12",
                         "d5fc263c-b32f-4caa-9454-01e74a39c97e"
-                    ],
+                    ]
                 },
             ]
         }
@@ -166,7 +166,7 @@ system-security-plan:
 <br/>
 
 {{<callout>}}
-**Required Roles**\
+**Required Roles**
 1. `content-approver`
 2. `cloud-service-provider`
 
@@ -176,9 +176,9 @@ system-security-plan:
 
 ## XPath Queries
 
-| Item             | XPath&nbsp;query                                                                                                                                                                                                                                                                 |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Approver’s name  | `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/party-name)[1]`<br/>{{<callout>}}*Note:* For each additional approver, replace `[1]` with `[2]`, `[3]`, and so on.{{</callout>}}                                              |
-| Approver’s title | `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='http://fedramp.gov/ns/oscal'])[1]`<br/>{{<callout>}}*Note:* For each additional approver, replace `[1]` with `[2]`, `[3]`, and so on.{{</callout>}} |
-| CSP's name       | `/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='cloud-service-provider']/party-uuid]]/party-name`                                                                                                                                                              |
+| Item                  | XPath&nbsp;query                                                                                                                                                                                                                                                                 |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Approver’s&nbsp;name  | `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver']/party-uuid]]/name)[1]`<br/>{{<callout>}}*Note:* For each additional approver, replace `[1]` with `[2]`, `[3]`, and so on.{{</callout>}}                                                    |
+| Approver’s&nbsp;title | `(/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='content-approver'] /party-uuid]]/prop[@name='title'][@ns='http://fedramp.gov/ns/oscal'])[1]`<br/>{{<callout>}}*Note:* For each additional approver, replace `[1]` with `[2]`, `[3]`, and so on.{{</callout>}} |
+| CSP's&nbsp;name       | `/*/metadata/party[@uuid=[/*/metadata/responsible-party[@role-id='cloud-service-provider']/party-uuid]]/name`                                                                                                                                                                    |
 
