@@ -123,7 +123,7 @@ Each citation must have a `type` field defined. The value of the `type` field mu
 - `law`
 - `regulation`
 - `standard`
-- `guidance` 
+- `external-guidance` 
 
 FedRAMP tools use the `type` field to differentiate these `resource` assemblies.
 
