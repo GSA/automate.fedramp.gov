@@ -35,13 +35,7 @@ set to `fedramp-citations`. See JSON, YAML, and XML examples in the **Representa
             "uuid": "6221a18b-06d0-4f0c-9606-8a1710cb44b2",
             "type": "organization",
             "name": "Federal Risk and Authorization Management Program: Program Management Office",
-            "short-name": "FedRAMP PMO",
-            "links": [
-                {
-                    "href": "#8b7b9208-767b-4c19-876a-06d9af3ab66f",
-                    "rel": "reference"
-                }
-            ]
+            "short-name": "FedRAMP PMO"
         }
     ]
 },
@@ -75,9 +69,6 @@ metadata:
     type: organization
     name: 'Federal Risk and Authorization Management Program: Program Management Office'
     short-name: 'FedRAMP PMO'
-    links:
-    - href: '#8b7b9208-767b-4c19-876a-06d9af3ab66f'
-      rel: reference
 
 back-matter:
   resources:
@@ -97,7 +88,6 @@ back-matter:
     <party uuid="6221a18b-06d0-4f0c-9606-8a1710cb44b2" type="organization">
        <name>Federal Risk and Authorization Management Program: Program Management Office</name>
        <short-name>FedRAMP PMO</short-name>
-       <link href="#8b7b9208-767b-4c19-876a-06d9af3ab66f" rel="reference"/>
     </party>  
 </metadata>
 
