@@ -109,11 +109,11 @@ system-security-plan:
       name: authorization-type
       value: fedramp-agency
   import-profile:
+    href: https://raw.githubusercontent.com/GSA/fedramp-automation/refs/heads/develop/dist/content/rev5/baselines/xml/FedRAMP_rev5_MODERATE-baseline_profile.xml  
     remarks: |-
       This example points to the FedRAMP Rev 5 Moderate baseline that is part of the official FedRAMP 3.0.0 release.
 
       Must adjust accordingly for applicable baseline and revision.
-    href: https://raw.githubusercontent.com/GSA/fedramp-automation/refs/heads/develop/dist/content/rev5/baselines/xml/FedRAMP_rev5_MODERATE-baseline_profile.xml
 {{< /highlight >}}
 {{% /tab %}}
 {{< /tabs >}}
