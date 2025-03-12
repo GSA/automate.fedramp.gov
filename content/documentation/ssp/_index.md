@@ -19,6 +19,7 @@ FedRAMP extensions and allowed values are described in relevant subsection.
 - [OSCAL SSP Components Overview](./overview-components)
 - [OSCAL Representation:](./oscal-representation/_index)
   - [Common Template Elements](./oscal-representation/common-elements)
+  - [Authorization Paths](./oscal-representation/authorization-paths.md)
   - [System Owner and Assignment of Responsibility](./oscal-representation/owner-and-responsibility)
   - [Illustrated Architecture and Narratives](./oscal-representation/illustrated-architecture)
   - [Leveraged Authorization and Services](./oscal-representation/leveraged-authorizations)
