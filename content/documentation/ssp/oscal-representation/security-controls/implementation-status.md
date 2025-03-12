@@ -37,37 +37,38 @@ justification must be provided in the `remarks` field.
 {
   "system-security-plan": {
     "control-implementation": {
-      "implemented-requirement": {
+      "implemented-requirements": [ {
         "uuid": "11111111-2222-4000-8000-012000010000",
         "control-id": "ac-1",
-        "prop": [
-          {
-            "name": "planned-completion-date",
-            "ns": "http://fedramp.gov/ns/oscal",
-            "value": "2021-01-01Z"
-          },
-          {
-            "name": "implementation-status",
-            "ns": "http://fedramp.gov/ns/oscal",
-            "value": "implemented"
-          },
-          {
-            "name": "implementation-status",
-            "ns": "http://fedramp.gov/ns/oscal",
-            "value": "partial"
-          },
-          {
-            "name": "implementation-status",
-            "ns": "http://fedramp.gov/ns/oscal",
-            "value": "planned"
-          },
-          {
-            "name": "implementation-status",
-            "ns": "http://fedramp.gov/ns/oscal",
-            "value": "not-applicable"
-          }
-        ]
-      }
+        "statements": [ { 
+          "by-components": [ { 
+            "props" : [ {
+              "ns" : "http://fedramp.gov/ns/oscal",
+              "name" : "planned-completion-date",
+              "value" : "2025-12-31Z"
+            } ],
+            "component-uuid" : "11111111-2222-4000-8000-009000000000",
+            "description" : "The description",
+            "implementation-status" : {
+              "state" : "implemented"
+            },
+            "implementation-status" : {
+              "remarks" : "Describe the plan to complete the implementation.",
+              "state" : "partial"
+            },
+            "implementation-status" : {
+              "remarks" : "Describe the plan to complete the implementation.",
+              "state" : "planned"
+            },
+            "implementation-status" : {
+              "remarks" : "Describe why the control is not applicable.",
+              "state" : "not-applicable"
+            }
+           } ],
+          "statement-id" : "ac-1_smt.a",
+          "uuid" : "11111111-2222-4000-8000-012000010101"
+         } ]
+      } ]
     }
   }
 }
@@ -77,17 +78,34 @@ justification must be provided in the `remarks` field.
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <system-security-plan>
-  <control-implementation>
-    <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">
-      <prop name="planned-completion-date" ns="http://fedramp.gov/ns/oscal" value="2021-01-01Z"/>
-      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="implemented"/>
-      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="partial"/>
-      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="planned"/>
-      <prop name="implementation-status" ns="http://fedramp.gov/ns/oscal" value="not-applicable"/>
-      <!-- responsible-role, statement, by-component -->
-    </implemented-requirement>
-  </control-implementation>
-  <!-- back-matter -->
+    <control-implementation>
+        <implemented-requirement uuid="11111111-2222-4000-8000-012000010000" control-id="ac-1">      
+            <statement statement-id="ac-1_smt.a" uuid="111111111-2222-4000-8000-012000030100">
+                <by-component component-uuid="11111111-2222-4000-8000-009000000000"
+                    uuid="11111111-2222-4000-8000-012000010101">
+                    <description><p>The description</p></description>
+                    <prop ns="http://fedramp.gov/ns/oscal" name="planned-completion-date" value="2025-12-31Z" />
+                    <implementation-status state="implemented"/>
+                    <implementation-status state="partial">
+                        <remarks>
+                            <p>Describe the plan to complete the implementation.</p>
+                        </remarks>
+                    </implementation-status>
+                    <implementation-status state="planned">
+                        <remarks>
+                            <p>Describe the plan to complete the implementation.</p>
+                        </remarks>
+                    </implementation-status>
+                    <implementation-status state="not-applicable">
+                        <remarks>
+                            <p>Describe why the control is not applicable.</p>
+                        </remarks>
+                    </implementation-status>
+                </by-component>
+            </statement>
+        </implemented-requirement>
+    </control-implementation>
+    <!-- back-matter -->
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
@@ -100,50 +118,53 @@ system-security-plan:
     implemented-requirement:
       uuid: "11111111-2222-4000-8000-012000010000"
       control-id: "ac-1"
-      prop:
-        - name: "planned-completion-date"
-          ns: "http://fedramp.gov/ns/oscal"
-          value: "2021-01-01Z"
-        - name: "implementation-status"
-          ns: "http://fedramp.gov/ns/oscal"
-          value: "implemented"
-        - name: "implementation-status"
-          ns: "http://fedramp.gov/ns/oscal"
-          value: "partial"
-        - name: "implementation-status"
-          ns: "http://fedramp.gov/ns/oscal"
-          value: "planned"
-        - name: "implementation-status"
-          ns: "http://fedramp.gov/ns/oscal"
-          value: "not-applicable"
+      statements:
+      - by-components:
+        - props:
+          - ns: http://fedramp.gov/ns/oscal
+            name: planned-completion-date
+            value: 2025-12-31Z
+        - component-uuid: 11111111-2222-4000-8000-009000000000
+          description: The description.
+          implementation-status:
+            state: implemented
+          implementation-status:
+            remarks: Describe the plan to complete the implementation.
+            state: partial
+          implementation-status:
+            remarks: Describe the plan to complete the implementation.
+            state: planned
+          implementation-status:
+            remarks: Describe the plan to complete the implementation.
+            state: not-applicable
+          uuid: 11111111-2222-4000-8000-012000010101
 {{< /highlight >}}
 {{% /tab %}}
 
 {{< /tabs >}}
 
+
+{{< callout >}}
+
+**NOTE:**
+
+The example OSCAL representation has multiple `implementation-status` assemblies for illustrative purposes only.  A FedRAMP SSP statement must only have one implementation status specified.
+
+{{</ callout >}}
+
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Implementation Status (may return more than 1 result for a given control) :
-    /*/control-implementation/implemented-requirement[@control-id="ac-1"] /prop[@name="implementation-status"]/@value
+    /*/control-implementation/implemented-requirement[@control-id="ac-1"]/statement[@statement-id="ac-1_smt.a"]/by-component[@uuid="11111111-2222-4000-8000-012000010101"]/implementation-status/@state
   Gap Description (If implementation-status="partial"):
-    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="partial"][@ns="http://fedramp.gov/ns/oscal"]/remarks/node()
+    /*/control-implementation/implemented-requirement/statement/by-component/implementation-status[@state="partial"]/remarks/node()
   Planned Completion Date (If implementation-status="planned"):
-    /*/control-implementation/implemented-requirement[@control-id="ac-1"]/prop[@name="planned-completion-date"][@ns="http://fedramp.gov/ns/oscal"]/@value
+    /*/control-implementation/implemented-requirement[@control-id="ac-1"]/statement/by-component/prop[@name="planned-completion-date"][@ns="http://fedramp.gov/ns/oscal"]/@value
   Plan for Completion (If implementation-status="planned"):
-    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="planned"][@ns="http://fedramp.gov/ns/oscal"]/remarks/node()
+    /*/control-implementation/implemented-requirement/statement/by-component/implementation-status[@state="planned"]/remarks/node()
   Not Applicable (N/A) Justification (If implementation-status="na"):
-    /*/control-implementation/implemented-requirement/prop[@name='implementation-status'][@value="not-applicable"][@ns="http://fedramp.gov/ns/oscal"]/remarks/node()
+    /*/control-implementation/implemented-requirement/statement/by-component/implementation-status[@state="not-applicable"]/remarks/node()
 
 {{</ highlight >}}
-
-The FedRAMP `implementation-status` property at the control's
-`implemented-requirement` level is a summary of all statement and/or
-component level core OSCAL `implementation-status` designations. It must
-be set appropriately based on the least value of child statement
-or component level `implementation-status` designations. When a statement
-and/or component level `implementation-status` designation is not
-specified, the FedRAMP `implementation-status` value is assumed.
-Individual statements and/or components may override
-`implementation-status` locally.
 
 ---
