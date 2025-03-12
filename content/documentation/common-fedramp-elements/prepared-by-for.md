@@ -1,202 +1,638 @@
 ---
-title: Prepared By/For
+title: Prepared By and Prepared For
 weight: 303
 ---
-## Prepared By/For
 
-This addresses:
-- Prepared By (Third Party)
-- Prepared By (CSP/Self-Prepared)
-- Prepared For (CSP)
+# Prepared By and Prepared For
 
-### Prepared By (Third Party)
+This section describes the FedRAMP OSCAL syntax for `prepared-by` and `prepared-for` flags.
 
-{{< figure src="/img/content-figure-6.png" title="FedRAMP template \"Prepared By\"." alt="Screenshot of third party \"prepared by\" information in the FedRAMP template." >}}
 
-The FedRAMP SAP and SAR must always indicate the assessing organization
-using this Prepared By syntax.
+## Prepared By - Third Party
 
-##### Representation 
+The screen shot below shows the **Prepared by** section in the FedRAMP SSP template.
 
+<br/>
+{{< figure src="/img/content-figure-6.png" title="The 'Prepared by' section in the FedRAMP SSP template" alt="Screenshot of third party \"prepared by\" information in the FedRAMP template." >}}
+<br/>
+
+{{<callout>}}
+***Important:*** FedRAMP SAP and SAR documents must always indicate the assessing organization, using the FedRAMP OSCAL `prepared-by` syntax
+(see the **Representation** section below).
+{{</callout>}}
+
+The `responsible-party` assembly connects the `role` assembly to the `party` assembly and is required for compliance.
+
+If a FedRAMP document was prepared by an organization other than an CSP, that organization's logo should also appear in `back-matter`.
+
+<br/>
+
+### Representation 
+
+{{<callout>}}
+*Notes:*
+- For the logo, use `rlink` with a relative path or embed the logo as `base64`. FedRAMP prefers `base64` for images and diagrams.
+- All images must have sufficient resolution to render all their details in HTML5.
+{{</callout>}}
+
+{{< tabs JSON YAML XML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "metadata": {
+        "roles": [
+            {
+                "id": "prepared-by",
+                "title": "Prepared By",
+                "description": "The organization that prepared the document. If developed in-house, this is the CSP itself."
+            }
+        ],
+        "parties": [
+            {
+                "uuid": "d865602c-9d3b-49d7-8125-ce3f1ca04231",
+                "type": "organization",
+                "name": "Name of the person or the organization that prepared the document",
+                "address": {
+                    "type": "work",
+                    "addr-lines": [
+                        "Suite 0000",
+                        "1234 Some Street"
+                    ],
+                    "city": "Haven",
+                    "state": "ME",
+                    "postal-code": "00000",
+                    "country": "US"
+                },
+                "links": [
+                    {
+                        "href": "#891263fb-a5d6-44db-8d73-51bb8a9a3610",
+                        "rel": "logo"
+                    }
+                ]
+            }
+        ],
+        "responsible-parties": [
+            {
+                "role-id": "prepared-by",
+                "party-uuids": ["d865602c-9d3b-49d7-8125-ce3f1ca04231"]
+            }
+        ]
+    },
+
+    "back-matter": {
+        "resources": [
+            {
+                "uuid": "891263fb-a5d6-44db-8d73-51bb8a9a3610",
+                "title": "Logo",
+                "description": "Logo of the CSP or the organization that prepared the document.",
+                "rlinks": [
+                    {
+                        "href": "./attachments/img/logo.png",
+                        "media-type": "image/png"
+                    }
+                ],
+                "base64": {
+                    "filename": "logo.png",
+                    "media-type": "image/png",
+                    "value": "00000000"
+                }
+            }
+        ]
+    }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+metadata:
+  roles:
+  - id: prepared-by
+    title: Prepared By
+    description: The organization that prepared the document. If developed in-house, this is the CSP itself.
+  parties:
+  - uuid: d865602c-9d3b-49d7-8125-ce3f1ca04231
+    type: organization
+    name: Name of the person or the organization that prepared the document
+    address:
+      type: work
+      addr-lines:
+      - Suite 0000
+      - 1234 Some Street
+      city: Haven
+      state: ME
+      postal-code: '00000'
+      country: US
+    links:
+    - href: #891263fb-a5d6-44db-8d73-51bb8a9a3610
+      rel: logo
+  responsible-parties:
+  - role-id: prepared-by
+    party-uuids:
+    - d865602c-9d3b-49d7-8125-ce3f1ca04231
+
+back-matter:
+  resources:
+  - uuid: 891263fb-a5d6-44db-8d73-51bb8a9a3610
+    title: Logo
+    description: Logo of the CSP or the organization that prepared the document.
+    props:
+    - name: type
+      value: logo
+    rlinks:
+    - href: ./attachments/img/logo.png
+    base64:
+      filename: logo.png
+      media-type: image/png
+      value: 00000000
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="prepared-by">
         <title>Prepared By</title>
-        <description><p>Description</p></description>
+        <description>
+            <p>The organization that prepared the document. If developed in-house, this is the CSP itself.</p>
+        </description>
     </role>
-    <!-- cut: other role assemblies-->
-    <!-- cut: location assemblies-->
-    <party uuid="f84d8edc-d83e-440d-96c9-09b28c395ad5">
-        <name>Name of Consulting Org</name>
-        <short-name>Acronym/Short Name</short-name>
+    <party uuid="d865602c-9d3b-49d7-8125-ce3f1ca04231" type="organization">
+        <name>Name of the person or the organization that prepared the document</name>
         <address type="work">
-            <!-- address lines cut here for space -->
+            <addr-line>Suite 0000</addr-line>
+            <addr-line>1234 Some Street</addr-line>
+            <city>Haven</city>
+            <state>ME</state>
+            <postal-code>00000</postal-code>
+            <country>US</country>
         </address>
+        <link href="#891263fb-a5d6-44db-8d73-51bb8a9a3610" rel="logo"/>
     </party>
-    <!-- cut: other party assemblies -->
     <responsible-party role-id="prepared-by">
-        <party-id>f84d8edc-d83e-440d-96c9-09b28c395ad5</party-id>
+        <party-uuid>d865602c-9d3b-49d7-8125-ce3f1ca04231</party-uuid>
     </responsible-party>
 </metadata>
 
-<!-- OSCAL File Body -->
-
 <back-matter>
-    <resource id="1507f5e0-635c-4e23-a5f3-93f368f8e022">
-        <description><p>Preparer Logo</p></description>
-        <prop name="type" value="logo" />
-        <!-- Use rlink and/or base64 -->
-        <rlink href="./party-1-logo.png" media-type="image/png" />
-        <base64>00000000</base64>
+    <resource uuid="891263fb-a5d6-44db-8d73-51bb8a9a3610">
+        <title>Logo</title>
+        <description>
+            <p>Logo of the CSP or the organization that prepared the document.</p>
+        </description>
+        <prop name="type" value="logo"/>
+        <rlink href="./attachments/img/logo.png"/>
+        <base64 filename="logo.png" media-type="image/png">00000000</base64>
     </resource>
 </back-matter>
 {{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
+
+<br/>
+{{<callout>}}
+**Required role ID** \
+`prepared-by`
+{{</callout>}}
+<br/>
+
+### XPath Queries
+
+| Item                      | XPath&nbsp;query                                                                                                |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Preparer's&nbsp;name      | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/name`                |
+| Preparer's street address | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/address/addr-line`   |
+| Preparer's city           | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/address/city`        |
+| Preparer's state          | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/address/state`       |
+| Preparer's ZIP code       | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/address/postal-code` |
+| Preparer's country        | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/address/country`     |
+
+
+## Prepared By - CSP or Self&#8209;Prepared
+
+This section is applicable when the CSP creates or updates its own SSP or POA&M content. 
 
 {{<callout>}}
-**OSCAL Allowed Value** \
-Required Role ID:
-
-- `prepared-by`
+***Important:*** A CSP must never prepare the FedRAMP SAP and SAR documents.
 {{</callout>}}
 
-##### XPath Queries
+The `responsible-party` assembly connects the `role` assembly to the `party` assembly and is required for compliance.
 
-- Preparer Organization's Name and Address: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name`
+The screen shot below shows the **Prepared by** section in the FedRAMP SSP template.
 
-NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
+{{< figure src="/img/content-figure-6.png" title="The 'Prepared by' section in the FedRAMP SSP template" alt="Screenshot of CSP self \"prepared by\" information in the FedRAMP template." >}}
 
-**NOTES:**
 
-- The `responsible-party` assembly connects the role to the party and is
-    required for compliance.
+<br/>
 
-- If the content was prepared by an organization other than the CSP,
-    their logo should also appear in back-matter.
+### Representation
 
-### Prepared By (CSP/Self-Prepared)
+{{<callout>}}
+*Notes:*
+- For the logo, use `rlink` with a relative path or embed the logo as `base64`. FedRAMP prefers `base64` for images and diagrams.
+- All images must have sufficient resolution to render all their details in HTML5.
+{{</callout>}}
 
-{{< figure src="/img/content-figure-6.png" title="FedRAMP template \"Prepared By\"." alt="Screenshot of CSP self \"prepared by\" information in the FedRAMP template." >}}
+{{< tabs JSON YAML XML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "metadata": {
+        "roles": [
+            {
+                "id": "prepared-by",
+                "title": "Prepared By",
+                "description": "The organization that prepared the document. If developed in-house, this is the CSP itself."
+            }
+        ],
+        "locations": [
+            {
+                "uuid": "60d612ba-1ab4-49ab-858b-d83b1bcbf006",
+                "title": "Name of the organization that prepared the document"
+                "address": {
+                    "type": "work",
+                    "addr-lines": [
+                        "Suite 0000",
+                        "1234 Some Street"
+                    ],
+                    "city": "Haven",
+                    "state": "ME",
+                    "postal-code": "00000",
+                    "country": "US"
+                }
+            }
+        ],
+        "parties": [
+            {
+                "uuid": "d865602c-9d3b-49d7-8125-ce3f1ca04231",
+                "type": "organization",
+                "name": "Name of the person or the organization that prepared the document",
+                "location-uuids": ["60d612ba-1ab4-49ab-858b-d83b1bcbf006"],
+                "links": [
+                    {
+                        "href": "#891263fb-a5d6-44db-8d73-51bb8a9a3610",
+                        "rel": "logo"
+                    }
+                ]
+            }
+        ],
+        "responsible-parties": [
+            {
+                "role-id": "prepared-by",
+                "party-uuids": ["d865602c-9d3b-49d7-8125-ce3f1ca04231"]
+            }
+        ]
+    },
 
-This is applicable where the CSP creates or updates its own SSP or POA&M
-content. The FedRAMP SAP and SAR must never be CSP self-prepared.
+    "back-matter": {
+        "resources": [
+            {
+                "uuid": "891263fb-a5d6-44db-8d73-51bb8a9a3610",
+                "title": "Logo",
+                "description": "Logo of the CSP or the organization that prepared the document.",
+                "rlinks": [
+                    {
+                        "href": "./attachments/img/logo.png",
+                        "media-type": "image/png"
+                    }
+                ],
+                "base64": {
+                    "filename": "logo.png",
+                    "media-type": "image/png",
+                    "value": "00000000"
+                }
+            }
+        ]
+    }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+metadata:
+  roles:
+  - id: prepared-by
+    title: Prepared By
+    description: The organization that prepared the document.
+  locations:
+  - uuid: 60d612ba-1ab4-49ab-858b-d83b1bcbf006
+    title: Name of the organization that prepared the document
+    address:
+      type: work
+      addr-lines:
+      - Suite 0000
+      - 1234 Some Street
+      city: Haven
+      state: ME
+      postal-code: '00000'
+      country: US 
+  parties:
+  - uuid: d865602c-9d3b-49d7-8125-ce3f1ca04231
+    type: organization
+    name: Name of the person or the organization that prepared the document
+    location-uuids:
+    - 60d612ba-1ab4-49ab-858b-d83b1bcbf006
+    links:
+    - href: #891263fb-a5d6-44db-8d73-51bb8a9a3610
+      rel: logo
+  responsible-parties:
+  - role-id: prepared-by
+    party-uuids:
+    - d865602c-9d3b-49d7-8125-ce3f1ca04231
 
-##### Representation 
+back-matter:
+  resources:
+  - uuid: 891263fb-a5d6-44db-8d73-51bb8a9a3610
+    title: Logo
+    description: Logo of the organization that prepared the document.
+    props:
+    - name: type
+      value: logo
+    rlinks:
+    - href: ./attachments/img/logo.png
+    base64:
+      filename: logo.png
+      media-type: image/png
+      value: 00000000
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <metadata>
     <role id="prepared-by">
         <title>Prepared By</title>
-        <description><p>Description</p></description>
+        <description>
+            <p>The organization that prepared the document.</p>
+        </description>
     </role>
-     <location uuid="27b78960-59ef-4619-82b0-ae20b9c709ac">
-      <title>CSP HQ</title>
-      <address type="work">
-        <addr-line>Suite 0000</addr-line>
-        <addr-line>1234 Some Street</addr-line>
-        <city>Haven</city>
-        <state>ME</state>
-        <postal-code>00000</postal-code>
-        <country>US</country>
-      </address>
+    <location uuid="60d612ba-1ab4-49ab-858b-d83b1bcbf006">
+        <title>Name of the organization that prepared the document</title>
+        <address type="work">
+            <addr-line>Suite 0000</addr-line>
+            <addr-line>1234 Some Street</addr-line>
+            <city>Haven</city>
+            <state>ME</state>
+            <postal-code>00000</postal-code>
+            <country>US</country>
+        </address>
     </location>
-    <party id="2e0db7cf-08f5-472e-9360-fb3a9698476d">
-        <name>Cloud Service Provider (CSP) Name</name>
-        <short-name>CSP Acronym/Short Name</short-name>
-        <location-uuid>27b78960-59ef-4619-82b0-ae20b9c709ac</location-uuid>
+    <party uuid="d865602c-9d3b-49d7-8125-ce3f1ca04231" type="organization">
+        <name>Name of the person or the organization that prepared the document</name>
+        <link href="#891263fb-a5d6-44db-8d73-51bb8a9a3610" rel="logo"/>
+        <location-uuid>60d612ba-1ab4-49ab-858b-d83b1bcbf006</location-uuid>
     </party>
     <responsible-party role-id="prepared-by">
-        <party-id>2e0db7cf-08f5-472e-9360-fb3a9698476d</party-id>
+        <party-uuid>d865602c-9d3b-49d7-8125-ce3f1ca04231</party-uuid>
     </responsible-party>
 </metadata>
 
-<!-- OSCAL File Body -->
-
 <back-matter>
-    <resource id="74a61c36-ad18-4ee3-8bc4-6e2f917b0ce8">
-        <description><p>CSP Logo</p></description>
-        <prop name="type" value="logo" />
-        <!-- Use rlink and/or base64 -->
-        <rlink href="./logo.png" media-type="image/png" />
-        <base64>00000000</base64>
+    <resource uuid="891263fb-a5d6-44db-8d73-51bb8a9a3610">
+        <title>Logo</title>
+        <description>
+            <p>Logo of the organization that prepared the document.</p>
+        </description>
+        <prop name="type" value="logo"/>
+        <rlink href="./attachments/img/logo.png"/>
+        <base64 filename="logo.png" media-type="image/png">00000000</base64>
     </resource>
 </back-matter>
 {{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
-<br />
+<br/>
 {{<callout>}}
-**OSCAL Allowed Value** \
-Required Role ID:
-- `prepared-by`
+**Required role ID** \
+`prepared-by`
+{{</callout>}}
+<br/>
 
+### XPath Queries
+| Item                      | XPath&nbsp;query                                                                                                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Preparer's&nbsp;name      | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]/name`                                                                                |
+| Preparer's street address | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]]/address/addr-line`   |
+| Preparer's city           | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]]/address/city`        |
+| Preparer's state          | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]]/address/state`       |
+| Preparer's ZIP code       | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]]/address/postal-code` |
+| Preparer's country        | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-by']/party-uuid]]/address/country`     |
+
+
+## Prepared For - CSP
+
+In the vast majority of cases, FedRAMP SSP, SAP, SAR, and POA&M documents are prepared for an CSP.
+
+However, unforeseen circumstances may require another party to be named. For this reason, the `prepared-for` assemblies and CSPs have separately defined roles.
+
+The screen shot below shows the **Prepared for** section in the FedRAMP SSP template.
+
+{{< figure src="/img/content-figure-7.png" title="The 'Prepared for' section in the FedRAMP SSP template" alt="Screenshot of \"prepared for\" information in the FedRAMP template." >}}
+
+<br/>
+
+### Representation
+
+{{<callout>}}
+*Notes:*
+- For the logo, use `rlink` with a relative path or embed the logo as `base64`. FedRAMP prefers `base64` for images and diagrams.
+- All images must have sufficient resolution to render all their details in HTML5.
 {{</callout>}}
 
-##### XPath Queries
 
-- Preparer Organization's Name and Address: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-by']/party-id]]/org/org-name`
+{{< tabs JSON YAML XML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "metadata": {
+        "roles": [
+            {
+                "id": "prepared-for",
+                "title": "Prepared For",
+                "description": "The organization (typically, the CSP) for which the document was prepared."
+            },
+            {
+                "id": "cloud-service-provider",
+                "title": "Cloud Service Provider"
+            }
+        ],
+        "locations": [
+            {
+                "uuid": "60d612ba-1ab4-49ab-858b-d83b1bcbf006",
+                "title": "Name of the CSP",
+                "address": {
+                    "type": "work",
+                    "addr-lines": [
+                        "Suite 0000",
+                        "1234 Some Street"
+                    ],
+                    "city": "Haven",
+                    "state": "ME",
+                    "postal-code": "00000",
+                    "country": "US"
+                }
+            }
+        ],
+        "parties": [
+            {
+                "uuid": "d865602c-9d3b-49d7-8125-ce3f1ca04231",
+                "type": "organization",
+                "name": "Cloud Service Provider",
+                "links": [
+                    {
+                        "href": "#891263fb-a5d6-44db-8d73-51bb8a9a3610",
+                        "rel": "logo"
+                    }
+                ],
+                "location-uuids": ["60d612ba-1ab4-49ab-858b-d83b1bcbf006"]
+            }
+        ],
+        "responsible-parties": [
+            {
+                "role-id": "prepared-for",
+                "party-uuids": ["d865602c-9d3b-49d7-8125-ce3f1ca04231"]
+            }
+        ]
+    },
 
-NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
+    "back-matter": {
+        "resources": [
+            {
+                "uuid": "891263fb-a5d6-44db-8d73-51bb8a9a3610",
+                "title": "Logo",
+                "description": "Logo of the CSP.",
+                "rlinks": [
+                    {
+                        "href": "./attachments/img/logo.png",
+                        "media-type": "image/png"
+                    }
+                ],
+                "base64": {
+                    "filename": "logo.png",
+                    "media-type": "image/png",
+                    "value": "00000000"
+                }
+            }
+        ]
+    }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+metadata:
+  roles:
+  - id: prepared-for
+    title: Prepared For
+    description: The organization (typically, the CSP) for which the document was prepared.
+  - id: cloud-service-provider
+    title: Cloud Service Provider
+  locations:
+  - uuid: 60d612ba-1ab4-49ab-858b-d83b1bcbf006
+    title: Name of the CSP
+    address:
+      type: work
+      addr-lines:
+      - Suite 0000
+      - 1234 Some Street
+      city: Haven
+      state: ME
+      postal-code: '00000'
+      country: US 
+  parties:
+  - uuid: d865602c-9d3b-49d7-8125-ce3f1ca04231
+    type: organization
+    name: Cloud Service Provider
+    links:
+    - href: #891263fb-a5d6-44db-8d73-51bb8a9a3610
+      rel: logo
+    location-uuids:
+    - 60d612ba-1ab4-49ab-858b-d83b1bcbf006
+  responsible-parties:
+  - role-id: prepared-for
+    party-uuids:
+    - d865602c-9d3b-49d7-8125-ce3f1ca04231
 
-**NOTES:**
-
-- The `responsible-party` assembly connects the role to the party and is
-    required for compliance.
-
-### Prepared For (CSP)
-
-{{< figure src="/img/content-figure-7.png" title="FedRAMP template \"Prepared For\"." alt="Screenshot of \"prepared for\" information in the FedRAMP template." >}}
-
-For FedRAMP SSP, SAP, SAR, and POA&M, the `Prepared For` is typically
-the CSP; however, it may be different if an unforeseen circumstance
-requires another party to be named. For this reason, `Prepared For`
-and CSP have separately defined roles.
-
-##### Representation
+back-matter:
+  resources:
+  - uuid: 891263fb-a5d6-44db-8d73-51bb8a9a3610
+    title: Logo
+    description: Logo of the CSP.
+    props:
+    - name: type
+      value: logo
+    rlinks:
+    - href: ./attachments/img/logo.png
+    base64:
+      filename: logo.png
+      media-type: image/png
+      value: 00000000
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <metadata>
-    <!-- prop -->
     <role id="prepared-for">
         <title>Prepared For</title>
-        <description><p>The CSP for FedRAMP SSP, SAP, SAR, and POA&amp;M.</p></description>
+        <description>
+            <p>The organization (typically, the CSP) for which the document was prepared.</p>
+        </description>
     </role>
     <role id="cloud-service-provider">
         <title>Cloud Service Provider</title>
-        <short-name>CSP</short-name>
     </role>
-    <location uuid="27b78960-59ef-4619-82b0-ae20b9c709ac">
-      <title>CSP HQ</title>
-      <address type="work">
-        <addr-line>Suite 0000</addr-line>
-        <addr-line>1234 Some Street</addr-line>
-        <city>Haven</city>
-        <state>ME</state>
-        <postal-code>00000</postal-code>
-        <country>US</country>
-      </address>
+    <location uuid="60d612ba-1ab4-49ab-858b-d83b1bcbf006">
+        <title>Name of the CSP</title>
+        <address type="work">
+            <addr-line>Suite 0000</addr-line>
+            <addr-line>1234 Some Street</addr-line>
+            <city>Haven</city>
+            <state>ME</state>
+            <postal-code>00000</postal-code>
+            <country>US</country>
+        </address>
     </location>
-    <party id="2e0db7cf-08f5-472e-9360-fb3a9698476d">
-        <name>Cloud Service Provider (CSP) Name</name>
-        <short-name>CSP Acronym/Short Name</short-name>
-        <location-uuid>27b78960-59ef-4619-82b0-ae20b9c709ac</location-uuid>
+    <party uuid="d865602c-9d3b-49d7-8125-ce3f1ca04231" type="organization">
+        <name>Cloud Service Provider</name>
+        <link href="#891263fb-a5d6-44db-8d73-51bb8a9a3610" rel="logo"/>
+        <location-uuid>60d612ba-1ab4-49ab-858b-d83b1bcbf006</location-uuid>
     </party>
-    <!-- cut: other party assemblies -->
     <responsible-party role-id="prepared-for">
-        <party-id>2e0db7cf-08f5-472e-9360-fb3a9698476d</party-id>
+        <party-uuid>d865602c-9d3b-49d7-8125-ce3f1ca04231</party-uuid>
     </responsible-party>
 </metadata>
-<!-- OSCAL File Body -->
+
 <back-matter>
-    <resource id="74a61c36-ad18-4ee3-8bc4-6e2f917b0ce8">
-        <description><p>CSP Logo</p></description>
-        <prop name='type'>logo</prop>
-        <!-- Use rlink and/or base64 -->
-        <rlink href="./logo.png" media-type="image/png" />
-        <base64>00000000</base64>
+    <resource uuid="891263fb-a5d6-44db-8d73-51bb8a9a3610">
+        <title>Logo</title>
+        <description>
+            <p>Logo of the CSP.</p>
+        </description>
+        <prop name="type" value="logo"/>
+        <rlink href="./attachments/img/logo.png"/>
+        <base64 filename="logo.png" media-type="image/png">00000000</base64>
     </resource>
 </back-matter>
 {{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
 
-##### XPath Queries
+<br/>
+{{<callout>}}
+**Required role ID** \
+`prepared-for`
+{{</callout>}}
+<br/>
 
-- Prepared For (CSP) Details: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name`
-- Prepared For Details: `/*/metadata/party[@id=[/*/metadata/responsible-party[@role-id='prepared-for']/party-id]]/org/org-name`
+### XPath Queries
 
-NOTE: Replace "org-name" with "address/addr-line", "address/city", "address/state", or "address/zip" as needed. There may be more than one addr-line.
+| Item                       | XPath&nbsp;query                                                                                                                                                                 |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Recipient's&nbsp;name      | `/*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-for']/party-uuid]/name`                                                                                |
+| Recipient's street address | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-for']/party-uuid]]/address/addr-line`   |
+| Recipient's city           | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-for']/party-uuid]]/address/city`        |
+| Recipient's state          | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-for']/party-uuid]]/address/state`       |
+| Recipient's ZIP code       | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-for']/party-uuid]]/address/postal-code` |
+| Recipient's country        | `/*/metadata/location[@uuid=/*/metadata/party/location-uuid and /*/metadata/party[@uuid=/*/metadata/responsible-party[@role-id='prepared-for']/party-uuid]]/address/country`     |
+
