@@ -2,7 +2,9 @@
     "defaults": {
       "standard": "WCAG2AA",
       "runners": ["axe"],
-      "concurrency": 1
+      "concurrency": 1,
+      "threshold": 100
+
     },
     "urls": [
       "http://localhost:8080"
