@@ -3,7 +3,7 @@
       "standard": "WCAG2AA",
       "runners": ["axe"],
       "concurrency": 1,
-      "threshold": 100
+      "threshold": 5
 
     },
     "urls": [
