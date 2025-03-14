@@ -28,7 +28,7 @@ env:
 jobs:
   build-and-push-website:
     name: Build, Push, and 508 Compliance Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       BUILD_PATH: ./build
     permissions:
