@@ -23,8 +23,8 @@ While a leveraged system has no need to represent content here, its SSP must inc
 {{</callout>}}
 
 #### OSCAL Representation
-{{< tabs JSON XML YAML >}}
 
+{{< tabs JSON YAML XML >}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
@@ -53,7 +53,7 @@ While a leveraged system has no need to represent content here, its SSP must inc
         {
           "ns": "https://fedramp.gov/ns/oscal",
           "name": "impact-level",
-          "value": "moderate"
+          "value": "fips-199-moderate"
         }
       ],
       "party-uuid": "11111111-2222-4000-8000-c0040000000a",
@@ -86,43 +86,6 @@ While a leveraged system has no need to represent content here, its SSP must inc
 }
 {{< /highlight >}}
 {{% /tab %}}
-
-{{% tab %}}
-{{< highlight xml "linenos=table" >}}
-<metadata>
-    <!-- CSP name -->
-    <party uuid="22222222-2222-4000-8000-c0040000000a">
-        <name>Example IaaS Provider</name>
-        <short-name>E.I.P.</short-name>
-    </party>
-</metadata>
-<!-- cut import-profile, system-characteristics -->
-<system-implementation>
-    <leveraged-authorization uuid="11111111-2222-4000-8000-019000000001">
-        <title>Name of Underlying System</title>
-        <!-- FedRAMP Package ID -->
-        <prop name="leveraged-system-identifier" ns="https://fedramp.gov/ns/oscal" value="Package_ID value" />
-        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" value="fedramp-agency"/>
-        <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="moderate"/>
-        <party-uuid>11111111-2222-4000-8000-c0040000000a</party-uuid>
-        <date-authorized>2015-01-01</date-authorized>
-    </leveraged-authorization>
-    <!-- CSO name & service description -->
-    <component uuid="uuid-of-leveraged-system" type="leveraged-system">
-        <title>Name of Leveraged System</title>
-        <description>
-            <p>Briefly describe leveraged system.</p>
-        </description>
-        <prop name="leveraged-authorization-uuid" value="11111111-2222-4000-8000-019000000001" />
-        <prop name="inherited-uuid" value="22222222-0000-4000-9001-009000000001" />
-        <prop name="implementation-point" value="external"/>
-        <!-- FedRAMP prop extensions for table 6.1 columns -->
-        <status state="operational"/>
-    </component>
-</system-implementation>
-{{< /highlight >}}
-{{% /tab %}}
-
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 metadata:
@@ -143,7 +106,7 @@ system-implementation:
         value: fedramp-agency
       - ns: "https://fedramp.gov/ns/oscal"
         name: impact-level
-        value: moderate
+        value: fips-199-moderate
     party-uuid: "11111111-2222-4000-8000-c0040000000a"
     date-authorized: "2015-01-01"
   component:
@@ -162,7 +125,41 @@ system-implementation:
       state: operational
 {{< /highlight >}}
 {{% /tab %}}
-
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<metadata>
+    <!-- CSP name -->
+    <party uuid="22222222-2222-4000-8000-c0040000000a">
+        <name>Example IaaS Provider</name>
+        <short-name>E.I.P.</short-name>
+    </party>
+</metadata>
+<!-- cut import-profile, system-characteristics -->
+<system-implementation>
+    <leveraged-authorization uuid="11111111-2222-4000-8000-019000000001">
+        <title>Name of Underlying System</title>
+        <!-- FedRAMP Package ID -->
+        <prop name="leveraged-system-identifier" ns="https://fedramp.gov/ns/oscal" value="Package_ID value" />
+        <prop ns="https://fedramp.gov/ns/oscal" name="authorization-type" value="fedramp-agency"/>
+        <prop ns="https://fedramp.gov/ns/oscal" name="impact-level" value="fips-199-moderate"/>
+        <party-uuid>11111111-2222-4000-8000-c0040000000a</party-uuid>
+        <date-authorized>2015-01-01</date-authorized>
+    </leveraged-authorization>
+    <!-- CSO name & service description -->
+    <component uuid="uuid-of-leveraged-system" type="leveraged-system">
+        <title>Name of Leveraged System</title>
+        <description>
+            <p>Briefly describe leveraged system.</p>
+        </description>
+        <prop name="leveraged-authorization-uuid" value="11111111-2222-4000-8000-019000000001" />
+        <prop name="inherited-uuid" value="22222222-0000-4000-9001-009000000001" />
+        <prop name="implementation-point" value="external"/>
+        <!-- FedRAMP prop extensions for table 6.1 columns -->
+        <status state="operational"/>
+    </component>
+</system-implementation>
+{{< /highlight >}}
+{{% /tab %}}
 {{< /tabs >}}
 
 <br />
