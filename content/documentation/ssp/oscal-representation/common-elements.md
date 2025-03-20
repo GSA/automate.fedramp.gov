@@ -1,6 +1,8 @@
 ---
 title: General Template Information
 weight: 100
+aliases:
+  - /documentation/ssp/3-working-with-oscal-files/#oscal-based-fedramp-ssp-template
 ---
 # General Template Information
 

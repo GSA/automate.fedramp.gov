@@ -1,6 +1,8 @@
 ---
 title: Generated Content
 weight: 340
+aliases:
+  - /documentation/ssp/7-generated-content/#working-with-components
 ---
 # Generating Content from an OSCAL-Based SSP
 

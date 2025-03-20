@@ -1,8 +1,9 @@
 ---
 title: Specifying the FedRAMP Baseline
 weight: 330
+aliases:
+  - /documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline
 ---
-
 ## Specifying the FedRAMP Baseline
 
 OSCAL is designed for traceability. Because of this, the SSP is designed

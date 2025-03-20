@@ -1,6 +1,9 @@
 ---
 title: Implementation Statements - Overview 
 weight: 125
+aliases:
+  - /documentation/ssp/6-security-controls/#control-implementation-descriptions
+  - /documentation/ssp/6-security-controls/#response-identifying-inheritable-controls-and-customer-responsibilities
 ---
 ## Control Implementation Descriptions
 

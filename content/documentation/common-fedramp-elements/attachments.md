@@ -1,6 +1,8 @@
 ---
 title: Attachments
 weight: 320
+aliases:
+  - /documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content
 ---
 # Attachments to FedRAMP Content
 
