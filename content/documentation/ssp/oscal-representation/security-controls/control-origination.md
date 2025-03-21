@@ -56,16 +56,6 @@ leveraged authorization as it appears in the
                 "ns": "http://fedramp.gov/ns/oscal",
                 "name": "control-origination",
                 "value": "sp-system"
-              },
-              {
-                "ns": "http://fedramp.gov/ns/oscal",
-                "name": "control-origination",
-                "value": "customer-configured"
-              },
-              {
-                "ns": "http://fedramp.gov/ns/oscal",
-                "name": "control-origination",
-                "value": "inherited"
               }
             ]
           }
