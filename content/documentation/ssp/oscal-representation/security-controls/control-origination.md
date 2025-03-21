@@ -29,39 +29,47 @@ leveraged authorization as it appears in the
   "system-security-plan": {
     "system-implementation": {
       "leveraged-authorization": {
-        "uuid": "uuid-of-leveraged-authorization"
+        "uuid": "11111111-2222-4000-8000-019000000001"
       }
     },
     "control-implementation": {
       "implemented-requirement": {
         "uuid": "11111111-2222-4000-8000-012000020000",
         "control-id": "ac-2",
-        "prop": [
-          {
-            "name": "leveraged-authorization-uuid",
-            "value": "11111111-2222-4000-8000-019000000001"
-          },
-          {
-            "ns": "http://fedramp.gov/ns/oscal",
-            "name": "control-origination",
-            "value": "sp-corporate"
-          },
-          {
-            "ns": "http://fedramp.gov/ns/oscal",
-            "name": "control-origination",
-            "value": "sp-system"
-          },
-          {
-            "ns": "http://fedramp.gov/ns/oscal",
-            "name": "control-origination",
-            "value": "customer-configured"
-          },
-          {
-            "ns": "http://fedramp.gov/ns/oscal",
-            "name": "control-origination",
-            "value": "inherited"
+        "statement": {
+          "statement-id": "ac-2_smt.a",
+          "uuid": "11111111-2222-4000-8000-012000020100",
+          "by-component": {
+            "component-uuid": "11111111-2222-4000-8000-009000000000",
+            "uuid": "11111111-2222-4000-8000-012000020101",
+            "prop": [
+              {
+                "name": "leveraged-authorization-uuid",
+                "value": "11111111-2222-4000-8000-019000000001"
+              },
+              {
+                "ns": "http://fedramp.gov/ns/oscal",
+                "name": "control-origination",
+                "value": "sp-corporate"
+              },
+              {
+                "ns": "http://fedramp.gov/ns/oscal",
+                "name": "control-origination",
+                "value": "sp-system"
+              },
+              {
+                "ns": "http://fedramp.gov/ns/oscal",
+                "name": "control-origination",
+                "value": "customer-configured"
+              },
+              {
+                "ns": "http://fedramp.gov/ns/oscal",
+                "name": "control-origination",
+                "value": "inherited"
+              }
+            ]
           }
-        ]
+        }
       }
     }
   }
@@ -80,12 +88,16 @@ leveraged authorization as it appears in the
   </system-implementation>
   <control-implementation>
     <implemented-requirement uuid="11111111-2222-4000-8000-012000020000" control-id="ac-2">
-      <prop name="leveraged-authorization-uuid" value="11111111-2222-4000-8000-019000000001"/>
-      <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="sp-corporate"/>
-      <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="sp-system"/>
-      <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="customer-configured"/>
-      <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="inherited"/>
       <!-- responsible-role -->
+      <statement statement-id="ac-2_smt.a" uuid="11111111-2222-4000-8000-012000020100">
+        <by-component component-uuid="11111111-2222-4000-8000-009000000000" uuid="11111111-2222-4000-8000-012000020101">
+          <prop name="leveraged-authorization-uuid" value="11111111-2222-4000-8000-019000000001"/>
+          <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="sp-corporate"/>
+          <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="sp-system"/>
+          <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="customer-configured"/>
+          <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="inherited"/>
+        </by-component>
+      </statement>
     </implemented-requirement>
   </control-implementation>
   <!-- back-matter -->
@@ -95,32 +107,36 @@ leveraged authorization as it appears in the
 
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
----
 system-security-plan:
   system-implementation:
     leveraged-authorization:
-      uuid: "uuid-of-leveraged-authorization"
+      uuid: "11111111-2222-4000-8000-019000000001"
       # details cut - see Leveraged Authorizations Section
   control-implementation:
     implemented-requirement:
       uuid: "11111111-2222-4000-8000-012000020000"
       control-id: "ac-2"
-      prop:
-        - name: "leveraged-authorization-uuid"
-          value: "11111111-2222-4000-8000-019000000001"
-        - ns: "http://fedramp.gov/ns/oscal"
-          name: "control-origination"
-          value: "sp-corporate"
-        - ns: "http://fedramp.gov/ns/oscal"
-          name: "control-origination"
-          value: "sp-system"
-        - ns: "http://fedramp.gov/ns/oscal"
-          name: "control-origination"
-          value: "customer-configured"
-        - ns: "http://fedramp.gov/ns/oscal"
-          name: "control-origination"
-          value: "inherited"
-      # responsible-role (cut)
+      statement:
+        statement-id: "ac-2_smt.a"
+        uuid: "11111111-2222-4000-8000-012000020100"
+        by-component:
+          component-uuid: "11111111-2222-4000-8000-009000000000"
+          uuid: "11111111-2222-4000-8000-012000020101"
+          prop:
+            - name: "leveraged-authorization-uuid"
+              value: "11111111-2222-4000-8000-019000000001"
+            - ns: "http://fedramp.gov/ns/oscal"
+              name: "control-origination"
+              value: "sp-corporate"
+            - ns: "http://fedramp.gov/ns/oscal"
+              name: "control-origination"
+              value: "sp-system"
+            - ns: "http://fedramp.gov/ns/oscal"
+              name: "control-origination"
+              value: "customer-configured"
+            - ns: "http://fedramp.gov/ns/oscal"
+              name: "control-origination"
+              value: "inherited"
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -129,9 +145,9 @@ system-security-plan:
 ##### XPath Queries
 {{< highlight xml "linenos=table" >}}
   Number of Control Originations:
-    count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"])
+    count(/*/control-implementation/implemented-requirement[@control-id="ac-2"]/statement/by-component/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"])
   Control Origination(could return more than 1 result):
-    /*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"][1]/@value
+    /*/control-implementation/implemented-requirement[@control-id="ac-2"]/statement/by-component/prop[@name="control-origination"][@ns="http://fedramp.gov/ns/oscal"][1]/@value
   Inherited From: System Name (If control-origination="inherited"):
     /*/system-implementation/leveraged-authorization[@uuid=/*/control-implementation/implemented-requirement[@control-id="ac-2"]/prop[@name="leveraged-authorization-uuid"]]/title
   Inherited From: Authorization Date (If control-origination="inherited"):
