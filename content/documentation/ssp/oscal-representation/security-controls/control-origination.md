@@ -84,8 +84,6 @@ leveraged authorization as it appears in the
           <prop name="leveraged-authorization-uuid" value="11111111-2222-4000-8000-019000000001"/>
           <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="sp-corporate"/>
           <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="sp-system"/>
-          <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="customer-configured"/>
-          <prop ns="http://fedramp.gov/ns/oscal" name="control-origination" value="inherited"/>
         </by-component>
       </statement>
     </implemented-requirement>
