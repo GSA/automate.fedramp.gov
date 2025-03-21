@@ -119,12 +119,6 @@ system-security-plan:
             - ns: "http://fedramp.gov/ns/oscal"
               name: "control-origination"
               value: "sp-system"
-            - ns: "http://fedramp.gov/ns/oscal"
-              name: "control-origination"
-              value: "customer-configured"
-            - ns: "http://fedramp.gov/ns/oscal"
-              name: "control-origination"
-              value: "inherited"
 {{< /highlight >}}
 {{% /tab %}}
 
