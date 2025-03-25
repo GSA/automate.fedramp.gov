@@ -1262,7 +1262,7 @@ NOTE: Replace '001' with '002', '003', etc. for each sort-id based on desired or
 #### Security Testing May Include 
 
 SAP authors should describe the security testing that may be included
-within the terms-and-conditions assembly, in the "included-activities"
+within the terms-and-conditions assembly, in the "assessment-inclusions"
 part and its "included-activity" sub-parts.
 
 {{< figure src="/img/sap-figure-20.png" title="FedRAMP SAP template terms and conditions (inclusions)." alt="Screenshot of the terms and conditions \(e.g., security testing may include\) information in the FedRAMP SAP template." >}}
@@ -1270,7 +1270,7 @@ part and its "included-activity" sub-parts.
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
-    <part name="included-activities">
+    <part name="assessment-inclusions">
         <title>Included Activities</title>
         <p>The following activities are to be included as part of the FedRAMP assessment.</p>
         <part name="included-activity">
@@ -1289,7 +1289,7 @@ part and its "included-activity" sub-parts.
             <p>Attempted structured query language (SQL) injection and other forms of input
                 parameter testing</p>
         </part>
-        <!-- cut other included-activities -->
+        <!-- cut other assessment-inclusions -->
     </part>
 </terms-and-conditions>
 
@@ -1298,9 +1298,9 @@ part and its "included-activity" sub-parts.
 ##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of Included Activities:
-    count(/*/terms-and-conditions/part[@name='included-activities']/part[@name='included-activity'])
+    count(/*/terms-and-conditions/part[@name='assessment-inclusions']/part[@name='included-activity'])
 (SAP) First Included Activity:
-    /*/terms-and-conditions/part[@name='included-activities']/part[@name='included-activity'][1]/node()
+    /*/terms-and-conditions/part[@name='assessment-inclusions']/part[@name='included-activity'][1]/node()
 NOTE: Replace [1] as needed with [2], [3], etc.
 
 {{</ highlight >}}
@@ -1315,7 +1315,7 @@ NOTE: Replace [1] as needed with [2], [3], etc.
 #### Security Testing Will Not Include
 
 SAP authors should describe exclusive disclosures within the
-terms-and-conditions assembly, in the "excluded-activities" part and its
+terms-and-conditions assembly, in the "assessment-exclusions" part and its
 "excluded-activity" sub-parts.
 
 {{< figure src="/img/sap-figure-21.png" title="FedRAMP SAP template terms and conditions (exclusions)." alt="Screenshot of the terms and conditions \(e.g., security testing will not include\) information in the FedRAMP SAP template." >}}
@@ -1324,7 +1324,7 @@ terms-and-conditions assembly, in the "excluded-activities" part and its
 ##### Representation 
 {{< highlight xml "linenos=table" >}}
 <terms-and-conditions>
-    <part name="excluded-activities">
+    <part name="assessment-exclusions">
         <title>Excluded Activities</title>
         <p>The following activities are explicitly excluded from the assessment.</p>
         <part name="excluded-activity">
@@ -1357,9 +1357,9 @@ terms-and-conditions assembly, in the "excluded-activities" part and its
 ##### XPath Queries  
 {{< highlight xml "linenos=table" >}}
 (SAP) Number of Excluded Activities:
-    count(/*/terms-and-conditions/part[@name='excluded-activities']/part[@name='excluded-activity'])
+    count(/*/terms-and-conditions/part[@name='assessment-exclusions']/part[@name='excluded-activity'])
 (SAP) First Excluded Activity:
-    /*/terms-and-conditions/part[@name='excluded-activities']/part[@name='excluded-activity'][1]/node()
+    /*/terms-and-conditions/part[@name='assessment-exclusions']/part[@name='excluded-activity'][1]/node()
 NOTE: Replace [1] as needed with [2], [3], etc.
 
 {{</ highlight >}}
