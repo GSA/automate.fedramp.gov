@@ -70,7 +70,7 @@ system-characteristics assembly.
 
 The FedRAMP-assigned application number is the unique ID for a FedRAMP system. OSCAL supports several system identifiers, which may be assigned by different organizations.
 
-For this reason, OSCAL requires the identifier-type flag be present and have a value that uniquely identifies the issuing organization. FedRAMP requires its value to be "https://fedramp.gov" for all FedRAMP-issued application numbers.
+For this reason, OSCAL requires the identifier-type flag be present and have a value that uniquely identifies the issuing organization. FedRAMP requires its value to be "http://fedramp.gov" for all FedRAMP-issued application numbers.
 
 {{< figure src="/img/ssp-figure-5.png" title="FedRAMP SSP template System Name and Package ID" alt="Screenshot of the system name, and package ID in the FedRAMP SSP template." >}}
 
@@ -155,7 +155,7 @@ system-security-plan:
 **FedRAMP Allowed Value** 
 
 Required Identifier Type:
-- identifier-type="https://fedramp.gov"
+- identifier-type="http://fedramp.gov/ns/oscal"
 
 {{</callout>}}
 
@@ -166,7 +166,7 @@ Required Identifier Type:
     Information System Abbreviation:
         /*/system-characteristics/system-name-short
     FedRAMP Unique Identifier:
-        /*/system-characteristics/system-id[@identifier-type="https://fedramp.gov"]
+        /*/system-characteristics/system-id[@identifier-type="http://fedramp.gov/ns/oscal"]
 {{</ highlight >}}
 
 ---
@@ -646,7 +646,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
         "remarks": "If the status is “other”, the remarks field is required. Otherwise, it is optional."
       },
       "prop": {
-        "ns": "https://fedramp.gov/ns/oscal",
+        "ns": "http://fedramp.gov/ns/oscal",
         "name": "fully-operational-date",
         "value": "mm/dd/yyyy"
       }
@@ -681,7 +681,7 @@ The system status in the FedRAMP SSP template document is specified in the "Full
                 <p>Otherwise, it is optional.</p>
             </remarks>
         </status>
-        <prop ns="https://fedramp.gov/ns/oscal" name="fully-operational-date" value="mm/dd/yyyy"/>        
+        <prop ns="http://fedramp.gov/ns/oscal" name="fully-operational-date" value="mm/dd/yyyy"/>        
         <!--  cut -->        
     </system-characteristics>
     <!--  cut -->     
@@ -705,7 +705,7 @@ system-security-plan:
       state: operational
       remarks: If the status is “other”, the remarks field is required. Otherwise, it is optional.
     prop:
-      ns: "https://fedramp.gov/ns/oscal"
+      ns: "http://fedramp.gov/ns/oscal"
       name: "fully-operational-date"
       value: "mm/dd/yyyy"
 {{< /highlight >}}
@@ -734,7 +734,7 @@ FedRAMP only accepts those in bold:
     Remarks on System's Operational Status:
         /*/system-characteristics/status/remarks/node()
     Fully Operational As Of Date:
-        /*/system-characteristics/prop[@name="fully-operational-date"][@ns="https://fedramp.gov/ns/oscal"]/@value
+        /*/system-characteristics/prop[@name="fully-operational-date"][@ns="http://fedramp.gov/ns/oscal"]/@value
 {{</ highlight >}}
 
 **NOTE:**
