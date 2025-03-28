@@ -6,7 +6,7 @@ weight: 331
 
 ### Cloud Service Provider (CSP) Name
 
-The cloud service provider (CSP) must be provided as one of the party assemblies within the metadata.
+The cloud service provider (CSP) must be provided as one of the `party` assemblies within the metadata and must be associated with the "prepared-for" `role` through a `responsible-party`.
 
 {{< figure src="/img/ssp-figure-4.png" title="FedRAMP SSP template CSP Name" alt="Screenshot of the CSP name in the FedRAMP SSP template." >}}
 
@@ -22,7 +22,11 @@ The cloud service provider (CSP) must be provided as one of the party assemblies
         "uuid": "11111111-2222-4000-8000-004000000001",
         "type": "organization",
         "name": "Cloud Service Provider (CSP) Name"
-      }
+      },
+      "responsible-parties": [{
+        "party-uuids": ["11111111-2222-4000-8000-004000000001"],
+        "role-id": "prepared-for"
+      }]
     }
   }
 }
@@ -37,6 +41,9 @@ The cloud service provider (CSP) must be provided as one of the party assemblies
         <party uuid="11111111-2222-4000-8000-004000000001" type="organization">
             <name>Cloud Service Provider (CSP) Name</name>
         </party>
+        <responsible-party role-id="prepared-for">
+          <party-uuid>11111111-2222-4000-8000-004000000001</party-uuid>
+        </responsible-party>
     </metadata>
 </system-security-plan>
 {{< /highlight >}}
@@ -51,6 +58,10 @@ system-security-plan:
       uuid: "11111111-2222-4000-8000-004000000001"
       type: organization
       name: "Cloud Service Provider (CSP) Name"
+    responsible-parties:
+    - party-uuids:
+      - 11111111-2222-4000-8000-004000000001
+      role-id: prepared-for
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -61,6 +72,15 @@ system-security-plan:
 Cloud Service Provider (CSP) Name:
     /*/metadata/party[@uuid='uuid-of-csp']/name
 {{</ highlight >}}
+
+<br />
+{{<callout>}}
+
+**Note** 
+
+The "prepared-for" `role` identifies the CSP for which this SSP was prepared.
+
+{{</callout>}}
 
 ---
 ### System Name, Abbreviation, and FedRAMP Unique Identifier
