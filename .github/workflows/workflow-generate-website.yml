@@ -89,7 +89,7 @@ jobs:
         retention-days: 5
     - id: linkchecker
       name: Link Checker
-      uses: lycheeverse/lychee-action@f81112d0d2814ded911bd23e3beaa9dda9093915
+      uses: lycheeverse/lychee-action@1d97d84f0bc547f7b25f4c2170d87d810dc2fb2c
       with:
         args: --exclude-file .github/workflows/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './_site-test/**/*.html' --remap "https://automate.fedramp.gov/ file://${GITHUB_WORKSPACE}/_site-test/" --exclude-mail
         format: markdown
