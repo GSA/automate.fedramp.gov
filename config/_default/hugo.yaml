@@ -1,33 +1,9 @@
 title: "FedRAMP Automation (Archived)"
 baseURL: https://automate.fedramp.gov/
-defaultContentLanguage: en
-languageCode: "en-us"
-MetaDataFormat: "yaml"
-#googleAnalytics: UA-
-enableGitInfo: true
-enableRobotsTXT: true
-module:
-  mounts:
-  - source: static
-    target: static
-  - source: static/img
-    target: assets/img
-  - source: ../examples
-    target: static/examples
-#  imports:
-#  - path: github.com/GSA/uswds-hugo
-theme:
-- uswds-hugo
-params:
-  header:
-    project_shortname: "FedRAMP Automation (Archived)"
-    project_name: "FedRAMP Automation (Archived)"
-  usabanner: false
-#    debug: true
 markup:
-  goldmark: # Markdown Rendering
+  goldmark:
     renderer:
-      unsafe: true # required for the Hugo USWDS theme
-  highlight: # Code Highlighting
+      unsafe: true
+  highlight:
     guessSyntax: true
-    noClasses: false # enables USWDS styled syntax highlighting
+    noClasses: false
