@@ -1,6 +1,6 @@
 ---
 title: OSCAL Data Types
-weight: 117
+weight: 120
 ---
 # Handling of OSCAL Data Types
 
@@ -21,7 +21,7 @@ using the following format, unless otherwise noted:
 For example, a publication date of 5:30 pm EST on January 10, 2020 must
 appear as `2020-01-10T17:30:00.00-05:00`
 
-This includes:
+This includes the following items:
 
 - Numeric Year: Four-digit
 - A dash
@@ -131,33 +131,76 @@ information.
 
 - **Relative Paths**: All relative paths are assumed to be based on the location of the OSCAL file, unless tools are explicit as to other handling. Sensitive external documents should travel with the OSCAL file and be linked using a relative path.
 
-- **Internal Locations**: These URI fragments appear as just a hashtag (#) followed by a name, such as `#a3e9f988-2db7-4a14-9859-0a0f5b0eebee`. This notation points to a location internal to the OSCAL content. Typically, this references a `resource` assembly, but may reference any field or assembly with a unique ID or UUID.
+- **Internal Locations**: These URI fragments appear as just a hashtag (#) followed by a name, such as `#11111111-2222-4000-8000-001000000054`. This notation points to a location internal to the OSCAL content. Typically, this references a `resource` assembly, but may reference any field or assembly with a unique ID or UUID.
 
    If only a URI fragment (internal location) is present, the OSCAL tool must strip the hashtag (#) and treat the remaining string as a UUID reference to a resource. The resource may exist in the current OSCAL file, or one of the imported OSCAL files in the stack as described in [*File Content Concepts*](/documentation/general-concepts/oscal-file-concepts/#file-content) section.
 
-### URI Fragment Example
 
-The following OSCAL content contains a `href` flag with a URI
-fragment:
+## URI Fragment Example
 
+The following OSCAL content contains a `href` flag with a URI fragment:
+
+{{< tabs JSON YAML XML>}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "system-security-plan": {
+        "system-characteristics": {
+            "authorization-boundary": {
+                "diagrams": [
+                    {
+                        "uuid": "11111111-2222-4000-8000-007000000001",
+                        "links": [
+                            {
+                                "href": "#11111111-2222-4000-8000-001000000054"
+                            }
+                        ],
+                        "caption": "Authorization Boundary Diagram"
+                    }
+                ]
+            }
+        }
+    }
+}
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+system-security-plan:
+  system-characteristics:
+    authorization-boundary:
+      diagrams:
+      - uuid: '11111111-2222-4000-8000-007000000001'
+        links:
+        - href: '#11111111-2222-4000-8000-001000000054'
+        caption: Authorization Boundary Diagram
+{{</ highlight >}}
+{{% /tab %}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<system-characteristics>
-  <authorization-boundary>
-    <diagram uuid="a04b5a0c-6111-420c-9ea3-613629599213">
-      <link href="#a3e9f988-2db7-4a14-9859-0a0f5b0eebee"/>
-      <caption>Authorization Boundary Diagram</caption>
-    </diagram>
-  </authorization-boundary>
-</system-characteristics>
-{{< /highlight >}}
+<system-security-plan>
+    <system-characteristics>
+      <authorization-boundary>
+        <diagram uuid="11111111-2222-4000-8000-007000000001">
+          <link href="#11111111-2222-4000-8000-001000000054"/>
+          <caption>Authorization Boundary Diagram</caption>
+        </diagram>
+      </authorization-boundary>
+    </system-characteristics>
+</system-security-plan>
+{{</ highlight >}}
+{{% /tab %}}
+{{</ tabs >}}
+
 
 When a tool processes the above example, it should look inside the
 document for a field or assembly with a UUID of
-`a3e9f988-2db7-4a14-9859-0a0f5b0eebee`. This can be accomplished with
+`11111111-2222-4000-8000-007000000001`. This can be accomplished with
 the following XPath query:
 
 {{< highlight xml "linenos=false" >}}
-//*[@uuid="a3e9f988-2db7-4a14-9859-0a0f5b0eebee"]
+//*[@uuid="11111111-2222-4000-8000-007000000001"]
 {{< /highlight >}}
 If this is found to point to a `resource` assembly, see the [*Attachments and Embedded Content*](/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#attachments-and-embedded-content) section for additional handling.
 
@@ -220,8 +263,9 @@ visit the related [data type documentation](https://pages.nist.gov/metaschema/sp
 
 ## Working with markup-multiline Content
 
-In JSON, markup-multiline is based on Markdown syntax and requires no
-special handling. XML-based markup-multiline fields require all content
+In JSON, markup-multiline is based on Markdown syntax.
+
+XML-based markup-multiline fields require all content
 to be enclosed in one of the following tags: `<p>`, `<h1>` - `<h6>`,
 `<ol>`, `<ul>`, `<pre>`, or `<table>`. At least one of these tags must
 be present. More than one may be present. All text must be enclosed

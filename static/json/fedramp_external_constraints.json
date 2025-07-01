@@ -1,0 +1,1915 @@
+{
+  "metaschema-meta-constraints" : {
+    "contexts" : [ {
+      "metapaths" : [ {
+        "target" : "//user"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "count(authorized-privilege) gt 0",
+          "id" : "user-has-authorized-privilege",
+          "message" : "A FedRAMP document MUST define a user with at least one authorized privilege by a privilege identifier.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "User Has Authorized Privilege"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(role-id) gt 0",
+          "id" : "user-has-role-id",
+          "message" : "A FedRAMP document MUST define a user with at least one role by a role identifier.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "User Has Role ID"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='type']) = 1",
+          "id" : "user-has-user-type",
+          "message" : "A FedRAMP document MUST define a user with a type.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#user",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "User Has User Type"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/catalog//control"
+      }, {
+        "target" : "/assessment-plan/local-definitions/objectives-and-methods"
+      }, {
+        "target" : "/assessment-results/local-definitions/objectives-and-methods"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "count(prop[@ns='http://fedramp.gov/ns/oscal' and @name='response-point']) <= 1",
+          "id" : "prop-response-point-has-cardinality-one",
+          "message" : "MUST NOT have Duplicate response point at '{ path(.) }'.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#control-implementation-descriptions",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".//part",
+          "formal-name" : "Prop Response Point Has Cardinality One"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "index",
+          "name" : "index-implemented-statements",
+          "description" : "This index includes all statements defined in a FedRAMP SSP",
+          "key-fields" : [ {
+            "target" : "@statement-id"
+          } ],
+          "formal-name" : "Statements implimented in SSP",
+          "target" : "$implemented-statements-map"
+        }, {
+          "object-type" : "expect",
+          "test" : "every $param in $aggregate-parameters satisfies @param-id != $param",
+          "id" : "aggregate-parameters-warning",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP SHOULD NOT set aggregate parameters directly. Parameter {@param-id} is an aggregate parameter that should not be set in the SSP.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//set-parameter",
+          "formal-name" : "No Aggregate Parameters in SSP"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@ns='http://fedramp.gov/ns/oscal' and @name='authentication-method']) >= 1",
+          "id" : "component-has-authentication-method",
+          "message" : "A FedRAMP SSP MUST include at least one authentication method for each leveraged system.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//component[(@type='system' and prop[@name='leveraged-authorization-uuid']) or (@type='interconnection') or (@type=('service', 'software') and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type=('service', 'software') and prop[@name='implementation-point' and @value='internal'] and prop[@name='communicates-externally' and @value='yes' and @ns='http://fedramp.gov/ns/oscal'])]",
+          "formal-name" : "Component Has Authentication Method"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(responsible-role[not(@role-id='provider')]) >= 1",
+          "id" : "component-has-non-provider-responsible-role",
+          "message" : "A FedRAMP SSP MUST have each component describing leveraged systems, interconnections, or authorized services identify at least one responsible role other than \"provider\".",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#external-systems-and-services-not-having-fedramp-authorization",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//component[(@type='system' and prop[@name='leveraged-authorization-uuid']) or (@type=('service', 'software') and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type=('service', 'software') and prop[@name='implementation-point' and @value='internal'] and prop[@name='communicates-externally' and @value='yes' and @ns='http://fedramp.gov/ns/oscal'])]",
+          "formal-name" : "Component Has Non-Provider Responsible Role"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(responsible-role[@role-id='provider']/party-uuid) = 1",
+          "id" : "component-has-provider-responsible-role",
+          "message" : "A FedRAMP SSP MUST have each component describing leveraged systems, interconnections, or authorized services identify a \"provider\" role that references one responsible party.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#external-systems-and-services-not-having-fedramp-authorization",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//component[(@type='system' and prop[@name='leveraged-authorization-uuid']) or (@type=('service', 'software') and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type=('service', 'software') and prop[@name='implementation-point' and @value='internal'] and prop[@name='communicates-externally' and @value='yes' and @ns='http://fedramp.gov/ns/oscal'])]",
+          "formal-name" : "Component Has Provider Responsible Role"
+        }, {
+          "object-type" : "index-has-key",
+          "message" : "A FedRAMP SSP SHOULD NOT include extraneous controls outside of the FedRAMP baseline. Extraneous control: ({@control-id}).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#implementation-status",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "name" : "index-imported-controls",
+          "description" : "A FedRAMP SSP SHOULD NOT include extraneous controls outside of the FedRAMP baseline.",
+          "key-fields" : [ {
+            "target" : "@control-id"
+          } ],
+          "formal-name" : "Additional Controls Implemented Not in Baseline",
+          "id" : "extraneous-implemented-requirements",
+          "level" : "WARNING",
+          "target" : "//implemented-requirement"
+        }, {
+          "object-type" : "index",
+          "name" : "index-implemented-parameters",
+          "description" : "This index includes all parameters in a FedRAMP SSP.",
+          "key-fields" : [ {
+            "target" : "@param-id"
+          } ],
+          "formal-name" : "Parameters Implemented in SSP",
+          "target" : "$implemented-parameters-map"
+        }, {
+          "object-type" : "index",
+          "name" : "index-required-parameters",
+          "description" : "This index includes all parameters defined in the resolved profile catalog, imported by a FedRAMP SSP.",
+          "key-fields" : [ {
+            "target" : "@id"
+          } ],
+          "formal-name" : "Parameters from Profile",
+          "target" : "$required-parameters-map"
+        }, {
+          "object-type" : "index-has-key",
+          "message" : "A FedRAMP SSP must define all parameters for all controls from the imported baseline. The following parameters are defined in the baseline, but not properly set in the SSP: ({@id}).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "name" : "index-implemented-parameters",
+          "key-fields" : [ {
+            "target" : "@id"
+          } ],
+          "formal-name" : "Required Parameters Must Be Set",
+          "id" : "has-required-parameters",
+          "target" : "$required-parameters-map"
+        }, {
+          "object-type" : "index-has-key",
+          "message" : "All Response points defined in the baseline MUST have corresponding statements values in the SSP. Missing statement: ({@id}).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "name" : "index-implemented-statements",
+          "key-fields" : [ {
+            "target" : "@id"
+          } ],
+          "formal-name" : "Response Points Must Be Set",
+          "id" : "has-required-response-points",
+          "target" : "$required-response-points-map"
+        }, {
+          "object-type" : "expect",
+          "test" : "doc-available(resolve-uri($resolved-import-profile-href))",
+          "id" : "import-profile-has-available-document",
+          "level" : "CRITICAL",
+          "message" : "A FedRAMP SSP MUST import a profile or catalog with a valid file or HTTP(S) address.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "import-profile",
+          "formal-name" : "Import Profile has available document"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(resolve-profile(doc(resolve-uri($resolved-import-profile-href)))//control//prop[@ns='http://fedramp.gov/ns/oscal' and @name='response-point']) >= 2",
+          "id" : "import-profile-resolves-to-fedramp-content",
+          "level" : "CRITICAL",
+          "message" : "A FedRAMP SSP MUST import a profile or catalog of security controls to reference implemented requirements against those control(s).",
+          "remarks" : {
+            "remark" : "A FedRAMP SSP MUST use a valid FedRAMP catalog to reference security controls. It MUST NOT reference controls from a non-FedRAMP catalog."
+          },
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/3-working-with-oscal-files/#importing-the-fedramp-baseline",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Import Profile resolves to Fedramp content"
+        }, {
+          "object-type" : "index",
+          "name" : "index-imported-controls",
+          "key-fields" : [ {
+            "target" : "@id"
+          } ],
+          "target" : "$imported-controls-map"
+        }, {
+          "object-type" : "index",
+          "name" : "index-implemented-requirements",
+          "key-fields" : [ {
+            "target" : "@control-id"
+          } ],
+          "target" : "$implemented-requirements-map"
+        }, {
+          "object-type" : "index-has-key",
+          "message" : "A FedRAMP SSP MUST contain an implemented requirement for each imported control. Missing: ({@id}).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#implementation-status",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "name" : "index-implemented-requirements",
+          "description" : "A FedRAMP SSP MUST contain an implemented requirement for each imported control.",
+          "key-fields" : [ {
+            "target" : "@id"
+          } ],
+          "formal-name" : "Incomplete Implemented Requirements",
+          "id" : "incomplete-implemented-requirements",
+          "target" : "$imported-controls-map"
+        }, {
+          "object-type" : "expect",
+          "test" : ". = $sensitivity-level-floor",
+          "id" : "leveraged-authorization-has-valid-impact-level",
+          "message" : "The FIPS-199 impact level of the leveraged system MUST be the same or higher than the impact level of this system.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//leveraged-authorization/prop[@name='impact-level'][@ns='http://fedramp.gov/ns/oscal']/@value",
+          "formal-name" : "Leveraged Authorization Has Valid Impact Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "$non-provider-user-has-function-performed",
+          "id" : "non-provider-responsible-role-references-user",
+          "message" : "A FedRAMP SSP MUST have each component describing leveraged systems, interconnections, or authorized services reference at least one user with an authorized privilege and function performed via the \"privilege-uuid\" property.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#external-systems-and-services-not-having-fedramp-authorization",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Non-Provider Responsible Role References User"
+        } ],
+        "lets" : [ {
+          "var" : "import-profile-href",
+          "expression" : "import-profile/@href"
+        }, {
+          "var" : "resolved-import-profile-href",
+          "expression" : "if (starts-with($import-profile-href, '#')) then back-matter/resource[@uuid = substring($import-profile-href, 2)]/rlink/@href else $import-profile-href"
+        }, {
+          "var" : "sensitivity-level-floor",
+          "expression" : "if (system-characteristics/security-sensitivity-level = 'fips-199-high')                     then ('fips-199-high')                 else if (system-characteristics/security-sensitivity-level = 'fips-199-moderate')                     then ('fips-199-moderate', 'fips-199-high')                 else ('fips-199-low', 'fips-199-moderate', 'fips-199-high')"
+        }, {
+          "var" : "non-authorized-components",
+          "expression" : "//component[(@type='system' and prop[@name='leveraged-authorization-uuid']) or (@type=('service', 'software') and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type=('service', 'software') and prop[@name='implementation-point' and @value='internal'] and prop[@name='communicates-externally' and @value='yes' and @ns='http://fedramp.gov/ns/oscal'])]"
+        }, {
+          "var" : "system-implementation-users",
+          "expression" : "system-implementation/user"
+        }, {
+          "var" : "non-provider-user-has-function-performed",
+          "expression" : "count($system-implementation-users[@uuid = $non-authorized-components/responsible-role/prop[@name='privilege-uuid' and @ns='http://fedramp.gov/ns/oscal']/@value]/authorized-privilege/function-performed) >= 1"
+        }, {
+          "var" : "profile-is-available",
+          "expression" : "doc-available($resolved-import-profile-href)"
+        }, {
+          "var" : "resolved-profile",
+          "expression" : "if ($profile-is-available) then resolve-profile(doc(resolve-uri($resolved-import-profile-href)))//catalog else //catalog"
+        }, {
+          "var" : "imported-controls-map",
+          "expression" : "map:merge($resolved-profile//control ! map:entry(@id,.))?*"
+        }, {
+          "var" : "implemented-requirements-map",
+          "expression" : "map:merge(//implemented-requirement ! map:entry(@control-id,.))?*"
+        }, {
+          "var" : "required-parameters-map",
+          "expression" : "map:merge($resolved-profile//param[not(prop[@name='aggregates'])] ! map:entry(@id,.))?*"
+        }, {
+          "var" : "aggregate-parameters",
+          "expression" : "$resolved-profile//param[prop[@name='aggregates']]/@id"
+        }, {
+          "var" : "implemented-parameters-map",
+          "expression" : "map:merge(//set-parameter ! map:entry(@param-id,.))?*"
+        }, {
+          "var" : "implemented-statements-map",
+          "expression" : "map:merge(//statement ! map:entry(@statement-id,.))?*"
+        }, {
+          "var" : "required-response-points-map",
+          "expression" : "map:merge($resolved-profile//part[@name='statement' and (.//prop[@name='response-point'])] ! map:entry(@id,.))?*"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/back-matter"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "count(rlink[@href = 'https://www.fedramp.gov/assets/resources/templates/FedRAMP-Laws-Regulations-Standards-and-Guidance-Reference.xlsx']) eq 1",
+          "id" : "fedramp-citations-has-correct-link",
+          "message" : "The FedRAMP Laws, Regulations, Standards and Guidance MUST be https://www.fedramp.gov/assets/resources/templates/FedRAMP-Laws-Regulations-Standards-and-Guidance-Reference.xlsx",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/oscal-citations-and-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "resource[prop[@name='type' and @value='citation' and @class='fedramp-citations']]",
+          "formal-name" : "FedRAMP Citations Has Correct Link"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(resource[prop[@name eq 'type' and @value eq 'plan' and @class eq 'configuration-management-plan']])",
+          "id" : "has-configuration-management-plan",
+          "message" : "A FedRAMP SSP MUST have a Configuration Management Plan attached.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Configuration Management Plan"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(resource[prop[@name='type' and @value='citation' and @class='fedramp-citations']]) = 1",
+          "id" : "has-fedramp-citations",
+          "message" : "A FedRAMP MUST be have exactly one resource with a link to the FedRAMP Laws, Regulations, Standards and Guidance, but {count(resource[prop[@name='type' and @value='citation' and @class='fedramp-citations']])} found.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/oscal-citations-and-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has FedRAMP Citations Reference"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(resource[prop[@name eq 'type' and @value eq 'plan' and @class eq 'incident-response-plan']])",
+          "id" : "has-incident-response-plan",
+          "message" : "A FedRAMP SSP MUST have an Incident Response Plan attached.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Incident Response Plan"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(resource[prop[@name eq 'type' and @value eq 'plan' and @class eq 'information-system-contingency-plan']])",
+          "id" : "has-information-system-contingency-plan",
+          "message" : "A FedRAMP SSP MUST have a Contingency Plan attached.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Information System Contingency Plan"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(resource[prop[@name eq 'type' and @value eq 'rules-of-behavior']])",
+          "id" : "has-rules-of-behavior",
+          "message" : "A FedRAMP SSP MUST have Rules of Behavior.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Rules Of Behavior"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(resource[prop[@name eq 'type' and @value eq 'users-guide']])",
+          "id" : "has-user-guide",
+          "message" : "A FedRAMP SSP MUST have a User Guide attached.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has User Guide"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(./rlink) >= 1 or count(./base64) >= 1",
+          "id" : "resource-has-base64-or-rlink",
+          "level" : "WARNING",
+          "message" : "Every supporting artifact found in a citation MUST have at least one base64 or rlink element.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/oscal-citations-and-attachments/#including-multiple-rlink-and-base64-fields",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "resource",
+          "formal-name" : "Resource Has Base64 Or Rlink"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(title)",
+          "id" : "resource-has-title",
+          "level" : "WARNING",
+          "message" : "Every supporting artifact found in a citation SHOULD have a title.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/oscal-citations-and-attachments/#citation-and-attachment-details",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "resource",
+          "formal-name" : "Resource Has Title"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/control-implementation"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "not(exists(by-component))",
+          "id" : "misplaced-response-components",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP MUST identify how the system implements each control requirement implemented at the per-statement level, not in other locations allowed for non-FedRAMP use cases.",
+          "remarks" : {
+            "remark" : "NIST maintains OSCAL models that allow implemented requirements for controls to have references to the implementing components in multiple locations to support multiple use cases.\n\nDespite the flexibility of NIST's upstream OSCAL models, FedRAMP only accepts OSCAL-based SSPs with the reference in one of those locations, see `missing-response-components` for more details about this requirement.\n\nA constraint violation with this warning indicates a given SSP uses one of the valid locations for all NIST use cases, but not the only FedRAMP required location."
+          },
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#response-overview",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "implemented-requirement",
+          "formal-name" : "By-Component Reference for Implemented Requirements Misplaced"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(by-component) ge 1",
+          "id" : "missing-response-components",
+          "message" : "A FedRAMP SSP MUST identify how the system implements each control requirement implemented at the per-statement level and reference any component used to implement it.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#response-overview",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "implemented-requirement/statement",
+          "formal-name" : "By-Component Reference for Implemented Requirements Missing"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/metadata"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "count(/location/prop[@name eq 'type'][@value eq 'data-center'][@class eq 'alternate']) > 0",
+          "id" : "data-center-alternate",
+          "message" : "There MUST be one or more alternate data center(s).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-centers",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Data Center Alternate"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(/location/prop[@name eq 'type'][@value eq 'data-center']) > 1",
+          "id" : "data-center-count",
+          "message" : "There MUST be at least two (2) data centers listed.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-centers",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Data Center Count"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(address/country) eq 1",
+          "id" : "data-center-country-code",
+          "message" : "Each data center address MUST contain a country code.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-centers",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "location[prop[@name='type' and @value='data-center']]",
+          "formal-name" : "Data Center Has Country Code"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(/location/prop[@name eq 'type'][@value eq 'data-center'][@class eq 'primary']) = 1",
+          "id" : "data-center-primary",
+          "message" : "There MUST be a single primary data center.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-centers",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Data Center Primary"
+        }, {
+          "object-type" : "expect",
+          "test" : "address/country eq 'US'",
+          "id" : "data-center-us",
+          "message" : "Each data center MUST have an address that is within the United States.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-centers",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "location[prop[@name='type' and @value='data-center']]",
+          "formal-name" : "Data Center In United States"
+        }, {
+          "object-type" : "index",
+          "name" : "index-person-party-uuid",
+          "description" : "This index is a list of the UUIDs of all of the parties that are type \"person\" in the document.",
+          "key-fields" : [ {
+            "target" : "@uuid"
+          } ],
+          "formal-name" : "Index of parties of type \"person\".",
+          "target" : "map:merge(party[@type='person'] ! map:entry(@uuid,.))?*"
+        }, {
+          "object-type" : "index-has-key",
+          "message" : "For roles 'system-owner' and 'information-system-security-officer', the responsible-role party MUST be a party of type 'person'.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#summary-of-ssp-roles-requirements",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "name" : "index-person-party-uuid",
+          "key-fields" : [ {
+            "target" : "party-uuid"
+          } ],
+          "formal-name" : "Responsible Party Is Person",
+          "id" : "responsible-party-is-person",
+          "target" : "./responsible-party[(@role-id='system-owner') or (@role-id='information-system-security-officer')]"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(responsible-party[@role-id eq 'prepared-by'])",
+          "id" : "responsible-party-prepared-by",
+          "message" : "A FedRAMP SSP MUST have a responsible party that defines which party performs the role of preparing the document.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-csp-self-prepared",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Responsible Party Prepared By"
+        }, {
+          "object-type" : "expect",
+          "test" : "($prepared-by-party/address[@type='work'] and $prepared-by-party/address/addr-line and $prepared-by-party/address/city and $prepared-by-party/address/state and $prepared-by-party/address/postal-code) or ($prepared-by-location/address[@type='work'] and $prepared-by-location/address/addr-line and $prepared-by-location/address/city and $prepared-by-location/address/state and $prepared-by-location/address/postal-code)",
+          "id" : "responsible-party-prepared-by-location-valid",
+          "message" : "A FedRAMP SSP MUST have a responsible party for preparing the document, and that party MUST define an address.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-csp-self-prepared",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Responsible Party Prepared By Location Valid"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(responsible-party[@role-id eq 'prepared-for'])",
+          "id" : "responsible-party-prepared-for",
+          "message" : "A FedRAMP SSP MUST have a responsible party that defines the party for whom the document was prepared.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-for-csp",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Responsible Party Prepared For"
+        }, {
+          "object-type" : "expect",
+          "test" : "($prepared-for-party/address[@type='work'] and $prepared-for-party/address/addr-line and $prepared-for-party/address/city and $prepared-for-party/address/state and $prepared-for-party/address/postal-code) or ($prepared-for-location/address[@type='work'] and $prepared-for-location/address/addr-line and $prepared-for-location/address/city and $prepared-for-location/address/state and $prepared-for-location/address/postal-code)",
+          "id" : "responsible-party-prepared-for-location-valid",
+          "message" : "A FedRAMP SSP MUST define the address of the responsible party for whom the document was prepared.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-for-csp",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Responsible Party Prepared For Location Valid"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(role[@id eq 'authorizing-official-poc'])",
+          "id" : "role-defined-authorizing-official-poc",
+          "message" : "A FedRAMP SSP MUST define a role for the point of contact for an authorizing official.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Role Defined Authorizing Official POC"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(role[@id eq 'information-system-security-officer'])",
+          "id" : "role-defined-information-system-security-officer",
+          "message" : "A FedRAMP SSP MUST define a role for the point of contact for an information system security officer.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#assignment-of-security-responsibilities",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Role Defined Information System Security Officer"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(role[@id eq 'prepared-by'])",
+          "id" : "role-defined-prepared-by",
+          "message" : "A FedRAMP SSP MUST define a role for preparing this document.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-by-csp-self-prepared",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Role Defined Prepared By"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(role[@id eq 'prepared-for'])",
+          "id" : "role-defined-prepared-for",
+          "message" : "A FedRAMP SSP MUST define a role for which the document was prepared.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#prepared-for-csp",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Role Defined Prepared For"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(role[@id eq 'system-owner'])",
+          "id" : "role-defined-system-owner",
+          "message" : "A FedRAMP SSP MUST define the system owner role.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#information-system-owner",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Role Defined System Owner"
+        } ],
+        "lets" : [ {
+          "var" : "prepared-by-responsible-party-party-uuid",
+          "expression" : "responsible-party[@role-id eq 'prepared-by']/party-uuid"
+        }, {
+          "var" : "prepared-by-party",
+          "expression" : "//party[@uuid eq $prepared-by-responsible-party-party-uuid]"
+        }, {
+          "var" : "prepared-by-party-location-uuid",
+          "expression" : "//party[@uuid eq $prepared-by-responsible-party-party-uuid]/location-uuid"
+        }, {
+          "var" : "prepared-by-location",
+          "expression" : "//location[@uuid eq $prepared-by-party-location-uuid]"
+        }, {
+          "var" : "prepared-for-responsible-party-party-uuid",
+          "expression" : "responsible-party[@role-id eq 'prepared-for']/party-uuid"
+        }, {
+          "var" : "prepared-for-party",
+          "expression" : "//party[@uuid eq $prepared-for-responsible-party-party-uuid]"
+        }, {
+          "var" : "prepared-for-party-location-uuid",
+          "expression" : "//party[@uuid eq $prepared-for-responsible-party-party-uuid]/location-uuid"
+        }, {
+          "var" : "prepared-for-location",
+          "expression" : "//location[@uuid eq $prepared-for-party-location-uuid]"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-characteristics"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "@system eq 'https://doi.org/10.6028/NIST.SP.800-60v2r1'",
+          "id" : "categorization-has-correct-system-attribute",
+          "message" : "A FedRAMP SSP information-type categorization MUST have a correct system attribute. FedRAMP only supports the system value 'https://doi.org/10.6028/NIST.SP.800-60v2r1'.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type/categorization",
+          "formal-name" : "Categorization Has Correct System Attribute"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(information-type-id)",
+          "id" : "categorization-has-information-type-id",
+          "message" : "A FedRAMP SSP information type categorization MUST have at least one information type identifier.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type/categorization",
+          "formal-name" : "Categorization Has Information Type ID"
+        }, {
+          "object-type" : "expect",
+          "test" : "if (base ne selected) then exists(adjustment-justification) else true()",
+          "id" : "cia-impact-has-adjustment-justification",
+          "message" : "When SP 800-60 base and selected impacts levels differ for a given information type, the SSP MUST include a justification for the difference.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type/(confidentiality-impact | integrity-impact | availability-impact)",
+          "formal-name" : "Cia Impact Has Adjustment Justification"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(selected)",
+          "id" : "cia-impact-has-selected",
+          "message" : "A FedRAMP SSP information type confidentiality, integrity, or availability impact MUST specify the selected impact.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type/(confidentiality-impact | integrity-impact | availability-impact)",
+          "formal-name" : "Cia Impact Has Selected"
+        }, {
+          "object-type" : "expect",
+          "test" : ". <= current-dateTime()",
+          "id" : "fully-operational-date-is-valid",
+          "message" : "A system MUST be fully implemented prior to submitting the SSP to FedRAMP.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-status",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "prop[@ns='http://fedramp.gov/ns/oscal' and @name='fully-operational-date']/@value",
+          "formal-name" : "Fully Operational Date Is Valid"
+        }, {
+          "object-type" : "matches",
+          "message" : "A FedRAMP SSP MUST specify the system's fully operational data as a \"full-date\" per RFC3339 with the addition of a timezone.",
+          "datatype" : "date-with-timezone",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-status",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "formal-name" : "Fully Operational Date Type",
+          "id" : "fully-operational-date-type",
+          "target" : "prop[@ns='http://fedramp.gov/ns/oscal' and @name='fully-operational-date']/@value"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name eq 'authenticator-assurance-level'])",
+          "id" : "has-authenticator-assurance-level",
+          "message" : "A FedRAMP SSP MUST define its NIST SP 800-63 authenticator assurance level (AAL).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Authenticator Assurance Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(diagram)",
+          "id" : "has-authorization-boundary-diagram",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP MUST have at least one authorization boundary diagram.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "authorization-boundary",
+          "formal-name" : "Has Authorization Boundary Diagram"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(caption)",
+          "id" : "has-authorization-boundary-diagram-caption",
+          "message" : "Each FedRAMP SSP authorization boundary diagram MUST have a caption.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "authorization-boundary/diagram",
+          "formal-name" : "Has Authorization Boundary Diagram Caption"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(description)",
+          "id" : "has-authorization-boundary-diagram-description",
+          "message" : "A FedRAMP SSP document authorization boundary diagram MUST have a description.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "authorization-boundary/diagram",
+          "formal-name" : "Has Authorization Boundary Diagram Description"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(link)",
+          "id" : "has-authorization-boundary-diagram-link",
+          "message" : "Each FedRAMP SSP authorization boundary diagram MUST have a link.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "authorization-boundary/diagram",
+          "formal-name" : "Has Authorization Boundary Diagram Link"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(@rel)",
+          "id" : "has-authorization-boundary-diagram-link-rel",
+          "message" : "Each FedRAMP SSP authorization boundary diagram MUST have a link rel attribute.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "authorization-boundary/diagram/link",
+          "formal-name" : "Has Authorization Boundary Diagram Link Rel"
+        }, {
+          "object-type" : "expect",
+          "test" : "@rel eq 'diagram'",
+          "id" : "has-authorization-boundary-diagram-link-rel-allowed-value",
+          "message" : "Each FedRAMP SSP authorization boundary diagram MUST have a link rel attribute with the value \"diagram\".",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "authorization-boundary/diagram/link",
+          "formal-name" : "Has Authorization Boundary Diagram Link Rel Allowed Value"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name eq 'cloud-deployment-model'])",
+          "id" : "has-cloud-deployment-model",
+          "message" : "A FedRAMP SSP MUST define a cloud deployment model.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#deployment-model",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Cloud Deployment Model"
+        }, {
+          "object-type" : "expect",
+          "test" : "if (count(prop[@name eq 'cloud-deployment-model']) > 1) then every $p in prop[@name eq 'cloud-deployment-model'] satisfies exists($p/remarks) else every $p in prop[@name eq 'cloud-deployment-model' and @value eq 'other'] satisfies exists($p/remarks)",
+          "id" : "has-cloud-deployment-model-remarks",
+          "message" : "A FedRAMP SSP with more than one cloud deployment model or a cloud deployment model of \"other\" MUST supply remarks to clarify this selection.",
+          "remarks" : {
+            "remark" : "A FedRAMP SSP MUST use precise classifications for cloud deployment models. It MUST NOT use generic classifications like \"hybrid-cloud\"."
+          },
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#deployment-model",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Cloud Deployment Model Remarks"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name eq 'cloud-service-model'])",
+          "id" : "has-cloud-service-model",
+          "message" : "A FedRAMP SSP MUST define a cloud service model.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#service-model",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Cloud Service Model"
+        }, {
+          "object-type" : "expect",
+          "test" : "every $p in prop[@name eq 'cloud-service-model' and @value eq 'other'] satisfies exists($p/remarks)",
+          "id" : "has-cloud-service-model-remarks",
+          "message" : "A FedRAMP SSP with a cloud service model of \"other\" MUST supply remarks to explain this choice.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#service-model",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Cloud Service Model Remarks"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(data-flow)",
+          "id" : "has-data-flow",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP MUST include a data flow section.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Data Flow"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(description)",
+          "id" : "has-data-flow-description",
+          "message" : "An OSCAL SSP document with a data flow MUST have a description.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow",
+          "formal-name" : "Has Data Flow Description"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(diagram)",
+          "id" : "has-data-flow-diagram",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP MUST have at least one data flow diagram.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow",
+          "formal-name" : "Has Data Flow Diagram"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(caption)",
+          "id" : "has-data-flow-diagram-caption",
+          "message" : "Each FedRAMP SSP data flow diagram MUST have a caption.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow/diagram",
+          "formal-name" : "Has Data Flow Diagram Caption"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(description)",
+          "id" : "has-data-flow-diagram-description",
+          "message" : "Each FedRAMP SSP data flow diagram MUST have a description.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow/diagram",
+          "formal-name" : "Has Data Flow Diagram Description"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(link)",
+          "id" : "has-data-flow-diagram-link",
+          "message" : "Each FedRAMP SSP data flow diagram MUST have a link.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow/diagram",
+          "formal-name" : "Has Data Flow Diagram Link"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(@rel)",
+          "id" : "has-data-flow-diagram-link-rel",
+          "message" : "Each FedRAMP SSP data flow diagram MUST have a link rel attribute.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow/diagram/link",
+          "formal-name" : "Has Data Flow Diagram Link Rel"
+        }, {
+          "object-type" : "expect",
+          "test" : "@rel eq 'diagram'",
+          "id" : "has-data-flow-diagram-link-rel-allowed-value",
+          "message" : "Each FedRAMP SSP data flow diagram MUST have a link rel attribute with the value \"diagram\".",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow/diagram/link",
+          "formal-name" : "Has Data Flow Diagram Link Rel Allowed Value"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(@uuid)",
+          "id" : "has-data-flow-diagram-uuid",
+          "message" : "An OSCAL SSP document with a data flow diagram MUST have a unique identifier.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "data-flow/diagram",
+          "formal-name" : "Has Data Flow Diagram Uuid"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name eq 'federation-assurance-level'])",
+          "id" : "has-federation-assurance-level",
+          "message" : "A FedRAMP SSP MUST define its NIST SP 800-63 federation assurance level (FAL).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Federation Assurance Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@ns='http://fedramp.gov/ns/oscal' and @name='fully-operational-date'])",
+          "id" : "has-fully-operational-date",
+          "message" : "A FedRAMP SSP MUST define the system's fully operational date.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-status",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Fully Operational Date"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name eq 'identity-assurance-level'])",
+          "id" : "has-identity-assurance-level",
+          "message" : "A FedRAMP SSP MUST define its NIST SP 800-63 identity assurance level (IAL).",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#digital-identity-level-dil-determination",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Identity Assurance Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(network-architecture)",
+          "id" : "has-network-architecture",
+          "message" : "A FedRAMP SSP MUST include a network architecture.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Network Architecture"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(diagram)",
+          "id" : "has-network-architecture-diagram",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP MUST have at least one network architecture diagram.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "network-architecture",
+          "formal-name" : "Has Network Architecture Diagram"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(caption)",
+          "id" : "has-network-architecture-diagram-caption",
+          "message" : "Each FedRAMP SSP network architecture diagram MUST have a caption.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "network-architecture/diagram",
+          "formal-name" : "Has Network Architecture Diagram Caption"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(description)",
+          "id" : "has-network-architecture-diagram-description",
+          "message" : "Each FedRAMP SSP network architecture diagram MUST have a description.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "network-architecture/diagram",
+          "formal-name" : "Has Network Architecture Diagram Description"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(link)",
+          "id" : "has-network-architecture-diagram-link",
+          "message" : "Each FedRAMP SSP network architecture diagram MUST have a link.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "network-architecture/diagram",
+          "formal-name" : "Has Network Architecture Diagram Link"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(@rel)",
+          "id" : "has-network-architecture-diagram-link-rel",
+          "message" : "Each FedRAMP SSP network architecture diagram MUST have a link rel attribute.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "network-architecture/diagram/link",
+          "formal-name" : "Has Network Architecture Diagram Link Rel"
+        }, {
+          "object-type" : "expect",
+          "test" : "@rel eq 'diagram'",
+          "id" : "has-network-architecture-diagram-link-rel-allowed-value",
+          "message" : "Each FedRAMP SSP network architecture diagram MUST have a link rel attribute with the value \"diagram\".",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "network-architecture/diagram/link",
+          "formal-name" : "Has Network Architecture Diagram Link Rel Allowed Value"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(security-impact-level)",
+          "id" : "has-security-impact-level",
+          "message" : "A FedRAMP SSP document MUST specify a security impact level.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Security Impact Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(security-sensitivity-level)",
+          "id" : "has-security-sensitivity-level",
+          "message" : "A FedRAMP SSP document MUST specify a FIPS 199 categorization.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Security Sensitivity Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(system-id[@identifier-type eq 'http://fedramp.gov/ns/oscal'])",
+          "id" : "has-system-id",
+          "message" : "A FedRAMP SSP MUST have a FedRAMP system identifier.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-name-abbreviation-and-fedramp-unique-identifier",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has System Id"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(system-name-short)",
+          "id" : "has-system-name-short",
+          "message" : "A FedRAMP SSP MUST have a short system name.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-name-abbreviation-and-fedramp-unique-identifier",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has System Name Short"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(availability-impact)",
+          "id" : "information-type-has-availability-impact",
+          "message" : "A FedRAMP SSP information type MUST have an availability impact.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type",
+          "formal-name" : "Information Type Has Availability Impact"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(confidentiality-impact)",
+          "id" : "information-type-has-confidentiality-impact",
+          "message" : "A FedRAMP SSP information type MUST have a confidentiality impact.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type",
+          "formal-name" : "Information Type Has Confidentiality Impact"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(integrity-impact)",
+          "id" : "information-type-has-integrity-impact",
+          "message" : "A FedRAMP SSP information type MUST have an integrity impact.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "system-information/information-type",
+          "formal-name" : "Information Type Has Integrity Impact"
+        }, {
+          "object-type" : "expect",
+          "test" : "if ($is-saas) then (count(..//leveraged-authorization) >= 1) else (true())",
+          "id" : "saas-has-leveraged-authorization",
+          "message" : "A FedRAMP SSP that defines a SaaS cloud service model MUST define at least one leveraged authorization.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "SaaS Has Leveraged Authorization"
+        }, {
+          "object-type" : "expect",
+          "test" : ". eq $security-impact-level",
+          "id" : "security-sensitivity-level-matches-security-impact-level",
+          "level" : "WARNING",
+          "message" : "A FedRAMP SSP SHOULD define its FIPS-199 security sensitivity level to match the highest security impact level for the system's confidentiality, integrity, and availability objectives.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-sensitivity-level",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "security-sensitivity-level",
+          "formal-name" : "Security Sensitivity Level Matches Security Impact Level"
+        } ],
+        "lets" : [ {
+          "var" : "is-saas",
+          "expression" : "exists(prop[@name='cloud-service-model' and @value='saas'])"
+        }, {
+          "var" : "security-impact-level",
+          "expression" : "if (//security-impact-level//* = 'fips-199-high')                     then ('fips-199-high')                 else if (//security-impact-level//* = 'fips-199-moderate')                     then ('fips-199-moderate')                 else ('fips-199-low')"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "//(component | inventory-item)"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "matches",
+          "message" : "When the end-of-life-date property is present, it MUST be in date format.",
+          "datatype" : "date",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "formal-name" : "End of Life Date Type",
+          "id" : "end-of-life-date-type",
+          "target" : "prop[@ns='http://fedramp.gov/ns/oscal' and @name='end-of-life-date']/@value"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-implementation"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "count(./prop[@name='authentication-method' and @ns='http://fedramp.gov/ns/oscal'])  = count(./prop[@name='authentication-method' and @ns='http://fedramp.gov/ns/oscal']/remarks)",
+          "id" : "authentication-method-has-remarks",
+          "message" : "Each authentication method in a FedRAMP SSP MUST have a remarks field.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//component[(@type='system' and ./prop[@name='leveraged-authorization-uuid']) or (@type='service' and not(./prop[@name='leveraged-authorization-uuid']) and ./prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type='service' and ./prop[@name='implementation-point' and @value='internal'] and ./prop[@name='direction']) or (@type='software' and ./prop[@name='asset-type' and @value='cli'] and ./prop[@name='direction'])]",
+          "formal-name" : "Authentication Method Has Remarks"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='diagram-label' and @ns='http://fedramp.gov/ns/oscal']) = 1",
+          "id" : "component-has-diagram-label",
+          "message" : "In a FedRAMP SSP, each hardware, software, service, and interconnection component MUST include the diagram label.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "component[not(@uuid=$inventory-linked-component-uuids) and @type=('hardware', 'software', 'service', 'interconnection')]",
+          "formal-name" : "Component Has Diagram Label"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(link[@rel='used-by']) >= 1",
+          "id" : "component-has-used-by-link",
+          "message" : "A FedRAMP SSP's component MUST identify which other components use it via network communication. Component \"{ @uuid }\" exposes ports for other components to connect, but does not identify which components use it.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#ports-protocols-and-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "component[protocol]",
+          "formal-name" : "Component Has Used-By Link"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(inventory-item) >= 2",
+          "id" : "has-inventory-items",
+          "message" : "A FedRAMP SSP system implementation section MUST have at least two inventory items.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "System Implementation Has Inventory Items"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(./prop[@name='checksum' and @ns='http://fedramp.gov/ns/oscal']) = 1",
+          "id" : "image-has-checksum",
+          "message" : "In a FedRAMP SSP, a component that describes a container or operating system image MUST define a checksum property.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//component[@type='software' and ./prop[@name='asset-type' and @value='image']]",
+          "formal-name" : "Container Image Has Checksum Property"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(@class)",
+          "id" : "information-type-has-class",
+          "message" : "In a FedRAMP SSP, each information type property in a component MUST categorize the class of data flow as incoming to the system, outgoing from the system, or both.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "component/prop[@name='information-type' and @ns='http://fedramp.gov/ns/oscal']",
+          "formal-name" : "Information Type Has Class"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='information-type' and @ns='http://fedramp.gov/ns/oscal']) >= 1",
+          "id" : "inter-boundary-component-has-information-type",
+          "message" : "An inter-boundary communication component {@uuid} ({path(.)}) MUST have at least one information-type property.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#system-information-and-information-types",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "$inter-boundary-component",
+          "formal-name" : "Inter-Boundary Component Has Information Type"
+        }, {
+          "object-type" : "expect",
+          "test" : "prop[@name='information-type' and @ns='http://fedramp.gov/ns/oscal']/@class => exists()",
+          "id" : "inter-boundary-component-information-type-has-class-attribute",
+          "message" : "In a FedRAMP SSP, the information type of an inter-boundary communication component MUST include the network traffic direction.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#external-systems-and-services-not-having-fedramp-authorization",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "$inter-boundary-component",
+          "formal-name" : "Inter-Boundary Component's Information Type Has @class Attribute"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='public']) = 1",
+          "id" : "inventory-item-and-component-has-public",
+          "message" : "In a FedRAMP SSP, each inventory item and internal service component MUST state if they are public-facing.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "(inventory-item | component[@type='service' and prop[@name='implementation-point' and @value='internal']])",
+          "formal-name" : "Inventory Item and Component Has Public"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='asset-id']) = 1",
+          "id" : "inventory-item-or-component-has-asset-id",
+          "message" : "In a FedRAMP SSP, each inventory item and software image component MUST include the asset ID.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "(inventory-item)| (component[@type='software' and prop[@name='asset-type' and @value='image']])",
+          "formal-name" : "Inventory Item or Component Has Asset ID"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='authorization-type'][@ns='http://fedramp.gov/ns/oscal']) = 1",
+          "id" : "leveraged-authorization-has-authorization-type",
+          "message" : "A FedRAMP SSP MUST define exactly one authorization type for each leveraged authorization entry.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "leveraged-authorization",
+          "formal-name" : "Leveraged Authorization Has Authorization Type"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='impact-level'][@ns='http://fedramp.gov/ns/oscal']) = 1",
+          "id" : "leveraged-authorization-has-impact-level",
+          "message" : "A FedRAMP SSP MUST define exactly one impact level for each leveraged authorization entry.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "leveraged-authorization",
+          "formal-name" : "Leveraged Authorization Has Impact Level"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='leveraged-system-identifier'][@ns='http://fedramp.gov/ns/oscal']) = 1",
+          "id" : "leveraged-authorization-has-system-identifier",
+          "message" : "A FedRAMP SSP MUST define exactly one system identifier for each leveraged authorization entry.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "leveraged-authorization",
+          "formal-name" : "Leveraged Authorization Has System Identifier"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(./prop[@name='connection-security' and @ns='http://fedramp.gov/ns/oscal']) >= 1",
+          "id" : "network-component-has-connection-security-prop",
+          "message" : "All network components in a FedRAMP SSP system implementation MUST define at least one interconnection security property.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#ports-protocols-and-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "//component[(@type='service' and not(./prop[@name='leveraged-authorization-uuid']) and ./prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type='service' and ./prop[@name='implementation-point' and @value='internal'] and ./prop[@name='direction']) or (@type='software' and ./prop[@name='asset-type' and @value='cli'] and ./prop[@name='direction'])]",
+          "formal-name" : "Network Component Has Connection Security Property"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(./prop[@name='implementation-point']) = 1",
+          "id" : "network-component-has-implementation-point",
+          "message" : "A FedRAMP SSP with service components and CLI software components performing cross-boundary network communication MUST indicate exactly one time if the point of implementation is internal or external to the system.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#leveraged-fedramp-authorized-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "component[@type='service' or (@type='software' and ./prop[@name='asset-type' and @value='cli'])]",
+          "formal-name" : "Component Has Implementation Point"
+        }, {
+          "object-type" : "is-unique",
+          "key-fields" : [ {
+            "target" : "@value"
+          } ],
+          "id" : "unique-inventory-item-asset-id",
+          "remarks" : {
+            "remark" : "A FedRAMP SSP's inventory item MUST have an Asset ID that is unique across all inventory items in the system and its components."
+          },
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "inventory-item/prop[@name='asset-id']",
+          "formal-name" : "Unique Asset Identifier",
+          "description" : "Ensure each inventory item has a unique asset-id property."
+        }, {
+          "object-type" : "expect",
+          "test" : "some $uuid in ../../component/@uuid satisfies $uuid = substring-after(@href, '#')",
+          "id" : "used-by-link-references-component",
+          "message" : "A FedRAMP SSP's component MUST reference the existing component(s) that use it via network communication. However, component \"{../@uuid}\" references a nonexistent component \"{@href}\".",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#ports-protocols-and-services",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "component[protocol]/link[@rel='used-by']",
+          "formal-name" : "Used-By Link References Component"
+        } ],
+        "lets" : [ {
+          "var" : "inter-boundary-component",
+          "expression" : "component[(@type=('service','software') and not(prop[@name='leveraged-authorization-uuid']) and prop[@name='implementation-point' and @value='external']) or (@type='interconnection') or (@type=('service','software') and prop[@name='implementation-point' and @value='internal'] and (prop[@name='communicates-externally' and @value='yes' and @ns='http://fedramp.gov/ns/oscal']))]"
+        }, {
+          "var" : "inventory-linked-component-uuids",
+          "expression" : "inventory-item/implemented-component/@component-uuid"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-implementation/inventory-item"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "if ($high-sensitivity or $moderate-sensitivity) then exists(remarks) else true()",
+          "id" : "authenticated-scan-no-has-remarks",
+          "message" : "A FedRAMP SSP MUST provide justification for any high or moderate impact system inventory item that does not support authenticated scans.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "prop[@name='allows-authenticated-scan' and @value='no']",
+          "formal-name" : "Authenticated Scan No Has Remarks"
+        }, {
+          "object-type" : "expect",
+          "test" : "if ($high-sensitivity) then count(./responsible-party[@role-id=('asset-owner', 'asset-administrator')] | $implemented-component/responsible-role[@role-id=('asset-owner', 'asset-administrator')][count(party[@uuid=./party-uuid]) >= 1]) >= 1 else true()",
+          "id" : "high-impact-inventory-item-has-asset-owner",
+          "message" : "For HIGH-impact systems, every inventory-item MUST identify an asset-owner or administrator property either within the inventory-item itself, or within the component linked by the inventory-item.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "High Impact Inventory Item Has Asset Owner"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='asset-type' ]) = 1 or count(../component[@uuid=$component-uuid]/prop[@name='asset-type' ]) = 1",
+          "id" : "inventory-item-has-asset-type",
+          "message" : "In a FedRAMP SSP, each inventory item MUST define the asset type either in the inventory item itself or within the linked component.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Inventory Item Has Asset-Type"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='diagram-label' and @ns='http://fedramp.gov/ns/oscal']) >= 1 or count(../component[@uuid=$component-uuid]/prop[@name='diagram-label' and @ns='http://fedramp.gov/ns/oscal']) >= 1",
+          "id" : "inventory-item-has-diagram-label",
+          "message" : "In a FedRAMP SSP, each inventory item MUST include the diagram label either in the inventory item itself or within the linked component.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Inventory Item Has Diagram Label"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name='function']/remarks) or exists($implemented-component/prop[@name='function']/remarks)",
+          "id" : "inventory-item-has-function",
+          "message" : "Every inventory-item MUST provide remarks to describe the function of the item, either within the inventory-item itself, or within the component linked by the inventory-item.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Inventory Item Has Function"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='is-scanned']) = 1 or count(../component[@uuid=$component-uuid]/prop[@name='is-scanned']) = 1",
+          "id" : "inventory-item-has-is-scanned",
+          "message" : "In a FedRAMP SSP, each inventory item MUST state if it is included in scans either in the inventory item itself or within the linked component.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Inventory Item Has Is-Scanned"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='scan-type' and @ns='http://fedramp.gov/ns/oscal']) >= 1 or count($implemented-component/prop[@name='scan-type' and @ns='http://fedramp.gov/ns/oscal']) >= 1",
+          "id" : "inventory-item-has-scan-type",
+          "message" : "Every inventory-item MUST indicate one or more scan type(s), either within the inventory-item itself, or within the component linked by the inventory-item.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Inventory Item Has Scan Type"
+        }, {
+          "object-type" : "expect",
+          "test" : "matches(@value, '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\\\.[0-9a-fA-F]{4}\\\\.[0-9a-fA-F]{4})$')",
+          "id" : "inventory-item-has-valid-mac-address",
+          "message" : "In a FedRAMP SSP, each inventory item that has a MAC address MUST format the MAC address correctly.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[prop[@name='mac-address']]/prop[@name='mac-address']",
+          "formal-name" : "Inventory Item Has Valid Mac Address"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='vendor-name' and @ns='http://fedramp.gov/ns/oscal']) >= 1 or count(../component[@uuid=$component-uuid]/prop[@name='vendor-name' and @ns='http://fedramp.gov/ns/oscal']) >= 1",
+          "id" : "inventory-item-has-vendor-name",
+          "message" : "In a FedRAMP SSP, each inventory item MUST include the vendor name in the inventory item itself or within the linked component.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[../component[@uuid=$component-uuid and @type=('hardware','software')]]",
+          "formal-name" : "Inventory Item Has Vendor Name"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(prop[@name='virtual']) = 1 or count(../component[@uuid=$component-uuid]/prop[@name='virtual']) = 1",
+          "id" : "inventory-item-or-component-has-virtual",
+          "message" : "In a FedRAMP SSP, each inventory item MUST state if it is virtual in the inventory item itself or the linked component.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Inventory Item or Component Has Virtual"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(remarks)",
+          "id" : "scan-type-has-remarks",
+          "message" : "When scan-type is 'other' or 'not-applicable', remarks MUST be provided to explain the selection.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#system-inventory-approach",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "..//prop[@name='scan-type' and @ns='http://fedramp.gov/ns/oscal' and @value=('other','not-applicable')]",
+          "formal-name" : "Scan Type Has Remarks"
+        } ],
+        "lets" : [ {
+          "var" : "high-sensitivity",
+          "expression" : "../../system-characteristics/security-sensitivity-level='fips-199-high'"
+        }, {
+          "var" : "moderate-sensitivity",
+          "expression" : "../../system-characteristics/security-sensitivity-level='fips-199-moderate'"
+        }, {
+          "var" : "component-uuid",
+          "expression" : "implemented-component/@component-uuid"
+        }, {
+          "var" : "implemented-component",
+          "expression" : "../component[@uuid=$component-uuid]"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/(assessment-plan|assessment-results|plan-of-action-and-milestones|system-security-plan)/metadata"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name='fedramp-version'][@ns='http://fedramp.gov/ns/oscal'])",
+          "id" : "fedramp-version",
+          "message" : "A FedRAMP document's metadata MUST define a valid FedRAMP version.",
+          "remarks" : {
+            "remark" : "All documents in a digital authorization package for FedRAMP must specify the version that identifies which FedRAMP policies, guidance, and technical specifications its authors used during the creation and maintenance of the package.\n\nFedRAMP maintains an official list of the versions on [the fedramp-automation releases page](https://github.com/GSA/fedramp-automation/releases). Unless noted otherwise, a valid version is [a published tag name](https://github.com/GSA/fedramp-automation/tags)."
+          },
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#fedramp-version",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Fedramp Version"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(published)",
+          "id" : "has-published-date",
+          "message" : "All documents submitted to FedRAMP MUST define a valid publication date.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/#title-page",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Has Published Date"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(prop[@name='marking'])",
+          "id" : "marking",
+          "message" : "A FedRAMP document MUST have a marking that defines its data classification.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/4-expressing-common-fedramp-template-elements-in-oscal/",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "FedRAMP data sensitivity classification identifier."
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/(assessment-plan|assessment-results|plan-of-action-and-milestones|system-security-plan)/metadata/party"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "exists(name)",
+          "id" : "party-has-name",
+          "message" : "Every FedRAMP document MUST define a party with a name.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/general-concepts/oscal-metadata/#working-with-party-assemblies",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Party Has a Name"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/control-implementation/implemented-requirement/statement"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "some $uuid in $component-uuid satisfies count(../../../system-implementation/component[@uuid=$component-uuid and @type='policy']) >= 1",
+          "id" : "has-policy",
+          "message" : "In a FedRAMP SSP, {$policy-messages(./@statement-id)}",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#organization-policy-and-procedure-statements",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[@statement-id=$control-statement-ids]",
+          "formal-name" : "Has Policy"
+        }, {
+          "object-type" : "expect",
+          "test" : "some $uuid in $component-uuid satisfies count(../../../system-implementation/component[@uuid=$component-uuid and @type='process-procedure']) >= 1",
+          "id" : "has-procedure",
+          "message" : "In a FedRAMP SSP, {$procedure-messages(./@statement-id)}",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#organization-policy-and-procedure-statements",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[@statement-id=$control-statement-ids]",
+          "formal-name" : "Has Procedure"
+        }, {
+          "object-type" : "expect",
+          "test" : "count(../../../system-implementation/component[@type='this-system' and @uuid=$component-uuid]) = 1",
+          "id" : "statement-has-this-system-component",
+          "message" : "In a FedRAMP SSP, each control implementation statement MUST have one \"this-system\" by-component.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#response-this-system-component",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "Statement Has This System Component"
+        } ],
+        "lets" : [ {
+          "var" : "control-statement-ids",
+          "expression" : "('ac-1_smt.a', 'at-1_smt.a', 'au-1_smt.a', 'ca-1_smt.a', 'cm-1_smt.a', 'cp-1_smt.a', 'ia-1_smt.a', 'ir-1_smt.a', 'ma-1_smt.a', 'mp-1_smt.a', 'pe-1_smt.a', 'pl-1_smt.a', 'ps-1_smt.a', 'ra-1_smt.a', 'sa-1_smt.a', 'sc-1_smt.a', 'si-1_smt.a', 'sr-1_smt.a')"
+        }, {
+          "var" : "component-uuid",
+          "expression" : "by-component/@component-uuid"
+        }, {
+          "var" : "policy-messages",
+          "expression" : "map{'ac-1_smt.a' : 'a policy that addresses Access Control MUST be associated with AC-1 part a.',              'at-1_smt.a' : 'a policy that addresses Awareness and Training MUST be associated with AT-1 part a.',              'au-1_smt.a' : 'a policy that addresses Audit and Accountability MUST be associated with AU-1 part a.',              'ca-1_smt.a' : 'a policy that addresses Assessment, Authorization, and Monitoring MUST be associated with CA-1 part a.',              'cm-1_smt.a' : 'a policy that addresses Configuration Management MUST be associated with CM part a.',              'cp-1_smt.a' : 'a policy that addresses Contingency Planning MUST be associated with CP-1 part a.',             'ia-1_smt.a' : 'a policy that addresses Identification and Authentication MUST be associated with ACIA1 part a.',             'ir-1_smt.a' : 'a policy that addresses Incident Response MUST be associated with IR-1 part a.',             'ma-1_smt.a' : 'a policy that addresses Maintenance MUST be associated with MA-1 part a.',             'mp-1_smt.a' : 'a policy that addresses Media Protection MUST be associated with MP-1 part a.',             'pe-1_smt.a' : 'a policy that addresses Physical and Environmental Protection MUST be associated with PE-1 part a.',             'pl-1_smt.a' : 'a policy that addresses Planning MUST be associated with PL-1 part a.',             'ps-1_smt.a' : 'a policy that addresses Personnel Security MUST be associated with PS-1 part a.',             'ra-1_smt.a' : 'a policy that addresses Risk Assessment MUST be associated with RA-1 part a.',             'sa-1_smt.a' : 'a policy that addresses System and Services Acquisition MUST be associated with SA-1 part a.',             'sc-1_smt.a' : 'a policy that addresses System and Communications Protection MUST be associated with SC-1 part a.',             'si-1_smt.a' : 'a policy that addresses System and Information Integrity MUST be associated with SI-1 part a.',             'sr-1_smt.a' : 'a policy that addresses Supply Chain Risk Management MUST be associated with SR-1 part a.'}"
+        }, {
+          "var" : "procedure-messages",
+          "expression" : "map{'ac-1_smt.a' : 'at least one procedure that addresses Access Control MUST be associated with AC-1 part a.',              'at-1_smt.a' : 'at least one procedure that addresses Awareness and Training MUST be associated with AT-1 part a.',              'au-1_smt.a' : 'at least one procedure that addresses Audit and Accountability MUST be associated with AU-1 part a.',              'ca-1_smt.a' : 'at least one procedure that addresses Assessment, Authorization, and Monitoring MUST be associated with CA-1 part a.',              'cm-1_smt.a' : 'at least one procedure that addresses Configuration Management MUST be associated with CM1 part a.',             'cp-1_smt.a' : 'at least one procedure that addresses Contingency Planning MUST be associated with CP-1 part a.',             'ia-1_smt.a' : 'at least one procedure that addresses Incident Response MUST be associated with IA-1 part a.',             'ir-1_smt.a' : 'at least one procedure that addresses Incident Response MUST be associated with IR-1 part a.',             'ma-1_smt.a' : 'at least one procedure that addresses Maintenance MUST be associated with MA-1 part a.',             'mp-1_smt.a' : 'at least one procedure that addresses Media Protection MUST be associated with MP-1 part a.',             'pe-1_smt.a' : 'at least one procedure that addresses Physical and Environmental Protection MUST be associated with PE-1 part a.',             'pl-1_smt.a' : 'at least one procedure that addresses Planning MUST be associated with PL-1 part a.',             'ps-1_smt.a' : 'at least one procedure that addresses Personnel Security MUST be associated with PS-1 part a.',             'ra-1_smt.a' : 'at least one procedure that addresses Risk Assessment MUST be associated with RA-1 part a.',             'sa-1_smt.a' : 'at least one procedure that addresses System and Services Acquisition MUST be associated with SA-1 part a.',             'sc-1_smt.a' : 'at least one procedure that addresses System and Communications Protection MUST be associated with SC-1 part a.',             'si-1_smt.a' : 'at least one procedure that addresses System and Information Integrity MUST be associated with SI-1 part a.',             'sr-1_smt.a' : 'at least one procedure that addresses Supply Chain Risk Management MUST be associated with SR-1 part a.'}"
+        }, {
+          "var" : "component-uuid",
+          "expression" : "by-component/@component-uuid"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/control-implementation/implemented-requirement/statement/by-component"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "count(responsible-role) >= 1",
+          "id" : "by-component-has-responsible-role",
+          "message" : "In a FedRAMP SSP, each by-component MUST have at least one responsible role.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#responsible-roles-and-parameter-assignments",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".",
+          "formal-name" : "By Component Has Responsible Role"
+        }, {
+          "object-type" : "expect",
+          "test" : "exists(remarks)",
+          "id" : "implementation-status-has-remarks",
+          "message" : "In a FedRAMP SSP, each by-component that is not implemented MUST have remarks to provide context.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/6-security-controls/#implementation-status",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : "implementation-status[@state=('partial', 'planned', 'alternative', 'not-applicable' )]",
+          "formal-name" : "Implementation Status Has Remarks"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-characteristics/authorization-boundary/diagram/link"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($authorization-boundary-href, '#') and prop[@name='type' and @value='image' and @class='authorization-boundary']]) = 1",
+          "id" : "has-authorization-boundary-diagram-link-href-target",
+          "message" : "A FedRAMP SSP MUST include an authorization boundary diagram.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#authorization-boundary",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[@rel='diagram' and ../../../authorization-boundary/diagram/@uuid = $authorization-boundary-diagram-uuid]",
+          "formal-name" : "Has Authorization Boundary Diagram Link Href Target"
+        } ],
+        "lets" : [ {
+          "var" : "authorization-boundary-href",
+          "expression" : ".[@rel='diagram']/@href"
+        }, {
+          "var" : "authorization-boundary-diagram-uuid",
+          "expression" : "../@uuid"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-characteristics/data-flow/diagram/link"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($data-flow-href, '#') and prop[@name='type' and @value='image' and @class='data-flow']]) = 1",
+          "id" : "has-data-flow-diagram-link-href-target",
+          "message" : "A FedRAMP SSP MUST include a data flow diagram.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#data-flow",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[@rel='diagram' and ../../../data-flow/diagram/@uuid = $data-flow-diagram-uuid]",
+          "formal-name" : "Has Data Flow Diagram Link Href Target"
+        } ],
+        "lets" : [ {
+          "var" : "data-flow-href",
+          "expression" : ".[@rel='diagram']/@href"
+        }, {
+          "var" : "data-flow-diagram-uuid",
+          "expression" : "../@uuid"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "/system-security-plan/system-characteristics/network-architecture/diagram/link"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "expect",
+          "test" : "doc-available(resolve-uri(.[not(starts-with(@href, '#'))]/@href)) or count(../../../../back-matter/resource[@uuid=substring-after($network-architecture-href, '#') and prop[@name='type' and @value='image' and @class='network-architecture']]) = 1",
+          "id" : "has-network-architecture-diagram-link-href-target",
+          "message" : "A FedRAMP SSP MUST include a network architecture diagram.",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/4-ssp-template-to-oscal-mapping/#network-architecture",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "target" : ".[@rel='diagram' and ../../../network-architecture/diagram/@uuid = $network-architecture-diagram-uuid]",
+          "formal-name" : "Has Network Architecture Diagram Link Href Target"
+        } ],
+        "lets" : [ {
+          "var" : "network-architecture-href",
+          "expression" : ".[@rel='diagram']/@href"
+        }, {
+          "var" : "network-architecture-diagram-uuid",
+          "expression" : "../@uuid"
+        } ]
+      }
+    }, {
+      "metapaths" : [ {
+        "target" : "//back-matter/resource"
+      } ],
+      "constraints" : {
+        "rules" : [ {
+          "object-type" : "matches",
+          "message" : "A FedRAMP document SHOULD specify the last accessed date for resources where the specification publication date is unknown.  In such cases, the last accessed date MUST be be a date with an explicit timezone, per RFC-3339.",
+          "datatype" : "dateTime-with-timezone",
+          "props" : [ {
+            "value" : "https://automate.fedramp.gov/documentation/ssp/5-attachments/#attachments",
+            "name" : "help-url",
+            "namespace" : "https://docs.oasis-open.org/sarif/sarif/v2.1.0"
+          } ],
+          "formal-name" : "Last Accessed is Type DateTime",
+          "id" : "last-accessed-is-datetime",
+          "level" : "WARNING",
+          "target" : "prop[@ns='http://fedramp.gov/ns/oscal' and @name='last-accessed']/@value"
+        } ]
+      }
+    } ]
+  }
+}

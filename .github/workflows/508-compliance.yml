@@ -1,0 +1,126 @@
+name: 508 Compliance
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "release/*"
+      - "feature/*"
+  workflow_dispatch:
+    inputs:
+      linkcheck_fail_on_error:
+        description: 'A boolean flag that determines if bad links found by the link checker fail fast'
+        required: false
+        default: true
+        type: boolean
+      linkcheck_create_issue:
+        description: 'Create new GitHub issue if broken links are found'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  INPUT_FAIL_ON_ERROR: ${{ github.event.inputs.linkcheck_fail_on_error || 'true' }}
+  INPUT_ISSUE_ON_ERROR: ${{ github.event.inputs.linkcheck_create_issue || 'false' }}
+
+jobs:
+  build-and-push-website:
+    name: Build, Push, and 508 Compliance Test
+    runs-on: ubuntu-22.04
+    env:
+      BUILD_PATH: ./build
+    permissions:
+      contents: write
+    steps:
+      - name: Manage GH_TOKEN
+        if: env.GH_TOKEN == ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
+
+      - name: Checkout Latest
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          submodules: recursive
+
+      - name: Setup Swap Space
+        uses: pierotofy/set-swap-space@49819abfb41bd9b44fb781159c033dba90353a7c
+        with:
+          swap-size-gb: 10
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Setup Dependencies
+        run: |
+          # (Optional OSCAL commands omitted for brevity)
+          npm install --loglevel verbose
+          echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
+          sudo snap install dart-sass
+
+      - name: Cache Hugo Modules
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+
+      - name: Run Hugo
+        run: |
+          hugo -e staging --logLevel debug -d _site-test
+
+      - name: Zip Artifacts for Upload
+        run: |
+          zip ${{ runner.temp }}/website.zip -r _site-test
+
+      - name: Upload Generated Site
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: website
+          path: ${{ runner.temp }}/website.zip
+          retention-days: 5
+
+      # === Begin 508 (accessibility) Compliance Testing using pa11y-ci via sitemap ===
+
+      - name: Serve site for 508 Compliance Test
+        run: |
+          # Serve the built site (_site-test) on port 8080
+          npx http-server _site-test -p 8080 &
+          sleep 5
+
+      - name: Install pa11y-ci
+        run: npm install -g pa11y-ci
+
+      - name: Run pa11y-ci for 508 Compliance
+        id: pa11y
+        run: |
+          # This command tells pa11y-ci to fetch all URLs from the sitemap,
+          # excluding any URLs matching "/*.pdf", and use the settings in .pa11yci.
+          pa11y-ci \
+            --sitemap http://localhost:8080/sitemap.xml \
+            --sitemap-find "https://automate.fedramp.gov" \
+            --sitemap-replace "http://localhost:8080" \
+            --sitemap-exclude "/*.pdf" \
+            --config .pa11yci > pa11y_report.md
+          echo "pa11y_exit_code=$?" >> $GITHUB_ENV
+
+      - name: Upload 508 Compliance Report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pa11y-report
+          path: pa11y_report.md
+          retention-days: 5
+
+      - name: Fail on 508 Compliance Issues
+        if: ${{ env.pa11y_exit_code != '0' }}
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          script: |
+            core.setFailed('508 compliance test failed; please review the pa11y report.')

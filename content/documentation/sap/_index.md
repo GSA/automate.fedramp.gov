@@ -1,11 +1,11 @@
 ---
 title: FedRAMP OSCAL SAP
-weight: 300
+weight: 600
 menu:
   primary:
     name: Security Assessment Plan
     parent: Documentation
-    weight: 200
+    weight: 600
 ---
 # FedRAMP OSCAL SAP
 

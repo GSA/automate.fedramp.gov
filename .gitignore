@@ -3,3 +3,6 @@
 /hugo_stats.json
 
 /node_modules
+.vscode
+.DS_Store
+pa11y_report.md

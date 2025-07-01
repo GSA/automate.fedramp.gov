@@ -1,11 +1,11 @@
 ---
 title: FedRAMP OSCAL SAR
-weight: 400
+weight: 700
 menu:
   primary:
     name: Security Assessment Results
     parent: Documentation
-    weight: 300
+    weight: 700
 ---
 # FedRAMP OSCAL SAR
 

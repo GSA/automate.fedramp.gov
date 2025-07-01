@@ -25,7 +25,7 @@ env:
 jobs:
   build-and-push-website:
     name: Build and Push Website
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       BUILD_PATH: ./build
     permissions:
@@ -47,7 +47,7 @@ jobs:
       with:
         swap-size-gb: 10
     - name: Set up NodeJS
-      uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+      uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
@@ -62,12 +62,15 @@ jobs:
         # - ajv-formats
         # - markdown-link-check
         # - yaml-convert
+        npx oscal@latest use latest
+        npx oscal-cli metaschema convert --to=JSON -m=https://raw.githubusercontent.com/usnistgov/OSCAL/refs/heads/main/src/metaschema/oscal_complete_metaschema.xml https://raw.githubusercontent.com/GSA/fedramp-automation/refs/heads/develop/src/validations/constraints/fedramp-external-constraints.xml ../static/json/fedramp_external_constraints.json --overwrite
+        npx oscal-cli metaschema convert --to=JSON -m=https://raw.githubusercontent.com/usnistgov/OSCAL/refs/heads/main/src/metaschema/oscal_complete_metaschema.xml https://raw.githubusercontent.com/GSA/fedramp-automation/refs/heads/develop/src/validations/constraints/fedramp-external-allowed-values.xml ../static/json/fedramp_allowed_values.json --overwrite
         npm install --loglevel verbose
         echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
         # Dart-Sass
         sudo snap install dart-sass
     # cache hugo modules
-    - uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57
+    - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
       with:
         path: /tmp/hugo_cache
         key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
@@ -81,7 +84,7 @@ jobs:
       run: |
         zip ${{ runner.temp }}/website.zip -r _site-test
     - name: Upload generated site
-      uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       with:
         name: website
         path: |
@@ -89,7 +92,7 @@ jobs:
         retention-days: 5
     - id: linkchecker
       name: Link Checker
-      uses: lycheeverse/lychee-action@f81112d0d2814ded911bd23e3beaa9dda9093915
+      uses: lycheeverse/lychee-action@f613c4a64e50d792e0b31ec34bbcbba12263c6a6
       with:
         args: --exclude-file .github/workflows/config/.lycheeignore --verbose --no-progress --accept 200,206,429 './_site-test/**/*.html' --remap "https://automate.fedramp.gov/ file://${GITHUB_WORKSPACE}/_site-test/" --exclude-mail
         format: markdown
@@ -100,7 +103,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       continue-on-error: true
     - name: Upload link check report
-      uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
       with:
         name: html-link-report
         path: html-link-report.md

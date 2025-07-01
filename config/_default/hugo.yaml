@@ -41,6 +41,7 @@ params:
   sidenav:
   custom_css:
   - css/site.css
+  - css/accessibility.css
   searchAffiliate: fedramp-automation
 #    debug: true
 markup:
