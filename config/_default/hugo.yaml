@@ -1,4 +1,4 @@
-title: "FedRAMP Automation"
+title: "FedRAMP Automation (Archived)"
 baseURL: https://automate.fedramp.gov/
 defaultContentLanguage: en
 languageCode: "en-us"
@@ -6,19 +6,6 @@ MetaDataFormat: "yaml"
 #googleAnalytics: UA-
 enableGitInfo: true
 enableRobotsTXT: true
-menu:
-  secondary:
-  - name: FedRAMP
-    url: https://fedramp.gov/
-    weight: 10
-  - name: Marketplace
-    url: https://marketplace.fedramp.gov/
-    weight: 10
-  - name: Github
-    url: https://github.com/GSA/fedramp-automation
-    weight: 90
-# Configuration for hugo-uswds
-#
 module:
   mounts:
   - source: static
@@ -33,16 +20,9 @@ theme:
 - uswds-hugo
 params:
   header:
-    project_shortname: "Automation"
-    project_name: "Automation"
-  page_repo_path: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
-  contentRepoPath: https://github.com/GSA/automate.fedramp.gov/blob/develop/content
-  usabanner: true
-  sidenav:
-  custom_css:
-  - css/site.css
-  - css/accessibility.css
-  searchAffiliate: fedramp-automation
+    project_shortname: "FedRAMP Automation (Archived)"
+    project_name: "FedRAMP Automation (Archived)"
+  usabanner: false
 #    debug: true
 markup:
   goldmark: # Markdown Rendering
