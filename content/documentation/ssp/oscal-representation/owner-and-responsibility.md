@@ -190,7 +190,7 @@ A FedRAMP OSCAL SSP encodes the security officer responsible for the system like
   }
 }
 {{< /highlight >}}
-{{% /tab %}
+{{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -218,7 +218,7 @@ system-security-plan:
       - 11111111-2222-4000-8000-004000000011
       role-id: information-system-security-officer
 {{< /highlight >}}
-{{% /tab %}}}
+{{% /tab %}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <system-security-plan xmlns="http://csrc.nist.gov/ns/oscal/1.0"
@@ -358,7 +358,7 @@ system-security-plan:
         /*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/prop[@name='job-title']
     Authorizing Official's Agency:
         /*/metadata/party[@uuid=/*/metadata/party[@uuid=[/*/metadata/responsible-party [@role-id="authorizing-official"]/party-uuid]]/member-of-organization]/name
-{{</ highlight >}}
+{{< /highlight >}}
 
 **NOTE:**
 
@@ -478,7 +478,7 @@ system-security-plan:
 {{< highlight xml "linenos=table" >}}
     Authorizing Official’s Name:
         //metadata/party[@uuid=[//metadata/responsible-party[@role-id="authorizing-official"]/party-uuid]]/name
-{{</ highlight >}}
+{{< /highlight >}}
 
 <br />
 {{<callout>}}
